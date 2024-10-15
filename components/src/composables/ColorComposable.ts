@@ -6,7 +6,7 @@ export function createColorProp(defaultActiveColor: string = 'text-white', defau
             type: String,
             default: defaultActiveColor
         },
-        onActiveTextColor: {
+        textColor: {
             type: String,
             default: defaultOnActiveColor
         }
@@ -15,33 +15,33 @@ export function createColorProp(defaultActiveColor: string = 'text-white', defau
 
 export function createBgColorProp(defaultBgActiveColor: string = 'bg-slate-950', defaultBgOnActiveColor: string = 'bg-slate-200'){
     return {
-        BgActiveColor: {
+        activeColor: {
             type: String,
             default: defaultBgActiveColor
         },
-        BgOnActiveColor: {
+        color: {
             type: String,
             default: defaultBgOnActiveColor
         }
     };
 }
 
-export function useColorClassName(props: {activeTextColor: string; onActiveTextColor: string}) {
+export function useColorClassName(props: {activeTextColor: string; textColor: string}) {
     const className = computed(() => {
         return {
             active: `${props.activeTextColor}`,
-            onActive: `${props.onActiveTextColor}`
+            onActive: `${props.textColor}`
         };
     })
     
     return className;
 }
 
-export function useBgColorClassName(props: { BgActiveColor: string; BgOnActiveColor: string }) {
+export function useBgColorClassName(props: { activeColor: string; color: string }) {
     const className = computed(() => {
       return {
-        active: `${props.BgActiveColor}`,
-        onActive: `${props.BgOnActiveColor}`
+        active: `${props.activeColor}`,
+        onActive: `${props.color}`
       };
     });
   
