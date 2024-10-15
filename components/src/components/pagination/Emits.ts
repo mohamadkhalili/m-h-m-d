@@ -1,4 +1,4 @@
 export const paginationEmits = [
-    "update:modelValue",
-    "update:searchPage"
+    "update:modelValue", //Change the page it is on
+    "update:searchPage" //Change the page it is on with search page input
 ];
