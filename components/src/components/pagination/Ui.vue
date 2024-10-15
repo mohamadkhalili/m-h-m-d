@@ -62,7 +62,6 @@
         </template>
         <template #searchPageInput="{enabled}">
           <slot name="searchPageInput" :enabled="enabled"></slot>
-          <tooltip location="top" text="write page to jump" >
           <input
             v-if="showDefaultsearchPageInput && enabled"
             :value="searchPage"
@@ -70,17 +69,14 @@
             class="searchPage "
             :class="[roundedClass, sizeClass, textColorClass.onActive, bgColorClass.onActive, borderClass]"
           />
-        </tooltip>
         </template>
         <template #searchPageBtn="{enabled}">
           <slot name="searchPageBtn" :enabled="enabled"></slot>
-          <tooltip location="top" text="click to jump page">
           <button 
             v-if="showDefaultsearchPageBtn && enabled"
             :class="[roundedClass, sizeClass, textColorClass.active, bgColorClass.active, borderClass]"
           >
           <svg-icon type="mdi" :path="mdiMagnify"></svg-icon></button>
-        </tooltip>
         </template>
       </pagination>
     </div>
@@ -90,7 +86,6 @@
 <script setup lang="ts">
   import { computed, defineProps, useSlots, defineEmits, defineOptions, onMounted, defineSlots } from 'vue';
   import pagination from './Core.vue';
-  import tooltip from '../tooltip/core.vue'
   import { useColorClassName, useBgColorClassName } from '../../composables/ColorComposable'
   import { useSize } from '../../composables/UseSizeProps'
   import { useRounded } from '../../composables/UseRoundedProps'
