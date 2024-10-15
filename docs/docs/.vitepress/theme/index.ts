@@ -5,7 +5,8 @@ import DefaultTheme from 'vitepress/theme'
 // import './style.css'
 // import '../../../../styles'
 import './tailwind.postcss'
-import Pagination from '../../../../components/src/components/pagination/ui/index.vue'
+import Pagination from '../../../../components/src/components/pagination/Ui.vue'
+import { tooltip } from '../../../../components/src/directives/TooltipDirective'
 
 export default {
   extends: DefaultTheme,
@@ -16,6 +17,7 @@ export default {
   },
   enhanceApp({ app, router, siteData }) {
     // ...
+    app.directive('tooltipl', tooltip);
     app.component('Pagination', Pagination)
   }
 } satisfies Theme

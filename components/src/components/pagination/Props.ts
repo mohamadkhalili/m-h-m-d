@@ -1,25 +1,26 @@
-import { createSizeProp } from '../../composables/UseSizeProps'
+//import for create props we needed
+import { createSizeProp } from '../../composables/UseSizeProps' 
 import { createRoundedProp } from '../../composables/UseRoundedProps'
 import { createBorderProp } from '../../composables/UseBorderProps';
 import { createBgColorProp, createColorProp } from '../../composables/ColorComposable';
 
 export const paginationProps = {
-    pageSize: { type: Number, default: 20 },
-    startCountPageShow: { type: Number, default: 2 },
-    endCountPageShow: { type: Number, default: 2 },
-    insideOfActivePageShow: { type: Number, default: 1 },
-    modelValue: { type: Number, default: 1 },
-    searchPage: { type: Number, default: 0 },
-    enableSearchPage: { type: Boolean, default: true },
+    pageSize: { type: Number, default: 20 }, //Size of pages
+    startCountPageShow: { type: Number, default: 2 }, //The number of initial pages that are placed before '...'
+    endCountPageShow: { type: Number, default: 2 }, //The number of end pages that are placed after '...'
+    insideOfActivePageShow: { type: Number, default: 1 }, //The number of left and right pages of the page we are on
+    modelValue: { type: Number, default: 1 }, //the page it is on
+    searchPage: { type: Number, default: 0 }, //the page it is on with search page input
+    enableSearchPage: { type: Boolean, default: false }, //Whether to create a search page or not
 };
 
 export const uiProps = {
-    ...createColorProp(),
-    ...createBgColorProp(),
-    ...createRoundedProp(),
-    ...createSizeProp(),
-    ...createBorderProp(),
-    modelValue: { type: Number, required: false },
-    searchPage: { type: Number, required: false },
-    rtl: { type: Boolean, default: true },
+    ...createColorProp(), //Setting text color in active and inactive mode
+    ...createBgColorProp(), //Set background color in active and inactive mode
+    ...createRoundedProp(), //Set rounded for pages and button
+    ...createSizeProp(), //Set size for pages and button
+    ...createBorderProp(), //Set border for pages and button
+    modelValue: { type: Number, required: false }, //the page it is on
+    searchPage: { type: Number, required: false }, //the page it is on with search page input
+    rtl: { type: Boolean, default: true }, //Placement should be from right to left (if it is false, it will be reversed)
 }

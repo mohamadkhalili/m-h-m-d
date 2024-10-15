@@ -62,7 +62,6 @@
         </template>
         <template #searchPageInput="{enabled}">
           <slot name="searchPageInput" :enabled="enabled"></slot>
-          <tooltip location="right" text="custom text" >
           <input
             v-if="showDefaultsearchPageInput && enabled"
             :value="searchPage"
@@ -70,17 +69,14 @@
             class="searchPage "
             :class="[roundedClass, sizeClass, textColorClass.onActive, bgColorClass.onActive, borderClass]"
           />
-        </tooltip>
         </template>
         <template #searchPageBtn="{enabled}">
           <slot name="searchPageBtn" :enabled="enabled"></slot>
-          <tooltip>
           <button 
             v-if="showDefaultsearchPageBtn && enabled"
             :class="[roundedClass, sizeClass, textColorClass.active, bgColorClass.active, borderClass]"
           >
           <svg-icon type="mdi" :path="mdiMagnify"></svg-icon></button>
-        </tooltip>
         </template>
       </pagination>
     </div>
@@ -89,16 +85,16 @@
   
 <script setup lang="ts">
   import { computed, defineProps, useSlots, defineEmits, defineOptions, onMounted, defineSlots } from 'vue';
-  import pagination from '../core/index.vue';
-  import { useColorClassName, useBgColorClassName } from '../../../composables/ColorComposable'
-  import { useSize } from '../../../composables/UseSizeProps'
-  import { useRounded } from '../../../composables/UseRoundedProps'
-  import { uiSlots } from '../Slots'
-  import { uiProps } from '../Props';
-  import { useBorder } from '../../../composables/UseBorderProps';
-  import { paginationEmits } from '../Emits';
+  import pagination from './Core.vue';
+  import { useColorClassName, useBgColorClassName } from '../../composables/ColorComposable'
+  import { useSize } from '../../composables/UseSizeProps'
+  import { useRounded } from '../../composables/UseRoundedProps'
+  import { uiSlots } from './Slots'
+  import { uiProps } from './Props';
+  import { useBorder } from '../../composables/UseBorderProps';
+  import { paginationEmits } from './Emits';
   import SvgIcon from '@jamescoyle/vue-icon';
-import { mdiChevronDoubleRight, mdiChevronDoubleLeft, mdiChevronRight, mdiChevronLeft, mdiMagnify } from '@mdi/js';
+  import { mdiChevronDoubleRight, mdiChevronDoubleLeft, mdiChevronRight, mdiChevronLeft, mdiMagnify } from '@mdi/js';
   
 
   const props = defineProps(uiProps);
