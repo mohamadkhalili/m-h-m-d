@@ -10,7 +10,7 @@ export const paginationProps = {
     insideOfActivePageShow: { type: Number, default: 1 },
     modelValue: { type: Number, default: 1 },
     searchPage: { type: Number, default: 0 },
-    enableSearchPage: { type: Boolean, default: true },
+    enableSearchPage: { type: Boolean, default: false },
 };
 
 export const uiProps = {

@@ -1,6 +1,6 @@
 // src/index.ts
 import { App } from 'vue';
-import MainPagination from './components/pagination/Main.vue';
+import MainPagination from './components/pagination/Ui.vue';
 import '../../styles/index';
 import { tooltip } from './directives/TooltipDirective';
 
