@@ -7,9 +7,18 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "vite build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "Vue",
+    "Vue3",
+    "UI",
+    "UX",
+    "Tailwind",
+    "CSS",
+    "HTML",
+    "Framework"
+  ],
+  "author": "MHMD",
+  "license": "MIT",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.0",
     "@rollup/plugin-node-resolve": "^15.3.0",
@@ -27,5 +36,13 @@
     "@mdi/js": "^7.4.47",
     "@vitejs/plugin-vue": "^5.1.4",
     "vite-plugin-dts": "^4.2.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohamadkhalili/m-h-m-d.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mohamadkhalili/m-h-m-d/issues"
+  },
+  "homepage": "https://github.com/mohamadkhalili/m-h-m-d#readme"
 }
