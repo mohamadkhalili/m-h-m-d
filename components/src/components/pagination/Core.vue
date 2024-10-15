@@ -32,9 +32,9 @@ import {
   defineProps,
   defineSlots
 } from "vue";
-import { paginationProps } from "../Props";
-import { paginationSlots } from "../Slots";
-import { paginationEmits } from "../Emits";
+import { paginationProps } from "./Props";
+import { paginationSlots } from "./Slots";
+import { paginationEmits } from "./Emits";
 const props = defineProps(paginationProps);
 const slots = defineSlots<paginationSlots>()
 
