@@ -11,8 +11,8 @@ export const tooltip = {
       color: '#fff',
       padding: '5px',
       borderRadius: '3px',
-      whiteSpace: 'nowrap', 
-      zIndex: '9999', 
+      whiteSpace: 'nowrap',
+      zIndex: '9999',
     });
 
     // Append the tooltip to the body

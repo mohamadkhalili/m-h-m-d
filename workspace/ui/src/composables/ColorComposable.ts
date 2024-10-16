@@ -1,6 +1,6 @@
 import { ref, computed } from 'vue';
 
-export function createColorProp(defaultActiveColor: string = 'text-white', defaultOnActiveColor: string = 'text-black'){
+export function createColorProp(defaultActiveColor: string = 'text-white', defaultOnActiveColor: string = 'text-black') {
     return {
         activeTextColor: {
             type: String,
@@ -13,7 +13,7 @@ export function createColorProp(defaultActiveColor: string = 'text-white', defau
     };
 }
 
-export function createBgColorProp(defaultBgActiveColor: string = 'bg-slate-950', defaultBgOnActiveColor: string = 'bg-slate-200'){
+export function createBgColorProp(defaultBgActiveColor: string = 'bg-slate-950', defaultBgOnActiveColor: string = 'bg-slate-200') {
     return {
         activeColor: {
             type: String,
@@ -26,24 +26,24 @@ export function createBgColorProp(defaultBgActiveColor: string = 'bg-slate-950',
     };
 }
 
-export function useColorClassName(props: {activeTextColor: string; textColor: string}) {
+export function useColorClassName(props: { activeTextColor: string; textColor: string }) {
     const className = computed(() => {
         return {
             active: `${props.activeTextColor}`,
             onActive: `${props.textColor}`
         };
     })
-    
+
     return className;
 }
 
 export function useBgColorClassName(props: { activeColor: string; color: string }) {
     const className = computed(() => {
-      return {
-        active: `${props.activeColor}`,
-        onActive: `${props.color}`
-      };
+        return {
+            active: `${props.activeColor}`,
+            onActive: `${props.color}`
+        };
     });
-  
+
     return className;
 }

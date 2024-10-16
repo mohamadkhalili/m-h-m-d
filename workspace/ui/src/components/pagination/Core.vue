@@ -7,8 +7,12 @@
   </div>
   <template v-for="(page, index) in getPages" :key="index">
     <div @click="setModelValue(page)">
-      <slot name="default" :isCurrentPage="typeof page === 'number' && page !== -1" :isActive="page === modelValue"
-        :page="page"></slot>
+      <slot
+        name="default"
+        :isCurrentPage="typeof page === 'number' && page !== -1"
+        :isActive="page === modelValue"
+        :page="page"
+      ></slot>
     </div>
   </template>
   <div @click="nextPage">
@@ -26,17 +30,12 @@
 </template>
 
 <script setup lang="ts">
-import {
-  defineEmits,
-  computed,
-  defineProps,
-  defineSlots
-} from "vue";
+import { defineEmits, computed, defineProps, defineSlots } from "vue";
 import { paginationProps } from "./Props";
 import { paginationSlots } from "./Slots";
 import { paginationEmits } from "./Emits";
 const props = defineProps(paginationProps);
-const slots = defineSlots<paginationSlots>()
+const slots = defineSlots<paginationSlots>();
 
 const emit = defineEmits(paginationEmits);
 const prevPage = () => {
@@ -64,12 +63,12 @@ const superNextPage = () => {
 };
 
 const setModelValue = (temp: number) => {
-  if(temp !== -1){
-  emit("update:modelValue", temp);
+  if (temp !== -1) {
+    emit("update:modelValue", temp);
   }
 };
 const setSearchPage = (searchnum: number) => {
-  if(searchnum > 0 && searchnum <= props.pageSize){
+  if (searchnum > 0 && searchnum <= props.pageSize) {
     emit("update:modelValue", searchnum);
   }
   emit("update:searchPage", undefined);
@@ -81,7 +80,10 @@ const getPages = computed(() => {
   for (let i = 1; i <= props.startCountPageShow; i++) {
     if (props.pageSize > i + 1 && props.modelValue > i + 1) arrayBtn.push(i);
   }
-  if (props.pageSize > props.startCountPageShow + 2 && props.modelValue > props.startCountPageShow + 2)
+  if (
+    props.pageSize > props.startCountPageShow + 2 &&
+    props.modelValue > props.startCountPageShow + 2
+  )
     arrayBtn.push(-1);
   for (let i = props.insideOfActivePageShow; i > 0; i--) {
     if (props.modelValue - i > 0) arrayBtn.push(props.modelValue - i);
@@ -91,7 +93,8 @@ const getPages = computed(() => {
     if (props.modelValue + i + 1 <= props.pageSize)
       arrayBtn.push(props.modelValue + i + 1);
   }
-  if (props.modelValue + props.endCountPageShow + 2 <= props.pageSize) arrayBtn.push(-1);
+  if (props.modelValue + props.endCountPageShow + 2 <= props.pageSize)
+    arrayBtn.push(-1);
   for (let i = props.endCountPageShow - 1; i >= 0; i--) {
     if (props.modelValue + i + 2 <= props.pageSize)
       arrayBtn.push(props.pageSize - i);
