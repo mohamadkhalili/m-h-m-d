@@ -51,7 +51,7 @@ import DataTableItems from './DataTableItems.vue'
 import { ref, watch, onMounted, nextTick } from 'vue'
 
 import { changeSizeToGrid } from './services/sizeTypeTableGenerate'
-import type { Config, Header, PrimateHeader } from '../dataTable/models/tableModels.ts'
+import type { Config, Header, PrimateHeader } from './models/tableModels'
 
 // const header
 export interface Props {

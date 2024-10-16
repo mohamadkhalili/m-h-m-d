@@ -1,0 +1,14 @@
+{
+  "name": "m-h-m-d",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "private": true,
+  "scripts": {
+    "start": "pnpm -r start",
+    "build": "pnpm -r build"
+  },
+  "author": "",
+  "license": "MIT"
+}

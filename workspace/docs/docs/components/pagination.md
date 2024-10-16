@@ -1,6 +1,4 @@
-# Other Page
-
-Here is the component being used:
+# Pagination
 
 <script setup>
 import { ref } from 'vue'
@@ -13,7 +11,7 @@ const searchValue = ref()
 </script>
 
 <!-- Use the component with v-model binding -->
-<Pagination v-model="inputValue" v-model:searchPage="searchValue" size="size-10" border-radius-size="rounded-full" :pageSize="10" :enableSearchPage="true" class="bg-blue-500"/>
+<Pagination v-model="inputValue" v-model:searchPage="searchValue" size="size-10" border-radius-size="rounded-full" :pageSize="10" :enableSearchPage="false"/>
 
 You can also write more Markdown content here.
 
