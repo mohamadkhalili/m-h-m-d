@@ -25,7 +25,7 @@
 <script setup lang="ts">
 import DataTableBase from './DataTableBase.vue'
 import { ref, computed } from 'vue'
-import type { Config,PrimateHeader } from '../dataTable/models/tableModels.ts'
+import type { Config,PrimateHeader } from './models/tableModels'
 
 export interface Props {
     items: Array<any>,

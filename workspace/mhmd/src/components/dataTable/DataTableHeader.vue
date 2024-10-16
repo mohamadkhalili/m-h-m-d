@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
 import { defineEmits, onMounted, onUnmounted, ref } from 'vue';
-import type { Config, Header } from '../dataTable/models/tableModels.ts'
+import type { Config, Header } from './models/tableModels.js'
 
 const isMouseDown = ref(false);
 const isMoved = ref(false);
