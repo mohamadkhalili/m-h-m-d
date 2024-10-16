@@ -12,6 +12,6 @@ export function useSize(props: { size: string }) {
     const className = computed(() => {
         return `${props.size}`;
     });
-    
+
     return className;
 }

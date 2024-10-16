@@ -8,7 +8,7 @@ export function createRoundedProp(defaultSize: string = 'rounded-full') {
         }
     };
 }
-export function useRounded(props: {borderRadiusSize: string}) {
+export function useRounded(props: { borderRadiusSize: string }) {
     const className = computed(() => {
         return `${props.borderRadiusSize}`;
     });
