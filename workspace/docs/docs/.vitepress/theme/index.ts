@@ -5,8 +5,8 @@ import DefaultTheme from 'vitepress/theme'
 // import './style.css'
 // import '../../../../styles'
 import './tailwind.postcss'
-import Pagination from '../../../../components/src/components/pagination/Ui.vue'
-import { tooltip } from '../../../../components/src/directives/TooltipDirective'
+import Pagination from '../../../../ui/src/components/pagination/Ui.vue'
+import { tooltip } from '../../../../ui/src/directives/TooltipDirective'
 
 export default {
   extends: DefaultTheme,
