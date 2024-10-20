@@ -21,11 +21,8 @@
   <div @click="superNextPage">
     <slot name="superNext" :disabled="modelValue === pageSize"></slot>
   </div>
-  <div>
-    <slot name="searchPageInput" :enabled="enableSearchPage"></slot>
-  </div>
-  <div @click="setSearchPage(searchPage)">
-    <slot name="searchPageBtn" :enabled="enableSearchPage"></slot>
+  <div @click="toggleEdit" @keyup.enter="setSearchPage(searchPage)">
+    <slot name="searchPage" :enabled="enableSearchPage"></slot>
   </div>
 </template>
 
@@ -72,7 +69,14 @@ const setSearchPage = (searchnum: number) => {
     emit("update:modelValue", searchnum);
   }
   emit("update:searchPage", undefined);
-  console.log(props.searchPage);
+  if (props.isEditingSearchPage === true) {
+    emit("update:isEditingSearchPage", false);
+  }
+};
+const toggleEdit = () => {
+  if (props.isEditingSearchPage === false) {
+    emit("update:isEditingSearchPage", true);
+  }
 };
 
 const getPages = computed(() => {
