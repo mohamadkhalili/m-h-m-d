@@ -11,6 +11,7 @@
         @update:searchPage="handleSearchPage"
         :isEditingSearchPage="isEditingSearchPage"
         @update:isEditingSearchPage="handleIsEditingSearchPage"
+        :page-size="pageSize"
         v-bind="$attrs"
       >
         <template #superPrev="{ disabled }">
@@ -205,6 +206,7 @@ const showDefaultSuperPrev = computed(() => !slots.superPrev);
 const showDefaultSuperNext = computed(() => !slots.superNext);
 const showDefaultsearchPageInput = computed(() => !slots.superPrev);
 const showDefaultsearchPageBtn = computed(() => !slots.superNext);
+let timeoutId: number | undefined;
 
 const handlePageChange = (newValue: number) => {
   emit("update:modelValue", newValue);
@@ -223,10 +225,22 @@ const handleInput = (event: Event) => {
   if (target) {
     const value = target.value;
     const numericValue = value.replace(/[^0-9]/g, "");
-    if (numericValue && Number(numericValue) >= 0) {
-      emit("update:searchPage", Number(numericValue));
+    let limitedValue = numericValue.slice(0, 3);
+    if (limitedValue && Number(limitedValue) >= 0) {
+      emit("update:searchPage", Number(limitedValue));
+      
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+      timeoutId = window.setTimeout(() => {
+        if (Number(limitedValue) > 0 && Number(limitedValue) <= props.pageSize) {
+          emit("update:modelValue", Number(limitedValue));
+        }
+        emit("update:searchPage", undefined);
+      }, 700);
     }
-    target.value = numericValue;
+    
+    target.value = limitedValue;
   }
 };
 </script>

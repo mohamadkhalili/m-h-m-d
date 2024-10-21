@@ -21,6 +21,7 @@ export const uiProps = {
     ...createRoundedProp(), //Set rounded for pages and button
     ...createSizeProp(), //Set size for pages and button
     ...createBorderProp(), //Set border for pages and button
+    pageSize: { type: Number, default: 20, required: true }, //Size of pages
     modelValue: { type: Number, required: false }, //the page it is on
     searchPage: { type: Number, required: false }, //the page it is on with search page input
     rtl: { type: Boolean, default: true }, //Placement should be from right to left (if it is false, it will be reversed)
