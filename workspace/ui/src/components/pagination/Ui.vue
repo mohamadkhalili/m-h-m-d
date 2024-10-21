@@ -9,6 +9,8 @@
         @update:modelValue="handlePageChange"
         :searchPage="searchPage"
         @update:searchPage="handleSearchPage"
+        :isEditingSearchPage="isEditingSearchPage"
+        @update:isEditingSearchPage="handleIsEditingSearchPage"
         v-bind="$attrs"
       >
         <template #superPrev="{ disabled }">
@@ -201,6 +203,10 @@ const handlePageChange = (newValue: number) => {
 
 const handleSearchPage = (newValue: number) => {
   emit("update:searchPage", newValue);
+};
+
+const handleIsEditingSearchPage = (newValue: boolean) => {
+  emit("update:isEditingSearchPage", newValue);
 };
 
 const handleInput = (event: Event) => {
