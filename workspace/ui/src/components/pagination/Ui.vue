@@ -9,6 +9,9 @@
         @update:modelValue="handlePageChange"
         :searchPage="searchPage"
         @update:searchPage="handleSearchPage"
+        :isEditingSearchPage="isEditingSearchPage"
+        @update:isEditingSearchPage="handleIsEditingSearchPage"
+        :page-size="pageSize"
         v-bind="$attrs"
       >
         <template #superPrev="{ disabled }">
@@ -99,36 +102,45 @@
             <svg-icon type="mdi" :path="superNextIcon"></svg-icon>
           </button>
         </template>
-        <template #searchPageInput="{ enabled }">
-          <slot name="searchPageInput" :enabled="enabled"></slot>
-          <input
-            v-if="showDefaultsearchPageInput && enabled"
-            :value="searchPage"
-            @input="handleInput"
-            class="searchPage"
-            :class="[
-              roundedClass,
-              sizeClass,
-              textColorClass.onActive,
-              bgColorClass.onActive,
-              borderClass,
-            ]"
-          />
-        </template>
-        <template #searchPageBtn="{ enabled }">
-          <slot name="searchPageBtn" :enabled="enabled"></slot>
-          <button
-            v-if="showDefaultsearchPageBtn && enabled"
-            :class="[
-              roundedClass,
-              sizeClass,
-              textColorClass.active,
-              bgColorClass.active,
-              borderClass,
-            ]"
+        <template #searchPage="{ enabled }">
+          <slot name="searchPage" :enabled="enabled"></slot>
+          <div
+            class="flip-container"
+            :class="{ 'is-flipped': isEditingSearchPage }"
           >
-            <svg-icon type="mdi" :path="mdiMagnify"></svg-icon>
-          </button>
+            <div class="flipper">
+              <div class="front">
+                <button
+                  v-if="showDefaultsearchPageBtn && enabled"
+                  :class="[
+                    roundedClass,
+                    sizeClass,
+                    textColorClass.active,
+                    bgColorClass.active,
+                    borderClass,
+                  ]"
+                >
+                  <svg-icon type="mdi" :path="mdiMagnify"></svg-icon>
+                </button>
+              </div>
+              <div class="back">
+                <input
+                  v-if="showDefaultsearchPageInput && enabled"
+                  ref="searchInput"
+                  :value="searchPage"
+                  @input="handleInput"
+                  class="searchPage"
+                  :class="[
+                    roundedClass,
+                    sizeClass,
+                    textColorClass.onActive,
+                    bgColorClass.onActive,
+                    borderClass,
+                  ]"
+                />
+              </div>
+            </div>
+          </div>
         </template>
       </pagination>
     </div>
@@ -194,6 +206,7 @@ const showDefaultSuperPrev = computed(() => !slots.superPrev);
 const showDefaultSuperNext = computed(() => !slots.superNext);
 const showDefaultsearchPageInput = computed(() => !slots.superPrev);
 const showDefaultsearchPageBtn = computed(() => !slots.superNext);
+let timeoutId: number | undefined;
 
 const handlePageChange = (newValue: number) => {
   emit("update:modelValue", newValue);
@@ -203,15 +216,31 @@ const handleSearchPage = (newValue: number) => {
   emit("update:searchPage", newValue);
 };
 
+const handleIsEditingSearchPage = (newValue: boolean) => {
+  emit("update:isEditingSearchPage", newValue);
+};
+
 const handleInput = (event: Event) => {
   const target = event.target as HTMLInputElement;
   if (target) {
     const value = target.value;
     const numericValue = value.replace(/[^0-9]/g, "");
-    if (numericValue && Number(numericValue) >= 0) {
-      emit("update:searchPage", Number(numericValue));
+    let limitedValue = numericValue.slice(0, 3);
+    if (limitedValue && Number(limitedValue) >= 0) {
+      emit("update:searchPage", Number(limitedValue));
+      
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+      timeoutId = window.setTimeout(() => {
+        if (Number(limitedValue) > 0 && Number(limitedValue) <= props.pageSize) {
+          emit("update:modelValue", Number(limitedValue));
+        }
+        emit("update:searchPage", undefined);
+      }, 700);
     }
-    target.value = numericValue;
+    
+    target.value = limitedValue;
   }
 };
 </script>
@@ -266,6 +295,51 @@ button {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.flip-container {
+  perspective: 1000px; /* Creates 3D space */
+  display: inline-block; /* Keeps it inline with other items */
+  width: 100px; /* Use full width of the parent container */
+  max-width: 100px; /* Set a max width if necessary */
+  height: 40px; /* Adjust height based on the size of the button/input */
+  margin-right: -30px;
+  margin-top: 7px;
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+.flipper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d; /* Ensures 3D rotation works */
+  transform-origin: center;
+}
+
+.flip-container.is-flipped .flipper {
+  transform: rotateY(180deg);
+}
+
+.front,
+.back {
+  position: absolute; /* Make both sides overlap */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Hide the back when rotated */
+  display: flex; /* Centers content inside */
+  align-items: center; /* Vertical center */
+  justify-content: center; /* Horizontal center */
+}
+
+.front {
+  transform: rotateY(0deg); /* Default button visible */
+}
+
+.back {
+  transform: rotateY(180deg); /* Hidden input by default */
 }
 </style>
   
