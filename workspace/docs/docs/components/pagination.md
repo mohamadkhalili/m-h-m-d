@@ -8,6 +8,7 @@ import { ref } from 'vue'
 
 const inputValue = ref()
 const searchValue = ref()
+const isEditingSearchPage = ref()
 </script>
 
 <!-- Use the component with v-model binding -->
@@ -15,4 +16,4 @@ const searchValue = ref()
 
 You can also write more Markdown content here.
 
-<Pagination v-model="inputValue" v-model:searchPage="searchValue" :pageSize="10" />
+<Pagination v-model="inputValue" v-model:searchPage="searchValue" v-model:isEditingSearchPage="isEditingSearchPage" :pageSize="10" />
