@@ -9,7 +9,7 @@
 <script setup lang="ts">
 import { coreSlots } from './Slots'
 import { coreProps } from './Props';
-import { DefineProps } from 'vue';
+import { defineProps, defineSlots } from 'vue';
 const props = defineProps(coreProps);
 const slots = defineSlots<coreSlots>();
 </script>
