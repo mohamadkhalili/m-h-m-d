@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <div v-if="modelValue == true">
         <slot name="close"></slot>
     </div>
-    <div>
+    <div v-if="modelValue == true">
         <slot name="default"></slot>
     </div>
 </template>
