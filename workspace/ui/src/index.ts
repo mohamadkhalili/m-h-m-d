@@ -12,7 +12,7 @@ export default {
     install(app: App) {
         app.directive('tooltip', tooltip);
         app.component('Main', MainPagination);
-        app.component('Main', MainBtn);
+        app.component('MainBtn', MainBtn);
 
     },
 };
