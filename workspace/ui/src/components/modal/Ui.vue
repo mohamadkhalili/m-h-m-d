@@ -11,7 +11,9 @@
   
 <script setup lang="ts">
 import modal from "./Core.vue";
+import { uiProps } from "./Props";
 import { modalEmits } from "./Emits";
+const props = defineProps(uiProps);
 const emit = defineEmits(modalEmits);
 </script>
 <style scoped>
