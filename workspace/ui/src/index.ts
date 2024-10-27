@@ -8,7 +8,7 @@ export { MainPagination };
 
 export default {
     install(app: App) {
-        app.directive('tooltipl', tooltip);
+        app.directive('tooltip', tooltip);
         app.component('Main', MainPagination);
     },
 };
