@@ -1,20 +1,41 @@
 <template>
-  <div class="modal">
-    <modal>
-      <template #close></template>
-      <template #default>
-        <p>this is modal</p>
+  <div>
+    <Core
+      :modelValue="modelValue"
+      @update:modelValue="handleModelValue"
+      v-bind="$attrs"
+    >
+      <template #close>
+        <SvgIcon @click="handleClose" type="mdi" :path="mdiClose"></SvgIcon>
       </template>
-    </modal>
+      <template #default>
+        <div class="body">
+          <p>This is the modal content</p>
+        </div>
+      </template>
+    </Core>
   </div>
 </template>
   
 <script setup lang="ts">
-import modal from "./Core.vue";
+import { defineOptions, defineProps } from "vue";
+import Core from "./Core.vue";
 import { uiProps } from "./Props";
 import { modalEmits } from "./Emits";
+import SvgIcon from "@jamescoyle/vue-icon";
+import { mdiClose } from "@mdi/js";
 const props = defineProps(uiProps);
 const emit = defineEmits(modalEmits);
+defineOptions({
+  inheritAttrs: false,
+});
+const handleModelValue = (newValue: boolean) => {
+  console.log("Model value updated:", newValue);
+  emit("update:modelValue", newValue);
+};
+function handleClose() {
+  emit("update:modelValue", false);
+};
 </script>
 <style>
 .modal-overlay {
