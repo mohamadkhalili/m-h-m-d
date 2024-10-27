@@ -71,7 +71,7 @@
   }
   </script>
   
-  <style scoped>
-  /* همان استایل‌ها */
+  <style >
+ 
   </style>
   
