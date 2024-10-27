@@ -24,9 +24,11 @@ export default defineConfig({
         collapsed: true,
         link: '/components',
         items: [
-          { text: 'pagination', link: '/components//pagination' }
+          { text: 'pagination', link: '/components//pagination' },
+          { text: 'modal', link: '/components//modal' }
         ]
       },
+      
       {
         text: "API",
         collapsed: true,
