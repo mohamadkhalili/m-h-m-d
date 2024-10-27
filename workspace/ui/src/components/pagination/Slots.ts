@@ -17,4 +17,3 @@ export interface uiSlots {
 } //Here the rtl is sent to set the icons on the buttons correctly
 
 
-

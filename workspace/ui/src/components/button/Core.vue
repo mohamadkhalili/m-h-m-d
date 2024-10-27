@@ -21,11 +21,12 @@
   
   <script setup>
   import { ref, computed, defineProps } from 'vue'
+  import { buttonColors } from './props' // مسیر صحیح به فایل props.ts را وارد کنید
   
   const props = defineProps({
     color: {
       type: String,
-      default: 'blue',
+      default: 'default', // مقدار پیش‌فرض باید 'default' باشد
     },
   })
   
@@ -57,16 +58,11 @@
   
   const buttonColor = computed(() => {
     return {
-      'bg-blue-700 hover:bg-blue-800 hover:ring-2 ring-blue-200 ':
-        props.color === 'blue',
-      'bg-green-700 hover:bg-green-800 hover:ring-2 ring-green-200 ':
-        props.color === 'green',
-      'bg-red-600 hover:bg-red-700 hover:ring-2 ring-red-200 ':
-        props.color === 'red',
-      'bg-amber-500 hover:bg-amber-600 hover:ring-2 ring-amber-200 ':
-        props.color === 'yellow',
-      'bg-purple-700 hover:bg-purple-800 hover:ring-2 ring-purple-200 ':
-        props.color === 'purple',
+      'bg-blue-700 hover:bg-blue-800': props.color === buttonColors.default,
+      'bg-purple-700 hover:bg-purple-800': props.color === buttonColors.secondary,
+      'bg-green-700 hover:bg-green-800': props.color === buttonColors.primary,
+      'bg-red-600 hover:bg-red-700': props.color === buttonColors.error,
+      'bg-amber-500 hover:bg-amber-600': props.color === buttonColors.warning,
     }
   })
   
@@ -76,16 +72,6 @@
   </script>
   
   <style scoped>
-  .ripple {
-    position: absolute;
-    transform: scale(2);
-    animation: ripple-animation 0.2s linear forwards;
-  }
-  
-  @keyframes ripple-animation {
-    to {
-      background: rgba(255, 255, 255, 0.329);
-      opacity: 40;
-    }
-  }
+  /* همان استایل‌ها */
   </style>
+  

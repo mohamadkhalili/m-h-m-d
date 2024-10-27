@@ -7,7 +7,7 @@ import DefaultTheme from 'vitepress/theme'
 import './tailwind.postcss'
 import Pagination from '../../../../ui/src/components/pagination/Ui.vue'
 import { tooltip } from '../../../../ui/src/directives/TooltipDirective'
-import Button from '../../../../ui/src/components/button/Core.vue'
+import Btn from '../../../../ui/src/components/button/Core.vue'
 
 
 export default {
@@ -20,7 +20,7 @@ export default {
   enhanceApp({ app, router, siteData }) {
     // ...
     app.directive('tooltip', tooltip);
-    app.component('Button', Button) 
+    app.component('Btn', Btn) 
     app.component('Pagination', Pagination)
 
   }

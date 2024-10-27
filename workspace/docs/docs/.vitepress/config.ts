@@ -25,7 +25,7 @@ export default defineConfig({
         link: '/components',
         items: [
           { text: 'pagination', link: '/components//pagination' },{
-            text:'button',link:'/components//button'
+            text:'Btn',link:'/components//Btn'
           }
         ]
       },
