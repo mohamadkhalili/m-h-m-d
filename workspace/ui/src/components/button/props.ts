@@ -1,4 +1,4 @@
-// props.ts
+
 export const buttonColors = {
   default: 'bg-blue',
   secondary: 'bg-purple',
