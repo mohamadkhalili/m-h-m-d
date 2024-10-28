@@ -1,0 +1,145 @@
+<template>
+  <div class="button-container">
+    <button
+      :class="[
+        buttonColor,
+        'custom-button'
+      ]"
+      @click="createRipple"
+    >
+      <slot></slot>
+      <span
+        class="ripple"
+        v-if="rippleVisible"
+        :style="rippleStyle"
+        @transitionend="resetRipple"
+      ></span>
+    </button>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { ref, computed, defineProps } from 'vue';
+import { buttonColors, props } from './props';
+
+const propsData = defineProps(props);
+
+const rippleVisible = ref(false);
+const rippleStyle = ref({});
+
+const createRipple = (event: MouseEvent) => {
+  const button = event.currentTarget as HTMLButtonElement;
+  const rect = button.getBoundingClientRect();
+
+  const size = Math.max(rect.width, rect.height);
+  const x = event.clientX - rect.left - size / 2;
+  const y = event.clientY - rect.top - size / 2;
+
+  rippleStyle.value = {
+    width: `${size}px`,
+    height: `${size}px`,
+    top: `${y}px`,
+    left: `${x}px`,
+    transition: 'none',
+  };
+
+  rippleVisible.value = true;
+
+  setTimeout(() => {
+    rippleVisible.value = false;
+  }, 200);
+};
+
+const buttonColor = computed(() => {
+  return buttonColors[propsData.color] || buttonColors.default;
+});
+
+const resetRipple = () => {
+  rippleStyle.value = {};
+};
+</script>
+
+<style scoped>
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+}
+
+.custom-button {
+  padding: 0.5rem 2rem; 
+  margin: 2rem; 
+  border-radius: 0.5rem; 
+  color: white; 
+
+  position: relative; 
+  transition: all 0.2s; 
+  cursor: pointer; 
+  z-index: 10;
+  overflow: hidden; 
+}
+
+.custom-button:active {
+  transform: scale(0.95); 
+}
+
+.ripple {
+  position: absolute;
+  transform: scale(2);
+  animation: ripple-animation 0.2s linear forwards;
+  background: rgba(255, 255, 255, 0.6); 
+  z-index: 0;
+}
+
+@keyframes ripple-animation {
+  to {
+    background: #ffffff80;
+    opacity: 0; 
+  }
+}
+
+
+.bg-blue {
+    background: linear-gradient(45deg, rgb(0, 174, 255) 0%, rgb(0, 81, 255) 100%); 
+
+}
+
+.bg-purple {
+    background: linear-gradient(45deg, rgb(199, 0, 139) 0%, rgb(156, 0, 187) 100%); 
+
+}
+
+.bg-green {
+    background: linear-gradient(45deg, rgb(134, 218, 0) 0%, rgb(0, 221, 85) 100%); 
+
+}
+
+.bg-red {
+    background: linear-gradient(45deg, rgb(255, 0, 98) 0%, rgb(255, 0, 0) 100%); 
+
+}
+
+.bg-amber {
+    background: linear-gradient(45deg, rgb(255, 187, 0) 0%, rgb(255, 174, 0) 100%); 
+
+}
+
+.bg-random {
+  background: rgb(4,193,154);
+  background: linear-gradient(90deg, rgb(0, 194, 155) 0%, rgb(145, 0, 189) 100%); 
+}
+
+.bg-blue:hover,
+.bg-purple:hover,
+.bg-green:hover,
+.bg-red:hover,
+.bg-amber:hover,
+.bg-random:hover {
+  box-shadow: 
+    inset 0 0px 2px rgba(156, 156, 156, 0.1), 
+    0 0 0 2px rgba(255, 255, 255, 0.39),
+    0 0 0 4px rgba(201, 200, 200, 0.795), 
+    0 0 0 6px rgba(255, 255, 255, 0.034);
+}
+</style>
