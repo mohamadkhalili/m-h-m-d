@@ -72,7 +72,6 @@ const resetRipple = () => {
   margin: 2rem; 
   border-radius: 0.5rem; 
   color: white; 
-
   position: relative; 
   transition: all 0.2s; 
   cursor: pointer; 
@@ -125,9 +124,9 @@ const resetRipple = () => {
 
 }
 
-.bg-random {
+.bg-gradient {
   background: rgb(4,193,154);
-  background: linear-gradient(90deg, rgb(0, 194, 155) 0%, rgb(145, 0, 189) 100%); 
+  background: linear-gradient(80deg, rgb(26, 26, 26) 0%, rgb(67, 117, 255) 100%); 
 }
 
 .bg-blue:hover,
@@ -135,7 +134,7 @@ const resetRipple = () => {
 .bg-green:hover,
 .bg-red:hover,
 .bg-amber:hover,
-.bg-random:hover {
+.bg-gradient:hover {
   box-shadow: 
     inset 0 0px 2px rgba(156, 156, 156, 0.1), 
     0 0 0 2px rgba(255, 255, 255, 0.39),
