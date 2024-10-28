@@ -167,4 +167,13 @@ const resetRipple = () => {
   background: rgb(4,193,154);
   background: linear-gradient(90deg, rgba(4,193,154,1) 0%, rgb(2, 126, 151) 100%); 
 }
+
+.bg-random:hover {
+  box-shadow: 
+    inset 0 0px 2px rgba(255, 255, 255, 0.1), 
+    0 0 0 2px rgba(255, 255, 255, 0.6),
+    0 0 0 4px rgba(0, 174, 255, 0.5), 
+    0 0 0 6px rgba(255, 255, 255, 0.034);
+
+}
 </style>
