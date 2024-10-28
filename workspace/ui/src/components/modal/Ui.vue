@@ -7,7 +7,12 @@
     >
       <template #close>
         <slot name="close"></slot>
-        <SvgIcon v-if="showClose" @click="handleClose" type="mdi" :path="mdiClose"></SvgIcon>
+        <SvgIcon
+          v-if="showClose"
+          @click="handleClose"
+          type="mdi"
+          :path="mdiClose"
+        ></SvgIcon>
       </template>
       <template #default>
         <div class="body">
@@ -20,7 +25,8 @@
 </template>
   
 <script setup lang="ts">
-import { defineOptions, defineProps, useSlots, computed } from "vue";
+import { defineOptions, defineProps, useSlots, computed, defineSlots } from "vue";
+import { modalSlots } from "./Slots";
 import Core from "./Core.vue";
 import { uiProps } from "./Props";
 import { modalEmits } from "./Emits";
@@ -28,6 +34,7 @@ import SvgIcon from "@jamescoyle/vue-icon";
 import { mdiClose } from "@mdi/js";
 const props = defineProps(uiProps);
 const emit = defineEmits(modalEmits);
+const slots = defineSlots<modalSlots>();
 defineOptions({
   inheritAttrs: false,
 });
@@ -40,7 +47,7 @@ const handleModelValue = (newValue: boolean) => {
 };
 function handleClose() {
   emit("update:modelValue", false);
-};
+}
 </script>
 <style>
 .modal-overlay {

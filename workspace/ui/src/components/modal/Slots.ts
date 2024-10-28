@@ -1,4 +1,4 @@
-export interface coreSlots {
+export interface modalSlots {
     close(): any, 
     default(): any
 }
