@@ -5,7 +5,8 @@ export const buttonColors = {
   primary: 'bg-green',
   error: 'bg-red',
   warning: 'bg-amber',
-  gradient:'bg-gradient'
+  gradient:'bg-gradient',
+  link:'bg-link'
 } as const;
 
 export type ButtonColor = keyof typeof buttonColors;

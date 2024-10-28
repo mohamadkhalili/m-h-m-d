@@ -114,7 +114,6 @@
   }
 }
   
-  /* Background styles remain unchanged */
   .bg-blue { background: linear-gradient(45deg, rgb(0, 174, 255) 0%, rgb(0, 81, 255) 100%); }
   .bg-purple { background: linear-gradient(45deg, rgb(199, 0, 139) 0%, rgb(156, 0, 187) 100%); }
   .bg-green { background: linear-gradient(45deg, rgb(0, 207, 62) 0%, rgb(60, 190, 0) 100%); }
@@ -122,11 +121,26 @@
   .bg-amber { background: linear-gradient(45deg, rgb(255, 187, 0) 0%, rgb(255, 174, 0) 100%); }
   .bg-gradient { background: rgb(4,193,154); background: linear-gradient(80deg, rgb(26, 26, 26) 0%, rgb(67, 117, 255) 100%); }
   
+  .bg-link{
+
+color: rgb(45, 0, 209);
+border: 1px solid rgba(131, 131, 131, 0.644);
+
+  }
+
+
+  .bg-link:hover{
+
+border: 1px solid blue;
+
+  }
   .bg-blue:hover,
   .bg-purple:hover,
   .bg-green:hover,
   .bg-red:hover,
   .bg-amber:hover,
+  .bg-link:hover,
+
   .bg-gradient:hover {
     box-shadow: 
       inset 0 0px 2px rgba(156, 156, 156, 0.1), 
