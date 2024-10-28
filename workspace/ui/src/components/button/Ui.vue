@@ -1,4 +1,4 @@
-<template>
+<<template>
     <div class="button-container">
       <button
         :class="[
@@ -6,7 +6,7 @@
           { 'custom-button': true, 'disabled': propsData.isDisabled }
         ]"
         :disabled="propsData.isDisabled"
-        @click="!propsData.isDisabled && createRipple"
+        @click="createRipple"
       >
         <slot></slot>
         <span
@@ -18,7 +18,6 @@
       </button>
     </div>
   </template>
-  
   <script setup lang="ts">
   import { ref, computed, defineProps } from 'vue';
   import { buttonColors, props } from './props';
@@ -54,7 +53,7 @@
   
     setTimeout(() => {
       rippleVisible.value = false;
-    }, 200);
+    }, 600); // Adjust timeout to match the animation duration
   };
   
   const buttonColor = computed(() => {
@@ -96,20 +95,24 @@
     transform: scale(0.95); 
   }
   
-  .ripple {
-    position: absolute;
-    transform: scale(2);
-    animation: ripple-animation 0.2s linear forwards;
-    background: rgba(255, 255, 255, 0.6); 
-    z-index: 0;
+ 
+.ripple {
+  position: absolute;
+  transform: scale(0.1);
+  animation: ripple-animation 1s linear forwards;
+  background: rgba(255, 255, 255, 0.342); 
+  z-index: 0;
+  border-radius: 20%;
+  width: 20%;
+}
+
+@keyframes ripple-animation {
+  to {
+    background: #58585827;
+     transform: scale(2);
+    opacity: 0; 
   }
-  
-  @keyframes ripple-animation {
-    to {
-      background: #ffffff80;
-      opacity: 0; 
-    }
-  }
+}
   
   /* Background styles remain unchanged */
   .bg-blue { background: linear-gradient(45deg, rgb(0, 174, 255) 0%, rgb(0, 81, 255) 100%); }

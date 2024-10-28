@@ -66,7 +66,7 @@ const handleError = () => {
 }
 </script>
 
-
+-----------------
 **Disable**
 
 You Can use   *isDisable*  for disable your button
@@ -80,3 +80,4 @@ You Can use   *isDisable*  for disable your button
 ```md
 <Btn  isDisabled >Disabled </Btn>
 ```
+----
