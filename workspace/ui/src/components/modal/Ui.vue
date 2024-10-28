@@ -34,7 +34,7 @@ import SvgIcon from "@jamescoyle/vue-icon";
 import { mdiClose } from "@mdi/js";
 const props = defineProps(uiProps);
 const emit = defineEmits(modalEmits);
-const slots = defineSlots<modalSlots>();
+const uiSlots = defineSlots<modalSlots>();
 defineOptions({
   inheritAttrs: false,
 });
