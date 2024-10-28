@@ -1,12 +1,11 @@
 # Button
 
 <script setup>
-    // You can add any setup logic here if needed
+
+import Btn from '../../../ui/src/components/button/Core.vue'; 
 </script>
 
 **Button with Custom Effect**
-
-
 
 <div class="border-[1px] border-gray-300 p-6 m-6 rounded-lg shadow-lg bg-gray-50 flex justify-center items-center">
     <Btn color="default">Test</Btn>
@@ -22,7 +21,7 @@
         <Btn color="primary">Primary</Btn>
     </div>
     <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
-        <Btn color="error">Error</Btn>
+        <Btn color="error">#Error</Btn>
     </div>
     <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
         <Btn color="warning">Warning</Btn>
@@ -30,7 +29,7 @@
     <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
         <Btn color="secondary">Secondary</Btn>
     </div>
-     <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
-        <Btn color="secondary">random</Btn>
+    <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
+        <Btn color="random">Random</Btn>
     </div>
 </div>
