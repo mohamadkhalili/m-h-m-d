@@ -6,11 +6,13 @@
       v-bind="$attrs"
     >
       <template #close>
-        <SvgIcon @click="handleClose" type="mdi" :path="mdiClose"></SvgIcon>
+        <slot name="close"></slot>
+        <SvgIcon v-if="showClose" @click="handleClose" type="mdi" :path="mdiClose"></SvgIcon>
       </template>
       <template #default>
         <div class="body">
-          <p>This is the modal content</p>
+          <slot name="default"></slot>
+          <p v-if="showDefault">This is the modal content</p>
         </div>
       </template>
     </Core>
@@ -18,7 +20,7 @@
 </template>
   
 <script setup lang="ts">
-import { defineOptions, defineProps } from "vue";
+import { defineOptions, defineProps, useSlots } from "vue";
 import Core from "./Core.vue";
 import { uiProps } from "./Props";
 import { modalEmits } from "./Emits";
@@ -29,6 +31,9 @@ const emit = defineEmits(modalEmits);
 defineOptions({
   inheritAttrs: false,
 });
+const slots = useSlots();
+const showClose = computed(() => !slots.close);
+const showDefault = computed(() => !slots.default);
 const handleModelValue = (newValue: boolean) => {
   console.log("Model value updated:", newValue);
   emit("update:modelValue", newValue);
