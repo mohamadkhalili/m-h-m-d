@@ -15,4 +15,8 @@ export const props = {
     type: String as () => ButtonColor,
     default: 'default' as ButtonColor,
   },
+  isDisabled: {
+    type: Boolean,
+    default: false,
+  },
 };

@@ -65,3 +65,18 @@ const handleError = () => {
   alert("Test notification triggered!");
 }
 </script>
+
+
+**Disable**
+
+You Can use   *isDisable*  for disable your button
+<div class='border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center'>
+
+<Btn  isDisabled>Disabled </Btn>
+
+
+</div>
+
+```md
+<Btn  isDisabled >Disabled </Btn>
+```

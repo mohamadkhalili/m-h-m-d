@@ -1,5 +1,5 @@
 <template>
-  <Ui :color="propsData.color" @click="createRipple">
+  <Ui :color="propsData.color" @click="createRipple" :is-disabled="propsData.isDisabled">
     <slot></slot>
   </Ui>
 </template>
