@@ -20,7 +20,7 @@
 </template>
   
 <script setup lang="ts">
-import { defineOptions, defineProps, useSlots } from "vue";
+import { defineOptions, defineProps, useSlots, computed } from "vue";
 import Core from "./Core.vue";
 import { uiProps } from "./Props";
 import { modalEmits } from "./Emits";
