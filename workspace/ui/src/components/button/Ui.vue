@@ -111,7 +111,7 @@ const resetRipple = () => {
 }
 
 .bg-green {
-    background: linear-gradient(45deg, rgb(134, 218, 0) 0%, rgb(0, 221, 85) 100%); 
+    background: linear-gradient(45deg, rgb(0, 207, 62)0%, rgb(60, 190, 0)  100%); 
 
 }
 
