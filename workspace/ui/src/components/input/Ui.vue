@@ -11,7 +11,7 @@
         :class="[colorClass, { disabled: propsData.isDisabled, readonly: propsData.readonly }]"
         :disabled="propsData.isDisabled"
         :readonly="propsData.readonly"
-        @focus="isFocused = true"
+        
         @blur="handleBlur"
       />
       
@@ -43,13 +43,10 @@ const propsData = defineProps({
 });
 
 const inputValue = ref('');
-const isFocused = ref(false);
 
 const colorClass = computed(() => InputColor[propsData.color] || InputColor.default);
 
-const handleBlur = () => {
-  isFocused.value = inputValue.value !== '';
-};
+
 
 </script>
 <style>

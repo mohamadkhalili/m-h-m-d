@@ -85,7 +85,8 @@ you can easy import and use it!
 </div>
 
 ```md
-<Input color="primary"  title="ReadOnly Activated"  /> 
+<Input color="primary"  Readonly="true"   title="ReadOnly Activated"  /> 
+
 
 ```
 ---
