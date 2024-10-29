@@ -97,7 +97,7 @@ also can make Read Only with  **Readonly** feature !
 **RTL**
 <br/>
 
- can use **RTL** for align text and effect with  feature ! 
+ can use **RTL** for align text ! 
 
 <div class="border-[1px] border-gray-300 p-6 rounded-lg shadow-inner bg-white flex justify-center items-center">
 <Input color="warning"  title="نام خانوادگی"   RTL /> 
