@@ -1,21 +1,23 @@
 <script setup>
-import { ref } from 'vue';
+import { defineProps } from 'vue';
+import Ui from './Ui.vue';
+import { props } from './props';
 
-
-import Ui from './Ui.vue'
-const title =ref(0);
+const propsData = defineProps({
+  ...props, 
+  color: {
+    type: String,
+    default: 'default',
+  },
+});
 </script>
 
 <template>
-
-
-<Ui   :title="title">
-
-    <slot class="bg-gray-950"></slot>
-
-</Ui>
-
-
+  <Ui 
+    :readonly="propsData.Readonly" 
+    :isDisabled="propsData.isDisabled" 
+    :color="propsData.color" 
+  >
+    <slot></slot>
+  </Ui>
 </template>
-
-
