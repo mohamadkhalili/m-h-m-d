@@ -17,6 +17,7 @@ const propsData = defineProps({
     :readonly="propsData.Readonly" 
     :isDisabled="propsData.isDisabled" 
     :color="propsData.color" 
+    :RTL="propsData.RTL"
   >
     <slot></slot>
   </Ui>

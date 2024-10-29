@@ -7,6 +7,10 @@ export const props = {
       type: Boolean,
       default: false,
     },
+    RTL: {
+      type: Boolean,
+      default: false,
+    }
   };
   export const InputColor = {
     default: 'bg-default',

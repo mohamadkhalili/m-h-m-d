@@ -1,25 +1,23 @@
 <template>
-    <div class="input-container">
-      <label 
-        :class="{ 'active': isFocused || inputValue }" 
-        @click="focusInput"
-      >{{ title }}</label>
-      
-      <input
-        id="MainInput"
-        v-model="inputValue"
-        :class="[colorClass, { disabled: propsData.isDisabled, readonly: propsData.readonly }]"
-        :disabled="propsData.isDisabled"
-        :readonly="propsData.readonly"
-        
-        @blur="handleBlur"
-      />
-      
-      <slot></slot>
-    </div>
-  </template>
+  <div class="input-container">
+    <label 
+      :class="{ 'active': isFocused || inputValue }" 
+      @click="focusInput"
+    >{{ title }}</label>
+    
+    <input
+      id="MainInput"
+      v-model="inputValue"
+      :class="[colorClass, { disabled: propsData.isDisabled, readonly: propsData.readonly, rtl: propsData.RTL }]"
+      :disabled="propsData.isDisabled"
+      :readonly="propsData.readonly"
+      @focus="isFocused = true"
+      @blur="handleBlur"
+    />
+  </div>
+</template>
   
-  <script setup>
+<script setup>
 import { computed, defineProps, ref } from 'vue';
 import { InputColor } from './props'; 
 
@@ -29,6 +27,10 @@ const propsData = defineProps({
     default: 'default', 
   },
   isDisabled: {
+    type: Boolean,
+    default: false,
+  },
+  RTL: {
     type: Boolean,
     default: false,
   },
@@ -43,12 +45,16 @@ const propsData = defineProps({
 });
 
 const inputValue = ref('');
-
+const isFocused = ref(false);
 const colorClass = computed(() => InputColor[propsData.color] || InputColor.default);
 
+const handleBlur = () => {
+  isFocused.value = inputValue.value !== '';
+};
 
 
 </script>
+
 <style>
  
   #MainInput:hover,
@@ -66,7 +72,12 @@ const colorClass = computed(() => InputColor[propsData.color] || InputColor.defa
     border-radius: 10px;
     transition: all 200ms;
     border: 1px solid gray;
+  
   }
+  .rtl {
+  text-align: right; 
+  direction: rtl; 
+}
   .bg-default{
     background: rgb(255, 255, 255);
     border: 1px rgb(138, 138, 138) solid;
@@ -131,14 +142,15 @@ color: rgb(85, 85, 0);
 
 label {
   position: absolute;
-  left: 10px;
+  left: 10px; 
   top: 12px;
   transition: 0.2s ease all;
   color: gray; 
 }
 
 label.active {
-  top: -2%;
+  left: 10px;
+  top: 0px; 
   font-size: 11px;  
   color: #8b8b8b;  
 }
@@ -148,6 +160,13 @@ input {
   border-radius: 10px;
   border: 1px solid gray;  
   width: 100%;  
+  text-align: left; 
+}
+
+input.rtl {
+  text-align: right; 
+  direction: rtl; 
+
 }
 
 input:focus {

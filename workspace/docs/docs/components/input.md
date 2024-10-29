@@ -51,7 +51,7 @@ you can easy import and use it!
 
 ```md
 
-<Input color="default" title="default" />
+<Input color="default" title="default"  />
 <Input color="primary" title="primary"/>
 <Input color="error" title="error"/> 
 <Input color="warning" title="warning"/>
@@ -63,7 +63,8 @@ you can easy import and use it!
 ----
 
 **Disable**
-
+<br/>
+ You can easy Disable your input  with  **IsDisabled**
 
 
 <div class="border-[1px] border-gray-300 p-6 rounded-lg shadow-inner bg-white flex justify-center items-center">
@@ -78,9 +79,28 @@ you can easy import and use it!
 ```
 ---
 **Read Only**
+<br/>
+
+also can make Read Only with  **Readonly** feature ! 
 
 <div class="border-[1px] border-gray-300 p-6 rounded-lg shadow-inner bg-white flex justify-center items-center">
 <Input color="primary"  Readonly="true"   title="ReadOnly Activated"  /> 
+
+</div>
+
+```md
+<Input color="primary"  Readonly="true"   title="ReadOnly Activated"  /> 
+
+
+```
+---
+**RTL**
+<br/>
+
+ can use **RTL** for align text and effect with  feature ! 
+
+<div class="border-[1px] border-gray-300 p-6 rounded-lg shadow-inner bg-white flex justify-center items-center">
+<Input color="warning"  title="نام خانوادگی"   RTL /> 
 
 </div>
 
