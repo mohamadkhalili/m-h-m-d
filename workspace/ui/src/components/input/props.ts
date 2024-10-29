@@ -10,7 +10,6 @@ export const props = {
   };
   export const InputColor = {
     default: 'bg-default',
-
     secondary: 'bg-purple',
     primary: 'bg-green',
     error: 'bg-red',

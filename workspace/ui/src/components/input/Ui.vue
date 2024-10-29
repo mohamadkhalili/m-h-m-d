@@ -1,39 +1,58 @@
 <template>
+    <div class="input-container">
+      <label 
+        :class="{ 'active': isFocused || inputValue }" 
+        @click="focusInput"
+      >{{ title }}</label>
+      
       <input
         id="MainInput"
-        :class="[inputColor, colorClass, { 'custom-input': true, disabled: propsData.isDisabled, Readonly: propsData.Readonly }]"
-        :placeholder="title"
+        v-model="inputValue"
+        :class="[colorClass, { disabled: propsData.isDisabled, readonly: propsData.readonly }]"
         :disabled="propsData.isDisabled"
-        :readonly="propsData.Readonly"
-        placeholder=
+        :readonly="propsData.readonly"
+        @focus="isFocused = true"
+        @blur="handleBlur"
       />
+      
       <slot></slot>
-   
+    </div>
   </template>
   
   <script setup>
-  import { computed, defineProps } from 'vue';
-  import { InputColor } from './props'; 
-  
-  const propsData = defineProps({
-    color: {
-      type: String,
-      default: 'default', 
-    },
-    isDisabled: {
-      type: Boolean,
-      default: false,
-    },
-    Readonly: {
-      type: Boolean,
-      default: false,
-    },
-  });
+import { computed, defineProps, ref } from 'vue';
+import { InputColor } from './props'; 
 
-  const colorClass = computed(() => InputColor[propsData.color] || InputColor.default);
-  </script>
-  
-  <style >
+const propsData = defineProps({
+  color: {
+    type: String,
+    default: 'default', 
+  },
+  isDisabled: {
+    type: Boolean,
+    default: false,
+  },
+  readonly: {
+    type: Boolean,
+    default: false,
+  },
+  title: {
+    type: String,
+    default: '', 
+  },
+});
+
+const inputValue = ref('');
+const isFocused = ref(false);
+
+const colorClass = computed(() => InputColor[propsData.color] || InputColor.default);
+
+const handleBlur = () => {
+  isFocused.value = inputValue.value !== '';
+};
+
+</script>
+<style>
  
   #MainInput:hover,
 
@@ -71,25 +90,71 @@
   }
 
   .bg-red { 
-    background: rgb(255, 226, 226);
+    background: rgb(255, 246, 246);
 
 border:1px rgba(211, 0, 0, 0.829) solid ;
 color: rgb(204, 0, 0);
 }
 
   .bg-amber {  
-      background: rgb(255, 251, 228);
+      background: rgb(255, 252, 237);
 
 
 border:1px rgb(207, 207, 115) solid ;
 color: rgb(85, 85, 0);
 }
 
-  .bg-gradient {
-    background: linear-gradient(40deg, rgb(164, 200, 253) 0%, rgb(209, 255, 247) 100%);
-    color: rgb(55, 41, 117);
-    border: 1px rgb(69, 113, 131) solid;
+.bg-gradient {
+  background: linear-gradient(100deg, 
+    rgb(209, 255, 249) 0%, 
+    rgb(255, 194, 194) 20%, 
+    rgb(231, 255, 211) 40%, 
+    rgb(207, 208, 255) 60%, 
+    rgb(207, 255, 235) 80%, 
+    rgb(255, 199, 222) 100%
+  );
+  color: rgb(55, 41, 117);
+  border: 1px rgb(69, 113, 131) solid;
+}
+
+  .disabled {
+    pointer-events: none; 
+    opacity: 60%;
+    border: none;
 
   }
-  </style>
-  
+
+  .Readonly{
+    border: 10px black solid;
+  }
+  .input-container {
+  position: relative;
+  margin: 20px 0;  
+}
+
+label {
+  position: absolute;
+  left: 10px;
+  top: 12px;
+  transition: 0.2s ease all;
+  color: gray; 
+}
+
+label.active {
+  top: -2%;
+  font-size: 11px;  
+  color: #8b8b8b;  
+}
+
+input {
+  padding: 12px 10px;  
+  border-radius: 10px;
+  border: 1px solid gray;  
+  width: 100%;  
+}
+
+input:focus {
+  outline: none;
+  border-color: blue;  
+}
+</style>
