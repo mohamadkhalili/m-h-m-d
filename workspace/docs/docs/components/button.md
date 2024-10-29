@@ -7,7 +7,7 @@ import Btn from '../../../ui/src/components/button/Core.vue';
 
 **Button with Custom Effect**
 
-<div class="border-[1px] border-gray-300 p-6 rounded-lg shadow-inner bg-white flex justify-center items-center">
+<div class="border-[1px] border-gray-300 p-6 rounded-lg  dark:bg-zinc-900 dark:border-zinc-600 shadow-inner bg-white flex justify-center items-center ">
     <Btn color="default">Test</Btn>
 </div>
 
@@ -15,22 +15,22 @@ import Btn from '../../../ui/src/components/button/Core.vue';
 <Br/>
 
 <div class="grid grid-cols-2 gap-4">
-    <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
+    <div class="border-[1px] border-gray-300 p-4 rounded-lg  dark:bg-zinc-900 dark:border-zinc-600 shadow-inner bg-white flex justify-center items-center">
         <Btn color="default" class="w-[125px]">Default</Btn>
     </div>
-    <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
+    <div class="border-[1px] border-gray-300 p-4 rounded-lg  dark:bg-zinc-900 dark:border-zinc-600 shadow-inner bg-white flex justify-center items-center">
         <Btn color="primary">Primary</Btn>
     </div>
-    <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
+    <div class="border-[1px] border-gray-300 p-4 rounded-lg  dark:bg-zinc-900 dark:border-zinc-600 shadow-inner bg-white flex justify-center items-center">
         <Btn color="error"> Error !!</Btn>
     </div>
-    <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
+    <div class="border-[1px] border-gray-300 p-4 rounded-lg  dark:bg-zinc-900 dark:border-zinc-600 shadow-inner bg-white flex justify-center items-center">
         <Btn color="warning">Warning</Btn>
     </div>
-    <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
+    <div class="border-[1px] border-gray-300 p-4 rounded-lg  dark:bg-zinc-900 dark:border-zinc-600 shadow-inner bg-white flex justify-center items-center">
         <Btn color="secondary">Second</Btn>
     </div>
-    <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
+    <div class="border-[1px] border-gray-300 p-4 rounded-lg  dark:bg-zinc-900 dark:border-zinc-600 shadow-inner bg-white flex justify-center items-center">
         <Btn color="gradient">Gradient</Btn>
     </div>
 </div>
@@ -56,7 +56,7 @@ const handleError = () => {
 ```
 Results
 
-<div class='border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center'>
+<div class='border-[1px] border-gray-300 p-4 rounded-lg  dark:bg-zinc-900 dark:border-zinc-600 shadow-inner bg-white flex justify-center items-center'>
   <Btn color="warning" @click="handleError">You have a notification!</Btn>
 </div>
 
@@ -70,7 +70,7 @@ const handleError = () => {
 **Disable**
 
 You Can use   *isDisable*  for disable your button
-<div class='border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center'>
+<div class='border-[1px] border-gray-300 p-4 rounded-lg  dark:bg-zinc-900 dark:border-zinc-600 shadow-inner bg-white flex justify-center items-center'>
 
 <Btn  isDisabled>Disabled </Btn>
 
@@ -85,7 +85,7 @@ You Can use   *isDisable*  for disable your button
 
 
 **Link Button**
-<div class='border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center flex flex-row'>
+<div class='border-[1px] border-gray-300 p-4 rounded-lg  dark:bg-zinc-900 dark:border-zinc-600 shadow-inner bg-white flex justify-center items-center flex flex-row'>
 <Btn  color ="link" > link  </Btn>
 
 </div>
@@ -98,7 +98,7 @@ You Can use   *isDisable*  for disable your button
 
 
 **Also You can Use with Icons**
-<div class='border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center flex flex-row'>
+<div class='border-[1px] border-gray-300 p-4 rounded-lg  dark:bg-zinc-900 dark:border-zinc-600 shadow-inner bg-white flex justify-center items-center flex flex-row'>
     <Btn color="secondary"> <!-- Use space-x-2 for spacing -->
         <span>waiting</span>
         <div class="scale-50">

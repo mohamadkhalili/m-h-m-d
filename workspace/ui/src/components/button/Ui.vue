@@ -1,4 +1,4 @@
-<<template>
+<template>
     <div class="button-container">
       <button
         :class="[
