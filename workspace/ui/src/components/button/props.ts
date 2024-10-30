@@ -32,7 +32,7 @@ export const props = {
     type: Boolean,
     default: false,
   },
-  Cleaner: {
+  NoCleaner: {
     type: Boolean,
     default: false,
   },

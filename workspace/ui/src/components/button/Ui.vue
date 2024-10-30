@@ -1,21 +1,23 @@
 <template>
     <div class="button-container">
       <button
-        :class="[
-          buttonColor || VariantColor ,
-          { 'custom-button': true, 'disabled': propsData.isDisabled }
-        ]"
-        :disabled="propsData.isDisabled"
-        @click="createRipple"
-      >
-        <slot></slot>
-        <span
-          class="ripple"
-          v-if="rippleVisible"
-          :style="rippleStyle"
-          @transitionend="resetRipple"
-        ></span>
-      </button>
+  :class="[
+    buttonColor || VariantColor,
+    { 'custom-button': true, 'disabled': propsData.isDisabled, 'NoCleaner':propsData.NoCleaner }
+  ]"
+  :disabled="propsData.isDisabled"
+  @click="createRipple"
+>
+  <slot></slot>
+  <span
+    class="ripple"
+    v-if="rippleVisible"
+    :style="rippleStyle"
+    @transitionend="resetRipple"
+  ></span>
+</button>
+
+
     </div>
   </template>
   <script setup lang="ts">
@@ -27,6 +29,10 @@
     isDisabled: {
       type: Boolean,
       default: false,
+    }, 
+    NoCleaner: {
+      type: Boolean,
+      default: true,
     },
   });
   
@@ -108,27 +114,30 @@
 }
 
 .custom-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%; 
-    opacity: 0;
-    height: 100%;
-    background: rgb(255, 255, 255); 
-    backdrop-filter: blur(100px);
-    transition: left 0.7s ease, box-shadow 0.4s ease-in-out; 
-    z-index: 1; 
-    box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.5);
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  opacity: 0;
+  height: 100%;
+  background: rgb(255, 255, 255);
+  backdrop-filter: blur(100px);
+  transition: left 0.7s ease, box-shadow 0.4s ease-in-out;
+  z-index: 1;
+  box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.5);
 }
 
 .custom-button:hover::before {
-    left: 120%; 
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-    width: 12px; 
-    opacity: 100;
-
-
+  left: 120%;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  width: 12px;
+  opacity: 100;
 }
+
+.custom-button:not(.NoCleaner)::before {
+  display: none; 
+}
+
 
 .custom-button:hover {
     z-index: 10;
@@ -161,10 +170,10 @@
   
   .bg-blue { background: linear-gradient(45deg, rgb(0, 110, 255) 0%, rgb(68, 0, 255) 100%); border: 2px solid rgba(148, 148, 148, 0.301); }
   .bg-purple { background: linear-gradient(45deg, rgb(199, 0, 139) 0%, rgb(156, 0, 187) 100%); border: 2px solid rgba(148, 148, 148, 0.596);}
-  .bg-green { background: linear-gradient(45deg, rgb(38, 189, 0) 0%, rgb(0, 168, 50) 100%); border: 2px solid rgba(148, 148, 148, 0.466);}
+  .bg-green { background: linear-gradient(45deg, rgb(38, 189, 0) 0%, rgb(76, 168, 0) 100%); border: 2px solid rgba(148, 148, 148, 0.466);}
   .bg-red { background: linear-gradient(45deg, rgb(255, 0, 98) 0%, rgb(255, 0, 0) 100%); border: 2px solid rgba(148, 148, 148, 0.76);}
-  .bg-amber { background: linear-gradient(45deg, rgb(255, 166, 0) 0%, rgb(247, 210, 0) 100%);border: 2px solid rgba(148, 148, 148, 0.76); }
-  .bg-gradient {  background: linear-gradient(80deg, rgb(140, 3, 145) 0%, rgb(201, 134, 80) 100%);border: 2px solid rgba(148, 148, 148, 0.76); }
+  .bg-amber { background: linear-gradient(45deg, rgb(255, 166, 0) 0%, rgb(247, 201, 0) 100%);border: 2px solid rgba(148, 148, 148, 0.76); }
+  .bg-gradient {  background: linear-gradient(80deg, rgb(26, 26, 26) 0%, rgb(67, 117, 255) 100%);border: 2px solid rgba(148, 148, 148, 0.76); }
   .bg-link{
 
 color: rgb(45, 0, 209);
@@ -189,43 +198,26 @@ border: 1px solid blue;
 
     filter: brightness(1.2);
     box-shadow: 
-      inset 0 0px 2px rgba(156, 156, 156, 0.1), 
+      inset 0 0px 2px rgba(156, 156, 156, 0.178), 
       0 0 0 2px rgba(255, 255, 255, 0.39),
-      0 0 0 4px rgba(201, 200, 200, 0.795), 
+      0 0 0 4px rgba(141, 141, 141, 0.671), 
       0 0 0 6px rgba(255, 255, 255, 0.034);
   }
 
 
   .variant-link {
-  background: rgb(255, 255, 255);
-  color: rgb(0, 42, 231);
+  background: rgba(255, 255, 255, 0.247);
+  color: rgb(60, 83, 187);
 
-  position: relative; /* برای موقعیت‌یابی حاشیه */
-  overflow: hidden; /* جلوگیری از بیرون زدن حاشیه */
+
 }
 
 
-.variant-link::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: rgb(170, 204, 255) 2px solid; 
-  transform: scale(0);
-  transition: transform 0.7s ease; 
-  z-index: -1; 
-  border-radius: 1px;
-}
 
-.variant-link:hover::before {
-  transform: scale(1); 
-}
 
   .variant-faded {
   border: rgba(126, 126, 126, 0.432) 2px solid;
-  background: linear-gradient(120deg, rgb(224, 224, 224) 0%, rgb(238, 238, 238) 50%, rgb(223, 223, 223) 100%);
+  background: linear-gradient(120deg, rgba(224, 224, 224, 0.815) 0%, rgba(238, 238, 238, 0.836) 50%, rgba(223, 223, 223, 0.781) 100%);
   color: rgb(48, 48, 160);
 
 }

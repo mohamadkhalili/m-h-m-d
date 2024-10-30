@@ -16,10 +16,10 @@ import Btn from '../../../ui/src/components/button/Core.vue';
 
 <div class="grid grid-cols-2 gap-4">
     <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
-        <Btn color="default" class="w-[125px]">Default</Btn>
+        <Btn color="default"  cleaner>Default</Btn>
     </div>
     <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
-        <Btn color="primary">Primary</Btn>
+        <Btn color="primary" >Primary</Btn>
     </div>
     <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
         <Btn color="error"> Error !!</Btn>
@@ -122,9 +122,32 @@ You Can use   *isDisable*  for disable your button
 <Btn  variant='ghost' > ghosts   </Btn>
 <Btn  variant='shadow' > shadow  </Btn>
 
+```
 
+
+-----------------
+<br/>
+
+**NoCleaner**
+
+<br/>
+
+You Can use   *NoCleaner*  for disable your cleaner effect on button !
+<div class='  p-4 rounded-lg shadow-inner  flex justify-center items-center'>
+
+<Btn  color="secondary" NoCleaner>Disabled </Btn>
+
+
+</div>
+
+```md
+<Btn  color="secondary" NoCleaner>Disabled </Btn>
 
 ```
+---
+
+
+
 
 
 **Also You can Use with Icons**
