@@ -1,11 +1,15 @@
 <template>
   <Teleport v-if="modelValue" :to="teleport">
-      <div v-if="modelValue" class="modal-overlay" @click.self="handleOutsideClick">
-        <div class="modal-content">
-          <slot name="close"></slot>
-          <slot name="default"></slot>
-        </div>
+    <div
+      v-if="modelValue"
+      class="modal-overlay"
+      @click.self="handleOutsideClick"
+    >
+      <div class="modal-content">
+        <slot name="close"></slot>
+        <slot name="default"></slot>
       </div>
+    </div>
   </Teleport>
 </template>
     
@@ -21,7 +25,13 @@ const emit = defineEmits(modalEmits);
 
 function handleOutsideClick() {
   if (props.closeOnOutside) {
-    emit("update:modelValue", false);
+    const modalOverlay = document.querySelector(".modal-overlay");
+    if (modalOverlay) {
+      modalOverlay.classList.add("fadeOut"); 
+      setTimeout(() => {
+        emit("update:modelValue", false);
+      }, 1000); 
+    }
   }
 }
 </script>
