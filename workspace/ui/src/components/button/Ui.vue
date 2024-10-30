@@ -93,11 +93,52 @@
     cursor: pointer; 
     z-index: 10;
     overflow: hidden; 
-  }
-  
-  .custom-button:active {
+}
+
+.custom-button {
+    padding: 0.5rem 2rem; 
+    margin: 2rem; 
+    border-radius: 0.5rem; 
+    color: white; 
+    position: relative; 
+    transition: all 0.2s; 
+    cursor: pointer; 
+    z-index: 10;
+    overflow: hidden; 
+}
+
+.custom-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%; 
+    opacity: 0;
+    height: 100%;
+    background: rgb(255, 255, 255); 
+    backdrop-filter: blur(100px);
+    transition: left 0.7s ease, box-shadow 0.4s ease-in-out; 
+    z-index: 1; 
+    box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.5);
+}
+
+.custom-button:hover::before {
+    left: 120%; 
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    width: 12px; 
+    opacity: 100;
+
+
+}
+
+.custom-button:hover {
+    z-index: 10;
+    
+}
+
+.custom-button:active {
     transform: scale(0.95); 
-  }
+}
+
   
  
 .ripple {
@@ -118,12 +159,12 @@
   }
 }
   
-  .bg-blue { background: linear-gradient(45deg, rgb(0, 174, 255) 0%, rgb(0, 81, 255) 100%); }
-  .bg-purple { background: linear-gradient(45deg, rgb(199, 0, 139) 0%, rgb(156, 0, 187) 100%); }
-  .bg-green { background: linear-gradient(45deg, rgb(0, 207, 62) 0%, rgb(60, 190, 0) 100%); }
-  .bg-red { background: linear-gradient(45deg, rgb(255, 0, 98) 0%, rgb(255, 0, 0) 100%); }
-  .bg-amber { background: linear-gradient(45deg, rgb(255, 187, 0) 0%, rgb(255, 174, 0) 100%); }
-  .bg-gradient {  background: linear-gradient(80deg, rgb(26, 26, 26) 0%, rgb(67, 117, 255) 100%); }
+  .bg-blue { background: linear-gradient(45deg, rgb(0, 110, 255) 0%, rgb(68, 0, 255) 100%); border: 2px solid rgba(148, 148, 148, 0.301); }
+  .bg-purple { background: linear-gradient(45deg, rgb(199, 0, 139) 0%, rgb(156, 0, 187) 100%); border: 2px solid rgba(148, 148, 148, 0.596);}
+  .bg-green { background: linear-gradient(45deg, rgb(38, 189, 0) 0%, rgb(0, 168, 50) 100%); border: 2px solid rgba(148, 148, 148, 0.466);}
+  .bg-red { background: linear-gradient(45deg, rgb(255, 0, 98) 0%, rgb(255, 0, 0) 100%); border: 2px solid rgba(148, 148, 148, 0.76);}
+  .bg-amber { background: linear-gradient(45deg, rgb(255, 166, 0) 0%, rgb(247, 210, 0) 100%);border: 2px solid rgba(148, 148, 148, 0.76); }
+  .bg-gradient {  background: linear-gradient(80deg, rgb(140, 3, 145) 0%, rgb(201, 134, 80) 100%);border: 2px solid rgba(148, 148, 148, 0.76); }
   .bg-link{
 
 color: rgb(45, 0, 209);
@@ -144,8 +185,9 @@ border: 1px solid blue;
   .bg-red:hover,
   .bg-amber:hover,
   .bg-link:hover,
-
   .bg-gradient:hover {
+
+    filter: brightness(1.2);
     box-shadow: 
       inset 0 0px 2px rgba(156, 156, 156, 0.1), 
       0 0 0 2px rgba(255, 255, 255, 0.39),
@@ -172,7 +214,7 @@ border: 1px solid blue;
   height: 100%;
   border: rgb(170, 204, 255) 2px solid; 
   transform: scale(0);
-  transition: transform 0.5s ease; 
+  transition: transform 0.7s ease; 
   z-index: -1; 
   border-radius: 1px;
 }
@@ -183,7 +225,7 @@ border: 1px solid blue;
 
   .variant-faded {
   border: rgba(126, 126, 126, 0.432) 2px solid;
-  background: linear-gradient(120deg, rgb(224, 224, 224) 0%, rgb(255, 255, 255) 50%, rgb(223, 223, 223) 100%);
+  background: linear-gradient(120deg, rgb(224, 224, 224) 0%, rgb(238, 238, 238) 50%, rgb(223, 223, 223) 100%);
   color: rgb(48, 48, 160);
 
 }
@@ -235,10 +277,10 @@ background-color: rgb(220, 228, 255);
 
 }
 .variant-shadow {
-  border: rgba(255, 255, 255, 0.432) 1px solid;
-  background-color: rgb(2, 12, 109);
+  border: rgba(255, 255, 255, 0) 1px solid;
+  background-color: rgb(22, 32, 121);
   color: rgb(255, 255, 255);
-  box-shadow: 0 9px 20px 1px rgba(24, 32, 143, 0.664); 
+  box-shadow: 0 8px 10px 0px rgba(61, 70, 161, 0.664); 
 
   padding: 0.5rem 1.5rem;
 }
@@ -247,7 +289,7 @@ background-color: rgb(220, 228, 255);
   background-color: rgb(0, 12, 179);
   color: rgb(255, 255, 255);
   border: rgba(0, 3, 175, 0.979) 1px solid;
-  box-shadow: 0 12px 25px 2px rgba(62, 79, 110, 0.5); 
+  box-shadow: 0 12px 25px 2px rgba(75, 99, 145, 0.5); 
 
 }
 

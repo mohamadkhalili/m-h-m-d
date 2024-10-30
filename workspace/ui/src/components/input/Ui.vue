@@ -80,7 +80,7 @@ const handleBlur = () => {
 }
   .bg-default{
     background: rgb(255, 255, 255);
-    border: 1px rgb(138, 138, 138) solid;
+    border: 1px rgb(139, 166, 184) solid;
     color: rgb(48, 48, 48);
   }
   .bg-purple {
@@ -113,16 +113,18 @@ color: rgb(85, 85, 0);
 }
 
 .bg-gradient {
-  background: linear-gradient(100deg, 
-    rgb(209, 255, 249) 0%, 
-    rgb(255, 194, 194) 20%, 
-    rgb(231, 255, 211) 40%, 
-    rgb(207, 208, 255) 60%, 
-    rgb(207, 255, 235) 80%, 
-    rgb(255, 199, 222) 100%
-  );
-  color: rgb(55, 41, 117);
-  border: 1px rgb(69, 113, 131) solid;
+ 
+    background: linear-gradient(100deg, 
+        rgb(209, 255, 249) 0%, 
+        rgb(255, 235, 235) 20%, 
+        rgb(241, 255, 230) 40%, 
+        rgb(235, 235, 255) 60%, 
+        rgb(207, 255, 235) 80%, 
+        rgb(255, 230, 241) 100%
+    );
+    color: rgb(55, 41, 117);
+    border: 1px rgb(186, 220, 233) solid;
+    transition: background 1s;
 }
 
   .disabled {

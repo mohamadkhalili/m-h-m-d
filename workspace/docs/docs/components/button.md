@@ -7,7 +7,7 @@ import Btn from '../../../ui/src/components/button/Core.vue';
 
 **Button with Custom Effect**
 
-<div class="border-[1px] border-gray-300 p-6 rounded-lg shadow-inner bg-white flex justify-center items-center ">
+<div class="  p-6 rounded-lg shadow-inner  flex justify-center items-center ">
     <Btn color="default">Test</Btn>
 </div>
 
@@ -15,22 +15,22 @@ import Btn from '../../../ui/src/components/button/Core.vue';
 <Br/>
 
 <div class="grid grid-cols-2 gap-4">
-    <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
+    <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
         <Btn color="default" class="w-[125px]">Default</Btn>
     </div>
-    <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
+    <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
         <Btn color="primary">Primary</Btn>
     </div>
-    <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
+    <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
         <Btn color="error"> Error !!</Btn>
     </div>
-    <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
+    <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
         <Btn color="warning">Warning</Btn>
     </div>
-    <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
+    <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
         <Btn color="secondary">Second</Btn>
     </div>
-    <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
+    <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
         <Btn color="gradient">Gradient</Btn>
     </div>
 </div>
@@ -46,7 +46,7 @@ The main `<Btn>` tag can be call and using button
 ```md
 <template>
 
-<Btn color="warning" @click="handleError">you have notification</Btn>
+<Btn color="error" @click="handleError">notification</Btn>
 
 <script >
 const handleError = () => {
@@ -56,8 +56,8 @@ const handleError = () => {
 ```
 Results
 
-<div class='border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center'>
-  <Btn color="warning" @click="handleError">You have a notification!</Btn>
+<div class='  p-4 rounded-lg shadow-inner  flex justify-center items-center'>
+  <Btn color="error" @click="handleError"> Error!</Btn>
 </div>
 
 <script setup>
@@ -70,7 +70,7 @@ const handleError = () => {
 **Disable**
 
 You Can use   *isDisable*  for disable your button
-<div class='border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center'>
+<div class='  p-4 rounded-lg shadow-inner  flex justify-center items-center'>
 
 <Btn  isDisabled>Disabled </Btn>
 
@@ -87,24 +87,25 @@ You Can use   *isDisable*  for disable your button
 **Variants**
 
 <div class="grid grid-cols-2 gap-4">
-    <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
+    <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
 <Btn  variant='faded' > faded  </Btn>
  </div>
-    <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
+    <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
 <Btn  variant='link' > linked  </Btn>
 </div>
-    <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
-    <Btn  variant='bordered' >border </Btn>
+    <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
+  <Btn variant='bordered' > border</Btn>
+
 
 </div>
-    <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
+    <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
 <Btn  variant='light' > lighten  </Btn>
  </div>
-     <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
+     <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
      <Btn  variant='shadow' > shadow  </Btn>
 
 </div>
-    <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
+    <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
        <Btn  variant='ghost' > ghosts  </Btn>
 
  </div>
@@ -115,10 +116,10 @@ You Can use   *isDisable*  for disable your button
 
 ```md
 <Btn  variant='faded' > faded  </Btn>
-<Btn  variant='link' > link  </Btn>
-<Btn  variant='bordered' > bordered  </Btn>
-<Btn  variant='light' > light  </Btn>
-<Btn  variant='ghost' > ghost   </Btn>
+<Btn  variant='link' > linked  </Btn>
+<Btn variant='bordered' >border </Btn>
+<Btn  variant='light' > lighten  </Btn>
+<Btn  variant='ghost' > ghosts   </Btn>
 <Btn  variant='shadow' > shadow  </Btn>
 
 
@@ -127,7 +128,7 @@ You Can use   *isDisable*  for disable your button
 
 
 **Also You can Use with Icons**
-<div class='border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white  justify-center items-center flex flex-row'>
+<div class='  p-4 rounded-lg shadow-inner   justify-center items-center flex flex-row'>
     <Btn color="secondary">
         <span>on it !</span>
         <div class="scale-75">

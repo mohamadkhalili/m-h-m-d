@@ -32,6 +32,10 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  Cleaner: {
+    type: Boolean,
+    default: false,
+  },
   variant: {
     type: String as () => VariantColor,
     default: 'default' as VariantColor,

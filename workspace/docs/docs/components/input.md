@@ -105,8 +105,6 @@ also can make Read Only with  **Readonly** feature !
 </div>
 
 ```md
-<Input color="primary"  title="ReadOnly Activated" RTL  /> 
-
+<Input color="warning"  title="نام خانوادگی"   RTL /> 
 
 ```
----
