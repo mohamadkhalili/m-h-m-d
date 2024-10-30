@@ -1,13 +1,11 @@
 <template>
   <Teleport v-if="modelValue" :to="teleport">
-    <transition name="fade">
       <div v-if="modelValue" class="modal-overlay" @click.self="handleOutsideClick">
         <div class="modal-content">
           <slot name="close"></slot>
           <slot name="default"></slot>
         </div>
       </div>
-    </transition>
   </Teleport>
 </template>
     

@@ -23,7 +23,7 @@
     </Core>
   </div>
 </template>
-  
+
 <script setup lang="ts">
 import { defineOptions, defineProps, useSlots, computed, defineSlots } from "vue";
 import { modalSlots } from "./Slots";
@@ -49,6 +49,7 @@ function handleClose() {
   emit("update:modelValue", false);
 }
 </script>
+
 <style>
 .modal-overlay {
   position: fixed;
@@ -61,7 +62,11 @@ function handleClose() {
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0; 
+  animation: fadeIn 0.5s forwards; 
+  transition: opacity 0.5s ease;
 }
+
 .modal-content {
   background-color: rgba(255, 255, 255, 0.9); 
   padding: 20px;
@@ -70,15 +75,30 @@ function handleClose() {
   height: 200px;
   color: black;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-20px); 
+  animation: slideIn 0.5s forwards; 
 }
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; 
+  }
+  to {
+    opacity: 1; 
+  }
 }
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0; 
+  }
+  to {
+    transform: translateY(0); 
+    opacity: 1; 
+  }
 }
+
 .body {
   margin-top: 30px;
 }
