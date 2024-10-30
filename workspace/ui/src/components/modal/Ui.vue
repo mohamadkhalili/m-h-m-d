@@ -56,20 +56,20 @@ function handleClose() {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.2); 
+  background: rgba(0, 0, 0, 0.1); 
   backdrop-filter: blur(5px); 
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .modal-content {
-  background-color: rgba(255, 255, 255, 0.8); 
+  background-color: rgba(255, 255, 255, 0.9); 
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 10px;
   width: 400px;
   height: 200px;
   color: black;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 .fade-enter-active,
 .fade-leave-active {
