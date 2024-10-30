@@ -48,7 +48,7 @@ function handleClose() {
     modalOverlay.classList.add("fadeOut"); 
     setTimeout(() => {
       emit("update:modelValue", false);
-    }, 1000); 
+    }, 500); 
   }
 }
 </script>
@@ -123,7 +123,7 @@ function handleClose() {
 }
 
 .fadeOut {
-  animation: fadeOut 1s forwards, slideOut 1s forwards; 
+  animation: fadeOut 0.5s forwards, slideOut 0.5s forwards; 
 }
 
 .body {

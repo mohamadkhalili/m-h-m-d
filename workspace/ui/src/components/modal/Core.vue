@@ -30,7 +30,7 @@ function handleOutsideClick() {
       modalOverlay.classList.add("fadeOut"); 
       setTimeout(() => {
         emit("update:modelValue", false);
-      }, 1000); 
+      }, 500); 
     }
   }
 }
