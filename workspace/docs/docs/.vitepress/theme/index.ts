@@ -19,7 +19,7 @@ export default {
   },
   enhanceApp({ app, router, siteData }) {
     // ...
-    app.directive('tooltip', tooltip);
+    app.directive('tooltipl', tooltip);
     app.component('Btn', Btn) 
     app.component('Pagination', Pagination)
     app.component('Input',Input)

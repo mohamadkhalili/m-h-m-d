@@ -6,10 +6,22 @@ export const buttonColors = {
   error: 'bg-red',
   warning: 'bg-amber',
   gradient:'bg-gradient',
-  link:'bg-link'
 } as const;
 
+export const VariantColor = {
+  link: 'variant-link',
+  faded: 'variant-faded',
+  bordered: 'variant-bordered',
+  light: 'variant-light',
+  ghost: 'variant-ghost',
+  shadow:'variant-shadow'
+} as const;
+
+
+
 export type ButtonColor = keyof typeof buttonColors;
+export type VariantColor = keyof typeof VariantColor;
+
 
 export const props = {
   color: {
@@ -19,5 +31,9 @@ export const props = {
   isDisabled: {
     type: Boolean,
     default: false,
+  },
+  variant: {
+    type: String as () => VariantColor,
+    default: 'default' as VariantColor,
   },
 };

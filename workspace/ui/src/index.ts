@@ -11,7 +11,7 @@ export { MainPagination };
 
 export default {
     install(app: App) {
-        app.directive('tooltip', tooltip);
+        app.directive('tooltipl', tooltip);
         app.component('Main', MainPagination);
         app.component('MainBtn', MainBtn);
         app.component('MainInput',mainInput)
