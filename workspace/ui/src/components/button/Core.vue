@@ -1,6 +1,5 @@
 <template>
-  <Ui :color="propsData.color" @click="createRipple" :is-disabled="propsData.isDisabled">
-    <slot></slot>
+  <Ui :color="propsData.color" @click="createRipple" :is-disabled="propsData.isDisabled" :variant="propsData.variant"  :NoCleaner="!propsData.NoCleaner"><slot/>
   </Ui>
 </template>
 
@@ -8,7 +7,6 @@
 import Ui from './Ui.vue';
 import { defineProps, ref } from 'vue';
 import { props } from './props';
-
 const propsData = defineProps(props);
 const rippleVisible = ref(false);
 const rippleStyle = ref({});
