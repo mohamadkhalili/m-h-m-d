@@ -24,7 +24,11 @@ export default defineConfig({
         collapsed: true,
         link: '/components',
         items: [
-          { text: 'pagination', link: '/components//pagination' }
+          { text: 'pagination', link: '/components//pagination' },{
+            text:'button',link:'/components//button'
+          },{
+            text:'input',link:'/components//input'
+          }
         ]
       },
       {
