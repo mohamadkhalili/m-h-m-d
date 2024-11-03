@@ -7,7 +7,7 @@ const modelValue = ref('');
 
 **Input with Custom Effect**
 <div class="border-[1px] border-gray-300 p-6 rounded-lg shadow-inner bg-white flex justify-center items-center">
-<Input v-model="modelValue"  title="input" :isDisabled="false" :Readonly="false" />
+<Input v-model="modelValue"  title="input" />
 </div>
 <Br/>
 

@@ -5,7 +5,8 @@
     v-bind="$attrs"
   >
     <template #input>
-      <div class="input-container">
+      <slot name="input"></slot>
+      <div v-if="showInput" class="input-container">
         <label
           :class="{ active: isFocused || modelValue }"
           @click="focusInput"
@@ -33,17 +34,19 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps, ref, defineOptions } from "vue";
+import { computed, defineProps, ref, defineOptions, useSlots } from "vue";
 import { InputColor, inputProps } from "./props";
 import { inputEmits } from "./Emits";
+import { InputSlots } from '../modal/Slots';
 import Core from "./Core.vue";
-
+const uiSlots = defineSlots<InputSlots>();
 const props = defineProps(inputProps);
 const emit = defineEmits(inputEmits);
 defineOptions({
   inheritAttrs: false,
 });
-
+const slots = useSlots();
+const showInput = computed(() => !slots.input);
 const isFocused = ref(false);
 const handleModelValue = (newValue: String) => {
   emit("update:modelValue", newValue);
