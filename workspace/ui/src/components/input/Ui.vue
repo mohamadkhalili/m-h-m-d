@@ -1,5 +1,9 @@
 <template>
-  <Core>
+  <Core
+    :modeValue="modelValue"
+    @update:modelValue="handleModelValue"
+    v-bind="$attrs"
+  >
     <template #input>
       <div class="input-container">
         <label
@@ -27,21 +31,34 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps, ref, watch } from "vue";
+import { computed, defineProps, ref, defineOptions } from "vue";
 import { InputColor, inputProps } from "./props";
+import { inputEmits } from "./Emits";
 import Core from "./Core.vue";
 
 const props = defineProps(inputProps);
-const isFocused = ref(false);
+const emit = defineEmits(inputEmits);
+defineOptions({
+  inheritAttrs: false,
+});
 
-const colorClass = computed(() => InputColor[props.color] || InputColor.default);
+const isFocused = ref(false);
+const handleModelValue = (newValue: String) => {
+  emit("update:modelValue", newValue);
+};
+const colorClass = computed(
+  () => InputColor[props.color] || InputColor.default
+);
 
 const handleBlur = () => {
   isFocused.value = !!props.modelValue;
 };
 
 const focusInput = () => {
-  document.getElementById("MainInput").focus();
+  const input = document.getElementById("MainInput");
+  if (input) {
+    input.focus();
+  }
 };
 </script>
 

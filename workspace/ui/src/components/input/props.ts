@@ -3,7 +3,7 @@ export const inputProps = {
   isDisabled: {type: Boolean,default: false,},
   title: {type : String, default: ""},
   RTL: {type: Boolean,default: false,},
-  color: {type: String,default: 'default'},
+  color: { type: String as () => keyof typeof InputColor, default: 'default' },
   modelValue: {type: String}
 };
 export const InputColor = {
