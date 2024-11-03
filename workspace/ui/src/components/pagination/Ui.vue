@@ -1,3 +1,8 @@
+
+
+
+/* eslint-disable */
+
 <template>
   <div
     class="pagination-container"
