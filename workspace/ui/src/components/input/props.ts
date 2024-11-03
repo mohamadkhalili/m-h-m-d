@@ -4,7 +4,7 @@ export const inputProps = {
   title: {type : String, default: ""},
   RTL: {type: Boolean,default: false,},
   color: { type: String as () => keyof typeof InputColor, default: 'default' },
-  modelValue: {type: String}
+  modelValue: {type: String, default:''}
 };
 export const InputColor = {
   default: 'bg-default',

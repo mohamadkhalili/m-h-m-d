@@ -1,13 +1,13 @@
 
 # input
 <script >
-
-import Input from '../../../ui/src/components/input/Core.vue'; 
+import {ref} from 'vue'
+const modelValue = ref('');
 </script>
 
 **Input with Custom Effect**
 <div class="border-[1px] border-gray-300 p-6 rounded-lg shadow-inner bg-white flex justify-center items-center">
-<Input  title="input"/>
+<Input v-model="modelValue"  title="input" :isDisabled="false" :Readonly="false" />
 </div>
 <Br/>
 

@@ -9,7 +9,7 @@ import Pagination from '../../../../ui/src/components/pagination/Ui.vue'
 import Modal from '../../../../ui/src/components/modal/Ui.vue'
 import { tooltip } from '../../../../ui/src/directives/TooltipDirective'
 import Btn from '../../../../ui/src/components/button/Core.vue'
-import Input from '../../../../ui/src/components/input/Core.vue'
+import Input from '../../../../ui/src/components/input/Ui.vue'
 
 export default {
   extends: DefaultTheme,

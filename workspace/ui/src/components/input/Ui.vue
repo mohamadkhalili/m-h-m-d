@@ -1,6 +1,6 @@
 <template>
   <Core
-    :modeValue="modelValue"
+    :modelValue="modelValue"
     @update:modelValue="handleModelValue"
     v-bind="$attrs"
   >
@@ -14,6 +14,8 @@
         <input
           id="MainInput"
           v-model="modelValue"
+          :disabled="isDisabled"
+          :readonly="Readonly"
           :class="[
             colorClass,
             {
