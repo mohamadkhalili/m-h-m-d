@@ -16,13 +16,13 @@
           ref="inputRef"
           v-model="modelValue"
           :disabled="isDisabled"
-          :readonly="Readonly"
+          :readonly="readonly"
           :class="[
             colorClass,
             {
               disabled: isDisabled,
-              readonly: Readonly,
-              rtl: RTL,
+              readonly: readonly,
+              rtl: rtl,
             },
           ]"
           @focus="isFocused = true"
