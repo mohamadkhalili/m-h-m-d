@@ -2,12 +2,22 @@
 # input
 <script >
 import {ref} from 'vue'
-const modelValue = ref('');
+const inputValue = ref('');
+const inputValuedefault = ref('');
+const inputValuePrimary = ref('');
+const inputValueError = ref('');
+const inputValueWarning = ref('');
+const inputValueSecondary = ref('');
+const inputValueGradient = ref('');
+const inputValueDisable = ref('');
+const inputValueReadonly = ref('');
+const inputValueRtl = ref('');
+
 </script>
 
 **Input with Custom Effect**
 <div class="border-[1px] border-gray-300 p-6 rounded-lg shadow-inner bg-white flex justify-center items-center">
-<Input v-model="modelValue"  title="input" />
+<Input v-model="inputValue"  title="input" />
 </div>
 <Br/>
 
@@ -26,22 +36,22 @@ you can easy import and use it!
 
 <div class="grid grid-cols-2 gap-4">
     <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
-        <Input color="default" title="default" />
+        <Input v-model="inputValueDefault" color="default" title="default" />
     </div>
     <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
-        <Input color="primary" title="primary"/>
+        <Input v-model="inputValuePrimary" color="primary" title="primary"/>
     </div>
     <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
-        <Input color="error" title="error"/> 
+        <Input v-model="inputValueError" color="error" title="error"/> 
     </div>
     <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
-        <Input color="warning" title="warning"/>
+        <Input v-model="inputValueWarning" color="warning" title="warning"/>
     </div>
     <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
-        <Input color="secondary" title="secondary"/>
+        <Input v-model="inputValueSecondary" color="secondary" title="secondary"/>
     </div>
     <div class="border-[1px] border-gray-300 p-4 rounded-lg shadow-inner bg-white flex justify-center items-center">
-        <Input color="gradient" title="gradient"/>
+        <Input v-model="inputValueGradient" color="gradient" title="gradient"/>
     </div>
      
 </div>
@@ -69,7 +79,7 @@ you can easy import and use it!
 
 <div class="border-[1px] border-gray-300 p-6 rounded-lg shadow-inner bg-white flex justify-center items-center">
 
-<Input color="secondary" title="Disabled" isDisabled/>
+<Input v-model="inputValueDisable" color="secondary" title="Disabled" isDisabled/>
 
 </div>
 
@@ -84,7 +94,7 @@ you can easy import and use it!
 also can make Read Only with  **Readonly** feature ! 
 
 <div class="border-[1px] border-gray-300 p-6 rounded-lg shadow-inner bg-white flex justify-center items-center">
-<Input color="primary"  Readonly="true"   title="ReadOnly Activated"  /> 
+<Input v-model="inputValueReadonly" color="primary"  Readonly="true"   title="ReadOnly Activated"  /> 
 
 </div>
 
@@ -100,7 +110,7 @@ also can make Read Only with  **Readonly** feature !
  can use **RTL** for align text ! 
 
 <div class="border-[1px] border-gray-300 p-6 rounded-lg shadow-inner bg-white flex justify-center items-center">
-<Input color="warning"  title="نام خانوادگی"   RTL /> 
+<Input v-model="inputValueRtl" color="warning"  title="نام خانوادگی"   RTL /> 
 
 </div>
 

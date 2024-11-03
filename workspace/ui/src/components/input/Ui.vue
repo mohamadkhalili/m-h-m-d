@@ -13,7 +13,7 @@
           >{{ title }}</label
         >
         <input
-          id="MainInput"
+          ref="inputRef"
           v-model="modelValue"
           :disabled="isDisabled"
           :readonly="Readonly"
@@ -47,6 +47,7 @@ defineOptions({
 });
 const slots = useSlots();
 const showInput = computed(() => !slots.input);
+const inputRef = ref<HTMLInputElement | null>(null);
 const isFocused = ref(false);
 const handleModelValue = (newValue: String) => {
   emit("update:modelValue", newValue);
@@ -60,10 +61,7 @@ const handleBlur = () => {
 };
 
 const focusInput = () => {
-  const input = document.getElementById("MainInput");
-  if (input) {
-    input.focus();
-  }
+  inputRef.value?.focus();
 };
 </script>
 
