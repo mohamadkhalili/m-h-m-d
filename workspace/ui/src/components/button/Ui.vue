@@ -175,7 +175,7 @@ const roundClass = computed(() => Round[propsData.round] || 'sm-round');
   
   .bg-blue { background: linear-gradient(45deg, rgb(0, 110, 255) 0%, rgb(68, 0, 255) 100%); border: 2px solid rgba(148, 148, 148, 0.301); }
   .bg-purple { background: linear-gradient(45deg, rgb(199, 0, 139) 0%, rgb(156, 0, 187) 100%); border: 2px solid rgba(148, 148, 148, 0.596);}
-  .bg-green { background: linear-gradient(45deg, rgb(38, 189, 0) 0%, rgb(76, 168, 0) 100%); border: 2px solid rgba(148, 148, 148, 0.466);}
+  .bg-green { background: linear-gradient(45deg, rgb(34, 177, 117) 0%, rgb(107, 238, 0) 100%); border: 2px solid rgba(148, 148, 148, 0.466);}
   .bg-red { background: linear-gradient(45deg, rgb(255, 0, 98) 0%, rgb(255, 0, 0) 100%); border: 2px solid rgba(148, 148, 148, 0.76);}
   .bg-amber { background: linear-gradient(45deg, rgb(255, 166, 0) 0%, rgb(247, 201, 0) 100%);border: 2px solid rgba(148, 148, 148, 0.76); }
   .bg-gradient {  background: linear-gradient(80deg, rgb(26, 26, 26) 0%, rgb(67, 117, 255) 100%);border: 2px solid rgba(148, 148, 148, 0.76); }
@@ -209,60 +209,71 @@ border: 1px solid blue;
       0 0 0 6px rgba(255, 255, 255, 0.034);
   }
 
+  .variant-link{
+  background: transparent;
+  color: rgb(76, 94, 255);
+  transition:  0.5s; 
+  box-shadow: 
+      inset 0 0px 2px rgba(235, 83, 255, 0), 
+      0 0 0 2px rgba(255, 255, 255, 0),
+      0 0 0 4px rgba(0, 67, 212, 0), 
+      0 0 0 6px rgba(167, 255, 255, 0);
+}
 
-  .variant-link {
-  background: rgba(255, 255, 255, 0.247);
-  color: rgb(60, 83, 187);
-
-
+.variant-link:hover {
+  box-shadow: 
+      inset 
+      0 0 0 1px rgba(255, 255, 255, 0.247),
+      0 0 0 3px rgba(0, 67, 212, 0.39), 
+      0 0 0 5px rgba(167, 255, 255, 0.349);
+  color: rgb(73, 73, 233);
 }
 
 
 
-
-  .variant-faded {
+.variant-faded {
   border: rgba(126, 126, 126, 0.432) 2px solid;
   background: linear-gradient(120deg, rgba(224, 224, 224, 0.815) 0%, rgba(238, 238, 238, 0.836) 50%, rgba(223, 223, 223, 0.781) 100%);
   color: rgb(48, 48, 160);
 
+
 }
 
 .variant-faded:hover {
-
   border: rgba(240, 240, 240, 0.979) 2px solid;
+  background: linear-gradient(120deg, rgba(240, 240, 240, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(240, 240, 240, 0.9) 100%);
+  color: rgb(0, 0, 128);
+}
+
+.variant-light {
+  background-color: rgba(138, 138, 138, 0.116);
+  color: rgb(60, 60, 173);
+  padding: 10px 15px; 
+  border: 1px solid transparent; 
 
 }
 
+.variant-light:hover {
+  color: rgb(29, 62, 124);
+  background-color: rgba(0, 0, 0, 0.212);
+  border: 1px solid rgb(29, 62, 124); 
+}
 
+  .variant-ghost {
+  border: rgba(146, 146, 146, 0.541) 1px solid;
+
+  color: rgb(48, 48, 160);
+
+}
 .variant-bordered{
-  border: rgb(0, 73, 209) 2px solid;
-  background:white;
-  color: rgb(0, 42, 231);
+  border: rgb(42, 90, 179) 2px solid;
+
+  color: rgb(60, 60, 173);
+
 }
 .variant-bordered:hover {
 
 border: rgb(170, 204, 255) 2px solid;
-
-
-
-}
-.variant-light{
- 
-background: white;
-  color: rgb(1, 1, 184);
- 
-  
-
-}
-.variant-light:hover{
-background-color: rgb(220, 228, 255);
-
-
-}
-  .variant-ghost {
-  border: rgba(255, 255, 255, 0.432) 1px solid;
- background-color: white;
-  color: rgb(48, 48, 160);
 
 }
 
@@ -290,19 +301,25 @@ background-color: rgb(220, 228, 255);
 
 }
 .sm-round {
-  border-radius: 0.1rem;
+  border-radius: 0.3rem;
+
+
 }
 
 .md-round {
-  border-radius: 0.5rem;
+  border-radius: 0.7rem;
+  padding: 10px;
+
 }
 
 .lg-round {
-  border-radius: 1rem;
+  border-radius: 1.5rem;
+  padding: 10px;
 }
 
 .full-round {
-  border-radius: 100%;
+  border-radius: 2rem;
+  padding: 10px;
 }
   </style>
   

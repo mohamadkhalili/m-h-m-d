@@ -107,6 +107,7 @@ You Can use   *isDisable*  for disable your button
  </div>
     <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
 <Btn  variant='link' > linked  </Btn>
+
 </div>
     <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
   <Btn variant='bordered' > border</Btn>
@@ -132,7 +133,7 @@ You Can use   *isDisable*  for disable your button
 ```md
 
 <Btn  variant='faded' > faded  </Btn>
-<Btn  variant='link' > linked  </Btn>
+<Btn  variant='link' > linked  </Btn> 
 <Btn variant='bordered' >border </Btn>
 <Btn  variant='light' > lighten  </Btn>
 <Btn  variant='ghost' > ghosts   </Btn>
