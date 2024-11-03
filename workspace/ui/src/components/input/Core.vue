@@ -1,23 +1,17 @@
 <script setup>
 import { defineProps } from 'vue';
 import Ui from './Ui.vue';
-import { props } from './props';
+import { inputProps } from './props';
 
-const propsData = defineProps({
-  ...props, 
-  color: {
-    type: String,
-    default: 'default',
-  },
-});
+const props = defineProps(inputProps);
 </script>
 
 <template>
   <Ui 
-    :readonly="propsData.Readonly" 
-    :isDisabled="propsData.isDisabled" 
-    :color="propsData.color" 
-    :RTL="propsData.RTL"
+    :readonly="Readonly" 
+    :isDisabled="isDisabled" 
+    :color="color" 
+    :RTL="RTL"
   >
     <slot></slot>
   </Ui>
