@@ -1,8 +1,9 @@
 export const inputProps = {
   Readonly: {type: Boolean,default: false,},
   isDisabled: {type: Boolean,default: false,},
+  title: {type : String, default: ""},
   RTL: {type: Boolean,default: false,},
-  color: {type: String,default: 'default',},
+  color: {type: String,default: 'default'},
   modelValue: {type: String}
 };
 export const InputColor = {
