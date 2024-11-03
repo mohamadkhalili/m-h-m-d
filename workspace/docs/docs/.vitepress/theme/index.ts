@@ -6,6 +6,7 @@ import DefaultTheme from 'vitepress/theme'
 // import '../../../../styles'
 import './tailwind.postcss'
 import Pagination from '../../../../ui/src/components/pagination/Ui.vue'
+import Modal from '../../../../ui/src/components/modal/Ui.vue'
 import { tooltip } from '../../../../ui/src/directives/TooltipDirective'
 import Btn from '../../../../ui/src/components/button/Core.vue'
 import Input from '../../../../ui/src/components/input/Core.vue'
@@ -20,10 +21,10 @@ export default {
   enhanceApp({ app, router, siteData }) {
     // ...
     app.directive('tooltipl', tooltip);
-    app.component('Btn', Btn) 
+    app.component('Btn', Btn)
     app.component('Pagination', Pagination)
+    app.component('Modal', Modal)
     app.component('Input',Input)
     
-
   }
 } satisfies Theme
