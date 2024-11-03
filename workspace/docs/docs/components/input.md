@@ -75,7 +75,7 @@ you can easy import and use it!
 
 **code**
 ```md
-<Input color="secondary"  title="Disabled" isDisabled/>
+<Input  isDisabled />
 ```
 ---
 **Read Only**
@@ -105,7 +105,7 @@ also can make Read Only with  **Readonly** feature !
 </div>
 
 ```md
-<Input color="primary"  Readonly="true"   title="ReadOnly Activated"  /> 
+<Input RTL  /> 
 
 
 ```

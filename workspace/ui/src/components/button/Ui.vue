@@ -2,8 +2,8 @@
     <div class="button-container">
       <button
   :class="[
-    buttonColor || VariantColor,
-    { 'custom-button': true, 'disabled': propsData.isDisabled, 'NoCleaner':propsData.NoCleaner }
+    buttonColor || VariantColor,roundClass,
+    { 'custom-button': true, 'disabled': propsData.isDisabled, 'NoCleaner':propsData.NoCleaner}
   ]"
   :disabled="propsData.isDisabled"
   @click="createRipple"
@@ -22,7 +22,7 @@
   </template>
   <script setup lang="ts">
   import { ref, computed, defineProps } from 'vue';
-  import { buttonColors, props,VariantColor } from './props';
+  import { buttonColors, props,VariantColor ,Round} from './props';
   
   const propsData = defineProps({
     ...props,
@@ -34,6 +34,10 @@
       type: Boolean,
       default: true,
     },
+    round: {
+    type: String as () => keyof typeof Round,
+    default: 'sm',
+    }
   });
   
   const rippleVisible = ref(false);
@@ -59,15 +63,16 @@
   
     setTimeout(() => {
       rippleVisible.value = false;
-    }, 600); // Adjust timeout to match the animation duration
+    }, 600); 
   };
   const buttonColor = computed(() => {
-  
   if (propsData.variant) {
     return VariantColor[propsData.variant] || buttonColors[propsData.color] ; 
   }
   return  buttonColors.default; 
 });
+const roundClass = computed(() => Round[propsData.round] || 'sm-round'); 
+
 
   
   const resetRipple = () => {
@@ -284,6 +289,20 @@ background-color: rgb(220, 228, 255);
   box-shadow: 0 12px 25px 2px rgba(75, 99, 145, 0.5); 
 
 }
+.sm-round {
+  border-radius: 0.1rem;
+}
 
+.md-round {
+  border-radius: 0.5rem;
+}
+
+.lg-round {
+  border-radius: 1rem;
+}
+
+.full-round {
+  border-radius: 100%;
+}
   </style>
   

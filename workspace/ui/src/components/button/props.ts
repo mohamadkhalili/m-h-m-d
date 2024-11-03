@@ -17,10 +17,18 @@ export const VariantColor = {
   shadow:'variant-shadow'
 } as const;
 
+export const Round = {
+  sm: 'sm-round',
+  md: 'md-round',
+  lg: 'lg-round',
+  full:'full-round'
 
+
+} as const;
 
 export type ButtonColor = keyof typeof buttonColors;
 export type VariantColor = keyof typeof VariantColor;
+export type Round = keyof typeof Round;
 
 
 export const props = {
@@ -40,4 +48,8 @@ export const props = {
     type: String as () => VariantColor,
     default: 'default' as VariantColor,
   },
+  round:{
+    type: String as ()=> Round,
+    default:'sm' as Round
+  }
 };

@@ -37,7 +37,22 @@ import Btn from '../../../ui/src/components/button/Core.vue';
 <Br/>
 <Br/>
 
-#Code 
+
+
+
+**Code**
+
+```md
+<Btn color="default">   Default</Btn>
+<Btn color="primary">   Primary</Btn>
+<Btn color="error">     Error !!</Btn>
+<Btn color="warning">   Warning</Btn>
+<Btn color="secondary"> Second</Btn>
+<Btn color="gradient">  Gradient</Btn>
+
+
+```
+<br/>
 
 
 
@@ -115,6 +130,7 @@ You Can use   *isDisable*  for disable your button
 
 
 ```md
+
 <Btn  variant='faded' > faded  </Btn>
 <Btn  variant='link' > linked  </Btn>
 <Btn variant='bordered' >border </Btn>
@@ -152,7 +168,7 @@ You Can use   *NoCleaner*  for disable your cleaner effect on button !
 
 **Also You can Use with Icons**
 <div class='  p-4 rounded-lg shadow-inner   justify-center items-center flex flex-row'>
-    <Btn color="secondary">
+    <Btn color="secondary" class="rounded-xl">
         <span>on it !</span>
         <div class="scale-75">
         <svg class="animate-spin" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -162,4 +178,31 @@ You Can use   *NoCleaner*  for disable your cleaner effect on button !
 </Btn>
 </div>
 
+<br/>
+
+**Rounded** 
+<br/>
+
+ you can change your border radios  with *round* option
+<div class='  p-4 rounded-lg shadow-inner   justify-center items-center flex flex-row'>
+
+<Btn round="sm" variant="bordered">small</Btn>
+<Btn round="md" variant="bordered">medium</Btn>
+<Btn round="lg" variant="bordered">large</Btn>
+<Btn round="full" variant="bordered">full</Btn>
+
+
+
+</div>
+
+
+**Code**
+
+```md
+<Btn round="sm">small</Btn>
+<Btn round="md">medium</Btn>
+<Btn round="lg">large</Btn>
+<Btn round="full">full</Btn>
+
+```
 <br/>

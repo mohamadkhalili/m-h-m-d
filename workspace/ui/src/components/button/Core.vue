@@ -1,5 +1,11 @@
 <template>
-  <Ui :color="propsData.color" @click="createRipple" :is-disabled="propsData.isDisabled" :variant="propsData.variant"  :NoCleaner="!propsData.NoCleaner"><slot/>
+  <Ui
+  :color="propsData.color"
+  :is-disabled="propsData.isDisabled"
+  :variant="propsData.variant"
+  :NoCleaner="!propsData.NoCleaner"
+  :round="propsData.round"
+  ><slot/>
   </Ui>
 </template>
 
