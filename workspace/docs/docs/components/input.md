@@ -97,7 +97,7 @@ also can make Read Only with  **Readonly** feature !
 </div>
 
 ```md
-<Input v-model="inputValueReadonly" color="primary"  readonly="true"   title="ReadOnly Activated"  /> 
+<Input v-model="inputValueReadonly" readonly="true" title="ReadOnly Activated"  /> 
 
 
 ```
@@ -113,7 +113,7 @@ also can make Read Only with  **Readonly** feature !
 </div>
 
 ```md
-<Input v-model="inputValueRtl" color="warning"  title="نام خانوادگی"   rtl /> 
+<Input v-model="inputValueRtl" color="warning" title="نام خانوادگی" rtl /> 
 
 
 ```

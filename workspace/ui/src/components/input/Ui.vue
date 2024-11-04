@@ -10,8 +10,7 @@
         <label
           :class="{ active: isFocused || modelValue }"
           @click="focusInput"
-          >{{ title }}</label
-        >
+          >{{ title }}</label>
         <input
           ref="inputRef"
           v-model="modelValue"
@@ -37,7 +36,7 @@
 import { computed, defineProps, ref, defineOptions, useSlots } from "vue";
 import { InputColor, inputProps } from "./props";
 import { inputEmits } from "./Emits";
-import { InputSlots } from '../modal/Slots';
+import { InputSlots } from '../input/Slots';
 import Core from "./Core.vue";
 const uiSlots = defineSlots<InputSlots>();
 const props = defineProps(inputProps);
@@ -174,6 +173,6 @@ input.rtl {
 
 input:focus {
   outline: none;
-  border-color: blue;
+  box-shadow:  0px 0px 1px 1px rgba(0, 0, 0, 0.322);
 }
 </style>
