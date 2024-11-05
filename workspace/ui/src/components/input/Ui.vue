@@ -6,9 +6,11 @@
   >
     <template #input>
       <slot name="input"></slot>
-      <div ref="globalInputRef" v-if="showInput" class="input-container">
+      <div v-if="showInput" class="input-container">
         <label
-          :class="{ active: isFocused || localValue }"
+          :class="{ active: isFocused || localValue,
+          'underline-label': props.variant === 'underline'
+        }"
           @click="focusInput"
           >{{ title }}</label
         >
@@ -18,7 +20,7 @@
           :disabled="isDisabled"
           :readonly="readonly"
           :class="[
-            colorClass,
+            themeClass,
             {
               disabled: isDisabled,
               readonly: readonly,
@@ -26,6 +28,7 @@
             },
           ]"
           @focus="isFocused = true"
+          @blur="handleBlur"
         />
       </div>
     </template>
@@ -39,11 +42,9 @@ import {
   ref,
   defineOptions,
   useSlots,
-  onMounted,
-  onBeforeUnmount,
-  watch
+  watch,
 } from "vue";
-import { InputColor, uiProps } from "./props";
+import { InputColor, InputVariant, uiProps } from "./props";
 import { inputEmits } from "./Emits";
 import { InputSlots } from "./Slots";
 import Core from "./Core.vue";
@@ -57,48 +58,32 @@ defineOptions({
 const slots = useSlots();
 const showInput = computed(() => !slots.input);
 const inputRef = ref<HTMLInputElement | null>(null);
-const globalInputRef = ref<HTMLDivElement | null>(null);
 const isFocused = ref(false);
 const localValue = ref(props.modelValue);
 
-watch(() => props.modelValue, (newValue) => {
-  localValue.value = newValue;
-});
+watch(
+  () => props.modelValue,
+  (newValue) => {
+    localValue.value = newValue;
+  }
+);
 
 const handleModelValue = (newValue: string) => {
   emit("update:modelValue", newValue);
 };
-
-const colorClass = computed(
-  () => InputColor[props.color] || InputColor.default
-);
-
-const handleInput = (event: Event) => {
-  const target = event.target as HTMLInputElement;
-  const value = target.value.trim();
-  localValue.value = value; 
-
-  emit("update:modelValue", value);
-};
+const themeClass = computed(() => {
+  if (props.variant) {
+    return InputVariant[props.variant];
+  }
+  return InputColor[props.color];
+});
 
 const focusInput = () => {
   inputRef.value?.focus();
 };
-
-const handleClickOutside = (event: Event) => {
-  if (globalInputRef.value && !globalInputRef.value.contains(event.target as Node) && !props.modelValue) {
-    isFocused.value = false;
-    inputRef.value?.blur(); 
-  }
+const handleBlur = () => {
+  isFocused.value = !!props.modelValue;
 };
-
-onMounted(() => {
-  document.addEventListener("click", handleClickOutside);
-});
-
-onBeforeUnmount(() => {
-  document.removeEventListener("click", handleClickOutside);
-});
 </script>
 
 <style>
@@ -109,72 +94,125 @@ onBeforeUnmount(() => {
     0 0 0 5px rgba(14, 155, 190, 0.034);
   border-color: rgba(161, 161, 161, 0.719);
 }
+
 .custom-input {
   padding: 8px;
   border-radius: 10px;
   transition: all 200ms;
   border: 1px solid gray;
 }
+
 .rtl {
   text-align: right;
   direction: rtl;
 }
 .bg-default {
-  background: rgb(255, 255, 255);
-  border: 1px rgb(139, 166, 184) solid;
+  border: 2px rgb(93, 101, 107) solid;
   color: rgb(48, 48, 48);
 }
-.bg-purple {
-  background: rgb(254, 234, 255);
 
-  border: 1px rgb(144, 45, 148) solid;
+.bg-purple {
+  border: 2px rgb(191, 58, 196) solid;
   color: rgb(114, 0, 95);
 }
-.bg-green {
-  background: rgb(239, 255, 244);
 
-  border: 1px rgb(0, 179, 104) solid;
+.bg-green {
+  border: 2px rgb(0, 207, 145) solid;
   color: rgb(0, 116, 58);
 }
 
 .bg-red {
-  background: rgb(255, 246, 246);
-
-  border: 1px rgba(211, 0, 0, 0.829) solid;
+  border: 2px rgba(228, 46, 0, 0.829) solid;
   color: rgb(204, 0, 0);
 }
 
 .bg-amber {
-  background: rgb(255, 252, 237);
-
-  border: 1px rgb(207, 207, 115) solid;
+  border: 2px rgb(221, 221, 26) solid;
   color: rgb(85, 85, 0);
 }
 
-.bg-gradient {
-  background: linear-gradient(
-    100deg,
-    rgb(209, 255, 249) 0%,
-    rgb(255, 235, 235) 20%,
-    rgb(241, 255, 230) 40%,
-    rgb(235, 235, 255) 60%,
-    rgb(207, 255, 235) 80%,
-    rgb(255, 230, 241) 100%
-  );
-  color: rgb(55, 41, 117);
-  border: 1px rgb(186, 220, 233) solid;
-  transition: background 1s;
+.bg-transparent {
+  border: 2px solid rgb(62, 62, 253);
+  transition: 0.2s all ease-in-out;
+}
+
+.bg-transparent:focus {
+  border: 2px solid transparent;
+  border: 2px solid rgb(255, 213, 73);
+}
+
+.v-flat {
+  background: rgba(124, 124, 124, 0.315);
+  border: none;
+  color: rgba(0, 0, 0, 0.87);
+  transition: 0.2s all;
+}
+.v-flat:hover {
+  background: #cececea4;
+}
+
+.v-bordered {
+  border-bottom: 2px solid #9f7aea;
+  background-color: transparent;
+}
+
+.v-underline {
+  position: relative;
+  background-color: transparent;
+  padding: 10px;
+  border: none;
+  border-radius: 0;
+  border-bottom: 2px solid #000;
+  transition: border-color 0.3s ease;
+}
+
+.v-underline::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: transparent;
+  transition: all 0.4s ease;
+}
+
+.v-underline:hover::after {
+  background-color: #0056d8;
+  width: 100%;
+}
+
+.v-underline:focus {
+  border-bottom: 2px solid #00bb92;
+}
+
+.v-underline:hover {
+  border-bottom: 2px solid #0056d8;
+
+  cursor: text;
+}
+
+.v-faded {
+  border: none;
+
+  color: #000000;
+  box-shadow: inset 0px 0px 50px 0px rgba(0, 0, 0, 0.233);
+  transition: all 0.4s ease;
+}
+.v-faded:hover {
+  box-shadow: inset 0px 0px 50px 0px rgba(107, 73, 73, 0.233);
 }
 
 .disabled {
   pointer-events: none;
-  opacity: 60%;
-  border: none;
+  cursor: not-allowed;
+  opacity: 40%;
 }
 
 .Readonly {
   border: 10px black solid;
 }
+
 .input-container {
   position: relative;
   margin: 20px 0;
@@ -182,16 +220,19 @@ onBeforeUnmount(() => {
 
 label {
   position: absolute;
-  left: 10px;
+  left: 4%;
   top: 12px;
   transition: 0.2s ease all;
   color: gray;
+  padding: 2px;
 }
 
 label.active {
-  left: 10px;
-  top: 0px;
-  font-size: 11px;
+  left: 8;
+
+  background: #ffffff00;
+  top: -3px;
+  font-size: 12px;
   color: #8b8b8b;
 }
 
@@ -208,8 +249,18 @@ input.rtl {
   direction: rtl;
 }
 
-input:focus {
-  outline: none;
-  border-color: blue;
+.underline-label {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  font-size: 18px;
+  color: #8b8b8b;
+  transition: all 0.2s ease-in-out;
+}
+
+.underline-label.active {
+  top: 45px;
+  font-size: 16px;
+  color: #818181;
 }
 </style>
