@@ -14,7 +14,7 @@
         :vertical="vertical"
         :tooltip="tooltip"
       ></slot>
-      <div class="item" v-if="showItem">{{ item }}</div>
+      <div class="menu-item" v-if="showItem">{{ item }}</div>
     </template>
   </Core>
 </template>
@@ -39,11 +39,30 @@ const handlePageChange = (newValue: number) => {
 </script>
 
 <style scoped>
-.item {
-  background-color: black;
-  margin: 10px;
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1a1a1a;
   color: white;
-  padding: 10px;
-  
+  padding: 15px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.menu-item:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}
+
+div {
+  display: flex;
+  gap: 10px; 
+  flex-wrap: wrap; 
+}
+
+.menu-item-active {
+  background-color: #4caf50; 
 }
 </style>

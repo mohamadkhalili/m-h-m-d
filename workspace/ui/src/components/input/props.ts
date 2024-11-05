@@ -3,9 +3,16 @@ export const inputProps = {
   isDisabled: {type: Boolean,default: false,},
   title: {type : String, default: ""},
   rtl: {type: Boolean,default: false,},
-  color: { type: String as () => keyof typeof InputColor, default: 'default' },
   modelValue: {type: String, default:''}
 };
+export const uiProps = {
+  readonly: {type: Boolean,required : false},
+  isDisabled: {type: Boolean,required : false},
+  title: {type : String, required : false},
+  rtl: {type: Boolean,required : false},
+  color: { type: String as () => keyof typeof InputColor, default: 'default' },
+  modelValue: {type: String, required : false}
+}
 export const InputColor = {
   default: 'bg-default',
   secondary: 'bg-purple',

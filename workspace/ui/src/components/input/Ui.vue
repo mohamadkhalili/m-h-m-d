@@ -6,15 +6,15 @@
   >
     <template #input>
       <slot name="input"></slot>
-      <div v-if="showInput" class="input-container">
+      <div ref="globalInputRef" v-if="showInput" class="input-container">
         <label
-          :class="{ active: isFocused || modelValue }"
+          :class="{ active: isFocused || localValue }"
           @click="focusInput"
           >{{ title }}</label
         >
         <input
           ref="inputRef"
-          v-model="modelValue"
+          v-model="localValue"
           :disabled="isDisabled"
           :readonly="readonly"
           :class="[
@@ -26,7 +26,6 @@
             },
           ]"
           @focus="isFocused = true"
-          @blur="handleBlur"
         />
       </div>
     </template>
@@ -34,13 +33,23 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps, ref, defineOptions, useSlots } from "vue";
-import { InputColor, inputProps } from "./props";
+import {
+  computed,
+  defineProps,
+  ref,
+  defineOptions,
+  useSlots,
+  onMounted,
+  onBeforeUnmount,
+  watch
+} from "vue";
+import { InputColor, uiProps } from "./props";
 import { inputEmits } from "./Emits";
-import { InputSlots } from '../modal/Slots';
+import { InputSlots } from "./Slots";
 import Core from "./Core.vue";
+
 const uiSlots = defineSlots<InputSlots>();
-const props = defineProps(inputProps);
+const props = defineProps(uiProps);
 const emit = defineEmits(inputEmits);
 defineOptions({
   inheritAttrs: false,
@@ -48,21 +57,48 @@ defineOptions({
 const slots = useSlots();
 const showInput = computed(() => !slots.input);
 const inputRef = ref<HTMLInputElement | null>(null);
+const globalInputRef = ref<HTMLDivElement | null>(null);
 const isFocused = ref(false);
-const handleModelValue = (newValue: String) => {
+const localValue = ref(props.modelValue);
+
+watch(() => props.modelValue, (newValue) => {
+  localValue.value = newValue;
+});
+
+const handleModelValue = (newValue: string) => {
   emit("update:modelValue", newValue);
 };
+
 const colorClass = computed(
   () => InputColor[props.color] || InputColor.default
 );
 
-const handleBlur = () => {
-  isFocused.value = !!props.modelValue;
+const handleInput = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+  const value = target.value.trim();
+  localValue.value = value; 
+
+  emit("update:modelValue", value);
 };
 
 const focusInput = () => {
   inputRef.value?.focus();
 };
+
+const handleClickOutside = (event: Event) => {
+  if (globalInputRef.value && !globalInputRef.value.contains(event.target as Node) && !props.modelValue) {
+    isFocused.value = false;
+    inputRef.value?.blur(); 
+  }
+};
+
+onMounted(() => {
+  document.addEventListener("click", handleClickOutside);
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener("click", handleClickOutside);
+});
 </script>
 
 <style>
