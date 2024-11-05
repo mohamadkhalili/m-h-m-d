@@ -196,12 +196,12 @@ const focusInput = () => {
 
 .v-underline:focus {
   border-bottom: 2px solid #00bb92;  
-  border-right: 2px solid #00bb92;
+
 }
 
 .v-underline:hover {
   border-bottom: 2px solid #0056d8; 
-  border-right: 2px solid #0056d8;
+
 
   cursor: text; 
 }
@@ -269,17 +269,17 @@ input.rtl {
 .underline-label {
   position: absolute;
   top: 5px; 
-  left: 45%;
+  left: 0;
   font-size: 18px;
   color: #8b8b8b;
   transition: all 0.2s ease-in-out;
 }
 
 .underline-label.active {
-  top: 7px;
- margin-left: 60%;
+  top: 45px;
+
   font-size: 16px;
-  color: #000000;
+  color: #818181;
 
 
  

@@ -129,7 +129,7 @@ You can use any variants for your theme it's already ready !
 </div>
     <div class="   p-4 rounded-lg shadow-inner  flex justify-center items-center">
 
-<Input variant="underline" title="نام" rtl/>
+<Input variant="underline" title="Name"  />
 </div>
     <div class="   p-4 rounded-lg shadow-inner  flex justify-center items-center ">
 
