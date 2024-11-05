@@ -1,13 +1,18 @@
-export const inputProps = {
-  readonly: {type: Boolean,default: false,},
-  isDisabled: {type: Boolean,default: false,},
-  title: {type : String, default: ""},
-  rtl: {type: Boolean,default: false,},
-  color: { type: String as () => keyof typeof InputColor, default: 'default' },
-  variant: { type: String as () => keyof typeof InputVariant, default: 'default' },
 
-  modelValue: {type: String, default:''}
+export const inputProps = {
+  readonly: { type: Boolean, default: false },
+  isDisabled: { type: Boolean, default: false },
+  title: { type: String, default: "" },
+  rtl: { type: Boolean, default: false },
+  
+
+  color: { type: String as () => keyof typeof InputColor, default: 'default' },
+  variant: { type: String as () => keyof typeof InputVariant },
+
+  modelValue: { type: String, default: '' },
 };
+
+
 export const InputColor = {
   default: 'bg-default',
   secondary: 'bg-purple',
@@ -15,12 +20,13 @@ export const InputColor = {
   error: 'bg-red',
   warning: 'bg-amber',
   transparent: 'bg-transparent',
-} as const;
+} as const; 
+
 
 export const InputVariant = {
-  default: 'bg-default',
+  default: 'v-default',
   faded: 'v-faded',
-  underline: 'bg-purple',
-  bordered: 'bg-green',
-  flat: 'bg-red',
-} as const;
+  underline: 'v-underline',
+  bordered: 'v-bordered',
+  flat: 'v-flat',
+} as const; 

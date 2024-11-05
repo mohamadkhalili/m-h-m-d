@@ -18,6 +18,8 @@ const inputValueRtl = ref('');
 **Input with Custom Effect**
 <div class="  p-6 rounded-lg shadow-inner flex justify-center items-center">
 <Input v-model="inputValue"  title="input" />
+
+
 </div>
 <Br/>
 
@@ -61,12 +63,13 @@ you can easy import and use it!
 
 ```md
 
-<Input    color="default"     title="default"  />
-<Input    color="primary"     title="primary"  />
-<Input    color="error"       title="error"    /> 
-<Input    color="warning"     title="warning"  />
-<Input    color="secondary"   title="secondary"/>
-<Input    color="Transparent" title="Transparent" />
+<Input color="default" title="default" />
+<Input color="primary" title="primary" />
+<Input color="error" title="error" />
+<Input color="warning" title="warning" />
+<Input color="secondary" title="secondary" />
+<Input color="transparent" title="Transparent" />
+
 
 ```
 
@@ -104,6 +107,18 @@ also can make Read Only with  **Readonly** feature !
 
 
 ```
+---
+**Variant themes**
+<br/>
+<br/>
+
+You can use any variants for your theme it's already ready !
+<div class="   p-6 rounded-lg shadow-inner  flex justify-center items-center">
+
+<Input variant="faded" title="faded"/>
+
+</div>
+
 ---
 **RTL**
 <br/>
