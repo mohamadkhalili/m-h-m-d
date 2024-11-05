@@ -114,9 +114,29 @@ also can make Read Only with  **Readonly** feature !
 
 You can use any variants for your theme it's already ready !
 <div class="   p-6 rounded-lg shadow-inner  flex justify-center items-center">
+<div class="flex w-full flex-col col-span-1 gap-4">
+    <div class="   p-4 rounded-lg shadow-inner  flex justify-center items-center">
 
 <Input variant="faded" title="faded"/>
+</div>
+    <div class="   p-4 rounded-lg shadow-inner  flex justify-center items-center">
 
+<Input variant="bordered" title="bordered"/>
+</div>
+    <div class="   p-4 rounded-lg shadow-inner  flex justify-center items-center">
+
+<Input variant="default" title="default"/>
+</div>
+    <div class="   p-4 rounded-lg shadow-inner  flex justify-center items-center">
+
+<Input variant="underline" title="underline"/>
+</div>
+    <div class="   p-4 rounded-lg shadow-inner  flex justify-center items-center ">
+
+<Input variant="flat" title="flat"/>
+</div>
+ 
+</div>
 </div>
 
 ---

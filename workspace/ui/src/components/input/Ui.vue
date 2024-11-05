@@ -125,26 +125,60 @@ const focusInput = () => {
 }
 
 .bg-transparent {
-  border: 2px solid blue;
+  border: 2px solid rgb(62, 62, 253);
+  transition: 0.2s all ease-in-out;
 }
 
 .bg-transparent:focus {
   border: 2px solid transparent;
+  border: 2px solid rgb(255, 213, 73);
+
 }
 
 .v-faded {
-  background: rgb(235, 16, 16);
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.v-underline {
-  border-bottom: 2px solid #9f7aea;
-  background-color: transparent;
+  background: rgb(224, 224, 224);
+  border: none;
+  color: rgba(0, 0, 0, 0.87);
 }
 
 .v-bordered {
-  border: 2px solid #28a745;
+  border-bottom: 2px solid #9f7aea;
   background-color: transparent;
+}
+.v-underline {
+  position: relative;
+  background-color: transparent;
+  padding: 10px;
+  border: none;
+  border-radius: 0;
+  border-bottom: 2px solid #000;  /* خط مشکی ثابت */
+  transition: border-color 0.3s ease;  /* برای تغییر رنگ مرز */
+}
+
+/* هنگام هاور شدن، خط آبی ظاهر می‌شود */
+.v-underline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: transparent; 
+  transition: all 0.4s ease;  
+}
+
+.v-underline:hover::after {
+  background-color: #0056d8; 
+  width: 100%;  
+}
+
+.v-underline:focus {
+  border-bottom: 2px solid #00bb92;  
+}
+
+.v-underline:hover {
+  border-bottom: 2px solid #0056d8; 
+  cursor: text; 
 }
 
 .v-flat {
@@ -177,8 +211,8 @@ label {
 }
 
 label.active {
-  left: 10px;
-  top: 0px;
+  left: 10;
+  top: -2px;
   font-size: 11px;
   color: #8b8b8b;
 }
@@ -196,12 +230,7 @@ input.rtl {
   direction: rtl;
 }
 
-input:focus {
-  outline: none;
-  box-shadow: 0px 0px 1px 1px rgba(247, 215, 75, 0.801);
-}
 
-.v-faded {
-  background: #e00000;
-}
+
+
 </style>
