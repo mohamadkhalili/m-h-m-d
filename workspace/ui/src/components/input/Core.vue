@@ -7,7 +7,7 @@
 import { defineProps } from 'vue';
 import { inputProps } from './props';
 import { inputEmits } from './Emits';
-import { InputSlots } from '../modal/Slots';
+import { InputSlots } from '../input/Slots';
 const props = defineProps(inputProps);
 const emit = defineEmits(inputEmits);
 const slots = defineSlots<InputSlots>();
