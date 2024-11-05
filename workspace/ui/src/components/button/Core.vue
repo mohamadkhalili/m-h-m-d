@@ -3,7 +3,7 @@
   :color="propsData.color"
   :is-disabled="propsData.isDisabled"
   :variant="propsData.variant"
-  :NoCleaner="!propsData.NoCleaner"
+  :CleanerEffect="propsData.CleanerEffect"
   :round="propsData.round"
   ><slot/>
   </Ui>

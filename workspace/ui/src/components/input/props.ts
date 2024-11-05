@@ -11,6 +11,7 @@ export const uiProps = {
   title: {type : String, required : false},
   rtl: {type: Boolean,required : false},
   color: { type: String as () => keyof typeof InputColor, default: 'default' },
+  variant: { type: String as () => keyof typeof InputVariant },
   modelValue: {type: String, required : false}
 }
 export const InputColor = {
@@ -22,3 +23,10 @@ export const InputColor = {
   gradient: 'bg-gradient',
   link: 'bg-link',
 } as const;
+export const InputVariant = {
+  default: 'v-default',
+  faded: 'v-faded',
+  underline: 'v-underline',
+  bordered: 'v-bordered',
+  flat: 'v-flat',
+} as const; 

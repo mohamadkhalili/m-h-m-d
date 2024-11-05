@@ -40,7 +40,7 @@ export const props = {
     type: Boolean,
     default: false,
   },
-  NoCleaner: {
+  CleanerEffect: {
     type: Boolean,
     default: false,
   },
