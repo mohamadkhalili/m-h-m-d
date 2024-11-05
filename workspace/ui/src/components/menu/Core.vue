@@ -10,8 +10,6 @@
         :index="index"
         :isActive="item == modelValue"
         :item="item"
-        :vertical="vertical"
-        :tooltip="tooltip"
       ></slot>
     </div>
   </div>
