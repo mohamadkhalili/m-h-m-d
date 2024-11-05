@@ -3,9 +3,10 @@
       <button
   :class="[
     buttonColor || VariantColor,roundClass,
-    { 'custom-button': true, 'disabled': propsData.isDisabled, 'NoCleaner':propsData.NoCleaner}
+    { 'custom-button': true, 'disabled': propsData.isDisabled, 'CleanerEffect':propsData.CleanerEffect}
   ]"
   :disabled="propsData.isDisabled"
+  :Cleanereffect="propsData.CleanerEffect"
   @click="createRipple"
 >
   <slot></slot>
@@ -30,7 +31,7 @@
       type: Boolean,
       default: false,
     }, 
-    NoCleaner: {
+    CleanerEffect: {
       type: Boolean,
       default: true,
     },
@@ -139,7 +140,7 @@ const roundClass = computed(() => Round[propsData.round] || 'sm-round');
   opacity: 100;
 }
 
-.custom-button:not(.NoCleaner)::before {
+.custom-button:not(.CleanerEffect)::before {
   display: none; 
 }
 
