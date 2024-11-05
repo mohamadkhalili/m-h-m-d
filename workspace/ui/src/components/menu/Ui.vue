@@ -14,7 +14,7 @@
         :vertical="vertical"
         :tooltip="tooltip"
       ></slot>
-      <div v-if="showItem">{{ item }}</div>
+      <div class="item" v-if="showItem">{{ item }}</div>
     </template>
   </Core>
 </template>
@@ -37,3 +37,13 @@ const handlePageChange = (newValue: number) => {
   emit("update:modelValue", newValue);
 };
 </script>
+
+<style scoped>
+.item {
+  background-color: black;
+  margin: 10px;
+  color: white;
+  padding: 10px;
+  
+}
+</style>
