@@ -8,24 +8,19 @@
       <slot name="input"></slot>
       <div v-if="showInput" class="input-container">
         <label
-          :class="{ 
-            active: isFocused || modelValue,
-            'underline-label': props.variant === 'underline',
-     
-
-          }" 
+          :class="{ active: isFocused || localValue,
+          'underline-label': props.variant === 'underline'
+        }"
           @click="focusInput"
+          >{{ title }}</label
         >
-          {{ title }}
-        </label>
-
         <input
           ref="inputRef"
-          v-model="modelValue"
+          v-model="localValue"
           :disabled="isDisabled"
           :readonly="readonly"
           :class="[
-            themeClass ,
+            themeClass,
             {
               disabled: isDisabled,
               readonly: readonly,
@@ -40,60 +35,58 @@
   </Core>
 </template>
 
-
 <script setup lang="ts">
-import { computed, defineProps, ref, defineOptions, useSlots } from "vue";
-import { inputProps, InputVariant ,InputColor} from "./props"; 
+import {
+  computed,
+  defineProps,
+  ref,
+  defineOptions,
+  useSlots,
+  watch,
+} from "vue";
+import { InputColor, InputVariant, uiProps } from "./props";
 import { inputEmits } from "./Emits";
-import { InputSlots } from "../input/Slots";
+import { InputSlots } from "./Slots";
 import Core from "./Core.vue";
 
 const uiSlots = defineSlots<InputSlots>();
-const props = defineProps(inputProps);
+const props = defineProps(uiProps);
 const emit = defineEmits(inputEmits);
-
 defineOptions({
   inheritAttrs: false,
 });
-
 const slots = useSlots();
 const showInput = computed(() => !slots.input);
 const inputRef = ref<HTMLInputElement | null>(null);
 const isFocused = ref(false);
+const localValue = ref(props.modelValue);
 
-const handleModelValue = (newValue: String) => {
+watch(
+  () => props.modelValue,
+  (newValue) => {
+    localValue.value = newValue;
+  }
+);
+
+const handleModelValue = (newValue: string) => {
   emit("update:modelValue", newValue);
 };
-
-
-
 const themeClass = computed(() => {
-
   if (props.variant) {
     return InputVariant[props.variant];
   }
   return InputColor[props.color];
 });
 
-
-
+const focusInput = () => {
+  inputRef.value?.focus();
+};
 const handleBlur = () => {
   isFocused.value = !!props.modelValue;
 };
-
-
-
-
-const focusInput = () => {
-  inputRef.value?.focus();
-  isFocused.value = true; 
-};
-
 </script>
 
-
-<style scoped>
-
+<style>
 #MainInput:hover,
 #MainInput:focus {
   box-shadow: inset 0 0 2px rgba(156, 156, 156, 0.1),
@@ -146,7 +139,6 @@ const focusInput = () => {
 .bg-transparent:focus {
   border: 2px solid transparent;
   border: 2px solid rgb(255, 213, 73);
-
 }
 
 .v-flat {
@@ -155,7 +147,7 @@ const focusInput = () => {
   color: rgba(0, 0, 0, 0.87);
   transition: 0.2s all;
 }
-.v-flat:hover{
+.v-flat:hover {
   background: #cececea4;
 }
 
@@ -164,58 +156,50 @@ const focusInput = () => {
   background-color: transparent;
 }
 
-
-
-
-
 .v-underline {
   position: relative;
   background-color: transparent;
   padding: 10px;
   border: none;
   border-radius: 0;
-  border-bottom: 2px solid #000;  
-  transition: border-color 0.3s ease; 
+  border-bottom: 2px solid #000;
+  transition: border-color 0.3s ease;
 }
 
 .v-underline::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: transparent; 
-  transition: all 0.4s ease;  
+  background-color: transparent;
+  transition: all 0.4s ease;
 }
 
 .v-underline:hover::after {
-  background-color: #0056d8; 
-  width: 100%;  
+  background-color: #0056d8;
+  width: 100%;
 }
 
 .v-underline:focus {
-  border-bottom: 2px solid #00bb92;  
-
+  border-bottom: 2px solid #00bb92;
 }
 
 .v-underline:hover {
-  border-bottom: 2px solid #0056d8; 
+  border-bottom: 2px solid #0056d8;
 
-
-  cursor: text; 
+  cursor: text;
 }
 
 .v-faded {
   border: none;
- 
+
   color: #000000;
   box-shadow: inset 0px 0px 50px 0px rgba(0, 0, 0, 0.233);
-  transition: all 0.4s ease;  
-
+  transition: all 0.4s ease;
 }
 .v-faded:hover {
-
   box-shadow: inset 0px 0px 50px 0px rgba(107, 73, 73, 0.233);
 }
 
@@ -247,7 +231,7 @@ label.active {
   left: 8;
 
   background: #ffffff00;
-top: -3px;
+  top: -3px;
   font-size: 12px;
   color: #8b8b8b;
 }
@@ -265,10 +249,9 @@ input.rtl {
   direction: rtl;
 }
 
-
 .underline-label {
   position: absolute;
-  top: 5px; 
+  top: 5px;
   left: 0;
   font-size: 18px;
   color: #8b8b8b;
@@ -277,12 +260,7 @@ input.rtl {
 
 .underline-label.active {
   top: 45px;
-
   font-size: 16px;
   color: #818181;
-
-
- 
- 
 }
 </style>
