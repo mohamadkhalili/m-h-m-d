@@ -83,50 +83,39 @@ const focusInput = () => {
   direction: rtl;
 }
 .bg-default {
-  background: rgb(255, 255, 255);
-  border: 1px rgb(139, 166, 184) solid;
+  border: 2px rgb(93, 101, 107) solid;
   color: rgb(48, 48, 48);
 }
 .bg-purple {
-  background: rgb(254, 234, 255);
 
-  border: 1px rgb(144, 45, 148) solid;
+  border: 2px rgb(191, 58, 196) solid;
   color: rgb(114, 0, 95);
 }
 .bg-green {
-  background: rgb(239, 255, 244);
 
-  border: 1px rgb(0, 179, 104) solid;
+
+  border: 2px rgb(0, 207, 145) solid;
   color: rgb(0, 116, 58);
 }
 
 .bg-red {
-  background: rgb(255, 246, 246);
 
-  border: 1px rgba(211, 0, 0, 0.829) solid;
+  border: 2px rgba(228, 46, 0, 0.829) solid;
   color: rgb(204, 0, 0);
 }
 
 .bg-amber {
-  background: rgb(255, 252, 237);
 
-  border: 1px rgb(207, 207, 115) solid;
+  border: 2px rgb(221, 221, 26) solid;
   color: rgb(85, 85, 0);
 }
 
-.bg-gradient {
-  background: linear-gradient(
-    100deg,
-    rgb(209, 255, 249) 0%,
-    rgb(255, 235, 235) 20%,
-    rgb(241, 255, 230) 40%,
-    rgb(235, 235, 255) 60%,
-    rgb(207, 255, 235) 80%,
-    rgb(255, 230, 241) 100%
-  );
-  color: rgb(55, 41, 117);
-  border: 1px rgb(186, 220, 233) solid;
-  transition: background 1s;
+.bg-transparent {
+  border: 2px solid blue; 
+}
+
+.bg-transparent:focus {
+  border: 2px solid  transparent; 
 }
 
 .disabled {
@@ -173,6 +162,6 @@ input.rtl {
 
 input:focus {
   outline: none;
-  box-shadow:  0px 0px 1px 1px rgba(209, 143, 0, 0.322);
+  box-shadow:  0px 0px 1px 1px rgba(247, 215, 75, 0.801);
 }
 </style>

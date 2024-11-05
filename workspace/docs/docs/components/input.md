@@ -8,7 +8,7 @@ const inputValuePrimary = ref('');
 const inputValueError = ref('');
 const inputValueWarning = ref('');
 const inputValueSecondary = ref('');
-const inputValueGradient = ref('');
+const inputValueTransparent = ref('');
 const inputValueDisable = ref('');
 const inputValueReadonly = ref('');
 const inputValueRtl = ref('');
@@ -51,7 +51,7 @@ you can easy import and use it!
         <Input v-model="inputValueSecondary" color="secondary" title="secondary"/>
     </div>
     <div class="   p-4 rounded-lg shadow-inner  flex justify-center items-center">
-        <Input v-model="inputValueGradient" color="gradient" title="gradient"/>
+        <Input v-model="inputValueTransparent" color="transparent" title="Transparent"/>
     </div>
      
 </div>
@@ -61,12 +61,12 @@ you can easy import and use it!
 
 ```md
 
-<Input v-model="inputValueDefault"   color="default"    title="default"  />
-<Input v-model="inputValuePrimary"   color="primary"    title="primary"  />
-<Input v-model="inputValueError"     color="error"      title="error"    /> 
-<Input v-model="inputValueWarning"   color="warning"    title="warning"  />
-<Input v-model="inputValueSecondary" color="secondary"  title="secondary"/>
-<Input v-model="inputValueGradient"  color="gradient"   title="gradient" />
+<Input    color="default"     title="default"  />
+<Input    color="primary"     title="primary"  />
+<Input    color="error"       title="error"    /> 
+<Input    color="warning"     title="warning"  />
+<Input    color="secondary"   title="secondary"/>
+<Input    color="Transparent" title="Transparent" />
 
 ```
 

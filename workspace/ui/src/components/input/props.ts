@@ -4,6 +4,8 @@ export const inputProps = {
   title: {type : String, default: ""},
   rtl: {type: Boolean,default: false,},
   color: { type: String as () => keyof typeof InputColor, default: 'default' },
+  variant: { type: String as () => keyof typeof InputVariant, default: 'default' },
+
   modelValue: {type: String, default:''}
 };
 export const InputColor = {
@@ -12,6 +14,13 @@ export const InputColor = {
   primary: 'bg-green',
   error: 'bg-red',
   warning: 'bg-amber',
-  gradient: 'bg-gradient',
-  link: 'bg-link',
+  transparent: 'bg-transparent',
+} as const;
+
+export const InputVariant = {
+  default: 'bg-default',
+  faded: 'v-faded',
+  underline: 'bg-purple',
+  bordered: 'bg-green',
+  flat: 'bg-red',
 } as const;
