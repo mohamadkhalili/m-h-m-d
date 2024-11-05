@@ -8,16 +8,24 @@
       <slot name="input"></slot>
       <div v-if="showInput" class="input-container">
         <label
-          :class="{ active: isFocused || modelValue }"
+          :class="{ 
+            active: isFocused || modelValue,
+            'underline-label': props.variant === 'underline',
+     
+
+          }" 
           @click="focusInput"
-          >{{ title }}</label>
+        >
+          {{ title }}
+        </label>
+
         <input
           ref="inputRef"
           v-model="modelValue"
           :disabled="isDisabled"
           :readonly="readonly"
           :class="[
-               themeClass ,
+            themeClass ,
             {
               disabled: isDisabled,
               readonly: readonly,
@@ -31,6 +39,7 @@
     </template>
   </Core>
 </template>
+
 
 <script setup lang="ts">
 import { computed, defineProps, ref, defineOptions, useSlots } from "vue";
@@ -72,9 +81,14 @@ const handleBlur = () => {
   isFocused.value = !!props.modelValue;
 };
 
+
+
+
 const focusInput = () => {
   inputRef.value?.focus();
+  isFocused.value = true; 
 };
+
 </script>
 
 
@@ -135,27 +149,35 @@ const focusInput = () => {
 
 }
 
-.v-faded {
-  background: rgb(224, 224, 224);
+.v-flat {
+  background: rgba(124, 124, 124, 0.315);
   border: none;
   color: rgba(0, 0, 0, 0.87);
+  transition: 0.2s all;
+}
+.v-flat:hover{
+  background: #cececea4;
 }
 
 .v-bordered {
   border-bottom: 2px solid #9f7aea;
   background-color: transparent;
 }
+
+
+
+
+
 .v-underline {
   position: relative;
   background-color: transparent;
   padding: 10px;
   border: none;
   border-radius: 0;
-  border-bottom: 2px solid #000;  /* خط مشکی ثابت */
-  transition: border-color 0.3s ease;  /* برای تغییر رنگ مرز */
+  border-bottom: 2px solid #000;  
+  transition: border-color 0.3s ease; 
 }
 
-/* هنگام هاور شدن، خط آبی ظاهر می‌شود */
 .v-underline::after {
   content: '';
   position: absolute;
@@ -174,17 +196,27 @@ const focusInput = () => {
 
 .v-underline:focus {
   border-bottom: 2px solid #00bb92;  
+  border-right: 2px solid #00bb92;
 }
 
 .v-underline:hover {
   border-bottom: 2px solid #0056d8; 
+  border-right: 2px solid #0056d8;
+
   cursor: text; 
 }
 
-.v-flat {
+.v-faded {
   border: none;
-  background-color: #ff0000;
-  color: #fff;
+ 
+  color: #000000;
+  box-shadow: inset 0px 0px 50px 0px rgba(0, 0, 0, 0.233);
+  transition: all 0.4s ease;  
+
+}
+.v-faded:hover {
+
+  box-shadow: inset 0px 0px 50px 0px rgba(107, 73, 73, 0.233);
 }
 
 .disabled {
@@ -204,16 +236,19 @@ const focusInput = () => {
 
 label {
   position: absolute;
-  left: 10px;
+  left: 4%;
   top: 12px;
   transition: 0.2s ease all;
   color: gray;
+  padding: 2px;
 }
 
 label.active {
-  left: 10;
-  top: -2px;
-  font-size: 11px;
+  left: 8;
+
+  background: #ffffff00;
+top: -3px;
+  font-size: 12px;
   color: #8b8b8b;
 }
 
@@ -231,6 +266,23 @@ input.rtl {
 }
 
 
+.underline-label {
+  position: absolute;
+  top: 5px; 
+  left: 45%;
+  font-size: 18px;
+  color: #8b8b8b;
+  transition: all 0.2s ease-in-out;
+}
+
+.underline-label.active {
+  top: 7px;
+ margin-left: 60%;
+  font-size: 16px;
+  color: #000000;
 
 
+ 
+ 
+}
 </style>

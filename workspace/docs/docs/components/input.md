@@ -121,15 +121,15 @@ You can use any variants for your theme it's already ready !
 </div>
     <div class="   p-4 rounded-lg shadow-inner  flex justify-center items-center">
 
-<Input variant="bordered" title="bordered"/>
+<Input variant="bordered" title="bordered" />
 </div>
     <div class="   p-4 rounded-lg shadow-inner  flex justify-center items-center">
 
-<Input variant="default" title="default"/>
+<Input variant="default" title="default" />
 </div>
     <div class="   p-4 rounded-lg shadow-inner  flex justify-center items-center">
 
-<Input variant="underline" title="underline"/>
+<Input variant="underline" title="نام" rtl/>
 </div>
     <div class="   p-4 rounded-lg shadow-inner  flex justify-center items-center ">
 
