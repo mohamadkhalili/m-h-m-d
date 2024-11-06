@@ -13,6 +13,7 @@ export const uiProps = {
   color: { type: String as () => keyof typeof InputColor, default: 'default' },
   variant: { type: String as () => keyof typeof InputVariant },
   size: { type: String as () => keyof typeof InputSize ,default:'md'},
+  submit: { type: String, default: "" },
   modelValue: {type: String, required : false}
 }
 export const InputColor = {
