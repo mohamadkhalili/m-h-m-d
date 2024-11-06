@@ -7,11 +7,13 @@
     <template #input>
       <slot name="input"></slot>
       <div v-if="showInput" class="input-container">
+       
         <label
           :class="{ 
             active: isFocused || modelValue,
             'underline-label': props.variant === 'underline',
             'search-label': props.variant === 'search',
+            'bordered-label': props.variant === 'bordered', 
           }" 
           @click="focusInput"
         >
@@ -20,6 +22,7 @@
 
         <div :class="{
           'search-wrapper': props.variant === 'search',
+          'bordered-wrapper': props.variant === 'bordered', 
         }">
           <input
             ref="inputRef"
@@ -38,10 +41,8 @@
             ]"
             @focus="isFocused = true"
             @blur="handleBlur"
-
           />
           <div v-if="props.variant === 'search'">
-           
             <span class="subscribe-btn">{{ submit }}</span>
           </div>
         </div>
@@ -135,14 +136,15 @@ const focusInput = () => {
 }
 .subscribe-btn {
   height: 100%;
-  border: none;
   border-radius: 15px;
   color: rgb(0, 0, 0);
   cursor: pointer;
   background-color: #ffffff;
   font-weight: 500;
-  margin: 8px;
-  padding: 12px;
+  font-size: 14px;
+  margin: 4px;
+  margin-left: 0;
+  padding: 10px;
   align-items: center;
   justify-content: center;
   position: relative;
@@ -169,7 +171,7 @@ background: #001b94;
 
 .search-label.active {
   font-size: 12px;
-  top: -3px;
+  top: px;
   left: 8px;
   color: #8b8b8b;
   background: transparent;
@@ -241,13 +243,35 @@ background: #001b94;
   background: #cececea4;
 }
 
-.v-bordered {
-  border-bottom: 2px solid #9f7aea;
-  background-color: transparent;
+.bordered-wrapper {
+  position: relative; 
+}
+
+.bordered-label {
+  position: absolute;
+  top: -8px;
+  left: 10px; 
+  background: #ffffff; 
+  padding: 0 10px;
+  font-size: 12px;
+  color: #8b8b8b;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+  z-index: 10;
 }
 
 
+.bordered-label.active {
+ 
+  top: -8px;
+  background: #5a5a5a; 
+color: #ffffff;
 
+}
+.bordered-label:active {
+border: 1px solid greenyellow;
+
+}
 
 
 .v-underline {
