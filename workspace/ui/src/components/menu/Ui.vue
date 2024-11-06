@@ -16,10 +16,18 @@
         :vertical="vertical"
         :tooltip="tooltip"
       ></slot>
-      <tooltipl :enabled="tooltip" :text="item" :location="vertical ? 'right' : 'top'">
+      <tooltipl
+        :enabled="tooltip"
+        :text="item"
+        :location="vertical ? 'right' : 'top'"
+      >
         <div
           class="menu-item"
-          :class="{ 'menu-item-active': isActive }"
+          :class="[
+            isActive ? 'menu-item-active' : '',
+            isActive ? bgColorClass.active : bgColorClass.onActive,
+            isActive ? textColorClass.active : textColorClass.onActive,
+          ]"
           v-if="showItem"
         >
           {{ item }}
@@ -35,6 +43,10 @@ import { defineProps, useSlots, computed } from "vue";
 import { uiProps } from "./Props";
 import { menuEmits } from "./Emits";
 import { uiSlots } from "./Slots";
+import {
+  useColorClassName,
+  useBgColorClassName,
+} from "../../composables/ColorComposable";
 const props = defineProps(uiProps);
 const emit = defineEmits(menuEmits);
 const uiSlots = defineSlots<uiSlots>();
@@ -44,6 +56,9 @@ defineOptions({
 const slots = useSlots();
 const showMenu = computed(() => !slots.menu);
 const showItem = computed(() => !slots.item);
+const textColorClass = useColorClassName(props);
+const bgColorClass = useBgColorClassName(props);
+
 const handlePageChange = (newValue: number) => {
   emit("update:modelValue", newValue);
   console.log(props.vertical);
@@ -55,8 +70,6 @@ const handlePageChange = (newValue: number) => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #1a1a1a;
-  color: white;
   padding: 15px 20px;
   border-radius: 8px;
   cursor: pointer;
@@ -64,7 +77,6 @@ const handlePageChange = (newValue: number) => {
 }
 
 .menu-item:hover {
-  background-color: #333;
   transform: scale(1.05);
 }
 
@@ -74,8 +86,6 @@ div {
   flex-wrap: wrap;
 }
 .menu-item-active {
-  background-color: #363636;
-  color: white;
   transform: scale(1.1);
 }
 </style>
