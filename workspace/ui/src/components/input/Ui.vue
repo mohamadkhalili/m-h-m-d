@@ -11,30 +11,40 @@
           :class="{ 
             active: isFocused || modelValue,
             'underline-label': props.variant === 'underline',
-     
-
+            'iconic-label': props.variant === 'iconic',
           }" 
           @click="focusInput"
         >
           {{ title }}
         </label>
 
-        <input
-          ref="inputRef"
-          v-model="modelValue"
-          :disabled="isDisabled"
-          :readonly="readonly"
-          :class="[
-            themeClass ,
-            {
-              disabled: isDisabled,
-              readonly: readonly,
-              rtl: rtl,
-            },
-          ]"
-          @focus="isFocused = true"
-          @blur="handleBlur"
-        />
+        <div :class="{
+          'iconic-wrapper': props.variant === 'iconic',
+        }">
+          <input
+            ref="inputRef"
+            v-model="modelValue"
+            :disabled="isDisabled"
+            :readonly="readonly"
+            required
+            :class="[
+              themeClass,
+              props.variant === 'iconic' ? 'iconic-input' : '',
+              {
+                disabled: isDisabled,
+                readonly: readonly,
+                rtl: rtl,
+              },
+            ]"
+            @focus="isFocused = true"
+            @blur="handleBlur"
+
+          />
+          <div v-if="props.variant === 'iconic'">
+            <span class="icon">{{ icon }}</span>
+            <span class="subscribe-btn">{{ submit }}</span>
+          </div>
+        </div>
       </div>
     </template>
   </Core>
@@ -93,6 +103,76 @@ const focusInput = () => {
 
 
 <style scoped>
+.iconic-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: #292524;
+  border-radius: 20px;
+  padding: 5px;
+  width: fit-content;
+  height: 45px;
+  box-sizing: content-box;
+  position: relative;
+}
+
+.iconic-input {
+  max-width: 170px;
+  height: 100%;
+  border: none;
+  outline: none;
+  padding-left: 15px;
+  background-color: #2925244f;
+  color: white;
+  font-size: 1em;
+  margin-right: 10px; 
+  border: 1px solid gray;
+  border-radius: 15px;
+
+}
+
+.iconic-input:focus {
+  border: 2px solid #4376c2;
+}
+.subscribe-btn {
+  height: 100%;
+  border: none;
+  border-radius: 15px;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  background-color: #ffffff;
+  font-weight: 500;
+  margin: 8px;
+  padding: 12px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s;
+}
+.subscribe-btn:hover {
+
+  background-color: #0066ff;
+}
+
+.subscribe-btn:active {
+  transform: scale(0.9);
+}
+
+.iconic-label {
+  color: gray;
+  position: absolute;
+  top: 12px;
+  left: 4%;
+  transition: 0.2s ease all;
+}
+
+.iconic-label.active {
+  font-size: 12px;
+  top: -3px;
+  left: 8px;
+  color: #8b8b8b;
+  background: transparent;
+}
+
 
 #MainInput:hover,
 #MainInput:focus {
@@ -103,7 +183,7 @@ const focusInput = () => {
 }
 
 .custom-input {
-  padding: 8px;
+
   border-radius: 10px;
   transition: all 200ms;
   border: 1px solid gray;

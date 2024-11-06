@@ -129,15 +129,29 @@ You can use any variants for your theme it's already ready !
 </div>
     <div class="   p-4 rounded-lg shadow-inner  flex justify-center items-center">
 
-<Input variant="underline" title="Name"  />
+<Input variant="underline" title="underline"  />
 </div>
     <div class="   p-4 rounded-lg shadow-inner  flex justify-center items-center ">
 
 <Input variant="flat" title="flat"/>
 </div>
- 
+ <div class="   p-4 rounded-lg shadow-inner  flex justify-center items-center ">
+
+<Input variant="iconic"    title="iconic"   submit="Go"/>
+
 </div>
 </div>
+</div>
+
+```md
+<Input variant="faded"      title="faded"/>
+<Input variant="bordered"   title="bordered" />
+<Input variant="default"    title="default" />
+<Input variant="underline"  title="underline"  />
+<Input variant="flat"       title="flat"/>
+<Input variant="iconic"    title="iconic" />
+
+```
 
 ---
 **RTL**

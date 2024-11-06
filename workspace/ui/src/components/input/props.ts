@@ -4,6 +4,8 @@ export const inputProps = {
   isDisabled: { type: Boolean, default: false },
   title: { type: String, default: "" },
   rtl: { type: Boolean, default: false },
+  icon: { type: String, default: "" },
+  submit: { type: String, default: "" },
   
 
   color: { type: String as () => keyof typeof InputColor, default: 'default' },
@@ -29,4 +31,5 @@ export const InputVariant = {
   underline: 'v-underline',
   bordered: 'v-bordered',
   flat: 'v-flat',
+  iconic:'v-iconic'
 } as const; 
