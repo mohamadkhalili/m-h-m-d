@@ -7,7 +7,7 @@
     <template #input>
       <slot name="input"></slot>
       <div v-if="showInput" class="input-container">
-       
+
         <label
           :class="{ 
             active: isFocused || localValue,
@@ -28,7 +28,7 @@
         }">
           <input
             ref="inputRef"
-            v-model="modelValue"
+            v-model="localValue"
             :disabled="isDisabled"
             :readonly="readonly"
             required
@@ -137,7 +137,7 @@ const focusInput = () => {
 .search-wrapper {
   display: flex;
   align-items: center;
-  background-color: #292524;
+  background-color: #000000ab;
   border-radius: 20px;
   border: 1px solid rgb(58, 58, 58);
   padding: 5px;
@@ -153,7 +153,7 @@ const focusInput = () => {
   border: none;
   outline: none;
   padding-left: 15px;
-  background-color: #2925244f;
+  background-color: #9b9b9bab;
   color: white;
   font-size: 1em;
   margin-right: 10px; 
@@ -250,7 +250,7 @@ background: #001b94;
 }
 
 .bg-transparent {
-  border: 2px solid rgb(62, 62, 253);
+  border: 2px solid rgb(37, 37, 255);
   transition: 0.2s all ease-in-out;
 }
 
