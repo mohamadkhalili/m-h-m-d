@@ -125,7 +125,7 @@ You can use any variants for your theme it's already ready !
 </div>
     <div class="   p-4 rounded-lg shadow-inner  flex justify-center items-center">
 
-<Input variant="default" title="default" />
+<Input variant="shadow" title="shadow" />
 </div>
     <div class="   p-4 rounded-lg shadow-inner  flex justify-center items-center">
 
@@ -146,13 +146,36 @@ You can use any variants for your theme it's already ready !
 ```md
 <Input variant="faded"      title="faded"/>
 <Input variant="bordered"   title="bordered" />
-<Input variant="default"    title="default" />
+<Input variant="shadow"    title="shadow" />
 <Input variant="underline"  title="underline"  />
 <Input variant="flat"       title="flat"/>
 <Input variant="search"     submit="search"/>
 
 
 ```
+
+---
+**Size**
+
+you can choice your size
+<div class="   p-6 rounded-lg shadow-inner  flex-col flex gap-4 justify-center items-center">
+
+<Input variant="shadow"   title="sm size" size="sm" />
+<Input variant="shadow"   title="md size" size="md"/>
+<Input variant="shadow"   title="lg size" size="lg"/>
+<Input variant="shadow"   title="xl size" size="xl"/>
+</div>
+
+
+**code**
+
+```md
+<Input variant="shadow"   title="sm size" size="sm" />
+<Input variant="shadow"   title="md size" size="md"/>
+<Input variant="shadow"   title="lg size" size="lg"/>
+<Input variant="shadow"   title="xl size" size="xl"/>
+```
+
 
 ---
 **RTL**

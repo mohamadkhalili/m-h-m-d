@@ -33,7 +33,7 @@
             :readonly="readonly"
             required
             :class="[
-              themeClass,
+              themeClass,size,
               props.variant === 'search' ? 'search-input' : '',
               {
                 disabled: isDisabled,
@@ -56,7 +56,7 @@
 
 <script setup lang="ts">
 import { computed, defineProps, ref, defineOptions, useSlots } from "vue";
-import { inputProps, InputVariant ,InputColor} from "./props"; 
+import { inputProps, InputVariant ,InputColor,InputSize} from "./props"; 
 import { inputEmits } from "./Emits";
 import { InputSlots } from "../input/Slots";
 import Core from "./Core.vue";
@@ -87,7 +87,9 @@ const themeClass = computed(() => {
   }
   return InputColor[props.color];
 });
-
+const size = computed(() => {
+  return InputSize[props.size]
+})
 
 
 const handleBlur = () => {
@@ -108,7 +110,7 @@ const focusInput = () => {
 <style scoped>
 
 
-.v-default {
+.v-shadow {
   border: 2px solid transparent;
   background-origin: border-box;
   background-clip: content-box;
@@ -116,7 +118,7 @@ const focusInput = () => {
   transition: box-shadow 0.3s ease, border 0.5s ease; 
 }
 
-.v-default:focus {
+.v-shadow:focus {
   border: 2px solid transparent;
   background-origin: border-box;
   background-clip: content-box;
@@ -403,5 +405,23 @@ input.rtl {
   top: 45px;
   font-size: 16px;
   color: #818181;
+}
+
+
+.size-sm{
+  font-size: 12px;
+
+}
+.size-md{
+  font-size: 15px;
+  
+}
+.size-lg{
+  font-size: 18px;
+  
+}
+.size-xl{
+  font-size: 20px;
+  
 }
 </style>

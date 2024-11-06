@@ -9,10 +9,20 @@ export const inputProps = {
 
   color: { type: String as () => keyof typeof InputColor, default: 'default' },
   variant: { type: String as () => keyof typeof InputVariant },
+  size: { type: String as () => keyof typeof InputSize ,default:'md'},
 
   modelValue: { type: String, default: '' },
 };
 
+
+export const InputSize={
+  sm:`size-sm`,
+  md:`size-md`,
+  lg:`size-lg`,
+  xl:`size-xl`,
+
+
+}
 
 export const InputColor = {
   default: 'bg-default',
@@ -25,7 +35,7 @@ export const InputColor = {
 
 
 export const InputVariant = {
-  default: 'v-default',
+  shadow: 'v-shadow',
   faded: 'v-faded',
   underline: 'v-underline',
   bordered: 'v-bordered',
