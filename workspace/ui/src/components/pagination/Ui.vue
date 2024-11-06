@@ -161,6 +161,9 @@ import {
   defineOptions,
   onMounted,
   defineSlots,
+  watch,
+  nextTick,
+  ref,
 } from "vue";
 import pagination from "./Core.vue";
 import {
@@ -212,7 +215,7 @@ const showDefaultSuperNext = computed(() => !slots.superNext);
 const showDefaultsearchPageInput = computed(() => !slots.superPrev);
 const showDefaultsearchPageBtn = computed(() => !slots.superNext);
 let timeoutId: number | undefined;
-
+const searchInput = ref<HTMLInputElement | null>(null);
 const handlePageChange = (newValue: number) => {
   emit("update:modelValue", newValue);
 };
@@ -233,21 +236,34 @@ const handleInput = (event: Event) => {
     let limitedValue = numericValue.slice(0, 3);
     if (limitedValue && Number(limitedValue) >= 0) {
       emit("update:searchPage", Number(limitedValue));
-      
+
       if (timeoutId) {
         clearTimeout(timeoutId);
       }
       timeoutId = window.setTimeout(() => {
-        if (Number(limitedValue) > 0 && Number(limitedValue) <= props.pageSize) {
+        if (
+          Number(limitedValue) > 0 &&
+          Number(limitedValue) <= props.pageSize
+        ) {
           emit("update:modelValue", Number(limitedValue));
         }
         emit("update:searchPage", undefined);
       }, 700);
     }
-    
+
     target.value = limitedValue;
   }
 };
+watch(
+  () => props.isEditingSearchPage,
+  (newValue) => {
+    if (newValue) {
+      nextTick(() => {
+        searchInput.value?.focus();
+      });
+    }
+  }
+);
 </script>
 
 <style scoped>

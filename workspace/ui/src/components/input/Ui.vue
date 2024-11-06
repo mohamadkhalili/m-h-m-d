@@ -10,7 +10,7 @@
        
         <label
           :class="{ 
-            active: isFocused || modelValue,
+            active: isFocused || localValue,
             'underline-label': props.variant === 'underline',
             'search-label': props.variant === 'search',
             'bordered-label': props.variant === 'bordered', 
@@ -55,8 +55,8 @@
 
 
 <script setup lang="ts">
-import { computed, defineProps, ref, defineOptions, useSlots } from "vue";
-import { inputProps, InputVariant ,InputColor,InputSize} from "./props"; 
+import { computed, defineProps, ref, defineOptions, useSlots, watch } from "vue";
+import { uiProps, InputVariant ,InputColor,InputSize} from "./props"; 
 import { inputEmits } from "./Emits";
 import { InputSlots } from "../input/Slots";
 import Core from "./Core.vue";
@@ -73,6 +73,14 @@ const slots = useSlots();
 const showInput = computed(() => !slots.input);
 const inputRef = ref<HTMLInputElement | null>(null);
 const isFocused = ref(false);
+const localValue = ref(props.modelValue);
+
+watch(
+  () => props.modelValue,
+  (newValue) => {
+    localValue.value = newValue;
+  }
+);
 
 const handleModelValue = (newValue: String) => {
   emit("update:modelValue", newValue);

@@ -14,4 +14,4 @@ function openModal() {
 this is test for modal
 <br>
 <button @click="openModal">Open Modal</button>
-<Modal v-model="isModalOpen" teleport="body" closeOnOutside="true"/>
+<modal v-model="isModalOpen" teleport="body" closeOnOutside="true"/>

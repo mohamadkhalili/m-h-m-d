@@ -11,7 +11,7 @@ export const paginationProps = {
     insideOfActivePageShow: { type: Number, default: 1 }, //The number of left and right pages of the page we are on
     modelValue: { type: Number, default: 1 }, //the page it is on
     searchPage: { type: Number, default: 0 }, //the page it is on with search page input
-    enableSearchPage: { type: Boolean, default: false }, //Whether to create a search page or not
+    enableSearchPage: { type: Boolean, default: true }, //Whether to create a search page or not
     isEditingSearchPage: { type: Boolean, default: false }, // Whether to display the icon or enter input mode
 };
 
