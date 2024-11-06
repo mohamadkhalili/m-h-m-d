@@ -149,16 +149,16 @@ You Can use   *isDisable*  for disable your button
 
 <br/>
 
-You Can use   *CleanerEffect*  for disable your cleaner effect on button !
+You Can use   *CleanerEffect*  for enable  cleaner effect on button !
 <div class='  p-4 rounded-lg shadow-inner  flex justify-center items-center'>
 
-<Btn  color="secondary" CleanerEffect>Cleaner </Btn>
+<Btn  color="secondary" CleanerEffect  >Cleaner </Btn>
 
 
 </div>
 
 ```md
-<Btn  color="secondary" CleanerEffect=>Cleaner </Btn>
+<Btn  color="secondary" CleanerEffect > Cleaner </Btn>
 
 ```
 ---
