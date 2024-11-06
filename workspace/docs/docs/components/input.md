@@ -149,7 +149,8 @@ You can use any variants for your theme it's already ready !
 <Input variant="default"    title="default" />
 <Input variant="underline"  title="underline"  />
 <Input variant="flat"       title="flat"/>
-<Input variant="search"    title="iconic" />
+<Input variant="search"     submit="search"/>
+
 
 ```
 

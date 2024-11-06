@@ -14,6 +14,7 @@
             'underline-label': props.variant === 'underline',
             'search-label': props.variant === 'search',
             'bordered-label': props.variant === 'bordered', 
+
           }" 
           @click="focusInput"
         >
@@ -23,6 +24,7 @@
         <div :class="{
           'search-wrapper': props.variant === 'search',
           'bordered-wrapper': props.variant === 'bordered', 
+
         }">
           <input
             ref="inputRef"
@@ -104,11 +106,30 @@ const focusInput = () => {
 
 
 <style scoped>
+
+
+.v-default {
+  border: 2px solid transparent;
+  background-origin: border-box;
+  background-clip: content-box;
+  box-shadow: 0 4px 20px rgba(149, 155, 167, 0.555);  
+  transition: box-shadow 0.3s ease, border 0.5s ease; 
+}
+
+.v-default:focus {
+  border: 2px solid transparent;
+  background-origin: border-box;
+  background-clip: content-box;
+  box-shadow: 0 10px 15px rgba(86, 145, 247, 0.548);  
+}
+
+
 .search-wrapper {
   display: flex;
   align-items: center;
   background-color: #292524;
   border-radius: 20px;
+  border: 1px solid rgb(58, 58, 58);
   padding: 5px;
   width: fit-content;
   height: 45px;
@@ -162,19 +183,7 @@ background: #001b94;
 }
 
 .search-label {
-  color: gray;
-  position: absolute;
-  top: 12px;
-  left: 4%;
-  transition: 0.2s ease all;
-}
-
-.search-label.active {
-  font-size: 12px;
-  top: px;
-  left: 8px;
-  color: #8b8b8b;
-  background: transparent;
+ opacity: 0;
 }
 
 
@@ -197,11 +206,19 @@ background: #001b94;
   text-align: right;
   direction: rtl;
 }
-.bg-default {
-  border: 2px rgb(93, 101, 107) solid;
-  color: rgb(48, 48, 48);
-}
 
+.default-label:active{
+  opacity: 0;
+}
+.default-wrapper{
+
+  border-radius: 15px;
+
+}
+.bg-default {
+  border: 2px rgb(112, 112, 112) solid;
+
+}
 .bg-purple {
   border: 2px rgb(191, 58, 196) solid;
   color: rgb(114, 0, 95);
@@ -229,7 +246,7 @@ background: #001b94;
 
 .bg-transparent:focus {
   border: 2px solid transparent;
-  border: 2px solid rgb(255, 213, 73);
+  border: 2px solid rgb(1, 206, 221);
 
 }
 
@@ -280,7 +297,7 @@ border: 1px solid greenyellow;
   padding: 10px;
   border: none;
   border-radius: 0;
-  border-bottom: 2px solid #000;  
+  border-bottom: 2px solid #afafaf;  
   transition: border-color 0.3s ease; 
 }
 
@@ -352,6 +369,7 @@ label {
 label.active {
   left: 8;
 
+
   background: #ffffff00;
 top: -3px;
   font-size: 12px;
@@ -383,12 +401,7 @@ input.rtl {
 
 .underline-label.active {
   top: 45px;
-
   font-size: 16px;
   color: #818181;
-
-
- 
- 
 }
 </style>
