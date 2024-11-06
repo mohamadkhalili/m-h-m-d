@@ -11,7 +11,7 @@
           :class="{ 
             active: isFocused || modelValue,
             'underline-label': props.variant === 'underline',
-            'iconic-label': props.variant === 'iconic',
+            'search-label': props.variant === 'search',
           }" 
           @click="focusInput"
         >
@@ -19,7 +19,7 @@
         </label>
 
         <div :class="{
-          'iconic-wrapper': props.variant === 'iconic',
+          'search-wrapper': props.variant === 'search',
         }">
           <input
             ref="inputRef"
@@ -29,7 +29,7 @@
             required
             :class="[
               themeClass,
-              props.variant === 'iconic' ? 'iconic-input' : '',
+              props.variant === 'search' ? 'search-input' : '',
               {
                 disabled: isDisabled,
                 readonly: readonly,
@@ -40,8 +40,8 @@
             @blur="handleBlur"
 
           />
-          <div v-if="props.variant === 'iconic'">
-            <span class="icon">{{ icon }}</span>
+          <div v-if="props.variant === 'search'">
+           
             <span class="subscribe-btn">{{ submit }}</span>
           </div>
         </div>
@@ -103,7 +103,7 @@ const focusInput = () => {
 
 
 <style scoped>
-.iconic-wrapper {
+.search-wrapper {
   display: flex;
   align-items: center;
   background-color: #292524;
@@ -115,7 +115,7 @@ const focusInput = () => {
   position: relative;
 }
 
-.iconic-input {
+.search-input {
   max-width: 170px;
   height: 100%;
   border: none;
@@ -130,7 +130,7 @@ const focusInput = () => {
 
 }
 
-.iconic-input:focus {
+.search-input:focus {
   border: 2px solid #4376c2;
 }
 .subscribe-btn {
@@ -150,14 +150,16 @@ const focusInput = () => {
 }
 .subscribe-btn:hover {
 
-  background-color: #0066ff;
+  background-color: #002fff;
+  color: white;
 }
 
 .subscribe-btn:active {
-  transform: scale(0.9);
+background: #001b94;
+
 }
 
-.iconic-label {
+.search-label {
   color: gray;
   position: absolute;
   top: 12px;
@@ -165,7 +167,7 @@ const focusInput = () => {
   transition: 0.2s ease all;
 }
 
-.iconic-label.active {
+.search-label.active {
   font-size: 12px;
   top: -3px;
   left: 8px;

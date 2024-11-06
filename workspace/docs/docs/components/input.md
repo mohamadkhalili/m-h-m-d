@@ -137,7 +137,7 @@ You can use any variants for your theme it's already ready !
 </div>
  <div class="   p-4 rounded-lg shadow-inner  flex justify-center items-center ">
 
-<Input variant="iconic"    title="iconic"   submit="Go"/>
+<Input variant="search"  submit="search"/>
 
 </div>
 </div>
@@ -149,7 +149,7 @@ You can use any variants for your theme it's already ready !
 <Input variant="default"    title="default" />
 <Input variant="underline"  title="underline"  />
 <Input variant="flat"       title="flat"/>
-<Input variant="iconic"    title="iconic" />
+<Input variant="search"    title="iconic" />
 
 ```
 
