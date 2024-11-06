@@ -62,7 +62,7 @@ import { InputSlots } from "../input/Slots";
 import Core from "./Core.vue";
 
 const uiSlots = defineSlots<InputSlots>();
-const props = defineProps(inputProps);
+const props = defineProps(uiProps);
 const emit = defineEmits(inputEmits);
 
 defineOptions({
