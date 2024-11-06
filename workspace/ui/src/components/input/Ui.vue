@@ -7,54 +7,68 @@
     <template #input>
       <slot name="input"></slot>
       <div v-if="showInput" class="input-container">
+       
         <label
-          :class="{ active: isFocused || localValue,
-          'underline-label': props.variant === 'underline'
-        }"
+          :class="{ 
+            active: isFocused || localValue,
+            'underline-label': props.variant === 'underline',
+            'search-label': props.variant === 'search',
+            'bordered-label': props.variant === 'bordered', 
+
+          }" 
           @click="focusInput"
-          >{{ title }}</label
         >
-        <input
-          ref="inputRef"
-          v-model="localValue"
-          :disabled="isDisabled"
-          :readonly="readonly"
-          :class="[
-            themeClass,
-            {
-              disabled: isDisabled,
-              readonly: readonly,
-              rtl: rtl,
-            },
-          ]"
-          @focus="isFocused = true"
-          @blur="handleBlur"
-        />
+          {{ title }}
+        </label>
+
+        <div :class="{
+          'search-wrapper': props.variant === 'search',
+          'bordered-wrapper': props.variant === 'bordered', 
+
+        }">
+          <input
+            ref="inputRef"
+            v-model="modelValue"
+            :disabled="isDisabled"
+            :readonly="readonly"
+            required
+            :class="[
+              themeClass,size,
+              props.variant === 'search' ? 'search-input' : '',
+              {
+                disabled: isDisabled,
+                readonly: readonly,
+                rtl: rtl,
+              },
+            ]"
+            @focus="isFocused = true"
+            @blur="handleBlur"
+          />
+          <div v-if="props.variant === 'search'">
+            <span class="subscribe-btn">{{ submit }}</span>
+          </div>
+        </div>
       </div>
     </template>
   </Core>
 </template>
 
+
 <script setup lang="ts">
-import {
-  computed,
-  defineProps,
-  ref,
-  defineOptions,
-  useSlots,
-  watch,
-} from "vue";
-import { InputColor, InputVariant, uiProps } from "./props";
+import { computed, defineProps, ref, defineOptions, useSlots, watch } from "vue";
+import { uiProps, InputVariant ,InputColor,InputSize} from "./props"; 
 import { inputEmits } from "./Emits";
-import { InputSlots } from "./Slots";
+import { InputSlots } from "../input/Slots";
 import Core from "./Core.vue";
 
 const uiSlots = defineSlots<InputSlots>();
-const props = defineProps(uiProps);
+const props = defineProps(inputProps);
 const emit = defineEmits(inputEmits);
+
 defineOptions({
   inheritAttrs: false,
 });
+
 const slots = useSlots();
 const showInput = computed(() => !slots.input);
 const inputRef = ref<HTMLInputElement | null>(null);
@@ -68,25 +82,121 @@ watch(
   }
 );
 
-const handleModelValue = (newValue: string) => {
+const handleModelValue = (newValue: String) => {
   emit("update:modelValue", newValue);
 };
+
+
+
 const themeClass = computed(() => {
+
   if (props.variant) {
     return InputVariant[props.variant];
   }
   return InputColor[props.color];
 });
+const size = computed(() => {
+  return InputSize[props.size]
+})
 
-const focusInput = () => {
-  inputRef.value?.focus();
-};
+
 const handleBlur = () => {
   isFocused.value = !!props.modelValue;
 };
+
+
+
+
+const focusInput = () => {
+  inputRef.value?.focus();
+  isFocused.value = true; 
+};
+
 </script>
 
-<style>
+
+<style scoped>
+
+
+.v-shadow {
+  border: 2px solid transparent;
+  background-origin: border-box;
+  background-clip: content-box;
+  box-shadow: 0 4px 20px rgba(149, 155, 167, 0.555);  
+  transition: box-shadow 0.3s ease, border 0.5s ease; 
+}
+
+.v-shadow:focus {
+  border: 2px solid transparent;
+  background-origin: border-box;
+  background-clip: content-box;
+  box-shadow: 0 10px 15px rgba(86, 145, 247, 0.548);  
+}
+
+
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: #292524;
+  border-radius: 20px;
+  border: 1px solid rgb(58, 58, 58);
+  padding: 5px;
+  width: fit-content;
+  height: 45px;
+  box-sizing: content-box;
+  position: relative;
+}
+
+.search-input {
+  max-width: 170px;
+  height: 100%;
+  border: none;
+  outline: none;
+  padding-left: 15px;
+  background-color: #2925244f;
+  color: white;
+  font-size: 1em;
+  margin-right: 10px; 
+  border: 1px solid gray;
+  border-radius: 15px;
+
+}
+
+.search-input:focus {
+  border: 2px solid #4376c2;
+}
+.subscribe-btn {
+  height: 100%;
+  border-radius: 15px;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  background-color: #ffffff;
+  font-weight: 500;
+  font-size: 14px;
+  margin: 4px;
+  margin-left: 0;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s;
+}
+.subscribe-btn:hover {
+
+  background-color: #002fff;
+  color: white;
+}
+
+.subscribe-btn:active {
+background: #001b94;
+
+}
+
+.search-label {
+ opacity: 0;
+}
+
+
 #MainInput:hover,
 #MainInput:focus {
   box-shadow: inset 0 0 2px rgba(156, 156, 156, 0.1),
@@ -96,7 +206,7 @@ const handleBlur = () => {
 }
 
 .custom-input {
-  padding: 8px;
+
   border-radius: 10px;
   transition: all 200ms;
   border: 1px solid gray;
@@ -106,11 +216,19 @@ const handleBlur = () => {
   text-align: right;
   direction: rtl;
 }
-.bg-default {
-  border: 2px rgb(93, 101, 107) solid;
-  color: rgb(48, 48, 48);
-}
 
+.default-label:active{
+  opacity: 0;
+}
+.default-wrapper{
+
+  border-radius: 15px;
+
+}
+.bg-default {
+  border: 2px rgb(112, 112, 112) solid;
+
+}
 .bg-purple {
   border: 2px rgb(191, 58, 196) solid;
   color: rgb(114, 0, 95);
@@ -138,7 +256,8 @@ const handleBlur = () => {
 
 .bg-transparent:focus {
   border: 2px solid transparent;
-  border: 2px solid rgb(255, 213, 73);
+  border: 2px solid rgb(1, 206, 221);
+
 }
 
 .v-flat {
@@ -147,14 +266,40 @@ const handleBlur = () => {
   color: rgba(0, 0, 0, 0.87);
   transition: 0.2s all;
 }
-.v-flat:hover {
+.v-flat:hover{
   background: #cececea4;
 }
 
-.v-bordered {
-  border-bottom: 2px solid #9f7aea;
-  background-color: transparent;
+.bordered-wrapper {
+  position: relative; 
 }
+
+.bordered-label {
+  position: absolute;
+  top: -8px;
+  left: 10px; 
+  background: #ffffff; 
+  padding: 0 10px;
+  font-size: 12px;
+  color: #8b8b8b;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+  z-index: 10;
+}
+
+
+.bordered-label.active {
+ 
+  top: -8px;
+  background: #5a5a5a; 
+color: #ffffff;
+
+}
+.bordered-label:active {
+border: 1px solid greenyellow;
+
+}
+
 
 .v-underline {
   position: relative;
@@ -162,44 +307,48 @@ const handleBlur = () => {
   padding: 10px;
   border: none;
   border-radius: 0;
-  border-bottom: 2px solid #000;
-  transition: border-color 0.3s ease;
+  border-bottom: 2px solid #afafaf;  
+  transition: border-color 0.3s ease; 
 }
 
 .v-underline::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: transparent;
-  transition: all 0.4s ease;
+  background-color: transparent; 
+  transition: all 0.4s ease;  
 }
 
 .v-underline:hover::after {
-  background-color: #0056d8;
-  width: 100%;
+  background-color: #0056d8; 
+  width: 100%;  
 }
 
 .v-underline:focus {
-  border-bottom: 2px solid #00bb92;
+  border-bottom: 2px solid #00bb92;  
+
 }
 
 .v-underline:hover {
-  border-bottom: 2px solid #0056d8;
+  border-bottom: 2px solid #0056d8; 
 
-  cursor: text;
+
+  cursor: text; 
 }
 
 .v-faded {
   border: none;
-
+ 
   color: #000000;
   box-shadow: inset 0px 0px 50px 0px rgba(0, 0, 0, 0.233);
-  transition: all 0.4s ease;
+  transition: all 0.4s ease;  
+
 }
 .v-faded:hover {
+
   box-shadow: inset 0px 0px 50px 0px rgba(107, 73, 73, 0.233);
 }
 
@@ -230,8 +379,9 @@ label {
 label.active {
   left: 8;
 
+
   background: #ffffff00;
-  top: -3px;
+top: -3px;
   font-size: 12px;
   color: #8b8b8b;
 }
@@ -249,9 +399,10 @@ input.rtl {
   direction: rtl;
 }
 
+
 .underline-label {
   position: absolute;
-  top: 5px;
+  top: 5px; 
   left: 0;
   font-size: 18px;
   color: #8b8b8b;
@@ -262,5 +413,23 @@ input.rtl {
   top: 45px;
   font-size: 16px;
   color: #818181;
+}
+
+
+.size-sm{
+  font-size: 12px;
+
+}
+.size-md{
+  font-size: 15px;
+  
+}
+.size-lg{
+  font-size: 18px;
+  
+}
+.size-xl{
+  font-size: 20px;
+  
 }
 </style>

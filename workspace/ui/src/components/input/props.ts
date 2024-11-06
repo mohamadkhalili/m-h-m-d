@@ -12,6 +12,7 @@ export const uiProps = {
   rtl: {type: Boolean,required : false},
   color: { type: String as () => keyof typeof InputColor, default: 'default' },
   variant: { type: String as () => keyof typeof InputVariant },
+  size: { type: String as () => keyof typeof InputSize ,default:'md'},
   modelValue: {type: String, required : false}
 }
 export const InputColor = {
@@ -24,9 +25,16 @@ export const InputColor = {
   link: 'bg-link',
 } as const;
 export const InputVariant = {
-  default: 'v-default',
+  shadow: 'v-shadow',
   faded: 'v-faded',
   underline: 'v-underline',
   bordered: 'v-bordered',
   flat: 'v-flat',
+  search:'v-search'
 } as const; 
+export const InputSize={
+  sm:`size-sm`,
+  md:`size-md`,
+  lg:`size-lg`,
+  xl:`size-xl`,
+}
