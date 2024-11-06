@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="{ 'vertical-menu': vertical }">
     <div
       v-for="(item, index) in items"
       :key="index"

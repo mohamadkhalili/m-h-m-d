@@ -1,5 +1,5 @@
 export const tooltip = {
-  mounted(el: HTMLElement, binding: { value: { location: string, text: string } }) {
+  mounted(el: HTMLElement, binding: { value: { location: string, text: string, enabled: boolean } }) {
     // Create tooltip element
     const tooltip = document.createElement('div');
     tooltip.textContent = binding.value.text;  // Use the text from the directive
@@ -20,6 +20,8 @@ export const tooltip = {
 
     // Function to show the tooltip
     const showTooltip = () => {
+      if (!binding.value.enabled) return; // Check if tooltip is enabled
+
       const rect = el.getBoundingClientRect();
       tooltip.style.display = 'block';
 
@@ -64,6 +66,17 @@ export const tooltip = {
     // Add event listeners for mouseenter and mouseleave
     el.addEventListener('mouseenter', showTooltip);
     el.addEventListener('mouseleave', hideTooltip);
+  },
+
+  updated(el: HTMLElement, binding: { value: { location: string, text: string, enabled: boolean } }) {
+    // Update tooltip text and check enabled status on update
+    const tooltip = document.querySelector('div[tooltip]') as HTMLElement;
+    if (tooltip) {
+      tooltip.textContent = binding.value.text;
+      if (!binding.value.enabled) {
+        tooltip.style.display = 'none'; // Hide the tooltip if disabled
+      }
+    }
   },
 
   unmounted(el: HTMLElement) {
