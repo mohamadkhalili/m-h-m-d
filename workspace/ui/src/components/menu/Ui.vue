@@ -61,7 +61,7 @@ const bgColorClass = useBgColorClassName(props);
 
 const handlePageChange = (newValue: number) => {
   emit("update:modelValue", newValue);
-  console.log(props.vertical);
+  console.log(textColorClass.value.active);
 };
 </script>
 
