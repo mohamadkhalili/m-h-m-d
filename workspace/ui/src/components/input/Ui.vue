@@ -137,9 +137,9 @@ const focusInput = () => {
 .search-wrapper {
   display: flex;
   align-items: center;
-  background-color: #000000ab;
+  background-color: #0000005d;
   border-radius: 20px;
-  border: 1px solid rgb(58, 58, 58);
+  border: 1px solid rgba(126, 126, 126, 0.685);
   padding: 5px;
   width: fit-content;
   height: 45px;
@@ -153,7 +153,7 @@ const focusInput = () => {
   border: none;
   outline: none;
   padding-left: 15px;
-  background-color: #9b9b9bab;
+  background-color: #52525273;
   color: white;
   font-size: 1em;
   margin-right: 10px; 
@@ -250,7 +250,7 @@ background: #001b94;
 }
 
 .bg-transparent {
-  border: 2px solid rgb(37, 37, 255);
+  border: 2px solid rgb(77, 77, 241);
   transition: 0.2s all ease-in-out;
 }
 

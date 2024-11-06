@@ -2,7 +2,7 @@
 
 <script >
 
-import Btn from '../../../ui/src/components/button/Core.vue'; 
+import Btn from '../../../ui/src/components/button/Ui.vue'; 
 </script>
 
 **Button with Custom Effect**
