@@ -6,6 +6,6 @@ const menuValue = ref("");
 
 this is test for menu
 <br>
-<Menu v-model="menuValue">
+<Menu v-model="menuValue" vertical>
 </Menu>
 <div>Selected menu item: {{ menuValue }}</div>

@@ -2,6 +2,8 @@
   <Core
     :modelValue="modelValue"
     @update:modelValue="handlePageChange"
+    :vertical="vertical"
+    :tooltip="tooltip"
     v-bind="$attrs"
   >
     <slot name="menu"></slot>
@@ -14,7 +16,11 @@
         :vertical="vertical"
         :tooltip="tooltip"
       ></slot>
-      <div class="menu-item" v-if="showItem">{{ item }}</div>
+      <div 
+        class="menu-item"
+        :class="{ 'menu-item-active': isActive }"
+        v-if="showItem"
+      >{{ item }}</div>
     </template>
   </Core>
 </template>
@@ -35,6 +41,7 @@ const showMenu = computed(() => !slots.menu);
 const showItem = computed(() => !slots.item);
 const handlePageChange = (newValue: number) => {
   emit("update:modelValue", newValue);
+  console.log(props.vertical)
 };
 </script>
 
@@ -61,8 +68,17 @@ div {
   gap: 10px; 
   flex-wrap: wrap; 
 }
-
 .menu-item-active {
-  background-color: #4caf50; 
+  background-color: #363636; 
+  color: white;
+  transform: scale(1.1);
+}
+</style>
+<style >
+.vertical-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 20px;
 }
 </style>
