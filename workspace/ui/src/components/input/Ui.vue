@@ -28,7 +28,7 @@
         }">
           <input
             ref="inputRef"
-            v-model="modelValue"
+            v-model="localValue"
             :disabled="isDisabled"
             :readonly="readonly"
             required
