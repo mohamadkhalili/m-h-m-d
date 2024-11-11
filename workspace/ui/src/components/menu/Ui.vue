@@ -27,6 +27,7 @@
             isActive ? 'menu-item-active' : '',
             isActive ? bgColorClass.active : bgColorClass.onActive,
             isActive ? textColorClass.active : textColorClass.onActive,
+            sizeClass,
           ]"
           v-if="showItem"
         >
@@ -47,6 +48,7 @@ import {
   useColorClassName,
   useBgColorClassName,
 } from "../../composables/ColorComposable";
+import { useSize } from "../../composables/UseSizeProps";
 const props = defineProps(uiProps);
 const emit = defineEmits(menuEmits);
 const uiSlots = defineSlots<uiSlots>();
@@ -58,22 +60,25 @@ const showMenu = computed(() => !slots.menu);
 const showItem = computed(() => !slots.item);
 const textColorClass = useColorClassName(props);
 const bgColorClass = useBgColorClassName(props);
+const sizeClass = useSize(props);
 
 const handlePageChange = (newValue: number) => {
   emit("update:modelValue", newValue);
-  console.log(textColorClass.value.active);
 };
 </script>
 
 <style scoped>
 .menu-item {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 15px 20px;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
+  font-size: 80%;
+  text-align: center;
+  min-width: 100px; /* or another consistent value */
+  min-height: 40px;
 }
 
 .menu-item:hover {
@@ -82,7 +87,7 @@ const handlePageChange = (newValue: number) => {
 
 div {
   display: flex;
-  gap: 10px;
+  gap: 5px;
   flex-wrap: wrap;
 }
 .menu-item-active {
@@ -91,9 +96,8 @@ div {
 </style>
 <style >
 .vertical-menu {
-  display: flex;
   flex-direction: column;
-  gap: 10px;
-  width: 20px;
+  min-width: 100px; /* or another consistent value */
+  min-height: 40px;
 }
 </style>
