@@ -5,6 +5,7 @@
     :vertical="vertical"
     :tooltip="tooltip"
     v-bind="$attrs"
+    :class="bgColorClass.onActive"
   >
     <slot name="menu"></slot>
     <template v-if="showMenu" #item="{ index, isActive, item }">
@@ -77,18 +78,13 @@ const handlePageChange = (newValue: number) => {
   transition: background-color 0.3s, transform 0.2s;
   font-size: 80%;
   text-align: center;
-  min-width: 100px; /* or another consistent value */
-  min-height: 40px;
+  min-width: 90px;
+  min-height: 45px;
+  margin: 5px;
 }
 
 .menu-item:hover {
   transform: scale(1.05);
-}
-
-div {
-  display: flex;
-  gap: 5px;
-  flex-wrap: wrap;
 }
 .menu-item-active {
   transform: scale(1.1);
@@ -97,7 +93,12 @@ div {
 <style >
 .vertical-menu {
   flex-direction: column;
-  min-width: 100px; /* or another consistent value */
+  min-width: 100px;
   min-height: 40px;
+}
+.menu{
+  display: inline-flex;
+  padding: 10px;
+  border-radius: 8px;
 }
 </style>

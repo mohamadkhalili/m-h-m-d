@@ -1,6 +1,6 @@
 import { PropType, computed } from 'vue';
 
-export function createSizeProp(defaultSize: string = 'size-14') {
+export function createSizeProp(defaultSize: string = 'size-10') {
     return {
         size: {
             type: String,
