@@ -1,30 +1,23 @@
-
-import { PropType } from 'vue'; 
+import { PropType } from 'vue';
 
 export interface Tab {
-  title: string;
+  label: string;
   value: string;
-}
-
-export interface TabProps {
-  modelValue: string;
-  tabs: Tab[]; 
-  color?: string;
-  variant?: string;
-  size?: string;
+  content: string;
 }
 
 export const TabProps = {
   modelValue: {
     type: String,
-    default: 'first', 
+    default: 'one',
   },
   tabs: {
-    type: Array as PropType<Tab[]>, 
+    type: Array as PropType<Tab[]>,
     required: true,
-    default: () => [],  
+    default: () => [],
   },
-  color: String,
-  variant: String,
-  size: String
+};
+
+export const TabEmits = {
+  'update:modelValue': (value: string) => true,
 };

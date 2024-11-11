@@ -1,22 +1,20 @@
-<!-- ui.vue -->
 <script setup lang="ts">
 import Core from './Core.vue';
 import { ref } from 'vue';
 
 const tabs = [
-  { title: 'first Tab', value: 'first' },
-  { title: 'second Tab', value: 'second' },
-  { title: 'third Tab', value: 'third' },
+  { label: 'Item One', value: 'one', content: 'This is custom content for Item One tab.' },
+  { label: 'Item Two', value: 'two', content: 'Custom content for Item Two tab.' },
+  { label: 'Item Three', value: 'three', content: 'Content for Item Three tab.' },
 ];
 
-const activeTab = ref('first');
+const activeTab = ref('one');
 </script>
 
 <template>
   <Core :tabs="tabs" v-model:modelValue="activeTab">
     <template #default="{ tabs, activeTab, selectTab }">
-      <!-- تب‌ها -->
-      <div class="tab-titles flex space-x-4 border-b-2">
+      <div class="tab-titles flex space-x-4 border-b-[1px]">
         <button
           v-for="tab in tabs"
           :key="tab.value"
@@ -26,16 +24,14 @@ const activeTab = ref('first');
           ]"
           @click="selectTab(tab.value)"
         >
-          {{ tab.title }}
+          {{ tab.label }}
         </button>
       </div>
 
       <div class="tab-content mt-4">
-        <template v-for="tab in tabs" :key="tab.value">
-          <div v-if="activeTab === tab.value">
-            <slot :name="tab.value">{{ tab.title }} Content</slot>
-          </div>
-        </template>
+        <div v-for="tab in tabs" :key="tab.value" v-if="activeTab === tab.value">
+          <slot :name="tab.value">{{ tab.content }}</slot>
+        </div>
       </div>
     </template>
   </Core>
