@@ -1,7 +1,8 @@
+
 <template>
   <div>
-    <slot
-      :tabs="tabs"
+    <slot 
+      :tabs="props.tabs"
       :activeTab="activeTab"
       :selectTab="selectTab"
     />

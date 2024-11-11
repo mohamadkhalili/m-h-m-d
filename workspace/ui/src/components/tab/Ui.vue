@@ -1,6 +1,7 @@
+<!-- ui.vue -->
 <script setup lang="ts">
-import Core from './Core.vue';
 import { ref } from 'vue';
+import Core from './Core.vue';
 
 const tabs = [
   { label: 'Item One', value: 'one', content: 'This is custom content for Item One tab.' },
@@ -30,7 +31,7 @@ const activeTab = ref('one');
 
       <div class="tab-content mt-4">
         <div v-for="tab in tabs" :key="tab.value" v-if="activeTab === tab.value">
-          <slot :name="tab.value">{{ tab.content }}</slot>
+          <Tab :color="tab.color" :variant="tab.variant">{{ tab.content }}</Tab>
         </div>
       </div>
     </template>
