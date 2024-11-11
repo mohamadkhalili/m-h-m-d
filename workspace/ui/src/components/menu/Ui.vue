@@ -29,6 +29,7 @@
             isActive ? bgColorClass.active : bgColorClass.onActive,
             isActive ? textColorClass.active : textColorClass.onActive,
             sizeClass,
+            shadowColorClass.active,
           ]"
           v-if="showItem"
         >
@@ -61,6 +62,12 @@ const showMenu = computed(() => !slots.menu);
 const showItem = computed(() => !slots.item);
 const textColorClass = useColorClassName(props);
 const bgColorClass = useBgColorClassName(props);
+const shadowColorClass = computed(() => {
+  return {
+    active: bgColorClass.value.active.replace("bg-", "shadow-sm shadow-"),
+  };
+});
+console.log(shadowColorClass.value.active);
 const sizeClass = useSize(props);
 
 const handlePageChange = (newValue: number) => {
