@@ -1,27 +1,21 @@
+# Tab Component Example
 
-<script setup>
-import { ref } from 'vue';
-const activeTab = ref(0);
-</script>
+<br/>
+<br/>
+<br/>
 
+<Tab>
 
-# Tab
+  <TabChild Title="first Tab" variant="bordered">
+    <TabBody>This is custom content for Item One tab</TabBody>
+  </TabChild>
 
+  <TabChild  Title="second Tab">
+    <TabBody>Custom content for Item Two tab</TabBody>
+  </TabChild>
 
+  <TabChild  Title="third Tab">
+    <TabBody>Content for Item Three tab</TabBody>
+  </TabChild>
 
-
-
-
-<Tab :tabs="[{ label: 'Home' }, { label: 'About' }, { label: 'Contact' }]" v-model:modelValue="activeTab">
-  <template #tab-0>
-    <div>Home  Content</div>
-  </template>
-  <template #tab-1>
-    <div>About Content</div>
-  </template>
-  <template #tab-2>
-    <div>Contact Content</div>
-  </template>
 </Tab>
-
-
