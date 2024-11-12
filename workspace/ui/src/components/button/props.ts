@@ -5,7 +5,7 @@ export const buttonColors = {
   primary: 'bg-green',
   error: 'bg-red',
   warning: 'bg-amber',
-  gradient:'bg-gradient',
+  dark:'bg-dark',
 } as const;
 
 export const VariantColor = {

@@ -31,7 +31,7 @@ import Btn from '../../../ui/src/components/button/Ui.vue';
         <Btn color="secondary">Second</Btn>
     </div>
     <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
-        <Btn color="gradient">Gradient</Btn>
+        <Btn color="dark">Gradient</Btn>
     </div>
 </div>
 <Br/>
@@ -48,7 +48,7 @@ import Btn from '../../../ui/src/components/button/Ui.vue';
 <Btn color="error">     Error !!</Btn>
 <Btn color="warning">   Warning</Btn>
 <Btn color="secondary"> Second</Btn>
-<Btn color="gradient">  Gradient</Btn>
+<Btn color="dark">  Gradient</Btn>
 
 
 ```
