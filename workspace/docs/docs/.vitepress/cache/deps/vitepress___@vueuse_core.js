@@ -34,7 +34,7 @@ import {
   version,
   watch,
   watchEffect
-} from "./chunk-L2JNJ22P.js";
+} from "./chunk-CZX7GLWV.js";
 
 // node_modules/vitepress/lib/vue-demi.mjs
 var isVue2 = false;
@@ -1032,7 +1032,7 @@ function useArrayReduce(list, reducer, ...args) {
   const reduceCallback = (sum, value, index) => reducer(toValue(sum), toValue(value), index);
   return computed(() => {
     const resolved = toValue(list);
-    return args.length ? resolved.reduce(reduceCallback, typeof args[0] === "function" ? toValue(args[0]()) : toValue(args[0])) : resolved.reduce(reduceCallback);
+    return args.length ? resolved.reduce(reduceCallback, toValue(args[0])) : resolved.reduce(reduceCallback);
   });
 }
 function useArraySome(list, fn) {
@@ -1179,8 +1179,7 @@ function useIntervalFn(cb, interval = 1e3, options = {}) {
     if (immediateCallback)
       cb();
     clean();
-    if (isActive.value)
-      timer = setInterval(cb, intervalValue);
+    timer = setInterval(cb, intervalValue);
   }
   if (immediate && isClient)
     resume();
@@ -2832,13 +2831,6 @@ var breakpointsPrimeFlex = {
   lg: 992,
   xl: 1200
 };
-var breakpointsElement = {
-  xs: 0,
-  sm: 768,
-  md: 992,
-  lg: 1200,
-  xl: 1920
-};
 function useBreakpoints(breakpoints, options = {}) {
   function getValue2(k, delta) {
     let v = toValue(breakpoints[toValue(k)]);
@@ -3869,15 +3861,9 @@ function useDevicesList(options = {}) {
     const { state, query } = usePermission("camera", { controls: true });
     await query();
     if (state.value !== "granted") {
-      let granted = true;
-      try {
-        stream = await navigator.mediaDevices.getUserMedia(constraints);
-      } catch (e) {
-        stream = null;
-        granted = false;
-      }
+      stream = await navigator.mediaDevices.getUserMedia(constraints);
       update();
-      permissionGranted.value = granted;
+      permissionGranted.value = true;
     } else {
       permissionGranted.value = true;
     }
@@ -4088,9 +4074,9 @@ function useDropZone(target, options = {}) {
     const checkValidity = (event) => {
       var _a2, _b2;
       const items = Array.from((_b2 = (_a2 = event.dataTransfer) == null ? void 0 : _a2.items) != null ? _b2 : []);
-      const types = items.map((item) => item.type);
+      const types = items.filter((item) => item.kind === "file").map((item) => item.type);
       const dataTypesValid = checkDataTypes(types);
-      const multipleFilesValid = multiple || items.length <= 1;
+      const multipleFilesValid = multiple || items.filter((item) => item.kind === "file").length <= 1;
       return dataTypesValid && multipleFilesValid;
     };
     const handleDragEvent = (event, eventType) => {
@@ -5912,7 +5898,6 @@ function useMediaControls(target, options = {}) {
   const muted = ref(false);
   const supportsPictureInPicture = document2 && "pictureInPictureEnabled" in document2;
   const sourceErrorEvent = createEventHook();
-  const playbackErrorEvent = createEventHook();
   const disableTrack = (track) => {
     usingElRef(target, (el) => {
       if (track) {
@@ -6030,14 +6015,10 @@ function useMediaControls(target, options = {}) {
     const el = toValue(target);
     if (!el)
       return;
-    if (isPlaying) {
-      el.play().catch((e) => {
-        playbackErrorEvent.trigger(e);
-        throw e;
-      });
-    } else {
+    if (isPlaying)
+      el.play();
+    else
       el.pause();
-    }
   });
   useEventListener(target, "timeupdate", () => ignoreCurrentTimeUpdates(() => currentTime.value = toValue(target).currentTime));
   useEventListener(target, "durationchange", () => duration.value = toValue(target).duration);
@@ -6102,8 +6083,7 @@ function useMediaControls(target, options = {}) {
     togglePictureInPicture,
     isPictureInPicture,
     // Events
-    onSourceError: sourceErrorEvent.on,
-    onPlaybackError: playbackErrorEvent.on
+    onSourceError: sourceErrorEvent.on
   };
 }
 function getMapVue2Compat() {
@@ -8722,7 +8702,7 @@ function useWebSocket(url, options = {}) {
     ws.onclose = (ev) => {
       status.value = "CLOSED";
       onDisconnected == null ? void 0 : onDisconnected(ws, ev);
-      if (!explicitlyClosed && options.autoReconnect && (wsRef.value == null || ws === wsRef.value)) {
+      if (!explicitlyClosed && options.autoReconnect && ws === wsRef.value) {
         const {
           retries = -1,
           delay = 1e3,
@@ -9051,7 +9031,6 @@ export {
   refAutoReset as autoResetRef,
   breakpointsAntDesign,
   breakpointsBootstrapV5,
-  breakpointsElement,
   breakpointsMasterCss,
   breakpointsPrimeFlex,
   breakpointsQuasar,
