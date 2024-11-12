@@ -47,9 +47,29 @@ const tabs = [
 
 </div>
 
+<br/>
+<br/>
 
+*Code*
 
+```md
 
+<script setup>
+import Tab from '../../../ui/src/components/tab/Ui.vue';
+const tabs = [
+  { label: 'Tab 1', value: 'one', content: 'Content of tab 1' },
+  { label: 'Tab 2', value: 'two', content: 'Content of tab 2' },
+  { label: 'Tab 3', value: 'three', content: 'Content of tab 3' }
+];
+</script>
+
+<Tab :tabs="tabs" color= "default" />  
+<Tab :tabs="tabs" color= "primary" />
+<Tab :tabs="tabs" color= "error" />
+<Tab :tabs="tabs" color= "warning" />
+<Tab :tabs="tabs" color= "secondary" />
+<Tab :tabs="tabs" color= "Dark" />
+```
 
 
 
