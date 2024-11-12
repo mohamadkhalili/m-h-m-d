@@ -22,8 +22,8 @@ export const InputColor = {
   primary: 'bg-green',
   error: 'bg-red',
   warning: 'bg-amber',
-  gradient: 'bg-gradient',
-  link: 'bg-link',
+  transparent: 'bg-transparent',
+
 } as const;
 export const InputVariant = {
   shadow: 'v-shadow',

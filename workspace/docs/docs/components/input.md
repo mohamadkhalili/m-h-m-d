@@ -136,7 +136,7 @@ You can use any variants for your theme it's already ready !
 </div>
  <div class="   p-4 rounded-lg shadow-inner  flex justify-center items-center ">
 
-<Input variant="search"  submit="search"/>
+<Input variant="search"  submit="search" />
 
 </div>
 </div>
@@ -148,7 +148,7 @@ You can use any variants for your theme it's already ready !
 <Input variant="shadow"    title="shadow"    />
 <Input variant="underline"  title="underline"/>
 <Input variant="flat"       title="flat"/>
-<Input variant="search"     submit="search"  />
+<Input variant="search"     submit="🔒"  />
 
 
 ```

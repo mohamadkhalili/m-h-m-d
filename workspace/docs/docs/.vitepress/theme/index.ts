@@ -11,6 +11,8 @@ import { tooltip } from '../../../../ui/src/directives/TooltipDirective'
 import Btn from '../../../../ui/src/components/button/Core.vue'
 import Input from '../../../../ui/src/components/input/Ui.vue'
 import Menu from '../../../../ui/src/components/menu/Ui.vue'
+import Tab from '../../../../ui/src/components/tab/Ui.vue'
+
 
 export default {
   extends: DefaultTheme,
@@ -27,6 +29,8 @@ export default {
     app.component('modal', Modal)
     app.component('Input',Input)
     app.component('Menu',Menu)
+    app.component('Tab',Tab)
+
     
   }
 } satisfies Theme
