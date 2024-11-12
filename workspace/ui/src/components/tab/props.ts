@@ -16,8 +16,8 @@ export const TabProps = {
     required: true,
     default: () => [],
   },
-};
-
-export const TabEmits = {
-  'update:modelValue': (value: string) => true,
+  color: {
+    type: String,
+    default: 'primary',  
+  },
 };

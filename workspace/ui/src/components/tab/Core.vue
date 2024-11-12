@@ -1,18 +1,7 @@
-
-<template>
-  <div>
-    <slot 
-      :tabs="props.tabs"
-      :activeTab="activeTab"
-      :selectTab="selectTab"
-    />
-  </div>
-</template>
-
-<script setup lang="ts">
+<script setup>
 import { defineProps, defineEmits, ref, watch } from 'vue';
 import { TabProps } from './props';
-import { TabEmits } from './Emits';
+import { TabEmits } from './emits';
 
 const props = defineProps(TabProps);
 const emit = defineEmits(TabEmits);
@@ -23,8 +12,18 @@ watch(() => props.modelValue, (newVal) => {
   activeTab.value = newVal;
 });
 
-function selectTab(value: string) {
+function selectTab(value) {
   activeTab.value = value;
   emit('update:modelValue', value);
 }
 </script>
+
+<template>
+  <div>
+    <slot 
+      :tabs="props.tabs"
+      :activeTab="activeTab"
+      :selectTab="selectTab"
+    />
+  </div>
+</template>
