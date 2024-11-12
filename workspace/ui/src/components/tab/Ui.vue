@@ -1,8 +1,11 @@
 <script setup>
 import { defineProps, computed, ref } from 'vue';
 import { TabProps, TabColors } from './props';
+import { useBgColorClassName, useColorClassName } from '../../composables/ColorComposable';
 const props = defineProps(TabProps);
 const activeTab = ref(props.modelValue || props.tabs[0]?.value);
+const bgColorClass = useBgColorClassName(props);
+const textColorClass = useColorClassName(props);
 const getTabColor = (tabValue) => {
   const isActive = activeTab.value === tabValue; 
   if (isActive) {
@@ -34,8 +37,10 @@ function selectTab(value) {
         <button
     @click="selectTab(tab.value)"
     :class="[
-          'py-2 px-4 transition-all duration-300 ease-in-out rounded-b-3xl bg-transparent',
-          getTabColor(tab.value)
+          'py-2 px-4 transition-all duration-300 ease-in-out rounded-b-3xl   ',
+          getTabColor(tab.value),
+          activeTab==tab.value ? bgColorClass.active : bgColorClass.onActive,
+          activeTab==tab.value ? textColorClass.active : textColorClass.onActive,
         ]"
   >
     {{ tab.label }}

@@ -42,8 +42,9 @@ const tabs = [
         <Tab :tabs="tabs" color= "secondary" />
     </div>
     <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
-        <Tab :tabs="tabs" color= "Dark" />
+        <Tab :tabs="tabs" activeColor="bg-red-500" color="bg-blue-700" activeTextColor="text-white" textColor="text-white" />
     </div>
+
 
 </div>
 
@@ -55,7 +56,6 @@ const tabs = [
 ```md
 
 <script setup>
-import Tab from '../../../ui/src/components/tab/Ui.vue';
 const tabs = [
   { label: 'Tab 1', value: 'one', content: 'Content of tab 1' },
   { label: 'Tab 2', value: 'two', content: 'Content of tab 2' },
@@ -69,6 +69,9 @@ const tabs = [
 <Tab :tabs="tabs" color= "warning" />
 <Tab :tabs="tabs" color= "secondary" />
 <Tab :tabs="tabs" color= "Dark" />
+<Tab :tabs="tabs" color= "activeError" />
+<Tab :tabs="tabs" color= "activeDark"  />
+
 ```
 
 

@@ -1,4 +1,5 @@
 import { PropType } from 'vue';
+import { createBgColorProp, createColorProp } from '../../composables/ColorComposable';
 
 export interface Tab {
   label: string;
@@ -6,12 +7,12 @@ export interface Tab {
   content: string;
 }
 export const TabColors = {
-  activeDefault: 'bg-blue-700 text-white', 
-  activePrimary: 'bg-green-700 text-white', 
-  activeSecondary: 'bg-purple-700 text-white',
-  activeError: 'bg-red-600 text-white',
-  activeWarning: 'bg-amber-400 text-white',
-  activeDark: 'bg-gray-800 text-white'
+  activeDefault: 'bg-sky-600 ', 
+  activePrimary: 'bg-emerald-600 ', 
+  activeSecondary: 'bg-purple-700 ',
+  activeError: 'bg-red-600 ',
+  activeWarning: 'bg-amber-400 ',
+  activeDark: 'bg-gray-800 '
 
 } as const;
 
@@ -27,12 +28,15 @@ export const TabProps = {
     required: true,
     default: () => [],
   },
-  color: {
-    type: String as PropType<keyof typeof TabColors>,
-    default: 'default',  
-  },
+  // color: {
+  //   type: String as PropType<keyof typeof TabColors>,
+  //   default: 'default',  
+  // },
   isDisabled: {
     type: Boolean,
     default: false,
-  }
+  },
+  ...createColorProp(),
+  ...createBgColorProp()
+
 };
