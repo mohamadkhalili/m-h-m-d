@@ -26,7 +26,7 @@ this is modal closed when click outside
 ```vue
 <modal v-model="isModalOpen" teleport="body" closeOnOutside/>
 ```
-this is modal custom coloring
+this is modal custom colored
 
 <button  @click="isModalOpen3 = true" class="bg-black text-white rounded-lg p-2 mt-1" cleaner>Open Modal</button>
 <modal v-model="isModalOpen3" teleport="body" activeColor="bg-white" activeTextColor="text-black"/>
