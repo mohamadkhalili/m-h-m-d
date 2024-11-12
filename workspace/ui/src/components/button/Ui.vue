@@ -181,7 +181,7 @@ to {
 .bg-green { background: linear-gradient(45deg, rgb(34, 177, 117) 0%, rgb(107, 238, 0) 100%); border: 2px solid rgba(148, 148, 148, 0.466);}
 .bg-red { background: linear-gradient(45deg, rgb(255, 0, 98) 0%, rgb(255, 0, 0) 100%); border: 2px solid rgba(148, 148, 148, 0.76);}
 .bg-amber { background: linear-gradient(45deg, rgb(255, 166, 0) 0%, rgb(247, 201, 0) 100%);border: 2px solid rgba(148, 148, 148, 0.76); }
-.bg-gradient {  background: linear-gradient(80deg, rgb(26, 26, 26) 0%, rgb(67, 117, 255) 100%);border: 2px solid rgba(148, 148, 148, 0.76); }
+.bg-dark {  background: linear-gradient(180deg, rgb(44, 44, 44) 0%, rgb(0, 0, 0) 100%);border: 2px solid rgba(148, 148, 148, 0.76); }
 .bg-link{
 
 color: rgb(45, 0, 209);

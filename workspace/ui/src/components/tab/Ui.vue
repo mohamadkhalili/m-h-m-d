@@ -1,48 +1,68 @@
-<!-- ui.vue -->
-<script setup lang="ts">
-import { ref } from 'vue';
-import Core from './Core.vue';
+<script setup>
+import { defineProps, computed, ref } from 'vue';
+import { TabProps, TabColors } from './props';
+const props = defineProps(TabProps);
+const activeTab = ref(props.modelValue || props.tabs[0]?.value);
+const getTabColor = (tabValue) => {
+  const isActive = activeTab.value === tabValue; 
+  if (isActive) {
+    return TabColors[`active${capitalize(props.color)}`] || TabColors.activeDefault;
+  } else {
+ 
+    return TabColors[props.color] || TabColors.default;
+  }
+};
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
-const tabs = [
-  { label: 'Item One', value: 'one', content: 'This is custom content for Item One tab.' },
-  { label: 'Item Two', value: 'two', content: 'Custom content for Item Two tab.' },
-  { label: 'Item Three', value: 'three', content: 'Content for Item Three tab.' },
-];
-
-const activeTab = ref('one');
+function selectTab(value) {
+  activeTab.value = value;
+  emit('update:modelValue', value);
+}
 </script>
 
 <template>
-  <Core :tabs="tabs" v-model:modelValue="activeTab">
-    <template #default="{ tabs, activeTab, selectTab }">
-      <div class="tab-titles flex space-x-4 border-b-[1px]">
-        <button
-          v-for="tab in tabs"
-          :key="tab.value"
-          :class="[
-            'tab-title py-2 px-4 cursor-pointer',
-            activeTab === tab.value ? 'text-blue-500 border-b-2 border-blue-500' : 'text-gray-500 hover:text-gray-700'
-          ]"
-          @click="selectTab(tab.value)"
-        >
-          {{ tab.label }}
-        </button>
-      </div>
+  <div>
+    <Core 
 
-      <div class="tab-content mt-4">
-        <div v-for="tab in tabs" :key="tab.value" v-if="activeTab === tab.value">
-          <Tab :color="tab.color" :variant="tab.variant">{{ tab.content }}</Tab>
-        </div>
+      :is-disabled="props.isDisabled"
+     
+      class="flex flex-row gap-4 w-fit  border-b-[1px] p-2 border-gray-400 "
+    >
+      <div v-for="tab in props.tabs" :key="tab.value" class="relative">
+        <button
+    @click="selectTab(tab.value)"
+    :class="[
+          'py-2 px-4 transition-all duration-300 ease-in-out rounded-b-3xl bg-transparent',
+          getTabColor(tab.value)
+        ]"
+  >
+    {{ tab.label }}
+  </button>
       </div>
-    </template>
-  </Core>
+    </Core>
+
+    <div class="mt-4">
+      <div v-for="tab in props.tabs" :key="tab.value" v-show="activeTab === tab.value" class="w-full">
+        <transition name="fade" mode="out-in">
+          <div :key="tab.value" class="p-6 rounded-md bg-transparent mb-2 ">
+            {{ tab.content }}
+          </div>
+        </transition>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-.tab-title {
-  transition: color 0.3s, border-color 0.3s;
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s ease-in-out;
 }
-.tab-title:hover {
-  color: #4a90e2;
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
+
+
+
 </style>
