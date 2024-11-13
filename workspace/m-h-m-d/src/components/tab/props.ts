@@ -3,7 +3,7 @@ import { createBgColorProp, createColorProp } from '../../composables/ColorCompo
 
 export interface Tab {
   label: string;
-  value: string;
+  value: number;
   content: string;
 }
 

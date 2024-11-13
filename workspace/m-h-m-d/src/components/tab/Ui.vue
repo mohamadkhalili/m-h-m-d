@@ -1,11 +1,12 @@
 <script setup>
 import { ref, computed } from 'vue';
-import { TabProps, variant } from './props';
+import { TabProps } from './props';
 import { useBgColorClassName, useColorClassName } from '../../composables/ColorComposable';
+import Core from './Core.vue';
 
 const props = defineProps(TabProps);
 const activeTab = ref(props.modelValue || props.tabs[0]?.value);
-
+const emit = defineEmits(['update:modelValue']);
 const bgColorClass = useBgColorClassName(props);
 const textColorClass = useColorClassName(props);
 
@@ -18,36 +19,36 @@ const getButtonStyleClass = computed(() => {
     case 'Link':
       return 'text-blue-600 underline transition-opacity duration-200 ease-in-out hover:opacity-80';
     default:
-      return ' flex   w-fit border-b-[1px]  border-gray-300 transition-all duration-200 ';
+      return '';
   }
 });
 
 
+
 function selectTab(value) {
   activeTab.value = value;
-  emit('update:modelValue', tab.value);
+  emit('update:modelValue', value);
 }
 </script>
 
 <template>
   <div>
     <Core 
-    :variant="props.variant"
+      :variant="props.variant"
       :is-disabled="props.isDisabled"
-      :class="['rounded-b-3xl flex ',
-      getButtonStyleClass=='default' && 'border-b-[1px]  '
-  ]"
+      :class="'rounded-b-3xl flex'"
     >
-      <div v-for="tab in props.tabs" :key=tab.value class="relative">
+      <div v-for="(tab, index) in props.tabs" :key="tab.value" class="relative">
         <button
           @click="selectTab(tab.value)"
           :class="[
-            'py-2 px-4 transition-all duration-300 ease-in-out',
+            'py-2 px-4 transition-all active:scale-95 duration-800 ease-in-out ',
             getButtonStyleClass,
             activeTab === tab.value ? bgColorClass.active : bgColorClass.onActive,
             activeTab === tab.value ? textColorClass.active : textColorClass.onActive,
-            tab.value === 1 ? 'rounded-l-full' : '', 
-            tab.value === props.tabs.length  ? 'rounded-r-full' : ''
+
+            props.variant ==='default' && index === 0 ? 'rounded-l-full' : '',
+            props.variant ==='default' && index === props.tabs.length - 1 ? 'rounded-r-full' : ''
           ]"
         >
           {{ tab.label }}
@@ -58,7 +59,7 @@ function selectTab(value) {
     <div class="mt-4">
       <div v-for="tab in props.tabs" :key="tab.value" v-show="activeTab === tab.value" class="w-full">
         <transition name="fade" mode="out-in">
-          <div v-if="tab.content !=null" :key="tab.value" class="p-6 rounded-lg bg-transparent shadow-inner">
+          <div v-if="tab.content != null" :key="tab.value" class="p-6 rounded-lg bg-transparent shadow-inner">
             {{ tab.content }}
           </div>
         </transition>
