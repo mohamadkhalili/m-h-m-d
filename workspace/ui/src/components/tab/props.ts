@@ -6,17 +6,13 @@ export interface Tab {
   value: string;
   content: string;
 }
-export const TabColors = {
-  activeDefault: 'bg-sky-600 ', 
-  activePrimary: 'bg-emerald-600 ', 
-  activeSecondary: 'bg-purple-700 ',
-  activeError: 'bg-red-600 ',
-  activeWarning: 'bg-amber-400 ',
-  activeDark: 'bg-gray-800 '
 
+export const variant = {
+  default: 'default',
+  Underline: 'underline',
+  bordered: 'bordered',
+  Link: 'link',
 } as const;
-
-
 
 export const TabProps = {
   modelValue: {
@@ -28,15 +24,14 @@ export const TabProps = {
     required: true,
     default: () => [],
   },
-  // color: {
-  //   type: String as PropType<keyof typeof TabColors>,
-  //   default: 'default',  
-  // },
+  variant: {
+    type: String as PropType<keyof typeof variant>,
+    default: 'default',
+  },
   isDisabled: {
     type: Boolean,
     default: false,
   },
   ...createColorProp(),
-  ...createBgColorProp()
-
+  ...createBgColorProp(),
 };
