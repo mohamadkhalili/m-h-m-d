@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, defineEmits, ref, watch } from 'vue';
+import { ref, watch } from 'vue';
 import { TabProps } from './props';
 import { TabEmits } from './Emits';
 

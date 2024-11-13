@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, ref, computed } from 'vue';
+import { ref, computed } from 'vue';
 import { TabProps, variant } from './props';
 import { useBgColorClassName, useColorClassName } from '../../composables/ColorComposable';
 

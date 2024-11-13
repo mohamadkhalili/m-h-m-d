@@ -7,25 +7,24 @@
     <template #input>
       <slot name="input"></slot>
       <div v-if="showInput" class="input-container">
-
         <label
-          :class="{ 
+          :class="{
             active: isFocused || localValue,
             'underline-label': props.variant === 'underline',
             'search-label': props.variant === 'search',
-            'bordered-label': props.variant === 'bordered', 
-
-          }" 
+            'bordered-label': props.variant === 'bordered',
+          }"
           @click="focusInput"
         >
           {{ title }}
         </label>
 
-        <div :class="{
-          'search-wrapper': props.variant === 'search',
-          'bordered-wrapper': props.variant === 'bordered', 
-
-        }">
+        <div
+          :class="{
+            'search-wrapper': props.variant === 'search',
+            'bordered-wrapper': props.variant === 'bordered',
+          }"
+        >
           <input
             ref="inputRef"
             v-model="localValue"
@@ -33,7 +32,8 @@
             :readonly="readonly"
             required
             :class="[
-              themeClass,size,
+              themeClass,
+              size,
               props.variant === 'search' ? 'search-input' : '',
               {
                 disabled: isDisabled,
@@ -55,8 +55,15 @@
 
 
 <script setup lang="ts">
-import { computed, defineProps, ref, defineOptions, useSlots, watch } from "vue";
-import { uiProps, InputVariant ,InputColor,InputSize} from "./props"; 
+import {
+  computed,
+  defineProps,
+  ref,
+  defineOptions,
+  useSlots,
+  watch,
+} from "vue";
+import { uiProps, InputVariant, InputColor, InputSize } from "./props";
 import { inputEmits } from "./Emits";
 import { InputSlots } from "../input/Slots";
 import Core from "./Core.vue";
@@ -86,53 +93,42 @@ const handleModelValue = (newValue: String) => {
   emit("update:modelValue", newValue);
 };
 
-
-
 const themeClass = computed(() => {
-
   if (props.variant) {
     return InputVariant[props.variant];
   }
   return InputColor[props.color];
 });
 const size = computed(() => {
-  return InputSize[props.size]
-})
-
+  return InputSize[props.size];
+});
 
 const handleBlur = () => {
   isFocused.value = !!props.modelValue;
 };
 
-
-
-
 const focusInput = () => {
   inputRef.value?.focus();
-  isFocused.value = true; 
+  isFocused.value = true;
 };
-
 </script>
 
 
 <style scoped>
-
-
 .v-shadow {
   border: 2px solid transparent;
   background-origin: border-box;
   background-clip: content-box;
-  box-shadow: 0 4px 20px rgba(149, 155, 167, 0.555);  
-  transition: box-shadow 0.3s ease, border 0.5s ease; 
+  box-shadow: 0 4px 20px rgba(149, 155, 167, 0.555);
+  transition: box-shadow 0.3s ease, border 0.5s ease;
 }
 
 .v-shadow:focus {
   border: 2px solid transparent;
   background-origin: border-box;
   background-clip: content-box;
-  box-shadow: 0 10px 15px rgba(86, 145, 247, 0.548);  
+  box-shadow: 0 10px 15px rgba(86, 145, 247, 0.548);
 }
-
 
 .search-wrapper {
   display: flex;
@@ -156,10 +152,9 @@ const focusInput = () => {
   background-color: #52525273;
   color: white;
   font-size: 1em;
-  margin-right: 10px; 
+  margin-right: 10px;
   border: 1px solid gray;
   border-radius: 15px;
-
 }
 
 .search-input:focus {
@@ -182,20 +177,17 @@ const focusInput = () => {
   transition: all 0.3s;
 }
 .subscribe-btn:hover {
-
   background-color: #002fff;
   color: white;
 }
 
 .subscribe-btn:active {
-background: #001b94;
-
+  background: #001b94;
 }
 
 .search-label {
- opacity: 0;
+  opacity: 0;
 }
-
 
 #MainInput:hover,
 #MainInput:focus {
@@ -206,7 +198,6 @@ background: #001b94;
 }
 
 .custom-input {
-
   border-radius: 10px;
   transition: all 200ms;
   border: 1px solid gray;
@@ -217,17 +208,14 @@ background: #001b94;
   direction: rtl;
 }
 
-.default-label:active{
+.default-label:active {
   opacity: 0;
 }
-.default-wrapper{
-
+.default-wrapper {
   border-radius: 15px;
-
 }
 .bg-default {
   border: 2px rgb(112, 112, 112) solid;
-
 }
 .bg-purple {
   border: 2px rgb(191, 58, 196) solid;
@@ -257,7 +245,6 @@ background: #001b94;
 .bg-transparent:focus {
   border: 2px solid transparent;
   border: 2px solid rgb(1, 206, 221);
-
 }
 
 .v-flat {
@@ -266,19 +253,19 @@ background: #001b94;
   color: rgba(0, 0, 0, 0.87);
   transition: 0.2s all;
 }
-.v-flat:hover{
+.v-flat:hover {
   background: #cececea4;
 }
 
 .bordered-wrapper {
-  position: relative; 
+  position: relative;
 }
 
 .bordered-label {
   position: absolute;
   top: -8px;
-  left: 10px; 
-  background: #ffffff; 
+  left: 10px;
+  background: #ffffff;
   padding: 0 10px;
   font-size: 12px;
   color: #8b8b8b;
@@ -287,19 +274,14 @@ background: #001b94;
   z-index: 10;
 }
 
-
 .bordered-label.active {
- 
   top: -8px;
-  background: #5a5a5a; 
-color: #ffffff;
-
+  background: #5a5a5a;
+  color: #ffffff;
 }
 .bordered-label:active {
-border: 1px solid greenyellow;
-
+  border: 1px solid greenyellow;
 }
-
 
 .v-underline {
   position: relative;
@@ -307,48 +289,44 @@ border: 1px solid greenyellow;
   padding: 10px;
   border: none;
   border-radius: 0;
-  border-bottom: 2px solid #afafaf;  
-  transition: border-color 0.3s ease; 
+  border-bottom: 2px solid #afafaf;
+  transition: border-color 0.3s ease;
 }
 
 .v-underline::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: transparent; 
-  transition: all 0.4s ease;  
+  background-color: transparent;
+  transition: all 0.4s ease;
 }
 
 .v-underline:hover::after {
-  background-color: #0056d8; 
-  width: 100%;  
+  background-color: #0056d8;
+  width: 100%;
 }
 
 .v-underline:focus {
-  border-bottom: 2px solid #00bb92;  
-
+  border-bottom: 2px solid #00bb92;
 }
 
 .v-underline:hover {
-  border-bottom: 2px solid #0056d8; 
+  border-bottom: 2px solid #0056d8;
 
-
-  cursor: text; 
+  cursor: text;
 }
 
 .v-faded {
   border: none;
- 
+
   color: #000000;
   box-shadow: inset 0px 0px 50px 0px rgba(0, 0, 0, 0.233);
-  transition: all 0.4s ease;  
-
+  transition: all 0.4s ease;
 }
 .v-faded:hover {
-
   box-shadow: inset 0px 0px 50px 0px rgba(107, 73, 73, 0.233);
 }
 
@@ -379,9 +357,8 @@ label {
 label.active {
   left: 8;
 
-
   background: #ffffff00;
-top: -3px;
+  top: -3px;
   font-size: 12px;
   color: #8b8b8b;
 }
@@ -399,10 +376,9 @@ input.rtl {
   direction: rtl;
 }
 
-
 .underline-label {
   position: absolute;
-  top: 5px; 
+  top: 5px;
   left: 0;
   font-size: 18px;
   color: #8b8b8b;
@@ -415,21 +391,16 @@ input.rtl {
   color: #818181;
 }
 
-
-.size-sm{
+.size-sm {
   font-size: 12px;
-
 }
-.size-md{
+.size-md {
   font-size: 15px;
-  
 }
-.size-lg{
+.size-lg {
   font-size: 18px;
-  
 }
-.size-xl{
+.size-xl {
   font-size: 20px;
-  
 }
 </style>
