@@ -13,7 +13,7 @@ const isEditingSearchPage = ref()
 </script>
 
 <!-- Use the component with v-model binding -->
-<Pagination v-model="inputValue1" v-model:searchPage="searchValue" size="size-10" border-radius-size="rounded-full" :pageSize="10" :enableSearchPage="false"/>
+<Pagination v-model="inputValue1" v-model:searchPage="searchValue" size="size-10" border-radius-size="rounded-full" :pageSize="20" :enableSearchPage="false"/>
 
 You can also write more Markdown content here.
 
