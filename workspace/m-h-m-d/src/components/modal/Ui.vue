@@ -67,18 +67,18 @@ function handleClose() {
   justify-content: center;
   opacity: 0; 
   animation: fadeIn 0.5s forwards; 
+  z-index: 9999;
 }
 
 .modal-content {
-  background-color: rgba(255, 255, 255, 0.9);
   padding: 20px;
   border-radius: 10px;
   width: 400px;
   height: 200px;
-  color: black;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   transform: translateY(-20px); 
   animation: slideIn 0.5s forwards; 
+  z-index: 10000;
 }
 
 

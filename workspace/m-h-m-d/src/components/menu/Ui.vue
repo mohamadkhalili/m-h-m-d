@@ -67,7 +67,6 @@ const shadowColorClass = computed(() => {
     active: bgColorClass.value.active.replace("bg-", "shadow-sm shadow-"),
   };
 });
-console.log(shadowColorClass.value.active);
 const sizeClass = useSize(props);
 
 const handlePageChange = (newValue: number) => {

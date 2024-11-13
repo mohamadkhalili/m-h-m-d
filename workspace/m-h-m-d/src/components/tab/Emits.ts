@@ -1,3 +1,4 @@
+// emits.ts
 export const TabEmits = {
-  'update:modelValue': (value: string) => true,
+  'update:modelValue': (value: string) => true,  
 };
