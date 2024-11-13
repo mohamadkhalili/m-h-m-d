@@ -36,7 +36,7 @@ const tabsVariants = [
         <Tab :tabs="tabs" activeColor="bg-blue-600" color="bg-gray-700" activeTextColor="text-white" textColor="text-white" />
     </div>
     <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
-        <Tab :tabs="tabs" activeColor="bg-rose-600" color="bg-gray-200" activeTextColor="text-white" textColor="text-black" />
+        <Tab :tabs="tabs" activeColor="bg-rose-700" color="bg-gray-100" activeTextColor="text-white" textColor="text-black" />
     </div>
 
 
@@ -75,7 +75,7 @@ textColor="text-white"
 <div class="grid grid-cols-2 gap-4">
    
    <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
-        <Tab :tabs="tabsVariants" variant="bordered"/>
+        <Tab :tabs="tabsVariants" variant="bordered" />
     </div>
     <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
         <Tab :tabs="tabsVariants" variant="underline" activeTextColor="text-blue-500" />

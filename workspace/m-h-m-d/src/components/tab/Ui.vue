@@ -13,9 +13,9 @@ const textColorClass = useColorClassName(props);
 const getButtonStyleClass = computed(() => {
   switch (props.variant) {
     case 'underline':
-      return 'relative border-transparent after:content-[""] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-0 after:left-0 after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100 bg-transparent';
+      return 'relative  after:content-[""] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-0 after:left-0  after:transition-transform after:duration-300 hover:after:scale-x-100 bg-transparent';
     case 'bordered':
-      return 'border-2 border-blue-500 rounded-md  transition-transform duration-200';
+      return ' border-blue-800 shadow-gray-400   shadow-inner transition-transform duration-200';
     case 'Link':
       return 'text-blue-600 underline transition-opacity duration-200 ease-in-out hover:opacity-80';
     default:
@@ -42,13 +42,14 @@ function selectTab(value) {
         <button
           @click="selectTab(tab.value)"
           :class="[
-            'py-2 px-4 transition-all active:scale-95 duration-800 ease-in-out ',
+            'py-2 px-4 transition-all hover:animate-pulse duration-300 ease-in-out border-x-8  ',
             getButtonStyleClass,
             activeTab === tab.value ? bgColorClass.active : bgColorClass.onActive,
             activeTab === tab.value ? textColorClass.active : textColorClass.onActive,
-
+           props.variant ==='underline' && activeTab === tab.value ? 'after:scale-x-100' : 'after:scale-x-0' ,
             props.variant ==='default' && index === 0 ? 'rounded-l-full' : '',
-            props.variant ==='default' && index === props.tabs.length - 1 ? 'rounded-r-full' : ''
+            props.variant ==='default' && index === props.tabs.length - 1 ? 'rounded-r-full' : '',
+            activeTab === tab.value ? '' : '',
           ]"
         >
           {{ tab.label }}
