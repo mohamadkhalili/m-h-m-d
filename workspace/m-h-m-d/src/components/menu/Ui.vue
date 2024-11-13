@@ -1,41 +1,7 @@
 <template>
-  <Core
-    :modelValue="modelValue"
-    @update:modelValue="handlePageChange"
-    :vertical="vertical"
-    :tooltip="tooltip"
-    v-bind="$attrs"
-    :class="bgColorClass.onActive"
-  >
-    <slot name="menu"></slot>
-    <template v-if="showMenu" #item="{ index, isActive, item }">
-      <slot
-        name="item"
-        :index="index"
-        :isActive="item == modelValue"
-        :item="item"
-        :vertical="vertical"
-        :tooltip="tooltip"
-      ></slot>
-      <tooltipl
-        :enabled="tooltip"
-        :text="item"
-        :location="vertical ? 'right' : 'top'"
-      >
-        <div
-          class="menu-item"
-          :class="[
-            isActive ? 'menu-item-active' : '',
-            isActive ? bgColorClass.active : bgColorClass.onActive,
-            isActive ? textColorClass.active : textColorClass.onActive,
-            sizeClass,
-            shadowColorClass.active,
-          ]"
-          v-if="showItem"
-        >
-          {{ item }}
-        </div>
-      </tooltipl>
+  <Core>
+    <template #menu>
+      <slot name="menu"></slot>
     </template>
   </Core>
 </template>
@@ -75,36 +41,4 @@ const handlePageChange = (newValue: number) => {
 </script>
 
 <style scoped>
-.menu-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-  font-size: 80%;
-  text-align: center;
-  min-width: 90px;
-  min-height: 45px;
-  margin: 5px;
-}
-
-.menu-item:hover {
-  transform: scale(1.05);
-}
-.menu-item-active {
-  transform: scale(1.1);
-}
-</style>
-<style >
-.vertical-menu {
-  flex-direction: column;
-  min-width: 100px;
-  min-height: 40px;
-}
-.menu{
-  display: inline-flex;
-  padding: 10px;
-  border-radius: 8px;
-}
 </style>

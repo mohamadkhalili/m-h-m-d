@@ -1,5 +1,5 @@
 export interface coreSlots {
-    item(props: { index: number, isActive: boolean, item: string }): any
+    menu(): any
 }
 export interface uiSlots {
     menu(): any,
