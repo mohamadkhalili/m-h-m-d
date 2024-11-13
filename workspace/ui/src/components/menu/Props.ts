@@ -4,6 +4,7 @@ import { createBorderProp } from '../../composables/UseBorderProps';
 import { createBgColorProp, createColorProp } from '../../composables/ColorComposable';
 
 export const coreProps = {
+    ...createBgColorProp(),
     modelValue: { type: String },
     items: { type: Array as () => string[], default: ["item1", "item2", "item3"] },
     icons: { type: Array as () => string[], required: false },

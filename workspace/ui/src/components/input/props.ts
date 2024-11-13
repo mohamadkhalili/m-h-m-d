@@ -13,6 +13,7 @@ export const uiProps = {
   color: { type: String as () => keyof typeof InputColor, default: 'default' },
   variant: { type: String as () => keyof typeof InputVariant },
   size: { type: String as () => keyof typeof InputSize ,default:'md'},
+  submit: { type: String, default: "" },
   modelValue: {type: String, required : false}
 }
 export const InputColor = {
@@ -21,8 +22,8 @@ export const InputColor = {
   primary: 'bg-green',
   error: 'bg-red',
   warning: 'bg-amber',
-  gradient: 'bg-gradient',
-  link: 'bg-link',
+  transparent: 'bg-transparent',
+
 } as const;
 export const InputVariant = {
   shadow: 'v-shadow',

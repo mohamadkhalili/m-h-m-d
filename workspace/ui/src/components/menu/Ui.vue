@@ -5,6 +5,7 @@
     :vertical="vertical"
     :tooltip="tooltip"
     v-bind="$attrs"
+    :class="bgColorClass.onActive"
   >
     <slot name="menu"></slot>
     <template v-if="showMenu" #item="{ index, isActive, item }">
@@ -16,10 +17,20 @@
         :vertical="vertical"
         :tooltip="tooltip"
       ></slot>
-      <tooltipl :enabled="tooltip" :text="item" :location="vertical ? 'right' : 'top'">
+      <tooltipl
+        :enabled="tooltip"
+        :text="item"
+        :location="vertical ? 'right' : 'top'"
+      >
         <div
           class="menu-item"
-          :class="{ 'menu-item-active': isActive }"
+          :class="[
+            isActive ? 'menu-item-active' : '',
+            isActive ? bgColorClass.active : bgColorClass.onActive,
+            isActive ? textColorClass.active : textColorClass.onActive,
+            sizeClass,
+            shadowColorClass.active,
+          ]"
           v-if="showItem"
         >
           {{ item }}
@@ -35,6 +46,11 @@ import { defineProps, useSlots, computed } from "vue";
 import { uiProps } from "./Props";
 import { menuEmits } from "./Emits";
 import { uiSlots } from "./Slots";
+import {
+  useColorClassName,
+  useBgColorClassName,
+} from "../../composables/ColorComposable";
+import { useSize } from "../../composables/UseSizeProps";
 const props = defineProps(uiProps);
 const emit = defineEmits(menuEmits);
 const uiSlots = defineSlots<uiSlots>();
@@ -44,46 +60,51 @@ defineOptions({
 const slots = useSlots();
 const showMenu = computed(() => !slots.menu);
 const showItem = computed(() => !slots.item);
+const textColorClass = useColorClassName(props);
+const bgColorClass = useBgColorClassName(props);
+const shadowColorClass = computed(() => {
+  return {
+    active: bgColorClass.value.active.replace("bg-", "shadow-sm shadow-"),
+  };
+});
+const sizeClass = useSize(props);
+
 const handlePageChange = (newValue: number) => {
   emit("update:modelValue", newValue);
-  console.log(props.vertical);
 };
 </script>
 
 <style scoped>
 .menu-item {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  background-color: #1a1a1a;
-  color: white;
-  padding: 15px 20px;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
+  font-size: 80%;
+  text-align: center;
+  min-width: 90px;
+  min-height: 45px;
+  margin: 5px;
 }
 
 .menu-item:hover {
-  background-color: #333;
   transform: scale(1.05);
 }
-
-div {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
 .menu-item-active {
-  background-color: #363636;
-  color: white;
   transform: scale(1.1);
 }
 </style>
 <style >
 .vertical-menu {
-  display: flex;
   flex-direction: column;
-  gap: 10px;
-  width: 20px;
+  min-width: 100px;
+  min-height: 40px;
+}
+.menu{
+  display: inline-flex;
+  padding: 10px;
+  border-radius: 8px;
 }
 </style>

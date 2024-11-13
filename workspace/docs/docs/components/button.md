@@ -2,7 +2,7 @@
 
 <script >
 
-import Btn from '../../../ui/src/components/button/Core.vue'; 
+import Btn from '../../../ui/src/components/button/Ui.vue'; 
 </script>
 
 **Button with Custom Effect**
@@ -31,7 +31,7 @@ import Btn from '../../../ui/src/components/button/Core.vue';
         <Btn color="secondary">Second</Btn>
     </div>
     <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
-        <Btn color="gradient">Gradient</Btn>
+        <Btn color="dark">Gradient</Btn>
     </div>
 </div>
 <Br/>
@@ -48,7 +48,7 @@ import Btn from '../../../ui/src/components/button/Core.vue';
 <Btn color="error">     Error !!</Btn>
 <Btn color="warning">   Warning</Btn>
 <Btn color="secondary"> Second</Btn>
-<Btn color="gradient">  Gradient</Btn>
+<Btn color="dark">  Gradient</Btn>
 
 
 ```
@@ -149,16 +149,16 @@ You Can use   *isDisable*  for disable your button
 
 <br/>
 
-You Can use   *CleanerEffect*  for disable your cleaner effect on button !
+You Can use   *CleanerEffect*  for enable  cleaner effect on button !
 <div class='  p-4 rounded-lg shadow-inner  flex justify-center items-center'>
 
-<Btn  color="secondary" CleanerEffect>Cleaner </Btn>
+<Btn  color="secondary" CleanerEffect  >Cleaner </Btn>
 
 
 </div>
 
 ```md
-<Btn  color="secondary" CleanerEffect=>Cleaner </Btn>
+<Btn  color="secondary" CleanerEffect > Cleaner </Btn>
 
 ```
 ---

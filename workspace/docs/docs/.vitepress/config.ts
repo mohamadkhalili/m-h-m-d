@@ -28,7 +28,8 @@ export default defineConfig({
           { text: 'modal', link: '/components//modal' },
           {text:'button',link:'/components//button'},
           {text:'input',link:'/components//input'},
-          {text:'Menu',link:'/components//menu'}
+          {text:'Menu',link:'/components//menu'},
+          {text:'Tab',link:'/components//tab'}
         ]
       },
       

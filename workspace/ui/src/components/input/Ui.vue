@@ -7,7 +7,7 @@
     <template #input>
       <slot name="input"></slot>
       <div v-if="showInput" class="input-container">
-       
+
         <label
           :class="{ 
             active: isFocused || localValue,
@@ -28,7 +28,7 @@
         }">
           <input
             ref="inputRef"
-            v-model="modelValue"
+            v-model="localValue"
             :disabled="isDisabled"
             :readonly="readonly"
             required
@@ -62,7 +62,7 @@ import { InputSlots } from "../input/Slots";
 import Core from "./Core.vue";
 
 const uiSlots = defineSlots<InputSlots>();
-const props = defineProps(inputProps);
+const props = defineProps(uiProps);
 const emit = defineEmits(inputEmits);
 
 defineOptions({
@@ -137,9 +137,9 @@ const focusInput = () => {
 .search-wrapper {
   display: flex;
   align-items: center;
-  background-color: #292524;
+  background-color: #0000005d;
   border-radius: 20px;
-  border: 1px solid rgb(58, 58, 58);
+  border: 1px solid rgba(126, 126, 126, 0.685);
   padding: 5px;
   width: fit-content;
   height: 45px;
@@ -153,7 +153,7 @@ const focusInput = () => {
   border: none;
   outline: none;
   padding-left: 15px;
-  background-color: #2925244f;
+  background-color: #52525273;
   color: white;
   font-size: 1em;
   margin-right: 10px; 
@@ -250,7 +250,7 @@ background: #001b94;
 }
 
 .bg-transparent {
-  border: 2px solid rgb(62, 62, 253);
+  border: 2px solid rgb(77, 77, 241);
   transition: 0.2s all ease-in-out;
 }
 
