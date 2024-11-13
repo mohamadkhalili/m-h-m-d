@@ -13,8 +13,5 @@ export const uiProps = {
     ...createRoundedProp(),
     ...createSizeProp(),
     ...createBorderProp(),
-    modelValue: { type: String, required: false },
-    vertical: { type: Boolean, required: false },
-    tooltip: { type: Boolean, required: false },
-    rtl: { type: Boolean, default: true }
+    modelValue: { type: Boolean, required: false }
 }

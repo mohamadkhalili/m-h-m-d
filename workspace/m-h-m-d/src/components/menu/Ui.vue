@@ -2,16 +2,16 @@
   <Core>
     <template #menu>
       <slot name="menu"></slot>
+      <div v-if="props.modelValue && showMenu"></div>
     </template>
   </Core>
 </template>
 <script setup lang="ts">
 import Core from "./Core.vue";
-import tooltipl from "../../components/tooltip/Core.vue";
 import { useSlots, computed } from "vue";
 import { uiProps } from "./Props";
 import { menuEmits } from "./Emits";
-import { uiSlots } from "./Slots";
+import { menuSlots } from "./Slots";
 import {
   useColorClassName,
   useBgColorClassName,
@@ -19,13 +19,12 @@ import {
 import { useSize } from "../../composables/UseSizeProps";
 const props = defineProps(uiProps);
 const emit = defineEmits(menuEmits);
-const uiSlots = defineSlots<uiSlots>();
+const uiSlots = defineSlots<menuSlots>();
 defineOptions({
   inheritAttrs: false,
 });
 const slots = useSlots();
 const showMenu = computed(() => !slots.menu);
-const showItem = computed(() => !slots.item);
 const textColorClass = useColorClassName(props);
 const bgColorClass = useBgColorClassName(props);
 const shadowColorClass = computed(() => {
@@ -35,9 +34,6 @@ const shadowColorClass = computed(() => {
 });
 const sizeClass = useSize(props);
 
-const handlePageChange = (newValue: number) => {
-  emit("update:modelValue", newValue);
-};
 </script>
 
 <style scoped>
