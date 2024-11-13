@@ -19,7 +19,6 @@
 <script setup lang="ts">
 import { modalSlots } from "./Slots";
 import { coreProps } from "./Props";
-import { defineProps, defineSlots, defineEmits, watchEffect } from "vue";
 import { modalEmits } from "./Emits";
 import {
   useBgColorClassName,

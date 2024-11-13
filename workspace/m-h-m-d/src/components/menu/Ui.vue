@@ -42,7 +42,7 @@
 <script setup lang="ts">
 import Core from "./Core.vue";
 import tooltipl from "../../components/tooltip/Core.vue";
-import { defineProps, useSlots, computed } from "vue";
+import { useSlots, computed } from "vue";
 import { uiProps } from "./Props";
 import { menuEmits } from "./Emits";
 import { uiSlots } from "./Slots";

@@ -6,13 +6,7 @@ import DefaultTheme from 'vitepress/theme'
 // import '../../../../styles'
 import './tailwind.postcss'
 // import Pagination from '../../../../ui/src/components/pagination/Ui.vue'
-import { pagination } from 'm-h-m-d'
-import Modal from '../../../../ui/src/components/modal/Ui.vue'
-import { tooltip } from '../../../../ui/src/directives/TooltipDirective'
-import Btn from '../../../../ui/src/components/button/Core.vue'
-import Input from '../../../../ui/src/components/input/Ui.vue'
-import Menu from '../../../../ui/src/components/menu/Ui.vue'
-import Tab from '../../../../ui/src/components/tab/Ui.vue'
+import { pagination, modal, Button, input, menu, tab } from 'm-h-m-d'
 
 
 export default {
@@ -24,13 +18,12 @@ export default {
   },
   enhanceApp({ app, router, siteData }) {
     // ...
-    app.directive('tooltipl', tooltip);
-    app.component('Btn', Btn)
+    app.component('Button', Button)
     app.component('Pagination', pagination)
-    app.component('modal', Modal)
-    app.component('Input', Input)
-    app.component('Menu', Menu)
-    app.component('Tab', Tab)
+    app.component('modal', modal)
+    app.component('Input', input)
+    app.component('Menu', menu)
+    app.component('Tab', tab)
 
 
   }

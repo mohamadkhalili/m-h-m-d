@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineEmits, computed, defineProps, defineSlots } from "vue";
+import { computed } from "vue";
 import { paginationProps } from "./Props";
 import { paginationSlots } from "./Slots";
 import { paginationEmits } from "./Emits";

@@ -1,6 +1,5 @@
 
 <script setup>
-import Tab from '../../../ui/src/components/tab/Ui.vue';
 const tabs = [
   { label: 'Tab 1', value: 'one', content: 'Content of tab 1' },
   { label: 'Tab 2', value: 'two', content: 'Content of tab 2' },
