@@ -4,7 +4,7 @@ import { createBorderProp } from '../../composables/UseBorderProps';
 import { createBgColorProp, createColorProp } from '../../composables/ColorComposable';
 
 export const coreProps = {
-    modelValue: { type: Boolean },
+    modelValue: { type: Boolean, default: false },
     location: { type: String, default: "top" }
 }
 export const uiProps = {

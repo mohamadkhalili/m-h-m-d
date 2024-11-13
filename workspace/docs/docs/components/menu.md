@@ -1,13 +1,15 @@
 # menu
 <script setup>
 import { ref } from 'vue'
-const menuValue = ref("");
+const menuValue = ref(false);
 const menuValueTooltip = ref("");
 const menuValueVertical = ref("");
 const menuValueColor = ref("");
 </script>
 
 this is default menu component:
+
+<button  @click="menuValue = true" class="bg-black text-white rounded-lg p-2 mt-1" cleaner>Open menu</button>
 <br>
 <Menu v-model="menuValue">
 </Menu>
