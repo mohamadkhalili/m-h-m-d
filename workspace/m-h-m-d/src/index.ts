@@ -11,26 +11,37 @@ import mainInput from './components/input/Core.vue';
 
 import { tooltip } from './directives/TooltipDirective';
 
-const components = [{ name: 'pagination', ...pagination },
-{ name: 'modal', ...modal },
-{ name: 'Button', ...Button },
-{ name: 'input', ...input },
-{ name: 'menu', ...menu },
-{ name: 'tab', ...tab }];
+const components = [
+    { name: 'pagination', ...pagination },
+    { name: 'modal', ...modal },
+    { name: 'Button', ...Button },
+    { name: 'input', ...input },
+    { name: 'menu', ...menu },
+    { name: 'tab', ...tab }
+]
+
+const directives = {
+    tooltip,
+    // Add other directives here
+}
 
 const install = (app: App) => {
     components.forEach(component => {
         app.component(component.name, component);
     });
-};
+    Object.entries(directives).forEach(([name, directive]) => {
+        app.directive(name, directive);
+    });
+
+}
 
 
-export { pagination, modal, Button, input, menu, tab };
-
+export { pagination, modal, Button, input, menu, tab }
+export { tooltip }
 
 export default {
     install
-};
+}
 
 // export default {
 //     install(app: App) {
