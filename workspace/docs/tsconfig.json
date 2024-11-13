@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "m-h-m-d": [
+        "../m-h-m-d/src/index.ts"
+      ],
+      "m-h-m-d/*": [
+        "../m-h-m-d/src/*"
+      ]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.d.ts",
+    "**/*.vue"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

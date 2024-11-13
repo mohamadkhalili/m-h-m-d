@@ -4,10 +4,15 @@
   "directories": {
     "doc": "docs"
   },
+  "workspaces": [
+    "workspace/*"
+  ],
   "private": true,
   "scripts": {
     "start": "pnpm -r start",
-    "build": "pnpm -r build"
+    "dev": "lerna run docs:dev --scope=docs",
+    "build": "pnpm -r build",
+    "new-version": "lerna version --conventional-commits --yes"
   },
   "author": "",
   "license": "MIT",
@@ -17,5 +22,8 @@
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.14"
+  },
+  "devDependencies": {
+    "lerna": "^8.1.9"
   }
 }
