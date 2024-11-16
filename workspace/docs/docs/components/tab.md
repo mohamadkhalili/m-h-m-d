@@ -42,16 +42,16 @@ Modify the colors for active and inactive tabs
 The following examples show how you can customize the background and text colors for active and inactive states.
 
 <div class="grid grid-cols-2 gap-4"> 
-<div class="p-4 rounded-lg shadow-inner flex justify-center items-center"> <Tab :tabs="tabs" activeColor="bg-blue-600" color="bg-gray-700" activeTextColor="text-white" textColor="text-white" > <template #label="{ tab }"> <span>{{ tab.label }}</span> </template> <template #content="{ tab }"> <p>{{ tab.content }}</p> </template> </Tab> </div> <div class="p-4 rounded-lg shadow-inner flex justify-center items-center"> <Tab :tabs="tabs" activeColor="bg-rose-700" color="bg-gray-100" activeTextColor="text-white" textColor="text-black" > <template #label="{ tab }"> <span>{{ tab.label }}</span> </template> <template #content="{ tab }"> <p>{{ tab.content }}</p> </template> </Tab> </div> </div>
----
+<div class="p-4 rounded-lg shadow-inner flex justify-center items-center"> <Tab :tabs="tabsVariants" activeColor="bg-blue-600" color="bg-gray-700" activeTextColor="text-white" textColor="text-white" > <template #label="{ tab }"> <span>{{ tab.label }}</span> </template> <template #content="{ tab }"> <p>{{ tab.content }}</p> </template> </Tab> </div> <div class="p-4 rounded-lg shadow-inner flex justify-center items-center"> <Tab :tabs="tabsVariants" activeColor="bg-rose-700" color="bg-gray-100" activeTextColor="text-white" textColor="text-black" > <template #label="{ tab }"> <span>{{ tab.label }}</span> </template> <template #content="{ tab }"> <p>{{ tab.content }}</p> </template> </Tab> </div> </div>
+
 
 ## Vertical Tabs
 
 <div class="p-6 rounded-lg shadow-inner flex justify-center items-center">
   <Tab 
     :tabs="tabsVariants" 
-    activeColor="bg-green-600" 
-    color="bg-gray-100" 
+    activeColor="bg-purple-600" 
+    color="bg-purple-200" 
     activeTextColor="text-white" 
     textColor="text-black"
     vertical
@@ -70,10 +70,10 @@ const tabsVariants = [
   { label: 'Tab 3', value: 3, content: null }
 ];
 </script>
-<Tab 
+ <Tab 
     :tabs="tabsVariants" 
-    activeColor="bg-green-600" 
-    color="bg-gray-100" 
+    activeColor="bg-purple-600" 
+    color="bg-purple-200" 
     activeTextColor="text-white" 
     textColor="text-black"
     vertical
@@ -109,12 +109,28 @@ const tabsVariants = [
       variant="underline" 
       activeTextColor="text-blue-500"
     >
-      <template #label="{ tab }">
-        <span>{{ tab.label }}</span>
-      </template>
+    </Tab>
+  </div>
+   <div class="p-4 my-10 rounded-lg shadow-inner flex justify-center items-center">
+    <Tab 
+      :tabs="tabsVariants" 
+      variant="bordered"
+    >
+    </Tab>
+  </div>
+
+  <div class="p-4 rounded-lg my-10  shadow-inner flex justify-center items-center">
+    <Tab 
+      :tabs="tabsVariants" 
+      variant="Link" 
+      activeTextColor="text-purple-700"
+      activeShadow="shadow-purple-700" 
+      shadow="shadow-purple-300" 
+    >
     </Tab>
   </div>
 </div>
+
 
 ---
 

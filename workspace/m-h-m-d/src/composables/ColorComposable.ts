@@ -25,6 +25,22 @@ export function createBgColorProp(defaultBgActiveColor: string = 'bg-slate-950',
         }
     };
 }
+export function createShadowProp(defaultActiveShadowColor: string = '', defaultOnActiveShadowColor: string = 'shadow-transparent') {
+    return {
+        activeShadow: {
+            type: String,
+            default: defaultActiveShadowColor
+        },
+        shadow: {
+            type: String,
+            default: defaultOnActiveShadowColor
+        }
+    };
+}
+
+
+
+
 
 export function useColorClassName(props: { activeTextColor: string; textColor: string }) {
     const className = computed(() => {
@@ -42,6 +58,17 @@ export function useBgColorClassName(props: { activeColor: string; color: string 
         return {
             active: `${props.activeColor}`,
             onActive: `${props.color}`
+        };
+    });
+
+    return className;
+}
+
+export function useShadowColorClassName(props: { activeShadow: string; shadow: string }) {
+    const className = computed(() => {
+        return {
+            active: `${props.activeShadow}`,
+            onActive: `${props.shadow}`
         };
     });
 

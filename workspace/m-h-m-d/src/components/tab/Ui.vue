@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { TabProps } from './props';
-import { useBgColorClassName, useColorClassName } from '../../composables/ColorComposable';
+import { useBgColorClassName, useColorClassName ,useShadowColorClassName} from '../../composables/ColorComposable';
 import Core from './Core.vue';
 
 const props = defineProps(TabProps);
@@ -9,21 +9,23 @@ const activeTab = ref(props.modelValue || props.tabs[0]?.value);
 const emit = defineEmits(['update:modelValue']);
 const bgColorClass = useBgColorClassName(props);
 const textColorClass = useColorClassName(props);
+const ShadowColorClass = useShadowColorClassName(props);
+
 
 const getButtonStyleClass = computed(() => {
   switch (props.variant) {
     case 'underline':
       return 'relative after:content-[""] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-0 after:left-0 after:transition-transform after:duration-300 hover:after:scale-x-100 bg-transparent';
     case 'bordered':
-      return 'border-blue-800 shadow-gray-400 shadow-inner transition-transform duration-200';
+      return 'border-blue-800  shadow-inner transition-transform duration-200';
     case 'Link':
-      return 'text-blue-600 underline transition-opacity duration-200 ease-in-out hover:opacity-80';
+      return ' bg-transparent   ';
     default:
       return '';
   }
 });
 
-const layoutClass = computed(() => (props.vertical ? 'flex flex-col' : 'flex')); // تغییر جهت لیبل‌ها
+const layoutClass = computed(() => (props.vertical ? 'flex flex-col' : 'flex'));
 
 function selectTab(value) {
   activeTab.value = value;
@@ -38,7 +40,7 @@ function selectTab(value) {
       :is-disabled="props.isDisabled"
       :class="layoutClass"
     >
-      <!-- لیبل‌ها -->
+ 
       <div v-for="(tab, index) in props.tabs" :key="tab.value" class="relative">
         <button
           @click="selectTab(tab.value)"
@@ -47,10 +49,16 @@ function selectTab(value) {
             getButtonStyleClass,
             activeTab === tab.value ? bgColorClass.active : bgColorClass.onActive,
             activeTab === tab.value ? textColorClass.active : textColorClass.onActive,
-            props.variant === 'underline' && activeTab === tab.value ? 'after:scale-x-100' : 'after:scale-x-0',
+            activeTab === tab.value ? ShadowColorClass.active : ShadowColorClass.onActive,
+
+            props.variant === 'underline' && activeTab === tab.value ? 'after:scale-x-100 active:scale-100' : '',
+
+            props.variant === 'Link' && activeTab === tab.value ? 'shadow-md transition-all duration-300  rounded-lg ' : '',
+            props.variant === 'Link' && activeTab !== tab.value ? 'shadow-inner transition-all duration-300  rounded-lg    ' : '',
+
             !vertical ? (props.variant === 'default' && index === 0 ? 'rounded-l-full' : ''):(props.variant === 'default' && index === 0 ? 'rounded-t-2xl' : ''),
             !vertical ?( props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-r-full' : ''):( props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-b-2xl' : ''),
-              props.vertical ? 'w-full  ' : ''
+              props.vertical ? 'w-full ' : ''
           ]"
         >
 
