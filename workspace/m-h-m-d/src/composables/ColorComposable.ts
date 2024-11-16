@@ -25,6 +25,7 @@ export function createBgColorProp(defaultBgActiveColor: string = 'bg-slate-950',
         }
     };
 }
+
 export function createShadowProp(defaultActiveShadowColor: string = '', defaultOnActiveShadowColor: string = 'shadow-transparent') {
     return {
         activeShadow: {

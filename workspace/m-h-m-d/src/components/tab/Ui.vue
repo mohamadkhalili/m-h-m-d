@@ -15,10 +15,10 @@ const ShadowColorClass = useShadowColorClassName(props);
 const getButtonStyleClass = computed(() => {
   switch (props.variant) {
     case 'underline':
-      return 'relative after:content-[""] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-0 after:left-0 after:transition-transform after:duration-300 hover:after:scale-x-100 bg-transparent';
+      return 'relative after:content-[""] after:absolute after:w-full after:h-[2px] after:bg-rose-400 after:bottom-0 after:left-0 after:transition-transform after:duration-300 hover:after:scale-x-100 bg-transparent';
     case 'bordered':
       return 'border-blue-800  shadow-inner transition-transform duration-200';
-    case 'Link':
+    case 'shadow':
       return ' bg-transparent   ';
     default:
       return '';
@@ -45,16 +45,16 @@ function selectTab(value) {
         <button
           @click="selectTab(tab.value)"
           :class="[
-            'py-2 px-4 transition-all active:scale-95 hover:brightness-90 hover:bg duration-100 ease-in-out border-x-8 ',
+            'py-2 px-4 transition-all  hover:brightness-90 hover:bg duration-100 ease-in-out border-x-8 ',
             getButtonStyleClass,
             activeTab === tab.value ? bgColorClass.active : bgColorClass.onActive,
             activeTab === tab.value ? textColorClass.active : textColorClass.onActive,
             activeTab === tab.value ? ShadowColorClass.active : ShadowColorClass.onActive,
 
-            props.variant === 'underline' && activeTab === tab.value ? 'after:scale-x-100 active:scale-100' : '',
+            props.variant === 'underline' && activeTab === tab.value ? 'after:scale-x-100' : 'after:scale-x-0',
 
-            props.variant === 'Link' && activeTab === tab.value ? 'shadow-md transition-all duration-300  rounded-lg ' : '',
-            props.variant === 'Link' && activeTab !== tab.value ? 'shadow-inner transition-all duration-300  rounded-lg    ' : '',
+            props.variant === 'shadow' && activeTab === tab.value ? 'shadow-md transition-all duration-300  active:scale-95 rounded-lg ' : '',
+            props.variant === 'shadow' && activeTab !== tab.value ? 'shadow-inner transition-all duration-300  rounded-lg active:scale-95    ' : '',
 
             !vertical ? (props.variant === 'default' && index === 0 ? 'rounded-l-full' : ''):(props.variant === 'default' && index === 0 ? 'rounded-t-2xl' : ''),
             !vertical ?( props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-r-full' : ''):( props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-b-2xl' : ''),

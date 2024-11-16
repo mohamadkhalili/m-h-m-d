@@ -107,28 +107,33 @@ const tabsVariants = [
     <Tab 
       :tabs="tabsVariants" 
       variant="underline" 
-      activeTextColor="text-blue-500"
+      activeTextColor="text-rose-600"
+      activeColor="bg-purple-600"
     >
     </Tab>
   </div>
    <div class="p-4 my-10 rounded-lg shadow-inner flex justify-center items-center">
     <Tab 
       :tabs="tabsVariants" 
-      variant="bordered"
+      variant="default"
     >
     </Tab>
   </div>
 
   <div class="p-4 rounded-lg my-10  shadow-inner flex justify-center items-center">
-    <Tab 
+
+
+  <Tab 
       :tabs="tabsVariants" 
-      variant="Link" 
-      activeTextColor="text-purple-700"
-      activeShadow="shadow-purple-700" 
-      shadow="shadow-purple-300" 
+      variant="shadow" 
+      activeTextColor="text-sky-600"
+      activeShadow="shadow-sky-500" 
+      shadow="shadow-gray-200" 
     >
     </Tab>
+    
   </div>
+  
 </div>
 
 
@@ -143,8 +148,8 @@ const tabsVariants = [
 | **Default Tab**      | Basic example with default styles. This is the simplest usage, without any extra configuration.                 | Pass an array of tabs with labels and content. Set the `variant` prop to `'default'`.       |
 | **Customize Colors** | Customize the text and background colors of both active and inactive tabs. Can be applied using `createColorProp()` and `createBgColorProp()`. | Set the `textColor` and `activeColor` props to modify the colors of the tabs.               |
 | **Vertical Tabs**    | Displays the tabs in a vertical orientation instead of horizontal, useful for space-constrained areas.            | Set the `vertical` prop to `true`.                                                           |
-| **Variants**         | Different tab styles that can be applied using the `variant` prop. Options include `'underline'`, `'bordered'`, `'link'`, and `'default'`. | Use the `variant` prop to set the desired tab style (`'underline'`, `'bordered'`, etc.).      |
+| **Variants**         | Different tab styles that can be applied using the `variant` prop. Options include `'underline'`, `'bordered'`, `'shadow'`, and `'default'`. | Use the `variant` prop to set the desired tab style (`'underline'`, `'bordered'`, etc.).      |
 | **Disabled Tab**     | Disable specific tabs to prevent interaction. Can be controlled via the `isDisabled` prop.                        | Set `isDisabled` to `true` for the tab that should be disabled.                             |
 | **Custom Content**   | Customize the content that appears when a tab is selected. This is managed via slots for content and labels.      | Use `#content` and `#label` slots to customize the tab label and content dynamically.        |
-
+|**Customize Shadow Colors**| Customize the Shadow colors of both active and inactive tabs.| Set the `activeShadow` and `shadow` props to modify the shadow of the tabs.               |
 ---
