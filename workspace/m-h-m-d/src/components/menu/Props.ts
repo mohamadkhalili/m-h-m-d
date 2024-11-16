@@ -1,6 +1,5 @@
 import { createSizeProp } from '../../composables/UseSizeProps'
 import { createRoundedProp } from '../../composables/UseRoundedProps'
-import { createBorderProp } from '../../composables/UseBorderProps';
 import { createBgColorProp, createColorProp } from '../../composables/ColorComposable';
 
 export const coreProps = {

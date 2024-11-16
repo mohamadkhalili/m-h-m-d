@@ -8,12 +8,14 @@
     <template #menu>
       <div
         v-if="modelValue"
-        class="absolute left-0 top-full -mt-4 w-28 h-20 bg-black text-white rounded-lg shadow-lg z-50 
-               transition-transform transition-opacity duration-300 ease-in-out transform"
         :class="[
            modelValue ? 'scale-100 opacity-100 translate-y-0': 'scale-95 opacity-0 -translate-y-2 pointer-events-none',
-           bgColorClass.onActive
+           bgColorClass.onActive,
+           sizeClass,
     ]"
+        class="absolute left-0 top-full -mt-4 w-28 h-20 bg-black text-white rounded-lg shadow-lg z-50 
+               transition-transform transition-opacity duration-300 ease-in-out transform"
+        
       ><slot name="menu"></slot></div>
       
     </template>
@@ -41,7 +43,6 @@ const handleModelValue = (newValue: boolean) => {
 const slots = useSlots();
 const showMenu = computed(() => !slots.menu);
 const bgColorClass = useBgColorClassName(props);
-
 const sizeClass = useSize(props);
 </script>
 
