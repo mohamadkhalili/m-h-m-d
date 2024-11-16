@@ -38,6 +38,10 @@ export const TabProps = {
     type: Boolean,
     default: false,
   },
+  size:{
+    type: String 
+  },
+  
   ...createColorProp(),
   ...createBgColorProp(),
   ...createShadowProp(),

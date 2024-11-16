@@ -1,4 +1,4 @@
-# input
+## input
 <script >
 import {ref} from 'vue'
 const inputValue = ref('');
@@ -31,7 +31,8 @@ you can easy import and use it!
 
 ```
 
-**Customize the color as you like or use the default values!**
+## modify 
+the color as you like or use the default values!**
 
 <Br/>
 
@@ -74,7 +75,7 @@ you can easy import and use it!
 
 ----
 
-**Disable**
+## Disable
 <br/>
 
  You can easy Disable your input  with  **IsDisabled**
@@ -91,7 +92,7 @@ you can easy import and use it!
 <Input color="secondary" title="Disabled" isDisabled/>
 ```
 ---
-**Read Only**
+## Read Only
 <br/>
 
 also can make Read Only with  **Readonly** feature ! 
@@ -107,7 +108,7 @@ also can make Read Only with  **Readonly** feature !
 
 ```
 ---
-**Variant themes**
+## Variant 
 <br/>
 <br/>
 
@@ -154,7 +155,7 @@ You can use any variants for your theme it's already ready !
 ```
 
 ---
-**Size**
+## Size
 
 you can choice your size
 <div class="   p-6 rounded-lg shadow-inner  flex-col flex gap-4 justify-center items-center">
@@ -177,10 +178,10 @@ you can choice your size
 
 
 ---
-**RTL**
+## RTL
 <br/>
 
- can use **RTL** for align text ! 
+ can use `RTL` for align text ! 
 
 <div class="   p-6 rounded-lg shadow-inner  flex justify-center items-center">
 <Input v-model="inputValueRtl" color="warning"  title="نام خانوادگی"   rtl /> 

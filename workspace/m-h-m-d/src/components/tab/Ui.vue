@@ -5,6 +5,24 @@ import { useBgColorClassName, useColorClassName ,useShadowColorClassName} from '
 import Core from './Core.vue';
 
 const props = defineProps(TabProps);
+
+const sizeTab = computed(() => {
+  switch(props.size){
+    case 'sm':
+      return 'text-sm'
+    case 'md':
+      return 'text-md'
+      case 'lg':
+      return 'text-lg'
+      case 'xl':
+      return 'text-xl bg-black'
+      case '2xl':
+      return 'text-bold text-2xl text-lg'
+     default:
+     return 'text-sm'
+  }
+});
+
 const activeTab = ref(props.modelValue || props.tabs[0]?.value);
 const emit = defineEmits(['update:modelValue']);
 const bgColorClass = useBgColorClassName(props);
@@ -82,8 +100,10 @@ function selectTab(value) {
         @click="!props.isDisabled && selectTab(tab.value)"
   :disabled="props.isDisabled"
   :class="[
+   
     `py-2 px-4 transition-all hover:brightness-90 duration-100 ease-in-out border-x-8`,
-    getButtonStyleClass,
+    getButtonStyleClass,sizeTab,
+    
     activeTab === tab.value ? bgColorClass.active : bgColorClass.onActive,
     activeTab === tab.value ? textColorClass.active : textColorClass.onActive,
     activeTab === tab.value ? ShadowColorClass.active : ShadowColorClass.onActive,
@@ -113,7 +133,7 @@ function selectTab(value) {
       </div>
     </Core>
 
-    <!-- محتوا -->
+  
     <div class="mt-4">
       <div v-for="tab in props.tabs" :key="tab.value" v-show="activeTab === tab.value" class="w-full">
         <transition name="fade" mode="out-in">

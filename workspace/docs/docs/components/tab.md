@@ -245,6 +245,58 @@ The following examples show how you can customize the background and text colors
 ```
 
 
+
+## Size
+<div class="p-6 rounded-lg shadow-inner flex  flex-col justify-center items-center">
+  <Tab 
+     :tabs="tabsVariants" 
+      activeTextColor="text-teal-500"
+      activeShadow="shadow-teal-500" 
+      textColor="shadow-gray-300" 
+      variant="bordered"
+      size="2xl" 
+  >
+  </Tab>
+  <Tab 
+     :tabs="tabsVariants" 
+      activeTextColor="text-teal-500"
+      activeShadow="shadow-teal-500" 
+      textColor="shadow-gray-300" 
+      variant="bordered"
+      size="xl" 
+  >
+  </Tab>
+  <Tab 
+     :tabs="tabsVariants" 
+      activeTextColor="text-teal-500"
+      activeShadow="shadow-teal-500" 
+      textColor="shadow-gray-300" 
+      variant="bordered" 
+      size="lg" 
+  >
+  </Tab>
+  <Tab 
+     :tabs="tabsVariants" 
+      activeTextColor="text-teal-500"
+      activeShadow="shadow-teal-500" 
+      textColor="shadow-gray-300" 
+      variant="bordered" 
+      size="md"  
+  >
+  </Tab>
+   <Tab 
+     :tabs="tabsVariants" 
+      activeTextColor="text-teal-500"
+      activeShadow="shadow-teal-500" 
+      textColor="shadow-gray-300" 
+      variant="bordered" 
+      size="sm"  
+  >
+  </Tab>
+</div>
+
+
+
 ## Tab Component Features
 
 | **Feature**         | **Description**                                                                                                   | **Usage**                                                                                   |
