@@ -8,10 +8,8 @@ export const coreProps = {
     location: { type: String, default: "top" }
 }
 export const uiProps = {
-    ...createColorProp(),
     ...createBgColorProp(),
     ...createRoundedProp(),
     ...createSizeProp(),
-    ...createBorderProp(),
     modelValue : { type : Boolean, default : false},
 }
