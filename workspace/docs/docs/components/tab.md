@@ -14,7 +14,7 @@ const tabsVariants = [
 
 ---
 
-# Default Tab
+## Default Tab
 
 **Simple tabs with default configurations**  
 This example demonstrates horizontally aligned tabs with default styling.
@@ -72,7 +72,8 @@ const tabs = [
 <br/>
 
 
-Modify the colors for active and inactive tabs
+## Modify
+ the colors for active and inactive tabs
 The following examples show how you can customize the background and text colors for active and inactive states.
 <br/>
 <br/>
@@ -128,7 +129,7 @@ The following examples show how you can customize the background and text colors
     color="bg-purple-200" 
     activeTextColor="text-white" 
     textColor="text-black"
-    vertical      <--add this
+    vertical      <!-- add this -->
   >
 ```
 
@@ -209,15 +210,42 @@ The following examples show how you can customize the background and text colors
       activeTextColor="text-teal-500"
       activeShadow="shadow-teal-500" 
       shadow="shadow-gray-300" 
-      variant="shadow"   <-- You can choice 1 of 4 variants  -->
+      variant="shadow"   <!-- You can choice 1 of 4 variants  -->
     >
 ```
 <br/>
 <br/>
 
 
+## Disable
+ you can disable your Tab with `isDisable` option!
 
-# Tab Component Features
+ <div class="p-6 rounded-lg shadow-inner flex justify-center items-center">
+  <Tab 
+     :tabs="tabsVariants" 
+      activeTextColor="text-teal-500"
+      activeShadow="shadow-teal-500" 
+      textColor="shadow-gray-300" 
+      variant="bordered" 
+    isDisabled 
+  >
+  </Tab>
+</div>
+
+**Code**
+```md
+ <Tab 
+     :tabs="tabsVariants" 
+      activeTextColor="text-teal-500"
+      activeShadow="shadow-teal-500" 
+      textColor="shadow-gray-300" 
+      variant="bordered" 
+     isDisabled    <!-- add this -->
+  >
+```
+
+
+## Tab Component Features
 
 | **Feature**         | **Description**                                                                                                   | **Usage**                                                                                   |
 |---------------------|-------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
@@ -225,7 +253,7 @@ The following examples show how you can customize the background and text colors
 | **Customize Colors** | Customize the text and background colors of both active and inactive tabs. Can be applied using `createColorProp()` and `createBgColorProp()`. | Set the `textColor` and `activeColor` props to modify the colors of the tabs.               |
 | **Vertical Tabs**    | Displays the tabs in a vertical orientation instead of horizontal, useful for space-constrained areas.            | Set the `vertical` prop to `true`.                                                           |
 | **Variants**         | Different tab styles that can be applied using the `variant` prop. Options include `'underline'`, `'bordered'`, `'shadow'`, and `'default'`. | Use the `variant` prop to set the desired tab style (`'underline'`, `'bordered'`, etc.).      |
-| **Disabled Tab**     | Disable specific tabs to prevent interaction. Can be controlled via the `isDisabled` prop.                        | Set `isDisabled` to `true` for the tab that should be disabled.                             |
+| **Disabled Tab**     | Prevent users from interacting with specific tabs by disabling them.                                              | Use the `isDisabled` prop to disable all tabs or specific ones.                             |
 | **Custom Content**   | Customize the content that appears when a tab is selected. This is managed via slots for content and labels.      | Use `#content` and `#label` slots to customize the tab label and content dynamically.        |
-|**Customize Shadow Colors**| Customize the Shadow colors of both active and inactive tabs.| Set the `activeShadow` and `shadow` props to modify the shadow of the tabs.               |
----
+| **Customize Shadow Colors** | Customize the shadow colors of both active and inactive tabs.                                              | Set the `activeShadow` and `shadow` props to modify the shadow of the tabs.                 |
+
