@@ -47,9 +47,9 @@ The following examples show how you can customize the background and text colors
 
 ## Vertical Tabs
 
-<div class="p-6 rounded-lg shadow-inner flex flex-col items-start">
+<div class="p-6 rounded-lg shadow-inner flex justify-center items-center">
   <Tab 
-    :tabs="tabs" 
+    :tabs="tabsVariants" 
     activeColor="bg-green-600" 
     color="bg-gray-100" 
     activeTextColor="text-white" 
@@ -59,13 +59,35 @@ The following examples show how you can customize the background and text colors
     <template #label="{ tab }">
       <span>{{ tab.label }}</span>
     </template>
-    <template #content="{ tab }">
-      <p>{{ tab.content }}</p>
+  </Tab>
+</div>
+
+```md
+<script setup>
+const tabsVariants = [
+  { label: 'Tab 1', value: 1, content: null },
+  { label: 'Tab 2', value: 2, content: null },
+  { label: 'Tab 3', value: 3, content: null }
+];
+</script>
+<Tab 
+    :tabs="tabsVariants" 
+    activeColor="bg-green-600" 
+    color="bg-gray-100" 
+    activeTextColor="text-white" 
+    textColor="text-black"
+    vertical
+  >
+    <template #label="{ tab }">
+      <span>{{ tab.label }}</span>
     </template>
   </Tab>
 </div>
 
+```
+
 ---
+
 
 ## Variants
 

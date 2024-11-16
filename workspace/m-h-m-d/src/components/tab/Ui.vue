@@ -43,13 +43,14 @@ function selectTab(value) {
         <button
           @click="selectTab(tab.value)"
           :class="[
-            'py-2 px-4 transition-all active:scale-95 hover:brightness-90 hover:bg duration-100 ease-in-out border-x-8',
+            'py-2 px-4 transition-all active:scale-95 hover:brightness-90 hover:bg duration-100 ease-in-out border-x-8 ',
             getButtonStyleClass,
             activeTab === tab.value ? bgColorClass.active : bgColorClass.onActive,
             activeTab === tab.value ? textColorClass.active : textColorClass.onActive,
             props.variant === 'underline' && activeTab === tab.value ? 'after:scale-x-100' : 'after:scale-x-0',
-            props.variant === 'default' && index === 0 ? 'rounded-l-full' : '',
-            props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-r-full' : '',
+            !vertical ? (props.variant === 'default' && index === 0 ? 'rounded-l-full' : ''):(props.variant === 'default' && index === 0 ? 'rounded-t-2xl' : ''),
+            !vertical ?( props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-r-full' : ''):( props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-b-2xl' : ''),
+              props.vertical ? 'w-full  ' : ''
           ]"
         >
 
