@@ -11,17 +11,52 @@ const bgColorClass = useBgColorClassName(props);
 const textColorClass = useColorClassName(props);
 const ShadowColorClass = useShadowColorClassName(props);
 
-
 const getButtonStyleClass = computed(() => {
   switch (props.variant) {
     case 'underline':
-      return 'relative after:content-[""] after:absolute after:w-full after:h-[2px] after:bg-rose-400 after:bottom-0 after:left-0 after:transition-transform after:duration-300 hover:after:scale-x-100 bg-transparent';
+      return 'relative after:content-[""] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-0 after:left-0 after:transition-transform after:duration-300 hover:after:scale-x-100 bg-transparent';
     case 'bordered':
-      return 'border-blue-800  shadow-inner transition-transform duration-200';
+      return 'relative border-2 border-transparent hover:border-blue-500 transition-all duration-300';
     case 'shadow':
-      return ' bg-transparent   ';
+      return ' bg-transparent relative after:content after:absolute after:w-full after:h-[1px] after:bg-gray-200 ';
+
+
+     case 'mirror':
+  return `
+    relative flex items-center justify-center overflow-hidden bg-transparent rounded-xl
+    transition-all duration-500 ease-in-out
+    border-2 border-transparent
+    bg-gradient-to-br from-white/10 to-blue-400/30
+    hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-white/40
+    hover:scale-110 active:scale-100
+    after:content-[""] after:absolute after:w-full after:h-full after:bg-gradient-to-t 
+    after:from-transparent after:to-blue-300/40 after:opacity-0 after:transition-all 
+    after:duration-500 hover:after:opacity-100 hover:after:scale-105 hover:after:blur-md
+    before:content-[""] before:absolute before:w-full before:h-full before:bg-gradient-to-t 
+    before:from-transparent before:to-blue-100/30 before:opacity-0 before:transition-all 
+    before:duration-500 hover:before:opacity-100 hover:before:scale-110 hover:before:blur-md
+    shadow-2xl shadow-blue-500/10
+    hover:shadow-2xl hover:shadow-blue-600/60
+    active:shadow-none active:scale-95
+  `;
+
+
+
+
     default:
-      return '';
+      return `
+        relative flex items-center justify-center overflow-hidden  bg-gradient-to-br
+        from-white/20 to-white/10 backdrop-blur-md
+        transition-all duration-700 ease-in-out shadow-inner 
+        after:content-[""] after:absolute after:inset-0 
+        after:bg-gradient-to-br after:from-blue-400/30 after:via-white/10 after:to-transparent
+        after:opacity-0 after:scale-75 after:blur-lg
+        hover:after:opacity-60 hover:after:scale-[1.15] hover:after:blur-md
+        before:content-[""] before:absolute before:w-[140%] before:h-[140%]
+        before:bg-gradient-to-br before:from-blue-200/20 before:to-white/5
+        before:opacity-0 before:scale-0 before:transition-transform before:duration-700
+        hover:before:scale-100 hover:before:opacity-50 active:before:scale-90 active:before:opacity-30
+      `;
   }
 });
 
@@ -52,9 +87,15 @@ function selectTab(value) {
             activeTab === tab.value ? ShadowColorClass.active : ShadowColorClass.onActive,
 
             props.variant === 'underline' && activeTab === tab.value ? 'after:scale-x-100' : 'after:scale-x-0',
-
             props.variant === 'shadow' && activeTab === tab.value ? 'shadow-md transition-all duration-300  active:scale-95 rounded-lg ' : '',
             props.variant === 'shadow' && activeTab !== tab.value ? 'shadow-inner transition-all duration-300  rounded-lg active:scale-95    ' : '',
+            props.variant === 'bordered' 
+  ? `relative overflow-hidden rounded-md bg-transparent ring-1 
+     ${activeTab === tab.value 
+       ? 'after:translate-x-0 after:scale-x-100 after:opacity-100 ring-gray-200 ' 
+       : 'after:translate-x-[-100%] after:scale-x-10 after:opacity-0 ring-gray-200'} 
+     transition-all duration-700`
+  : '',
 
             !vertical ? (props.variant === 'default' && index === 0 ? 'rounded-l-full' : ''):(props.variant === 'default' && index === 0 ? 'rounded-t-2xl' : ''),
             !vertical ?( props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-r-full' : ''):( props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-b-2xl' : ''),

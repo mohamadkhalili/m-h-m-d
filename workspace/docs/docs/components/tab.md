@@ -36,13 +36,71 @@ This example demonstrates horizontally aligned tabs with default styling.
   </Tab>
 </div>
 
+<br/>
+<br/>
+
+**Code**
+
+
+```md
+<script setup>
+const tabs = [
+  { label: 'Tab 1', value: 1, content: 'Content of tab 1' },
+  { label: 'Tab 2', value: 2, content: 'Content of tab 2' },
+  { label: 'Tab 3', value: 3, content: 'Content of tab 3' }
+];
+</script>
+
+<Tab 
+    :tabs="tabs" 
+    activeColor="bg-gray-800" 
+    color="bg-gray-200" 
+    activeTextColor="text-white" 
+    textColor="text-black"
+  >
+    <template #label="{ tab }">
+      <span>{{ tab.label }}</span>
+    </template>
+    <template #content="{ tab }">
+      <p>{{ tab.content }}</p>
+    </template>
+  </Tab>
+
+
+```
+<br/>
+<br/>
 
 
 Modify the colors for active and inactive tabs
 The following examples show how you can customize the background and text colors for active and inactive states.
+<br/>
+<br/>
 
 <div class="grid grid-cols-2 gap-4"> 
-<div class="p-4 rounded-lg shadow-inner flex justify-center items-center"> <Tab :tabs="tabsVariants" activeColor="bg-blue-600" color="bg-gray-700" activeTextColor="text-white" textColor="text-white" > <template #label="{ tab }"> <span>{{ tab.label }}</span> </template> <template #content="{ tab }"> <p>{{ tab.content }}</p> </template> </Tab> </div> <div class="p-4 rounded-lg shadow-inner flex justify-center items-center"> <Tab :tabs="tabsVariants" activeColor="bg-rose-700" color="bg-gray-100" activeTextColor="text-white" textColor="text-black" > <template #label="{ tab }"> <span>{{ tab.label }}</span> </template> <template #content="{ tab }"> <p>{{ tab.content }}</p> </template> </Tab> </div> </div>
+<div class="p-4 rounded-lg shadow-inner flex justify-center items-center">
+ <Tab :tabs="tabsVariants" activeColor="bg-blue-600" color="bg-gray-700" activeTextColor="text-white" textColor="text-white" > 
+ <template #label="{ tab }"> 
+ <span>{{ tab.label }}</span>
+  </template>
+   <template #content="{ tab }">
+    <p>{{ tab.content }}</p> 
+    </template>
+    </Tab> 
+    </div> 
+    <div class="p-4 rounded-lg shadow-inner flex justify-center items-center"> 
+    <Tab :tabs="tabsVariants" activeColor="bg-rose-700" color="bg-gray-100" activeTextColor="text-white" textColor="text-black" >
+     <template #label="{ tab }"> 
+     <span>{{ tab.label }}</span> 
+     </template>
+      <template #content="{ tab }"> 
+      <p>{{ tab.content }}</p> 
+      </template> 
+      </Tab>
+       </div>
+       </div>
+
+
 
 
 ## Vertical Tabs
@@ -63,39 +121,37 @@ The following examples show how you can customize the background and text colors
 </div>
 
 ```md
-<script setup>
-const tabsVariants = [
-  { label: 'Tab 1', value: 1, content: null },
-  { label: 'Tab 2', value: 2, content: null },
-  { label: 'Tab 3', value: 3, content: null }
-];
-</script>
+
  <Tab 
     :tabs="tabsVariants" 
     activeColor="bg-purple-600" 
     color="bg-purple-200" 
     activeTextColor="text-white" 
     textColor="text-black"
-    vertical
+    vertical      <--add this
   >
-    <template #label="{ tab }">
-      <span>{{ tab.label }}</span>
-    </template>
-  </Tab>
-</div>
-
 ```
 
 ---
 
 
 ## Variants
+<br/>
+
+<div class="flex justify-around">
+<h5 class="text-orange-800">bordered</h5>
+<h5 class="text-blue-950">underline</h5>
+
+</div>
+<br/>
 
 <div class="grid grid-cols-2 gap-4">
   <div class="p-4 rounded-lg shadow-inner flex justify-center items-center">
     <Tab 
       :tabs="tabsVariants" 
       variant="bordered"
+       activeTextColor="text-orange-500"
+      activeColor="bg-purple-600"
     >
       <template #label="{ tab }">
         <span>{{ tab.label }}</span>
@@ -107,7 +163,7 @@ const tabsVariants = [
     <Tab 
       :tabs="tabsVariants" 
       variant="underline" 
-      activeTextColor="text-rose-600"
+      activeTextColor="text-blue-700"
       activeColor="bg-purple-600"
     >
     </Tab>
@@ -115,7 +171,9 @@ const tabsVariants = [
    <div class="p-4 my-10 rounded-lg shadow-inner flex justify-center items-center">
     <Tab 
       :tabs="tabsVariants" 
-      variant="default"
+     variant="mirror"
+      activeTextColor="text-rose-500"
+      activeColor="bg-rose-600"
     >
     </Tab>
   </div>
@@ -125,19 +183,37 @@ const tabsVariants = [
 
   <Tab 
       :tabs="tabsVariants" 
+      activeTextColor="text-teal-500"
+      activeShadow="shadow-teal-500" 
+      shadow="shadow-gray-300" 
       variant="shadow" 
-      activeTextColor="text-sky-600"
-      activeShadow="shadow-sky-500" 
-      shadow="shadow-gray-200" 
     >
     </Tab>
     
   </div>
   
 </div>
+<div class="flex justify-around">
+<h5 class="text-rose-900">mirror</h5>
+<h5 class="text-cyan-900">shadow</h5>
 
+</div>
+<br/>
 
 ---
+
+**code**
+```md
+ <Tab 
+      :tabs="tabsVariants" 
+      activeTextColor="text-teal-500"
+      activeShadow="shadow-teal-500" 
+      shadow="shadow-gray-300" 
+      variant="shadow"   <-- You can choice 1 of 4 variants  -->
+    >
+```
+<br/>
+<br/>
 
 
 

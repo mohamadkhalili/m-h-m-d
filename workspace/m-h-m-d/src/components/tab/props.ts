@@ -12,6 +12,8 @@ export const variant = {
   Underline: 'underline',
   bordered: 'bordered',
   shadow: 'shadow',
+  mirror: 'mirror',
+
 } as const;
 
 export const TabProps = {
