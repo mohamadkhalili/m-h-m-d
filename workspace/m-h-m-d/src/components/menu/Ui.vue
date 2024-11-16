@@ -1,21 +1,23 @@
 <template>
   <Core
-  v-bind="$attrs">
+    :modelValue="modelValue"
+    @update:modelValue="handleModelValue"
+    v-bind="$attrs"
+    class="relative"
+  >
     <template #menu>
+      <slot name="menu"></slot>
       <div
         v-if="modelValue"
-        class="relative overflow-hidden transform transition-all duration-300 ease-in-out max-h-0 bg-black"
+        class="absolute left-0 top-full -mt-4 w-28 h-20 bg-black text-white rounded-lg shadow-lg z-50 
+               transition-transform transition-opacity duration-300 ease-in-out transform"
         :class="{
-          'max-h-[500px] opacity-100': modelValue,
-          'opacity-0': !modelValue,
+          'scale-100 opacity-100 translate-y-0': modelValue,
+          'scale-95 opacity-0 -translate-y-2 pointer-events-none': !modelValue,
         }"
-      >
-        <slot name="menu"></slot>
-      </div>
+      ></div>
     </template>
-    
   </Core>
-  <p>{{modelValue}}</p>
 </template>
 
 <script setup lang="ts">
@@ -33,10 +35,9 @@ import { useSize } from "../../composables/UseSizeProps";
 const props = defineProps(uiProps);
 const emit = defineEmits(menuEmits);
 const uiSlots = defineSlots<menuSlots>();
-defineOptions({
-  inheritAttrs: false,
-});
-
+const handleModelValue = (newValue: boolean) => {
+  emit("update:modelValue", newValue);
+};
 const slots = useSlots();
 const showMenu = computed(() => !slots.menu);
 const textColorClass = useColorClassName(props);

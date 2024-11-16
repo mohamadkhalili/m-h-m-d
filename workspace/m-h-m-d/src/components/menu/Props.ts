@@ -13,5 +13,5 @@ export const uiProps = {
     ...createRoundedProp(),
     ...createSizeProp(),
     ...createBorderProp(),
-    modelValue: { type: Boolean, required: false }
+    modelValue : { type : Boolean, default : false},
 }
