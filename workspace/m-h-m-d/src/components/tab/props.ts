@@ -32,6 +32,10 @@ export const TabProps = {
     type: Boolean,
     default: false,
   },
+  vertical: { 
+    type: Boolean,
+    default: false,
+  },
   ...createColorProp(),
   ...createBgColorProp(),
 };

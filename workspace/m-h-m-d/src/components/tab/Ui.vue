@@ -23,6 +23,8 @@ const getButtonStyleClass = computed(() => {
   }
 });
 
+const layoutClass = computed(() => (props.vertical ? 'flex flex-col' : 'flex')); // تغییر جهت لیبل‌ها
+
 function selectTab(value) {
   activeTab.value = value;
   emit('update:modelValue', value);
@@ -34,8 +36,9 @@ function selectTab(value) {
     <Core 
       :variant="props.variant"
       :is-disabled="props.isDisabled"
-      :class="'rounded-b-3xl flex'"
+      :class="layoutClass"
     >
+      <!-- لیبل‌ها -->
       <div v-for="(tab, index) in props.tabs" :key="tab.value" class="relative">
         <button
           @click="selectTab(tab.value)"
@@ -49,7 +52,7 @@ function selectTab(value) {
             props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-r-full' : '',
           ]"
         >
-          <!-- استفاده از اسلات label -->
+
           <slot name="label" :tab="tab">
             {{ tab.label }}
           </slot>
@@ -57,11 +60,12 @@ function selectTab(value) {
       </div>
     </Core>
 
+    <!-- محتوا -->
     <div class="mt-4">
       <div v-for="tab in props.tabs" :key="tab.value" v-show="activeTab === tab.value" class="w-full">
         <transition name="fade" mode="out-in">
           <div v-if="tab.content != null" :key="tab.value" class="p-6 rounded-lg bg-transparent shadow-inner">
-            <!-- استفاده از اسلات content -->
+         
             <slot name="content" :tab="tab">
               {{ tab.content }}
             </slot>
@@ -71,7 +75,6 @@ function selectTab(value) {
     </div>
   </div>
 </template>
-
 
 <style scoped>
 .fade-enter-active, .fade-leave-active {

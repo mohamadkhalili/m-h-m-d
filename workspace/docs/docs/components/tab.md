@@ -12,11 +12,13 @@ const tabsVariants = [
 ];
 </script>
 
-# Tab Component
-<br/>
-<br/>
+---
 
-### Default Tab
+# Default Tab
+
+**Simple tabs with default configurations**  
+This example demonstrates horizontally aligned tabs with default styling.
+
 <div class="p-6 rounded-lg shadow-inner flex justify-center items-center">
   <Tab 
     :tabs="tabs" 
@@ -26,7 +28,7 @@ const tabsVariants = [
     textColor="text-black"
   >
     <template #label="{ tab }">
-      <span >{{ tab.label }}</span>
+      <span>{{ tab.label }}</span>
     </template>
     <template #content="{ tab }">
       <p>{{ tab.content }}</p>
@@ -34,59 +36,38 @@ const tabsVariants = [
   </Tab>
 </div>
 
-<br/>
-<br/>
 
+
+Modify the colors for active and inactive tabs
+The following examples show how you can customize the background and text colors for active and inactive states.
+
+<div class="grid grid-cols-2 gap-4"> 
+<div class="p-4 rounded-lg shadow-inner flex justify-center items-center"> <Tab :tabs="tabs" activeColor="bg-blue-600" color="bg-gray-700" activeTextColor="text-white" textColor="text-white" > <template #label="{ tab }"> <span>{{ tab.label }}</span> </template> <template #content="{ tab }"> <p>{{ tab.content }}</p> </template> </Tab> </div> <div class="p-4 rounded-lg shadow-inner flex justify-center items-center"> <Tab :tabs="tabs" activeColor="bg-rose-700" color="bg-gray-100" activeTextColor="text-white" textColor="text-black" > <template #label="{ tab }"> <span>{{ tab.label }}</span> </template> <template #content="{ tab }"> <p>{{ tab.content }}</p> </template> </Tab> </div> </div>
 ---
 
-### Customize Colors
-<br/>
-<br/>
+## Vertical Tabs
 
-<div class="grid grid-cols-2 gap-4">
-  <div class="p-4 rounded-lg shadow-inner flex justify-center items-center">
-    <Tab 
-      :tabs="tabs" 
-      activeColor="bg-blue-600" 
-      color="bg-gray-700" 
-      activeTextColor="text-white" 
-      textColor="text-white"
-    >
-      <template #label="{ tab }">
-        <span >{{ tab.label }}</span>
-      </template>
-      <template #content="{ tab }">
-        <p>{{ tab.content }}</p>
-      </template>
-    </Tab>
-  </div>
-  
-  <div class="p-4 rounded-lg shadow-inner flex justify-center items-center">
-    <Tab 
-      :tabs="tabs" 
-      activeColor="bg-rose-700" 
-      color="bg-gray-100" 
-      activeTextColor="text-white" 
-      textColor="text-black"
-    >
-      <template #label="{ tab }">
-        <span>{{ tab.label }}</span>
-      </template>
-      <template #content="{ tab }">
-        <p>{{ tab.content }}</p>
-      </template>
-    </Tab>
-  </div>
+<div class="p-6 rounded-lg shadow-inner flex flex-col items-start">
+  <Tab 
+    :tabs="tabs" 
+    activeColor="bg-green-600" 
+    color="bg-gray-100" 
+    activeTextColor="text-white" 
+    textColor="text-black"
+    vertical
+  >
+    <template #label="{ tab }">
+      <span>{{ tab.label }}</span>
+    </template>
+    <template #content="{ tab }">
+      <p>{{ tab.content }}</p>
+    </template>
+  </Tab>
 </div>
 
-<br/>
-<br/>
-
 ---
 
-### Variants
-<br/>
-<br/>
+## Variants
 
 <div class="grid grid-cols-2 gap-4">
   <div class="p-4 rounded-lg shadow-inner flex justify-center items-center">
@@ -99,7 +80,7 @@ const tabsVariants = [
       </template>
     </Tab>
   </div>
-  
+
   <div class="p-4 rounded-lg shadow-inner flex justify-center items-center">
     <Tab 
       :tabs="tabsVariants" 
@@ -107,10 +88,25 @@ const tabsVariants = [
       activeTextColor="text-blue-500"
     >
       <template #label="{ tab }">
-        <span >{{ tab.label }}</span>
+        <span>{{ tab.label }}</span>
       </template>
     </Tab>
   </div>
 </div>
+
+---
+
+
+
+# Tab Component Features
+
+| **Feature**         | **Description**                                                                                                   | **Usage**                                                                                   |
+|---------------------|-------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
+| **Default Tab**      | Basic example with default styles. This is the simplest usage, without any extra configuration.                 | Pass an array of tabs with labels and content. Set the `variant` prop to `'default'`.       |
+| **Customize Colors** | Customize the text and background colors of both active and inactive tabs. Can be applied using `createColorProp()` and `createBgColorProp()`. | Set the `textColor` and `activeColor` props to modify the colors of the tabs.               |
+| **Vertical Tabs**    | Displays the tabs in a vertical orientation instead of horizontal, useful for space-constrained areas.            | Set the `vertical` prop to `true`.                                                           |
+| **Variants**         | Different tab styles that can be applied using the `variant` prop. Options include `'underline'`, `'bordered'`, `'link'`, and `'default'`. | Use the `variant` prop to set the desired tab style (`'underline'`, `'bordered'`, etc.).      |
+| **Disabled Tab**     | Disable specific tabs to prevent interaction. Can be controlled via the `isDisabled` prop.                        | Set `isDisabled` to `true` for the tab that should be disabled.                             |
+| **Custom Content**   | Customize the content that appears when a tab is selected. This is managed via slots for content and labels.      | Use `#content` and `#label` slots to customize the tab label and content dynamically.        |
 
 ---
