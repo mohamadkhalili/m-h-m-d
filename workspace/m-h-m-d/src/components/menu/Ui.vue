@@ -9,15 +9,16 @@
       <div
         v-if="modelValue"
         :class="[
-           modelValue ? 'scale-100 opacity-100 translate-y-0': 'scale-95 opacity-0 -translate-y-2 pointer-events-none',
-           bgColorClass.onActive,
-           sizeClass,
-    ]"
-        class="absolute left-0 top-full -mt-4 w-28 h-20 bg-black text-white rounded-lg shadow-lg z-50 
-               transition-transform transition-opacity duration-300 ease-in-out transform"
-        
-      ><slot name="menu"></slot></div>
-      
+          modelValue
+            ? 'scale-100 opacity-100 translate-y-0'
+            : 'scale-95 opacity-0 -translate-y-2 pointer-events-none',
+          bgColorClass.onActive,
+          sizeClass, // Ensure sizeClass is applied here
+        ]"
+        class="absolute left-0 top-full -mt-4 bg-black text-white rounded-lg shadow-lg z-50 transition-transform transition-opacity duration-300 ease-in-out transform"
+      >
+        <slot name="menu"></slot>
+      </div>
     </template>
   </Core>
 </template>
