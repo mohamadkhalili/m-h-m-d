@@ -14,7 +14,7 @@ const tabsVariants = [
 
 ---
 
-## Default Tab
+##  Tab
 
 **Simple tabs with default configurations**  
 This example demonstrates horizontally aligned tabs with default styling.

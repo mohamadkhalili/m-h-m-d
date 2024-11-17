@@ -11,7 +11,7 @@
           :class="{
             active: isFocused || localValue,
             'underline-label': props.variant === 'underline',
-            'search-label': props.variant === 'search',
+           
             'bordered-label': props.variant === 'bordered',
           }"
           @click="focusInput"
@@ -21,7 +21,6 @@
 
         <div
           :class="{
-            'search-wrapper': props.variant === 'search',
             'bordered-wrapper': props.variant === 'bordered',
           }"
         >
@@ -33,8 +32,7 @@
             required
             :class="[
               themeClass,
-              size,
-              props.variant === 'search' ? 'search-input' : '',
+              size,        
               {
                 disabled: isDisabled,
                 readonly: readonly,
@@ -44,9 +42,7 @@
             @focus="isFocused = true"
             @blur="handleBlur"
           />
-          <div v-if="props.variant === 'search'">
-            <span class="subscribe-btn">{{ submit }}</span>
-          </div>
+        
         </div>
       </div>
     </template>
@@ -130,64 +126,10 @@ const focusInput = () => {
   box-shadow: 0 10px 15px rgba(86, 145, 247, 0.548);
 }
 
-.search-wrapper {
-  display: flex;
-  align-items: center;
-  background-color: #0000005d;
-  border-radius: 20px;
-  border: 1px solid rgba(126, 126, 126, 0.685);
-  padding: 5px;
-  width: fit-content;
-  height: 45px;
-  box-sizing: content-box;
-  position: relative;
-}
 
-.search-input {
-  max-width: 170px;
-  height: 100%;
-  border: none;
-  outline: none;
-  padding-left: 15px;
-  background-color: #52525273;
-  color: white;
-  font-size: 1em;
-  margin-right: 10px;
-  border: 1px solid gray;
-  border-radius: 15px;
-}
 
-.search-input:focus {
-  border: 2px solid #4376c2;
-}
-.subscribe-btn {
-  height: 100%;
-  border-radius: 15px;
-  color: rgb(0, 0, 0);
-  cursor: pointer;
-  background-color: #ffffff;
-  font-weight: 500;
-  font-size: 14px;
-  margin: 4px;
-  margin-left: 0;
-  padding: 10px;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  transition: all 0.3s;
-}
-.subscribe-btn:hover {
-  background-color: #002fff;
-  color: white;
-}
 
-.subscribe-btn:active {
-  background: #001b94;
-}
 
-.search-label {
-  opacity: 0;
-}
 
 #MainInput:hover,
 #MainInput:focus {

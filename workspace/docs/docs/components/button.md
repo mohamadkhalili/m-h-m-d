@@ -1,16 +1,18 @@
-# Button
+## Button
 
 <script >
 
 </script>
 
-**Button with Custom Effect**
+
 
 <div class="  p-6 rounded-lg shadow-inner  flex justify-center items-center ">
     <Button color="default">Test</Button>
 </div>
 
-**Customize the color as you like or use the default values!**
+## Modify 
+
+the color as you like or use the default values!
 <Br/>
 
 <div class="grid grid-cols-2 gap-4">
@@ -81,7 +83,7 @@ const handleError = () => {
 </script>
 
 -----------------
-**Disable**
+## Disable
 
 You Can use   *isDisable*  for disable your Button
 <div class='  p-4 rounded-lg shadow-inner  flex justify-center items-center'>
@@ -98,7 +100,7 @@ You Can use   *isDisable*  for disable your Button
 
 
 
-**Variants**
+## Variants
 
 <div class="grid grid-cols-2 gap-4">
     <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
@@ -144,7 +146,7 @@ You Can use   *isDisable*  for disable your Button
 -----------------
 <br/>
 
-**CleanerEffect**
+## CleanerEffect
 
 <br/>
 
@@ -180,7 +182,8 @@ You Can use   *CleanerEffect*  for enable  cleaner effect on Button !
 
 <br/>
 
-**Rounded** 
+ ## Rounded 
+
 <br/>
 
  you can change your border radios  with *round* option
@@ -206,3 +209,19 @@ You Can use   *CleanerEffect*  for enable  cleaner effect on Button !
 
 ```
 <br/>
+
+## Button Component Features
+
+| **Feature**            | **Description**                                                                                   | **Usage**                                                                                 |
+|------------------------|---------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|
+| **Default Button**      | A basic button with default styling.                                                             | `<Button color="default">Default</Button>`                                                |
+| **Customize Colors**    | Change button colors using options like `default`, `primary`, `error`, `warning`, `secondary`, and `dark`. | `<Button color="primary">Primary</Button>`                                                |
+| **Disable**             | Disable button interaction to prevent clicks.                                                    | `<Button isDisabled>Disabled</Button>`                                                   |
+| **Variants**            | Apply styles like `faded`, `link`, `bordered`, `light`, `ghost`, and `shadow`.                   | `<Button variant="shadow">Shadow</Button>`                                               |
+| **Cleaner Effect**      | Adds a cleaner animation effect to the button.                                                   | `<Button CleanerEffect>Cleaner</Button>`                                                 |
+| **Icons with Buttons**  | Combine icons and labels inside a button for better visuals.                                      | Use `svg` tags or other icon libraries within the button tag.                             |
+| **Rounded Corners**     | Customize border radius using `round` options: `sm`, `md`, `lg`, and `full`.                     | `<Button round="lg">Large Rounded</Button>`                                              |
+| **Custom Events**       | Attach click or other events to handle user interaction.                                          | `<Button @click="handleEvent">Click Me</Button>`                                         |
+
+---
+

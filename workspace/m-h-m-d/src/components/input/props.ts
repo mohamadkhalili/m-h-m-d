@@ -30,8 +30,7 @@ export const InputVariant = {
   faded: 'v-faded',
   underline: 'v-underline',
   bordered: 'v-bordered',
-  flat: 'v-flat',
-  search:'v-search'
+  flat: 'v-flat'
 } as const; 
 export const InputSize={
   sm:`size-sm`,
