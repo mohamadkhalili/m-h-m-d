@@ -9,7 +9,7 @@ export interface Tab {
 
 export const variant = {
   default: 'default',
-  Underline: 'underline',
+  underline: 'underline',
   bordered: 'bordered',
   shadow: 'shadow',
   mirror: 'mirror',
