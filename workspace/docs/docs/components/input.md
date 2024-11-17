@@ -1,10 +1,10 @@
-## Input Component Overview
+## Input
 
 Easily customize and use the Input component with various properties like `color`, `size`, `variant`, and more.
 
 ---
 
-### Input with Custom Effect
+## Input with Custom Effect
 
 <div class="p-6 rounded-lg shadow-inner flex justify-center items-center">
   
@@ -23,7 +23,7 @@ Easily customize and use the Input component with various properties like `color
 ```
 
 
-### Colors
+## Colors
 
 Customize the input colors using the `color` prop. Below are examples of various color options:
 
@@ -56,7 +56,7 @@ Customize the input colors using the `color` prop. Below are examples of various
 
 ---
 
-### Disable
+## Disable
 
 You can disable the Input component using the `isDisabled` prop.
 
@@ -69,7 +69,7 @@ You can disable the Input component using the `isDisabled` prop.
 
 ---
 
-### Read Only
+## Read Only
 
 Set the Input component to read-only mode using the `readonly` prop.
 
@@ -82,7 +82,7 @@ Set the Input component to read-only mode using the `readonly` prop.
 
 ---
 
-### Variants
+## Variants
 
 Apply different styles to the Input component using the `variant` prop. Below are examples:
 
@@ -120,7 +120,7 @@ Apply different styles to the Input component using the `variant` prop. Below ar
 
 ```
 
-### Sizes
+## Sizes
 
 Choose the size of the Input component using the `size` prop.
 
@@ -145,7 +145,7 @@ Choose the size of the Input component using the `size` prop.
 
 ---
 
-### RTL
+## RTL
 
 You can align text for Right-to-Left languages using the `rtl` prop.
 
@@ -156,7 +156,7 @@ You can align text for Right-to-Left languages using the `rtl` prop.
   </div>
 </div>
 
-### Input Component Features
+## Input Component Features
 
 | **Feature**          | **Description**                                                                                             | **Usage**                                                                                   |
 |-----------------------|-----------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
