@@ -6,19 +6,24 @@
     class="relative"
   >
     <template #menu>
-      <div
-        v-if="modelValue"
-        :class="[
-          modelValue
-            ? 'scale-100 opacity-100 translate-y-0'
-            : 'scale-95 opacity-0 -translate-y-2 pointer-events-none',
-          bgColorClass.onActive,
-          sizeClass, // Ensure sizeClass is applied here
-        ]"
-        class="absolute left-0 top-full -mt-4 bg-black text-white rounded-lg shadow-lg z-50 transition-transform transition-opacity duration-300 ease-in-out transform"
+      <transition
+        name="menu-transition"
+        @before-enter="beforeEnter"
+        @enter="enter"
+        @leave="leave"
       >
-        <slot name="menu"></slot>
-      </div>
+        <div
+          v-show="modelValue"
+          :class="[
+        bgColorClass.onActive,
+        sizeClass,
+        roundedClass, 
+      ]"
+          class="absolute left-0 top-full -mt-4 bg-black text-white shadow-lg z-50 transform"
+        >
+          <slot name="menu"></slot>
+        </div>
+      </transition>
     </template>
   </Core>
 </template>
@@ -33,7 +38,7 @@ import {
   useColorClassName,
   useBgColorClassName,
 } from "../../composables/ColorComposable";
-import { useSize } from "../../composables/UseSizeProps";
+import { useRounded } from "../../composables/UseRoundedProps";
 
 const props = defineProps(uiProps);
 const emit = defineEmits(menuEmits);
@@ -44,7 +49,31 @@ const handleModelValue = (newValue: boolean) => {
 const slots = useSlots();
 const showMenu = computed(() => !slots.menu);
 const bgColorClass = useBgColorClassName(props);
-const sizeClass = useSize(props);
+const sizeClass = props.size;
+const roundedClass = props.rounded;
+
+const beforeEnter = (el: HTMLElement) => {
+  el.style.transform = "scale(0.95)";
+  el.style.opacity = "0";
+  el.style.transition = "none";
+};
+
+const enter = (el: HTMLElement, done: Function) => {
+  el.offsetHeight;
+  el.style.transition =
+    "transform 300ms ease-in-out, opacity 300ms ease-in-out";
+  el.style.transform = "scale(1)";
+  el.style.opacity = "1";
+  done();
+};
+
+const leave = (el: HTMLElement, done: Function) => {
+  el.style.transition =
+    "transform 300ms ease-in-out, opacity 300ms ease-in-out";
+  el.style.transform = "scale(0.95)";
+  el.style.opacity = "0";
+  el.addEventListener("transitionend", () => done(), { once: true });
+};
 </script>
 
 <style scoped>
