@@ -8,7 +8,7 @@ export const coreProps = {
 }
 export const uiProps = {
     ...createBgColorProp(),
-    ...createRoundedProp(),
-    ...createSizeProp(),
+    rounded : {type : String, default : "rounded-lg"},
+    size : {type : String, default : "w-28 h-20"},
     modelValue : { type : Boolean, default : false},
 }
