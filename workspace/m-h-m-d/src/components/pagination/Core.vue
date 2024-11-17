@@ -81,27 +81,32 @@ const toggleEdit = () => {
 
 const getPages = computed(() => {
   let arrayBtn: number[] = [];
-  for (let i = 1; i <= props.startCountPageShow; i++) {
-    if (props.pageSize > i + 1 && props.modelValue > i + 1) arrayBtn.push(i);
-  }
-  if (
-    props.pageSize > props.startCountPageShow + 2 &&
-    props.modelValue > props.startCountPageShow + 2
-  )
-    arrayBtn.push(-1);
-  for (let i = props.insideOfActivePageShow; i > 0; i--) {
-    if (props.modelValue - i > 0) arrayBtn.push(props.modelValue - i);
-  }
-  if (props.modelValue > 0) arrayBtn.push(props.modelValue);
-  for (let i = 0; i < props.insideOfActivePageShow; i++) {
-    if (props.modelValue + i + 1 <= props.pageSize)
-      arrayBtn.push(props.modelValue + i + 1);
-  }
-  if (props.modelValue + props.endCountPageShow + 2 <= props.pageSize)
-    arrayBtn.push(-1);
-  for (let i = props.endCountPageShow - 1; i >= 0; i--) {
-    if (props.modelValue + i + 2 <= props.pageSize)
-      arrayBtn.push(props.pageSize - i);
+  if(props.pageSize > 6){
+    if(props.modelValue  < 5){
+        for(let i = 1 ; i<6 ; i++){
+          arrayBtn.push(i);
+        }
+        arrayBtn.push(-1);
+        arrayBtn.push(props.pageSize);
+    }else if(props.modelValue > props.pageSize - 4){
+        arrayBtn.push(1);
+        arrayBtn.push(-1);
+        for(let i = props.pageSize -4 ; i <= props.pageSize ; i++){
+          arrayBtn.push(i);
+        }
+    }else {
+      arrayBtn.push(1);
+      arrayBtn.push(-1);
+      arrayBtn.push(props.modelValue -1);
+      arrayBtn.push(props.modelValue);
+      arrayBtn.push(props.modelValue + 1);
+      arrayBtn.push(-1);
+      arrayBtn.push(props.pageSize)
+    }
+  }else {
+    for(let i = 1 ; i <props.pageSize + 1 ; i++){
+      arrayBtn.push(i);
+    }
   }
   return arrayBtn;
 });

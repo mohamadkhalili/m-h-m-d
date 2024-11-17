@@ -72,7 +72,7 @@
           </div>
           <span
             v-if="page === -1 && showDefaultPagination"
-            class="dot mx-2"
+            class="dot mx-3"
             :class="textColorClass.onActive"
             >...</span
           >
