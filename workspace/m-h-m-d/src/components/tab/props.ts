@@ -1,23 +1,25 @@
 import { PropType } from 'vue';
-import { createBgColorProp, createColorProp } from '../../composables/ColorComposable';
+import { createBgColorProp, createColorProp, createShadowProp } from '../../composables/ColorComposable';
 
 export interface Tab {
   label: string;
-  value: string;
+  value: number;
   content: string;
 }
 
 export const variant = {
   default: 'default',
-  Underline: 'underline',
+  underline: 'underline',
   bordered: 'bordered',
-  Link: 'link',
+  shadow: 'shadow',
+  mirror: 'mirror',
+
 } as const;
 
 export const TabProps = {
   modelValue: {
     type: String,
-    default: 'one',
+    default: 1,
   },
   tabs: {
     type: Array as PropType<Tab[]>,
@@ -32,6 +34,15 @@ export const TabProps = {
     type: Boolean,
     default: false,
   },
+  vertical: { 
+    type: Boolean,
+    default: false,
+  },
+  size:{
+    type: String 
+  },
+  
   ...createColorProp(),
   ...createBgColorProp(),
+  ...createShadowProp(),
 };
