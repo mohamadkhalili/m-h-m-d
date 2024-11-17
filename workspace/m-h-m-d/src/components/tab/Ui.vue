@@ -38,21 +38,11 @@ const getButtonStyleClass = computed(() => {
       return 'bg-transparent relative after:content after:absolute after:w-full after:h-[1px] after:bg-gray-200';
     case 'mirror':
       return `
-        relative flex items-center justify-center overflow-hidden bg-transparent rounded-xl
-        transition-all duration-500 ease-in-out
-        border-2 border-transparent
-        bg-gradient-to-br from-white/10 to-gray-400/30
-        hover:bg-gradient-to-br hover:from-sky-500/10 hover:to-white/40
-        hover:scale-110
-        after:content-[""] after:absolute after:w-full after:h-full after:bg-gradient-to-t
-        after:from-transparent after:to-gray-300/40 after:opacity-0 after:transition-all
-        after:duration-500 hover:after:opacity-100 hover:after:scale-105 hover:after:blur-md
-        before:content-[""] before:absolute before:w-full before:h-full before:bg-gradient-to-t
-        before:from-transparent before:to-sky-100/30 before:opacity-0 before:transition-all
-        before:duration-500 hover:before:opacity-100 hover:before:scale-110 hover:before:blur-md
-        shadow-2xl shadow-blue-500/10
-        hover:shadow-2xl hover:shadow-blue-600/60
-        active:shadow-none
+        relative inline-flex items-center justify-center overflow-hidden bg-transparent
+        border-2 border-transparent rounded-full
+hover:shadow-[0px_0px_2px_1px_rgba(10,10,10,0.1)]
+hover:scale-105
+active:scale-95
       `;
     default:
       return `
@@ -101,6 +91,11 @@ function selectTab(value) {
             activeTab === tab.value ? shadowColorClass.active : shadowColorClass.onActive,
             props.isDisabled ? 'opacity-50 cursor-not-allowed' : '',
             props.variant === 'underline' && activeTab === tab.value ? 'after:scale-x-100' : 'after:scale-x-0',
+
+            props.variant === 'mirror' && activeTab === tab.value ? 'shadow-[inset_6px_1px_80px_26px_rgba(47,_115,_106,_0.19)]' : '',
+
+            
+
             props.variant === 'shadow' && activeTab === tab.value ? 'shadow-md transition-all duration-300 active:scale-95 rounded-lg' : '',
             props.variant === 'shadow' && activeTab !== tab.value ? 'shadow-inner transition-all duration-300 rounded-lg active:scale-95' : '',
             props.variant === 'bordered'
@@ -136,7 +131,6 @@ function selectTab(value) {
   </div>
 </template>
 
-
 <style scoped>
 .fade-enter-active, .fade-leave-active {
   transition: opacity 0.3s ease-in-out;
@@ -144,4 +138,6 @@ function selectTab(value) {
 .fade-enter, .fade-leave-to {
   opacity: 0;
 }
+
+
 </style>

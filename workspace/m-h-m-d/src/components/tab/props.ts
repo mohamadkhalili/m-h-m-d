@@ -19,7 +19,7 @@ export const variant = {
 export const TabProps = {
   modelValue: {
     type: String,
-    default: 2,
+    default: 1,
   },
   tabs: {
     type: Array as PropType<Tab[]>,
