@@ -247,47 +247,67 @@ The following examples show how you can customize the background and text colors
 
 
 ## Size
-<div class="p-6 rounded-lg shadow-inner flex  flex-col justify-center items-center">
 
+Adjust the size of the tabs using the `size` prop. The available options are `sm`, `md`, `lg`, and `xl`. Below are examples for each size option:
+
+<div class="p-6 rounded-lg shadow-inner flex flex-col justify-center items-center">
+
+
+
+<div class="flex items-center space-x-4">
   <Tab 
      :tabs="tabsVariants" 
-      activeTextColor="text-rose-500"
-      activeShadow="shadow-teal-500" 
-      textColor="shadow-gray-300" 
-      variant="bordered"
-      size="xl" 
-  >
-  </Tab>
-  <Tab 
-     :tabs="tabsVariants" 
-      activeTextColor="text-orange-500"
-      activeShadow="shadow-teal-500" 
-      textColor="shadow-gray-300" 
-      variant="bordered" 
-      size="lg" 
-  >
-  </Tab>
-  <Tab 
-     :tabs="tabsVariants" 
-      activeTextColor="text-blue-500"
-      activeShadow="shadow-teal-500" 
-      textColor="shadow-gray-300" 
-      variant="bordered" 
-      size="md"  
-  >
-  </Tab>
-   <Tab 
-     :tabs="tabsVariants" 
-      activeTextColor="text-purple-500"
-      activeShadow="shadow-teal-500" 
-      textColor="shadow-gray-300" 
-      variant="bordered" 
-      size="sm"  
+     activeTextColor="text-rose-500"
+     activeShadow="shadow-teal-500" 
+     textColor="shadow-gray-300" 
+     variant="bordered"
+     size="xl" 
   >
   </Tab>
 </div>
 
 
+
+<div class="flex items-center space-x-4">
+  <Tab 
+     :tabs="tabsVariants" 
+     activeTextColor="text-orange-500"
+     activeShadow="shadow-teal-500" 
+     textColor="shadow-gray-300" 
+     variant="bordered"
+     size="lg" 
+  >
+  </Tab>
+</div>
+
+
+
+<div class="flex items-center space-x-4">
+  <Tab 
+     :tabs="tabsVariants" 
+     activeTextColor="text-blue-500"
+     activeShadow="shadow-teal-500" 
+     textColor="shadow-gray-300" 
+     variant="bordered"
+     size="md" 
+  >
+  </Tab>
+</div>
+
+
+<div class="flex items-center space-x-4">
+  <Tab 
+     :tabs="tabsVariants" 
+     activeTextColor="text-purple-500"
+     activeShadow="shadow-teal-500" 
+     textColor="shadow-gray-300" 
+     variant="bordered"
+     size="sm" 
+  >
+  </Tab>
+</div>
+
+</div>
 
 ## Tab Component Features
 
@@ -300,4 +320,4 @@ The following examples show how you can customize the background and text colors
 | **Disabled Tab**     | Prevent users from interacting with specific tabs by disabling them.                                              | Use the `isDisabled` prop to disable all tabs or specific ones.                             |
 | **Custom Content**   | Customize the content that appears when a tab is selected. This is managed via slots for content and labels.      | Use `#content` and `#label` slots to customize the tab label and content dynamically.        |
 | **Customize Shadow Colors** | Customize the shadow colors of both active and inactive tabs.                                              | Set the `activeShadow` and `shadow` props to modify the shadow of the tabs.                 |
-
+| **Size**             | Change the size of the tabs. Sizes available are `sm`, `md`, `lg`, and `xl`.                                     | Set the `size` prop to one of the following: `'sm'`, `'md'`, `'lg'`, `'xl'`.                  |
