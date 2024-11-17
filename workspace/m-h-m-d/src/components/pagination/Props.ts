@@ -6,9 +6,6 @@ import { createBgColorProp, createColorProp } from '../../composables/ColorCompo
 
 export const paginationProps = {
     pageSize: { type: Number, default: 20 }, //Size of pages
-    startCountPageShow: { type: Number, default: 2 }, //The number of initial pages that are placed before '...'
-    endCountPageShow: { type: Number, default: 2 }, //The number of end pages that are placed after '...'
-    insideOfActivePageShow: { type: Number, default: 1 }, //The number of left and right pages of the page we are on
     modelValue: { type: Number, default: 1 }, //the page it is on
     searchPage: { type: Number, default: 0 }, //the page it is on with search page input
     enableSearchPage: { type: Boolean, default: true }, //Whether to create a search page or not
