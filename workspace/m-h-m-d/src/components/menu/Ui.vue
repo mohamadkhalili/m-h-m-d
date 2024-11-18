@@ -50,7 +50,9 @@ watch(
     if (newValue) {
       setTimeout(() => {
         enableOutside.value = true;
-      }, 500); 
+      }, 5); 
+    } else{
+      enableOutside.value = false;
     }
   }
 );

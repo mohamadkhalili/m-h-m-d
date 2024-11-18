@@ -56,7 +56,7 @@ this is menu component with closed clickOutside:
 <br>
 
 ```vue
-<Menu v-model="menuValueRounded" :rounded="'rounded'" >
+<Menu v-model="menuValueOutside" :closeOutside="true" >
 ```
 
 
