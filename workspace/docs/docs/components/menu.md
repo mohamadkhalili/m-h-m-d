@@ -5,6 +5,7 @@ const menuValue = ref(false);
 const menuValueColor = ref(false);
 const menuValueRounded = ref(false);
 const menuValueOutside = ref(false);
+const menuValueHover = ref(false);
 const menuValueSize = ref(false);
 </script>
 
@@ -48,7 +49,7 @@ this is menu component with set border-radius:
 
 this is menu component with closed clickOutside:
 
-<button  @click="menuValueOutside = !menuValueOutside" class="w-28 bg-black text-white rounded-lg p-2 mt-1" cleaner>Open menu</button>
+<button @mouseover="menuValueOutside = true" @mouseleave="menuValueOutside = false"  @click="menuValueOutside = !menuValueOutside" class="w-28 bg-black text-white rounded-lg p-2 mt-1" cleaner>Open menu</button>
 <Menu v-model="menuValueOutside" :closeOutside="true" >
 </Menu>
 <br>
@@ -58,7 +59,23 @@ this is menu component with closed clickOutside:
 ```vue
 <Menu v-model="menuValueOutside" :closeOutside="true" >
 ```
+this is menu component with opened when hover:
 
+<button @mouseover="menuValueHover = true" @mouseleave="menuValueHover = false" class="w-28 bg-black text-white rounded-lg p-2 mt-1" cleaner>Open menu</button>
+<Menu v-model="menuValueHover" @mouseover="menuValueHover = true" @mouseleave="menuValueHover = false">
+</Menu>
+<br>
+<br>
+<br>
+
+```vue
+<button @mouseover="menuValueHover = true"   
+@mouseleave="menuValueHover = false"
+class="w-28 bg-black text-white rounded-lg p-2 mt-1" 
+cleaner>Open menu</button>
+<Menu v-model="menuValueHover" @mouseover="menuValueHover = true"
+ @mouseleave="menuValueHover = false">
+```
 
 this is menu component with set size and create button in menu:
 
