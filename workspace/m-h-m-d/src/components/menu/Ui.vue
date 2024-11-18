@@ -13,12 +13,9 @@
         @leave="leave"
       >
         <div
+          v-click-outside="handleClickOutside"
           v-show="modelValue"
-          :class="[
-        bgColorClass.onActive,
-        sizeClass,
-        roundedClass, 
-      ]"
+          :class="[bgColorClass.onActive, sizeClass, roundedClass]"
           class="absolute left-0 top-full -mt-4 bg-black text-white shadow-lg z-50 transform"
         >
           <slot name="menu"></slot>
@@ -30,7 +27,7 @@
 
 <script setup lang="ts">
 import Core from "./Core.vue";
-import { useSlots, computed } from "vue";
+import { useSlots, computed, ref, watch } from "vue";
 import { uiProps } from "./Props";
 import { menuEmits } from "./Emits";
 import { menuSlots } from "./Slots";
@@ -43,15 +40,31 @@ import { useRounded } from "../../composables/UseRoundedProps";
 const props = defineProps(uiProps);
 const emit = defineEmits(menuEmits);
 const uiSlots = defineSlots<menuSlots>();
+const enableOutside = ref(false);
 const handleModelValue = (newValue: boolean) => {
   emit("update:modelValue", newValue);
 };
+watch(
+  () => props.modelValue, 
+  (newValue) => {
+    if (newValue) {
+      setTimeout(() => {
+        enableOutside.value = true;
+      }, 500); 
+    }
+  }
+);
 const slots = useSlots();
 const showMenu = computed(() => !slots.menu);
 const bgColorClass = useBgColorClassName(props);
 const sizeClass = props.size;
 const roundedClass = props.rounded;
-
+const handleClickOutside = (event: Event) => {
+  if (props.modelValue && enableOutside.value && props.closeOutside) {
+    handleModelValue(false);
+    enableOutside.value = false;
+  }
+};
 const beforeEnter = (el: HTMLElement) => {
   el.style.transform = "scale(0.95)";
   el.style.opacity = "0";

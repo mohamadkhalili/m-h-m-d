@@ -11,4 +11,5 @@ export const uiProps = {
     rounded : {type : String, default : "rounded-lg"},
     size : {type : String, default : "w-28 h-20"},
     modelValue : { type : Boolean, default : false},
+    closeOutside : { type : Boolean, default : false},
 }
