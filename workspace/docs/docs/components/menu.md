@@ -4,6 +4,7 @@ import { ref } from 'vue'
 const menuValue = ref(false);
 const menuValueColor = ref(false);
 const menuValueRounded = ref(false);
+const menuValueOutside = ref(false);
 const menuValueSize = ref(false);
 </script>
 
@@ -44,6 +45,21 @@ this is menu component with set border-radius:
 ```vue
 <Menu v-model="menuValueRounded" :rounded="'rounded'" >
 ```
+
+this is menu component with closed clickOutside:
+
+<button  @click="menuValueOutside = !menuValueOutside" class="w-28 bg-black text-white rounded-lg p-2 mt-1" cleaner>Open menu</button>
+<Menu v-model="menuValueOutside" :closeOutside="true" >
+</Menu>
+<br>
+<br>
+<br>
+
+```vue
+<Menu v-model="menuValueRounded" :rounded="'rounded'" >
+```
+
+
 this is menu component with set size and create button in menu:
 
 <button  @click="menuValueSize = !menuValueSize" class="w-28 bg-black text-white rounded-lg p-2 mt-1" cleaner>Open menu</button>

@@ -10,6 +10,7 @@ import MainBtn from './components/button/Core.vue';
 import mainInput from './components/input/Core.vue';
 
 import { tooltip } from './directives/TooltipDirective';
+import  clickOutside  from './directives/clickOutSide'
 
 const components = [
     { name: 'pagination', ...pagination },
@@ -22,7 +23,7 @@ const components = [
 
 const directives = {
     tooltip,
-    // Add other directives here
+    clickOutside,
 }
 
 const install = (app: App) => {

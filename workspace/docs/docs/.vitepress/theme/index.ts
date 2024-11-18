@@ -7,7 +7,7 @@ import DefaultTheme from 'vitepress/theme'
 import './tailwind.postcss'
 // import Pagination from '../../../../ui/src/components/pagination/Ui.vue'
 import { pagination, modal, Button, input, menu, tab } from 'm-h-m-d'
-
+import clickOutside from 'm-h-m-d/src/directives/clickOutSide';
 
 export default {
   extends: DefaultTheme,
@@ -25,6 +25,7 @@ export default {
     app.component('Menu', menu)
     app.component('Tab', tab)
 
+    app.directive('click-outside', clickOutside)
 
   }
 } satisfies Theme
