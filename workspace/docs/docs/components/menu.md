@@ -93,7 +93,9 @@ cleaner>Open menu</button>
 <br>
 
 ```vue
-<Menu v-model="menuValueSize" :color="'bg-teal-900'" :size="'w-32 h-20'" >
-<template #menu><button class="ml-4 size-9 text-xs bg-teal-500 text-white rounded-lg mt-1" 
+<Menu v-model="menuValueSize" :menuClass="'rounded-sm w-32 h-20'" >
+<template #menu><button 
+class="ml-11 size-9 text-xs bg-teal-500 text-white rounded-lg mt-5" 
 cleaner>item1</button></template>
+</Menu>
 ```

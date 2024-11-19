@@ -26,8 +26,10 @@ const isEditingSearchPage = ref()
 - `v-model`: Binds the current page number.
 - `v-model:searchPage`: Manages the search functionality.
 - `v-model:isEditingSearchPage`: Indicates if the search input is editable.
-
+<br>
+<br>
 <Pagination v-model="inputValue1" v-model:searchPage="searchValue" v-model:isEditingSearchPage="isEditingSearchPage"/>
+<br>
 
 ```vue
 <Pagination v-model="inputValue" v-model:searchPage="searchValue" 
@@ -39,8 +41,10 @@ v-model:isEditingSearchPage="isEditingSearchPage"/>
 **Props:**
 
 - `enableSearchPage`: Set to `false` to deactivate search functionality.
-
+<br>
+<br>
 <Pagination v-model="inputValue3" :enableSearchPage="false"/>
+<br>
 
 ```vue
 <Pagination v-model="inputValue" :enableSearchPage="false"/>
@@ -52,9 +56,13 @@ v-model:isEditingSearchPage="isEditingSearchPage"/>
 
 - `rtl`: Set to `false` for Left-to-Right layout.
 - `enableSearchPage`: Disable the search page feature.
+<br>
+<br>
+
 <div class="ml-44">
 <Pagination v-model="inputValue2" :enableSearchPage="false" :rtl="false"/>
 </div>
+<br>
 
 ```vue
 <Pagination v-model="inputValue" :enableSearchPage="false" :rtl="false"/>
@@ -65,66 +73,36 @@ v-model:isEditingSearchPage="isEditingSearchPage"/>
 **Props:**
 
 - `pageSize`: Defines the number of items per page.
-
+<br>
+<br>
 <Pagination v-model="inputValue4" :enableSearchPage="false" :pageSize="10"/>
+<br>
 
 ```vue
 <Pagination v-model="inputValue" :enableSearchPage="false" :pageSize="10"/>
 
 ```
 
-## Customize Colors
+## Customize Classes
 
 **Props:**
 
-- `color`: Background color of the component.
-- `activeColor`: Background color for the active page.
-- `textColor`: Text color.
-- `activeTextColor`: Text color for the active page.
+- `activeClass`: Custom classes applied to the active page button.
+- `onActiveClass`: Custom classes applied to non-active page buttons.
+- `separatorClass`: Custom classes applied to separators (e.g., `...` between pages).
+- `buttonClass`: Custom classes applied to all pagination buttons.
 
-<Pagination v-model="inputValue5" :enableSearchPage="false" :color="'bg-black'" :activeColor="'bg-indigo-100'" :textColor="'text-indigo-300'" :activeTextColor="'text-black'"/>
+### Example Usage:
+<br>
+<br>
+<Pagination v-model="inputValue5" :enableSearchPage="false" :activeClass="'bg-emerald-500 size-11 rounded-lg shadow-lg'" :onActiveClass="'rounded-lg shadow-lg'" :separatorClass="'text-emerald-500'" :buttonClass="'size-11 rounded-lg shadow-lg'" />
 
-```vue
-<Pagination v-model="inputValue" :enableSearchPage="false" 
-:color="'bg-black'" :activeColor="'bg-indigo-100'" 
-:textColor="'text-indigo-300'" :activeTextColor="'text-black'"/>
-```
-
-## Adjust Pagination Size
-
-**Props:**
-
-- `size`: Adjusts the size of the pagination.
-
-<Pagination v-model="inputValue6" :enableSearchPage="false" :size="'size-8'"/>
+<br>
 
 ```vue
-<Pagination v-model="inputValue" :enableSearchPage="false" 
-:size="'size-8'"/>
-```
-
-## Rounded Pagination
-
-**Props:**
-
-- `borderRadiusSize`: Specifies border radius (e.g., `rounded`).
-
-<Pagination v-model="inputValue7" :enableSearchPage="false" :borderRadiusSize="'rounded'"/>
-
-```vue
-<Pagination v-model="inputValue" :enableSearchPage="false" 
-:borderRadiusSize="'rounded'"/>
-```
-
-## Set Border Style
-
-**Props:**
-
-- `borderStyle`: Defines border color and width.
-
-<Pagination v-model="inputValue8" :enableSearchPage="false" :borderStyle="'border-emerald-600 border-2'"/>
-
-```vue
-<Pagination v-model="inputValue" :enableSearchPage="false" 
-:borderStyle="'border-emerald-600 border-2'"/>
+<Pagination v-model="inputValue5" :enableSearchPage="false" 
+:activeClass="'bg-emerald-500 size-11 rounded-lg shadow-lg'" 
+:onActiveClass="'rounded-lg shadow-lg'" 
+:separatorClass="'text-emerald-500'" 
+:buttonClass="'size-11 rounded-lg shadow-lg'" />
 ```
