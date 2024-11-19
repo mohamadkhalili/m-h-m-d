@@ -8,9 +8,14 @@ const isModalOpen3 = ref(false);
 </script>
 
 
-click to button to open modal
+## Default Modal
 
-this is default modal
+**Props:**
+- `v-model`: Binds the modal open/close state.
+- `teleport`: Teleports the modal content to the `<body>`.
+
+**Usage:**
+- This is the basic modal that opens when the button is clicked.
 
 <button  @click="isModalOpen = true" class="bg-black text-white rounded-lg p-2 mt-1" cleaner>Open Modal</button>
 <modal v-model="isModalOpen"/>
@@ -18,7 +23,15 @@ this is default modal
 ```vue
 <modal v-model="isModalOpen" teleport="body"/>
 ```
-this is modal closed when click outside
+## Modal Closed on Outside Click
+
+**Props:**
+
+- `closeOnOutside`: Closes the modal when clicking outside of it.
+
+**Usage:**
+
+- This modal closes when clicking outside the modal content.
 
 <button  @click="isModalOpen2 = true" class="bg-black text-white rounded-lg p-2 mt-1" cleaner>Open Modal</button>
 <modal v-model="isModalOpen2" teleport="body" closeOnOutside/>
@@ -26,7 +39,16 @@ this is modal closed when click outside
 ```vue
 <modal v-model="isModalOpen" teleport="body" closeOnOutside/>
 ```
-this is modal custom colored
+## Custom Colored Modal
+
+**Props:**
+
+- `activeColor`: Sets the background color of the modal.
+- `activeTextColor`: Sets the text color of the modal.
+
+**Usage:**
+
+- This modal has custom background and text colors.
 
 <button  @click="isModalOpen3 = true" class="bg-black text-white rounded-lg p-2 mt-1" cleaner>Open Modal</button>
 <modal v-model="isModalOpen3" teleport="body" activeColor="bg-white" activeTextColor="text-black"/>
