@@ -5,10 +5,10 @@
 
 <template>
   <div
-    class="pagination-container"
+    class="flex flex-col items-center"
     :style="rtl ? 'direction: rtl;' : 'direction: ltr;'"
   >
-    <div class="pagination-controls">
+    <div class="flex items-center gap-4">
       <pagination
         :modelValue="modelValue"
         @update:modelValue="handlePageChange"
@@ -50,7 +50,7 @@
             v-if="isCurrentPage && showDefaultPagination"
             class="cursor-pointer elevation-1"
             :class="[
-              isActive ? 'currentPageNumber size-10 rounded-full bg-slate-950 text-white' : 'pageNumber size-10 rounded-full bg-slate-200 text-black',
+              isActive ? 'text-center flex justify-center items-center select-none size-10 rounded-full bg-slate-950 text-white' : 'text-center flex justify-center items-center select-none size-10 rounded-full bg-slate-200 text-black',
               isActive ? activeClass : onActiveClass
             ]"
           >
@@ -58,7 +58,7 @@
           </div>
           <span
             v-if="page === -1 && showDefaultPagination"
-            class="dot mx-3"
+            class="select-none mx-3"
             :class="separatorClass"
             >...</span
           >
@@ -86,7 +86,8 @@
         <template #searchPage="{ enabled }">
           <slot name="searchPage" :enabled="enabled"></slot>
           <div
-            class="flip-container"
+            class="inline-block w-[100px] max-w-[100px] h-[40px] mr-[-30px] mt-[7px] box-border" 
+            style="perspective: 1000px;"
             :class="{ 'is-flipped': isEditingSearchPage }"
           >
             <div class="flipper">
@@ -104,7 +105,7 @@
                   ref="searchInput"
                   :value="searchPage"
                   @input="handleInput"
-                  class="searchPage"
+                  class="text-center flex justify-center items-center outline-none"
                   :class="`${onActiveClass} size-10 rounded-full bg-slate-200 text-black`"
                 />
               </div>
@@ -217,74 +218,17 @@ watch(
 </script>
 
 <style scoped>
-.searchPage {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  outline: none;
-}
-.pagination-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.pagination-controls {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.pageNumber {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
 button {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.currentPageNumber {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.dot {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.flip-container {
-  perspective: 1000px; /* Creates 3D space */
-  display: inline-block; /* Keeps it inline with other items */
-  width: 100px; /* Use full width of the parent container */
-  max-width: 100px; /* Set a max width if necessary */
-  height: 40px; /* Adjust height based on the size of the button/input */
-  margin-right: -30px;
-  margin-top: 7px;
-  box-sizing: border-box; /* Include padding and border in element's total width and height */
-}
-
 .flipper {
   position: relative;
   width: 100%;
   height: 100%;
   transition: transform 0.6s;
-  transform-style: preserve-3d; /* Ensures 3D rotation works */
+  transform-style: preserve-3d; 
   transform-origin: center;
 }
 
@@ -294,23 +238,23 @@ button {
 
 .front,
 .back {
-  position: absolute; /* Make both sides overlap */
+  position: absolute; 
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden; /* Hide the back when rotated */
-  display: flex; /* Centers content inside */
-  align-items: center; /* Vertical center */
-  justify-content: center; /* Horizontal center */
+  backface-visibility: hidden; 
+  display: flex;
+  align-items: center;
+  justify-content: center; 
 }
 
 .front {
-  transform: rotateY(0deg); /* Default button visible */
+  transform: rotateY(0deg); 
 }
 
 .back {
-  transform: rotateY(180deg); /* Hidden input by default */
+  transform: rotateY(180deg); 
 }
 </style>
   
