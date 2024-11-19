@@ -23,12 +23,7 @@
           <slot name="superPrev" :disabled="disabled" :rtl="rtl"></slot>
           <button
             v-if="showDefaultSuperPrev"
-            :class="[
-              roundedClass,
-              sizeClass,
-              textColorClass.active,
-              bgColorClass.active,
-            ]"
+            :class="`${buttonClass} size-10 rounded-full bg-slate-950 text-white`"
             :disabled="disabled"
           >
             <svg-icon type="mdi" :path="superPrevIcon"></svg-icon>
@@ -38,12 +33,7 @@
           <slot name="prev" :disabled="disabled" :rtl="rtl"></slot>
           <button
             v-if="showDefaultPrev"
-            :class="[
-              roundedClass,
-              sizeClass,
-              textColorClass.active,
-              bgColorClass.active,
-            ]"
+            :class="`${buttonClass} size-10 rounded-full bg-slate-950 text-white`"
             :disabled="disabled"
           >
             <svg-icon type="mdi" :path="prevIcon"></svg-icon>
@@ -60,12 +50,8 @@
             v-if="isCurrentPage && showDefaultPagination"
             class="cursor-pointer elevation-1"
             :class="[
-              isActive ? 'currentPageNumber' : 'pageNumber',
-              roundedClass,
-              sizeClass,
-              isActive ? bgColorClass.active : bgColorClass.onActive,
-              isActive ? textColorClass.active : textColorClass.onActive,
-              borderClass,
+              isActive ? 'currentPageNumber size-10 rounded-full bg-slate-950 text-white' : 'pageNumber size-10 rounded-full bg-slate-200 text-black',
+              isActive ? activeClass : onActiveClass
             ]"
           >
             {{ page }}
@@ -73,7 +59,7 @@
           <span
             v-if="page === -1 && showDefaultPagination"
             class="dot mx-3"
-            :class="textColorClass.onActive"
+            :class="separatorClass"
             >...</span
           >
         </template>
@@ -81,12 +67,7 @@
           <slot name="next" :disabled="disabled" :rtl="rtl"></slot>
           <button
             v-if="showDefaultNext"
-            :class="[
-              roundedClass,
-              sizeClass,
-              textColorClass.active,
-              bgColorClass.active,
-            ]"
+            :class="`${buttonClass} size-10 rounded-full bg-slate-950 text-white`"
             :disabled="disabled"
           >
             <svg-icon type="mdi" :path="nextIcon"></svg-icon>
@@ -96,12 +77,7 @@
           <slot name="superNext" :disabled="disabled" :rtl="rtl"></slot>
           <button
             v-if="showDefaultSuperNext"
-            :class="[
-              roundedClass,
-              sizeClass,
-              textColorClass.active,
-              bgColorClass.active,
-            ]"
+            :class="`${buttonClass} size-10 rounded-full bg-slate-950 text-white`"
             :disabled="disabled"
           >
             <svg-icon type="mdi" :path="superNextIcon"></svg-icon>
@@ -117,13 +93,7 @@
               <div class="front">
                 <button
                   v-if="showDefaultsearchPageBtn && enabled"
-                  :class="[
-                    roundedClass,
-                    sizeClass,
-                    textColorClass.active,
-                    bgColorClass.active,
-                    borderClass,
-                  ]"
+                  :class="`${buttonClass} size-10 rounded-full bg-slate-950 text-white`"
                 >
                   <svg-icon type="mdi" :path="mdiMagnify"></svg-icon>
                 </button>
@@ -135,13 +105,7 @@
                   :value="searchPage"
                   @input="handleInput"
                   class="searchPage"
-                  :class="[
-                    roundedClass,
-                    sizeClass,
-                    textColorClass.onActive,
-                    bgColorClass.onActive,
-                    borderClass,
-                  ]"
+                  :class="`${onActiveClass} size-10 rounded-full bg-slate-200 text-black`"
                 />
               </div>
             </div>
@@ -163,12 +127,6 @@ import {
   ref,
 } from "vue";
 import pagination from "./Core.vue";
-import {
-  useColorClassName,
-  useBgColorClassName,
-} from "../../composables/ColorComposable";
-import { useSize } from "../../composables/UseSizeProps";
-import { useRounded } from "../../composables/UseRoundedProps";
 import { uiSlots } from "./Slots";
 import { uiProps } from "./Props";
 import { useBorder } from "../../composables/UseBorderProps";
@@ -183,11 +141,6 @@ import {
 } from "@mdi/js";
 
 const props = defineProps(uiProps);
-const sizeClass = useSize(props);
-const roundedClass = useRounded(props);
-const textColorClass = useColorClassName(props);
-const bgColorClass = useBgColorClassName(props);
-const borderClass = useBorder(props);
 
 defineOptions({
   inheritAttrs: false,
