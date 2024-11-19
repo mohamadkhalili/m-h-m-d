@@ -5,10 +5,10 @@
 
 <template>
   <div
-    class="pagination-container"
+    class="flex flex-col items-center"
     :style="rtl ? 'direction: rtl;' : 'direction: ltr;'"
   >
-    <div class="pagination-controls">
+    <div class="flex items-center gap-4">
       <pagination
         :modelValue="modelValue"
         @update:modelValue="handlePageChange"
@@ -23,12 +23,7 @@
           <slot name="superPrev" :disabled="disabled" :rtl="rtl"></slot>
           <button
             v-if="showDefaultSuperPrev"
-            :class="[
-              roundedClass,
-              sizeClass,
-              textColorClass.active,
-              bgColorClass.active,
-            ]"
+            :class="`${buttonClass} size-10 rounded-full bg-slate-950 text-white`"
             :disabled="disabled"
           >
             <svg-icon type="mdi" :path="superPrevIcon"></svg-icon>
@@ -38,12 +33,7 @@
           <slot name="prev" :disabled="disabled" :rtl="rtl"></slot>
           <button
             v-if="showDefaultPrev"
-            :class="[
-              roundedClass,
-              sizeClass,
-              textColorClass.active,
-              bgColorClass.active,
-            ]"
+            :class="`${buttonClass} size-10 rounded-full bg-slate-950 text-white`"
             :disabled="disabled"
           >
             <svg-icon type="mdi" :path="prevIcon"></svg-icon>
@@ -60,20 +50,16 @@
             v-if="isCurrentPage && showDefaultPagination"
             class="cursor-pointer elevation-1"
             :class="[
-              isActive ? 'currentPageNumber' : 'pageNumber',
-              roundedClass,
-              sizeClass,
-              isActive ? bgColorClass.active : bgColorClass.onActive,
-              isActive ? textColorClass.active : textColorClass.onActive,
-              borderClass,
+              isActive ? 'text-center flex justify-center items-center select-none size-10 rounded-full bg-slate-950 text-white' : 'text-center flex justify-center items-center select-none size-10 rounded-full bg-slate-200 text-black',
+              isActive ? activeClass : onActiveClass
             ]"
           >
             {{ page }}
           </div>
           <span
             v-if="page === -1 && showDefaultPagination"
-            class="dot mx-3"
-            :class="textColorClass.onActive"
+            class="select-none mx-3"
+            :class="separatorClass"
             >...</span
           >
         </template>
@@ -81,12 +67,7 @@
           <slot name="next" :disabled="disabled" :rtl="rtl"></slot>
           <button
             v-if="showDefaultNext"
-            :class="[
-              roundedClass,
-              sizeClass,
-              textColorClass.active,
-              bgColorClass.active,
-            ]"
+            :class="`${buttonClass} size-10 rounded-full bg-slate-950 text-white`"
             :disabled="disabled"
           >
             <svg-icon type="mdi" :path="nextIcon"></svg-icon>
@@ -96,12 +77,7 @@
           <slot name="superNext" :disabled="disabled" :rtl="rtl"></slot>
           <button
             v-if="showDefaultSuperNext"
-            :class="[
-              roundedClass,
-              sizeClass,
-              textColorClass.active,
-              bgColorClass.active,
-            ]"
+            :class="`${buttonClass} size-10 rounded-full bg-slate-950 text-white`"
             :disabled="disabled"
           >
             <svg-icon type="mdi" :path="superNextIcon"></svg-icon>
@@ -110,20 +86,15 @@
         <template #searchPage="{ enabled }">
           <slot name="searchPage" :enabled="enabled"></slot>
           <div
-            class="flip-container"
+            class="inline-block w-[100px] max-w-[100px] h-[40px] mr-[-30px] mt-[7px] box-border" 
+            style="perspective: 1000px;"
             :class="{ 'is-flipped': isEditingSearchPage }"
           >
             <div class="flipper">
               <div class="front">
                 <button
                   v-if="showDefaultsearchPageBtn && enabled"
-                  :class="[
-                    roundedClass,
-                    sizeClass,
-                    textColorClass.active,
-                    bgColorClass.active,
-                    borderClass,
-                  ]"
+                  :class="`${buttonClass} size-10 rounded-full bg-slate-950 text-white`"
                 >
                   <svg-icon type="mdi" :path="mdiMagnify"></svg-icon>
                 </button>
@@ -134,14 +105,8 @@
                   ref="searchInput"
                   :value="searchPage"
                   @input="handleInput"
-                  class="searchPage"
-                  :class="[
-                    roundedClass,
-                    sizeClass,
-                    textColorClass.onActive,
-                    bgColorClass.onActive,
-                    borderClass,
-                  ]"
+                  class="text-center flex justify-center items-center outline-none"
+                  :class="`${onActiveClass} size-10 rounded-full bg-slate-200 text-black`"
                 />
               </div>
             </div>
@@ -163,12 +128,6 @@ import {
   ref,
 } from "vue";
 import pagination from "./Core.vue";
-import {
-  useColorClassName,
-  useBgColorClassName,
-} from "../../composables/ColorComposable";
-import { useSize } from "../../composables/UseSizeProps";
-import { useRounded } from "../../composables/UseRoundedProps";
 import { uiSlots } from "./Slots";
 import { uiProps } from "./Props";
 import { useBorder } from "../../composables/UseBorderProps";
@@ -183,11 +142,6 @@ import {
 } from "@mdi/js";
 
 const props = defineProps(uiProps);
-const sizeClass = useSize(props);
-const roundedClass = useRounded(props);
-const textColorClass = useColorClassName(props);
-const bgColorClass = useBgColorClassName(props);
-const borderClass = useBorder(props);
 
 defineOptions({
   inheritAttrs: false,
@@ -264,74 +218,17 @@ watch(
 </script>
 
 <style scoped>
-.searchPage {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  outline: none;
-}
-.pagination-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.pagination-controls {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.pageNumber {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
 button {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.currentPageNumber {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.dot {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.flip-container {
-  perspective: 1000px; /* Creates 3D space */
-  display: inline-block; /* Keeps it inline with other items */
-  width: 100px; /* Use full width of the parent container */
-  max-width: 100px; /* Set a max width if necessary */
-  height: 40px; /* Adjust height based on the size of the button/input */
-  margin-right: -30px;
-  margin-top: 7px;
-  box-sizing: border-box; /* Include padding and border in element's total width and height */
-}
-
 .flipper {
   position: relative;
   width: 100%;
   height: 100%;
   transition: transform 0.6s;
-  transform-style: preserve-3d; /* Ensures 3D rotation works */
+  transform-style: preserve-3d; 
   transform-origin: center;
 }
 
@@ -341,23 +238,23 @@ button {
 
 .front,
 .back {
-  position: absolute; /* Make both sides overlap */
+  position: absolute; 
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden; /* Hide the back when rotated */
-  display: flex; /* Centers content inside */
-  align-items: center; /* Vertical center */
-  justify-content: center; /* Horizontal center */
+  backface-visibility: hidden; 
+  display: flex;
+  align-items: center;
+  justify-content: center; 
 }
 
 .front {
-  transform: rotateY(0deg); /* Default button visible */
+  transform: rotateY(0deg); 
 }
 
 .back {
-  transform: rotateY(180deg); /* Hidden input by default */
+  transform: rotateY(180deg); 
 }
 </style>
   

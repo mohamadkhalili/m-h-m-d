@@ -13,11 +13,10 @@ export const paginationProps = {
 };
 
 export const uiProps = {
-    ...createColorProp(), //Setting text color in active and inactive mode
-    ...createBgColorProp(), //Set background color in active and inactive mode
-    ...createRoundedProp(), //Set rounded for pages and button
-    ...createSizeProp(), //Set size for pages and button
-    ...createBorderProp(), //Set border for pages and button
+    activeClass: { type: String, default: '' },
+    onActiveClass: { type: String, default: '' },
+    buttonClass: { type: String, default: '' },
+    separatorClass: { type: String, default: 'text-black' },
     pageSize: { type: Number, default: 20, required: true }, //Size of pages
     modelValue: { type: Number, required: false }, //the page it is on
     searchPage: { type: Number, required: false }, //the page it is on with search page input
