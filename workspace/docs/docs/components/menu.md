@@ -37,7 +37,7 @@ this is menu component with set color:
 this is menu component with set border-radius:
 
 <button  @click="menuValueRounded = !menuValueRounded" class="w-28 bg-black text-white rounded-lg p-2 mt-1" cleaner>Open menu</button>
-<Menu v-model="menuValueRounded" :rounded="'rounded'" >
+<Menu v-model="menuValueRounded" :rounded="'rounded-sm'" >
 </Menu>
 <br>
 <br>
@@ -49,7 +49,7 @@ this is menu component with set border-radius:
 
 this is menu component with closed clickOutside:
 
-<button @mouseover="menuValueOutside = true" @mouseleave="menuValueOutside = false"  @click="menuValueOutside = !menuValueOutside" class="w-28 bg-black text-white rounded-lg p-2 mt-1" cleaner>Open menu</button>
+<button  @click="menuValueOutside = !menuValueOutside" class="w-28 bg-black text-white rounded-lg p-2 mt-1" cleaner>Open menu</button>
 <Menu v-model="menuValueOutside" :closeOutside="true" >
 </Menu>
 <br>
