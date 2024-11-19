@@ -9,7 +9,15 @@ const menuValueHover = ref(false);
 const menuValueSize = ref(false);
 </script>
 
-this is default menu component:
+## Default Menu
+
+**Props:**
+
+- `v-model`: Binds the open/close state of the menu.
+
+**Usage:**
+
+- This is the basic menu that toggles when the button is clicked.
 
 <button  @click="menuValue = !menuValue" class="w-28 bg-black text-white rounded-lg p-2 mt-1" cleaner>Open menu</button>
 <Menu v-model="menuValue"  >
@@ -22,32 +30,14 @@ this is default menu component:
 <Menu v-model="menuValue">
 ```
 
-this is menu component with set color:
+## Menu with Close on Click Outside
 
-<button  @click="menuValueColor = !menuValueColor" class="w-28 bg-black text-white rounded-lg p-2 mt-1" cleaner>Open menu</button>
-<Menu v-model="menuValueColor" :color="'bg-teal-900'" >
-</Menu>
-<br>
-<br>
-<br>
+**Props:**
+- `closeOutside`: Closes the menu when clicking outside.
 
-```vue
-<Menu v-model="menuValueColor" :color="'bg-teal-900'" >
-```
-this is menu component with set border-radius:
+**Usage:**
 
-<button  @click="menuValueRounded = !menuValueRounded" class="w-28 bg-black text-white rounded-lg p-2 mt-1" cleaner>Open menu</button>
-<Menu v-model="menuValueRounded" :rounded="'rounded-sm'" >
-</Menu>
-<br>
-<br>
-<br>
-
-```vue
-<Menu v-model="menuValueRounded" :rounded="'rounded'" >
-```
-
-this is menu component with closed clickOutside:
+- This menu closes automatically when you click outside of it.
 
 <button  @click="menuValueOutside = !menuValueOutside" class="w-28 bg-black text-white rounded-lg p-2 mt-1" cleaner>Open menu</button>
 <Menu v-model="menuValueOutside" :closeOutside="true" >
@@ -59,7 +49,15 @@ this is menu component with closed clickOutside:
 ```vue
 <Menu v-model="menuValueOutside" :closeOutside="true" >
 ```
-this is menu component with opened when hover:
+## Menu with Open on Hover
+
+**Props:**
+
+- `@mouseleave`: Closes the menu when mouse leaves.
+
+**Usage:**
+
+- This menu opens when hovered over and closes when the mouse leaves.
 
 <button @mouseover="menuValueHover = true" @mouseleave="menuValueHover = false" class="w-28 bg-black text-white rounded-lg p-2 mt-1" cleaner>Open menu</button>
 <Menu v-model="menuValueHover" @mouseover="menuValueHover = true" @mouseleave="menuValueHover = false">
@@ -77,11 +75,18 @@ cleaner>Open menu</button>
  @mouseleave="menuValueHover = false">
 ```
 
-this is menu component with set size and create button in menu:
+## Menu with Set Size and border radius and Create Button in Menu
+
+**Props:**
+- `menuClass`: Sets custom tailwind classes for the menu.
+
+**Usage:**
+
+- This menu has custom size, border radius and a button (`item1`) inside.
 
 <button  @click="menuValueSize = !menuValueSize" class="w-28 bg-black text-white rounded-lg p-2 mt-1" cleaner>Open menu</button>
-<Menu v-model="menuValueSize" :color="'bg-teal-900'" :size="'w-32 h-20'" >
-<template #menu><button class="ml-4 size-9 text-xs bg-teal-500 text-white rounded-lg mt-1" cleaner>item1</button></template>
+<Menu v-model="menuValueSize" :menuClass="'rounded-sm w-32 h-20'" >
+<template #menu><button class="ml-11 size-9 text-xs bg-teal-500 text-white rounded-lg mt-5" cleaner>item1</button></template>
 </Menu>
 <br>
 <br>

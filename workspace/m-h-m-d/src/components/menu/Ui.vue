@@ -15,8 +15,7 @@
         <div
           v-click-outside="handleClickOutside"
           v-show="modelValue"
-          :class="[bgColorClass.onActive, sizeClass, roundedClass]"
-          class="absolute left-0 top-full -mt-4 bg-black text-white shadow-lg z-50 transform"
+          :class="`${menuClass} absolute left-0 top-full -mt-4 bg-teal-200 rounded-lg w-28 h-20 shadow-lg z-50 transform`"
         >
           <slot name="menu"></slot>
         </div>
@@ -31,11 +30,6 @@ import { useSlots, computed, ref, watch } from "vue";
 import { uiProps } from "./Props";
 import { menuEmits } from "./Emits";
 import { menuSlots } from "./Slots";
-import {
-  useColorClassName,
-  useBgColorClassName,
-} from "../../composables/ColorComposable";
-import { useRounded } from "../../composables/UseRoundedProps";
 
 const props = defineProps(uiProps);
 const emit = defineEmits(menuEmits);
@@ -58,9 +52,7 @@ watch(
 );
 const slots = useSlots();
 const showMenu = computed(() => !slots.menu);
-const bgColorClass = useBgColorClassName(props);
-const sizeClass = props.size;
-const roundedClass = props.rounded;
+const menuClass = props.menuClass;
 const handleClickOutside = (event: Event) => {
   if (props.modelValue && enableOutside.value && props.closeOutside) {
     handleModelValue(false);

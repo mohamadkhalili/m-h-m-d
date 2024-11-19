@@ -20,7 +20,13 @@ const searchValue = ref()
 const isEditingSearchPage = ref()
 </script>
 
-this is default pagination:
+## Default Pagination
+
+**Props:**
+- `v-model`: Binds the current page number.
+- `v-model:searchPage`: Manages the search functionality.
+- `v-model:isEditingSearchPage`: Indicates if the search input is editable.
+
 <Pagination v-model="inputValue1" v-model:searchPage="searchValue" v-model:isEditingSearchPage="isEditingSearchPage"/>
 
 ```vue
@@ -28,7 +34,24 @@ this is default pagination:
 v-model:isEditingSearchPage="isEditingSearchPage"/>
 ```
 
-with ltr:
+## Disable Search Page
+
+**Props:**
+
+- `enableSearchPage`: Set to `false` to deactivate search functionality.
+
+<Pagination v-model="inputValue3" :enableSearchPage="false"/>
+
+```vue
+<Pagination v-model="inputValue" :enableSearchPage="false"/>
+```
+
+## Left-to-Right Pagination
+
+**Props:**
+
+- `rtl`: Set to `false` for Left-to-Right layout.
+- `enableSearchPage`: Disable the search page feature.
 <div class="ml-44">
 <Pagination v-model="inputValue2" :enableSearchPage="false" :rtl="false"/>
 </div>
@@ -37,15 +60,11 @@ with ltr:
 <Pagination v-model="inputValue" :enableSearchPage="false" :rtl="false"/>
 ```
 
-search page is not active:
+## Set Page Size
 
-<Pagination v-model="inputValue3" :enableSearchPage="false"/>
+**Props:**
 
-```vue
-<Pagination v-model="inputValue" :enableSearchPage="false"/>
-```
-
-set page size:
+- `pageSize`: Defines the number of items per page.
 
 <Pagination v-model="inputValue4" :enableSearchPage="false" :pageSize="10"/>
 
@@ -54,7 +73,14 @@ set page size:
 
 ```
 
-set color:
+## Customize Colors
+
+**Props:**
+
+- `color`: Background color of the component.
+- `activeColor`: Background color for the active page.
+- `textColor`: Text color.
+- `activeTextColor`: Text color for the active page.
 
 <Pagination v-model="inputValue5" :enableSearchPage="false" :color="'bg-black'" :activeColor="'bg-indigo-100'" :textColor="'text-indigo-300'" :activeTextColor="'text-black'"/>
 
@@ -64,7 +90,11 @@ set color:
 :textColor="'text-indigo-300'" :activeTextColor="'text-black'"/>
 ```
 
-set page size:
+## Adjust Pagination Size
+
+**Props:**
+
+- `size`: Adjusts the size of the pagination.
 
 <Pagination v-model="inputValue6" :enableSearchPage="false" :size="'size-8'"/>
 
@@ -73,7 +103,11 @@ set page size:
 :size="'size-8'"/>
 ```
 
-set page rounded:
+## Rounded Pagination
+
+**Props:**
+
+- `borderRadiusSize`: Specifies border radius (e.g., `rounded`).
 
 <Pagination v-model="inputValue7" :enableSearchPage="false" :borderRadiusSize="'rounded'"/>
 
@@ -82,7 +116,11 @@ set page rounded:
 :borderRadiusSize="'rounded'"/>
 ```
 
-set page border:
+## Set Border Style
+
+**Props:**
+
+- `borderStyle`: Defines border color and width.
 
 <Pagination v-model="inputValue8" :enableSearchPage="false" :borderStyle="'border-emerald-600 border-2'"/>
 
