@@ -39,23 +39,22 @@ const isModalOpen3 = ref(false);
 ```vue
 <modal v-model="isModalOpen" teleport="body" closeOnOutside/>
 ```
-## Custom Colored Modal
+## Custom class for Modal and Outside of Modal
 
 **Props:**
 
-- `activeColor`: Sets the background color of the modal.
-- `activeTextColor`: Sets the text color of the modal.
+- `outsideClass`: Sets the class outside of modal.
+- `modalClass`: Sets the class of the modal.
 
 **Usage:**
 
 - This modal has custom background and text colors.
 
 <button  @click="isModalOpen3 = true" class="bg-black text-white rounded-lg p-2 mt-1" cleaner>Open Modal</button>
-<modal v-model="isModalOpen3" teleport="body" activeColor="bg-white" activeTextColor="text-black"/>
+<modal v-model="isModalOpen3" teleport="body" :outsideClass="'backdrop-blur-lg'" :modalClass="'border-2 border-black'"/>
 
 ```vue
-<modal v-model="isModalOpen" 
-       teleport="body" 
-       activeColor="bg-white" 
-       activeTextColor="text-black"/>
+<modal v-model="isModalOpen3" teleport="body" 
+:outsideClass="'backdrop-blur-lg'" 
+:modalClass="'border-2 border-black'"/>
 ```

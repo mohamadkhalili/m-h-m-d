@@ -2,8 +2,8 @@ import { Teleport } from "vue";
 import { createBgColorProp, createColorProp } from "../../composables/ColorComposable";
 
 export const coreProps = {
-    ...createColorProp(),
-    ...createBgColorProp(),
+    modalClass : { type : String, default : ''},
+    outsideClass : { type : String, default : ''},
     teleport : { type : String, default : 'body'},
     closeOnOutside : { type : Boolean, default : false},
     modelValue : { type : Boolean, default : false},
