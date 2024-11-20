@@ -85,7 +85,7 @@ cleaner>Open menu</button>
 - This menu has custom size, border radius and a button (`item1`) inside.
 
 <button  @click="menuValueSize = !menuValueSize" class="w-28 bg-black text-white rounded-lg p-2 mt-1" cleaner>Open menu</button>
-<Menu v-model="menuValueSize" :menuClass="'rounded-sm w-32 h-20'" >
+<Menu v-model="menuValueSize" menuClass="'rounded-xl bg-gray-500 w-32 h-20'" >
 <template #menu><button class="ml-11 size-9 text-xs bg-teal-500 text-white rounded-lg mt-5" cleaner>item1</button></template>
 </Menu>
 <br>
@@ -93,7 +93,7 @@ cleaner>Open menu</button>
 <br>
 
 ```vue
-<Menu v-model="menuValueSize" :menuClass="'rounded-sm w-32 h-20'" >
+<Menu v-model="menuValueSize" :menuClass="'rounded-xl bg-gray-500 w-32 h-20'" >
 <template #menu><button 
 class="ml-11 size-9 text-xs bg-teal-500 text-white rounded-lg mt-5" 
 cleaner>item1</button></template>

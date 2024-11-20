@@ -15,7 +15,7 @@
         <div
           v-click-outside="handleClickOutside"
           v-show="modelValue"
-          :class="`${menuClass} absolute left-0 top-full -mt-4 bg-teal-200 rounded-lg w-28 h-20 shadow-lg z-50 transform`"
+          :class="mergeClasses(uiClass,menuClass)"
         >
           <slot name="menu"></slot>
         </div>
@@ -38,6 +38,30 @@ const enableOutside = ref(false);
 const handleModelValue = (newValue: boolean) => {
   emit("update:modelValue", newValue);
 };
+const uiClass = ref("absolute left-0 top-full -mt-4 bg-teal-200 rounded-lg w-28 h-20 shadow-lg z-50 transform");
+const mergeClasses = (uiClassInput: string, customClassInput: string) => {
+  let mergedClass = uiClassInput;
+
+  if (customClassInput && customClassInput.trim() !== '') {
+    const uiClassArray = uiClassInput.split(' ').filter(Boolean); 
+    const customClassArray = customClassInput.split(' ').filter(Boolean); 
+
+    customClassArray.forEach(customClass => {
+      const index = uiClassArray.findIndex(existingClass => existingClass.startsWith(customClass.split('-')[0])); 
+
+      if (index !== -1) {
+        uiClassArray.splice(index, 1, customClass);  // Replace class
+      } else {
+        uiClassArray.push(customClass);  // Add new class
+      }
+    });
+
+    mergedClass = uiClassArray.join(' ');
+  }
+
+  return mergedClass;
+};
+
 watch(
   () => props.modelValue, 
   (newValue) => {
