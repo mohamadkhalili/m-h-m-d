@@ -17,7 +17,7 @@ export const uiProps = {
     onActiveClass: { type: String, default: '' },
     buttonClass: { type: String, default: '' },
     separatorClass: { type: String, default: 'text-black' },
-    pageSize: { type: Number, default: 20, required: true }, //Size of pages
+    pageSize: { type: Number, default: 20, required: false }, //Size of pages
     modelValue: { type: Number, required: false }, //the page it is on
     searchPage: { type: Number, required: false }, //the page it is on with search page input
     rtl: { type: Boolean, default: true }, //Placement should be from right to left (if it is false, it will be reversed)
