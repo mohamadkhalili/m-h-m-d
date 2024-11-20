@@ -15,7 +15,7 @@
         <div
           v-click-outside="handleClickOutside"
           v-show="modelValue"
-          :class="mergeClasses(uiClass,menuClass)"
+          :class="mergeClasses(uiClass, menuClass)"
         >
           <slot name="menu"></slot>
         </div>
@@ -40,27 +40,39 @@ const handleModelValue = (newValue: boolean) => {
 };
 const uiClass = ref("absolute left-0 top-full -mt-4 bg-teal-200 rounded-lg w-28 h-20 shadow-lg z-50 transform");
 const mergeClasses = (uiClassInput: string, customClassInput: string) => {
-  let mergedClass = uiClassInput;
+  if (!customClassInput || customClassInput.trim() === '') return uiClassInput;
 
-  if (customClassInput && customClassInput.trim() !== '') {
-    const uiClassArray = uiClassInput.split(' ').filter(Boolean); 
-    const customClassArray = customClassInput.split(' ').filter(Boolean); 
+  const uiClassArray = uiClassInput.split(' ').filter(Boolean); 
+  const customClassArray = customClassInput.split(' ').filter(Boolean);
 
-    customClassArray.forEach(customClass => {
-      const index = uiClassArray.findIndex(existingClass => existingClass.startsWith(customClass.split('-')[0])); 
+  const resultClassArray = [];
 
-      if (index !== -1) {
-        uiClassArray.splice(index, 1, customClass);  // Replace class
-      } else {
-        uiClassArray.push(customClass);  // Add new class
-      }
-    });
+  // Create a map for `uiClass` to handle replacement efficiently
+  const uiClassMap = new Map(
+    uiClassArray.map(uiClass => [uiClass.split('-')[0], uiClass]) // Key: base name, Value: full class
+  );
 
-    mergedClass = uiClassArray.join(' ');
-  }
+  // Loop through `customClass` to replace or add
+  customClassArray.forEach(customClass => {
+    const baseName = customClass.split('-')[0];
 
-  return mergedClass;
+    // Replace in `uiClass` if it exists
+    if (uiClassMap.has(baseName)) {
+      uiClassMap.set(baseName, customClass); // Replace existing class with `customClass`
+    } else {
+      // Otherwise, append `customClass`
+      resultClassArray.push(customClass);
+    }
+  });
+
+  // Add all remaining `uiClass` items after applying replacements
+  resultClassArray.push(...uiClassMap.values());
+
+  // Return the merged classes as a string
+  console.log(resultClassArray.join(' '))
+  return resultClassArray.join(' ');
 };
+
 
 watch(
   () => props.modelValue, 
