@@ -58,3 +58,26 @@ const isModalOpen3 = ref(false);
 :outsideClass="'backdrop-blur-lg'" 
 :modalClass="'border-2 border-black'"/>
 ```
+
+### Slots in the Modal Component
+
+Slots in Vue allow you to customize the content inside a component. In this modal component, there are two slots:
+
+1. **`#close` Slot**  
+   - **Purpose**: Allows you to define custom content for the close button of the modal.  
+   - **Default Behavior**: If not provided, a default close button with an SVG icon (`mdiClose`) is rendered.  
+   - **Usage**:
+     ```vue
+     <template #close>
+       <button class="custom-close-button">Close</button>
+     </template>
+     ```
+2. **`#default` Slot**  
+   - **Purpose**: Lets you define the main content of the modal.  
+   - **Default Behavior**: If not provided, a placeholder paragraph (`This is the modal content`) is displayed.  
+   - **Usage**:
+     ```vue
+     <template #default>
+       <p>Your custom modal content goes here!</p>
+     </template>
+     ```
