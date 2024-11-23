@@ -1,5 +1,4 @@
 import { PropType } from 'vue';
-import { createBgColorProp, createColorProp, createShadowProp } from '../../composables/ColorComposable';
 
 export interface Tab {
   label: string;
@@ -13,18 +12,16 @@ export const variant = {
   bordered: 'bordered',
   shadow: 'shadow',
   mirror: 'mirror',
-
 } as const;
 
 export const TabProps = {
   modelValue: {
-    type: String,
+    type: [String, Number] as PropType<string | number>,
     default: 1,
   },
   tabs: {
     type: Array as PropType<Tab[]>,
     required: true,
-    default: () => [],
   },
   variant: {
     type: String as PropType<keyof typeof variant>,
@@ -34,15 +31,27 @@ export const TabProps = {
     type: Boolean,
     default: false,
   },
-  vertical: { 
+  vertical: {
     type: Boolean,
     default: false,
   },
-  size:{
-    type: String 
+  size: {
+    type: String,
   },
-  
-  ...createColorProp(),
-  ...createBgColorProp(),
-  ...createShadowProp(),
+  activeTextColor: {
+    type: String,
+    default: 'text-white',
+  },
+  textColor: {
+    type: String,
+    default: 'text-black',
+  },
+  activeColor: {
+    type: String,
+    default: 'bg-gray-950',
+  },
+  color: {
+    type: String,
+    default: 'bg-slate-200',
+  },
 };
