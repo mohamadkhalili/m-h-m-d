@@ -61,13 +61,11 @@ function selectTab(value) {
 <template>
   <div>
     <Core
+    :tabs="props.tabs"
       :variant="props.variant"
       :is-disabled="props.isDisabled"
       :class="[layoutClass,props.variant==='bordered' ? '  ring-2 p-2 relative  rounded-lg ring-gray-300 hover:ring-gray-400 transition-all duration-300':''
 ,
-
-
-
       ]"
     >
       <div v-for="(tab, index) in props.tabs" :key="tab.value" :class="[

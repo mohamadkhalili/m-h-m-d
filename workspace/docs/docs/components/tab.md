@@ -263,9 +263,10 @@ Adjust the size of the tabs using the `size` prop. The available options are `sm
   <Tab 
      :tabs="tabsVariants" 
      activeTextColor="text-rose-500"
-     activeShadow="shadow-teal-500" 
-     textColor="shadow-gray-300" 
-     variant="bordered"
+     activeColor="bg-transparent"
+     textColor="shadow-gray-300 shadow-rose-300" 
+     color="bg-transparent"
+     variant="shadow"
      size="xl" 
   >
   </Tab>

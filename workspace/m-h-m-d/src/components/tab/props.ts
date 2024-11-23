@@ -1,6 +1,5 @@
 import { PropType } from 'vue';
 
-
 export interface Tab {
   label: string;
   value: number;
@@ -13,18 +12,16 @@ export const variant = {
   bordered: 'bordered',
   shadow: 'shadow',
   mirror: 'mirror',
-
 } as const;
 
 export const TabProps = {
   modelValue: {
-    type: String,
+    type: [String, Number] as PropType<string | number>,
     default: 1,
   },
   tabs: {
     type: Array as PropType<Tab[]>,
     required: true,
-    default: () => [],
   },
   variant: {
     type: String as PropType<keyof typeof variant>,
@@ -34,14 +31,13 @@ export const TabProps = {
     type: Boolean,
     default: false,
   },
-  vertical: { 
+  vertical: {
     type: Boolean,
     default: false,
   },
-  size:{
-    type: String 
+  size: {
+    type: String,
   },
-
   activeTextColor: {
     type: String,
     default: 'text-white',
@@ -57,5 +53,5 @@ export const TabProps = {
   color: {
     type: String,
     default: 'bg-slate-200',
-  }
+  },
 };
