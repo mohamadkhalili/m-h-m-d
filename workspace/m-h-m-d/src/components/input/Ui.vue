@@ -57,7 +57,9 @@
 <script setup lang="ts">
 import {
   computed,
+  defineProps,
   ref,
+  defineOptions,
   useSlots,
   watch,
 } from "vue";
