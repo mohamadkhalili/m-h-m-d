@@ -162,19 +162,20 @@ The following examples show how you can customize the background and text colors
 
   <div class="p-4 rounded-lg shadow-inner flex justify-center items-center">
     <Tab 
-      :tabs="tabsVariants" 
-      variant="underline" 
-      activeTextColor="text-blue-700"
-      activeColor="bg-purple-600"
-    >
-    </Tab>
+  :tabs="tabsVariants" 
+  variant="underline"
+  activeColor="bg-transparent"
+  color="bg-transparent"
+  TextColor="text-gray-500"
+  activeTextColor="text-blue-500"
+>
+</Tab>
+
   </div>
    <div class="p-4 my-10 rounded-lg shadow-inner flex justify-center items-center">
     <Tab 
       :tabs="tabsVariants" 
      variant="mirror"
-      activeTextColor="text-rose-500"
-      activeColor="bg-rose-600"
     >
     </Tab>
   </div>
@@ -184,9 +185,8 @@ The following examples show how you can customize the background and text colors
 
   <Tab 
       :tabs="tabsVariants" 
-      activeTextColor="text-teal-500"
-      activeShadow="shadow-teal-500" 
-      shadow="shadow-gray-300" 
+      activeColor="text-sky-600 shadow-sky-300 scale-105  " 
+      color=" text-gray-950 shadow-sky-300  "
       variant="shadow" 
     >
     </Tab>
@@ -206,12 +206,15 @@ The following examples show how you can customize the background and text colors
 **code**
 ```md
  <Tab 
-      :tabs="tabsVariants" 
-      activeTextColor="text-teal-500"
-      activeShadow="shadow-teal-500" 
-      shadow="shadow-gray-300" 
-      variant="shadow"   <!-- You can choice 1 of 4 variants  -->
+  :tabs="tabsVariants" 
+  activeColor="bg-transparent"
+  color="bg-transparent"
+  TextColor="text-gray-500"
+  activeTextColor="text-blue-500"
+  variant="underline"        <!-- You can choice 1 of 4 variants  -->
     >
+      
+  
 ```
 <br/>
 <br/>
@@ -294,8 +297,9 @@ Adjust the size of the tabs using the `size` prop. The available options are `sm
   </Tab>
 </div>
 
+<br/>
 
-<div class="flex items-center space-x-4">
+<div class="flex items-center space-x-4 ">
   <Tab 
      :tabs="tabsVariants" 
      activeTextColor="text-purple-500"

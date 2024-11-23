@@ -1,5 +1,5 @@
 import { PropType } from 'vue';
-import { createBgColorProp, createColorProp, createShadowProp } from '../../composables/ColorComposable';
+
 
 export interface Tab {
   label: string;
@@ -41,8 +41,21 @@ export const TabProps = {
   size:{
     type: String 
   },
-  
-  ...createColorProp(),
-  ...createBgColorProp(),
-  ...createShadowProp(),
+
+  activeTextColor: {
+    type: String,
+    default: 'text-white',
+  },
+  textColor: {
+    type: String,
+    default: 'text-black',
+  },
+  activeColor: {
+    type: String,
+    default: 'bg-gray-950',
+  },
+  color: {
+    type: String,
+    default: 'bg-slate-200',
+  }
 };
