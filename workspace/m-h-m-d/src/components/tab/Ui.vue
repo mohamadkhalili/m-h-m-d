@@ -32,9 +32,9 @@ const getButtonStyleClass = computed(() => {
       return 'relative after:content-[""] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-0 after:left-0 after:transition-transform after:duration-300 hover:after:scale-x-100 ';
     case 'mirror':
       return `  relative inline-flex items-center justify-center overflow-hidden
-        after:content-[""] after:absolute after:w-10 after:h-10 after:rounded-full
-        after:bg-gray-800/30 after:opacity-0 after:scale-0
-        hover:after:opacity-100  hover:after:scale-100  after:transition-transform
+        after:content-[""] after:absolute after:w-10 after:h-10
+        after:bg-gray-600/30 after:opacity-0 
+        after:opacity-100  after:scale-100 after:transition-transform
         after:duration-500`
     case 'shadow':
       return ' relative';
@@ -90,13 +90,13 @@ function selectTab(value) {
     props.variant === 'mirror'
       ? `relative overflow-hidden 
           ${activeTab === tab.value
-            ? 'after:translate-x-full after:scale-x-150 after:opacity-100  space-x-10'
-            : 'after:translate-x-[-100%] after:scale-x-10  '}
+            ? 'after:translate-x-100 after:scale-0 space-x-10'
+            : ' after:scale-x-[200%]  '}
           transition-all duration-700`
       : '',
     !props.vertical ? (props.variant === 'default' && index === 0 ? 'rounded-l-full' : '') : (props.variant === 'default' && index === 0 ? 'rounded-t-2xl' : ''),
     !props.vertical ? (props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-r-full' : '') : (props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-b-2xl' : ''),
-    !props.vertical ? (props.variant === 'mirror' && index === 0 ? 'rounded-l-lg' : '') : (props.variant === 'default' && index === 0 ? 'rounded-t-lg' : ''),
+    !props.vertical ? (props.variant === 'mirror' && index === 0 ? 'rounded-l-lg' : '') : (props.variant === 'default' && index === 0 ? 'rounded-t-2xl' : ''),
     !props.vertical ? (props.variant === 'mirror' && index === props.tabs.length - 1 ? 'rounded-r-lg' : '') : (props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-b-2xl' : ''),
     props.vertical ? 'w-full' : '',
     activeTab === tab.value ? props.activeTextColor : props.textColor,
