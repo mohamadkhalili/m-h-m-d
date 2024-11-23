@@ -47,29 +47,23 @@ const mergeClasses = (uiClassInput: string, customClassInput: string) => {
 
   const resultClassArray = [];
 
-  // Create a map for `uiClass` to handle replacement efficiently
   const uiClassMap = new Map(
-    uiClassArray.map(uiClass => [uiClass.split('-')[0], uiClass]) // Key: base name, Value: full class
+    uiClassArray.map(uiClass => [uiClass.split('-')[0], uiClass]) 
   );
 
-  // Loop through `customClass` to replace or add
   customClassArray.forEach(customClass => {
     const baseName = customClass.split('-')[0];
 
-    // Replace in `uiClass` if it exists
     if (uiClassMap.has(baseName)) {
-      uiClassMap.set(baseName, customClass); // Replace existing class with `customClass`
+      uiClassMap.set(baseName, customClass); 
     } else {
-      // Otherwise, append `customClass`
+
       resultClassArray.push(customClass);
     }
   });
 
-  // Add all remaining `uiClass` items after applying replacements
   resultClassArray.push(...uiClassMap.values());
 
-  // Return the merged classes as a string
-  console.log(resultClassArray.join(' '))
   return resultClassArray.join(' ');
 };
 

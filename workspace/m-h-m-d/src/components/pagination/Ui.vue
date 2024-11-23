@@ -23,7 +23,7 @@
           <slot name="superPrev" :disabled="disabled" :rtl="rtl"></slot>
           <button
             v-if="showDefaultSuperPrev"
-            :class="`${buttonClass} size-10 rounded-full bg-slate-950 text-white`"
+            :class="mergeClasses(uiButtonClass, buttonClass)"
             :disabled="disabled"
           >
             <svg-icon type="mdi" :path="superPrevIcon"></svg-icon>
@@ -33,7 +33,7 @@
           <slot name="prev" :disabled="disabled" :rtl="rtl"></slot>
           <button
             v-if="showDefaultPrev"
-            :class="`${buttonClass} size-10 rounded-full bg-slate-950 text-white`"
+            :class="mergeClasses(uiButtonClass, buttonClass)"
             :disabled="disabled"
           >
             <svg-icon type="mdi" :path="prevIcon"></svg-icon>
@@ -50,8 +50,7 @@
             v-if="isCurrentPage && showDefaultPagination"
             class="cursor-pointer elevation-1"
             :class="[
-              isActive ? 'text-center flex justify-center items-center select-none size-10 rounded-full bg-slate-950 text-white' : 'text-center flex justify-center items-center select-none size-10 rounded-full bg-slate-200 text-black',
-              isActive ? activeClass : onActiveClass
+              isActive ? mergeClasses(uiActiveClass, activeClass) : mergeClasses(uiOnActiveClass, onActiveClass)
             ]"
           >
             {{ page }}
@@ -67,7 +66,7 @@
           <slot name="next" :disabled="disabled" :rtl="rtl"></slot>
           <button
             v-if="showDefaultNext"
-            :class="`${buttonClass} size-10 rounded-full bg-slate-950 text-white`"
+            :class="mergeClasses(uiButtonClass, buttonClass)"
             :disabled="disabled"
           >
             <svg-icon type="mdi" :path="nextIcon"></svg-icon>
@@ -77,7 +76,7 @@
           <slot name="superNext" :disabled="disabled" :rtl="rtl"></slot>
           <button
             v-if="showDefaultSuperNext"
-            :class="`${buttonClass} size-10 rounded-full bg-slate-950 text-white`"
+            :class="mergeClasses(uiButtonClass, buttonClass)"
             :disabled="disabled"
           >
             <svg-icon type="mdi" :path="superNextIcon"></svg-icon>
@@ -94,7 +93,7 @@
               <div class="front">
                 <button
                   v-if="showDefaultsearchPageBtn && enabled"
-                  :class="`${buttonClass} size-10 rounded-full bg-slate-950 text-white`"
+                  :class="mergeClasses(uiButtonClass, buttonClass)"
                 >
                   <svg-icon type="mdi" :path="mdiMagnify"></svg-icon>
                 </button>
@@ -105,8 +104,7 @@
                   ref="searchInput"
                   :value="searchPage"
                   @input="handleInput"
-                  class="text-center flex justify-center items-center outline-none"
-                  :class="`${onActiveClass} size-10 rounded-full bg-slate-200 text-black`"
+                  :class="mergeClasses(uiInputClass,onActiveClass)"
                 />
               </div>
             </div>
@@ -157,6 +155,10 @@ const superNextIcon = computed(() =>
   props.rtl ? mdiChevronDoubleLeft : mdiChevronDoubleRight
 );
 const nextIcon = computed(() => (props.rtl ? mdiChevronLeft : mdiChevronRight));
+const uiInputClass = ref("text-center flex justify-center items-center outline-none size-10 rounded-full bg-slate-200 text-black")
+const uiButtonClass = ref("size-10 rounded-full bg-slate-950 text-white")
+const uiActiveClass = ref("cursor-pointer elevation-1 text-center flex justify-center items-center select-none size-10 rounded-full bg-slate-950 text-white")
+const uiOnActiveClass = ref("cursor-pointer elevation-1 text-center flex justify-center items-center select-none size-10 rounded-full bg-slate-200 text-black")
 const slots = useSlots();
 const showDefaultPagination = computed(() => !slots.default);
 const showDefaultPrev = computed(() => !slots.prev);
@@ -177,6 +179,34 @@ const handleSearchPage = (newValue: number) => {
 
 const handleIsEditingSearchPage = (newValue: boolean) => {
   emit("update:isEditingSearchPage", newValue);
+};
+
+const mergeClasses = (uiClassInput: string, customClassInput: string) => {
+  if (!customClassInput || customClassInput.trim() === '') return uiClassInput;
+
+  const uiClassArray = uiClassInput.split(' ').filter(Boolean); 
+  const customClassArray = customClassInput.split(' ').filter(Boolean);
+
+  const resultClassArray = [];
+
+  const uiClassMap = new Map(
+    uiClassArray.map(uiClass => [uiClass.split('-')[0], uiClass]) 
+  );
+
+  customClassArray.forEach(customClass => {
+    const baseName = customClass.split('-')[0];
+
+    if (uiClassMap.has(baseName)) {
+      uiClassMap.set(baseName, customClass); 
+    } else {
+
+      resultClassArray.push(customClass);
+    }
+  });
+
+  resultClassArray.push(...uiClassMap.values());
+
+  return resultClassArray.join(' ');
 };
 
 const handleInput = (event: Event) => {
