@@ -140,8 +140,8 @@ The following examples show how you can customize the background and text colors
 <br/>
 
 <div class="flex justify-around">
-<h5 class="text-orange-800">bordered</h5>
-<h5 class="text-blue-950">underline</h5>
+<h5 class="text-green-600">bordered</h5>
+<h5 class="text-blue-600">underline</h5>
 
 </div>
 <br/>
@@ -151,8 +151,8 @@ The following examples show how you can customize the background and text colors
     <Tab 
       :tabs="tabsVariants" 
       variant="bordered"
-       activeColor="text-green-600 bg-white   " 
-      color=" text-gray-400  bg-white  "
+       activeColor="text-green-600 bg-transparent   " 
+      color=" text-gray-400   bg-transparent  "
     >
       <template #label="{ tab }">
         <span>{{ tab.label }}</span>
@@ -176,8 +176,8 @@ The following examples show how you can customize the background and text colors
     <Tab 
       :tabs="tabsVariants" 
      variant="mirror"
-       activeColor="text-green-600 bg-white   " 
-      color=" text-gray-400  bg-white  shadow-none "
+       activeColor=" text-rose-600 bg-gray-200  " 
+      color=" text-gray-800   bg-gray-200   "
     >
     </Tab>
   </div>
@@ -197,8 +197,8 @@ The following examples show how you can customize the background and text colors
   
 </div>
 <div class="flex justify-around">
-<h5 class="text-rose-900">mirror</h5>
-<h5 class="text-cyan-900">shadow</h5>
+<h5 class="text-rose-600">mirror</h5>
+<h5 class="text-yellow-600">shadow</h5>
 
 </div>
 <br/>

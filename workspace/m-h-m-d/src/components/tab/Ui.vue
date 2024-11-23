@@ -31,31 +31,21 @@ const getButtonStyleClass = computed(() => {
     case 'underline':
       return 'relative after:content-[""] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-0 after:left-0 after:transition-transform after:duration-300 hover:after:scale-x-100 ';
     case 'mirror':
-      return 'relative border-2 border-transparent  transition-all duration-300';
+      return `  relative inline-flex items-center justify-center overflow-hidden
+        after:content-[""] after:absolute after:w-10 after:h-10 after:rounded-full
+        after:bg-gray-800/30 after:opacity-0 after:scale-0
+        hover:after:opacity-100  hover:after:scale-100  after:transition-transform
+        after:duration-500`
     case 'shadow':
-      return 'bg-transparent relative after:content after:absolute after:w-full after:h-[1px] after:bg-gray-200';
-      case 'mirror':
+      return ' relative';
+      case 'bordered':
       return `
-        relative inline-flex items-center justify-center overflow-hidden
-        after:content-[""]
-        after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px]
-        after:bg-yellow-00 after:scale-x-0 after:transition-all after:duration-300 ease-out
-        hover:after:scale-x-100 hover:after:left-0
-        active:after:scale-x-100
+        relative inline-flex items-center justify-center  transition-all duration-1000 
       `;
     default:
       return `
-        relative flex items-center justify-center overflow-hidden bg-gradient-to-br
-        from-white/20 to-white/10 backdrop-blur-md
-        transition-all duration-700 ease-in-out ${props.variant != "bordered" ?'shadow-inner' : ' '} 
-        after:content-[""] after:absolute after:inset-0
-        after:bg-gradient-to-br after:from-blue-400/30 after:via-white/10 after:to-transparent
-        after:opacity-0 after:scale-75 after:blur-lg
-   
-        before:content-[""] before:absolute before:w-[140%] before:h-[140%]
-        before:bg-gradient-to-br before:from-blue-200/20 before:to-white/5
-        before:opacity-0 before:scale-0 before:transition-transform before:duration-700
-      active:before:opacity-30
+        relative flex items-center justify-center overflow-hidden 
+        transition-all duration-700 ease-in-out shadow-inner
       `;
   }
 });
@@ -73,7 +63,12 @@ function selectTab(value) {
     <Core
       :variant="props.variant"
       :is-disabled="props.isDisabled"
-      :class="[layoutClass,props.variant==='bordered' ? '  ring-2 p-2 relative  rounded-lg ring-gray-300 hover:ring-gray-400 transition-all duration-300':'']"
+      :class="[layoutClass,props.variant==='bordered' ? '  ring-2 p-2 relative  rounded-lg ring-gray-300 hover:ring-gray-400 transition-all duration-300':''
+,
+
+
+
+      ]"
     >
       <div v-for="(tab, index) in props.tabs" :key="tab.value" :class="[
         'relative ',
@@ -90,21 +85,20 @@ function selectTab(value) {
       : '',
     ,
     props.variant === 'underline' && activeTab === tab.value ? ' after:scale-x-100' : 'after:scale-x-0',
-    props.variant === 'shadow' && activeTab === tab.value ? 'shadow-[inset_0px_4px_4px_0px] transition-all duration-300 rounded-lg  ' : '',
-    props.variant === 'shadow' && activeTab !== tab.value ? 'shadow-[0px_1px_4px_0px] transition-all duration-300 rounded-lg ' : '',
+    props.variant === 'shadow' && activeTab === tab.value ? 'shadow-[inset_0px_4px_4px_0px] transition-all duration-200 rounded-lg active:scale-95 ' : '',
+    props.variant === 'shadow' && activeTab !== tab.value ? 'shadow-[0px_1px_4px_0px] transition-all duration-200 rounded-lg active:scale-95  ' : '',
     props.variant === 'mirror'
-      ? `relative overflow-hidden rounded-md bg-transparent ring-1
+      ? `relative overflow-hidden 
           ${activeTab === tab.value
-            ? 'after:translate-x-0 after:scale-x-100 after:opacity-100 ring-gray-200'
-            : 'after:translate-x-[-100%] after:scale-x-10 after:opacity-0 ring-gray-200'}
+            ? 'after:translate-x-full after:scale-x-150 after:opacity-100  space-x-10'
+            : 'after:translate-x-[-100%] after:scale-x-10  '}
           transition-all duration-700`
       : '',
     !props.vertical ? (props.variant === 'default' && index === 0 ? 'rounded-l-full' : '') : (props.variant === 'default' && index === 0 ? 'rounded-t-2xl' : ''),
     !props.vertical ? (props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-r-full' : '') : (props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-b-2xl' : ''),
-    !props.vertical ? (props.variant === 'bordered' && index === 0 ? 'rounded-l-lg' : '') : (props.variant === 'default' && index === 0 ? 'rounded-t-lg' : ''),
-    !props.vertical ? (props.variant === 'bordered' && index === props.tabs.length - 1 ? 'rounded-r-lg' : '') : (props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-b-2xl' : ''),
+    !props.vertical ? (props.variant === 'mirror' && index === 0 ? 'rounded-l-lg' : '') : (props.variant === 'default' && index === 0 ? 'rounded-t-lg' : ''),
+    !props.vertical ? (props.variant === 'mirror' && index === props.tabs.length - 1 ? 'rounded-r-lg' : '') : (props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-b-2xl' : ''),
     props.vertical ? 'w-full' : '',
-    // اضافه کردن activeTextColor و activeColor
     activeTab === tab.value ? props.activeTextColor : props.textColor,
     activeTab === tab.value ? props.activeColor : props.color,
     activeTab === tab.value ? props.activeShadow : props.shadow
