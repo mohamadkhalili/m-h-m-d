@@ -119,7 +119,6 @@
 import {
   computed,
   useSlots,
-  defineOptions,
   onMounted,
   watch,
   nextTick,
