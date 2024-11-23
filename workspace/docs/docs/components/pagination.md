@@ -3,9 +3,6 @@
 <script setup>
 import { ref } from 'vue'
 
-// If your component is **not** globally registered, uncomment the next line and adjust the path accordingly
-// import MyComponent from '@path/to/MyComponent.vue'
-
 const inputValue1 = ref()
 const inputValue2 = ref()
 const inputValue3 = ref()
