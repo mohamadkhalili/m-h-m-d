@@ -151,8 +151,8 @@ The following examples show how you can customize the background and text colors
     <Tab 
       :tabs="tabsVariants" 
       variant="bordered"
-       activeTextColor="text-orange-500"
-      activeColor="bg-purple-600"
+       activeColor="text-green-600 bg-white   " 
+      color=" text-gray-400  bg-white  "
     >
       <template #label="{ tab }">
         <span>{{ tab.label }}</span>
@@ -176,6 +176,8 @@ The following examples show how you can customize the background and text colors
     <Tab 
       :tabs="tabsVariants" 
      variant="mirror"
+       activeColor="text-green-600 bg-white   " 
+      color=" text-gray-400  bg-white  shadow-none "
     >
     </Tab>
   </div>
@@ -185,8 +187,8 @@ The following examples show how you can customize the background and text colors
 
   <Tab 
       :tabs="tabsVariants" 
-      activeColor="text-sky-600 shadow-sky-300 scale-105  " 
-      color=" text-gray-950 shadow-sky-300  "
+      activeColor="text-yellow-600 bg-white shadow-yellow-300   " 
+      color=" text-gray-500 shadow-yellow-300 bg-white  "
       variant="shadow" 
     >
     </Tab>
