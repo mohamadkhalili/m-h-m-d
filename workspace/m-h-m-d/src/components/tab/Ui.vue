@@ -93,14 +93,14 @@ function selectTab(value) {
     getButtonStyleClass,
     sizeTab,
     props.isDisabled ? 'opacity-50 cursor-not-allowed' : '',
-     !props.vertical && props.position =='top' ? (props.variant === 'bordered' && activeTab === tab.value ? '  border-b-0 active:scale-95 ' : '') : '' ,
-     !props.vertical && props.position =='bottom' ? (props.variant === 'bordered' && activeTab === tab.value ? '  border-t-0 active:scale-95 ' : '') : '' ,
-     props.vertical && props.position =='left' ? (props.variant === 'bordered' && activeTab === tab.value ? '  border-r-0 active:scale-95 ' : '') : '' ,
-     props.vertical && props.position =='right' ? (props.variant === 'bordered' && activeTab === tab.value ? '  border-l-0 active:scale-95 ' : '') : '' ,
+     !props.vertical && props.position =='top' ? (props.variant === 'bordered' && activeTab === tab.value ? '  border-b-0  shadow-[inset_0px_2px_0px_0px] active:scale-105 ' : '') : '' ,
+     !props.vertical && props.position =='bottom' ? (props.variant === 'bordered' && activeTab === tab.value ? '  border-t-0  shadow-[inset_0px_-1px_0px_0px]  active:scale-105 ' : '') : '' ,
+     props.vertical && props.position =='left' ? (props.variant === 'bordered' && activeTab === tab.value ? '  border-r-0 shadow-[inset_1px_0px_0px_0px] active:scale-105 ' : '') : '' ,
+     props.vertical && props.position =='right' ? (props.variant === 'bordered' && activeTab === tab.value ? '  border-l-0 shadow-[inset_-1px_0px_0px_0px] active:scale-105 ' : '') : '' ,
 
 
      
-      props.variant === 'bordered' && activeTab !== tab.value ? ' active:scale-95'  
+      props.variant === 'bordered' && activeTab !== tab.value ? ' active:scale-105'  
       : '',
     ,
     props.variant === 'underline' && activeTab === tab.value ? ' after:scale-x-100' : 'after:scale-x-0',

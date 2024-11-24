@@ -24,7 +24,7 @@ This example demonstrates horizontally aligned tabs with default styling.
    class="gap-3 border-[1px] rounded-md w-fit"
     :tabs="tabs" 
     variant="bordered"
-     activeColor="text-blue-500"
+     activeColor="text-blue-500 shadow-blue-300"
   >
     <template #label="{ tab }">
       <span>{{ tab.label }}</span>
@@ -149,7 +149,7 @@ The following examples show how you can customize the background and text colors
 <div class="grid grid-cols-2 gap-4">
   <div class="p-4 rounded-lg shadow-inner flex justify-center items-center">
     <Tab 
-    class="gap-3 border-2 rounded-xl w-fit"
+    class="gap-3 border-2  w-fit"
       :tabs="tabs" 
       variant="bordered"
        activeColor="text-green-800 bg-transparent border-t-green-600    " 
@@ -243,7 +243,7 @@ Adjust the position of the tabs using the `position` prop. The available options
   <div class="p-4 rounded-lg shadow-inner flex justify-center items-center">
      <Tab 
     :tabs="tabs" 
-   activeColor="bg-transparent" 
+   activeColor="bg-transparent shadow-rose-400 text-rose-700" 
     textColor="text-gray-400  bg-transparent"
     variant="bordered"
     position="bottom"
@@ -260,8 +260,8 @@ Adjust the position of the tabs using the `position` prop. The available options
    <div class="p-4 rounded-lg shadow-inner flex justify-center items-center">
      <Tab 
     :tabs="tabs" 
-   activeColor="bg-transparent" 
-    textColor="text-gray-400  bg-transparent"
+   activeColor="bg-transparent shadow-sky-400 text-sky-700" 
+    textColor="text-gray-400  bg-transparent "
     variant="bordered"
     position="top"
   >
@@ -278,7 +278,7 @@ Adjust the position of the tabs using the `position` prop. The available options
    <div class="p-4 rounded-lg shadow-inner flex justify-center items-center">
      <Tab 
     :tabs="tabs" 
-   activeColor="bg-transparent" 
+   activeColor="bg-transparent shadow-violet-400 text-violet-700" 
     textColor="text-gray-400  bg-transparent"
     variant="bordered"
     position="left"
@@ -298,7 +298,7 @@ Adjust the position of the tabs using the `position` prop. The available options
 
    <Tab 
     :tabs="tabs" 
-    activeColor="bg-transparent" 
+    activeColor="bg-transparent  shadow-lime-400 text-lime-700" 
     textColor="text-gray-400  bg-transparent"
     variant="bordered"
      position="right"
@@ -337,7 +337,7 @@ const tabs = [
 
  <Tab 
     :tabs="tabs" 
-    activeColor="bg-transparent" 
+    activeColor="bg-transparent  shadow-lime-400 text-lime-700" 
     textColor="text-gray-400  bg-transparent"
     variant="bordered"
      vertical     <!-- when you select right or left better use vertical -->
