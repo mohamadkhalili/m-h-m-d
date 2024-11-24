@@ -1,5 +1,5 @@
 <template>
-    <div class="menu" :class="{ 'vertical-menu': vertical }" @click="handleClick">
+    <div class="list" :class="{ 'vertical-list': vertical }" @click="handleClick">
       <div v-for="(item, index) in items" :key="index">
         <slot
           name="item"
@@ -16,13 +16,12 @@
   import { coreProps } from "./Props";
   import { listEmits } from "./Emits";
   import { coreSlots } from "./Slots";
-  import { useBgColorClassName } from "../../composables/ColorComposable";
   const props = defineProps(coreProps);
   const emit = defineEmits(listEmits);
   const slots = defineSlots<coreSlots>();
   const handleClick = (event: MouseEvent) => {
     const target = event.target as HTMLElement;
-    if (target.classList.contains("menu-item")) {
+    if (target.classList.contains("list-item")) {
       const itemValue = target.textContent?.trim();
       emit("update:modelValue", itemValue);
     }
