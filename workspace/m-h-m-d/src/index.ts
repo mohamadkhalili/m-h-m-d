@@ -6,8 +6,8 @@ import Button from './components/button/Ui.vue';
 import input from './components/input/Ui.vue';
 import menu from './components/menu/Ui.vue';
 import tab from './components/tab/Ui.vue';
-import MainBtn from './components/button/Core.vue';
-import mainInput from './components/input/Core.vue';
+import ChatBubble from './components/ChatBubble/Ui.vue';
+
 
 import { tooltip } from './directives/TooltipDirective';
 import  clickOutside  from './directives/clickOutSide'
@@ -18,7 +18,10 @@ const components = [
     { name: 'Button', ...Button },
     { name: 'input', ...input },
     { name: 'menu', ...menu },
-    { name: 'tab', ...tab }
+    { name: 'tab', ...tab },
+    { name: 'ChatBubble', ...ChatBubble },
+
+    
 ]
 
 const directives = {
@@ -37,7 +40,7 @@ const install = (app: App) => {
 }
 
 
-export { pagination, modal, Button, input, menu, tab }
+export { pagination, modal, Button, input, menu, tab,ChatBubble }
 export { tooltip }
 
 export default {
