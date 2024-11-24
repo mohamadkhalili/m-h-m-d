@@ -29,7 +29,8 @@ export default defineConfig({
           {text:'button',link:'/components//button'},
           {text:'input',link:'/components//input'},
           {text:'Menu',link:'/components//menu'},
-          {text:'Tab',link:'/components//tab'}
+          {text:'Tab',link:'/components//tab'},
+          {text:'List',link:'/components//list'}
         ]
       },
       

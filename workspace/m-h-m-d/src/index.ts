@@ -6,6 +6,7 @@ import Button from './components/button/Ui.vue';
 import input from './components/input/Ui.vue';
 import menu from './components/menu/Ui.vue';
 import tab from './components/tab/Ui.vue';
+import list from './components/list/Ui.vue'
 import MainBtn from './components/button/Core.vue';
 import mainInput from './components/input/Core.vue';
 
@@ -18,7 +19,8 @@ const components = [
     { name: 'Button', ...Button },
     { name: 'input', ...input },
     { name: 'menu', ...menu },
-    { name: 'tab', ...tab }
+    { name: 'tab', ...tab },
+    { name: 'list', ...list}
 ]
 
 const directives = {
@@ -37,7 +39,7 @@ const install = (app: App) => {
 }
 
 
-export { pagination, modal, Button, input, menu, tab }
+export { pagination, modal, Button, input, menu, tab, list }
 export { tooltip }
 
 export default {
