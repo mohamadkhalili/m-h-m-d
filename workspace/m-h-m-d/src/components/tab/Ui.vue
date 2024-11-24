@@ -9,6 +9,20 @@ const emit = defineEmits(['update:modelValue']);
 const activeTab = ref(props.modelValue || props.tabs[0]?.value);
 
 
+const position = computed(() => {
+  switch (props.position) {
+    case 'bottom':
+      return 'flex flex-col flex-col-reverse gap-2';
+    case 'left':
+      return 'flex flex-row flex-row gap-2';
+    case 'right':
+      return 'flex flex-row flex-row-reverse gap-2 ';
+    case 'top':
+      return 'flex flex-col ';
+    default:
+      return ' ';
+  }
+});
 
 
 const sizeTab = computed(() => {
@@ -59,7 +73,7 @@ function selectTab(value) {
 </script>
 
 <template>
-  <div>
+  <div :class="[position , 'items-center']">
     <Core
     :tabs="props.tabs"
       :variant="props.variant"

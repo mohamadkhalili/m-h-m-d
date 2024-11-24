@@ -222,15 +222,134 @@ The following examples show how you can customize the background and text colors
 <br/>
 
 
+## Position
+Adjust the position of the tabs using the `position` prop. The available options are `top`, `right`, `left`, and `bottom`. Below are examples for each position option:
+<div class="grid grid-cols-2 gap-4">
+  <div class="p-4 rounded-lg shadow-inner flex justify-center items-center">
+     <Tab 
+    :tabs="tabs" 
+   activeColor="bg-transparent" 
+    textColor="text-gray-400  bg-transparent"
+    variant="bordered"
+    position="bottom"
+  >
+    <template #label="{ tab }">
+      <span>{{ tab.label }}</span>
+    </template>
+    <template #content="{ tab }">
+      <p>{{ tab.content }}</p>
+    </template>
+  </Tab>
+  </div>
+
+  <div class="p-4 rounded-lg shadow-inner flex justify-center items-center">
+     <Tab 
+    :tabs="tabs" 
+    activeColor="bg-transparent" 
+    textColor="text-gray-400  bg-transparent"
+    variant="bordered"
+    position="top"
+  >
+    <template #label="{ tab }">
+      <span>{{ tab.label }}</span>
+    </template>
+    <template #content="{ tab }">
+      <p>{{ tab.content }}</p>
+    </template>
+  </Tab>
+
+
+  </div>
+   <div class="p-4 my-10 rounded-lg shadow-inner flex justify-center items-center">
+     <Tab 
+    :tabs="tabs" 
+   activeColor="bg-transparent" 
+    textColor="text-gray-400  bg-transparent"
+    variant="bordered"
+     position="left"
+     vertical
+  >
+    <template #label="{ tab }">
+      <span>{{ tab.label }}</span>
+    </template>
+    <template #content="{ tab }">
+      <p>{{ tab.content }}</p>
+    </template>
+  </Tab>
+  </div>
+
+  <div class="p-4 rounded-lg my-10  shadow-inner flex justify-center items-center">
+
+
+   <Tab 
+    :tabs="tabs" 
+    activeColor="bg-transparent" 
+    textColor="text-gray-400  bg-transparent"
+    variant="bordered"
+     position="right"
+     vertical
+  >
+    <template #label="{ tab }">
+      <span>{{ tab.label }}</span>
+    </template>
+    <template #content="{ tab }">
+      <p>{{ tab.content }}</p>
+    </template>
+  </Tab>
+    
+  </div>
+  
+</div>
+<div class="flex justify-around">
+<h5 class="text-rose-600">mirror</h5>
+<h5 class="text-yellow-600">shadow</h5>
+
+</div>
+
+<br/>
+**Code** 
+
+```md
+<script setup>
+const tabs = [
+  { label: 'Tab 1', value: 1, content: 'Content of tab 1' },
+  { label: 'Tab 2', value: 2, content: 'Content of tab 2' },
+  { label: 'Tab 3', value: 3, content: 'Content of tab 3' }
+];
+
+</script>
+
+ <Tab 
+    :tabs="tabs" 
+    activeColor="bg-transparent" 
+    textColor="text-gray-400  bg-transparent"
+    variant="bordered"
+     vertical     <!-- when you select right or left better use vertical -->
+     position="right"    <!-- You can choice 1 of 4 side  -->
+  >
+    <template #label="{ tab }">
+      <span>{{ tab.label }}</span>
+    </template>
+    <template #content="{ tab }">
+      <p>{{ tab.content }}</p>
+    </template>
+  </Tab>
+
+```
+
+
+
+
+
+
 ## Disable
  you can disable your Tab with `isDisable` option!
 
  <div class="p-6 rounded-lg shadow-inner flex justify-center items-center">
   <Tab 
      :tabs="tabsVariants" 
-      activeTextColor="text-teal-500"
-      activeShadow="shadow-teal-500" 
-      textColor="shadow-gray-300" 
+      activeTextColor="text-white bg-gray-600 rounded-full" 
+      color="shadow-gray-300 text-teal-500" 
       variant="bordered" 
     isDisabled 
   >
@@ -277,10 +396,9 @@ Adjust the size of the tabs using the `size` prop. The available options are `sm
 <div class="flex items-center space-x-4">
   <Tab 
      :tabs="tabsVariants" 
-     activeTextColor="text-orange-500"
-     activeShadow="shadow-teal-500" 
-     textColor="shadow-gray-300" 
-     variant="bordered"
+     variant="shadow"
+     activeColor="bg-transparent shadow-yellow-500 text-yellow-500 "
+     color="shadow-yellow-400"
      size="lg" 
   >
   </Tab>
@@ -291,10 +409,9 @@ Adjust the size of the tabs using the `size` prop. The available options are `sm
 <div class="flex items-center space-x-4">
   <Tab 
      :tabs="tabsVariants" 
-     activeTextColor="text-blue-500"
-     activeShadow="shadow-teal-500" 
-     textColor="shadow-gray-300" 
-     variant="bordered"
+     variant="shadow"
+     activeColor="bg-transparent "
+     color="shadow-blue-400"
      size="md" 
   >
   </Tab>
@@ -305,16 +422,28 @@ Adjust the size of the tabs using the `size` prop. The available options are `sm
 <div class="flex items-center space-x-4 ">
   <Tab 
      :tabs="tabsVariants" 
-     activeTextColor="text-purple-500"
-     activeShadow="shadow-teal-500" 
-     textColor="shadow-gray-300" 
-     variant="bordered"
+     variant="shadow"
+     activeColor="bg-transparent shadow-green-500 text-green-700 "
+     color="shadow-green-400"
      size="sm" 
   >
   </Tab>
 </div>
 
 </div>
+
+**Code**
+
+```md
+  <Tab 
+     :tabs="tabsVariants" 
+     variant="shadow"
+     activeColor="bg-transparent shadow-green-500 text-green-700 "
+     color="shadow-green-400"
+     size="sm"     <!-- You can choice 1 of 4 sizes  -->
+  >
+  </Tab>
+```
 
 ## Tab Component Features
 
@@ -328,3 +457,4 @@ Adjust the size of the tabs using the `size` prop. The available options are `sm
 | **Custom Content**   | Customize the content that appears when a tab is selected. This is managed via slots for content and labels.      | Use `#content` and `#label` slots to customize the tab label and content dynamically.        |
 | **Customize Shadow Colors** | Customize the shadow colors of both active and inactive tabs.                                              | Set the `activeShadow` and `shadow` props to modify the shadow of the tabs.                 |
 | **Size**             | Change the size of the tabs. Sizes available are `sm`, `md`, `lg`, and `xl`.                                     | Set the `size` prop to one of the following: `'sm'`, `'md'`, `'lg'`, `'xl'`.                  |
+| **Position**             | Change the Position of the tabs. Position available are `left`, `right`, `bottom`, and `top`.                                     | Set the `Position` prop to one of the following: `'left'`, `'right'`, `'bottom'`, `'top'`.                  |

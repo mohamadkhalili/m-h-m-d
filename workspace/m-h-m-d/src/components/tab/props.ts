@@ -40,7 +40,7 @@ export const TabProps = {
   },
   activeTextColor: {
     type: String,
-    default: 'text-white',
+    default: 'text-blue-500',
   },
   textColor: {
     type: String,
@@ -53,5 +53,9 @@ export const TabProps = {
   color: {
     type: String,
     default: 'bg-slate-200',
+  },
+  position: {
+    type: String,
+    default: 'top',
   },
 };
