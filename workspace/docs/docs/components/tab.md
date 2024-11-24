@@ -19,13 +19,11 @@ const tabsVariants = [
 **Simple tabs with default configurations**  
 This example demonstrates horizontally aligned tabs with default styling.
 
-<div class="p-6 rounded-lg shadow-inner flex justify-center items-center">
+<div class="p-8 rounded-lg shadow-inner flex justify-center items-center">
   <Tab 
+   class="gap-3 border-[1px] rounded-xl w-fit"
     :tabs="tabs" 
-    activeColor="bg-gray-800" 
-    color="bg-gray-200" 
-    activeTextColor="text-white" 
-    textColor="text-black"
+    variant="bordered"
   >
     <template #label="{ tab }">
       <span>{{ tab.label }}</span>
@@ -78,19 +76,21 @@ The following examples show how you can customize the background and text colors
 <br/>
 <br/>
 
-<div class="grid grid-cols-2 gap-4"> 
-<div class="p-4 rounded-lg shadow-inner flex justify-center items-center">
- <Tab :tabs="tabsVariants" activeColor="bg-blue-600" color="bg-gray-700" activeTextColor="text-white" textColor="text-white" > 
- <template #label="{ tab }"> 
- <span>{{ tab.label }}</span>
-  </template>
-   <template #content="{ tab }">
-    <p>{{ tab.content }}</p> 
-    </template>
+<div class="grid grid-cols-2 gap-2"> 
+<div class="p-8 rounded-lg   justify-center items-center shadow-inner">
+ <Tab :tabs="tabs" 
+ activeColor="bg-blue-600"
+  color="bg-gray-700"
+   activeTextColor="text-white"
+    textColor="text-white" > 
     </Tab> 
     </div> 
-    <div class="p-4 rounded-lg shadow-inner flex justify-center items-center"> 
-    <Tab :tabs="tabsVariants" activeColor="bg-rose-700" color="bg-gray-100" activeTextColor="text-white" textColor="text-black" >
+    <div class="p-8 rounded-lg shadow-inner  justify-center items-center"> 
+    <Tab :tabs="tabs" 
+    activeColor="bg-rose-700" 
+    color="bg-gray-100" 
+    activeTextColor="text-white"
+     textColor="text-black" >
      <template #label="{ tab }"> 
      <span>{{ tab.label }}</span> 
      </template>
@@ -149,9 +149,10 @@ The following examples show how you can customize the background and text colors
 <div class="grid grid-cols-2 gap-4">
   <div class="p-4 rounded-lg shadow-inner flex justify-center items-center">
     <Tab 
-      :tabs="tabsVariants" 
+    class="gap-3 border-2 rounded-xl w-fit"
+      :tabs="tabs" 
       variant="bordered"
-       activeColor="text-green-600 bg-transparent   " 
+       activeColor="text-green-800 bg-transparent border-t-green-600    " 
       color=" text-gray-400   bg-transparent  "
     >
       <template #label="{ tab }">
@@ -162,7 +163,8 @@ The following examples show how you can customize the background and text colors
 
   <div class="p-4 rounded-lg shadow-inner flex justify-center items-center">
     <Tab 
-  :tabs="tabsVariants" 
+    class="gap-3 border-2 rounded-xl w-96"
+  :tabs="tabs" 
   variant="underline"
   activeColor="bg-transparent"
   color="bg-transparent"
@@ -174,21 +176,23 @@ The following examples show how you can customize the background and text colors
   </div>
    <div class="p-4 my-10 rounded-lg shadow-inner flex justify-center items-center">
     <Tab 
-      :tabs="tabsVariants" 
+    class="gap-3 border-2  w-fit bg-gray-200"
+      :tabs="tabs" 
      variant="mirror"
        activeColor=" text-rose-600 bg-gray-200  " 
-      color=" text-gray-800   bg-gray-200   "
+      color=" text-gray-800   bg-gray-200 bg-white   "
     >
     </Tab>
   </div>
 
   <div class="p-4 rounded-lg my-10  shadow-inner flex justify-center items-center">
-
+ 
 
   <Tab 
-      :tabs="tabsVariants" 
-      activeColor="text-yellow-600 bg-white shadow-yellow-300   " 
-      color=" text-gray-500 shadow-yellow-300 bg-white  "
+  class="gap-3 border-2 rounded-xl min-w-full "
+      :tabs="tabs" 
+      activeColor="bg-gray-200  text-black" 
+      color=" text-gray-400  bg-white   "
       variant="shadow" 
     >
     </Tab>
@@ -253,10 +257,10 @@ Adjust the position of the tabs using the `position` prop. The available options
   </Tab>
   </div>
 
-  <div class="p-4 rounded-lg shadow-inner flex justify-center items-center">
+   <div class="p-4 rounded-lg shadow-inner flex justify-center items-center">
      <Tab 
     :tabs="tabs" 
-    activeColor="bg-transparent" 
+   activeColor="bg-transparent" 
     textColor="text-gray-400  bg-transparent"
     variant="bordered"
     position="top"
@@ -271,13 +275,13 @@ Adjust the position of the tabs using the `position` prop. The available options
 
 
   </div>
-   <div class="p-4 my-10 rounded-lg shadow-inner flex justify-center items-center">
+   <div class="p-4 rounded-lg shadow-inner flex justify-center items-center">
      <Tab 
     :tabs="tabs" 
    activeColor="bg-transparent" 
     textColor="text-gray-400  bg-transparent"
     variant="bordered"
-     position="left"
+    position="left"
      vertical
   >
     <template #label="{ tab }">
@@ -300,7 +304,7 @@ Adjust the position of the tabs using the `position` prop. The available options
      position="right"
      vertical
   >
-    <template #label="{ tab }">
+    <template #label="{ tab }" >
       <span>{{ tab.label }}</span>
     </template>
     <template #content="{ tab }">
@@ -360,7 +364,7 @@ const tabs = [
  <div class="p-6 rounded-lg shadow-inner flex justify-center items-center">
   <Tab 
      :tabs="tabsVariants" 
-      activeTextColor="text-white bg-gray-600 rounded-full" 
+      activeTextColor="text-white bg-gray-600 " 
       color="shadow-gray-300 text-teal-500" 
       variant="bordered" 
     isDisabled 
@@ -386,7 +390,7 @@ const tabs = [
 
 Adjust the size of the tabs using the `size` prop. The available options are `sm`, `md`, `lg`, and `xl`. Below are examples for each size option:
 
-<div class="p-6 rounded-lg shadow-inner flex flex-col justify-center items-center">
+<div class="p-6 rounded-lg shadow-inner flex flex-col justify-center items-center gap-8">
 
 
 
@@ -404,7 +408,6 @@ Adjust the size of the tabs using the `size` prop. The available options are `sm
 </div>
 
 
-
 <div class="flex items-center space-x-4">
   <Tab 
      :tabs="tabsVariants" 
@@ -418,7 +421,7 @@ Adjust the size of the tabs using the `size` prop. The available options are `sm
 
 
 
-<div class="flex items-center space-x-4">
+<div class="flex items-center ">
   <Tab 
      :tabs="tabsVariants" 
      variant="shadow"
@@ -431,7 +434,7 @@ Adjust the size of the tabs using the `size` prop. The available options are `sm
 
 <br/>
 
-<div class="flex items-center space-x-4 ">
+<div class="flex items-center  ">
   <Tab 
      :tabs="tabsVariants" 
      variant="shadow"

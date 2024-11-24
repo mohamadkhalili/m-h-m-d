@@ -1,12 +1,14 @@
+// props.ts
 import { PropType } from 'vue';
 
 export interface Tab {
   label: string;
-  value: number;
-  content: string;
+  value: number | string;
+  content?: string;
+  disabled?: boolean;
 }
 
-export const variant = {
+export const variants = {
   default: 'default',
   underline: 'underline',
   bordered: 'bordered',
@@ -24,7 +26,7 @@ export const TabProps = {
     required: true,
   },
   variant: {
-    type: String as PropType<keyof typeof variant>,
+    type: String as PropType<keyof typeof variants>,
     default: 'default',
   },
   isDisabled: {
@@ -36,26 +38,27 @@ export const TabProps = {
     default: false,
   },
   size: {
-    type: String,
+    type: String as PropType<'sm' | 'md' | 'lg' | 'xl'>,
+    default: 'md',
   },
   activeTextColor: {
     type: String,
-    default: 'text-blue-500',
+    default: '',
   },
   textColor: {
     type: String,
-    default: 'text-black',
+    default: 'text-gray-400',
   },
   activeColor: {
     type: String,
-    default: 'bg-gray-950',
+    default: 'bg-transparent',
   },
   color: {
     type: String,
-    default: 'bg-slate-200',
+    default: 'bg-transparent',
   },
   position: {
-    type: String,
+    type: String as PropType<'top' | 'bottom' | 'left' | 'right'>,
     default: 'top',
   },
 };
