@@ -6,7 +6,7 @@ import DefaultTheme from 'vitepress/theme'
 // import '../../../../styles'
 import './tailwind.postcss'
 // import Pagination from '../../../../ui/src/components/pagination/Ui.vue'
-import { pagination, modal, Button, input, menu, tab, list } from 'm-h-m-d'
+import { pagination, modal, Button, input, menu, tab, list, tooltip } from 'm-h-m-d'
 import clickOutside from 'm-h-m-d/src/directives/clickOutSide';
 
 export default {
@@ -27,6 +27,7 @@ export default {
     app.component('List', list)
 
     app.directive('click-outside', clickOutside)
+    app.directive('tooltipl', tooltip)
 
   }
 } satisfies Theme

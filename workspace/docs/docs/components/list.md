@@ -9,18 +9,7 @@ const menuValueHover = ref(false);
 const menuValueSize = ref(false);
 </script>
 
-## Default Menu
+## Default List
 
-**Props:**
-
-- `v-model`: Binds the open/close state of the menu.
-
-**Usage:**
-
-- This is the basic menu that toggles when the button is clicked.
-
-<List v-model="menuValue"  >
+<List v-model="menuValue" vertical >
 </List>
-<br>
-<br>
-<br>
