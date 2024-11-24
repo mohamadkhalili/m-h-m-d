@@ -12,7 +12,7 @@ const tabsVariants = [
 ];
 </script>
 
----
+
 
 ##  Tab
 
@@ -224,6 +224,17 @@ The following examples show how you can customize the background and text colors
 
 ## Position
 Adjust the position of the tabs using the `position` prop. The available options are `top`, `right`, `left`, and `bottom`. Below are examples for each position option:
+
+<br/>
+<br/>
+
+<div class="flex justify-around">
+<h5>bottom</h5>
+<h5>top</h5>
+
+</div>
+<br/>
+
 <div class="grid grid-cols-2 gap-4">
   <div class="p-4 rounded-lg shadow-inner flex justify-center items-center">
      <Tab 
@@ -301,12 +312,13 @@ Adjust the position of the tabs using the `position` prop. The available options
   
 </div>
 <div class="flex justify-around">
-<h5 class="text-rose-600">mirror</h5>
-<h5 class="text-yellow-600">shadow</h5>
+<h5>left</h5>
+<h5>right</h5>
 
 </div>
 
 <br/>
+
 **Code** 
 
 ```md
