@@ -16,14 +16,15 @@ const tabsVariants = [
 
 ##  Tab
 
-**Simple tabs with default configurations**  
+
 This example demonstrates horizontally aligned tabs with default styling.
 
-<div class="p-8 rounded-lg shadow-inner flex justify-center items-center">
+<div class="p-8 rounded-xl shadow-inner flex justify-center items-center">
   <Tab 
-   class="gap-3 border-[1px] rounded-xl w-fit"
+   class="gap-3 border-[1px] rounded-md w-fit"
     :tabs="tabs" 
     variant="bordered"
+     activeColor="text-blue-500"
   >
     <template #label="{ tab }">
       <span>{{ tab.label }}</span>
@@ -49,12 +50,12 @@ const tabs = [
 ];
 </script>
 
-<Tab 
+<div class="p-8 rounded-lg shadow-inner flex justify-center items-center">
+  <Tab 
+   class="gap-3 border-[1px] rounded-md w-fit"
     :tabs="tabs" 
-    activeColor="bg-gray-800" 
-    color="bg-gray-200" 
-    activeTextColor="text-white" 
-    textColor="text-black"
+    variant="bordered"
+    activeColor="text-blue-500"
   >
     <template #label="{ tab }">
       <span>{{ tab.label }}</span>
@@ -63,7 +64,7 @@ const tabs = [
       <p>{{ tab.content }}</p>
     </template>
   </Tab>
-
+</div>
 
 ```
 <br/>
@@ -75,7 +76,6 @@ const tabs = [
 The following examples show how you can customize the background and text colors for active and inactive states.
 <br/>
 <br/>
-
 <div class="grid grid-cols-2 gap-2"> 
 <div class="p-8 rounded-lg   justify-center items-center shadow-inner">
  <Tab :tabs="tabs" 

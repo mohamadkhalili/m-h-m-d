@@ -93,18 +93,40 @@ function selectTab(value) {
     getButtonStyleClass,
     sizeTab,
     props.isDisabled ? 'opacity-50 cursor-not-allowed' : '',
-            props.variant === 'bordered' && activeTab !== tab.value ? 'active:scale-95' : '',
-            props.variant === 'underline' && activeTab === tab.value ? 'after:scale-x-100' : 'after:scale-x-0',
-            props.variant === 'underline' && activeTab !== tab.value ? 'after:scale-x-0 after:bg-gray-400' : '',
-            props.variant === 'shadow' && activeTab === tab.value ? 'bg-gray-200 border-0 border-x-8 active:scale-95' : '',
-            props.variant === 'shadow' && activeTab !== tab.value ? 'border-x-2 active:scale-95' : '',
-            props.variant === 'mirror' ? `relative overflow-hidden ${activeTab === tab.value ? 'after:translate-x-100 after:scale-0' : 'after:scale-x-[200%]'} transition-all duration-700` : '',
-            !props.vertical ? (props.variant === 'default' && index === 0 ? 'rounded-l-full' : '') : (props.variant === 'default' && index === 0 ? 'rounded-t-2xl' : ''),
-            !props.vertical ? (props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-r-full' : '') : (props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-b-2xl' : ''),
-            props.vertical ? 'w-full' : '',
-            activeTab === tab.value ? props.activeTextColor : props.textColor,
-            activeTab === tab.value ? props.activeColor : props.color,
-            activeTab === tab.value ? props.activeShadow : props.shadow
+     !props.vertical && props.position =='top' ? (props.variant === 'bordered' && activeTab === tab.value ? '  border-b-0 active:scale-95 ' : '') : '' ,
+     !props.vertical && props.position =='bottom' ? (props.variant === 'bordered' && activeTab === tab.value ? '  border-t-0 active:scale-95 ' : '') : '' ,
+     props.vertical && props.position =='left' ? (props.variant === 'bordered' && activeTab === tab.value ? '  border-r-0 active:scale-95 ' : '') : '' ,
+     props.vertical && props.position =='right' ? (props.variant === 'bordered' && activeTab === tab.value ? '  border-l-0 active:scale-95 ' : '') : '' ,
+
+
+     
+      props.variant === 'bordered' && activeTab !== tab.value ? ' active:scale-95'  
+      : '',
+    ,
+    props.variant === 'underline' && activeTab === tab.value ? ' after:scale-x-100' : 'after:scale-x-0',
+    props.variant === 'underline' && activeTab !== tab.value ? ' after:scale-x-0 after:bg-gray-400 ' : 'after:scale-x-0',
+
+    props.variant === 'shadow' && activeTab === tab.value ? ' bg-gray-200 border-0 border-x-8 active:scale-95 ' : '',
+    props.variant === 'shadow' && activeTab !== tab.value ? '  border-x-2  active:scale-95  ' : '',
+
+
+    props.variant === 'default' && activeTab === tab.value ? '' : '',
+    props.variant === 'default' && activeTab !== tab.value ? '' : '',
+
+
+    props.variant === 'mirror'
+      ? `relative overflow-hidden 
+          ${activeTab === tab.value
+            ? 'after:translate-x-100 after:scale-0 space-x-10'
+            : ' after:scale-x-[200%]  '}
+          transition-all duration-700`
+      : '',
+    !props.vertical ? (props.variant === 'default' && index === 0 ? 'rounded-l-full' : '') : (props.variant === 'default' && index === 0 ? 'rounded-t-2xl' : ''),
+    !props.vertical ? (props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-r-full' : '') : (props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-b-2xl' : ''),
+    props.vertical ? 'w-full' : '',
+    activeTab === tab.value ? props.activeTextColor : props.textColor,
+    activeTab === tab.value ? props.activeColor : props.color,
+    activeTab === tab.value ? props.activeShadow : props.shadow
 
   ]"
 >
@@ -118,9 +140,9 @@ function selectTab(value) {
 
     <div class="w-full  ">
       <div v-for="tab in props.tabs" :key="tab.value" v-show="activeTab === tab.value" class="p-6">
-        <transition name="fade" mode="out-in">
+        <transition name="slide-right" mode="out-in">
           <div v-if="tab.content != null" :key="tab.value" class="">
-            <slot name="content" :tab="tab">
+            <slot name="content" :tab="tab" :class="[ 'animate-ping' ]">
               {{ tab.content }}
             </slot>
           </div>
@@ -131,12 +153,17 @@ function selectTab(value) {
 </template>
 
 <style scoped>
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.3s ease-in-out;
+
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition: all 0.5s ease-in-out;
 }
-.fade-enter, .fade-leave-to {
+.slide-right-enter {
   opacity: 0;
+  transform: translateX(-100%);
 }
-
-
+.slide-right-leave-to {
+  opacity: 0;
+  transform: translateX(100%);
+}
 </style>
