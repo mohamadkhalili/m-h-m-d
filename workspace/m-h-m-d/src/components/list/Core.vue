@@ -1,5 +1,5 @@
 <template>
-  <div class="inline-flex p-[10px] rounded-[8px]" :class="{ 'flex flex-col min-w-[100px] min-h-[40px]': vertical }">
+  <div class="inline-flex p-[10px] rounded-[8px]" :class="herizontal ? '' : 'flex flex-col min-w-[100px] min-h-[40px]' ">
     <div v-for="(item, index) in items" :key="index" @click="handleClick(item)">
       <slot
         name="item"

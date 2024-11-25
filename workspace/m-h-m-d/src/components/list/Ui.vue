@@ -2,27 +2,32 @@
   <Core
     :modelValue="modelValue"
     @update:modelValue="handlePageChange"
-    :vertical="vertical"
+    :herizontal="herizontal"
     :tooltip="tooltip"
     v-bind="$attrs"
   >
     <slot name="list"></slot>
-    <template v-if="showMenu" #item="{ index, isActive, item }">
+    <template v-if="showList" #item="{ index, isActive, item }">
       <slot
         name="item"
         :index="index"
         :isActive="item == modelValue"
         :item="item"
-        :vertical="vertical"
+        :vertical="herizontal"
         :tooltip="tooltip"
       ></slot>
       <tooltipl
+        v-if="showItem"
         :enabled="tooltip"
         :text="item"
-        :location="vertical ? 'right' : 'top'"
+        :location="herizontal ? 'top' : 'right'"
       >
         <div
-          :class="isActive ? mergeClasses(uiActiveClass, activeClass) : mergeClasses(uiOnActiveClass, OnActiveClass)"
+          :class="
+            isActive
+              ? mergeClasses(uiActiveClass, activeClass)
+              : mergeClasses(uiOnActiveClass, OnActiveClass)
+          "
           v-if="showItem"
         >
           {{ item }}
@@ -45,44 +50,43 @@ defineOptions({
   inheritAttrs: false,
 });
 const uiActiveClass = ref(
-  "scale-110 bg-emerald-900 text-white flex justify-center items-center rounded-lg cursor-pointer transition-transform duration-300 ease-in-out transform hover:scale-105 text-sm text-center min-w-[90px] min-h-[45px] m-1"
+  "bg-gray-900 hover:bg-gray-800 transition-colors duration-300 delay-80 text-white flex justify-center items-center cursor-pointer transition-transform duration-300 ease-in-out select-none transform text-sm text-center w-24 h-10"
 );
 const uiOnActiveClass = ref(
-  "bg-gray-100 text-black flex justify-center items-center rounded-lg cursor-pointer transition-transform duration-300 ease-in-out transform hover:scale-105 text-sm text-center min-w-[90px] min-h-[45px] m-1"
+  "bg-gray-100 hover:bg-gray-200 text-black flex justify-center items-center cursor-pointer transition-colors duration-300 select-none ease-in-out delay-80 transform text-sm text-center w-24 h-10"
 );
 const slots = useSlots();
-const showMenu = computed(() => !slots.menu);
+const showList = computed(() => !slots.list);
 const showItem = computed(() => !slots.item);
 
 const handlePageChange = (newValue: number) => {
   emit("update:modelValue", newValue);
 };
 const mergeClasses = (uiClassInput: string, customClassInput: string) => {
-  if (!customClassInput || customClassInput.trim() === '') return uiClassInput;
+  if (!customClassInput || customClassInput.trim() === "") return uiClassInput;
 
-  const uiClassArray = uiClassInput.split(' ').filter(Boolean); 
-  const customClassArray = customClassInput.split(' ').filter(Boolean);
+  const uiClassArray = uiClassInput.split(" ").filter(Boolean);
+  const customClassArray = customClassInput.split(" ").filter(Boolean);
 
   const resultClassArray = [];
 
   const uiClassMap = new Map(
-    uiClassArray.map(uiClass => [uiClass.split('-')[0], uiClass]) 
+    uiClassArray.map((uiClass) => [uiClass.split("-")[0], uiClass])
   );
 
-  customClassArray.forEach(customClass => {
-    const baseName = customClass.split('-')[0];
+  customClassArray.forEach((customClass) => {
+    const baseName = customClass.split("-")[0];
 
     if (uiClassMap.has(baseName)) {
-      uiClassMap.set(baseName, customClass); 
+      uiClassMap.set(baseName, customClass);
     } else {
-
       resultClassArray.push(customClass);
     }
   });
 
   resultClassArray.push(...uiClassMap.values());
 
-  return resultClassArray.join(' ');
+  return resultClassArray.join(" ");
 };
 </script>
   
