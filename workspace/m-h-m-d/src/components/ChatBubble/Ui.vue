@@ -18,18 +18,22 @@ const isLongMessage = (message) => {
 <template>
   <Core :Side="Side" :rightSubChat="rightSubChat" :leftSubChat="leftSubChat" :Avatar="Avatar" :Header="Header" :HeaderSub="HeaderSub">
     <template #default="{ Side, rightSubChat, leftSubChat, Avatar, Header, HeaderSub }">
-      <div :class="['flex w-full p-2', Side === 'left' ? 'justify-start ' : 'justify-end']">
+      <div :class="['flex w-full p-2', Side === 'left' ? 'justify-start ' : 'justify-end',
+       Avatar && Side === 'left' ? 'pl-12 ' : '',
+       Avatar && Side === 'right' ? 'pr-12 ' : '',
+
+
+      ]">
         <div class="relative max-w-[75%]">
-          <div v-if="Avatar" class="absolute -left-10 top-2">
+          <div v-if="Avatar" :class="['absolute ', Side === 'left' ? '-left-10 top-0  ' : '-right-10 top-0']">
             <img
-              :src="Avatar"
-              alt="Avatar"
+              :src="Avatar"       
               class="w-10 h-10 rounded-full border border-gray-300 shadow"
             />
           </div>
 
           <div
-            class="flex items-center mb-1"
+            class="flex items-center "
             :class="Side === 'left' ? 'text-left justify-start flex-row ml-4' : 'text-right justify-start flex-row-reverse mr-4 '"
           >
             <span class="text-lg">{{ Header }}</span>
@@ -40,7 +44,7 @@ const isLongMessage = (message) => {
           <div
             :class="[
               'px-4 py-2 shadow-md max-w-[75%]',
-              Side === 'left' ? 'bg-gray-400 text-black' : 'bg-blue-500 text-white',
+              Side === 'left' ? 'bg-gray-200 text-black' : 'bg-blue-500 text-white',
               isLongMessage($slots.default ? $slots.default()[0].children : '') 
                 ? 'rounded-md' 
                 : (Side === 'left' 
@@ -53,8 +57,8 @@ const isLongMessage = (message) => {
           </div>
 
           <div
-            class="flex items-center mt-1 text-xs space-x-1"
-            :class="Side === 'left' ? 'text-left justify-end flex-row-reverse opacity-80' : 'text-right justify-end flex-row-reverse opacity-80 '"
+            class="flex items-center mt-1 text-xs space-x-2"
+            :class="Side === 'left' ? 'text-left justify-start flex-row-reverse opacity-80 pr-4' : 'text-right justify-end flex-row-reverse opacity-80 '"
           >
             <span class="">{{ rightSubChat }}</span>
             <span class="px-2">{{ leftSubChat }}</span>

@@ -26,4 +26,9 @@ export const ChatBubbleProps = {
     type: String,
     default: '',
   },
+  Color: {
+    type: String,
+    default: '',
+  },
+
 };
