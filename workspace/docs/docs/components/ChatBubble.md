@@ -1,26 +1,16 @@
-
-## ChatBubble 
-
-<br/>
+## ChatBubble
 
 The `ChatBubble` component allows you to display messages in a chat-like interface. Below is a basic example of how to use it:
-<br/>
 
-<div class="p-8 rounded-xl shadow-inner   ">
-
-<ChatBubble >
-this is a test!
-</ChatBubble>
-
+<div class="p-8 rounded-xl shadow-inner flex  items-center">
+  <ChatBubble>this is a test!</ChatBubble>
 </div>
-
 
 **Code**
 
-```md
-
-<ChatBubble >
-this is a test!
+```html
+<ChatBubble>
+  this is a test!
 </ChatBubble>
 
 ```
