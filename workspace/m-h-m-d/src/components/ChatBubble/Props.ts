@@ -1,20 +1,20 @@
-import { PropType } from "vue"
+import { PropType } from 'vue';
 
-export const ChatBubbleProps ={
-
-    
-
-}
-export const SideChatBubble ={
-
-    Side: {
-        type: String as PropType<'left' | 'right'>
-      },
-
-      subSide: {
-        type: String as PropType<'top' | 'bottom'>
-      },
-
-    
-
-}
+export const ChatBubbleProps = {
+  Side: {
+    type: String as PropType<'left' | 'right'>,
+    default: 'left',
+  },
+  TopChat: {
+    type: String,
+    default: '',
+  },
+  downChat: {
+    type: String,
+    default: '',
+  },
+  Avatar: {
+    type: String,
+    default: '',
+  },
+};

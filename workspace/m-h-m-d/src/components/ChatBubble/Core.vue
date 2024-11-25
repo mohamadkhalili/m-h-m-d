@@ -1,14 +1,17 @@
+<script setup lang="ts">
+import { defineProps } from 'vue';
+import { ChatBubbleProps } from './Props';
 
-  <script setup lang="ts">
-  import { ChatBubbleProps } from './Props'; 
-  import { ChatBubbleEmits } from './Emits';  
-  
-  const props = defineProps(ChatBubbleProps);  
-  const emit = defineEmits(ChatBubbleEmits);  
-  </script>
-  <template>
-    <div>
-      <slot name="ChatBubble"></slot>
-    </div>
-  </template>
-  
+const props = defineProps(ChatBubbleProps);
+</script>
+
+<template>
+  <div>
+    <slot
+      :Side="props.Side"
+      :downChat="props.downChat"
+      :TopChat="props.TopChat"
+      :Avatar="props.Avatar"
+    />
+  </div>
+</template>

@@ -1,5 +1,4 @@
-// emits.ts
 export const ChatBubbleEmits = {
-    'update:modelValue': (value: string) => true,  
+    'update:modelValue': (value: string) => true,
   };
   
