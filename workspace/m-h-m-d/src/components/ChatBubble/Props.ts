@@ -13,6 +13,15 @@ export const ChatBubbleProps = {
     type: String,
     default: '',
   },
+  Header: {
+    type: String,
+    default: '',
+  },
+  
+  HeaderSub: {
+    type: String,
+    default: '',
+  },
   Avatar: {
     type: String,
     default: '',

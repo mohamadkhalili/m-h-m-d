@@ -12,6 +12,9 @@ const props = defineProps(ChatBubbleProps);
       :rightSubChat="props.rightSubChat"
       :leftSubChat="props.leftSubChat"
       :Avatar="props.Avatar"
+      :Header="props.Header"
+      :HeaderSub="props.HeaderSub"
+
     />
   </div>
 </template>
