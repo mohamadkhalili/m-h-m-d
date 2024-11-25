@@ -9,6 +9,7 @@ export const uiProps = {
     modelValue: { type: String, required: false },
     activeClass: { type: String, default: "" },
     OnActiveClass: { type: String, default: "" },
+    herizontal: { type: Boolean, required: false },
     tooltip: { type: Boolean, required: false },
     rtl: { type: Boolean, default: true }
 }

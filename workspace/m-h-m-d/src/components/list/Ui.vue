@@ -2,24 +2,25 @@
   <Core
     :modelValue="modelValue"
     @update:modelValue="handlePageChange"
-    :vertical="vertical"
+    :herizontal="herizontal"
     :tooltip="tooltip"
     v-bind="$attrs"
   >
     <slot name="list"></slot>
-    <template v-if="showMenu" #item="{ index, isActive, item }">
+    <template v-if="showList" #item="{ index, isActive, item }">
       <slot
         name="item"
         :index="index"
         :isActive="item == modelValue"
         :item="item"
-        :vertical="vertical"
+        :vertical="herizontal"
         :tooltip="tooltip"
       ></slot>
       <tooltipl
+        v-if="showItem"
         :enabled="tooltip"
         :text="item"
-        :location="vertical ? 'right' : 'top'"
+        :location="herizontal ? 'top' : 'right'"
       >
         <div
           :class="
@@ -49,13 +50,13 @@ defineOptions({
   inheritAttrs: false,
 });
 const uiActiveClass = ref(
-  "bg-gray-900 hover:bg-gray-800 transition-colors duration-300 delay-80 text-white flex justify-center items-center cursor-pointer transition-transform duration-300 ease-in-out select-none transform text-sm text-center min-w-[90px] min-h-[45px]"
+  "bg-gray-900 hover:bg-gray-800 transition-colors duration-300 delay-80 text-white flex justify-center items-center cursor-pointer transition-transform duration-300 ease-in-out select-none transform text-sm text-center w-24 h-10"
 );
 const uiOnActiveClass = ref(
-  "bg-gray-100 hover:bg-gray-200 text-black flex justify-center items-center cursor-pointer transition-colors duration-300 select-none ease-in-out delay-80 transform text-sm text-center min-w-[90px] min-h-[45px]"
+  "bg-gray-100 hover:bg-gray-200 text-black flex justify-center items-center cursor-pointer transition-colors duration-300 select-none ease-in-out delay-80 transform text-sm text-center w-24 h-10"
 );
 const slots = useSlots();
-const showMenu = computed(() => !slots.menu);
+const showList = computed(() => !slots.list);
 const showItem = computed(() => !slots.item);
 
 const handlePageChange = (newValue: number) => {
