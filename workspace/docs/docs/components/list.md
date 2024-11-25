@@ -11,5 +11,5 @@ const menuValueSize = ref(false);
 
 ## Default List
 
-<List v-model="menuValue" vertical >
+<List v-model="menuValue" >
 </List>
