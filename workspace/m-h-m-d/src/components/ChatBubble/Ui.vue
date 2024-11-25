@@ -1,12 +1,14 @@
 <script setup>
 
 
+
+
 </script>
 
 <template #ChatBubble>
-    <div>
-    hi
-    </div>
+    <Core>
+12
+    </Core>
 </template>
 
 <style scoped>
