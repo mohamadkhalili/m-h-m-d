@@ -5,11 +5,11 @@ export const ChatBubbleProps = {
     type: String as PropType<'left' | 'right'>,
     default: 'left',
   },
-  TopChat: {
+  leftSubChat: {
     type: String,
     default: '',
   },
-  downChat: {
+  rightSubChat: {
     type: String,
     default: '',
   },

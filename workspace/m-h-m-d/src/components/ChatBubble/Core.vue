@@ -9,8 +9,8 @@ const props = defineProps(ChatBubbleProps);
   <div>
     <slot
       :Side="props.Side"
-      :downChat="props.downChat"
-      :TopChat="props.TopChat"
+      :rightSubChat="props.rightSubChat"
+      :leftSubChat="props.leftSubChat"
       :Avatar="props.Avatar"
     />
   </div>
