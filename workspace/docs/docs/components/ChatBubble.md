@@ -25,13 +25,13 @@
       Header="Ali"
       HeaderSub="owner"
     >
-      Hey! How's it going?
+    dasdasdasdasda
     </ChatBubble>
     <ChatBubble Side="right"
     Header="Ali"
       HeaderSub="owner"
      leftSubChat="12:03" rightSubChat="Read">
-      Everything's good, thanks! What about you?
+     test
     </ChatBubble>
     <ChatBubble
     Header="Ali"
