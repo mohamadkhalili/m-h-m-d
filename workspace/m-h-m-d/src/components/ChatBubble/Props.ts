@@ -30,6 +30,10 @@ export const ChatBubbleProps = {
     type: String,
     default: 'bg-blue-500 text-white',
   },
+  subColor: {
+    type: String,
+    default: 'text-gray-600',
+  },
   typing: {
     type: Boolean,
     default: false,

@@ -9,9 +9,8 @@ const props = defineProps({
   Header: { type: String, required: false },
   HeaderSub: { type: String, required: false },
   color: { type: String, required: false },
+  subColor: { type: String, required: false },
   typing: { type: Boolean ,required: false },
-
-
 });
 
 const isLongMessage = (message) => {
@@ -21,8 +20,8 @@ const isLongMessage = (message) => {
 
 <template>
     <Core :Side="Side" :rightSubChat="rightSubChat" :leftSubChat="leftSubChat" :Avatar="Avatar" :Header="Header" :HeaderSub="HeaderSub" 
-    :color="color" :typing="typing">
-      <template #default="{ Side, rightSubChat, leftSubChat, Avatar, Header, HeaderSub, color, typing }">
+    :color="color" :typing="typing" :subColor="subColor">
+      <template #default="{ Side, rightSubChat, leftSubChat, Avatar, Header, HeaderSub, color, typing ,subColor}">
         <div :class="['flex w-full p-2', Side === 'left' ? 'justify-start ' : 'justify-end',
          Avatar && Side === 'left' ? 'pl-12 ' : '',
          Avatar && Side === 'right' ? 'pr-12 ' : '',
@@ -40,11 +39,11 @@ const isLongMessage = (message) => {
               class="flex items-center "
               :class="Side === 'left' ? 'text-left justify-start flex-row ml-4' : 'text-right justify-start flex-row-reverse mr-4 '"
             >
-              <span class="text-lg">{{ Header }}</span>
-              <span class="text-xs px-2">{{ HeaderSub }}</span>
+            <span :class="['text-lg', subColor]">{{ Header }}</span>
+<span class="text-xs px-2" :class="subColor">{{ HeaderSub }}</span>
+
+
             </div>
-  
-            <!-- Chat Bubble with dynamic border-radius based on message length -->
             <div
               :class="[
                 'px-4 py-2 shadow-md max-w-[75%]', color,
@@ -56,7 +55,6 @@ const isLongMessage = (message) => {
               ]"
               style="word-wrap: break-word; word-break: break-word;"
             >
-              <!-- Conditional rendering for typing animation -->
               <span v-if="typing">
                 <div class="flex gap-1">
                   <span class="size-1.5 rounded-full bg-neutral-600 motion-safe:animate-[bounce_1s_ease-in-out_infinite] dark:bg-neutral-600"></span>
@@ -69,10 +67,10 @@ const isLongMessage = (message) => {
   
             <div
               class="flex items-center mt-1 text-xs space-x-2"
-              :class="Side === 'left' ? 'text-left justify-start flex-row-reverse opacity-80 pr-4' : 'text-right justify-end flex-row-reverse opacity-80 '"
+              :class="Side === 'left' ? 'text-left justify-start flex-row-reverse  pr-4' : 'text-right justify-end flex-row-reverse  '"
             >
-              <span v-if="!typing">{{ rightSubChat }}</span>
-              <span v-if="!typing" class="px-2">{{ leftSubChat }}</span>
+              <span v-if="!typing" :class="[subColor]">{{ rightSubChat }}</span>
+              <span v-if="!typing" :class="['px-2',subColor]">{{ leftSubChat }}</span>
             </div>
           </div>
         </div>

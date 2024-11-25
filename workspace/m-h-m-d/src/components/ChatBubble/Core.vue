@@ -15,6 +15,7 @@ const props = defineProps(ChatBubbleProps);
       :Header="props.Header"
       :HeaderSub="props.HeaderSub"
       :color="props.color"
+      :subColor="props.subColor"
       :typing="props.typing"
 
 

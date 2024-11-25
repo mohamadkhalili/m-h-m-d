@@ -160,7 +160,49 @@ You can also display timestamps or message status with `Header` and `subHeader`
 ```
 
 
+## Colorizing
 
+You can change your subColor  with `subColor` option!
+<div class="p-8 rounded-xl shadow-inner ">
+<ChatBubble 
+  Side="left" 
+  leftSubChat="10:42" 
+  rightSubChat="Delivered"
+  color="bg-gray-300  "
+   Header="Sara" 
+  HeaderSub="sister"
+  subColor="text-rose-600"
+ >
+  this is subColor with red theme !
+</ChatBubble>
+
+<ChatBubble 
+  Side="right" 
+  leftSubChat="11:13" 
+  rightSubChat="sent" 
+   Header="Ali" 
+  HeaderSub="friend"
+  color="bg-gray-800 text-white"
+  subColor="text-yellow-600"
+>
+ and this with  Yellow !
+</ChatBubble>
+</div>
+
+**Code**
+```md
+<ChatBubble 
+  Side="left" 
+  leftSubChat="10:42" 
+  rightSubChat="Delivered"
+  color="bg-gray-300  "
+  Header="Sara" 
+  HeaderSub="sister"
+  subColor="text-rose-600"    <--! Just Change this -->
+ >
+  this is subColor with red theme !
+</ChatBubble>
+```
 
 ## Avatar
 
