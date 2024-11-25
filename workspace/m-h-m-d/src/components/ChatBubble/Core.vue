@@ -14,6 +14,10 @@ const props = defineProps(ChatBubbleProps);
       :Avatar="props.Avatar"
       :Header="props.Header"
       :HeaderSub="props.HeaderSub"
+      :color="props.color"
+      :typing="props.typing"
+
+
 
     />
   </div>

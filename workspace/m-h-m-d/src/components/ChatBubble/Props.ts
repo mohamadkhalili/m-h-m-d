@@ -26,9 +26,13 @@ export const ChatBubbleProps = {
     type: String,
     default: '',
   },
-  Color: {
+  color: {
     type: String,
-    default: '',
+    default: 'bg-blue-500 text-white',
+  },
+  typing: {
+    type: Boolean,
+    default: false,
   },
 
 };
