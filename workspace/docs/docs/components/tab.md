@@ -50,12 +50,11 @@ const tabs = [
 ];
 </script>
 
-<div class="p-8 rounded-lg shadow-inner flex justify-center items-center">
   <Tab 
    class="gap-3 border-[1px] rounded-md w-fit"
     :tabs="tabs" 
     variant="bordered"
-    activeColor="text-blue-500"
+    activeColor="text-blue-500 shadow-blue-300"
   >
     <template #label="{ tab }">
       <span>{{ tab.label }}</span>
@@ -64,7 +63,6 @@ const tabs = [
       <p>{{ tab.content }}</p>
     </template>
   </Tab>
-</div>
 
 ```
 <br/>

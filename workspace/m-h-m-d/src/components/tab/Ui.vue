@@ -1,4 +1,4 @@
-<script setup>
+<script setup >
 import { ref, computed } from 'vue';
 import { TabProps } from './props';
 import Core from './Core.vue';
