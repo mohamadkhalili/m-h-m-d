@@ -31,7 +31,7 @@ const isLongMessage = (message) => {
             <div v-if="Avatar" :class="['absolute ', Side === 'left' ? '-left-10 top-0  ' : '-right-10 top-0']">
               <img
                 :src="Avatar"       
-                class="w-10 h-10 rounded-full border border-gray-300 shadow"
+                class="w-10 h-10 rounded-full border  border-gray-300 shadow"
               />
             </div>
   

@@ -23,11 +23,11 @@ you can select Your Side for Massage with `Side` option
 <div class="p-8 rounded-xl shadow-inner ">
 
 
-<ChatBubble Side="left" color="bg-gray-600 text-white">
+<ChatBubble Side="left" color="bg-violet-600  text-white">
 hi there !
 </ChatBubble>
 
-<ChatBubble Side="right" >
+<ChatBubble Side="right" color="bg-amber-500 text-white" >
 hello
 </ChatBubble>
 
@@ -39,11 +39,11 @@ hello
 
 ```md
 
-<ChatBubble Side="left" color="bg-gray-600 text-white">
+<ChatBubble Side="left" color="bg-violet-600  text-white">
 hi there !
 </ChatBubble>
 
-<ChatBubble Side="right" >
+<ChatBubble Side="right" color="bg-amber-500 text-white" >
 hello
 </ChatBubble>
 
@@ -106,7 +106,7 @@ You can also display timestamps or message status with `leftSubChat` and `rightS
 ## Header ChatBubble
 <br/>
 
-You can also display timestamps or message status with `Header` and `subHeader`
+You can also display timestamps or message status with `Header` and `HeaderSub`
 <br/>
 
 
@@ -117,21 +117,22 @@ You can also display timestamps or message status with `Header` and `subHeader`
   Side="left" 
   leftSubChat="10:42" 
   rightSubChat="Delivered"
-  color="bg-gray-200 "
+  color="bg-green-300 "
    Header="Sara" 
   HeaderSub="sister"
  >
-  Pretty good as well. Want to grab coffee later?
+  this is preview with Header and headerSub
 </ChatBubble>
 
 <ChatBubble 
   Side="right" 
   leftSubChat="11:13" 
   rightSubChat="sent" 
+  color="bg-rose-300 "
    Header="Ali" 
   HeaderSub="friend"
 >
-  Sure thing, see you at 4 PM!
+  this is preview with Header and headerSub
 </ChatBubble>
 </div>
 
@@ -141,21 +142,22 @@ You can also display timestamps or message status with `Header` and `subHeader`
   Side="left" 
   leftSubChat="10:42" 
   rightSubChat="Delivered"
-  color="bg-gray-200 "
+  color="bg-green-300 "
    Header="Sara" 
   HeaderSub="sister"
  >
-  Pretty good as well. Want to grab coffee later?
+  this is preview with Header and headerSub
 </ChatBubble>
 
 <ChatBubble 
   Side="right" 
   leftSubChat="11:13" 
   rightSubChat="sent" 
+  color="bg-rose-300 "
    Header="Ali" 
   HeaderSub="friend"
 >
-  Sure thing, see you at 4 PM!
+  this is preview with Header and headerSub
 </ChatBubble>
 ```
 
@@ -208,7 +210,7 @@ You can change your subColor  with `subColor` option!
 
 For a more personalized chat experience, you can include an `Avatar` for each user
 
-<div class="w-full bg-slate-200">
+<div class="w-full shadow-inner">
 
 <ChatBubble 
   Side="left" 
@@ -265,7 +267,7 @@ For a more personalized chat experience, you can include an `Avatar` for each us
 ## Typing
  You can use `typing` when you need  <br/>
 - this option ignore  your text  and Sub ChatBubble
-<div class="w-full bg-slate-200">
+<div class="w-full shadow-inner">
 
 <ChatBubble 
   Side="right" 
@@ -273,7 +275,7 @@ For a more personalized chat experience, you can include an `Avatar` for each us
   leftSubChat="14:12" 
   rightSubChat="Delivered"
   Header="Sara" 
-  color="bg-yellow-400"
+  color="bg-purple-600 text-white"
   >
   where are you from ?
 </ChatBubble>
@@ -286,7 +288,7 @@ For a more personalized chat experience, you can include an `Avatar` for each us
   leftSubChat="22:17" 
   Avatar="https://avatar.iran.liara.run/public/28"
   rightSubChat="Read" 
-  color="bg-gray-400 text-white"
+  color="bg-green-400 text-white"
   typing
   Header="John" 
   >
@@ -322,6 +324,6 @@ For a more personalized chat experience, you can include an `Avatar` for each us
 | **Side**                 | Control the side of the chat bubble (left or right). Helps differentiate between the user and recipient.            | Set the `Side` prop to either `left` or `right`.                                             |
 | **Sub-Chat**             | Display timestamps or message statuses under the main message. Can be used for time and delivery status.            | Use the `leftSubChat` and `rightSubChat` props for timestamps or status.                   |
 | **Typing Indicator**     | Display an animation while the other user is typing. When set to `true`, the component shows a typing animation.     | Set the `typing` prop to `true` to show the typing animation.                               |
-| **Header and Subheader** | Show the sender's name and additional context (e.g., role or relation).                                            | Pass `Header` and `HeaderSub` props to display the sender's name and additional details.    |
-| **Message Length Styling** | Customize the chat bubble's shape based on the length of the message. Short messages get rounded corners, long messages have square corners. | Use the `isLongMessage` function to dynamically apply styles for long messages.             |
+| **Header and HeaderSub** | Show the sender's name and additional context (e.g., role or relation).                                            | Pass `Header` and `HeaderSub` props to display the sender's name and additional details.    |
 | **Responsive Layout**    | Layout adapts based on the presence of avatars and the side of the message.                                        | Avatar placement and message alignment change depending on the `Side` prop value.          |
+| **Sub Color**            | Customize the color of the text for sub-elements like timestamps or statuses.                                       | Set the `subColor` prop to modify the color of the sub-elements (e.g., `text-rose-600`).     |
