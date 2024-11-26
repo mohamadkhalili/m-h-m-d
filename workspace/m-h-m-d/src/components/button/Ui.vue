@@ -105,7 +105,7 @@ const resetRipple = () => {
 
 
 .custom-button {
-  padding: 0.5rem 0.5rem; 
+  padding: 0.5rem 1rem; 
   border-radius: 1rem; 
   color: white; 
   position: relative; 
@@ -231,7 +231,7 @@ color: rgb(73, 73, 233);
 .variant-faded {
 border: rgba(126, 126, 126, 0.432) 2px solid;
 background: linear-gradient(120deg, rgba(224, 224, 224, 0.815) 0%, rgba(238, 238, 238, 0.836) 50%, rgba(223, 223, 223, 0.781) 100%);
-color: rgb(48, 48, 160);
+color: rgba(0, 0, 0, 0.61);
 
 
 }
@@ -239,7 +239,7 @@ color: rgb(48, 48, 160);
 .variant-faded:hover {
 border: rgba(240, 240, 240, 0.979) 2px solid;
 background: linear-gradient(120deg, rgba(240, 240, 240, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(240, 240, 240, 0.9) 100%);
-color: rgb(0, 0, 128);
+color: rgb(75, 75, 75);
 }
 
 .variant-light {

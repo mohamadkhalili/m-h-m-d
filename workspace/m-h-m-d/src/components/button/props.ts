@@ -38,7 +38,7 @@ export const size = {
 export type ButtonColor = keyof typeof buttonColors;
 export type VariantColor = keyof typeof VariantColor;
 export type Round = keyof typeof Round;
-export type size = keyof typeof Round;
+export type size = keyof typeof size;
 
 
 
@@ -65,6 +65,6 @@ export const props = {
   },
   size:{
     type: String as ()=> size,
-    default:'sm' as size
+    default:'md' as size
   },
 };

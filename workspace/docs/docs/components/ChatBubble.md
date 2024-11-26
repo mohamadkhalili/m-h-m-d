@@ -319,14 +319,51 @@ For a more personalized chat experience, you can include an `Avatar` for each us
 ## Customize 
 you can use another component like button in Chat Bubble  this some example !
 <div class="w-full shadow-inner">
-<ChatBubble Header="Admin" leftSubChat="Sent ✓✓" class="p-0 m-0">
+<ChatBubble
+ Header="Admin"
+leftSubChat="Sent ✓✓"
+Avatar="https://avatar.iran.liara.run/public/20"
+>
 Download this file 
-<Button class="inline " round="lg" variant="faded" size="sm" >
+<Button
+ class="inline"
+  round="lg"
+  variant="faded"
+  size="sm"
+   >
 File.pdf ↓
+</Button>
+ </ChatBubble>
+
+ <ChatBubble Header="engineer" Side="right" leftSubChat="Sending  82% " color="bg-green-600 text-white"   class="p-0 m-0" Avatar="https://avatar.iran.liara.run/public/21">
+ Checkout
+<Button class="inline " round="lg" variant="faded" size="sm" >
+File.pdf ↓ 
 </Button>
 
  </ChatBubble>
 </div>
+
+**Code**
+
+```md
+<ChatBubble
+ Header="Admin"
+leftSubChat="Sent ✓✓"
+Avatar="https://avatar.iran.liara.run/public/20"
+>
+Download this file 
+<Button
+ class="inline"
+  round="lg"
+  variant="faded"
+  size="sm"
+   >
+File.pdf ↓
+</Button>
+ </ChatBubble>
+
+```
 
 ## ChatBubble Component Features
 
