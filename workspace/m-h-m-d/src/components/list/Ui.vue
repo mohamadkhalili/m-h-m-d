@@ -25,8 +25,8 @@
         <div
           :class="
             isActive
-              ? mergeClasses(uiActiveClass, activeClass)
-              : mergeClasses(uiOnActiveClass, OnActiveClass)
+              ? mergeClasses(uiActiveClass, activeClass).value
+              : mergeClasses(uiOnActiveClass, onActiveClass).value
           "
           v-if="showItem"
         >
@@ -39,7 +39,9 @@
   <script setup lang="ts">
 import Core from "./Core.vue";
 import tooltipl from "../../components/tooltip/Core.vue";
-import { useSlots, computed, ref } from "vue";
+import { useMergeClasses } from "../tools/useMergeClasses";
+const mergeClasses = useMergeClasses();
+import { useSlots, computed, ref, onActivated } from "vue";
 import { uiProps } from "./Props";
 import { listEmits } from "./Emits";
 import { uiSlots } from "./Slots";
@@ -61,32 +63,6 @@ const showItem = computed(() => !slots.item);
 
 const handlePageChange = (newValue: number) => {
   emit("update:modelValue", newValue);
-};
-const mergeClasses = (uiClassInput: string, customClassInput: string) => {
-  if (!customClassInput || customClassInput.trim() === "") return uiClassInput;
-
-  const uiClassArray = uiClassInput.split(" ").filter(Boolean);
-  const customClassArray = customClassInput.split(" ").filter(Boolean);
-
-  const resultClassArray = [];
-
-  const uiClassMap = new Map(
-    uiClassArray.map((uiClass) => [uiClass.split("-")[0], uiClass])
-  );
-
-  customClassArray.forEach((customClass) => {
-    const baseName = customClass.split("-")[0];
-
-    if (uiClassMap.has(baseName)) {
-      uiClassMap.set(baseName, customClass);
-    } else {
-      resultClassArray.push(customClass);
-    }
-  });
-
-  resultClassArray.push(...uiClassMap.values());
-
-  return resultClassArray.join(" ");
 };
 </script>
   

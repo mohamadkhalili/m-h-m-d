@@ -23,7 +23,7 @@
           <slot name="superPrev" :disabled="disabled" :rtl="rtl"></slot>
           <button
             v-if="showDefaultSuperPrev"
-            :class="mergeClasses(uiButtonClass, buttonClass)"
+            :class="mergeClasses(uiButtonClass, buttonClass).value"
             :disabled="disabled"
           >
             <svg-icon type="mdi" :path="superPrevIcon"></svg-icon>
@@ -33,7 +33,7 @@
           <slot name="prev" :disabled="disabled" :rtl="rtl"></slot>
           <button
             v-if="showDefaultPrev"
-            :class="mergeClasses(uiButtonClass, buttonClass)"
+            :class="mergeClasses(uiButtonClass, buttonClass).value"
             :disabled="disabled"
           >
             <svg-icon type="mdi" :path="prevIcon"></svg-icon>
@@ -50,7 +50,9 @@
             v-if="isCurrentPage && showDefaultPagination"
             class="cursor-pointer elevation-1"
             :class="[
-              isActive ? mergeClasses(uiActiveClass, activeClass) : mergeClasses(uiOnActiveClass, onActiveClass)
+              isActive
+                ? mergeClasses(uiActiveClass, activeClass).value
+                : mergeClasses(uiOnActiveClass, onActiveClass).value,
             ]"
           >
             {{ page }}
@@ -66,7 +68,7 @@
           <slot name="next" :disabled="disabled" :rtl="rtl"></slot>
           <button
             v-if="showDefaultNext"
-            :class="mergeClasses(uiButtonClass, buttonClass)"
+            :class="mergeClasses(uiButtonClass, buttonClass).value"
             :disabled="disabled"
           >
             <svg-icon type="mdi" :path="nextIcon"></svg-icon>
@@ -76,7 +78,7 @@
           <slot name="superNext" :disabled="disabled" :rtl="rtl"></slot>
           <button
             v-if="showDefaultSuperNext"
-            :class="mergeClasses(uiButtonClass, buttonClass)"
+            :class="mergeClasses(uiButtonClass, buttonClass).value"
             :disabled="disabled"
           >
             <svg-icon type="mdi" :path="superNextIcon"></svg-icon>
@@ -85,15 +87,15 @@
         <template #searchPage="{ enabled }">
           <slot name="searchPage" :enabled="enabled"></slot>
           <div
-            class="inline-block w-[100px] max-w-[100px] h-[40px] mr-[-30px] mt-[7px] box-border" 
-            style="perspective: 1000px;"
+            class="inline-block w-[100px] max-w-[100px] h-[40px] mr-[-30px] mt-[7px] box-border"
+            style="perspective: 1000px"
             :class="{ 'is-flipped': isEditingSearchPage }"
           >
             <div class="flipper">
               <div class="front">
                 <button
                   v-if="showDefaultsearchPageBtn && enabled"
-                  :class="mergeClasses(uiButtonClass, buttonClass)"
+                  :class="mergeClasses(uiButtonClass, buttonClass).value"
                 >
                   <svg-icon type="mdi" :path="mdiMagnify"></svg-icon>
                 </button>
@@ -104,7 +106,7 @@
                   ref="searchInput"
                   :value="searchPage"
                   @input="handleInput"
-                  :class="mergeClasses(uiInputClass,onActiveClass)"
+                  :class="mergeClasses(uiInputClass, onActiveClass).value"
                 />
               </div>
             </div>
@@ -116,20 +118,15 @@
 </template>
   
 <script setup lang="ts">
-import {
-  computed,
-  useSlots,
-  onMounted,
-  watch,
-  nextTick,
-  ref,
-} from "vue";
+import { computed, useSlots, onMounted, watch, nextTick, ref } from "vue";
 import pagination from "./Core.vue";
 import { uiSlots } from "./Slots";
 import { uiProps } from "./Props";
 import { useBorder } from "../../composables/UseBorderProps";
 import { paginationEmits } from "./Emits";
 import SvgIcon from "@jamescoyle/vue-icon";
+import { useMergeClasses } from "../tools/useMergeClasses";
+const mergeClasses = useMergeClasses();
 import {
   mdiChevronDoubleRight,
   mdiChevronDoubleLeft,
@@ -154,10 +151,16 @@ const superNextIcon = computed(() =>
   props.rtl ? mdiChevronDoubleLeft : mdiChevronDoubleRight
 );
 const nextIcon = computed(() => (props.rtl ? mdiChevronLeft : mdiChevronRight));
-const uiInputClass = ref("text-center flex justify-center items-center outline-none size-10 rounded-full bg-slate-200 text-black")
-const uiButtonClass = ref("size-10 rounded-full bg-slate-950 text-white")
-const uiActiveClass = ref("cursor-pointer elevation-1 text-center flex justify-center items-center select-none size-10 rounded-full bg-slate-950 text-white")
-const uiOnActiveClass = ref("cursor-pointer elevation-1 text-center flex justify-center items-center select-none size-10 rounded-full bg-slate-200 text-black")
+const uiInputClass = ref(
+  "text-center flex justify-center items-center outline-none size-10 rounded-full bg-slate-200 text-black"
+);
+const uiButtonClass = ref("size-10 rounded-full bg-slate-950 text-white");
+const uiActiveClass = ref(
+  "cursor-pointer elevation-1 text-center flex justify-center items-center select-none size-10 rounded-full bg-slate-950 text-white"
+);
+const uiOnActiveClass = ref(
+  "cursor-pointer elevation-1 text-center flex justify-center items-center select-none size-10 rounded-full bg-slate-200 text-black"
+);
 const slots = useSlots();
 const showDefaultPagination = computed(() => !slots.default);
 const showDefaultPrev = computed(() => !slots.prev);
@@ -178,34 +181,6 @@ const handleSearchPage = (newValue: number) => {
 
 const handleIsEditingSearchPage = (newValue: boolean) => {
   emit("update:isEditingSearchPage", newValue);
-};
-
-const mergeClasses = (uiClassInput: string, customClassInput: string) => {
-  if (!customClassInput || customClassInput.trim() === '') return uiClassInput;
-
-  const uiClassArray = uiClassInput.split(' ').filter(Boolean); 
-  const customClassArray = customClassInput.split(' ').filter(Boolean);
-
-  const resultClassArray = [];
-
-  const uiClassMap = new Map(
-    uiClassArray.map(uiClass => [uiClass.split('-')[0], uiClass]) 
-  );
-
-  customClassArray.forEach(customClass => {
-    const baseName = customClass.split('-')[0];
-
-    if (uiClassMap.has(baseName)) {
-      uiClassMap.set(baseName, customClass); 
-    } else {
-
-      resultClassArray.push(customClass);
-    }
-  });
-
-  resultClassArray.push(...uiClassMap.values());
-
-  return resultClassArray.join(' ');
 };
 
 const handleInput = (event: Event) => {
@@ -257,7 +232,7 @@ button {
   width: 100%;
   height: 100%;
   transition: transform 0.6s;
-  transform-style: preserve-3d; 
+  transform-style: preserve-3d;
   transform-origin: center;
 }
 
@@ -267,23 +242,23 @@ button {
 
 .front,
 .back {
-  position: absolute; 
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden; 
+  backface-visibility: hidden;
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
 }
 
 .front {
-  transform: rotateY(0deg); 
+  transform: rotateY(0deg);
 }
 
 .back {
-  transform: rotateY(180deg); 
+  transform: rotateY(180deg);
 }
 </style>
   
