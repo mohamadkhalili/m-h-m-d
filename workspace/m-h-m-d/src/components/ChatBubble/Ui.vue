@@ -48,7 +48,9 @@ const isLongMessage = (message) => {
               :class="[
                 'px-4 py-2 shadow-md max-w-[75%]', color,
                 isLongMessage($slots.default ? $slots.default()[0].children : '') 
-                  ? 'rounded-md' 
+                  ? (Side === 'left' 
+                      ? 'rounded-3xl rounded-tl-none' 
+                      : 'rounded-3xl rounded-tr-none')
                   : (Side === 'left' 
                       ? 'rounded-bl-full rounded-e-full' 
                       : 'rounded-br-full rounded-s-full')

@@ -3,14 +3,15 @@
 The `ChatBubble` component allows you to display messages in a chat-like interface. Below is a basic example of how to use it:
 
 <div class="p-8 rounded-xl shadow-inner flex  items-center">
-  <ChatBubble>this is a test!</ChatBubble>
+  <ChatBubble >this is a test
+  !</ChatBubble>
 </div>
 
 **Code**
 
 ```html
 <ChatBubble>
-  this is a test!
+  <Button>Download</Button>this is a test!
 </ChatBubble>
 
 ```
@@ -313,6 +314,19 @@ For a more personalized chat experience, you can include an `Avatar` for each us
   
 </ChatBubble>
 ```
+
+
+## Customize 
+you can use another component like button in Chat Bubble  this some example !
+<div class="w-full shadow-inner">
+<ChatBubble Header="Admin" leftSubChat="Sent ✓✓" class="p-0 m-0">
+Download this file 
+<Button class="inline " round="lg" variant="faded" size="sm" >
+File.pdf ↓
+</Button>
+
+ </ChatBubble>
+</div>
 
 ## ChatBubble Component Features
 

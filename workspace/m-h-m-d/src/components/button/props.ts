@@ -25,10 +25,21 @@ export const Round = {
 
 
 } as const;
+export const size = {
+  xs: 'scale-[0.7]',
+  sm: 'scale-[0.9]',
+  md: 'scale-1',
+  lg: 'scale-[1.2]',
+  xl:'scale-[1.5]'
+
+
+} as const;
 
 export type ButtonColor = keyof typeof buttonColors;
 export type VariantColor = keyof typeof VariantColor;
 export type Round = keyof typeof Round;
+export type size = keyof typeof Round;
+
 
 
 export const props = {
@@ -51,5 +62,9 @@ export const props = {
   round:{
     type: String as ()=> Round,
     default:'sm' as Round
-  }
+  },
+  size:{
+    type: String as ()=> size,
+    default:'sm' as size
+  },
 };
