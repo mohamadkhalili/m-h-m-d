@@ -71,7 +71,7 @@ const isLongMessage = (message) => {
             >
             <div v-if="Images.length > 0" :class="['grid gap-2  mb-4 rounded-xl ' ,Images.length >1 ?'grid-cols-2' :'grid-cols']">
   <div v-for="(image, index) in Images.slice(0, 4)" :key="index" class="image-item relative group">
-    <div :class="['relative w-full h-full rounded-xl overflow-hidden cursor-pointer transition-all duration-300', Images.length === 1 ? 'w-[350px] h-fit' : 'w-[150px] h-[100px]']">
+    <div :class="['relative rounded-xl overflow-hidden cursor-pointer transition-all duration-300', Images.length === 1 ? 'w-[360px] h-fit' : 'w-[160px] h-[100px]']">
       
       <img :src="image" alt="chat image" class="transform scale-110 group-hover:scale-125 transition-transform duration-300 ease-in-out object-cover object-center" />
       <div v-if="index === 3 && Images.length > 4" class="absolute inset-0 bg-black opacity-70 flex items-center justify-center hover:opacity-60">
