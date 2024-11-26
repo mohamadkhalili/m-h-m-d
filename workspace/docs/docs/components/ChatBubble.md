@@ -370,14 +370,16 @@ File.pdf ↓
 
 ```
 
+## Images
 
+you can use images template in chat and use `Images` with array checkout example below
 <div class="w-full shadow-inner">
 <ChatBubble
  Header="scott"
  HeaderSub="PhotoGraph"
 leftSubChat="Sent ✓✓"
 rightSubChat="11:12"
-color="bg-orange-700 text-white"
+color="bg-stone-700 text-white"
 Avatar="https://avatar.iran.liara.run/public/50"
  :Images="['https://wallpapercrafter.com/desktop1/550550-fall-leaves-autumn-leaf-nature-yellow-tree-season.jpg']"
 >
@@ -395,6 +397,20 @@ Avatar="https://avatar.iran.liara.run/public/90"
 checkout this pictures 
  </ChatBubble>
 </div>
+
+```md
+<ChatBubble
+ Header="scott"
+ HeaderSub="PhotoGraph"
+leftSubChat="Sent ✓✓"
+rightSubChat="11:12"
+color="bg-stone-700 text-white"
+Avatar="https://avatar.iran.liara.run/public/50"
+:Images="['Your src pic 1 ','Your src pic 2' and ...]"
+>
+its my new photo
+</ChatBubble>
+```
 
 ## ChatBubble Component Features
 
