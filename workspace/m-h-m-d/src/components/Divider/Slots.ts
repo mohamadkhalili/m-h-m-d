@@ -1,3 +1,1 @@
-export interface DividerSlots {
-    input(): any
-}
+export const dividerSlots = ['default'];

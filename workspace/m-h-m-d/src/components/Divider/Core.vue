@@ -1,18 +1,23 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
-import { DividerProps } from './props';
+import { dividerProps } from './props';
 
-const props = defineProps(DividerProps);
+// پراپ‌ها
+const props = defineProps(dividerProps);
+
+// محاسبه استایل Divider
+const getDividerStyle = () => {
+  return props.direction === 'vertical'
+    ? {
+        borderLeft: `${props.thickness} ${props.dashed ? 'dashed' : 'solid'} ${props.color}`,
+        height: props.length,
+      }
+    : {
+        borderTop: `${props.thickness} ${props.dashed ? 'dashed' : 'solid'} ${props.color}`,
+        width: props.length,
+      };
+};
 </script>
 
 <template>
-  <div>
-    <slot
-      :color="props.color"
-    />
-    
-  </div>
+  <div :style="getDividerStyle()" />
 </template>
-
-<style scoped>
-</style>
