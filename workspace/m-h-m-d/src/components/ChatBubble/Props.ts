@@ -17,6 +17,10 @@ export const ChatBubbleProps = {
     type: String,
     default: '',
   },
+  Images: {
+    type: Array as PropType<Array<string>>, 
+    default: () => [],
+  },
   
   HeaderSub: {
     type: String,

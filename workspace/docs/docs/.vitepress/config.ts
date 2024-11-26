@@ -30,7 +30,7 @@ export default defineConfig({
           {text:'input',link:'/components//input'},
           {text:'Menu',link:'/components//menu'},
           {text:'Tab',link:'/components//tab'},
-          {text:'ChatBubble',link:'/components//ChatBubble'},
+          {text:'Chat Bubble',link:'/components//ChatBubble'},
           {text:'List',link:'/components//list'}
         ]
       },

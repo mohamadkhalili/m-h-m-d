@@ -7,7 +7,7 @@
 
 
 <div class="  p-6 rounded-lg shadow-inner  flex justify-center items-center ">
-    <Button color="default">Test</Button>
+    <Button color="default">Button test </Button>
 </div>
 
 ## Modify 
@@ -187,13 +187,12 @@ You Can use   *CleanerEffect*  for enable  cleaner effect on Button !
 <br/>
 
  you can change your border radios  with *round* option
-<div class='  p-4 rounded-lg shadow-inner   justify-center items-center flex flex-row'>
 
+<div class='  p-4 rounded-lg shadow-inner   justify-around items-center flex flex-row'>
 <Button round="sm" variant="bordered">small</Button>
 <Button round="md" variant="bordered">medium</Button>
 <Button round="lg" variant="bordered">large</Button>
 <Button round="full" variant="bordered">full</Button>
-
 
 
 </div>
@@ -210,18 +209,46 @@ You Can use   *CleanerEffect*  for enable  cleaner effect on Button !
 ```
 <br/>
 
+
+## Size 
+
+<br/>
+
+ you can change your border radios  with *size* option
+ 
+<div class='  p-4 rounded-lg shadow-inner   justify-around items-center flex flex-row'>
+<Button size="xs" variant="shadow">xs</Button>
+<Button size="sm" variant="shadow">sm</Button>
+<Button size="md" variant="shadow">md</Button>
+<Button size="lg" variant="shadow">large</Button>
+<Button size="xl" variant="shadow">xl</Button>
+
+
+</div>
+
+
+**Code**
+
+```md
+<Button size="xs" variant="shadow">xs</Button>
+<Button size="sm" variant="shadow">sm</Button>
+<Button size="md" variant="shadow">md</Button>
+<Button size="lg" variant="shadow">large</Button>
+<Button size="xl" variant="shadow">xl</Button>
+
+```
+<br/>
+
 ## Button Component Features
 
-| **Feature**            | **Description**                                                                                   | **Usage**                                                                                 |
-|------------------------|---------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|
-| **Default Button**      | A basic button with default styling.                                                             | `<Button color="default">Default</Button>`                                                |
-| **Customize Colors**    | Change button colors using options like `default`, `primary`, `error`, `warning`, `secondary`, and `dark`. | `<Button color="primary">Primary</Button>`                                                |
-| **Disable**             | Disable button interaction to prevent clicks.                                                    | `<Button isDisabled>Disabled</Button>`                                                   |
-| **Variants**            | Apply styles like `faded`, `link`, `bordered`, `light`, `ghost`, and `shadow`.                   | `<Button variant="shadow">Shadow</Button>`                                               |
-| **Cleaner Effect**      | Adds a cleaner animation effect to the button.                                                   | `<Button CleanerEffect>Cleaner</Button>`                                                 |
-| **Icons with Buttons**  | Combine icons and labels inside a button for better visuals.                                      | Use `svg` tags or other icon libraries within the button tag.                             |
-| **Rounded Corners**     | Customize border radius using `round` options: `sm`, `md`, `lg`, and `full`.                     | `<Button round="lg">Large Rounded</Button>`                                              |
-| **Custom Events**       | Attach click or other events to handle user interaction.                                          | `<Button @click="handleEvent">Click Me</Button>`                                         |
-
----
-
+| **Feature**           | **Description**                                                                                   | **Usage**                                                                                     |
+|-----------------------|---------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| **Default Button**     | A basic button with default styling for minimal designs.                                         | Use without additional props to apply the default look. Example: `<Button color="default" />` |
+| **Custom Colors**      | Customize button colors with options like `default`, `primary`, `error`, `warning`, `secondary`, and `dark`. | Set the `color` prop to change the button's appearance. Example: `<Button color="primary" />` |
+| **Disable**            | Disable interaction to make the button inactive.                                                 | Use the `isDisabled` prop to disable the button. Example: `<Button isDisabled />`            |
+| **Variants**           | Style the button with options like `faded`, `link`, `bordered`, `light`, `ghost`, or `shadow`.    | Set the `variant` prop for unique styles. Example: `<Button variant="shadow" />`             |
+| **Cleaner Effect**     | Adds smooth animation effects to enhance user experience.                                        | Enable by adding the `CleanerEffect` prop. Example: `<Button CleanerEffect />`               |
+| **Icons**              | Combine icons with labels for enhanced visuals.                                                  | Add icons inside the button tag. Example: `<Button><Icon /> Label</Button>`                  |
+| **Rounded Corners**    | Adjust border-radius with `sm`, `md`, `lg`, or `full` values.                                    | Use the `round` prop to set corner styles. Example: `<Button round="lg" />`                  |
+| **Size Options**       | Change size with `xs`, `sm`, `md`, `lg`, or `xl` options.                                        | Use the `size` prop to modify button dimensions. Example: `<Button size="xl" />`             |
+| **Event Handling**     | Trigger actions on click or other events.                                                        | Attach events using `@` syntax. Example: `<Button @click="handleClick" />`                   |

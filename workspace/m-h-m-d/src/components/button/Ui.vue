@@ -5,11 +5,13 @@
     :is-disabled="propsData.isDisabled"
     :variant="propsData.variant"
     :round="propsData.round"
+    :size="propsData.size"
+
   >
     <template #button>
       <button
         :class="[
-          buttonColor || VariantColor, roundClass,
+          buttonColor || VariantColor, roundClass,sizeClass,
           { 'custom-button': true, 'disabled': propsData.isDisabled, 'CleanerEffect': propsData.CleanerEffect }
         ]"
         :disabled="propsData.isDisabled"
@@ -32,12 +34,14 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import Core from './Core.vue'
-import { buttonColors, props, VariantColor, Round } from './props';
+import { buttonColors, props, VariantColor, Round, size } from './props';
 const propsData = defineProps({
   ...props,
   isDisabled: { type: Boolean, default: false },
   CleanerEffect: { type: Boolean },
   round: { type: String as () => keyof typeof Round, default: 'sm' },
+  size: { type: String as () => keyof typeof size, default: 'md' },
+
 });
 
 const rippleVisible = ref(false);
@@ -76,6 +80,8 @@ const buttonColor = computed(() => {
 
 
 const roundClass = computed(() => Round[propsData.round] || 'sm-round');
+const sizeClass = computed(() => size[propsData.size] || '');
+
 
 
 const resetRipple = () => {
@@ -97,22 +103,10 @@ const resetRipple = () => {
   width: auto;
 }
 
-.custom-button {
-  padding: 0.5rem 2rem; 
-  margin: 2rem; 
-  border-radius: 0.5rem; 
-  color: white; 
-  position: relative; 
-  transition: all 0.2s; 
-  cursor: pointer; 
-  z-index: 10;
-  overflow: hidden; 
-}
 
 .custom-button {
-  padding: 0.5rem 2rem; 
-  margin: 2rem; 
-  border-radius: 0.5rem; 
+  padding: 0.5rem 1rem; 
+  border-radius: 1rem; 
   color: white; 
   position: relative; 
   transition: all 0.2s; 
@@ -237,7 +231,7 @@ color: rgb(73, 73, 233);
 .variant-faded {
 border: rgba(126, 126, 126, 0.432) 2px solid;
 background: linear-gradient(120deg, rgba(224, 224, 224, 0.815) 0%, rgba(238, 238, 238, 0.836) 50%, rgba(223, 223, 223, 0.781) 100%);
-color: rgb(48, 48, 160);
+color: rgba(0, 0, 0, 0.61);
 
 
 }
@@ -245,7 +239,7 @@ color: rgb(48, 48, 160);
 .variant-faded:hover {
 border: rgba(240, 240, 240, 0.979) 2px solid;
 background: linear-gradient(120deg, rgba(240, 240, 240, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(240, 240, 240, 0.9) 100%);
-color: rgb(0, 0, 128);
+color: rgb(75, 75, 75);
 }
 
 .variant-light {
