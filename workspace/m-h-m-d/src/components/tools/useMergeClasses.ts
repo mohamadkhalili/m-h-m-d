@@ -31,5 +31,5 @@ export function useMergeClasses() {
     });
   };
 
-  return { mergeClasses };
+  return mergeClasses ;
 }

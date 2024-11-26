@@ -25,8 +25,8 @@
         <div
           :class="
             isActive
-            ? mergeClasses(uiActiveClass, activeClass).value
-            : mergeClasses(uiOnActiveClass, onActiveClass).value
+              ? mergeClasses(uiActiveClass, activeClass).value
+              : mergeClasses(uiOnActiveClass, onActiveClass).value
           "
           v-if="showItem"
         >
@@ -40,7 +40,7 @@
 import Core from "./Core.vue";
 import tooltipl from "../../components/tooltip/Core.vue";
 import { useMergeClasses } from "../tools/useMergeClasses";
-const { mergeClasses } = useMergeClasses();
+const mergeClasses = useMergeClasses();
 import { useSlots, computed, ref, onActivated } from "vue";
 import { uiProps } from "./Props";
 import { listEmits } from "./Emits";

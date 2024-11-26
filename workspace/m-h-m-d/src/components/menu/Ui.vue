@@ -15,7 +15,7 @@
         <div
           v-click-outside="handleClickOutside"
           v-show="modelValue"
-          :class="mergeClasses(uiClass, menuClass)"
+          :class="mergeClasses(uiClass, menuClass).value"
         >
           <slot name="menu"></slot>
         </div>
@@ -30,6 +30,8 @@ import { useSlots, computed, ref, watch } from "vue";
 import { uiProps } from "./Props";
 import { menuEmits } from "./Emits";
 import { menuSlots } from "./Slots";
+import { useMergeClasses } from "../tools/useMergeClasses";
+const mergeClasses = useMergeClasses();
 
 const props = defineProps(uiProps);
 const emit = defineEmits(menuEmits);
@@ -38,44 +40,17 @@ const enableOutside = ref(false);
 const handleModelValue = (newValue: boolean) => {
   emit("update:modelValue", newValue);
 };
-const uiClass = ref("absolute left-0 top-full -mt-4 bg-teal-200 rounded-lg w-28 h-20 shadow-lg z-50 transform");
-const mergeClasses = (uiClassInput: string, customClassInput: string) => {
-  if (!customClassInput || customClassInput.trim() === '') return uiClassInput;
-
-  const uiClassArray = uiClassInput.split(' ').filter(Boolean); 
-  const customClassArray = customClassInput.split(' ').filter(Boolean);
-
-  const resultClassArray = [];
-
-  const uiClassMap = new Map(
-    uiClassArray.map(uiClass => [uiClass.split('-')[0], uiClass]) 
-  );
-
-  customClassArray.forEach(customClass => {
-    const baseName = customClass.split('-')[0];
-
-    if (uiClassMap.has(baseName)) {
-      uiClassMap.set(baseName, customClass); 
-    } else {
-
-      resultClassArray.push(customClass);
-    }
-  });
-
-  resultClassArray.push(...uiClassMap.values());
-
-  return resultClassArray.join(' ');
-};
-
-
+const uiClass = ref(
+  "absolute left-0 top-full -mt-4 bg-teal-200 rounded-lg w-28 h-20 shadow-lg z-50 transform"
+);
 watch(
-  () => props.modelValue, 
+  () => props.modelValue,
   (newValue) => {
     if (newValue) {
       setTimeout(() => {
         enableOutside.value = true;
-      }, 5); 
-    } else{
+      }, 5);
+    } else {
       enableOutside.value = false;
     }
   }
