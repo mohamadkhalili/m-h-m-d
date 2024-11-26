@@ -6,8 +6,8 @@ The `ChatBubble` component allows you to display messages in a chat-like interfa
 
 
 <ChatBubble 
-  :Images="['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXG28Cj6UWHoyg7-TdZdv9DUmHwNIZo7c1Sw&s', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXG28Cj6UWHoyg7-TdZdv9DUmHwNIZo7c1Sw&s', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXG28Cj6UWHoyg7-TdZdv9DUmHwNIZo7c1Sw&s','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXG28Cj6UWHoyg7-TdZdv9DUmHwNIZo7c1Sw&s','https://avatar.iran.liara.run/public/26', 'https://avatar.iran.liara.run/public/27', 'https://avatar.iran.liara.run/public/26','https://avatar.iran.liara.run/public/26','https://avatar.iran.liara.run/public/26']">
-look at this picture 
+ >
+this is a massage for you !
 </ChatBubble>
 
 </div>
@@ -369,6 +369,32 @@ File.pdf ↓
  </ChatBubble>
 
 ```
+
+
+<div class="w-full shadow-inner">
+<ChatBubble
+ Header="scott"
+ HeaderSub="PhotoGraph"
+leftSubChat="Sent ✓✓"
+rightSubChat="11:12"
+color="bg-orange-700 text-white"
+Avatar="https://avatar.iran.liara.run/public/50"
+ :Images="['https://wallpapercrafter.com/desktop1/550550-fall-leaves-autumn-leaf-nature-yellow-tree-season.jpg']"
+>
+its my new photo
+ </ChatBubble>
+<ChatBubble
+ Header="Emilia"
+ Side="right"
+leftSubChat="Sent ✓✓"
+rightSubChat="17:47"
+color="bg-gray-500 text-white"
+Avatar="https://avatar.iran.liara.run/public/90"
+ :Images="['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4Agomr1rNCyqrpB2Co_D9I1mJHLFmiAKo1A&s', 'https://media.foodpress.ir/d/2024/02/14/4/36560.jpg?ts=1707903454000', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXG28Cj6UWHoyg7-TdZdv9DUmHwNIZo7c1Sw&s','https://salamdonya.com/assets/images/66/66872rxfb.jpg','https://avatar.iran.liara.run/public/26', 'https://avatar.iran.liara.run/public/27']"
+>
+checkout this pictures 
+ </ChatBubble>
+</div>
 
 ## ChatBubble Component Features
 

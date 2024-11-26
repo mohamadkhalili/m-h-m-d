@@ -62,37 +62,24 @@ const isLongMessage = (message) => {
                       : 'rounded-br-full rounded-s-full'),
                       Images.length > 0   ? (Side === 'left' 
                       ? ' rounded-xl rounded-tl-none ' 
-                      : 'rounded-3xl rounded-tr-none')
+                      : 'rounded-xl rounded-tr-none')
                   : (Side === 'left' 
                       ? 'rounded-bl-full rounded-e-full' 
                       : 'rounded-br-full rounded-s-full'),
               ]"
               style="word-wrap: break-word; word-break: break-word;"
             >
-           
-            <div v-if="Images.length > 4" class="grid gap-2 grid-cols-2 mb-2">
-  <div v-for="(image, index) in Images.slice(0, 4)" :key="index" class="image-item relative">
-    <div class="relative w-full h-full rounded-xl overflow-hidden">
-      <img :src="image" alt="chat image" 
-        
-      />
-      <div v-if="index === 3" class="absolute inset-0 bg-black opacity-70 flex items-center justify-center hover:opacity-40 transition-all duration-300 cursor-pointer">
-        <span class="text-white font-medium text-xl ">+{{ Images.length - 4 }} more</span>
+            <div v-if="Images.length > 0" :class="['grid gap-2  mb-4 rounded-xl ' ,Images.length >1 ?'grid-cols-2' :'grid-cols']">
+  <div v-for="(image, index) in Images.slice(0, 4)" :key="index" class="image-item relative group">
+    <div :class="['relative w-full h-full rounded-xl overflow-hidden cursor-pointer transition-all duration-300', Images.length === 1 ? 'w-[350px] h-fit' : 'w-[150px] h-[100px]']">
+      
+      <img :src="image" alt="chat image" class="transform scale-110 group-hover:scale-125 transition-transform duration-300 ease-in-out object-cover object-center" />
+      <div v-if="index === 3 && Images.length > 4" class="absolute inset-0 bg-black opacity-70 flex items-center justify-center hover:opacity-60">
+        <span class="text-white font-medium text-xl">+{{ Images.length - 4 }} more</span>
       </div>
     </div>
-
+  </div>
 </div>
-
-
-
-
-
-
-
-</div>
-
-
-
               <span v-if="typing">
                 <div class="flex gap-1">
                   <span class="size-1.5 rounded-full bg-neutral-600 motion-safe:animate-[bounce_1s_ease-in-out_infinite] dark:bg-neutral-600"></span>
@@ -149,8 +136,7 @@ img {
 
 
 .image-item img {
-  width: 120px;
-  height: 120px;
+  
   border-radius: 5px;
   background-size: 50%;
   
