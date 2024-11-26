@@ -15,7 +15,7 @@ const props = defineProps(dividerProps);
     <!-- Divider with text (Vertical) -->
     <template v-if="props.text && props.direction === 'vertical'">
       <div class="flex flex-col items-center justify-center h-full">
-        <div class="flex-grow w-px">
+        <div :class="['flex-grow w-px', props.color]">
           <Core v-bind="props" />
         </div>
         <span
@@ -24,32 +24,32 @@ const props = defineProps(dividerProps);
         >
           {{ props.text }}
         </span>
-        <div class="flex-grow w-px">
+        <div :class="['flex-grow w-px', props.color]">
           <Core v-bind="props" />
         </div>
       </div>
     </template>
 
     <template v-else-if="props.direction === 'vertical'">
-      <Core v-bind="props" class="h-full w-px mx-auto" />
+      <Core v-bind="props" :class="['h-full w-px mx-auto', props.color]" />
     </template>
 
     <!-- Divider with text (Horizontal) -->
     <template v-if="props.text && props.direction === 'horizontal'">
       <div class="flex items-center justify-center w-full">
-        <div class="flex-grow h-px  bg-black"></div>
+        <div :class="['flex-grow h-px', props.color]"></div>
         <span
           :style="{ color: props.color }"
           class="px-2 text-sm"
         >
           {{ props.text }}
         </span>
-        <div class="flex-grow h-px bg-black "></div>
+        <div :class="['flex-grow h-px', props.color]"></div>
       </div>
     </template>
 
     <template v-else-if="props.direction === 'horizontal'">
-      <div class="w-full h-px bg-gray-300"></div>
+      <div :class="['w-full h-px', props.color]"></div>
     </template>
   </div>
 </template>
@@ -66,8 +66,5 @@ const props = defineProps(dividerProps);
 }
 .h-px {
   height: 1px;
-}
-.bg-gray-300 {
-  background-color: #d1d5db;
 }
 </style>

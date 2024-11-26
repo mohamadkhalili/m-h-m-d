@@ -1,1 +1,1 @@
-export const dividerEmits = {};
+export const dividerEmits = ['updateDirection'];
