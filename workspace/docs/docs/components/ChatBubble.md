@@ -3,15 +3,20 @@
 The `ChatBubble` component allows you to display messages in a chat-like interface. Below is a basic example of how to use it:
 
 <div class="p-8 rounded-xl shadow-inner flex  items-center">
-  <ChatBubble >this is a test
-  !</ChatBubble>
+
+
+<ChatBubble 
+  :Images="['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXG28Cj6UWHoyg7-TdZdv9DUmHwNIZo7c1Sw&s', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXG28Cj6UWHoyg7-TdZdv9DUmHwNIZo7c1Sw&s', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXG28Cj6UWHoyg7-TdZdv9DUmHwNIZo7c1Sw&s','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXG28Cj6UWHoyg7-TdZdv9DUmHwNIZo7c1Sw&s','https://avatar.iran.liara.run/public/26', 'https://avatar.iran.liara.run/public/27', 'https://avatar.iran.liara.run/public/26','https://avatar.iran.liara.run/public/26','https://avatar.iran.liara.run/public/26']">
+look at this picture 
+</ChatBubble>
+
 </div>
 
 **Code**
 
 ```html
 <ChatBubble>
-  <Button>Download</Button>this is a test!
+this is a test!
 </ChatBubble>
 
 ```
@@ -317,7 +322,7 @@ For a more personalized chat experience, you can include an `Avatar` for each us
 
 
 ## Customize 
-you can use another component like button in Chat Bubble  this some example !
+you can use another component like button in Chat Bubble   !
 <div class="w-full shadow-inner">
 <ChatBubble
  Header="Admin"
