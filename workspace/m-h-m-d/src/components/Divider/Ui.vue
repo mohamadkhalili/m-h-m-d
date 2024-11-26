@@ -15,29 +15,29 @@ const props = defineProps(dividerProps);
     <!-- Divider with text (Vertical) -->
     <template v-if="props.text && props.direction === 'vertical'">
       <div class="flex flex-col items-center justify-center h-full">
-        <div :class="['flex-grow w-px', props.color]">
+        <div :class="['flex-grow w-px', props.color , props.diameter]">
           <Core v-bind="props" />
         </div>
         <span
-          :style="{ color: props.color }"
+          :style="{ color: props.color  }"
           class="px-2 text-sm"
         >
           {{ props.text }}
         </span>
-        <div :class="['flex-grow w-px', props.color]">
+        <div :class="['flex-grow w-px', props.color , props.diameter]">
           <Core v-bind="props" />
         </div>
       </div>
     </template>
 
     <template v-else-if="props.direction === 'vertical'">
-      <Core v-bind="props" :class="['h-full w-px mx-auto', props.color]" />
+      <Core v-bind="props" :class="['h-full w-px mx-auto', props.color , props.diameter]" />
     </template>
 
     <!-- Divider with text (Horizontal) -->
     <template v-if="props.text && props.direction === 'horizontal'">
       <div class="flex items-center justify-center w-full">
-        <div :class="['flex-grow h-px', props.color]"></div>
+        <div :class="['flex-grow h-px', props.color , props.diameter]"></div>
         <span
           :style="{ color: props.color }"
           class="px-2 text-sm"
@@ -49,7 +49,7 @@ const props = defineProps(dividerProps);
     </template>
 
     <template v-else-if="props.direction === 'horizontal'">
-      <div :class="['w-full h-px', props.color]"></div>
+      <div :class="['w-full h-px', props.color , props.diameter] "></div>
     </template>
   </div>
 </template>

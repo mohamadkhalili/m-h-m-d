@@ -9,6 +9,7 @@ const props = defineProps(dividerProps);
     :class="[
       props.direction === 'vertical' ? 'h-full w-px' : 'w-full h-px',
       props.color,
+      props.diameter,
     ]"
     :style="{
       height: props.direction === 'vertical' ? props.length : 'auto',
