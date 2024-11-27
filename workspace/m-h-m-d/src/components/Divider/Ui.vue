@@ -1,8 +1,20 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import Core from './Core.vue';
 import { dividerProps } from './props';
 
 const props = defineProps(dividerProps);
+
+const DividerPosition = computed(() => {
+  switch (props.position) {
+    case 'end':
+      return 'order-first';
+    case 'start':
+      return 'order-last';
+    default:
+      return 'order-none';
+  }
+});
 </script>
 
 <template>
@@ -22,7 +34,7 @@ const props = defineProps(dividerProps);
         <!-- متن یا فضای خالی -->
         <span
           :style="{ color: props.color }"
-          :class="props.textColor"
+          :class="[props.textColor,DividerPosition]"
           class="px-2 text-sm"
         >
           {{ props.text }}
@@ -40,14 +52,14 @@ const props = defineProps(dividerProps);
 
     <!-- Horizontal Divider with Text -->
     <template v-if="props.text !== undefined && props.direction === 'horizontal'">
-      <div class="flex items-center justify-center mx-auto">
+      <div class="flex items-center  mx-auto">
         <div class="flex-grow">
           <Core v-bind="props" />
         </div>
         <!-- متن یا فضای خالی -->
         <span
           :style="{ color: props.color }"
-          :class="[props.textColor,' text-sm',props.text ==='' ? '':'px-1' ]"
+          :class="[props.textColor,' text-sm flex-grow-0 ',props.text ==='' ? '':'px-1',DividerPosition ]"
         >
           {{ props.text  }} 
         </span>

@@ -119,7 +119,21 @@ The `diameter` prop defines the thickness of the divider:
 </div>
 ```
 
+## Position
 
+
+<Divider direction="horizontal" length="300px" text="VS" textColor="text-red-500" color="bg-red-500"  class="my-8" position="start"/>
+<Divider direction="horizontal" length="300px" text="VS" textColor="text-yellow-500" color="bg-yellow-500" class="my-8" />
+<Divider direction="horizontal" length="300px" text="VS" textColor="text-blue-500" color="bg-blue-500" class="my-8"  position="end"/>
+
+
+**Code**
+```md
+<Divider  length="300px" text="VS"  position="start"/>
+<Divider  length="300px" text="VS"   />
+<Divider  length="300px" text="VS"  position="end"/>
+
+```
 
 
 ## Multi
@@ -178,4 +192,5 @@ The `diameter` prop defines the thickness of the divider:
 | **Divider Length**       | Control the length of the divider.                                                                                  | Set the `length` prop (e.g., `200px`, `100%`, etc.) to control how long the divider spans.                  |
 | **Text in Divider**      | Display custom text inside the divider.                                                                              | Pass text through the `text` prop (e.g., `text="OR"`) to display text in the middle of the divider.         |
 | **Responsive Layout**    | Divider layout adapts based on direction (horizontal/vertical) and length.                                           | Use `direction` and `length` props to change the layout and spacing depending on the design structure.        |
+| **Position  Text**    | Change teh text in Divider with `position` props                                            | Use `position` props and use `start` and `end`       |
 

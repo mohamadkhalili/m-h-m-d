@@ -7,4 +7,5 @@ export const dividerProps = {
   diameter: { type: String, default: '1px' },
   length: { type: String, default: '100%' },
   text: { type: String, default: '' },
+  position:{Type:String,default:''}
 };
