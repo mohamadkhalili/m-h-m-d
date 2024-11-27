@@ -38,7 +38,7 @@ const props = defineProps(dividerProps);
 
     <!-- Divider with text (Horizontal) -->
     <template v-if="props.text && props.direction === 'horizontal'">
-      <div class="flex items-center justify-center w-full">
+      <div class="flex items-center justify-center mx-auto">
         <div class="flex-grow">
           <Core v-bind="props" />
         </div>
