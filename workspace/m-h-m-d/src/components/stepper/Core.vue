@@ -1,137 +1,98 @@
 <template>
-  <div class="flex-container">
+  <div class="flex flex-row justify-between relative pb-4 pt-4">
     <!-- Progress Bar -->
-    <div class="progress">
+    <div
+      class="absolute top-8 h-1.5 m-0 shadow-none bg-gray-300 w-[95%] overflow-hidden"
+    >
       <div
-        class="progress-bar"
+        class="bg-teal-800 h-full transition-all duration-300 ease-linear"
         role="progressbar"
         :style="progressStyle"
-        :aria-valuenow="progressValue"
+        :aria-valuenow="60"
         aria-valuemin="0"
         aria-valuemax="100"
       ></div>
     </div>
 
     <div
-      class="step"
-      v-for="step in steps"
-      :key="step.number"
+      v-for="(step, index) in steps"
+      :key="index + 1"
       :class="{
-        done: step.number < modelValue,
-        current: step.number === modelValue,
+        'flex flex-col items-center z-20':
+          index !== 0 && index !== steps.length - 1,
+        'flex flex-col items-start z-20': index === 0,
+        'flex flex-col items-end z-20': index === steps.length - 1,
       }"
     >
-      <div
-        class="step-number"
-        :id="'step-' + step.number"
-        @click="moveStep(step.number)"
+      <slot
+        name="step"
+        :index="index + 1"
+        :step="step"
+        :currentStep="modelValue"
       >
-        <svg-icon
-          v-if="step.number < modelValue"
-          type="mdi"
-          :path="mdiCheck"
-        ></svg-icon>
-        <span v-else>{{ step.number }}</span>
-      </div>
-      <div class="step-label">{{ step.label }}</div>
+      </slot>
+      <div
+      class="bg-gray-300 p-2 text-white rounded-full cursor-pointer items-center flex justify-center w-10 h-10 text-center"
+      :class="{
+        'bg-teal-800 transition-all duration-500 delay-200':
+          index +1 <= modelValue,
+      }"
+      @click="moveStep(index + 1)"
+      ref="stepRefs"
+    >
+      <svg-icon
+        v-if="index + 1 < modelValue"
+        type="mdi"
+        :path="mdiIcons[step.icon]"
+      ></svg-icon>
+      <span v-else class="text-xs truncate">{{ index }}</span>
+    </div>
+    <div class="pt-1.5">{{ step.label }}</div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, nextTick, ref, watch } from "vue";
 import { coreProps } from "./Props";
 import { stepperEmits } from "./Emits";
-import {
-  mdiCheck
-} from "@mdi/js";
+import * as mdiIcons from "@mdi/js";
 import SvgIcon from "@jamescoyle/vue-icon";
-// Define props and emits
 const props = defineProps(coreProps);
 const emit = defineEmits(stepperEmits);
 
-// Computed properties for progress
-const progressStyle = computed(() => {
-  if (props.steps.length === 0) return { width: '0%' }; // No steps, no progress
-  const progress = Math.min(
-    ((props.modelValue - 1) / (props.steps.length - 1)) * 100,
-    100
-  );
-  return { width: `${progress}%` };
-});
 
-const progressValue = computed(() => {
-
-  console.log((props.modelValue - 1) / (props.steps.length - 1) * 100);
-  if (!props.steps || props.steps.length === 0) return 0;
-  return Math.min(
-    ((props.modelValue - 1) / (props.steps.length - 1)) * 100,
-    100
-  );
-});
-
-// Handle step navigation
 const moveStep = (stepNumber: number) => {
-  emit("update:modelValue", stepNumber);
+  if (props.allowStepClick) {
+    emit("update:modelValue", stepNumber);
+  }
 };
+const progressStyle = ref({ width: "0%" })
+const stepRefs = ref<HTMLDivElement[]>([]);
+watch(
+  () => props.modelValue,
+  async (newValue) => {
+    if (props.steps.length === 0) {
+      progressStyle.value = { width: "0%" };
+      return;
+    }
+
+    await nextTick();
+
+    const first = stepRefs.value[0];
+    const current = stepRefs.value[newValue - 1];
+
+    if (first && current) {
+      const delta =
+        current.getBoundingClientRect().right -
+        first.getBoundingClientRect().right;
+      progressStyle.value = { width: `${delta}px` };
+    }
+  },
+  { immediate: true }
+);
 </script>
 
 <style scoped>
-.flex-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  position: relative;
-  padding-bottom: 1em;
-  padding-top: 1em;
-}
-
-.progress {
-  position: absolute;
-  top: 2em;
-  height: 5px;
-  margin: 0;
-  box-shadow: none;
-  background-color: #cdcdcd;
-  width: 100%;
-  overflow: hidden;
-}
-
-.progress-bar {
-  background-color: #46c0bd;
-  height: 100%;
-  transition: width 0.3s ease; /* Smooth transition for width change */
-}
-
-.step {
-  text-align: center;
-  z-index: 2;
-}
-
-.step-number {
-  background-color: #cdcdcd;
-  padding: 0.5em;
-  color: white;
-  border-radius: 50%;
-  cursor: pointer;
-
-  background-size: 0% 0%;
-  background-position: center;
-  background-image: radial-gradient(circle at center, #b384c7 50%, transparent 50%);
-  background-repeat: no-repeat;
-}
-
-.step.done .step-number {
-  background-color: #46c0bd;
-}
-
-.step.current .step-number {
-  background-size: 200% 200%;
-  transition: all 0.4s 0.5s;
-}
-
-.step-label {
-  padding-top: 5px;
-}
 </style>
 
