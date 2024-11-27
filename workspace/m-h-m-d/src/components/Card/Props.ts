@@ -21,6 +21,11 @@ export const cardProps = {
   },
   horizontal: {
     type: Boolean,
-    default: false,  
+    default: false,
+  },
+  variant: {
+    type: String,
+    default: 'default',  // مقدار پیش‌فرض واریانت
+    validator: (value: string) => ['default', 'post'].includes(value),
   },
 };

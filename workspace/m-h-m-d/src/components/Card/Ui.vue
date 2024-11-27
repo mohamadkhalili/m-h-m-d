@@ -1,44 +1,69 @@
 <template>
     <Core
       :class="[
-        'card',
         'rounded-xl',
         'overflow-hidden',
         'shadow-md',
         'relative',
-        'bg-white',
+        props.variant === 'post' ? 'bg-white flex flex-col p-4 gap-4' : 'bg-white',
         'cursor-pointer',
         props.horizontal 
-          ? 'grid grid-flow-col grid-rows-3 gap-4 h-52'  // Grid layout for horizontal cards
-          : 'flex flex-col w-80',  // Flex layout for vertical cards
+          ? 'grid grid-flow-col grid-rows-3 gap-4 h-52'
+          : 'flex flex-col w-80',
       ]"
     >
-
-    <div v-if="props.header " :class="[props.horizontal ? '' : 'p-4 ']">
-        <div class="flex items-center justify-between">
-          <span class="text-sm text-gray-500 pr-2">{{ props.header }}</span>
+    
+      <template v-if="props.variant === 'post'">
+        <div class="flex items-center justify-between ">
+          <div class="flex items-center">
+            <img :src="props.avatar" alt="User Avatar" class="w-14 h-14 rounded-full mr-2" />
+            <div>
+              <h3 class="text-lg font-bold">{{ props.username }}</h3>
+              <p class="text-sm text-gray-500">{{ props.time }}</p>
+            </div>
+          </div>
+         <slot></slot>
         </div>
-      </div>
-
-      <!-- Image -->
-      <div v-if="props.image" :class="['relative', props.horizontal ? ' mx-auto row-span-3' : 'w-full h-48']">
-        <img :src="props.image" alt="Card Image" class="object-cover w-[90%] h-[90%] mt-[0.7rem] m-auto rounded-lg" />
-      </div>
-  
-      <!-- Content -->
-      <div :class="['p-4', props.horizontal ? '  col-span-2 row-span-1 ' : '']">
-        <h3 class="text-xl font-semibold text-gray-900">{{ props.title }}</h3>
-        <p class="text-sm text-gray-600 ">{{ props.description }}</p>
-      </div>
-  
-      <!-- Footer (Optional) -->
-      <div v-if="props.footer || $slots.default" :class="[props.horizontal ? 'col-span-2 row-span-2 p-4   mt-10' : 'p-4 ']">
-        <div class="flex items-center justify-between">
-          <span class="text-sm text-gray-500 pr-2">{{ props.footer }}</span>
-       
-          <slot></slot>
+    
+        <p class="mt-2 text-gray-700">{{ props.description }}</p>
+    
+        <div v-if="props.image" class="mt-2">
+          <img :src="props.image" alt="Post Image" class="w-full h-auto rounded-lg" />
         </div>
-      </div>
+    
+        <div class="flex text-gray-500 text-xs mt-4">
+          <div class="flex justify-center items-center border-t pt-2 space-x-4">
+            <span v-if="props.likes">{{ props.likes }} Likes</span>
+            <span v-if="props.comments">{{ props.comments }} Comments</span>
+            <span v-if="props.followers">{{ props.followers }} Followers</span>
+            <span v-if="props.following">{{ props.following }} Following</span>
+          </div>
+        </div>
+      </template>
+    
+      <template v-else>
+        <div v-if="props.header" :class="[props.horizontal ? '' : 'p-4']">
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-gray-500 pr-2">{{ props.header }}</span>
+          </div>
+        </div>
+    
+
+        <div v-if="props.image" :class="['relative', props.horizontal ? 'mx-auto row-span-3' : 'w-full h-48']">
+          <img :src="props.image" alt="Card Image" class="object-cover w-[90%] h-[90%] mt-[0.7rem] m-auto rounded-lg" />
+        </div>
+        <div :class="['p-4', props.horizontal ? 'col-span-2 row-span-1' : '']">
+          <h3 class="text-xl font-semibold">{{ props.title }}</h3>
+          <p class="text-sm text-gray-500">{{ props.description }}</p>
+        </div>
+    
+        <div v-if="props.footer || $slots.default" :class="[props.horizontal ? 'col-span-2 row-span-2 p-4 mt-10' : 'p-4 border-t']">
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-gray-500 pr-2">{{ props.footer }}</span>
+            <slot></slot>
+          </div>
+        </div>
+      </template>
     </Core>
   </template>
   
@@ -46,15 +71,36 @@
   import { defineProps } from 'vue';
   import { cardProps } from './Props';
   
-  const props = defineProps(cardProps);
+  const props = defineProps({
+    ...cardProps,
+    avatar: {
+      type: String,
+      required: true,
+    },
+    username: {
+      type: String,
+      required: true,
+    },
+    time: {
+      type: String,
+      required: true,
+    },
+    likes: {
+      type: Number,
+      required: true,
+    },
+    comments: {
+      type: Number,
+      required: true,
+    },
+    followers: {
+      type: Number,
+      required: true,
+    },
+    following: {
+      type: Number,
+      required: true,
+    },
+  });
   </script>
-  
-  <style scoped>
-  .card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .card:hover {
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-  }
-  </style>
   

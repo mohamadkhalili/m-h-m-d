@@ -229,17 +229,20 @@ color: rgb(73, 73, 233);
 
 
 .variant-faded {
-border: rgba(126, 126, 126, 0.432) 2px solid;
-background: linear-gradient(120deg, rgba(224, 224, 224, 0.815) 0%, rgba(238, 238, 238, 0.836) 50%, rgba(223, 223, 223, 0.781) 100%);
+border: rgba(185, 185, 185, 0.432) 2px solid;
+background: linear-gradient(120deg, rgba(240, 240, 240, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(240, 240, 240, 0.9) 100%);
 color: rgba(0, 0, 0, 0.61);
+transition: all 0.5s; 
 
 
 }
 
 .variant-faded:hover {
 border: rgba(240, 240, 240, 0.979) 2px solid;
-background: linear-gradient(120deg, rgba(240, 240, 240, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(240, 240, 240, 0.9) 100%);
+background: linear-gradient(120deg, rgba(228, 228, 228, 0.9) 0%, rgba(252, 252, 252, 0.9) 50%, rgba(224, 224, 224, 0.9) 100%);
 color: rgb(75, 75, 75);
+
+
 }
 
 .variant-light {
