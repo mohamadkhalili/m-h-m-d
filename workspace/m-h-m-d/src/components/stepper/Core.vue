@@ -1,9 +1,9 @@
 <template>
-  <div class="flex-container">
+  <div class="flex flex-row justify-between relative pb-4 pt-4">
     <!-- Progress Bar -->
-    <div class="progress">
+    <div class="absolute top-8 h-1.5 m-0 shadow-none bg-gray-300 w-full overflow-hidden">
       <div
-        class="progress-bar"
+        class="bg-teal-400 h-full transition-all duration-300 ease-linear"
         role="progressbar"
         :style="progressStyle"
         :aria-valuenow="progressValue"
@@ -13,27 +13,26 @@
     </div>
 
     <div
-      class="step"
+      class="text-center z-20"
       v-for="step in steps"
       :key="step.number"
-      :class="{
-        done: step.number < modelValue,
-        current: step.number === modelValue,
-      }"
     >
       <div
-        class="step-number"
+        class="bg-gray-300 p-2 text-white rounded-full cursor-pointer bg-[length:0%_0%] bg-center bg-no-repeat bg-[radial-gradient(circle_at_center,_#b384c7_50%,_transparent_50%)]"
+        :class="{
+          'bg-teal-400 transition-all duration-500 delay-200': step.number <= modelValue
+        }"
         :id="'step-' + step.number"
         @click="moveStep(step.number)"
       >
         <svg-icon
           v-if="step.number < modelValue"
           type="mdi"
-          :path="mdiCheck"
+          :path="mdiIcons[step.icon]"
         ></svg-icon>
         <span v-else>{{ step.number }}</span>
       </div>
-      <div class="step-label">{{ step.label }}</div>
+      <div class="pt-1.5">{{ step.label }}</div>
     </div>
   </div>
 </template>
@@ -42,9 +41,7 @@
 import { computed } from "vue";
 import { coreProps } from "./Props";
 import { stepperEmits } from "./Emits";
-import {
-  mdiCheck
-} from "@mdi/js";
+import * as mdiIcons from "@mdi/js";
 import SvgIcon from "@jamescoyle/vue-icon";
 // Define props and emits
 const props = defineProps(coreProps);
@@ -77,61 +74,5 @@ const moveStep = (stepNumber: number) => {
 </script>
 
 <style scoped>
-.flex-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  position: relative;
-  padding-bottom: 1em;
-  padding-top: 1em;
-}
-
-.progress {
-  position: absolute;
-  top: 2em;
-  height: 5px;
-  margin: 0;
-  box-shadow: none;
-  background-color: #cdcdcd;
-  width: 100%;
-  overflow: hidden;
-}
-
-.progress-bar {
-  background-color: #46c0bd;
-  height: 100%;
-  transition: width 0.3s ease; /* Smooth transition for width change */
-}
-
-.step {
-  text-align: center;
-  z-index: 2;
-}
-
-.step-number {
-  background-color: #cdcdcd;
-  padding: 0.5em;
-  color: white;
-  border-radius: 50%;
-  cursor: pointer;
-
-  background-size: 0% 0%;
-  background-position: center;
-  background-image: radial-gradient(circle at center, #b384c7 50%, transparent 50%);
-  background-repeat: no-repeat;
-}
-
-.step.done .step-number {
-  background-color: #46c0bd;
-}
-
-.step.current .step-number {
-  background-size: 200% 200%;
-  transition: all 0.4s 0.5s;
-}
-
-.step-label {
-  padding-top: 5px;
-}
 </style>
 
