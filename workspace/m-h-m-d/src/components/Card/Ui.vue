@@ -1,11 +1,26 @@
 <template>
-    <div :class="['card', 'rounded-lg', 'overflow-hidden', 'shadow-lg', 'relative', 'bg-white', 'w-80', 'cursor-pointer', props.elevation ? 'shadow-md' : '']">
+    <Core
+      :class="[
+        'card',
+        'rounded-lg',
+        'overflow-hidden',
+        'shadow-md',
+        'relative',
+        'bg-white',
+        'cursor-pointer',
+        props.elevation ? 'shadow-xl' : '',
+        props.horizontal ? 'flex flex-row ' : 'flex flex-col w-fit',  
+       
+      ]"
+    >
       <!-- Image -->
-      <div v-if="props.image" class="relative w-full h-48">
-        <img  :src="props.image" class="object-cover w-full h-full rounded-t-lg"/>
+      <div :class="['relative', props.horizontal ? 'w-2/4' : 'w-full h-40 ']">
+        <img :src="props.image" alt="Card Image" class="object-cover w-[90%] h-[90%] mt-[0.7rem] m-auto rounded-lg" />
+        
       </div>
   
-      <div class="p-4">
+      <!-- Content -->
+      <div :class="['p-4', props.horizontal ? 'w-1/4' : '']">
         <h3 class="text-xl font-semibold text-gray-900">{{ props.title }}</h3>
         <p class="text-sm text-gray-600 mt-2">{{ props.description }}</p>
       </div>
@@ -14,10 +29,10 @@
       <div v-if="props.footer" class="p-4 border-t">
         <div class="flex items-center justify-between">
           <span class="text-sm text-gray-500">{{ props.footer }}</span>
-         <slot/>
+          <button class="text-sm text-blue-500">View</button>
         </div>
       </div>
-    </div>
+    </Core>
   </template>
   
   <script setup lang="ts">
@@ -32,7 +47,8 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   .card:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+   
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
   }
   </style>
   
