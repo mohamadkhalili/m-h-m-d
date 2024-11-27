@@ -1,7 +1,7 @@
 # stepper
 <script setup>
 import { ref } from 'vue'
-const stepperValue = ref();
+const stepperValue = ref(1);
 const menuValueColor = ref(false);
 const menuValueRounded = ref(false);
 const menuValueOutside = ref(false);

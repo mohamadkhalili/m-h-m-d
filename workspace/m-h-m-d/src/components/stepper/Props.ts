@@ -7,7 +7,6 @@ export const coreProps = {
     modelValue: { type: Number, default: 1 },
     steps: {
         type: Array as PropType<Step[]>,
-        required: true,
         default: [
             { label: "step1", number: 1 },
             { label: "step2", number: 2 },
