@@ -39,7 +39,7 @@ header="header "
 /> 
 ```
 
-## Card with button 
+##  button 
 
 
 <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
@@ -72,7 +72,7 @@ Check out
 ```
 
 ‍‍
-## Card with image 
+##  image 
 
 <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
 
@@ -91,7 +91,7 @@ View
 
 </br>
 
-## Card with image  horizontal
+##  image  horizontal
 <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
 
 <Card 
@@ -120,21 +120,25 @@ View
  </Button>
 </Card>
 ```
-## Post Simple theme
+## Variant
+
+
+**Post**
+
 
 <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
 
 <Card 
   title="Beautiful Sunset" 
-  description="This is a demo post from MHMD library" 
+  description="This is a demo post from MHMD library 🔥" 
   variant="post"
   avatar="https://avatar.iran.liara.run/public/50"
   username="John Doe"
   time="2h ago"
-  followers="1.2K"
-  comments="72"
-  following="5.7K"
-  likes="1K"
+  info1="1.2K followers"
+  info2="72 comments "
+  info3="5.7K following"
+  info4="1K likes"
 >
 
 <Button   round="full">
@@ -142,3 +146,25 @@ View
  </Button>
 </Card>
 </div>
+
+**Code**
+
+```md
+<Card 
+  title="Beautiful Sunset" 
+  description="This is a demo post from MHMD library 🔥" 
+  avatar="https://your.image.com"
+  username="John Doe"
+  time="2h ago"
+  followers="1.2K"
+  comments="72"
+  following="5.7K"
+  likes="1K"
+  variant="post"
+>
+
+<Button   round="full">
+    follow
+</Button>
+</Card>
+```

@@ -9,7 +9,9 @@
         'cursor-pointer',
         props.horizontal 
           ? 'grid grid-flow-col grid-rows-3 gap-4 h-52'
-          : 'flex flex-col w-80',
+          : 'flex flex-col w-80 ',
+          props.variant === 'post' && !props.horizontal ? 'w-[28rem]' : ''
+
       ]"
     >
     
@@ -32,11 +34,11 @@
         </div>
     
         <div class="flex text-gray-500 text-xs mt-4">
-          <div class="flex justify-center items-center border-t pt-2 space-x-4">
-            <span v-if="props.likes">{{ props.likes }} Likes</span>
-            <span v-if="props.comments">{{ props.comments }} Comments</span>
-            <span v-if="props.followers">{{ props.followers }} Followers</span>
-            <span v-if="props.following">{{ props.following }} Following</span>
+          <div class="flex justify-center items-center border-t pt-2 w-full space-x-4">
+            <span v-if="props.info1">{{ props.info1 }} </span>
+            <span v-if="props.info2">{{ props.info2 }} </span>
+            <span v-if="props.info3">{{ props.info3 }} </span>
+            <span v-if="props.info4">{{ props.info4 }} </span>
           </div>
         </div>
       </template>
@@ -85,22 +87,24 @@
       type: String,
       required: true,
     },
-    likes: {
-      type: Number,
+    info1: {
+      type: String,
       required: true,
     },
-    comments: {
-      type: Number,
+    info2: {
+      type: String,
       required: true,
     },
-    followers: {
-      type: Number,
+    info3: {
+      type: String,
       required: true,
     },
-    following: {
-      type: Number,
+    info4: {
+      type: String,
       required: true,
     },
   });
   </script>
-  
+
+      
+    
