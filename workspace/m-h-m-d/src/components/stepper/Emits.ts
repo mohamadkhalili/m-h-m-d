@@ -1,3 +1,4 @@
 export const stepperEmits = [
-    "update:modelValue"
+    "update:modelValue",
+    "update:progressStyle"
 ];
