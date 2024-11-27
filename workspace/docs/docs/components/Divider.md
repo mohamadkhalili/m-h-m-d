@@ -133,9 +133,9 @@ The `diameter` prop defines the thickness of the divider:
       <Divider className="my-4"  />
       <div className="flex h-5 items-center space-x-4 text-small">
         <p>Blog</p>
-    <Divider direction="vertical" length="20px" text=" " color="bg-gray-400"  />
+    <Divider direction="vertical" length="20px"  color="bg-gray-400"  />
         <div>Docs</div>
-    <Divider direction="vertical" length="20px" text=" "  color="bg-gray-400" />
+    <Divider direction="vertical" length="20px"   color="bg-gray-400" />
         <p >Source</p>
       </div>
     </div>
@@ -167,16 +167,15 @@ The `diameter` prop defines the thickness of the divider:
 </div>
 ```
 
-## **Props Table**
+## Divider Component Features
 
-| **Prop**    | **Type**                        | **Default**        | **Description**                                           |
-|-------------|---------------------------------|--------------------|-----------------------------------------------------------|
-| `direction` | `'horizontal' | 'vertical'`     | `'horizontal'`     | Specifies the divider's orientation.                     |
-| `color`     | `string`                        | `'bg-gray-400'`    | Background color of the divider.                         |
-| `diameter`  | `string`                        | `'1px'`            | Thickness of the divider.                                |
-| `length`    | `string`                        | `'100%'`           | Length of the divider.                                    |
-| `text`      | `string`                        | `' '`              | Text displayed in the middle of the divider (if any).    |
+| **Feature**             | **Description**                                                                                                     | **Usage**                                                                                                 |
+|-------------------------|---------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
+| **Horizontal Divider**   | Creates a horizontal line separating content, with optional text in the middle.                                      | Use the `direction="horizontal"` prop to specify a horizontal divider, and pass `text` for the text label.   |
+| **Vertical Divider**     | Creates a vertical line separating content, often used in layouts with multiple columns or items.                    | Use the `direction="vertical"` prop to specify a vertical divider, and adjust `length` for height control.    |
+| **Custom Colors**        | Customize the color of the divider’s background and text.                                                           | Set the `color` prop for the divider background, and `textColor` prop for the text (e.g., `text-red-500`).    |
+| **Diameter Control**     | Adjust the thickness of the divider to fit design needs.                                                            | Use the `diameter` prop (e.g., `1px`, `2px`, etc.) to control the divider’s thickness.                      |
+| **Divider Length**       | Control the length of the divider.                                                                                  | Set the `length` prop (e.g., `200px`, `100%`, etc.) to control how long the divider spans.                  |
+| **Text in Divider**      | Display custom text inside the divider.                                                                              | Pass text through the `text` prop (e.g., `text="OR"`) to display text in the middle of the divider.         |
+| **Responsive Layout**    | Divider layout adapts based on direction (horizontal/vertical) and length.                                           | Use `direction` and `length` props to change the layout and spacing depending on the design structure.        |
 
----
-
-Enjoy building with the `Divider` component! 🎉
