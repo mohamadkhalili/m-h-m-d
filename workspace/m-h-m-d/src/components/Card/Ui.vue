@@ -2,20 +2,26 @@
     <Core
       :class="[
         'card',
-        'rounded-lg',
+        'rounded-xl',
         'overflow-hidden',
         'shadow-md',
         'relative',
         'bg-white',
         'cursor-pointer',
-        props.elevation ? 'shadow-xl' : '',
         props.horizontal 
           ? 'grid grid-flow-col grid-rows-3 gap-4 h-52'  // Grid layout for horizontal cards
           : 'flex flex-col w-80',  // Flex layout for vertical cards
       ]"
     >
+
+    <div v-if="props.header " :class="[props.horizontal ? '' : 'p-4 ']">
+        <div class="flex items-center justify-between">
+          <span class="text-sm text-gray-500 pr-2">{{ props.header }}</span>
+        </div>
+      </div>
+
       <!-- Image -->
-      <div :class="['relative', props.horizontal ? ' mx-auto row-span-3' : 'w-full h-48']">
+      <div v-if="props.image" :class="['relative', props.horizontal ? ' mx-auto row-span-3' : 'w-full h-48']">
         <img :src="props.image" alt="Card Image" class="object-cover w-[90%] h-[90%] mt-[0.7rem] m-auto rounded-lg" />
       </div>
   
@@ -26,7 +32,7 @@
       </div>
   
       <!-- Footer (Optional) -->
-      <div v-if="props.footer || $slots.default" :class="[props.horizontal ? 'col-span-2 row-span-2 p-4   mt-10' : 'p-4 border-t']">
+      <div v-if="props.footer || $slots.default" :class="[props.horizontal ? 'col-span-2 row-span-2 p-4   mt-10' : 'p-4 ']">
         <div class="flex items-center justify-between">
           <span class="text-sm text-gray-500 pr-2">{{ props.footer }}</span>
        

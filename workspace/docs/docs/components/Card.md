@@ -1,5 +1,18 @@
-# Card Component
+# Card 
 
+
+
+`Card` components  simple example
+
+<div class="  p-6 rounded-lg shadow-inner  flex justify-center items-center ">
+<Card
+    description="description "
+   title="Title "
+   footer="footer "
+   
+   header="header"
+> </Card>
+</div>
 
 
 <Card 
@@ -24,7 +37,6 @@ View
   horizontal
 >
  <Button class="shadow-inner ring-1 ring-blue-200 rounded-lg" variant="link">
-
     View
   </Button>
 </Card>

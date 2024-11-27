@@ -15,12 +15,12 @@ export const cardProps = {
     type: String,
     default: '',
   },
-  elevation: {
-    type: Boolean,
-    default: true,
+  header: {
+    type: String,
+    default: '',
   },
   horizontal: {
     type: Boolean,
-    default: false,  // ویژگی برای حالت افقی
+    default: false,  
   },
 };
