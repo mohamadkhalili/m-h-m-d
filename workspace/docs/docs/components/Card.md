@@ -7,9 +7,11 @@ The `Card` component provides a sleek design with an image, title, description, 
 
 <Card 
   title="Beautiful Sunset" 
-  description="A breathtaking view of the sunset over the ocean." 
-  image="https://stacycorwin.com/wp-content/uploads/2018/12/sunrise-sunset.jpg" 
-  footer="View More"
+  description="A breathtaking view of the sunset " 
+  footer=" More from this photographer"
 >
+<Button variant="shadow">
+View
+</Button>
 </Card>
 

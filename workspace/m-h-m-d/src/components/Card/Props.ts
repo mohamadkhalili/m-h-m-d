@@ -9,7 +9,7 @@ export const cardProps = {
     },
     image: {
       type: String,
-      required: true,
+      required: false,
     },
     footer: {
       type: String,

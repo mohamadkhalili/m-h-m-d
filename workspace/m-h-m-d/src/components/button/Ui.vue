@@ -283,9 +283,9 @@ border: rgba(0, 3, 175, 0.979) 1px solid;
 }
 .variant-shadow {
 border: rgba(255, 255, 255, 0) 1px solid;
-background-color: rgb(22, 32, 121);
+background-color: rgb(53, 73, 255);
 color: rgb(255, 255, 255);
-box-shadow: 0 8px 10px 0px rgba(61, 70, 161, 0.664); 
+box-shadow: 0 2px 5px 0px rgba(61, 70, 161, 0.664); 
 
 padding: 0.5rem 1.5rem;
 }
@@ -294,7 +294,8 @@ padding: 0.5rem 1.5rem;
 background-color: rgb(0, 12, 179);
 color: rgb(255, 255, 255);
 border: rgba(0, 3, 175, 0.979) 1px solid;
-box-shadow: 0 12px 25px 2px rgba(75, 99, 145, 0.5); 
+box-shadow: 0 px 5px 0px rgba(75, 99, 145, 0.5); 
+overflow: hidden;
 
 }
 .sm-round {
