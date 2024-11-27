@@ -6,24 +6,10 @@ const props = defineProps(dividerProps);
 
 <template>
   <div
-    :class="[
-      props.direction === 'vertical' ? 'h-full w-px' : 'w-full h-px',
-      props.color,
-      props.diameter,
-    ]"
     :style="{
-      height: props.direction === 'vertical' ? props.length : 'auto',
-      width: props.direction === 'horizontal' ? props.length : 'auto'
+      height: props.direction === 'vertical' ? props.length : props.diameter,
+      width: props.direction === 'horizontal' ? props.length : props.diameter,
     }"
+    :class="[props.color]"
   ></div>
 </template>
-
-<style scoped>
-.h-full {
-  height: 100px;
-}
-.w-full {
-  width: 100px;
-}
-
-</style>
