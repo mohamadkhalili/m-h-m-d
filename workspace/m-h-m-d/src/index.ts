@@ -10,8 +10,8 @@ import ChatBubble from './components/ChatBubble/Ui.vue';
 import Divider from './components/Divider/Ui.vue';
 import list from './components/list/Ui.vue'
 import { tooltip } from './directives/TooltipDirective';
-import  clickOutside  from './directives/clickOutSide'
-
+import  clickOutside  from './directives/clickOutSide';
+import  stepper  from './components/stepper/Core.vue';
 const components = [
     { name: 'pagination', ...pagination },
     { name: 'modal', ...modal },
@@ -21,7 +21,8 @@ const components = [
     { name: 'tab', ...tab },
     { name: 'ChatBubble', ...ChatBubble },
     { name: 'Divider', ...Divider },
-    { name: 'list', ...list}
+    { name: 'list', ...list},
+    { name: 'stepper', ...stepper}
 ]
 
 const directives = {
@@ -40,7 +41,7 @@ const install = (app: App) => {
 }
 
 
-export { pagination, modal, Button, input, menu, tab, list,ChatBubble,Divider }
+export { pagination, modal, Button, input, menu, tab, list,ChatBubble,Divider, stepper }
 export { tooltip }
 
 export default {

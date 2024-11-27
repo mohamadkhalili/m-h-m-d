@@ -32,7 +32,7 @@ export default defineConfig({
           {text:'Tab',link:'/components//tab'},
           {text:'Chat Bubble',link:'/components//ChatBubble'},
           {text:'Divider',link:'/components//Divider'},
-
+          {text:'Stepper',link:'/components//stepper'},
           {text:'List',link:'/components//list'}
         ]
       },
