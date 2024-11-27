@@ -1,5 +1,6 @@
 {
   "name": "m-h-m-d",
+  "description": "Multi High Modular Design",
   "main": "index.js",
   "directories": {
     "doc": "docs"
