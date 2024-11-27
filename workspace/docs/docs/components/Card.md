@@ -166,3 +166,19 @@ View
 </Button>
 </Card>
 ```
+
+<div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
+
+<Card 
+  title="Tehran"
+  description="cloudy"
+  info2="humidity 10%"
+  info3="123 km/h"
+  info4="18°C"
+  variant="weather"
+  weatherIcon="https://icon-library.com/images/weather-icon/weather-icon-4.jpg"
+  weatherDescription="cloudy"
+>
+</Card>
+
+</div>
