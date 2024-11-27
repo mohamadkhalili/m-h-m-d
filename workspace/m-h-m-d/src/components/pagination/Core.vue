@@ -7,12 +7,8 @@
   </div>
   <template v-for="(page, index) in getPages" :key="index">
     <div @click="setModelValue(page)">
-      <slot
-        name="default"
-        :isCurrentPage="typeof page === 'number' && page !== -1"
-        :isActive="page === modelValue"
-        :page="page"
-      ></slot>
+      <slot name="default" :isCurrentPage="typeof page === 'number' && page !== -1" :isActive="page === modelValue"
+        :page="page"></slot>
     </div>
   </template>
   <div @click="nextPage">
@@ -21,7 +17,7 @@
   <div @click="superNextPage">
     <slot name="superNext" :disabled="modelValue === pageSize"></slot>
   </div>
-  <div @click="toggleEdit" @keyup.enter="setSearchPage(searchPage)">
+  <div v-if="enableSearchPage" @click="toggleEdit" @keyup.enter="setSearchPage(searchPage)">
     <slot name="searchPage" :enabled="enableSearchPage"></slot>
   </div>
 </template>
@@ -81,30 +77,30 @@ const toggleEdit = () => {
 
 const getPages = computed(() => {
   let arrayBtn: number[] = [];
-  if(props.pageSize > 6){
-    if(props.modelValue  < 5){
-        for(let i = 1 ; i<6 ; i++){
-          arrayBtn.push(i);
-        }
-        arrayBtn.push(-1);
-        arrayBtn.push(props.pageSize);
-    }else if(props.modelValue > props.pageSize - 4){
-        arrayBtn.push(1);
-        arrayBtn.push(-1);
-        for(let i = props.pageSize -4 ; i <= props.pageSize ; i++){
-          arrayBtn.push(i);
-        }
-    }else {
+  if (props.pageSize > 6) {
+    if (props.modelValue < 5) {
+      for (let i = 1; i < 6; i++) {
+        arrayBtn.push(i);
+      }
+      arrayBtn.push(-1);
+      arrayBtn.push(props.pageSize);
+    } else if (props.modelValue > props.pageSize - 4) {
       arrayBtn.push(1);
       arrayBtn.push(-1);
-      arrayBtn.push(props.modelValue -1);
+      for (let i = props.pageSize - 4; i <= props.pageSize; i++) {
+        arrayBtn.push(i);
+      }
+    } else {
+      arrayBtn.push(1);
+      arrayBtn.push(-1);
+      arrayBtn.push(props.modelValue - 1);
       arrayBtn.push(props.modelValue);
       arrayBtn.push(props.modelValue + 1);
       arrayBtn.push(-1);
       arrayBtn.push(props.pageSize)
     }
-  }else {
-    for(let i = 1 ; i <props.pageSize + 1 ; i++){
+  } else {
+    for (let i = 1; i < props.pageSize + 1; i++) {
       arrayBtn.push(i);
     }
   }
