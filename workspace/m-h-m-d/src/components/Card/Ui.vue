@@ -51,7 +51,7 @@
     <!-- Header Section -->
     <div class="flex justify-between items-center">
       <h3 class="text-lg font-semibold">{{ props.title }}</h3>
-      <span class="text-sm text-gray-500">{{ props.info1 }}</span> <!-- عنوان اضافی -->
+      <span class="text-sm text-gray-500 mt-8">{{ props.info1 }}</span> 
     </div>
 
     <!-- Progress Bar -->

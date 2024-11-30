@@ -218,3 +218,34 @@ View
 <span class="animate-pulse w-fit ">߷</span>
 </Card>
 </div>
+
+**Code**
+
+```md
+<Card
+  variant="progress"
+  title="Project Completion"
+  info1="Progress: 75%"
+  info2=75
+  info3="Started on: Jan 10"
+  info4="Deadline: Dec 25"
+  description="This project is almost complete"
+  class="bg-white"
+>
+<span class="animate-pulse w-fit ">߷</span>
+</Card>
+```
+
+## Features
+
+| **Feature**        | **Description**                                                                                             | **Usage**                                                                                             |
+|---------------------|-------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| **Basic Card**      | Display a card with a title and description.                                                                | Use the `title` and `description` props to set content.                                              |
+| **Header & Footer** | Add additional context above and below the card content.                                                    | Use the `header` and `footer` props for customization.                                               |
+| **Image Support**   | Include an image to enhance visual presentation.                                                            | Use the `image` prop to pass an image URL.                                                           |
+| **Horizontal Layout** | Arrange content in a horizontal format, useful for media-focused cards.                                    | Set the `horizontal` prop to `true`.                                                                 |
+| **Post Variant**    | Create a social media-like post layout with user details and actions.                                       | Set the `variant` prop to `post` and use related props like `avatar`, `username`, and `info1`-`info4`. |
+| **Weather Variant** | Display weather details in a card format, including an image and key metrics.                              | Set the `variant` prop to `weather` and provide props like `weatherImage` and `info1`-`info4`.       |
+| **Progress Variant**| Showcase project or task progress with percentage and milestones.                                          | Set the `variant` prop to `progress` and include props like `info1`-`info4` for details.             |
+
+---
