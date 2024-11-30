@@ -367,6 +367,7 @@ View
 ## Variant
 
 
+**Post**
 
 <Tab 
    class="gap-3 border-[1px] rounded-md w-full"
@@ -461,8 +462,15 @@ View
 
 </Tab>
 
+**weather**
 
-
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full"
+    :tabs="tabs" 
+    variant="bordered"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+    <template #content1>
 <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
 
 <Card 
@@ -478,9 +486,35 @@ View
 </Card>
 </div>
 
-‍‍‍**Code**
+</template>
 
-```md
+
+  <template #content2>
+
+  ```md
+  <Card class="bg-white shadow-md rounded-lg p-4 "  
+ weatherImage="https://icon-library.com/images/weather-icon/weather-icon-2.jpg">
+  <template #header>
+    <div class="flex justify-between items-center">
+      <img src="https://weather.png" alt="Weather Icon" class="w-12 h-12" />
+      <h3 class="text-xl font-bold">Tehran</h3>
+    </div>
+  </template>
+  <template #description>
+    <p class="text-gray-500 text-sm">Cloudy</p>
+    <ul class="flex justify-between  text-sm text-gray-700">
+      <ol>Humidity: 10%</ol>
+      <ol>Wind: 123 km/h</ol>
+      <ol>Temperature: 18°C</ol>
+    </ul>
+  </template>
+</Card>
+
+```
+  </template>
+  <template #content3>
+
+  ```md
 <Card 
   title="Tehran"
   description="cloudy"
@@ -491,7 +525,28 @@ View
   weatherImage="https://weather.png"
 >
 </Card>
+
 ```
+  </template>
+
+</Tab>
+
+
+
+
+
+
+**progress**
+
+
+
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full"
+    :tabs="tabs" 
+    variant="bordered"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+    <template #content1>
 <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
 
 <Card
@@ -504,13 +559,46 @@ View
   description="This project is almost complete"
   class="bg-white"
 >
-<span class="animate-pulse w-fit ">߷</span>
 </Card>
 </div>
 
-**Code**
+</template>
 
-```md
+
+  <template #content2>
+
+  ```md
+  <Card class="bg-white shadow-md rounded-lg p-4">
+  <template #header>
+    <h3 class="text-xl font-bold">Project Completion</h3>
+  </template>
+
+  <template #description>
+    <div class="mt-4">
+      <div class="flex justify-between items-center mb-2">
+        <span class="text-sm font-medium text-gray-700">Progress: 75%</span>
+      </div>
+      <div class="w-full bg-gray-200 rounded-full h-4">
+        <div
+          class="bg-blue-500 h-4 rounded-full"
+          style="width: 75%;"
+        ></div>
+      </div>
+    <p class="text-gray-500 text-sm">This project is almost complete</p>
+    </div>
+    <ul class="mt-4 justify-between p-2 flex text-sm text-gray-700">
+      <ol>Started on: Jan 10</ol>
+      <ol>Deadline: Dec 25</ol>
+    </ul>
+  </template>
+
+</Card>
+
+```
+  </template>
+  <template #content3>
+
+  ```md
 <Card
   variant="progress"
   title="Project Completion"
@@ -521,9 +609,19 @@ View
   description="This project is almost complete"
   class="bg-white"
 >
-<span class="animate-pulse w-fit ">߷</span>
 </Card>
 ```
+  </template>
+
+</Tab>
+
+
+
+
+
+
+
+
 
 
 
