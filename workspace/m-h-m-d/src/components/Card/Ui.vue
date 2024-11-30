@@ -44,7 +44,38 @@
           </div>
         </div>
       </template>
-  
+      <!-- progress variant -->
+
+      <template v-else-if="props.variant === 'progress'">
+  <div class="flex flex-col gap-4 p-4 w-96">
+    <!-- Header Section -->
+    <div class="flex justify-between items-center">
+      <h3 class="text-lg font-semibold">{{ props.title }}</h3>
+      <span class="text-sm text-gray-500">{{ props.info1 }}</span> <!-- عنوان اضافی -->
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="w-full bg-gray-200 rounded-full h-4">
+      <div
+        class="bg-blue-500 h-4 rounded-full"
+        :style="{ width: `${props.info2}%` }"
+      ></div>
+    </div>
+
+    <!-- Info Section -->
+    <div class="flex justify-between items-center text-sm text-gray-500">
+      <span v-if="props.info3">{{ props.info3 }} </span>
+      <span v-if="props.info4">{{ props.info4 }}</span>
+    </div>
+
+    <!-- Description -->
+   
+    <p v-if="props.description" class="text-sm text-gray-600 mt-2">
+      {{ props.description }}  <slot/>
+    </p>
+  </div>
+</template>
+
       <!-- Weather variant -->
       <template v-else-if="props.variant === 'weather'">
         <div class="flex items-center justify-between space-x-4">
@@ -62,6 +93,8 @@
             <div class="flex space-x-4 text-xs text-gray-500 mt-2">
               <span v-if="props.info2">{{ props.info2 }} </span>
               <span v-if="props.info3">{{ props.info3 }}</span>
+              <span v-if="props.info3">{{ props.info1 }}</span>
+
             
             </div>
           </div>

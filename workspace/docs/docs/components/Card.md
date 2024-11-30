@@ -178,7 +178,8 @@ View
 
 <Card 
   title="Tehran"
-  description="rainy"
+  description="cloudy"
+  info1="Precipitation 0%"
   info2="humidity 10%"
   info3="123 km/h"
   info4="18°C"
@@ -202,3 +203,18 @@ View
 >
 </Card>
 ```
+<div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
+
+<Card
+  variant="progress"
+  title="Project Completion"
+  info1="Progress: 75%"
+  info2=75
+  info3="Started on: Jan 10"
+  info4="Deadline: Dec 25"
+  description="This project is almost complete"
+  class="bg-white"
+>
+<span class="animate-pulse w-fit ">߷</span>
+</Card>
+</div>
