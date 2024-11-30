@@ -1,37 +1,83 @@
 
 <script setup>
 const tabs = [
-  { label: 'Slots', value: 1, content: '' },
-  { label: 'Props', value: 2, content: ''}
+  { label: 'UI', value: 1, content: '' },
+  { label: 'Slots', value: 2, content: ''},
+  { label: 'Props', value: 3, content: ''},
+
+
 ];
-
-
 
 
 </script>
 
-# Card 
-
-
-
+## Card 
 
 `Card` components  simple example
 
+
+
+
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full"
+    :tabs="tabs" 
+    variant="bordered"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+    <template #content1>
+
 <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
+<Card class="bg-white h-44 w-40">
+<template #title> 
+<h3>title</h3>
+</template>
+<template #description> 
+<p class="text-gray-500 text-sm">description</p>
+</template>
+</Card>
+</div>
+
+</template>
+
+
+  <template #content2>
+
+  ```md
+<template #title> 
+<h3>title</h3>
+</template>
+<template #description> 
+<p class="text-gray-500 text-sm">description</p>
+</template>
+
+```
+  </template>
+    <template #content3>
+
+```md
+
 <Card
-    description="description "
+   description="description "
    title="Title "  
    class="bg-white h-44 w-56"
 /> 
-</div>
-
-**Code**
-
-```md
-<Card description="description "title="Title "  /> 
 ```
+  </template>
+
+</Tab>
+
+
+
 
 ## Footer and Header
+this card use `footer ` and ` header ` property !
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full"
+    :tabs="tabs" 
+    variant="bordered"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+    <template #content1>
 
 <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
 <Card
@@ -51,24 +97,12 @@ footer
 </template>
 </Card>
 </div>
-
-**Code**
- 
+</template>
 
 
-
-
-<Tab 
-   class="gap-3 border-[1px] rounded-md w-full"
-    :tabs="tabs" 
-    variant="bordered"
-    activeColor="text-blue-500 shadow-blue-300"
-  >
-
-  <template #content1>
+  <template #content2>
 
   ```md
-
 <Card class="bg-white w-56"  > 
 <template #header> 
 header
@@ -85,7 +119,7 @@ footer
 </Card>
 ```
   </template>
-    <template #content2>
+    <template #content3>
 
 ```md
 
@@ -96,7 +130,6 @@ footer="footer"
 header="header " 
 /> 
 ```
-
   </template>
 
 </Tab>
@@ -111,45 +144,81 @@ header="header "
 
 ##  button 
 
+<Tab 
+  class="gap-3 border-[1px] rounded-md w-full"
+  :tabs="tabs" 
+  variant="bordered"
+  activeColor="text-blue-500 shadow-blue-500"
+>
+  <template #content1>
+    <div class="p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
+      <Card 
+        class="bg-white" 
+        >
+         <template #title>
+          <h3>Button Example</h3>
+        </template>
+        <template #description>
+          <p  class="text-gray-500 text-sm">This is a simple button example.</p>
+        </template>
+        <template #footer>
+          <Button variant="faded">Click Me</Button>
+        </template>
+      </Card>
+    </div>
+  </template>
 
-<div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
+  <template #content2>
 
+  ```md
+<Card class="bg-white w-56"  > 
+ <Card 
+class="bg-white" >
+<template #title>
+<h3>Button Example</h3>
+</template>
+<template #description>
+<p  class="text-gray-500 text-sm">This is a simple button example.</p>
+</template>
+<template #footer>
+<Button variant="faded">Click Me</Button>
+</template>
+</Card>
+```
+  </template>
+
+  <template #content3>
+
+  ```md
 
 <Card
-  description="Here are the biggest enterprise technology acquisitions of 2025 so far, in reverse chronological order."
-  title="Noteworthy technology acquisitions 2025"
-  header="invitation"
+  description="This is a simple button example."
+  title="Button Example"
   class="bg-white"
 >
-  <template #footer>
     <Button variant="faded">
       Check out
     </Button>
-  </template>
+
 </Card>
 
-</div>
-
-
-**Code**
-```md
-<Card
-description="Here are the biggest enterprise technology acquisitions of 
-        2025 so far, in reverse chronological order. "
-title="Noteworthy technology acquisitions 2025" 
-header="invitation " 
-   class="bg-white  "
-> 
-<Button  variant="faded">
-Check out
-</Button>
-</Card>
 ```
+  </template>
 
-‍‍
+</Tab>
+
 ##  image 
 
-<div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
+<Tab 
+  class="gap-3 border-[1px] rounded-md w-full"
+  :tabs="tabs" 
+  variant="bordered"
+  activeColor="text-blue-500 shadow-blue-500"
+>
+
+
+  <template #content1>
+    <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
 
 
 <Card 
@@ -159,52 +228,218 @@ Check out
   footer=" More from this photographer"
    class="bg-white  "
 >
+
 <Button class="shadow-inner ring-1 ring-blue-200 rounded-lg" variant="link">
 View
 </Button>
 </Card>
 </div>
 
-</br>
+  </template>
 
-##  image  horizontal
-<div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
+  <template #content2>
+
+  ```md
+<Card 
+  image="https://stacycorwin.com/wp-content/uploads/2018/12/sunrise-sunset.jpg" 
+   class="bg-white  "
+>
+  <template #title>
+    <h3>Beautiful Sunset</h3>
+  </template>
+
+  <template #description>
+    <p>A breathtaking view of the sunset</p>
+  </template>
+
+  <template #footer>
+    <p>More from this photographer</p>
+    <Button class="shadow-inner ring-1 ml-2 ring-blue-200 rounded-lg" variant="link">
+      View
+    </Button>
+  </template>
+
+</Card>
+
+```
+  </template>
+
+  <template #content3>
+
+  ```md
+
+<Card 
+  title="Beautiful Sunset" 
+  description="A breathtaking view of the sunset   " 
+  image="https://your-pic.jpg" 
+  footer=" More from this photographer"
+   class="bg-white  "
+>
+
+<Button class="shadow-inner ring-1 ring-blue-200 rounded-lg" variant="link">
+View
+</Button>
+</Card>
+```
+  </template>
+
+</Tab>
+
+##  image horizontal
+
+<Tab 
+  class="gap-3 border-[1px] rounded-md w-full"
+  :tabs="tabs" 
+  variant="bordered"
+  activeColor="text-blue-500 shadow-blue-500"
+>
+
+
+  <template #content1>
+    <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
+
 
 <Card 
   title="Beautiful Sunset" 
   description="A breathtaking view of the sunset   " 
   image="https://stacycorwin.com/wp-content/uploads/2018/12/sunrise-sunset.jpg" 
   footer=" More from this photographer"
-  horizontal
    class="bg-white  "
+   horizontal
 >
- <Button class="shadow-inner ring-1 ring-blue-200 rounded-lg" variant="link">
-    View
-  </Button>
+
+<Button class="shadow-inner ring-1 ring-blue-200 rounded-lg" variant="link">
+View
+</Button>
 </Card>
 </div>
 
-```md
+  </template>
+
+  <template #content2>
+
+  ```md
+<Card 
+  image="https://stacycorwin.com/wp-content/uploads/2018/12/sunrise-sunset.jpg" 
+   class="bg-white  "
+>
+  <template #title>
+    <h3>Beautiful Sunset</h3>
+  </template>
+
+  <template #description>
+    <p>A breathtaking view of the sunset</p>
+  </template>
+
+  <template #footer>
+    <p>More from this photographer</p>
+    <Button class="shadow-inner ring-1 ml-2 ring-blue-200 rounded-lg" variant="link">
+      View
+    </Button>
+  </template>
+
+</Card>
+
+```
+  </template>
+
+  <template #content3>
+
+  ```md
+
 <Card 
   title="Beautiful Sunset" 
   description="A breathtaking view of the sunset   " 
-  image="https://your_image.jpg" 
+  image="https://your-pic.jpg" 
   footer=" More from this photographer"
-  class="bg-white  "
-  horizontal
+   class="bg-white  "
 >
- <Button class="shadow-inner  rounded-lg" variant="link">
-    View
- </Button>
+
+<Button class="shadow-inner ring-1 ring-blue-200 rounded-lg" variant="link">
+View
+</Button>
 </Card>
 ```
+  </template>
+
+</Tab>
+
 ## Variant
 
 
 **Post**
 
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full"
+    :tabs="tabs" 
+    variant="bordered"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+    <template #content1>
 
 <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
+<Card 
+  description="This is a demo post from MHMD library 🔥" 
+  variant="post"
+  avatar="https://avatar.iran.liara.run/public/50"
+  username="John Doe"
+  time="2h ago"
+  info1="1.2K followers"
+  info2="72 comments "
+  info3="5.7K following"
+  info4="1K ♥️"
+>
+
+<Button   round="full">
+    follow
+ </Button>
+</Card>
+
+
+
+</div>
+</template>
+
+
+  <template #content2>
+
+  ```md
+<Card  class="bg-white">
+  <template #header>
+    <div class="flex items-center space-x-2">
+      <img src="https://avatar.iran.liara.run/public/50" alt="Avatar" class="w-10 h-10 rounded-full" />
+      <div>
+        <h3 class="font-bold text-gray-700">John Doe</h3>
+        <p class="text-sm text-gray-500">2h ago</p>
+      </div>
+    </div>
+    <Button class="  w-min shadow-none" round="full" >
+      follow
+    </Button>
+  </template>
+
+  <template #description>
+    <p class="text-gray-700">
+      This is a demo post from MHMD library 🔥
+    </p>
+  </template>
+
+  <template #footer>
+    <ul class="flex flex-row justify-center items-center  text-gray-500 text-sm ">
+      <ol >1.2K followers</ol>
+      <ol>72 comments</ol>
+      <ol>5.7K following</ol>
+      <ol>1K ♥️</ol>
+    </ul>
+    <div class="mt-4">
+    </div>
+  </template>
+</Card>
+```
+  </template>
+  <template #content3>
+
+  ```md
 
 <Card 
   description="This is a demo post from MHMD library 🔥" 
@@ -222,28 +457,20 @@ View
     follow
  </Button>
 </Card>
-</div>
-
-**Code**
-
-```md
-<Card 
-  description="This is a demo post from MHMD library 🔥" 
-  variant="post"
-  avatar="https://avatar.com"
-  username="John Doe"
-  time="2h ago"
-  info1="1.2K followers"
-  info2="72 comments "
-  info3="5.7K following"
-  info4="1K ♥️"
->
-<Button   round="full">
-    follow
-</Button>
-</Card>
 ```
+  </template>
 
+</Tab>
+
+**weather**
+
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full"
+    :tabs="tabs" 
+    variant="bordered"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+    <template #content1>
 <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
 
 <Card 
@@ -259,9 +486,35 @@ View
 </Card>
 </div>
 
-‍‍‍**Code**
+</template>
 
-```md
+
+  <template #content2>
+
+  ```md
+  <Card class="bg-white shadow-md rounded-lg p-4 "  
+ weatherImage="https://icon-library.com/images/weather-icon/weather-icon-2.jpg">
+  <template #header>
+    <div class="flex justify-between items-center">
+      <img src="https://weather.png" alt="Weather Icon" class="w-12 h-12" />
+      <h3 class="text-xl font-bold">Tehran</h3>
+    </div>
+  </template>
+  <template #description>
+    <p class="text-gray-500 text-sm">Cloudy</p>
+    <ul class="flex justify-between  text-sm text-gray-700">
+      <ol>Humidity: 10%</ol>
+      <ol>Wind: 123 km/h</ol>
+      <ol>Temperature: 18°C</ol>
+    </ul>
+  </template>
+</Card>
+
+```
+  </template>
+  <template #content3>
+
+  ```md
 <Card 
   title="Tehran"
   description="cloudy"
@@ -272,7 +525,28 @@ View
   weatherImage="https://weather.png"
 >
 </Card>
+
 ```
+  </template>
+
+</Tab>
+
+
+
+
+
+
+**progress**
+
+
+
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full"
+    :tabs="tabs" 
+    variant="bordered"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+    <template #content1>
 <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
 
 <Card
@@ -285,13 +559,46 @@ View
   description="This project is almost complete"
   class="bg-white"
 >
-<span class="animate-pulse w-fit ">߷</span>
 </Card>
 </div>
 
-**Code**
+</template>
 
-```md
+
+  <template #content2>
+
+  ```md
+  <Card class="bg-white shadow-md rounded-lg p-4">
+  <template #header>
+    <h3 class="text-xl font-bold">Project Completion</h3>
+  </template>
+
+  <template #description>
+    <div class="mt-4">
+      <div class="flex justify-between items-center mb-2">
+        <span class="text-sm font-medium text-gray-700">Progress: 75%</span>
+      </div>
+      <div class="w-full bg-gray-200 rounded-full h-4">
+        <div
+          class="bg-blue-500 h-4 rounded-full"
+          style="width: 75%;"
+        ></div>
+      </div>
+    <p class="text-gray-500 text-sm">This project is almost complete</p>
+    </div>
+    <ul class="mt-4 justify-between p-2 flex text-sm text-gray-700">
+      <ol>Started on: Jan 10</ol>
+      <ol>Deadline: Dec 25</ol>
+    </ul>
+  </template>
+
+</Card>
+
+```
+  </template>
+  <template #content3>
+
+  ```md
 <Card
   variant="progress"
   title="Project Completion"
@@ -302,9 +609,21 @@ View
   description="This project is almost complete"
   class="bg-white"
 >
-<span class="animate-pulse w-fit ">߷</span>
 </Card>
 ```
+  </template>
+
+</Tab>
+
+
+
+
+
+
+
+
+
+
 
 ## Features
 
