@@ -51,7 +51,7 @@
         <div class="flex justify-between items-center">
           <h3 v-if="!$slots.title" class="text-lg font-semibold">{{ props.title }}</h3>
           <slot name="title" />
-          <span v-if="!$slots.info1 && props.info1" class="text-sm text-gray-500">{{ props.info1 }}</span>
+          <span v-if="!$slots.info1 && props.info1" class="text-sm text-gray-500 mt-8">{{ props.info1 }}</span>
           <slot name="info1" />
         </div>
         <div class="w-full bg-gray-200 rounded-full h-4">
@@ -88,7 +88,7 @@
         <div class="flex flex-col justify-center items-center">
           <p class="text-3xl font-bold">{{ props.info4 }}</p>
           <div class="flex space-x-4 text-xs text-gray-500 mt-2">
-            <span v-if="!$slots.info1 && props.info1">{{ props.info1 }}</span>
+            <span  v-if="!$slots.info1 && props.info1">{{ props.info1 }}</span>
             <slot name="info1" />
             <span v-if="!$slots.info2 && props.info2">{{ props.info2 }}</span>
             <slot name="info2" />
