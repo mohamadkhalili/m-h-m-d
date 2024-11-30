@@ -7,9 +7,13 @@
         'relative',
         props.variant === 'post' ? 'bg-white flex flex-col p-4 gap-4' : '',
         props.variant === 'weather' ? 'bg-white flex flex-col p-4 gap-6' : '',
-        'cursor-pointer',
+        '',
         props.variant === 'post' && !props.horizontal ? 'w-[28rem]' : '',
-        props.variant === 'weather' ? 'w-[28rem]' : '', // Adjust for weather variant as well
+        props.variant === 'weather' ? 'w-[28rem]' : '',
+        props.horizontal 
+          ? 'grid grid-flow-col grid-rows-3 gap-4 h-52'  // Grid layout for horizontal cards
+          : ' ',
+
       ]"
     >
       <!-- Post variant -->
@@ -46,7 +50,7 @@
         <div class="flex items-center justify-between space-x-4">
           <!-- Avatar and Info -->
           <div class="flex items-center space-x-4">
-            <img :src="props.weatherIcon" alt="Weather Icon" class="w-16 h-16 rounded-full" />
+            <img :src="props.avatar" class="w-16 h-16 rounded-full" />
             <div>
               <h3 class="text-xl font-semibold">{{ props.title }}</h3>
               <p class="text-sm text-gray-500">{{ props.description }}</p>
@@ -96,57 +100,6 @@
   import { defineProps } from 'vue';
   import { cardProps } from './Props';
   
-  const props = defineProps({
-    ...cardProps,
-    avatar: {
-      type: String,
-      required: true,
-    },
-    username: {
-      type: String,
-      required: true,
-    },
-    time: {
-      type: String,
-      required: true,
-    },
-    info1: {
-      type: String,
-      required: false,
-    },
-    info2: {
-      type: String,
-      required: false,
-    },
-    info3: {
-      type: String,
-      required: false,
-    },
-    info4: {
-      type: String,
-      required: false,
-    },
-    weatherIcon: {
-      type: String,
-      required: true,
-    },
-    temperature: {
-      type: Number,
-      required: true,
-    },
-    weatherDescription: {
-      type: String,
-      required: true,
-    },
-    humidity: {
-      type: Number,
-    },
-    wind: {
-      type: Number,
-    },
-    pressure: {
-      type: Number,
-    },
-  });
+  const props = defineProps(cardProps);
   </script>
   

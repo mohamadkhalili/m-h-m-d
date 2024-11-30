@@ -1,32 +1,25 @@
-<template>
-    <div :class="['card-core', variantClass]" @click="handleClick">
-      <slot></slot>
-    </div>
-  </template>
-  
-  <script setup>
-  import { defineProps, defineEmits } from 'vue';
-  import { cardProps } from './props';
-  import { cardEmits } from './emits';
-  
-  const props = defineProps(cardProps);
-  const emit = defineEmits(cardEmits);
+<script setup lang="ts">
+import { defineProps } from 'vue';
+import { cardProps } from './Props';
 
-  const handleClick = () => {
-    if (props.isClickable) {
-      emit('cardClick', { title: props.title, description: props.description });
-    }
-  };
-  </script>
+const props = defineProps(cardProps);
+</script>
+
+<template>
+ <Core
+  :class="[
+    'grid',
+    props.horizontal ? 'grid-cols-3 grid-rows-3 gap-4 h-52' : '',
+    'rounded-xl',
+    'overflow-hidden',
+    'shadow-md',
+    'relative',
+    'p-4',
+    props.variant === 'post' && !props.horizontal ? 'w-[28rem]' : '',
+    props.variant === 'weather' ? 'w-[28rem]' : ''
+  ]"
+>
+
   
-  <style scoped>
-  .card-core {
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  .card-core:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  </style>
-  
+  </Core>
+</template>

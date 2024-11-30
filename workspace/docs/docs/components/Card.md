@@ -8,6 +8,7 @@
 <Card
     description="description "
    title="Title "  
+   class="bg-white h-44 w-56"
 /> 
 </div>
 
@@ -24,6 +25,7 @@
 description="description "
    title="Title" 
    footer="footer"
+   class="bg-white w-56"
     header="header " 
 /> 
 </div>
@@ -49,6 +51,7 @@ header="header "
 description="Here are the biggest enterprise technology acquisitions of 2025 so far, in reverse chronological order. "
    title="Noteworthy technology acquisitions 2025" 
     header="invitation " 
+   class="bg-white  "
 > 
 <Button  variant="faded">
 Check out
@@ -64,6 +67,7 @@ description="Here are the biggest enterprise technology acquisitions of
         2025 so far, in reverse chronological order. "
 title="Noteworthy technology acquisitions 2025" 
 header="invitation " 
+   class="bg-white  "
 > 
 <Button  variant="faded">
 Check out
@@ -82,6 +86,7 @@ Check out
   description="A breathtaking view of the sunset   " 
   image="https://stacycorwin.com/wp-content/uploads/2018/12/sunrise-sunset.jpg" 
   footer=" More from this photographer"
+   class="bg-white  "
 >
 <Button class="shadow-inner ring-1 ring-blue-200 rounded-lg" variant="link">
 View
@@ -100,6 +105,7 @@ View
   image="https://stacycorwin.com/wp-content/uploads/2018/12/sunrise-sunset.jpg" 
   footer=" More from this photographer"
   horizontal
+   class="bg-white  "
 >
  <Button class="shadow-inner ring-1 ring-blue-200 rounded-lg" variant="link">
     View
@@ -113,6 +119,7 @@ View
   description="A breathtaking view of the sunset   " 
   image="https://your_image.jpg" 
   footer=" More from this photographer"
+  class="bg-white  "
   horizontal
 >
  <Button class="shadow-inner  rounded-lg" variant="link">
@@ -171,14 +178,27 @@ View
 
 <Card 
   title="Tehran"
+  description="rainy"
+  info2="humidity 10%"
+  info3="123 km/h"
+  info4="18°C"
+  variant="weather"
+  avatar="https://icon-library.com/images/weather-icon/weather-icon-2.jpg"
+>
+</Card>
+</div>
+
+‍‍‍**Code**
+
+```md
+<Card 
+  title="Tehran"
   description="cloudy"
   info2="humidity 10%"
   info3="123 km/h"
   info4="18°C"
   variant="weather"
-  weatherIcon="https://icon-library.com/images/weather-icon/weather-icon-4.jpg"
-  weatherDescription="cloudy"
+  avatar="https://weather.png"
 >
 </Card>
-
-</div>
+```
