@@ -52,10 +52,10 @@ const getButtonStyleClass = computed(() => {
         after:opacity-100  after:scale-100 after:transition-transform
         after:duration-500 border-none`
     case 'shadow':
-      return ' relative';
+      return ' relative inline-flex items-center  justify-cente ';
       case 'bordered':
       return `
-        relative inline-flex items-center justify-center 
+        relative inline-flex items-center  justify-center 
       `;
     default:
       return `

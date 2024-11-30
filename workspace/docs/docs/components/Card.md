@@ -543,7 +543,7 @@ View
 <Tab 
    class="gap-3 border-[1px] rounded-md w-full"
     :tabs="tabs" 
-    variant="bordered"
+    variant="shadow"
     activeColor="text-blue-500 shadow-blue-500"
   >
     <template #content1>
@@ -621,10 +621,6 @@ View
 
 
 
-
-
-
-
 ## Features
 
 | **Feature**        | **Description**                                                                                             | **Usage**                                                                                             |
@@ -637,4 +633,3 @@ View
 | **Weather Variant** | Display weather details in a card format, including an image and key metrics.                              | Set the `variant` prop to `weather` and provide props like `weatherImage` and `info1`-`info4`.       |
 | **Progress Variant**| Showcase project or task progress with percentage and milestones.                                          | Set the `variant` prop to `progress` and include props like `info1`-`info4` for details.             |
 
----
