@@ -20,10 +20,12 @@ const isEditingSearchPage = ref()
 ## Default Pagination
 
 **Props:**
+
 - `v-model`: Binds the current page number.
 - `v-model:searchPage`: Manages the search functionality.
 - `v-model:isEditingSearchPage`: Indicates if the search input is editable.
 <br>
+
 <br>
 <Pagination v-model="inputValue1" v-model:searchPage="searchValue" v-model:isEditingSearchPage="isEditingSearchPage"/>
 <br>
@@ -39,6 +41,7 @@ v-model:isEditingSearchPage="isEditingSearchPage"/>
 
 - `enableSearchPage`: Set to `false` to deactivate search functionality.
 <br>
+
 <br>
 <Pagination v-model="inputValue3" :enableSearchPage="false"/>
 <br>
@@ -54,9 +57,10 @@ v-model:isEditingSearchPage="isEditingSearchPage"/>
 - `rtl`: Set to `false` for Left-to-Right layout.
 - `enableSearchPage`: Disable the search page feature.
 <br>
+
 <br>
 
-<div class="ml-44">
+<div >
 <Pagination v-model="inputValue2" :enableSearchPage="false" :rtl="false"/>
 </div>
 <br>
@@ -71,6 +75,7 @@ v-model:isEditingSearchPage="isEditingSearchPage"/>
 
 - `pageSize`: Defines the number of items per page.
 <br>
+
 <br>
 <Pagination v-model="inputValue4" :enableSearchPage="false" :pageSize="10"/>
 <br>
@@ -89,7 +94,8 @@ v-model:isEditingSearchPage="isEditingSearchPage"/>
 - `separatorClass`: Custom classes applied to separators (e.g., `...` between pages).
 - `buttonClass`: Custom classes applied to all pagination buttons.
 
-### Example Usage:
+### Example Usage
+
 <br>
 <br>
 <Pagination v-model="inputValue5" :enableSearchPage="false" :activeClass="'bg-emerald-500 size-11 rounded-lg shadow-lg'" :onActiveClass="'rounded-lg shadow-lg'" :separatorClass="'text-emerald-500'" :buttonClass="'size-11 rounded-lg shadow-lg'" />
@@ -116,6 +122,7 @@ The Pagination component utilizes multiple slots to give flexibility in customiz
    - **Purpose**: Customize the button for navigating to the first page or skipping multiple pages backward.
    - **Default Behavior**: If not provided, a button with a default icon (`mdiChevronDoubleLeft` or `mdiChevronDoubleRight` for RTL) is rendered.
    - **Usage**:
+
      ```vue
      <template #superPrev="{ disabled }">
        <button :disabled="disabled" class="custom-super-prev">
@@ -128,6 +135,7 @@ The Pagination component utilizes multiple slots to give flexibility in customiz
    - **Purpose**: Customize the button for navigating to the previous page.
    - **Default Behavior**: If not provided, a button with a default icon (`mdiChevronLeft` or `mdiChevronRight` for RTL) is rendered.
    - **Usage**:
+
      ```vue
      <template #prev="{ disabled }">
        <button :disabled="disabled" class="custom-prev">
@@ -144,6 +152,7 @@ The Pagination component utilizes multiple slots to give flexibility in customiz
      - `page`: Number of the page represented by the button.
    - **Default Behavior**: Renders the current page number with special styling or a separator (`...`) if applicable.
    - **Usage**:
+
      ```vue
      <template #default="{ isCurrentPage, isActive, page }">
        <button
@@ -160,6 +169,7 @@ The Pagination component utilizes multiple slots to give flexibility in customiz
    - **Purpose**: Customize the button for navigating to the next page.
    - **Default Behavior**: If not provided, a button with a default icon (`mdiChevronRight` or `mdiChevronLeft` for RTL) is rendered.
    - **Usage**:
+
      ```vue
      <template #next="{ disabled }">
        <button :disabled="disabled" class="custom-next">
@@ -172,6 +182,7 @@ The Pagination component utilizes multiple slots to give flexibility in customiz
    - **Purpose**: Customize the button for navigating to the last page or skipping multiple pages forward.
    - **Default Behavior**: If not provided, a button with a default icon (`mdiChevronDoubleRight` or `mdiChevronDoubleLeft` for RTL) is rendered.
    - **Usage**:
+
      ```vue
      <template #superNext="{ disabled }">
        <button :disabled="disabled" class="custom-super-next">
@@ -186,6 +197,7 @@ The Pagination component utilizes multiple slots to give flexibility in customiz
      - `enabled`: Boolean indicating if the search feature is enabled.
    - **Default Behavior**: Displays an input field or search button based on the `isEditingSearchPage` state.
    - **Usage**:
+
      ```vue
      <template #searchPage="{ enabled }">
        <div v-if="enabled" class="custom-search">

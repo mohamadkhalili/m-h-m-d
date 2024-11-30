@@ -1,7 +1,7 @@
 {
   "name": "m-h-m-d",
   "version": "0.1.1",
-  "description": "My High Mountain Display",
+  "description": "Multi High Modular Design",
   "main": "src/index.ts",
   "module": "src/index.ts",
   "types": "src/index.ts",

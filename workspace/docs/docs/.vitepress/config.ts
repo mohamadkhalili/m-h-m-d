@@ -34,7 +34,7 @@ export default defineConfig({
           {text:'Card',link:'/components//Card'},
 
           {text:'Divider',link:'/components//Divider'},
-
+          {text:'Stepper',link:'/components//stepper'},
           {text:'List',link:'/components//list'}
         ]
       },
