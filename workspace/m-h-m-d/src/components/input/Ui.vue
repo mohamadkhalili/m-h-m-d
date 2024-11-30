@@ -54,7 +54,7 @@
 import {
   computed,
   ref,
-  defineOptions,
+  
   useSlots,
   watch,
 } from "vue";
