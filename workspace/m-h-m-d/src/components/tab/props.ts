@@ -4,7 +4,7 @@ import { PropType } from 'vue';
 export interface Tab {
   label: string;
   value: number | string;
-  content?: string;
+  content?: any;
   disabled?: boolean;
 }
 

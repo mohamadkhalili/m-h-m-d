@@ -1,4 +1,17 @@
+
+<script setup>
+const tabs = [
+  { label: 'Slots', value: 1, content: '' },
+  { label: 'Props', value: 2, content: ''}
+];
+
+
+
+
+</script>
+
 # Card 
+
 
 
 
@@ -22,17 +35,60 @@
 
 <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
 <Card
-description="description "
-   title="Title" 
-   footer="footer"
-   class="bg-white w-56"
-    header="header " 
-/> 
+   class="bg-white w-56"  
+> 
+<template #header> 
+header
+</template>
+<template #title> 
+<h3>title</h3>
+</template>
+<template #description> 
+<p class="text-gray-500 text-sm">description</p>
+</template>
+<template #footer> 
+footer
+</template>
+</Card>
 </div>
 
 **Code**
+ 
+
+
+
+
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full"
+    :tabs="tabs" 
+    variant="bordered"
+    activeColor="text-blue-500 shadow-blue-300"
+  >
+
+  <template #content1>
+
+  ```md
+
+<Card class="bg-white w-56"  > 
+<template #header> 
+header
+</template>
+<template #title> 
+<h3>title</h3>
+</template>
+<template #description> 
+<p class="text-gray-500 text-sm">description</p>
+</template>
+<template #footer> 
+footer
+</template>
+</Card>
+```
+  </template>
+    <template #content2>
 
 ```md
+
 <Card
 description="description "
 title="Title" 
@@ -41,6 +97,18 @@ header="header "
 /> 
 ```
 
+  </template>
+
+</Tab>
+
+
+
+
+
+
+
+
+
 ##  button 
 
 
@@ -48,15 +116,18 @@ header="header "
 
 
 <Card
-description="Here are the biggest enterprise technology acquisitions of 2025 so far, in reverse chronological order. "
-   title="Noteworthy technology acquisitions 2025" 
-    header="invitation " 
-   class="bg-white  "
-> 
-<Button  variant="faded">
-Check out
-</Button>
+  description="Here are the biggest enterprise technology acquisitions of 2025 so far, in reverse chronological order."
+  title="Noteworthy technology acquisitions 2025"
+  header="invitation"
+  class="bg-white"
+>
+  <template #footer>
+    <Button variant="faded">
+      Check out
+    </Button>
+  </template>
 </Card>
+
 </div>
 
 
@@ -167,7 +238,6 @@ View
   info3="5.7K following"
   info4="1K ♥️"
 >
-
 <Button   round="full">
     follow
 </Button>
