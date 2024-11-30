@@ -1,37 +1,83 @@
 
 <script setup>
 const tabs = [
-  { label: 'Slots', value: 1, content: '' },
-  { label: 'Props', value: 2, content: ''}
+  { label: 'UI', value: 1, content: '' },
+  { label: 'Slots', value: 2, content: ''},
+  { label: 'Props', value: 3, content: ''},
+
+
 ];
-
-
 
 
 </script>
 
-# Card 
-
-
-
+## Card 
 
 `Card` components  simple example
 
+
+
+
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full"
+    :tabs="tabs" 
+    variant="bordered"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+    <template #content1>
+
 <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
+<Card class="bg-white h-44 w-40">
+<template #title> 
+<h3>title</h3>
+</template>
+<template #description> 
+<p class="text-gray-500 text-sm">description</p>
+</template>
+</Card>
+</div>
+
+</template>
+
+
+  <template #content2>
+
+  ```md
+<template #title> 
+<h3>title</h3>
+</template>
+<template #description> 
+<p class="text-gray-500 text-sm">description</p>
+</template>
+
+```
+  </template>
+    <template #content3>
+
+```md
+
 <Card
-    description="description "
+   description="description "
    title="Title "  
    class="bg-white h-44 w-56"
 /> 
-</div>
-
-**Code**
-
-```md
-<Card description="description "title="Title "  /> 
 ```
+  </template>
+
+</Tab>
+
+
+
 
 ## Footer and Header
+this card use `footer ` and ` header ` property !
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full"
+    :tabs="tabs" 
+    variant="bordered"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+    <template #content1>
 
 <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
 <Card
@@ -51,24 +97,12 @@ footer
 </template>
 </Card>
 </div>
-
-**Code**
- 
+</template>
 
 
-
-
-<Tab 
-   class="gap-3 border-[1px] rounded-md w-full"
-    :tabs="tabs" 
-    variant="bordered"
-    activeColor="text-blue-500 shadow-blue-300"
-  >
-
-  <template #content1>
+  <template #content2>
 
   ```md
-
 <Card class="bg-white w-56"  > 
 <template #header> 
 header
@@ -85,7 +119,7 @@ footer
 </Card>
 ```
   </template>
-    <template #content2>
+    <template #content3>
 
 ```md
 
@@ -96,7 +130,6 @@ footer="footer"
 header="header " 
 /> 
 ```
-
   </template>
 
 </Tab>
@@ -111,14 +144,56 @@ header="header "
 
 ##  button 
 
+<Tab 
+  class="gap-3 border-[1px] rounded-md w-full"
+  :tabs="tabs" 
+  variant="bordered"
+  activeColor="text-blue-500 shadow-blue-500"
+>
+  <template #content1>
+    <div class="p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
+      <Card 
+        class="bg-white" 
+        >
+         <template #title>
+          <h3>Button Example</h3>
+        </template>
+        <template #description>
+          <p  class="text-gray-500 text-sm">This is a simple button example.</p>
+        </template>
+        <template #footer>
+          <Button variant="faded">Click Me</Button>
+        </template>
+      </Card>
+    </div>
+  </template>
 
-<div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
+  <template #content2>
 
+  ```md
+<Card class="bg-white w-56"  > 
+ <Card 
+class="bg-white" >
+<template #title>
+<h3>Button Example</h3>
+</template>
+<template #description>
+<p  class="text-gray-500 text-sm">This is a simple button example.</p>
+</template>
+<template #footer>
+<Button variant="faded">Click Me</Button>
+</template>
+</Card>
+```
+  </template>
+
+  <template #content3>
+
+  ```md
 
 <Card
-  description="Here are the biggest enterprise technology acquisitions of 2025 so far, in reverse chronological order."
-  title="Noteworthy technology acquisitions 2025"
-  header="invitation"
+  description="This is a simple button example."
+  title="Button Example"
   class="bg-white"
 >
   <template #footer>
@@ -128,25 +203,11 @@ header="header "
   </template>
 </Card>
 
-</div>
-
-
-**Code**
-```md
-<Card
-description="Here are the biggest enterprise technology acquisitions of 
-        2025 so far, in reverse chronological order. "
-title="Noteworthy technology acquisitions 2025" 
-header="invitation " 
-   class="bg-white  "
-> 
-<Button  variant="faded">
-Check out
-</Button>
-</Card>
 ```
+  </template>
 
-‍‍
+</Tab>
+
 ##  image 
 
 <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
