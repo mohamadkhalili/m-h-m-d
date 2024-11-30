@@ -122,7 +122,8 @@
       >
         <div class="flex items-center justify-between">
           <span v-if="props.footer" class="text-sm text-gray-500 pr-2">{{ props.footer }}</span>
-          <slot  name="footer" />
+          <slot></slot>
+          <slot name="footer" />
         </div>
       </div>
     </template>
