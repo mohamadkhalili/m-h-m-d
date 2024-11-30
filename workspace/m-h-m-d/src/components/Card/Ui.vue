@@ -50,7 +50,7 @@
         <div class="flex items-center justify-between space-x-4">
           <!-- Avatar and Info -->
           <div class="flex items-center space-x-4">
-            <img :src="props.avatar" class="w-16 h-16 rounded-full" />
+            <img :src="props.weatherImage" class="w-16 h-16 " />
             <div>
               <h3 class="text-xl font-semibold">{{ props.title }}</h3>
               <p class="text-sm text-gray-500">{{ props.description }}</p>
@@ -97,7 +97,6 @@
   </template>
   
   <script setup lang="ts">
-  import { defineProps } from 'vue';
   import { cardProps } from './Props';
   
   const props = defineProps(cardProps);

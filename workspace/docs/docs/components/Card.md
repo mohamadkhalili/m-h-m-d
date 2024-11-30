@@ -183,7 +183,7 @@ View
   info3="123 km/h"
   info4="18°C"
   variant="weather"
-  avatar="https://icon-library.com/images/weather-icon/weather-icon-2.jpg"
+  weatherImage="https://icon-library.com/images/weather-icon/weather-icon-2.jpg"
 >
 </Card>
 </div>
@@ -198,7 +198,7 @@ View
   info3="123 km/h"
   info4="18°C"
   variant="weather"
-  avatar="https://weather.png"
+  weatherImage="https://weather.png"
 >
 </Card>
 ```

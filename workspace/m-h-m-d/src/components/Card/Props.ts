@@ -3,6 +3,7 @@ export const cardProps = {
   description: { type: String, required: true },
   image: { type: String, required: false },
   avatar: { type: String, required: false },
+  weatherImage: { type: String, required: false },
   username: { type: String, required: false },
   time: { type: String, required: false },
   info1: { type: String, required: false },
