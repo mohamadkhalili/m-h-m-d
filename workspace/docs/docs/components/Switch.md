@@ -246,3 +246,13 @@ const sizeActiveXl = ref(false);
 
 
 
+## Switch Component Features
+
+| **Feature**           | **Description**                                                                                     | **Usage**                                                                                     |
+|-----------------------|-----------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| **Default Switch**     | A basic switch with default styling for simple designs.                                              | Use without additional props to apply the default appearance. Example: `<Switch />`            |
+| **Colors**      | Customize the switch colors with options  | Use the `activeColor` and `inactiveColor` props to customize the colors. Example: `<Switch activeColor="bg-blue-500" inactiveColor="bg-gray-300" />` |
+| **Disable**            | Disable interaction to make the switch inactive.                                                     | Use the `isDisabled` prop to disable the switch. Example: `<Switch isDisabled />`       |
+| **Label Customization**| Add custom labels for the active and inactive states of the switch.                                  | Use the `label1` and `label2` props for active and inactive labels. Example: `<Switch v-model="isActive" label1="No" label2="Yes" />` |
+| **Size Options**       | Change the size of the switch with `sm`, `md`, `lg`, or `xl` options.                                | Use the `size` prop to change the size of the switch. Example: `<Switch size="lg" />`           |
+| **Event Handling**     | Trigger actions on click or other events.                                                           | Attach events using the `@` syntax. Example: `<Switch @change="handleChange" />`               |
