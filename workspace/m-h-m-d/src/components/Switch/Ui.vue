@@ -21,7 +21,7 @@ const switchClasses = computed(() => [
 
 const toggleClasses = computed(() => [
   'absolute rounded-full transition-transform duration-300 transform',
-  props.isDisabled ? '' : 'active:scale-95',
+  props.isDisabled ? 'opacity-60' : 'active:scale-95',
   props.size === 'sm' ? 'w-4 h-4' : '',
   props.size === 'md' ? 'w-5 h-5' : '',
   props.size === 'lg' ? 'w-7 h-7' : '',

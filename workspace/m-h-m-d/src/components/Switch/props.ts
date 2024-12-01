@@ -2,18 +2,11 @@ import { PropType } from 'vue';
 
 export const variants = {
   default: 'default',
-  rounded: 'rounded',
-  shadow: 'shadow',
-  flat: 'flat',
   inside: 'inside'
 } as const;
 
 export const SwitchProps = {
   modelValue: {
-    type: Boolean,
-    default: false,
-  },
-  defaultChecked: {
     type: Boolean,
     default: false,
   },
