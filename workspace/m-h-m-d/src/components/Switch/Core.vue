@@ -1,10 +1,11 @@
 <script setup>
-import { ref, defineEmits, defineProps, watch } from 'vue';
-import { SwitchProps } from './props'; // وارد کردن SwitchProps
+import { ref, watch } from 'vue';
+import { SwitchProps } from './props';
 
 const props = defineProps(SwitchProps);
 const emit = defineEmits(['update:modelValue']);
-const isActive = ref(props.defaultChecked);
+
+const isActive = ref(props.modelValue);
 
 const toggleSwitch = () => {
   if (!props.isDisabled) {

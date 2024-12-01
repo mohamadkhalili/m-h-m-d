@@ -2,7 +2,7 @@ import { PropType } from 'vue';
 
 export const variants = {
   default: 'default',
-  inside: 'inside'
+  inside: 'inside',
 } as const;
 
 export const SwitchProps = {
@@ -12,11 +12,11 @@ export const SwitchProps = {
   },
   label1: {
     type: String,
-    default: ''
+    default: '',
   },
   label2: {
     type: String,
-    default: ''
+    default: '',
   },
   variant: {
     type: String as PropType<keyof typeof variants>,
