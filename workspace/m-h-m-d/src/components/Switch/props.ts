@@ -1,10 +1,5 @@
 import { PropType } from 'vue';
 
-export const variant = {
-    outside: 'outside',
-  inside: 'inside',
-} as const;
-
 export const SwitchProps = {
   modelValue: {
     type: Boolean,
@@ -17,10 +12,6 @@ export const SwitchProps = {
   label2: {
     type: String,
     default: '',
-  },
-  variant: {
-    type: String as PropType<keyof typeof variant>,
-    default: 'inside',
   },
   activeColor: {
     type: String,

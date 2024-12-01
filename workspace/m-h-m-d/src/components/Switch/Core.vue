@@ -21,6 +21,6 @@ watch(() => props.modelValue, (newVal) => {
 
 <template>
   <div>
-    <slot :isActive="isActive" :toggleSwitch="toggleSwitch"></slot>
+    <slot :isActive="isActive" :toggleSwitch="toggleSwitch" ></slot>
   </div>
 </template>
