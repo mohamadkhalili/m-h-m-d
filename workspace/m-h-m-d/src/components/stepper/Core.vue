@@ -1,9 +1,7 @@
 <template>
   <div class="flex flex-row justify-between relative pb-4 pt-4">
     <!-- Progress Bar -->
-    <div
-      :class="mergeClasses(uiProgressClass, progressClass).value"
-    >
+    <div :class="mergeClasses(uiProgressClass, progressClass).value">
       <div
         :class="mergeClasses(uiProgressBarClass, progressBarClass).value"
         role="progressbar"
@@ -33,19 +31,22 @@
       >
       </slot>
       <div
-      :class="
-          index +1 <= modelValue ? mergeClasses(uiDoneClass, doneClass).value : mergeClasses(uiNotDoneClass, notDoneClass).value"
-      @click="moveStep(index + 1)"
-      ref="stepRefs"
-    >
-      <svg-icon
-        v-if="index + 1 < modelValue"
-        type="mdi"
-        :path="mdiIcons[step.icon]"
-      ></svg-icon>
-      <span v-else class="text-xs truncate">{{ index + 1}}</span>
-    </div>
-    <div class="pt-1.5 select-none">{{ step.label }}</div>
+        :class="
+          index + 1 <= modelValue
+            ? mergeClasses(uiDoneClass, doneClass).value
+            : mergeClasses(uiNotDoneClass, notDoneClass).value
+        "
+        @click="moveStep(index + 1)"
+        ref="stepRefs"
+      >
+        <svg-icon
+          v-if="index + 1 < modelValue"
+          type="mdi"
+          :path="mdiIcons[step.icon]"
+        ></svg-icon>
+        <span v-else class="text-xs truncate">{{ index + 1 }}</span>
+      </div>
+      <div class="pt-1.5 select-none">{{ step.label }}</div>
     </div>
   </div>
 </template>
@@ -62,10 +63,18 @@ const mergeClasses = useMergeClasses();
 const props = defineProps(coreProps);
 const emit = defineEmits(stepperEmits);
 const slots = defineSlots<stepperSlots>();
-const uiProgressClass = ref("absolute top-8 h-1.5 m-0 shadow-none bg-gray-300 w-[95%] overflow-hidden")
-const uiProgressBarClass = ref("bg-teal-800 h-full transition-all duration-300 ease-linear")
-const uiDoneClass = ref("bg-teal-800 transition-all duration-500 delay-200 flex justify-center w-10 h-10 text-center p-2 text-white rounded-full select-none cursor-pointer items-center")
-const uiNotDoneClass = ref("bg-gray-300 p-2 text-white rounded-full cursor-pointer items-center flex justify-center w-10 h-10 select-none text-center")
+const uiProgressClass = ref(
+  "absolute top-8 h-1.5 m-0 shadow-none bg-gray-300 w-[95%] overflow-hidden"
+);
+const uiProgressBarClass = ref(
+  "bg-teal-800 h-full transition-all duration-300 ease-linear"
+);
+const uiDoneClass = ref(
+  "bg-teal-800 transition-all duration-500 delay-200 flex justify-center w-10 h-10 text-center p-2 text-white rounded-full select-none cursor-pointer items-center"
+);
+const uiNotDoneClass = ref(
+  "bg-gray-300 p-2 text-white rounded-full cursor-pointer items-center flex justify-center w-10 h-10 select-none text-center"
+);
 
 const moveStep = (stepNumber: number) => {
   if (props.allowStepClick) {
@@ -81,7 +90,7 @@ const getStatus = (index: number): string => {
     return "done";
   }
 };
-const progressStyle = ref({ width: "0%" })
+const progressStyle = ref({ width: "0%" });
 const stepRefs = ref<HTMLDivElement[]>([]);
 watch(
   () => props.modelValue,
