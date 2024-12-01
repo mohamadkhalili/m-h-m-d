@@ -30,7 +30,7 @@ import { useSlots, computed, ref, watch } from "vue";
 import { uiProps } from "./Props";
 import { menuEmits } from "./Emits";
 import { menuSlots } from "./Slots";
-import { useMergeClasses } from "../tools/useMergeClasses";
+import { useMergeClasses } from "../../composables/useMergeClasses";
 const mergeClasses = useMergeClasses();
 
 const props = defineProps(uiProps);

@@ -125,7 +125,7 @@ import { uiProps } from "./Props";
 import { useBorder } from "../../composables/UseBorderProps";
 import { paginationEmits } from "./Emits";
 import SvgIcon from "@jamescoyle/vue-icon";
-import { useMergeClasses } from "../tools/useMergeClasses";
+import { useMergeClasses } from "../../composables/useMergeClasses";
 const mergeClasses = useMergeClasses();
 import {
   mdiChevronDoubleRight,

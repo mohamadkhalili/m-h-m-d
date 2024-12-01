@@ -17,4 +17,5 @@ export const coreProps = {
     vertical: { type: Boolean, default: false },
     tooltip: { type: Boolean, default: false },
     allowStepClick: { type: Boolean, default: false },
+    
 }
