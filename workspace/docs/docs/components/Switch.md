@@ -242,3 +242,45 @@ const sizeActiveXl = ref(false);
 ```
 </template>
 </Tab>
+
+
+
+## variant
+
+<Tab 
+   class="gap-3 border-[1px]  rounded-md w-full mx-auto "
+    :tabs="tabs" 
+    variant="shadow"
+    size="sm"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+<template #content1>
+
+<div class="flex flex-row gap-14 items-center justify-center">
+<Switch v-model="isActive" size="sm" label2="sm" />
+
+
+
+</div>
+</template>
+
+  <template #content2>
+
+  ```md
+<script setup>
+import { ref } from 'vue';
+const sizeActiveSm = ref(false);
+const sizeActiveMd = ref(false);
+const sizeActiveLg = ref(false);
+const sizeActiveXl = ref(false);
+</script>
+
+<div class="grid grid-cols-2 gap-3 justify-items-center">
+<Switch v-model="sizeActive" size="sm" label1="sm" activeColor="bg-blue-500" inactiveColor="bg-gray-300"/>
+<Switch v-model="sizeActive" size="md"/>
+<Switch v-model="sizeActive" size="lg"/>
+<Switch v-model="sizeActive" size="xl"/>
+</div>
+```
+</template>
+</Tab>
