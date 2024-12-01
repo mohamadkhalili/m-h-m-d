@@ -23,7 +23,6 @@ const tabs = [
     :tabs="tabs" 
     variant="shadow"
     size="sm"
-    justify="start"
     activeColor="text-blue-500 shadow-blue-500"
   >
     <template #content1>
