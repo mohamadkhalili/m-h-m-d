@@ -552,6 +552,7 @@ View
     :tabs="tabs" 
     variant="shadow"
     activeColor="text-blue-500 shadow-blue-500"
+    size="sm"
   >
     <template #content1>
 <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">

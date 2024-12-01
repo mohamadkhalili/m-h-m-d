@@ -32,6 +32,7 @@ export default defineConfig({
           {text:'Tab',link:'/components//tab'},
           {text:'Chat Bubble',link:'/components//ChatBubble'},
           {text:'Card',link:'/components//Card'},
+          {text:'Switch',link:'/components//Switch'},
 
           {text:'Divider',link:'/components//Divider'},
           {text:'Stepper',link:'/components//stepper'},
