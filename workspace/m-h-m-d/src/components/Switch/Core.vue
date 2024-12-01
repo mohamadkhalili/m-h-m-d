@@ -1,8 +1,11 @@
+// Core.vue
 <script setup>
-import { ref, defineEmits } from 'vue';
+import { ref, defineEmits, defineProps } from 'vue';
+import { SwitchProps } from './props'; // وارد کردن SwitchProps
 
+const props = defineProps(SwitchProps);
 const emit = defineEmits(['update:modelValue']);
-const isActive = ref(false);
+const isActive = ref(props.defaultChecked);
 
 const toggleSwitch = () => {
   if (!props.isDisabled) {
@@ -13,5 +16,7 @@ const toggleSwitch = () => {
 </script>
 
 <template>
-  <slot :isActive="isActive" :toggleSwitch="toggleSwitch"></slot>
+  <div>
+    <slot :isActive="isActive" :toggleSwitch="toggleSwitch"></slot>
+  </div>
 </template>

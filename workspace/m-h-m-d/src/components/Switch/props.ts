@@ -1,4 +1,4 @@
-//props/ts
+// props.ts
 import { PropType } from 'vue';
 
 export const variants = {
@@ -6,12 +6,25 @@ export const variants = {
   rounded: 'rounded',
   shadow: 'shadow',
   flat: 'flat',
+  inside: 'inside'
 } as const;
 
 export const SwitchProps = {
   modelValue: {
     type: Boolean,
     default: false,
+  },
+  defaultChecked: {
+    type: Boolean,
+    default: false,
+  },
+  label1: {
+    type: String,
+    default: ''
+  },
+  label2: {
+    type: String,
+    default: ''
   },
   variant: {
     type: String as PropType<keyof typeof variants>,

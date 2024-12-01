@@ -11,6 +11,7 @@ const switchClasses = computed(() => [
   props.isDisabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer',
   props.variant === 'rounded' ? 'rounded-full' : '',
   props.variant === 'shadow' ? 'shadow-md' : '',
+  props.variant === 'inside' ? 'flex justify-between' : '',
   props.size === 'sm' ? 'w-10 h-5' : '',
   props.size === 'md' ? 'w-12 h-6' : '',
   props.size === 'lg' ? 'w-16 h-8' : '',
@@ -31,9 +32,11 @@ const toggleClasses = computed(() => [
 </script>
 
 <template>
-  <Core :modelValue="props.modelValue" :isDisabled="props.isDisabled" @update:modelValue="emit('update:modelValue', $event)">
+  <Core :modelValue="props.modelValue" :isDisabled="props.isDisabled" :defaultChecked="props.defaultChecked" @update:modelValue="emit('update:modelValue', $event)">
     <template #default="{ isActive, toggleSwitch }">
       <div :class="switchClasses" @click="toggleSwitch">
+        <span class="absolute left-0 ml-1 text-xs" v-if="props.variant === 'inside' && !isActive">{{ props.label1 }}</span>
+        <span class="absolute right-0 mr-1 text-xs" v-if="props.variant === 'inside' && isActive">{{ props.label2 }}</span>
         <span :class="toggleClasses"></span>
       </div>
     </template>
