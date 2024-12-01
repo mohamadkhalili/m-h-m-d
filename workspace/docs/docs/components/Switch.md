@@ -1,19 +1,158 @@
-
-## Using Core Component
-
-
-
-  <Switch v-model="isActiveSm" activeColor="bg-blue-500" inactiveColor="bg-gray-300" size="sm"  variant="flat"/>
-  <Switch v-model="isActiveMd" activeColor="bg-blue-500" inactiveColor="bg-gray-300" size="md"  variant="shadow"/>
-  <Switch v-model="isActiveLg" activeColor="bg-blue-500" inactiveColor="bg-gray-300" size="lg"  variant="rounded"/>
-  <Switch v-model="isActiveXl" activeColor="bg-blue-500" inactiveColor="bg-gray-300" size="xl"  variant="inside"/>
-
-
 <script setup>
 import { ref } from 'vue';
-const isActiveSm = ref(false);
-const isActiveMd = ref(false);
-const isActiveLg = ref(false);
-const isActiveXl = ref(false);
+const isActive = ref(false);
+const labelActive = ref(false);
+const labelActive2 = ref(false);
+const labelActive3 = ref(false);
+const ColorActive1 = ref(true);
+const ColorActive2 = ref(true);
+const ColorActive3 = ref(true);
+const ColorActive4 = ref(true);
+const ColorActive5 = ref(true);
+const ColorActive6 = ref(true);
+
+
+
+
+const tabs = [
+  { label: 'UI', value: 1, content: '' },
+  { label: 'Props', value: 2, content: ''}
+
+];
+</script>
+
+
+## Switch
+
+
+
+<Tab 
+   class="gap-3 border-[1px]  rounded-md w-full mx-auto "
+    :tabs="tabs" 
+    variant="shadow"
+    size="sm"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+<template #content1>
+
+<div class="  p-6 rounded-lg   flex justify-center items-center ">
+<Switch v-model="isActive" />
+</div>
+</template>
+
+
+  <template #content2>
+
+  ```md
+<script setup>
+import { ref } from 'vue';
 const isActive = ref(false);
 </script>
+
+<Switch v-model="isActive" />
+
+```
+  </template>
+
+
+</Tab>
+
+
+
+
+## Label
+
+
+
+<Tab 
+   class="gap-3 border-[1px]  rounded-md w-full mx-auto "
+    :tabs="tabs" 
+    variant="shadow"
+    size="sm"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+<template #content1>
+
+<div class="  p-6 rounded-lg   flex justify-center items-center flex-col gap-4 ">
+<Switch v-model="labelActive" label1="No" label2="Yes"  />
+<Switch v-model="labelActive2" label1="0" label2=" 1 " />
+<Switch v-model="labelActive3" label1="×" label2=" ✓ " />
+
+</div>
+</template>
+
+
+  <template #content2>
+
+  ```md
+<script setup>
+import { ref } from 'vue';
+const labelActive = ref(false);
+const labelActive2 = ref(false);
+const labelActive3 = ref(false);
+</script>
+
+<Switch v-model="labelActive" label1="No" label2="Yes" />
+<Switch v-model="labelActive2" label1="0" label2=" 1 " />
+<Switch v-model="labelActive3" label1="×" label2=" ✓ " />
+
+
+```
+  </template>
+
+</Tab>
+
+
+
+
+
+
+## Color
+
+
+
+<Tab 
+   class="gap-3 border-[1px]  rounded-md w-full mx-auto "
+    :tabs="tabs" 
+    variant="shadow"
+    size="sm"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+<template #content1>
+
+
+
+<div class="grid grid-cols-2 grid-rows-3 gap-3 justify-items-center">
+
+<Switch v-model="ColorActive1"   activeColor="bg-pink-500" inactiveColor="bg-pink-950"/>
+<Switch v-model="ColorActive2"  activeColor="bg-cyan-500" inactiveColor="bg-cyan-950" />
+<Switch v-model="ColorActive3" activeColor="bg-green-500" inactiveColor="bg-green-950" />
+<Switch v-model="ColorActive4"  activeColor="bg-yellow-500" inactiveColor="bg-yellow-950"/>
+<Switch v-model="ColorActive5"  activeColor="bg-rose-500" inactiveColor="bg-rose-950"/>
+<Switch v-model="ColorActive6"  activeColor="bg-purple-500" inactiveColor="bg-purple-950" />
+
+
+</div>
+</template>
+
+
+  <template #content2>
+
+  ```md
+<script setup>
+import { ref } from 'vue';
+const labelActive = ref(false);
+const labelActive2 = ref(false);
+const labelActive3 = ref(false);
+</script>
+
+<Switch v-model="labelActive" label1="No" label2="Yes" />
+<Switch v-model="labelActive2" label1="0" label2=" 1 " />
+<Switch v-model="labelActive3" label1="×" label2=" ✓ " />
+
+
+```
+  </template>
+
+
+</Tab>

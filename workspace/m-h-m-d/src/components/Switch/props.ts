@@ -35,11 +35,11 @@ export const SwitchProps = {
   },
   inactiveColor: {
     type: String,
-    default: 'bg-gray-300',
+    default: 'bg-gray-400',
   },
   size: {
     type: String as PropType<'sm' | 'md' | 'lg' | 'xl'>,
-    default: '',
+    default: 'md',
   },
   isDisabled: {
     type: Boolean,

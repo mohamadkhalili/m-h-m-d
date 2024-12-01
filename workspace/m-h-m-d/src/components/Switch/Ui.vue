@@ -60,8 +60,8 @@ const toggleSwitch = () => {
   <Core :modelValue="props.modelValue" :isDisabled="props.isDisabled" :defaultChecked="props.defaultChecked" @update:modelValue="emit('update:modelValue', $event)">
     <template #default="{ isActive, toggleSwitch }">
       <div :class="switchClasses" @click="toggleSwitch">
-        <span class="absolute left-0 ml-1 text-xs" v-if="props.variant === 'inside' && !isActive">{{ props.label1 }}</span>
-        <span class="absolute right-0 mr-1 text-xs" v-if="props.variant === 'inside' && isActive">{{ props.label2 }}</span>
+        <span class="absolute right-0 mr-1 text-xs text-white" v-if="props.label1  && !isActive">{{ props.label1 }}</span>
+        <span class="absolute left-0 ml-1 text-xs text-white " v-if="props.label2  && isActive">{{ props.label2 }}</span>
         <span :class="toggleClasses" :style="toggleStyles"></span>
       </div>
     </template>
