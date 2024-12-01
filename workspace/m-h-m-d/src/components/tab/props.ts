@@ -61,4 +61,8 @@ export const TabProps = {
     type: String as PropType<'top' | 'bottom' | 'left' | 'right'>,
     default: 'top',
   },
+  justify:{
+    type:String,
+    default:'justify-center'
+  }
 };

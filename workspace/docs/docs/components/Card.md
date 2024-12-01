@@ -19,9 +19,11 @@ const tabs = [
 
 
 <Tab 
-   class="gap-3 border-[1px] rounded-md w-full"
+   class="gap-3 border-[1px] rounded-md w-full mx-auto "
     :tabs="tabs" 
-    variant="bordered"
+    variant="shadow"
+    size="sm"
+    justify="start"
     activeColor="text-blue-500 shadow-blue-500"
   >
     <template #content1>
@@ -74,7 +76,8 @@ this card use `footer ` and ` header ` property !
 <Tab 
    class="gap-3 border-[1px] rounded-md w-full"
     :tabs="tabs" 
-    variant="bordered"
+    variant="shadow"
+    size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
     <template #content1>
@@ -147,7 +150,8 @@ header="header "
 <Tab 
   class="gap-3 border-[1px] rounded-md w-full"
   :tabs="tabs" 
-  variant="bordered"
+  variant="shadow"
+  size="sm"
   activeColor="text-blue-500 shadow-blue-500"
 >
   <template #content1>
@@ -212,7 +216,8 @@ class="bg-white" >
 <Tab 
   class="gap-3 border-[1px] rounded-md w-full"
   :tabs="tabs" 
-  variant="bordered"
+  variant="shadow"
+  size="sm"
   activeColor="text-blue-500 shadow-blue-500"
 >
 
@@ -290,7 +295,8 @@ View
 <Tab 
   class="gap-3 border-[1px] rounded-md w-full"
   :tabs="tabs" 
-  variant="bordered"
+  variant="shadow"
+  size="sm"
   activeColor="text-blue-500 shadow-blue-500"
 >
 
@@ -372,7 +378,8 @@ View
 <Tab 
    class="gap-3 border-[1px] rounded-md w-full"
     :tabs="tabs" 
-    variant="bordered"
+    variant="shadow"
+    size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
     <template #content1>
@@ -467,7 +474,8 @@ View
 <Tab 
    class="gap-3 border-[1px] rounded-md w-full"
     :tabs="tabs" 
-    variant="bordered"
+    variant="shadow"
+    size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
     <template #content1>

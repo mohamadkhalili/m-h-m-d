@@ -25,6 +25,18 @@ const position = computed(() => {
   }
 });
 
+const justifyClass = computed(() => {
+  switch (props.justify) {
+    case 'start':
+      return 'justify-start w-full flex';
+    case 'end':
+      return 'justify-end w-full flex';
+    default:
+      return 'justify-center w-full flex';
+  }
+});
+
+
 
 const sizeTab = computed(() => {
   switch (props.size) {
@@ -52,7 +64,7 @@ const getButtonStyleClass = computed(() => {
         after:opacity-100  after:scale-100 after:transition-transform
         after:duration-500 border-none`
     case 'shadow':
-      return ' relative inline-flex items-center  justify-cente ';
+      return ' relative inline-flex    ';
       case 'bordered':
       return `
         relative inline-flex items-center  justify-center 
@@ -65,7 +77,8 @@ const getButtonStyleClass = computed(() => {
   }
 });
 
-const layoutClass = computed(() => (props.vertical ? 'flex flex-col' : 'flex'));
+const layoutClass = computed(() => (props.vertical ? 'flex flex-col' : justifyClass.value));
+
 
 function selectTab(value) {
   activeTab.value = value;
