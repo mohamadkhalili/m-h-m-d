@@ -7,6 +7,7 @@ import input from './components/input/Ui.vue';
 import menu from './components/menu/Ui.vue';
 import tab from './components/tab/Ui.vue';
 import ChatBubble from './components/ChatBubble/Ui.vue';
+import Card from './components/Card/Ui.vue';
 import Divider from './components/Divider/Ui.vue';
 import list from './components/list/Ui.vue'
 import { tooltip } from './directives/TooltipDirective';
@@ -20,6 +21,8 @@ const components = [
     { name: 'menu', ...menu },
     { name: 'tab', ...tab },
     { name: 'ChatBubble', ...ChatBubble },
+    { name: 'Card', ...Card },
+
     { name: 'Divider', ...Divider },
     { name: 'list', ...list},
     { name: 'stepper', ...stepper}
@@ -41,7 +44,8 @@ const install = (app: App) => {
 }
 
 
-export { pagination, modal, Button, input, menu, tab, list,ChatBubble,Divider, stepper }
+
+export { pagination, modal, Button, input, menu, tab, list,ChatBubble,Divider, stepper ,Card}
 export { tooltip }
 
 export default {

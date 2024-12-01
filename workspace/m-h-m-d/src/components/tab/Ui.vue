@@ -9,6 +9,7 @@ const emit = defineEmits(['update:modelValue']);
 const activeTab = ref(props.modelValue || props.tabs[0]?.value);
 
 
+
 const position = computed(() => {
   switch (props.position) {
     case 'bottom':
@@ -142,7 +143,7 @@ function selectTab(value) {
       <div v-for="tab in props.tabs" :key="tab.value" v-show="activeTab === tab.value" class="p-6">
         <transition name="slide-right" mode="out-in">
           <div v-if="tab.content != null" :key="tab.value" class="">
-            <slot name="content" :tab="tab" :class="[ 'animate-ping' ]">
+            <slot :name="'content'+tab.value" :tab="tab" :class="[ 'animate-ping' ]">
               {{ tab.content }}
             </slot>
           </div>
