@@ -1,24 +1,25 @@
 <script setup>
 import { computed } from 'vue';
-import { SwitchProps } from './props';
+import { SwitchProps, variant } from './props';
 import Core from './Core.vue';
 
 const props = defineProps(SwitchProps);
 const emit = defineEmits(['update:modelValue']);
 
-// محاسبه کلاس‌های استایل برای سوئیچ
+
 const switchClasses = computed(() => [
   'relative inline-flex items-center transition-colors duration-300 rounded-full',
   props.isDisabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer',
   props.variant === 'inside' ? 'flex justify-between items-center' : '',
-  props.size === 'sm' ? 'w-12 h-5' : '',
+  props.size === 'sm' ? 'w-11 h-5' : '',
   props.size === 'md' ? 'w-14 h-7' : '',
   props.size === 'lg' ? 'w-16 h-8' : '',
   props.size === 'xl' ? 'w-20 h-10' : '',
+  props.variant==="outside" ?'h-4':'',
   props.modelValue ? props.activeColor : props.inactiveColor,
 ]);
 
-// محاسبه کلاس‌های استایل برای دکمه سوئیچ
+
 const toggleClasses = computed(() => [
   'absolute rounded-full transition-transform duration-300 transform',
   props.isDisabled ? 'opacity-60' : 'active:scale-95',
@@ -27,20 +28,20 @@ const toggleClasses = computed(() => [
   props.size === 'lg' ? 'w-7 h-7' : '',
   props.size === 'xl' ? 'w-8 h-8' : '',
   'bg-white',
+  props.variant ==="outside" ? 'scale-125':'scale-1',
 ]);
 
-// تابع تغییر وضعیت
+
 const toggleSwitch = () => {
   if (!props.isDisabled) {
     emit('update:modelValue', !props.modelValue);
   }
 };
 
-// تابع برای محاسبه حرکت دکمه سوئیچ
 const getTranslateValue = (size) => {
   switch (size) {
     case 'sm':
-      return 'translateX(172%)';
+      return 'translateX(155%)';
     case 'md':
       return 'translateX(160%)';
     case 'lg':
@@ -55,7 +56,7 @@ const getTranslateValue = (size) => {
 </script>
 
 <template>
-  <Core :modelValue="props.modelValue" :isDisabled="props.isDisabled" :defaultChecked="props.defaultChecked" @update:modelValue="emit('update:modelValue', $event)">
+  <Core :modelValue="props.modelValue" :variant="props.variant" :isDisabled="props.isDisabled" :defaultChecked="props.defaultChecked" @update:modelValue="emit('update:modelValue', $event)">
     <template #default="{ isActive, toggleSwitch }">
       <div :class="switchClasses" @click="toggleSwitch">
         <span :class="['absolute right-0 mr-1 text-xs text-white', props.size === 'lg' || props.size === 'xl' ? 'text-sm' : '' ]" v-if="!isActive">{{ props.label1 }}</span>

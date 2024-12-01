@@ -1,7 +1,7 @@
 import { PropType } from 'vue';
 
-export const variants = {
-  default: 'default',
+export const variant = {
+    outside: 'outside',
   inside: 'inside',
 } as const;
 
@@ -19,8 +19,8 @@ export const SwitchProps = {
     default: '',
   },
   variant: {
-    type: String as PropType<keyof typeof variants>,
-    default: 'default',
+    type: String as PropType<keyof typeof variant>,
+    default: 'inside',
   },
   activeColor: {
     type: String,

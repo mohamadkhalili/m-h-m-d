@@ -12,6 +12,7 @@ const ColorActive5 = ref(true);
 const ColorActive6 = ref(true);
 const disable1 = ref(true);
 const disable2 = ref(false);
+const insideActive = ref(false);
 
 
 
@@ -256,12 +257,13 @@ const sizeActiveXl = ref(false);
   >
 <template #content1>
 
-<div class="flex flex-row gap-14 items-center justify-center">
-<Switch v-model="isActive" size="sm" label2="sm" />
-
-
-
+<div class="grid grid-cols-2 gap-3 justify-items-center">
+<h7 class="text-xs">inside variant</h7>
+<h7 class="text-xs">outside variant</h7>
+<Switch v-model="disable1" variant="outside" />
+<Switch v-model="disable2" variant="inside"   />
 </div>
+
 </template>
 
   <template #content2>
