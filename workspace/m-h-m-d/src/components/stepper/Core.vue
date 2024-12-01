@@ -2,10 +2,10 @@
   <div class="flex flex-row justify-between relative pb-4 pt-4">
     <!-- Progress Bar -->
     <div
-      class="absolute top-8 h-1.5 m-0 shadow-none bg-gray-300 w-[95%] overflow-hidden"
+      :class="mergeClasses(uiProgressClass, progressClass).value"
     >
       <div
-        class="bg-teal-800 h-full transition-all duration-300 ease-linear"
+        :class="mergeClasses(uiProgressBarClass, progressBarClass).value"
         role="progressbar"
         :style="progressStyle"
         :aria-valuenow="60"
@@ -32,11 +32,8 @@
       >
       </slot>
       <div
-      class="bg-gray-300 p-2 text-white rounded-full cursor-pointer items-center flex justify-center w-10 h-10 text-center"
-      :class="{
-        'bg-teal-800 transition-all duration-500 delay-200':
-          index +1 <= modelValue,
-      }"
+      :class="
+          index +1 <= modelValue ? mergeClasses(uiDoneClass, doneClass).value : mergeClasses(uiNotDoneClass, notDoneClass).value"
       @click="moveStep(index + 1)"
       ref="stepRefs"
     >
@@ -45,7 +42,7 @@
         type="mdi"
         :path="mdiIcons[step.icon]"
       ></svg-icon>
-      <span v-else class="text-xs truncate">{{ index }}</span>
+      <span v-else class="text-xs truncate">{{ index + 1}}</span>
     </div>
     <div class="pt-1.5">{{ step.label }}</div>
     </div>
@@ -58,9 +55,14 @@ import { coreProps } from "./Props";
 import { stepperEmits } from "./Emits";
 import * as mdiIcons from "@mdi/js";
 import SvgIcon from "@jamescoyle/vue-icon";
+import { useMergeClasses } from "../../composables/useMergeClasses";
+const mergeClasses = useMergeClasses();
 const props = defineProps(coreProps);
 const emit = defineEmits(stepperEmits);
-
+const uiProgressClass = ref("absolute top-8 h-1.5 m-0 shadow-none bg-gray-300 w-[95%] overflow-hidden")
+const uiProgressBarClass = ref("bg-teal-800 h-full transition-all duration-300 ease-linear")
+const uiDoneClass = ref("bg-teal-800 transition-all duration-500 delay-200 flex justify-center w-10 h-10 text-center p-2 text-white rounded-full cursor-pointer items-center")
+const uiNotDoneClass = ref("bg-gray-300 p-2 text-white rounded-full cursor-pointer items-center flex justify-center w-10 h-10 text-center")
 
 const moveStep = (stepNumber: number) => {
   if (props.allowStepClick) {

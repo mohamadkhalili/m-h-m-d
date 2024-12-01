@@ -21,7 +21,7 @@
 import { modalSlots } from "./Slots";
 import { coreProps } from "./Props";
 import { modalEmits } from "./Emits";
-import { useMergeClasses } from "../tools/useMergeClasses";
+import { useMergeClasses } from "../../composables/useMergeClasses";
 const mergeClasses = useMergeClasses();
 import { ref } from "vue";
 const props = defineProps(coreProps);
