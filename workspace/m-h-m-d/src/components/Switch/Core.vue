@@ -1,6 +1,5 @@
-// Core.vue
 <script setup>
-import { ref, defineEmits, defineProps } from 'vue';
+import { ref, defineEmits, defineProps, watch } from 'vue';
 import { SwitchProps } from './props'; // وارد کردن SwitchProps
 
 const props = defineProps(SwitchProps);
@@ -13,6 +12,10 @@ const toggleSwitch = () => {
     emit('update:modelValue', isActive.value);
   }
 };
+
+watch(() => props.modelValue, (newVal) => {
+  isActive.value = newVal;
+});
 </script>
 
 <template>

@@ -1,4 +1,3 @@
-// props.ts
 import { PropType } from 'vue';
 
 export const variants = {
@@ -40,7 +39,7 @@ export const SwitchProps = {
   },
   size: {
     type: String as PropType<'sm' | 'md' | 'lg' | 'xl'>,
-    default: 'md',
+    default: '',
   },
   isDisabled: {
     type: Boolean,
