@@ -95,7 +95,7 @@ A stepper with fully customized styles for progress, progress bar, done, and not
 <button :disabled="stepperValue4 === 4" @click="stepperValue4 = stepperValue4 + 1" class="w-28 bg-black text-white rounded-lg p-2 mt-1 ml-36" cleaner>next</button>
 
 ```vue
-<Stepper v-model="stepperValue4" progressClass="shadow-md bg-indigo-200" 
+<Stepper v-model="stepperValue" progressClass="shadow-md bg-indigo-200" 
 progressBarClass="bg-blue-950" doneClass="shadow-md bg-blue-950" 
 notDoneClass="shadow-md bg-indigo-200 text-black"></Stepper>
 ```
