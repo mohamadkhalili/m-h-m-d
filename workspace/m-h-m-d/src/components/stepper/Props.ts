@@ -17,5 +17,8 @@ export const coreProps = {
     vertical: { type: Boolean, default: false },
     tooltip: { type: Boolean, default: false },
     allowStepClick: { type: Boolean, default: false },
-    
+    doneClass : { type: String, default: "" },
+    notDoneClass : { type: String, default: "" },
+    progressClass : { type: String, default: "" },
+    progressBarClass : { type: String, default: "" },
 }
