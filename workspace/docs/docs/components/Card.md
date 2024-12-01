@@ -4,8 +4,6 @@ const tabs = [
   { label: 'UI', value: 1, content: '' },
   { label: 'Slots', value: 2, content: ''},
   { label: 'Props', value: 3, content: ''},
-
-
 ];
 
 
