@@ -19,9 +19,10 @@ const tabs = [
 
 
 <Tab 
-   class="gap-3 border-[1px] rounded-md w-full"
+   class="gap-3 border-[1px] rounded-md w-full mx-auto "
     :tabs="tabs" 
-    variant="bordered"
+    variant="shadow"
+    size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
     <template #content1>
@@ -74,7 +75,8 @@ this card use `footer ` and ` header ` property !
 <Tab 
    class="gap-3 border-[1px] rounded-md w-full"
     :tabs="tabs" 
-    variant="bordered"
+    variant="shadow"
+    size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
     <template #content1>
@@ -147,7 +149,8 @@ header="header "
 <Tab 
   class="gap-3 border-[1px] rounded-md w-full"
   :tabs="tabs" 
-  variant="bordered"
+  variant="shadow"
+  size="sm"
   activeColor="text-blue-500 shadow-blue-500"
 >
   <template #content1>
@@ -212,7 +215,8 @@ class="bg-white" >
 <Tab 
   class="gap-3 border-[1px] rounded-md w-full"
   :tabs="tabs" 
-  variant="bordered"
+  variant="shadow"
+  size="sm"
   activeColor="text-blue-500 shadow-blue-500"
 >
 
@@ -290,7 +294,8 @@ View
 <Tab 
   class="gap-3 border-[1px] rounded-md w-full"
   :tabs="tabs" 
-  variant="bordered"
+  variant="shadow"
+  size="sm"
   activeColor="text-blue-500 shadow-blue-500"
 >
 
@@ -372,7 +377,8 @@ View
 <Tab 
    class="gap-3 border-[1px] rounded-md w-full"
     :tabs="tabs" 
-    variant="bordered"
+    variant="shadow"
+    size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
     <template #content1>
@@ -467,7 +473,8 @@ View
 <Tab 
    class="gap-3 border-[1px] rounded-md w-full"
     :tabs="tabs" 
-    variant="bordered"
+    variant="shadow"
+    size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
     <template #content1>
@@ -543,8 +550,9 @@ View
 <Tab 
    class="gap-3 border-[1px] rounded-md w-full"
     :tabs="tabs" 
-    variant="bordered"
+    variant="shadow"
     activeColor="text-blue-500 shadow-blue-500"
+    size="sm"
   >
     <template #content1>
 <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
@@ -621,10 +629,6 @@ View
 
 
 
-
-
-
-
 ## Features
 
 | **Feature**        | **Description**                                                                                             | **Usage**                                                                                             |
@@ -637,4 +641,3 @@ View
 | **Weather Variant** | Display weather details in a card format, including an image and key metrics.                              | Set the `variant` prop to `weather` and provide props like `weatherImage` and `info1`-`info4`.       |
 | **Progress Variant**| Showcase project or task progress with percentage and milestones.                                          | Set the `variant` prop to `progress` and include props like `info1`-`info4` for details.             |
 
----

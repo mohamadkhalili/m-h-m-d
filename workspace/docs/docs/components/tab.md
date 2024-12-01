@@ -362,7 +362,7 @@ const tabs = [
  <div class="p-6 rounded-lg shadow-inner flex justify-center items-center">
   <Tab 
      :tabs="tabsVariants" 
-      activeTextColor="text-white bg-gray-600 " 
+      activeTextColor="text-gray-600  " 
       color="shadow-gray-300 text-teal-500" 
       variant="bordered" 
     isDisabled 
@@ -382,8 +382,51 @@ const tabs = [
   >
 ```
 
+## Justify
+ you can select justify your Tab with `justify` option!
 
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full mx-auto "
+    :tabs="tabs" 
+    variant="shadow"
+    size="sm"
+    justify="start"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+</tab>
+<br/>
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full mx-auto "
+    :tabs="tabs" 
+    variant="shadow"
+    size="sm"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+</tab>
+<br/>
 
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full mx-auto "
+    :tabs="tabs" 
+    variant="shadow"
+    size="sm"
+    justify="end"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+</tab>
+
+**Code**
+```md
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full mx-auto "
+    :tabs="tabs" 
+    variant="shadow"
+    size="sm"
+    justify="start" <!-- change this -->
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+</tab>
+```
 ## Size
 
 Adjust the size of the tabs using the `size` prop. The available options are `sm`, `md`, `lg`, and `xl`. Below are examples for each size option:
@@ -471,3 +514,4 @@ Adjust the size of the tabs using the `size` prop. The available options are `sm
 | **Customize Shadow Colors** | Customize the shadow colors of both active and inactive tabs.                                              | Set the `activeShadow` and `shadow` props to modify the shadow of the tabs.                 |
 | **Size**             | Change the size of the tabs. Sizes available are `sm`, `md`, `lg`, and `xl`.                                     | Set the `size` prop to one of the following: `'sm'`, `'md'`, `'lg'`, `'xl'`.                  |
 | **Position**             | Change the Position of the tabs. Position available are `left`, `right`, `bottom`, and `top`.                                     | Set the `Position` prop to one of the following: `'left'`, `'right'`, `'bottom'`, `'top'`.                  |
+| **Justify**             | Change the justify the tabs. justify available are `start`, `default`, and `end`.                                     | Set the `justify` prop to one of the following: `start`, `default`, and `end`.                  |
