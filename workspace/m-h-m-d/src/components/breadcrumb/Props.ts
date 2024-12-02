@@ -2,19 +2,20 @@ import { PropType } from 'vue';
 import * as mdiIcons from "@mdi/js";
 export interface item {
     title: string;
-    icon: keyof typeof mdiIcons;
     disable: boolean;
-    href: string;
 }
 export const coreProps = {
-    modelValue: { type: Number, default: 1 },
-    steps: {
+    modelValue: { type: String, default: "" },
+    items: {
         type: Array as PropType<item[]>,
         default: [
-            { title: "tab", icon: "", disable: false, href: "tab" },
-            { label: "pagination", icon: "", disable: false, href: "tab"  },
-            { label: "modal", icon: "", disable: false, href: "tab" }
+            { title: "tab", disable: false },
+            { title: "pagination", disable: false },
+            { title: "modal", disable: false }
         ]
-    },
-    itemClass : { type: String, default: "" },
+    }
+}
+export const uiProps = {
+    modelValue: { type: String, required: false },
+    itemClass : { type: String, required: false },
 }
