@@ -1,8 +1,11 @@
 <template>
   <div class="flex flex-row justify-between relative pb-4 pt-4">
     <!-- Progress Bar -->
-    <div :class="mergeClasses(uiProgressClass, progressClass).value">
+     <slot name="progress"></slot>
+    <div v-if="showProgress" :class="mergeClasses(uiProgressClass, progressClass).value">
+      <slot name="progressBar"></slot>
       <div
+        v-if="showProgressBar"
         :class="mergeClasses(uiProgressBarClass, progressBarClass).value"
         role="progressbar"
         :style="progressStyle"
@@ -31,6 +34,7 @@
       >
       </slot>
       <div
+        v-if="showStep"
         :class="
           index + 1 <= modelValue
             ? mergeClasses(uiDoneClass, doneClass).value
@@ -46,13 +50,13 @@
         ></svg-icon>
         <span v-else class="text-xs truncate">{{ index + 1 }}</span>
       </div>
-      <div class="pt-1.5 select-none">{{ step.label }}</div>
+      <div v-if="showStep" class="pt-1.5 select-none">{{ step.label }}</div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, ref, watch } from "vue";
+import { computed, nextTick, ref, useSlots, watch } from "vue";
 import { coreProps } from "./Props";
 import { stepperEmits } from "./Emits";
 import { stepperSlots } from "./Slots";
@@ -62,7 +66,11 @@ import { useMergeClasses } from "../../composables/useMergeClasses";
 const mergeClasses = useMergeClasses();
 const props = defineProps(coreProps);
 const emit = defineEmits(stepperEmits);
-const slots = defineSlots<stepperSlots>();
+const uiSlots = defineSlots<stepperSlots>();
+const slots = useSlots();
+const showStep = computed(() => !slots.step);
+const showProgress = computed(() => !slots.ptogress);
+const showProgressBar = computed(() => !slots.progressBar);
 const uiProgressClass = ref(
   "absolute top-8 h-1.5 m-0 shadow-none bg-gray-300 w-[95%] overflow-hidden"
 );
