@@ -6,21 +6,19 @@
       ]"
       @click="toggleCheck"
     >
-      <!-- Checkbox box -->
       <div
         :class="[
           'flex justify-center items-center border rounded transition-all duration-200',
           sizeClasses,
-          modelValue ? [color ,'border-gray-200 border-2 text-white'] : 'bg-white border-gray-300',
+          modelValue ? [color ] : 'bg-white border-gray-300',
           isDisabled ? '' : 'hover:border-blue-400',
            
         ]"
       >
-        <span v-if="modelValue" class="text-sm font-bold">
+        <span v-if="modelValue" :class="[ 'font-bold' ,size ==='sm' ? 'text-xs' : '',size ==='lg' ? 'text-xl' : '']">
           &#10003; <!-- Checkmark -->
         </span>
       </div>
-      <!-- Checkbox label -->
       <label
         :class="[
           'text-sm',
@@ -42,7 +40,7 @@
     },
     color: {
       type: String,
-      default: '',
+      default: 'bg-blue-500 text-white border-blue-500',
     },
     size: {
       type: String,
@@ -60,8 +58,7 @@
   
   const emit = defineEmits(['update:modelValue']);
   const isActive = ref(props.modelValue);
-  
-  // Toggle checkbox state
+
   const toggleCheck = () => {
     if (!props.isDisabled) {
       isActive.value = !isActive.value;
@@ -72,13 +69,13 @@
   const sizeClasses = computed(() => {
     switch (props.size) {
       case 'sm':
-        return 'w-4 h-4 text-xs'; // Small size
+        return 'w-4 h-4 '; 
       case 'md':
-        return 'w-6 h-6 text-sm'; // Medium size
+        return 'w-6 h-6 '; 
       case 'lg':
-        return 'w-8 h-8 text-base'; // Large size
+        return 'w-8 h-8 '; 
       default:
-        return 'w-6 h-6'; // Default to medium size
+        return 'w-6 h-6'; 
     }
   });
   </script>

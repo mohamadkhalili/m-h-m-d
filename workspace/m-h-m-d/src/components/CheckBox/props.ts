@@ -6,8 +6,8 @@ export const CheckBoxProps = {
     required: true,
   },
   color: {
-    type: String as PropType<'default' | 'primary' | 'secondary' | 'error'>,
-    default: 'default',
+    type: String ,
+    default: '',
   },
   size: {
     type: String as PropType<'sm' | 'md' | 'lg'>,
