@@ -117,7 +117,6 @@ A stepper configured with a defined list of custom steps, each with labels and i
 
 **Props:**
 
-- `v-model`: Binds the current step value.
 - `steps`: An array of steps, where each step includes:
   - `label`: The step's label (string).
   - `icon`: The step's icon (string, optional).
@@ -173,7 +172,6 @@ A stepper with fully customized styles for progress, progress bar, done, and not
 
 **Props:**
 
-- `v-model`: Binds the current step value.
 - `progressClass`: Custom CSS classes for the progress state.
 - `progressBarClass`: Custom CSS classes for the progress bar.
 - `doneClass`: Custom CSS classes for completed steps.
