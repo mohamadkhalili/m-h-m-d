@@ -9,7 +9,7 @@ import tab from './components/tab/Ui.vue';
 import ChatBubble from './components/ChatBubble/Ui.vue';
 import Switch from './components/Switch/Ui.vue';
 import Breadcrumb from './components/breadcrumb/Ui.vue'
-
+import CheckBox from './components/CheckBox/Ui.vue';
 import Card from './components/Card/Ui.vue';
 import Divider from './components/Divider/Ui.vue';
 import list from './components/list/Ui.vue'
@@ -26,7 +26,7 @@ const components = [
     { name: 'ChatBubble', ...ChatBubble },
     { name: 'Card', ...Card },
     { name: 'Switch', ...Switch },
-
+    { name: 'CheckBox', ...CheckBox },
     { name: 'Divider', ...Divider },
     { name: 'list', ...list},
     { name: 'stepper', ...stepper},
@@ -50,7 +50,8 @@ const install = (app: App) => {
 
 
 
-export { pagination, modal, Button, input, menu, tab, list,ChatBubble,Divider, stepper ,Card, Switch, Breadcrumb}
+
+export { pagination, modal, Button, input, menu, tab, list,ChatBubble,Divider, stepper ,Card, Switch, CheckBox, Breadcrumb}
 export { tooltip }
 
 export default {
