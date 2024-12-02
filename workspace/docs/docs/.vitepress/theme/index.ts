@@ -8,7 +8,7 @@ import './tailwind.postcss'
 // import Pagination from '../../../../ui/src/components/pagination/Ui.vue'
 
 
-import { pagination, modal, Button, input, menu, tab, list, tooltip ,ChatBubble,Divider, stepper,Card,Switch} from 'm-h-m-d'
+import { pagination, modal, Button, input, menu, tab, list, tooltip ,ChatBubble,Divider, stepper,Card,Switch, Breadcrumb} from 'm-h-m-d'
 
 import clickOutside from 'm-h-m-d/src/directives/clickOutSide';
 
@@ -33,6 +33,7 @@ export default {
     app.component('Switch', Switch)
     app.component('Stepper', stepper)
     app.component('List', list)
+    app.component('Breadcrumb', Breadcrumb)
     app.directive('click-outside', clickOutside)
     app.directive('tooltipl', tooltip)
 

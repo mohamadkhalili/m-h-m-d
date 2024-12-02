@@ -8,6 +8,7 @@ import menu from './components/menu/Ui.vue';
 import tab from './components/tab/Ui.vue';
 import ChatBubble from './components/ChatBubble/Ui.vue';
 import Switch from './components/Switch/Ui.vue';
+import Breadcrumb from './components/breadcrumb/Ui.vue'
 
 import Card from './components/Card/Ui.vue';
 import Divider from './components/Divider/Ui.vue';
@@ -28,7 +29,8 @@ const components = [
 
     { name: 'Divider', ...Divider },
     { name: 'list', ...list},
-    { name: 'stepper', ...stepper}
+    { name: 'stepper', ...stepper},
+    { name: 'breadcrumb', ...Breadcrumb},
 ]
 
 const directives = {
@@ -48,7 +50,7 @@ const install = (app: App) => {
 
 
 
-export { pagination, modal, Button, input, menu, tab, list,ChatBubble,Divider, stepper ,Card, Switch}
+export { pagination, modal, Button, input, menu, tab, list,ChatBubble,Divider, stepper ,Card, Switch, Breadcrumb}
 export { tooltip }
 
 export default {
