@@ -7,7 +7,7 @@ import DefaultTheme from 'vitepress/theme'
 import './tailwind.postcss'
 // import Pagination from '../../../../ui/src/components/pagination/Ui.vue'
 
-import { pagination, modal, Button, input, menu, tab, list, tooltip ,ChatBubble,Divider, stepper,Card,Switch,CheckBox, Breadcrumb} from 'm-h-m-d'
+import { pagination, modal, Button, input, menu, tab, list, tooltip ,ChatBubble,Divider, stepper,Card,Switch,CheckBox, Breadcrumb,Loader} from 'm-h-m-d'
 
 import clickOutside from 'm-h-m-d/src/directives/clickOutSide';
 
@@ -30,6 +30,7 @@ export default {
     app.component('CheckBox', CheckBox)
     app.component('Card', Card)
     app.component('Divider', Divider)
+    app.component('Loader', Loader)
     app.component('Switch', Switch)
     app.component('Stepper', stepper)
     app.component('List', list)

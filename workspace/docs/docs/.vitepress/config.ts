@@ -31,6 +31,7 @@ export default defineConfig({
           {text:'Menu',link:'/components//menu'},
           {text:'Tab',link:'/components//tab'},
           {text:'Chat Bubble',link:'/components//ChatBubble'},
+          {text:'Loader',link:'/components//Loader'},
           {text:'Card',link:'/components//Card'},
           {text:'Switch',link:'/components//Switch'},
           {text:'CheckBox',link:'/components//CheckBox'},
