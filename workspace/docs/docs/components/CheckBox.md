@@ -11,6 +11,12 @@ const ColorActive4 = ref(true);
 const ColorActive5 = ref(true);
 const disable1 = ref(true);
 const disable2 = ref(false);
+const size1 = ref(true);
+const size2 = ref(true);
+const size3 = ref(true);
+const Radius1 = ref(true);
+
+
 const insideActive = ref(false);
 
 
@@ -196,10 +202,9 @@ const ColorActive5 = ref(true);
 
 <div class="  p-6 rounded-lg   flex flex-row gap-8 justify-center place-items-center ">
 
-<CheckBox  v-model="ColorActive1" size="sm"  > small </CheckBox>
-<CheckBox  v-model="ColorActive2" size="md"  > medium </CheckBox>
-<CheckBox  v-model="ColorActive3" size="lg" > large
- </CheckBox>
+<CheckBox  v-model="size1" size="sm"  > small </CheckBox>
+<CheckBox  v-model="size2" size="md"  > medium </CheckBox>
+<CheckBox  v-model="size3" size="lg" > large </CheckBox>
 
 </div>
 </template>
@@ -210,18 +215,61 @@ const ColorActive5 = ref(true);
   ```md
 <script setup>
 import { ref } from 'vue';
-const ColorActive1 = ref(true);
-const ColorActive2 = ref(true);
-const ColorActive3 = ref(true);
-const ColorActive4 = ref(true);
-const ColorActive5 = ref(true);
+const size1 = ref(true);
+const size2 = ref(true);
+const size3 = ref(true);
 </script>
 
-<CheckBox  v-model="ColorActive1" color="bg-green-500 text-white border-green-500" > Green </CheckBox>
-<CheckBox  v-model="ColorActive2" color="bg-yellow-400 text-white border-yellow-400" > Yellow </CheckBox>
-<CheckBox  v-model="ColorActive3" color="bg-pink-500 text-white border-pink-500" > pink </CheckBox>
-<CheckBox  v-model="ColorActive4" color="bg-red-500 text-white border-red-500" > red </CheckBox>
-<CheckBox  v-model="ColorActive5" color="bg-purple-500 text-white border-purple-500" > purple </CheckBox>
+<CheckBox  v-model="size1" size="sm"  > small </CheckBox>
+<CheckBox  v-model="size2" size="md"  > medium </CheckBox>
+<CheckBox  v-model="size3" size="lg" > large </CheckBox>
+```
+  </template>
+
+
+</Tab>
+
+
+## Radius
+
+<Tab 
+   class="gap-3 border-[1px]  rounded-md w-full mx-auto "
+    :tabs="tabs" 
+    variant="shadow"
+    size="sm"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+<template #content1>
+
+<div class="  p-6 rounded-lg   flex flex-row gap-8 justify-center place-items-center ">
+
+<CheckBox  v-model="Radius1" radius="none"  >none </CheckBox>
+<CheckBox  v-model="Radius1" radius="sm"  >small  </CheckBox>
+<CheckBox  v-model="Radius1" radius="md" >medium </CheckBox>
+<CheckBox  v-model="Radius1" radius="lg" >large </CheckBox>
+<CheckBox  v-model="Radius1" radius="full">full  </CheckBox>
+
+
+</div>
+</template>
+
+
+  <template #content2>
+
+  ```md
+<script setup>
+import { ref } from 'vue';
+const Radius1 = ref(true);
+
+
+</script>
+
+<CheckBox  v-model="Radius1" radius="none"  >none </CheckBox>
+<CheckBox  v-model="Radius1" radius="sm"  >small  </CheckBox>
+<CheckBox  v-model="Radius1" radius="md" >medium </CheckBox>
+<CheckBox  v-model="Radius1" radius="lg" >large </CheckBox>
+<CheckBox  v-model="Radius1" radius="full">full  </CheckBox>
+
 
 ```
   </template>

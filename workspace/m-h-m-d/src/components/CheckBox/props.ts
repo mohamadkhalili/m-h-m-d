@@ -13,6 +13,10 @@ export const CheckBoxProps = {
     type: String as PropType<'sm' | 'md' | 'lg'>,
     default: 'md',
   },
+  radius: {
+    type: String as PropType<'sm' | 'md' | 'lg'| 'full'| 'none'>,
+    default: 'md',
+  },
   isDisabled: {
     type: Boolean,
     default: false,

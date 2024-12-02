@@ -8,8 +8,8 @@
     >
       <div
         :class="[
-          'flex justify-center items-center border rounded transition-all duration-200',
-          sizeClasses,
+          'flex justify-center items-center border  transition-all duration-200',
+          sizeClasses,RadiusClasses,
           modelValue ? [color ] : 'bg-white border-gray-300',
           isDisabled ? '' : 'hover:border-blue-400',
            
@@ -46,6 +46,10 @@
       type: String,
       default: 'md',
     },
+    radius: {
+      type: String,
+      default: 'md',
+    },
     isDisabled: {
       type: Boolean,
       default: false,
@@ -76,6 +80,22 @@
         return 'w-8 h-8 '; 
       default:
         return 'w-6 h-6'; 
+    }
+  });
+  const RadiusClasses = computed(() => {
+    switch (props.radius) {
+      case 'sm':
+        return 'rounded-sm '; 
+      case 'md':
+        return 'rounded-md '; 
+      case 'lg':
+        return 'rounded-lg '; 
+        case 'full':
+        return 'rounded-full '; 
+        case 'none':
+        return 'rounded-none'; 
+      default:
+        return 'rounded-md'; 
     }
   });
   </script>
