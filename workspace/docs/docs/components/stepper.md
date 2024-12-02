@@ -42,14 +42,16 @@ The default stepper component with `prev` and `next` buttons.
 <template #content2>
 
 ```vue
-      <slot
-        name="step"
-        :index="index + 1"
-        :step="step"
-        :currentStep="modelValue"
-        :status="getStatus(index + 1)"
-      >
-      </slot>
+<slot name="progress"></slot>
+<slot name="progressBar"></slot>
+<slot
+  name="step"
+  :index="index + 1"
+  :step="step"
+  :currentStep="modelValue"
+  :status="getStatus(index + 1)"
+>
+</slot>
 ```
 
 </template>
@@ -88,14 +90,16 @@ A stepper that allows users to click on any step to navigate directly to it.
 <template #content2>
 
 ```vue
-      <slot
-        name="step"
-        :index="index + 1"
-        :step="step"
-        :currentStep="modelValue"
-        :status="getStatus(index + 1)"
-      >
-      </slot>
+<slot name="progress"></slot>
+<slot name="progressBar"></slot>
+<slot
+  name="step"
+  :index="index + 1"
+  :step="step"
+  :currentStep="modelValue"
+  :status="getStatus(index + 1)"
+>
+</slot>
 ```
 
 </template>
@@ -113,7 +117,6 @@ A stepper configured with a defined list of custom steps, each with labels and i
 
 **Props:**
 
-- `v-model`: Binds the current step value.
 - `steps`: An array of steps, where each step includes:
   - `label`: The step's label (string).
   - `icon`: The step's icon (string, optional).
@@ -134,14 +137,16 @@ A stepper configured with a defined list of custom steps, each with labels and i
 <template #content2>
 
 ```vue
-      <slot
-        name="step"
-        :index="index + 1"
-        :step="step"
-        :currentStep="modelValue"
-        :status="getStatus(index + 1)"
-      >
-      </slot>
+<slot name="progress"></slot>
+<slot name="progressBar"></slot>
+<slot
+  name="step"
+  :index="index + 1"
+  :step="step"
+  :currentStep="modelValue"
+  :status="getStatus(index + 1)"
+>
+</slot>
 ```
 
 </template>
@@ -167,7 +172,6 @@ A stepper with fully customized styles for progress, progress bar, done, and not
 
 **Props:**
 
-- `v-model`: Binds the current step value.
 - `progressClass`: Custom CSS classes for the progress state.
 - `progressBarClass`: Custom CSS classes for the progress bar.
 - `doneClass`: Custom CSS classes for completed steps.
@@ -189,14 +193,16 @@ A stepper with fully customized styles for progress, progress bar, done, and not
 <template #content2>
 
 ```vue
-      <slot
-        name="step"
-        :index="index + 1"
-        :step="step"
-        :currentStep="modelValue"
-        :status="getStatus(index + 1)"
-      >
-      </slot>
+<slot name="progress"></slot>
+<slot name="progressBar"></slot>
+<slot
+  name="step"
+  :index="index + 1"
+  :step="step"
+  :currentStep="modelValue"
+  :status="getStatus(index + 1)"
+>
+</slot>
 ```
 
 </template>
