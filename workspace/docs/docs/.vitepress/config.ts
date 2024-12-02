@@ -36,7 +36,8 @@ export default defineConfig({
           {text:'CheckBox',link:'/components//CheckBox'},
           {text:'Divider',link:'/components//Divider'},
           {text:'Stepper',link:'/components//stepper'},
-          {text:'List',link:'/components//list'}
+          {text:'List',link:'/components//list'},
+          {text:'Breadcrumb',link:'/components//breadcrumb'}
         ]
       },
       

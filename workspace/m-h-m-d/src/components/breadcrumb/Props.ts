@@ -10,7 +10,7 @@ export const coreProps = {
         type: Array as PropType<item[]>,
         default: [
             { title: "tab", disable: false },
-            { title: "pagination", disable: false },
+            { title: "pagination", disable: true },
             { title: "modal", disable: false }
         ]
     }
