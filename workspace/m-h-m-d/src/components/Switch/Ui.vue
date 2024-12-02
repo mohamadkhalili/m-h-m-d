@@ -27,7 +27,7 @@ const toggleClasses = computed(() => {
   
   const baseClass = sizeMap[props.size] || 'w-4 h-4';
   return [
-    'absolute rounded-full transition-transform duration-300 transform',
+    ' rounded-full transition-transform duration-300 transform',
     props.isDisabled ? 'opacity-60' : 'active:scale-95',
     baseClass,
     'bg-white',
