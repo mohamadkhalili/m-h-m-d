@@ -16,7 +16,7 @@
         ]"
       >
         <span v-if="modelValue" :class="[ 'font-bold' ,size ==='sm' ? 'text-xs' : '',size ==='lg' ? 'text-xl' : '']">
-          &#10003; <!-- Checkmark -->
+          &#10003; 
         </span>
       </div>
       <label

@@ -9,6 +9,7 @@ export const CheckBoxProps = {
     type: String ,
     default: '',
   },
+  
   size: {
     type: String as PropType<'sm' | 'md' | 'lg'>,
     default: 'md',
@@ -18,10 +19,6 @@ export const CheckBoxProps = {
     default: 'md',
   },
   isDisabled: {
-    type: Boolean,
-    default: false,
-  },
-  indeterminate: {
     type: Boolean,
     default: false,
   },
