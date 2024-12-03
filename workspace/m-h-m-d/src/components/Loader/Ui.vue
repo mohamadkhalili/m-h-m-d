@@ -71,8 +71,9 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  gap: 10px;
+  gap: 12px;
   row-gap: 0px;
+  scale: 0.8;
   width: 72px;
   height: 72px;
   justify-content: center;
