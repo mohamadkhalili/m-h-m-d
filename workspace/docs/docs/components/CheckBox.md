@@ -319,6 +319,48 @@ const LineRef = ref(false);
 
 </Tab>
 
+
+## Control
+
+<Tab 
+   class="gap-3 border-[1px]  rounded-md w-full mx-auto "
+    :tabs="tabs" 
+    variant="shadow"
+    size="sm"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+<template #content1>
+
+<div class="  p-6 rounded-lg   flex flex-col gap-4 justify-center place-items-center ">
+
+<CheckBox  v-model="LineRef" lineThrough  >option </CheckBox> <br/>
+<label>control : {{LineRef}}</label>
+
+
+</div>
+</template>
+
+
+  <template #content2>
+
+  ```md
+<script setup>
+import { ref } from 'vue';
+const LineRef = ref(false);
+
+</script>
+
+<CheckBox  v-model="LineRef" lineThrough  >option </CheckBox>
+
+
+```
+  </template>
+
+
+</Tab>
+
+
+
 ## CheckBox Component Features
 
 | **Feature**           | **Description**                                                                                     | **Usage**                                                                                     |

@@ -27,8 +27,6 @@ const tabs = [
 
 ## Switch
 
-
-
 <Tab 
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
     :tabs="tabs" 
@@ -59,7 +57,6 @@ const isActive = ref(false);
 
 
 </Tab>
-
 
 
 
