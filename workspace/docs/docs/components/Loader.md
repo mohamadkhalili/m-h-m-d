@@ -1,6 +1,16 @@
 # Loader
 
 <Loader variant="spinner" size="lg" color="text-red-500" />
-<Loader>
-  <span>Loading...</span>
-</Loader>
+<br/>
+<br/>
+<br/>
+
+<Loader variant="dots" size="lg" color="text-red-500" />
+<br/>
+<br/>
+<br/>
+
+<Loader variant="default"  />
+
+
+
