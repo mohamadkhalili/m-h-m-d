@@ -9,13 +9,15 @@ export const coreProps = {
     items: {
         type: Array as PropType<item[]>,
         default: [
-            { title: "tab", disable: true },
-            { title: "pagination", disable: false },
-            { title: "modal", disable: false }
+            { title: "item1", disable: true },
+            { title: "item2", disable: false },
+            { title: "item3", disable: false }
         ]
     }
 }
 export const uiProps = {
     modelValue: { type: String, required: false },
-    itemClass : { type: String, required: false },
+    activeClass : { type: String, default: "" },
+    onActiveClass : { type: String, default: "" },
+    disableClass : { type: String, default: "" },
 }
