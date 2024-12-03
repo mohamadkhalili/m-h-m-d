@@ -42,6 +42,49 @@ Loader express an unspecified wait time or display the length of a process.
 
 </Tab>
 
+## Size
+
+<Tab 
+   class="gap-3 border-[1px]  rounded-md w-full mx-auto "
+    :tabs="tabs" 
+    variant="shadow"
+    size="sm"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+<template #content1>
+
+<div class="grid grid-cols-4 gap-3 justify-items-center">
+
+
+<Loader color="default" size="xl" />
+<Loader color="default" size="lg" />
+<Loader color="default" size="md" />
+<Loader color="default" size="sm" />
+
+
+
+
+
+
+
+</div>
+</template>
+
+
+  <template #content2>
+
+  ```md
+
+<Loader color="default" size="xl" />
+<Loader color="default" size="lg" />
+<Loader color="default" size="md" />
+<Loader color="default" size="sm" />
+
+
+```
+  </template>
+
+</Tab>
 
 
 

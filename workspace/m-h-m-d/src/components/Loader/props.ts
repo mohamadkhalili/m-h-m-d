@@ -6,7 +6,7 @@ export const loaderProps = {
     default: 'default',
   },
   size: {
-    type: String as PropType<'sm' | 'md' | 'lg'>,
+    type: String as PropType<'sm' | 'md' | 'lg' | 'xl'>,
     default: 'md',
   },
   color: {

@@ -24,11 +24,13 @@ const props = defineProps(loaderProps);
 const sizeClasses = computed(() => {
   switch (props.size) {
     case 'sm':
-      return 'w-6 h-6';
+      return 'w-8 h-8 scale-[0.7]';
     case 'md':
       return 'w-8 h-8';
     case 'lg':
-      return 'w-12 h-12';
+      return 'scale-125 w-8 h-8';
+      case 'xl':
+      return 'scale-150 w-8 h-8';
     default:
       return 'w-8 h-8';
   }
