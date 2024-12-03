@@ -1,17 +1,17 @@
 <template>
-    <div
+    <Core
       v-if="isVisible"
       class="flex justify-center items-center"
-      :class="[sizeClasses, colorClasses]"
+      :class="[sizeClasses]"
     >
-    <span v-if="variant === 'default'" class="loader"></span>
-      <span v-else-if="variant === 'spinner'" class="loader-spinner"></span>
-      <span v-else-if="variant === 'circle'" class="loader-circle"></span>
+    <span v-if="variant === 'default'" :class="['loader',props.color]"></span>
+      <span v-else-if="variant === 'spinner'" :class="['loader',colorClasses]-spinner"></span>
+      <span v-else-if="variant === 'circle'" :class="['loader',colorClasses]-circle"></span>
 
-      <div v-else-if="variant === 'dots'" class="loader-dots"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      <div v-else-if="variant === 'dots'" :class="['loader',colorClasses]-dots"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
 
 
-</div>
+</Core>
 
   </template>
   
@@ -34,9 +34,6 @@
     }
   });
   
-  const colorClasses = computed(() => {
-    return props.color ? `text-${props.color}` : 'text-gray-500';
-  });
   </script>
   
   <style scoped>
@@ -133,9 +130,9 @@
 
 
 
-.loader {
+.loader  {
   width: 3rem;
-  scale: 1.5;
+  scale: 1.3;
   height: 32px;
   
       position: relative;
@@ -147,9 +144,115 @@
       position: absolute;
       inset:0px;
       border-radius: 50%;
-      border: 3px solid #bb0606;
+      border: 3px solid #1371ec;
       animation: prixClipFix 2s linear infinite ;
     }
+
+    .secondary  {
+  width: 3rem;
+  scale: 1.3;
+  height: 32px;
+  
+      position: relative;
+      animation: rotate 1s linear infinite
+    }
+    .secondary::before {
+      content: "";
+      box-sizing: border-box;
+      position: absolute;
+      inset:0px;
+      border-radius: 50%;
+      border: 3px solid #af0baf;
+      animation: prixClipFix 2s linear infinite ;
+    }
+    .primary  {
+  width: 3rem;
+  scale: 1.3;
+  height: 32px;
+  
+      position: relative;
+      animation: rotate 1s linear infinite
+    }
+    .primary::before {
+      content: "";
+      box-sizing: border-box;
+      position: absolute;
+      inset:0px;
+      border-radius: 50%;
+      border: 3px solid #0ba131;
+      animation: prixClipFix 2s linear infinite ;
+    }
+
+    .warning  {
+  width: 3rem;
+  scale: 1.3;
+  height: 32px;
+  
+      position: relative;
+      animation: rotate 1s linear infinite
+    }
+    .warning::before {
+      content: "";
+      box-sizing: border-box;
+      position: absolute;
+      inset:0px;
+      border-radius: 50%;
+      border: 3px solid #e6b820;
+      animation: prixClipFix 2s linear infinite ;
+    }
+    .error  {
+  width: 3rem;
+  scale: 1.3;
+  height: 32px;
+  
+      position: relative;
+      animation: rotate 1s linear infinite
+    }
+    .error::before {
+      content: "";
+      box-sizing: border-box;
+      position: absolute;
+      inset:0px;
+      border-radius: 50%;
+      border: 3px solid #f81010;
+      animation: prixClipFix 2s linear infinite ;
+    }
+    .dark  {
+  width: 3rem;
+  scale: 1.3;
+  height: 32px;
+  
+      position: relative;
+      animation: rotate 1s linear infinite
+    }
+    .dark::before {
+      content: "";
+      box-sizing: border-box;
+      position: absolute;
+      inset:0px;
+      border-radius: 50%;
+      border: 3px solid #2e2e2e;
+      animation: prixClipFix 2s linear infinite ;
+    }
+    .light  {
+  width: 3rem;
+  scale: 1.3;
+  height: 32px;
+  
+      position: relative;
+      animation: rotate 1s linear infinite
+    }
+    .light::before {
+      content: "";
+      box-sizing: border-box;
+      position: absolute;
+      inset:0px;
+      border-radius: 50%;
+      border: 3px solid #e4e4e4;
+      animation: prixClipFix 2s linear infinite ;
+    }
+
+
 
     @keyframes rotate {
       100%   {transform: rotate(360deg)}

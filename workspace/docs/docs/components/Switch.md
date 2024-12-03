@@ -29,38 +29,6 @@ const tabs = [
 
 
 
-<Tab 
-   class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs" 
-    variant="shadow"
-    size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
-  >
-<template #content1>
-
-<div class="  p-6 rounded-lg   flex justify-center items-center ">
-<Switch v-model="isActive" />
-</div>
-</template>
-
-
-  <template #content2>
-
-  ```md
-<script setup>
-import { ref } from 'vue';
-const isActive = ref(false);
-</script>
-
-<Switch v-model="isActive" />
-
-```
-  </template>
-
-
-</Tab>
-
-
 
 
 ## Label

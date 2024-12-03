@@ -10,8 +10,8 @@ export const loaderProps = {
     default: 'md',
   },
   color: {
-    type: String,
-    default: 'text-blue-500',
+    type: String as PropType<'primary' | 'secondary' | 'warning' | 'error' | 'default'  | 'dark' | 'light' >,
+    default: 'default',
   },
   isVisible: {
     type: Boolean,
