@@ -56,15 +56,14 @@ Loader express an unspecified wait time or display the length of a process.
   >
 <template #content1>
 
-<div class="grid grid-cols-8 gap-3 justify-items-center">
+<div class="grid grid-cols-7 gap-3 justify-items-center">
 
 
-<Loader color="primary" />
+<Loader color="default" />
 <Loader color="secondary"/>
 <Loader color="warning" />
-<Loader color="default"/>
 <Loader color="error"/>
-<Loader color="warning"/>
+<Loader color="primary"/>
 <Loader color="dark"/>
 <Loader color="light"/>
 
@@ -79,7 +78,52 @@ Loader express an unspecified wait time or display the length of a process.
 
   ```md
 
-<Loader />
+<Loader color="default" />
+<Loader color="secondary"/>
+<Loader color="warning" />
+<Loader color="error"/>
+<Loader color="primary"/>
+<Loader color="dark"/>
+<Loader color="light"/>
+
+
+
+```
+  </template>
+
+</Tab>
+
+## Variants
+
+<Tab 
+   class="gap-3 border-[1px]  rounded-md w-full mx-auto "
+    :tabs="tabs" 
+    variant="shadow"
+    size="sm"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+<template #content1>
+
+<Loader variant="spinner" size="lg" />
+
+<Loader variant="dots" size="lg" />
+
+</template>
+
+
+  <template #content2>
+
+  ```md
+
+<Loader color="default" />
+<Loader color="secondary"/>
+<Loader color="warning" />
+<Loader color="error"/>
+<Loader color="primary"/>
+<Loader color="dark"/>
+<Loader color="light"/>
+
+
 
 ```
   </template>
