@@ -11,6 +11,10 @@
 <br/>
 
 <Loader variant="default"  />
+<br/>
+<br/>
+<br/>
 
+<Loader variant="circle"  />
 
 

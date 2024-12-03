@@ -6,8 +6,13 @@
     >
     <span v-if="variant === 'default'" class="loader"></span>
       <span v-else-if="variant === 'spinner'" class="loader-spinner"></span>
+      <span v-else-if="variant === 'circle'" class="loader-circle"></span>
+
       <div v-else-if="variant === 'dots'" class="loader-dots"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-    </div>
+
+
+</div>
+
   </template>
   
   <script setup >
@@ -36,7 +41,7 @@
   
   <style scoped>
   .loader-spinner {
-    width: 50px;
+    width: 3rem;
   aspect-ratio: 1;
   border-radius: 50%;
   border: 5px solid #0000;
@@ -49,7 +54,7 @@
   .loader-spinner:after {
     content: "";
     position: absolute;
-    inset: -5px;
+    inset: -4px;
     border-radius: 50%;
     border: inherit;
     animation: inherit;
@@ -129,7 +134,7 @@
 
 
 .loader {
-  width: 50px;
+  width: 3rem;
   scale: 1.5;
   height: 32px;
   
@@ -159,4 +164,25 @@
         100%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
 
     }
+
+
+    .loader-circle {
+  width: 3rem;
+  position: absolute;
+  height: 3rem;
+
+  border-radius: 50%;
+  border: 5px solid rgb(136, 135, 135); /* Base color */
+  border-top-color: rgb(52, 111, 201); /* Highlighted side */
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
   </style>
+
