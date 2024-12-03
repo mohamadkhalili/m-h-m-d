@@ -5,7 +5,9 @@
       v-bind="$attrs"
     >
       <template #item="{ title, disable, end }">
+        <slot name="item" :title="title" :disable="disable" :end="end"></slot>
         <div
+        v-if="showItem"
           :class="{
             'cursor-pointer': !disable,
             'text-gray-500 cursor-not-allowed': disable,
@@ -17,7 +19,8 @@
           <div :class="{'font-bold': modelValue === title && !disable}">
             {{ title }}
           </div>
-          <div v-if="!end" class="text-xs text-gray-300">/</div>
+          <slot v-if="!end" name="separator"></slot>
+          <div v-if="!end && showSeparator" class="text-xs text-gray-300">/</div>
         </div>
       </template>
     </Core>
@@ -27,10 +30,15 @@
   import Core from "./Core.vue";
   import { uiProps } from "./Props";
   import { breadcrumbEmits } from "./Emits";
+import { uiSlots } from "./Slots";
+import { computed, useSlots } from "vue";
   
   const props = defineProps(uiProps);
   const emit = defineEmits(breadcrumbEmits);
-  
+  const uiSlots = defineSlots<uiSlots>();
+  const slots = useSlots();
+  const showItem = computed(() => !slots.item);
+  const showSeparator = computed(() => !slots.separator);
   const handleItemChange = (newValue: string) => {
     emit("update:modelValue", newValue);
   };

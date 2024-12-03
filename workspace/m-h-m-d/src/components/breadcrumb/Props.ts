@@ -9,8 +9,8 @@ export const coreProps = {
     items: {
         type: Array as PropType<item[]>,
         default: [
-            { title: "tab", disable: false },
-            { title: "pagination", disable: true },
+            { title: "tab", disable: true },
+            { title: "pagination", disable: false },
             { title: "modal", disable: false }
         ]
     }

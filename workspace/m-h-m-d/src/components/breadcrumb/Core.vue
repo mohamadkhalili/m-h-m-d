@@ -19,10 +19,11 @@
   <script setup lang="ts">
 import { coreProps } from "./Props";
 import { breadcrumbEmits } from "./Emits";
+import { coreSlots } from "./Slots";
 
 const props = defineProps(coreProps);
 const emit = defineEmits(breadcrumbEmits);
-
+const slots = defineSlots<coreSlots>();
 const setModelValue = (title: string, disable: boolean) => {
   if (!disable) {
     emit("update:modelValue", title);
