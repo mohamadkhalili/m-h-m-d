@@ -42,7 +42,14 @@ Loader express an unspecified wait time or display the length of a process.
 
 </Tab>
 
+</br>
+
+
 ## Size
+</br>
+
+you can select your size with `size` property
+</br>
 
 <Tab 
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
@@ -90,6 +97,15 @@ Loader express an unspecified wait time or display the length of a process.
 
 ## Colors
 
+we have 7 Main color for Loader  you can see in below with `color` property!
+
+- primary   
+- warning
+ - dark 
+  - default
+- secondary 
+- error  
+- light
 <Tab 
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
     :tabs="tabs" 
@@ -138,6 +154,8 @@ Loader express an unspecified wait time or display the length of a process.
 
 ## Variants
 
+another variant for loader in MHMD library !
+
 <Tab 
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
     :tabs="tabs" 
@@ -146,11 +164,12 @@ Loader express an unspecified wait time or display the length of a process.
     activeColor="text-blue-500 shadow-blue-500"
   >
 <template #content1>
+<div class="grid grid-cols-3 gap-3 justify-items-center">
 
-<Loader variant="spinner" size="lg" />
-
-<Loader variant="dots" size="lg" />
-
+<Loader variant="spinner" />
+<Loader variant="circle" />
+<Loader variant="dots" />
+</div>
 </template>
 
 
@@ -158,13 +177,9 @@ Loader express an unspecified wait time or display the length of a process.
 
   ```md
 
-<Loader color="default" />
-<Loader color="secondary"/>
-<Loader color="warning" />
-<Loader color="error"/>
-<Loader color="primary"/>
-<Loader color="dark"/>
-<Loader color="light"/>
+<Loader variant="spinner" />
+<Loader variant="circle" />
+<Loader variant="dots" />
 
 
 

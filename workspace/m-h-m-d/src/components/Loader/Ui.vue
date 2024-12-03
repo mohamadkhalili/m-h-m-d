@@ -5,10 +5,10 @@
     :class="[sizeClasses]"
   >
   <span v-if="variant === 'default'" :class="['loader',props.color]"></span>
-    <span v-else-if="variant === 'spinner'" :class="['loader',colorClasses]-spinner"></span>
-    <span v-else-if="variant === 'circle'" :class="['loader',colorClasses]-circle"></span>
+    <span v-else-if="variant === 'spinner'" :class="['loader-spinner']"></span>
+    <span v-else-if="variant === 'circle'" :class="['loader-circle']"></span>
 
-    <div v-else-if="variant === 'dots'" :class="['loader',colorClasses]-dots"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    <div v-else-if="variant === 'dots'" :class="['loader-dots']"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
 
 
 </Core>
@@ -42,9 +42,10 @@ const sizeClasses = computed(() => {
 .loader-spinner {
   width: 3rem;
 aspect-ratio: 1;
+scale: 1.4;
 border-radius: 50%;
-border: 5px solid #0000;
-border-right-color: #f3c443;
+border: 4px solid #0000;
+border-right-color: #1fdba3;
 position: relative;
 animation: l24 1s infinite linear;
 }
@@ -158,7 +159,7 @@ height: 32px;
 
   .primary::before {
 
-    border: 3px solid #0ba131;
+    border: 3px solid #00d447;
 
   }
 
@@ -208,8 +209,8 @@ position: absolute;
 height: 3rem;
 
 border-radius: 50%;
-border: 5px solid rgb(136, 135, 135); 
-border-top-color: rgb(52, 111, 201);
+border: 5px solid rgb(189, 189, 189); 
+border-top-color: rgb(238, 175, 39);
 animation: spin 1s linear infinite;
 }
 
