@@ -93,6 +93,39 @@ you can select your size with `size` property
 
 </Tab>
 
+## Variants
+
+
+another variant for loader in MHMD library !
+
+<Tab 
+   class="gap-3 border-[1px]  rounded-md w-full mx-auto "
+    :tabs="tabs" 
+    variant="shadow"
+    size="sm"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+<template #content1>
+<div class="grid grid-cols-3 gap-3 justify-items-center">
+
+<Loader variant="spinner" />
+<Loader variant="circle" />
+<Loader variant="dots" />
+</div>
+</template>
+
+
+  <template #content2>
+
+  ```md
+<Loader variant="spinner" />
+<Loader variant="circle" />
+<Loader variant="dots" />
+```
+  </template>
+
+</Tab>
+
 
 
 ## Colors
@@ -152,9 +185,10 @@ we have 7 Main color for Loader  you can see in below with `color` property!
 
 </Tab>
 
-## Variants
 
-another variant for loader in MHMD library !
+## customize 
+
+you can mix `spinner` and `circle` variants with colors  and use it 
 
 <Tab 
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
@@ -164,11 +198,12 @@ another variant for loader in MHMD library !
     activeColor="text-blue-500 shadow-blue-500"
   >
 <template #content1>
-<div class="grid grid-cols-3 gap-3 justify-items-center">
+<div class="grid grid-cols-2 gap-8 justify-items-center">
 
-<Loader variant="spinner" />
-<Loader variant="circle" />
-<Loader variant="dots" />
+<Loader variant="circle" color="primary" />
+<Loader variant="circle"  color="error"/>
+<Loader variant="spinner"  color="warning"/>
+<Loader variant="spinner"  color="secondary"/>
 </div>
 </template>
 
@@ -176,14 +211,23 @@ another variant for loader in MHMD library !
   <template #content2>
 
   ```md
-
-<Loader variant="spinner" />
-<Loader variant="circle" />
-<Loader variant="dots" />
-
-
-
+<Loader variant="circle" color="primary" />
+<Loader variant="circle"  color="error"/>
+<Loader variant="spinner"  color="warning"/>
+<Loader variant="spinner"  color="secondary"/>
 ```
   </template>
 
 </Tab>
+
+
+## Loader Component Features
+
+| **Feature**             | **Description**                                                                                                   | **Usage**                                                                                   |
+|-------------------------|-------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
+| **Default Loader**      | Basic example displaying a loader with default styling. This is the simplest usage, without any extra configuration. | Pass the `Loader` component without any additional props.                                  |
+| **Size**                | Customize the size of the loader.                                                                                  | Set the `size` prop to one of `xl`, `lg`, `md`, or `sm`.                                    |
+| **Variants**            | Different types of loader animations: spinner, circle, or dots.                                                   | Set the `variant` prop to `spinner`, `circle`, or `dots`.                                   |
+| **Colors**              | Customize the color of the loader.                                                                                 | Set the `color` prop to one of `primary`, `warning`, `dark`, `default`, `secondary`, `error`, or `light`. |
+| **Customize Variants**  | Mix different variants with colors for more customization.                                                        | Combine `variant` and `color` props for customized loaders.                                 |
+

@@ -1,9 +1,27 @@
 <template>
-  <Core
-    v-if="isVisible"
-    class="flex justify-center items-center"
-    :class="[sizeClasses]"
-  >
+ <Core
+  v-if="isVisible"
+  class="flex justify-center items-center"
+  :class="[
+    sizeClasses,
+    variant === 'spinner' && props.color === 'default' ? 'border-r-blue-500' : '',
+    variant === 'spinner' && props.color === 'error' ? 'border-r-red-500' : '',
+    variant === 'spinner' && props.color === 'warning' ? 'border-r-yellow-500' : '',
+    variant === 'spinner' && props.color === 'secondary' ? 'border-r-purple-600' : '',
+    variant === 'spinner' && props.color === 'primary' ? 'border-r-green-500' : '',
+    variant === 'spinner' && props.color === 'dark' ? 'border-r-gray-600' : '',
+    variant === 'spinner' && props.color === 'light' ? 'border-r-gray-200' : '',
+
+    variant === 'circle' && props.color === 'default' ? 'border-r-blue-500' : '',
+    variant === 'circle' && props.color === 'error' ? 'border-r-red-500' : '',
+    variant === 'circle' && props.color === 'warning' ? 'border-r-yellow-500' : '',
+    variant === 'circle' && props.color === 'secondary' ? 'border-r-purple-600' : '',
+    variant === 'circle' && props.color === 'primary' ? 'border-r-green-500' : '',
+    variant === 'circle' && props.color === 'dark' ? 'border-r-gray-600' : '',
+    variant === 'circle' && props.color === 'light' ? 'border-r-gray-200' : ''
+  ]"
+>
+
   <span v-if="variant === 'default'" :class="['loader',props.color]"></span>
     <span v-else-if="variant === 'spinner'" :class="['loader-spinner']"></span>
     <span v-else-if="variant === 'circle'" :class="['loader-circle']"></span>
@@ -45,7 +63,7 @@ aspect-ratio: 1;
 scale: 1.4;
 border-radius: 50%;
 border: 4px solid #0000;
-border-right-color: #1fdba3;
+border-right-color: inherit;
 position: relative;
 animation: l24 1s infinite linear;
 }
@@ -66,10 +84,6 @@ animation: l24 1s infinite linear;
 @keyframes l24 {
   100% {transform: rotate(1turn)}
 }
-
-
-
-
 
 
 .loader-dots {
@@ -159,7 +173,7 @@ height: 32px;
 
   .primary::before {
 
-    border: 3px solid #00d447;
+    border: 3px solid #47ce12;
 
   }
 
@@ -209,8 +223,8 @@ position: absolute;
 height: 3rem;
 
 border-radius: 50%;
-border: 5px solid rgb(189, 189, 189); 
-border-top-color: rgb(238, 175, 39);
+border: 5px solid rgba(65, 65, 65, 0.678); 
+border-right-color: inherit;
 animation: spin 1s linear infinite;
 }
 
