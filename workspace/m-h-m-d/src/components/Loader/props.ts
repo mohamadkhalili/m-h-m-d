@@ -17,4 +17,4 @@ export const loaderProps = {
     type: Boolean,
     default: true,
   },
-};13
+};
