@@ -62,12 +62,12 @@ const getButtonStyleClass = computed(() => {
         after:content-[""] after:absolute after:w-10 after:h-10
         after:bg-gray-600/30 after:opacity-0 
         after:opacity-100  after:scale-100 after:transition-transform
-        after:duration-500 border-none`
+        after:duration-500 border-none `
     case 'shadow':
       return ' relative inline-flex ';
       case 'bordered':
       return `
-        relative inline-flex items-center  justify-center 
+        relative inline-flex items-center  justify-center transition-all  duration-200 ease-in-out 
       `;
     default:
       return `
@@ -108,7 +108,7 @@ function selectTab(value) {
     sizeTab,
     props.isDisabled ? 'opacity-50 cursor-not-allowed' : '',
      !props.vertical && props.position =='top' ? (props.variant === 'bordered' && activeTab === tab.value ? '  border-b-transparent border-x-transparent  shadow-[inset_0px_2px_0px_0px]' : '') : '' ,
-     !props.vertical && props.position =='bottom' ? (props.variant === 'bordered' && activeTab === tab.value ? '  border-t-0  shadow-[inset_0px_-1px_0px_0px]   ' : '') : '' ,
+     !props.vertical && props.position =='bottom' ? (props.variant === 'bordered' && activeTab === tab.value ? ' border-x-transparent  border-t-0  shadow-[inset_0px_-1px_0px_0px]   ' : '') : '' ,
      props.vertical && props.position =='left' ? (props.variant === 'bordered' && activeTab === tab.value ? '  border-[1px] border-y-transparent border-r-0 shadow-[inset_1px_0px_0px_0px] ' : '') : '' ,
      props.vertical && props.position =='right' ? (props.variant === 'bordered' && activeTab === tab.value ? ' border-y-transparent  border-l-0 shadow-[inset_-1px_0px_0px_0px]  ' : '') : '' ,
 
@@ -195,8 +195,7 @@ function selectTab(value) {
   opacity: 0;
   transform: translateX(100%);
 }
-/* From Uiverse.io by zanina-yassine */ 
-/* Remove this container when use*/
+
 .component-title {
   width: 100%;
   position: absolute;
