@@ -84,6 +84,8 @@ The following examples show how you can customize the background and text colors
  activeColor="bg-blue-600"
   color="bg-gray-700"
    activeTextColor="text-white"
+   variant="default"
+   contentColor="text-blue-600"
     textColor="text-white" > 
     </Tab> 
     </div> 
@@ -91,6 +93,8 @@ The following examples show how you can customize the background and text colors
     <Tab :tabs="tabs" 
     activeColor="bg-rose-700" 
     color="bg-gray-100" 
+   variant="default"
+   contentColor="text-red-600"
     activeTextColor="text-white"
      textColor="text-black" >
      <template #label="{ tab }"> 
@@ -116,6 +120,7 @@ The following examples show how you can customize the background and text colors
     activeTextColor="text-white" 
     textColor="text-black"
     vertical
+   variant="default"
   >
     <template #label="{ tab }">
       <span>{{ tab.label }}</span>
@@ -519,3 +524,4 @@ Adjust the size of the tabs using the `size` prop. The available options are `sm
 | **Size**             | Change the size of the tabs. Sizes available are `sm`, `md`, `lg`, and `xl`.                                     | Set the `size` prop to one of the following: `'sm'`, `'md'`, `'lg'`, `'xl'`.                  |
 | **Position**             | Change the Position of the tabs. Position available are `left`, `right`, `bottom`, and `top`.                                     | Set the `Position` prop to one of the following: `'left'`, `'right'`, `'bottom'`, `'top'`.                  |
 | **Justify**             | Change the justify the tabs. justify available are `start`, `default`, and `end`.                                     | Set the `justify` prop to one of the following: `start`, `default`, and `end`.                  |
+| **Content Color**         | Change the color of content `contentColor`                     | use the `contentColor ='text-blue-500'` in tab tag`                |

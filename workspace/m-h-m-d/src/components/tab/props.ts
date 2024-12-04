@@ -27,7 +27,7 @@ export const TabProps = {
   },
   variant: {
     type: String as PropType<keyof typeof variants>,
-    default: 'default',
+    default: 'bordered',
   },
   isDisabled: {
     type: Boolean,

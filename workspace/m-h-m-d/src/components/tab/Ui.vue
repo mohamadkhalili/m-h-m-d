@@ -117,7 +117,7 @@ function selectTab(value) {
       props.variant === 'bordered' && activeTab !== tab.value ? ' '  
       : '',
     ,
-    props.variant === 'underline' && activeTab === tab.value ? ' after:scale-x-100' : '',
+    props.variant === 'underline' && activeTab === tab.value ? ' after:scale-x-100' : 'after:scale-x-0',
     props.variant === 'underline' && activeTab !== tab.value ? ' after:scale-x-0 after:bg-gray-400 ' : '',
 
     props.variant === 'shadow' && activeTab === tab.value ? ' bg-gray-200 border-0 border-x-8 ' : '',
