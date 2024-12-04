@@ -62,12 +62,12 @@ const getButtonStyleClass = computed(() => {
         after:content-[""] after:absolute after:w-10 after:h-10
         after:bg-gray-600/30 after:opacity-0 
         after:opacity-100  after:scale-100 after:transition-transform
-        after:duration-500 border-none`
+        after:duration-500 border-none `
     case 'shadow':
       return ' relative inline-flex ';
       case 'bordered':
       return `
-        relative inline-flex items-center  justify-center 
+        relative inline-flex items-center  justify-center transition-all  duration-200 ease-in-out 
       `;
     default:
       return `
@@ -107,21 +107,21 @@ function selectTab(value) {
     getButtonStyleClass,
     sizeTab,
     props.isDisabled ? 'opacity-50 cursor-not-allowed' : '',
-     !props.vertical && props.position =='top' ? (props.variant === 'bordered' && activeTab === tab.value ? '  border-b-0 border-x-0  shadow-[inset_0px_2px_0px_0px] active:scale-105 ' : '') : '' ,
-     !props.vertical && props.position =='bottom' ? (props.variant === 'bordered' && activeTab === tab.value ? '  border-t-0  shadow-[inset_0px_-1px_0px_0px]  active:scale-105 ' : '') : '' ,
-     props.vertical && props.position =='left' ? (props.variant === 'bordered' && activeTab === tab.value ? '  border-r-0 shadow-[inset_1px_0px_0px_0px] active:scale-105 ' : '') : '' ,
-     props.vertical && props.position =='right' ? (props.variant === 'bordered' && activeTab === tab.value ? '  border-l-0 shadow-[inset_-1px_0px_0px_0px] active:scale-105 ' : '') : '' ,
+     !props.vertical && props.position =='top' ? (props.variant === 'bordered' && activeTab === tab.value ? '  border-b-transparent border-x-transparent  shadow-[inset_0px_2px_0px_0px]' : '') : '' ,
+     !props.vertical && props.position =='bottom' ? (props.variant === 'bordered' && activeTab === tab.value ? ' border-x-transparent  border-t-0  shadow-[inset_0px_-1px_0px_0px]   ' : '') : '' ,
+     props.vertical && props.position =='left' ? (props.variant === 'bordered' && activeTab === tab.value ? '  border-[1px] border-y-transparent border-r-0 shadow-[inset_1px_0px_0px_0px] ' : '') : '' ,
+     props.vertical && props.position =='right' ? (props.variant === 'bordered' && activeTab === tab.value ? ' border-y-transparent  border-l-0 shadow-[inset_-1px_0px_0px_0px]  ' : '') : '' ,
 
 
      
-      props.variant === 'bordered' && activeTab !== tab.value ? ' active:scale-105'  
+      props.variant === 'bordered' && activeTab !== tab.value ? ' '  
       : '',
     ,
     props.variant === 'underline' && activeTab === tab.value ? ' after:scale-x-100' : 'after:scale-x-0',
-    props.variant === 'underline' && activeTab !== tab.value ? ' after:scale-x-0 after:bg-gray-400 ' : 'after:scale-x-0',
+    props.variant === 'underline' && activeTab !== tab.value ? ' after:scale-x-0 after:bg-gray-400 ' : '',
 
-    props.variant === 'shadow' && activeTab === tab.value ? ' bg-gray-200 border-0 border-x-8 active:scale-105 ' : '',
-    props.variant === 'shadow' && activeTab !== tab.value ? '  border-x-2  active:scale-105 ' : '',
+    props.variant === 'shadow' && activeTab === tab.value ? ' bg-gray-200 border-0 border-x-8 ' : '',
+    props.variant === 'shadow' && activeTab !== tab.value ? '  border-x-2   ' : '',
 
 
     props.variant === 'default' && activeTab === tab.value ? '' : '',
@@ -137,14 +137,22 @@ function selectTab(value) {
       : '',
     !props.vertical ? (props.variant === 'default' && index === 0 ? 'rounded-l-full' : '') : (props.variant === 'default' && index === 0 ? 'rounded-t-2xl' : ''),
     !props.vertical ? (props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-r-full' : '') : (props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-b-2xl' : ''),
-    props.vertical ? 'w-full' : '',
-    !props.vertical ? 
-  (props.variant === 'bordered' && index === activeTab - 2 ? 'rounded-br-2xl shadow-main ' : 
-   props.variant === 'bordered' && index === activeTab  ? 'rounded-bl-2xl shadow-main' : '') 
-  : 
-  (props.variant === 'bordered' && index === 0 ? 'rounded-t-lg' : 
-   props.variant === 'bordered' && index === props.tabs.length - 1 ? 'rounded-b-lg' : '')
-,
+
+
+    !props.vertical && props.variant==='bordered' && props.position ==='top' ? (tab.value===activeTab + 1 ? 'rounded-bl-2xl' : '' ) :'',
+        !props.vertical && props.variant==='bordered' && props.position ==='top' ? (tab.value===activeTab -1  ? 'rounded-br-2xl' : '' ) :'',
+
+    !props.vertical && props.variant==='bordered' && props.position ==='bottom' ?  (tab.value===activeTab +1? 'rounded-tl-2xl ' : '' ) :'',
+        !props.vertical && props.variant==='bordered' && props.position ==='bottom' ?  (tab.value===activeTab -1? 'rounded-tr-2xl' : '' ) :'',
+
+     props.vertical && props.variant==='bordered' && props.position ==='right' ?   (tab.value===activeTab+1 ? 'rounded-tl-2xl' : '' ) :'',
+          props.vertical && props.variant==='bordered' && props.position ==='right' ?   (tab.value===activeTab-1 ? 'rounded-bl-2xl' : '' ) :'',
+
+    props.vertical && props.variant==='bordered' && props.position ==='left' ?   (tab.value===activeTab+1 ? 'rounded-tr-2xl' : '' ) :'',
+        props.vertical && props.variant==='bordered' && props.position ==='left' ?   (tab.value===activeTab-1 ? 'rounded-br-2xl' : '' ) :'',
+
+
+
     props.vertical ? 'w-full' : '',
     activeTab === tab.value ? props.activeTextColor : props.textColor,
     activeTab === tab.value ? props.activeColor : props.color,
@@ -163,7 +171,7 @@ function selectTab(value) {
     <div class="w-full  ">
       <div v-for="tab in props.tabs" :key="tab.value" v-show="activeTab === tab.value" class="p-6">
         <transition name="slide-right" mode="out-in">
-          <div v-if="tab.content != null" :key="tab.value" class="">
+          <div v-if="tab.content != null" :key="tab.value" :class=[props.contentColor]>
             <slot :name="'content'+tab.value" :tab="tab" :class="[ 'animate-ping' ]">
               {{ tab.content }}
             </slot>
@@ -187,8 +195,7 @@ function selectTab(value) {
   opacity: 0;
   transform: translateX(100%);
 }
-/* From Uiverse.io by zanina-yassine */ 
-/* Remove this container when use*/
+
 .component-title {
   width: 100%;
   position: absolute;
