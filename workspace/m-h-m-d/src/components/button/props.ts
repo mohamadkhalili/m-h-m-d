@@ -35,36 +35,12 @@ export const size = {
 
 } as const;
 
-export type ButtonColor = keyof typeof buttonColors;
 export type VariantColor = keyof typeof VariantColor;
-export type Round = keyof typeof Round;
-export type size = keyof typeof size;
-
 
 
 export const props = {
-  color: {
-    type: String as () => ButtonColor,
-    default: 'default' as ButtonColor,
-  },
-  isDisabled: {
-    type: Boolean,
-    default: false,
-  },
-  CleanerEffect: {
-    type: Boolean,
-    default: false,
-  },
-  variant: {
-    type: String as () => VariantColor,
-    default: 'default' as VariantColor,
-  },
-  round:{
-    type: String as ()=> Round,
-    default:'sm' as Round
-  },
-  size:{
-    type: String as ()=> size,
-    default:'md' as size
-  },
+  buttonClass: { type: String, default: '' },
+  disabled: { type: Boolean, default: false },
+  CleanerEffect: {type: Boolean, default: false },
+  variant: { type: String as () => VariantColor, default: 'default' as VariantColor },
 };

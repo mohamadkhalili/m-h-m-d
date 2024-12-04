@@ -1,12 +1,11 @@
 <!-- button-ui.vue -->
 <template>
-  <Core :color="propsData.color" :is-disabled="propsData.isDisabled" :variant="propsData.variant"
-    :round="propsData.round" :size="propsData.size">
+  <Core>
     <template #button>
       <button :class="[
-        buttonColor || VariantColor, roundClass, sizeClass,
-        { 'custom-button': true, 'disabled': propsData.isDisabled, 'CleanerEffect': propsData.CleanerEffect }
-      ]" :disabled="propsData.isDisabled" @click="createRipple" :CleanerEffect="propsData.CleanerEffect">
+        mergeClasses(uiButtonClass, buttonClass).value || VariantColor,
+        { 'custom-button': true, 'disabled': disabled, 'CleanerEffect': propsData.CleanerEffect }
+      ]" :disabled="disabled" @click="createRipple" :CleanerEffect="propsData.CleanerEffect">
         <slot></slot>
         <span class="ripple" v-if="rippleVisible" :style="rippleStyle" @transitionend="resetRipple"></span>
       </button>
@@ -17,20 +16,15 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import Core from './Core.vue'
-import { buttonColors, props, VariantColor, Round, size } from './props';
-const propsData = defineProps({
-  ...props,
-  isDisabled: { type: Boolean, default: false },
-  CleanerEffect: { type: Boolean },
-  round: { type: String as () => keyof typeof Round, default: 'sm' },
-  size: { type: String as () => keyof typeof size, default: 'md' },
-
-});
+import { buttonColors, props, VariantColor } from './props';
+import { useMergeClasses } from "../../composables/useMergeClasses";
+const mergeClasses = useMergeClasses();
+const propsData = defineProps(props);
 
 const rippleVisible = ref(false);
 const rippleStyle = ref({});
 
-
+const uiButtonClass = ref("bg-blue rounded-lg text-xs w-24 h-10 text-white relative transition-all duration-200 cursor-pointer z-10 overflow-hidden")
 const createRipple = (event: MouseEvent) => {
   const button = event.currentTarget as HTMLButtonElement;
   const rect = button.getBoundingClientRect();
@@ -56,14 +50,11 @@ const createRipple = (event: MouseEvent) => {
 
 const buttonColor = computed(() => {
   if (propsData.variant) {
-    return VariantColor[propsData.variant] || buttonColors[propsData.color];
+    return VariantColor[propsData.variant];
   }
   return buttonColors.default;
 });
 
-
-const roundClass = computed(() => Round[propsData.round] || 'sm-round');
-const sizeClass = computed(() => size[propsData.size] || '');
 
 
 
@@ -88,14 +79,6 @@ const resetRipple = () => {
 
 
 .custom-button {
-  padding: 0.5rem 1rem;
-  border-radius: 1rem;
-  color: white;
-  position: relative;
-  transition: all 0.2s;
-  cursor: pointer;
-  z-index: 10;
-  overflow: hidden;
 }
 
 .custom-button::before {
