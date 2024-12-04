@@ -7,16 +7,16 @@
       @update:isEditingSearchPage="handleIsEditingSearchPage" :page-size="pageSize" v-bind="$attrs">
       <template #superPrev="{ disabled }">
         <slot name="superPrev" :disabled="disabled" :rtl="rtl"></slot>
-        <button v-if="showDefaultSuperPrev" :class="mergeClasses(uiButtonClass, buttonClass).value"
+        <Button v-if="showDefaultSuperPrev" :buttonClass="mergeClasses(uiButtonClass, buttonClass).value"
           :disabled="disabled">
           <svg-icon type="mdi" :path="superPrevIcon"></svg-icon>
-        </button>
+      </Button>
       </template>
       <template #prev="{ disabled }">
         <slot name="prev" :disabled="disabled" :rtl="rtl"></slot>
-        <button v-if="showDefaultPrev" :class="mergeClasses(uiButtonClass, buttonClass).value" :disabled="disabled">
+        <Button v-if="showDefaultPrev" :buttonClass="mergeClasses(uiButtonClass, buttonClass).value" :disabled="disabled">
           <svg-icon type="mdi" :path="prevIcon"></svg-icon>
-        </button>
+        </Button>
       </template>
       <template #default="{ isCurrentPage, isActive, page }">
         <slot name="default" :isCurrentPage="isCurrentPage" :isActive="isActive" :page="page"></slot>
@@ -31,16 +31,16 @@
       </template>
       <template #next="{ disabled }">
         <slot name="next" :disabled="disabled" :rtl="rtl"></slot>
-        <button v-if="showDefaultNext" :class="mergeClasses(uiButtonClass, buttonClass).value" :disabled="disabled">
+        <Button v-if="showDefaultNext" :buttonClass="mergeClasses(uiButtonClass, buttonClass).value" :disabled="disabled">
           <svg-icon type="mdi" :path="nextIcon"></svg-icon>
-        </button>
+        </Button>
       </template>
       <template #superNext="{ disabled }">
         <slot name="superNext" :disabled="disabled" :rtl="rtl"></slot>
-        <button v-if="showDefaultSuperNext" :class="mergeClasses(uiButtonClass, buttonClass).value"
+        <Button v-if="showDefaultSuperNext" :buttonClass="mergeClasses(uiButtonClass, buttonClass).value"
           :disabled="disabled">
           <svg-icon type="mdi" :path="superNextIcon"></svg-icon>
-        </button>
+        </Button>
       </template>
       <template #searchPage="{ enabled }">
         <slot name="searchPage" :enabled="enabled"></slot>
@@ -48,10 +48,10 @@
           style="perspective: 1000px" :class="{ 'is-flipped': isEditingSearchPage }">
           <div class="flipper">
             <div class="front">
-              <button v-if="showDefaultsearchPageBtn && enabled"
-                :class="mergeClasses(uiButtonClass, buttonClass).value">
+              <Button v-if="showDefaultsearchPageBtn && enabled"
+                :buttonClass="mergeClasses(uiButtonClass, buttonClass).value">
                 <svg-icon type="mdi" :path="mdiMagnify"></svg-icon>
-              </button>
+              </Button>
             </div>
             <div class="back">
               <input v-if="showDefaultsearchPageInput && enabled" ref="searchInput" :value="searchPage"
@@ -101,7 +101,7 @@ const nextIcon = computed(() => (props.rtl ? mdiChevronLeft : mdiChevronRight));
 const uiInputClass = ref(
   "text-center flex justify-center items-center outline-none size-10 rounded-full bg-slate-200 text-black"
 );
-const uiButtonClass = ref("size-10 rounded-full bg-slate-950 text-white");
+const uiButtonClass = ref("w-10 h-10 rounded-full bg-slate-950 text-white flex items-center justify-center");
 const uiActiveClass = ref(
   "cursor-pointer elevation-1 text-center flex justify-center items-center select-none size-10 rounded-full bg-slate-950 text-white"
 );

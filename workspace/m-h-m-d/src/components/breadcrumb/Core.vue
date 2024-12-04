@@ -4,7 +4,6 @@
       v-for="(item, index) in items"
       :key="index"
       @click="setModelValue(item.title, item.disable)"
-      class="cursor-pointer"
     >
       <slot
         name="item"
