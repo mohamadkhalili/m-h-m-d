@@ -1,8 +1,9 @@
 <script setup>
 const tabs = [
-  { label: 'Tab 1', value: 1, content: 'Content of tab 1' },
+  { label: 'Tab 1', value: 1, content: ' Content of tab 1!' },
   { label: 'Tab 2', value: 2, content: 'Content of tab 2' },
-  { label: 'Tab 3', value: 3, content: 'Content of tab 3' }
+  { label: 'Tab 3', value: 3, content: 'Content of tab 3' },
+
 
 ];
 
