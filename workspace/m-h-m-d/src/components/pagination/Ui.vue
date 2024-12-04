@@ -7,14 +7,14 @@
       @update:isEditingSearchPage="handleIsEditingSearchPage" :page-size="pageSize" v-bind="$attrs">
       <template #superPrev="{ disabled }">
         <slot name="superPrev" :disabled="disabled" :rtl="rtl"></slot>
-        <Button v-if="showDefaultSuperPrev" :buttonClass="mergeClasses(uiButtonClass, buttonClass).value"
+        <Button v-if="showDefaultSuperPrev" :buttonClass="mergeClasses(paginationClasses.uiButtonClass, buttonClass).value"
           :disabled="disabled">
           <svg-icon type="mdi" :path="superPrevIcon"></svg-icon>
       </Button>
       </template>
       <template #prev="{ disabled }">
         <slot name="prev" :disabled="disabled" :rtl="rtl"></slot>
-        <Button v-if="showDefaultPrev" :buttonClass="mergeClasses(uiButtonClass, buttonClass).value" :disabled="disabled">
+        <Button v-if="showDefaultPrev" :buttonClass="mergeClasses(paginationClasses.uiButtonClass, buttonClass).value" :disabled="disabled">
           <svg-icon type="mdi" :path="prevIcon"></svg-icon>
         </Button>
       </template>
@@ -22,8 +22,8 @@
         <slot name="default" :isCurrentPage="isCurrentPage" :isActive="isActive" :page="page"></slot>
         <div v-if="isCurrentPage && showDefaultPagination" class="cursor-pointer elevation-1" :class="[
           isActive
-            ? mergeClasses(uiActiveClass, activeClass).value
-            : mergeClasses(uiOnActiveClass, onActiveClass).value,
+            ? mergeClasses(paginationClasses.uiActiveClass, activeClass).value
+            : mergeClasses(paginationClasses.uiOnActiveClass, onActiveClass).value,
         ]">
           {{ page }}
         </div>
@@ -31,13 +31,13 @@
       </template>
       <template #next="{ disabled }">
         <slot name="next" :disabled="disabled" :rtl="rtl"></slot>
-        <Button v-if="showDefaultNext" :buttonClass="mergeClasses(uiButtonClass, buttonClass).value" :disabled="disabled">
+        <Button v-if="showDefaultNext" :buttonClass="mergeClasses(paginationClasses.uiButtonClass, buttonClass).value" :disabled="disabled">
           <svg-icon type="mdi" :path="nextIcon"></svg-icon>
         </Button>
       </template>
       <template #superNext="{ disabled }">
         <slot name="superNext" :disabled="disabled" :rtl="rtl"></slot>
-        <Button v-if="showDefaultSuperNext" :buttonClass="mergeClasses(uiButtonClass, buttonClass).value"
+        <Button v-if="showDefaultSuperNext" :buttonClass="mergeClasses(paginationClasses.uiButtonClass, buttonClass).value"
           :disabled="disabled">
           <svg-icon type="mdi" :path="superNextIcon"></svg-icon>
         </Button>
@@ -49,13 +49,13 @@
           <div class="flipper">
             <div class="front">
               <Button v-if="showDefaultsearchPageBtn && enabled"
-                :buttonClass="mergeClasses(uiButtonClass, buttonClass).value">
+                :buttonClass="mergeClasses(paginationClasses.uiButtonClass, buttonClass).value">
                 <svg-icon type="mdi" :path="mdiMagnify"></svg-icon>
               </Button>
             </div>
             <div class="back">
               <input v-if="showDefaultsearchPageInput && enabled" ref="searchInput" :value="searchPage"
-                @input="handleInput" :class="mergeClasses(uiInputClass, onActiveClass).value" />
+                @input="handleInput" :class="mergeClasses(paginationClasses.uiInputClass, onActiveClass).value" />
             </div>
           </div>
         </div>
@@ -69,6 +69,7 @@ import { computed, useSlots, onMounted, watch, nextTick, ref } from "vue";
 import pagination from "./Core.vue";
 import { uiSlots } from "./Slots";
 import { uiProps } from "./Props";
+import { paginationClasses } from "./PaginatioinClasses";
 import { useBorder } from "../../composables/UseBorderProps";
 import { paginationEmits } from "./Emits";
 import SvgIcon from "@jamescoyle/vue-icon";
@@ -98,16 +99,6 @@ const superNextIcon = computed(() =>
   props.rtl ? mdiChevronDoubleLeft : mdiChevronDoubleRight
 );
 const nextIcon = computed(() => (props.rtl ? mdiChevronLeft : mdiChevronRight));
-const uiInputClass = ref(
-  "text-center flex justify-center items-center outline-none size-10 rounded-full bg-slate-200 text-black"
-);
-const uiButtonClass = ref("w-10 h-10 rounded-full bg-slate-950 text-white flex items-center justify-center");
-const uiActiveClass = ref(
-  "cursor-pointer elevation-1 text-center flex justify-center items-center select-none size-10 rounded-full bg-slate-950 text-white"
-);
-const uiOnActiveClass = ref(
-  "cursor-pointer elevation-1 text-center flex justify-center items-center select-none size-10 rounded-full bg-slate-200 text-black"
-);
 const slots = useSlots();
 const showDefaultPagination = computed(() => !slots.default);
 const showDefaultPrev = computed(() => !slots.prev);
