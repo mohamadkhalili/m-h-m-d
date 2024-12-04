@@ -22,15 +22,17 @@ This example demonstrates horizontally aligned tabs with default styling.
 
 <div class="p-8 rounded-xl shadow-inner flex justify-center items-center">
   <Tab 
-   class="gap-3 border-[1px] rounded-md w-fit"
+   class="gap-3 border-[1px] rounded-md w-fit bg-rose-400"
     :tabs="tabs" 
     variant="bordered"
-     activeColor="text-blue-500 shadow-blue-300"
+     activeColor="text-white shadow-yellow-300 bg-rose-400"
+     color="bg-gray-700 text-gray-200 border-transparent"
+     contentColor="text-white"
   >
     <template #label="{ tab }">
       <span>{{ tab.label }}</span>
     </template>
-    <template #content="{ tab }">
+    <template #content="{ tab }" >
       <p>{{ tab.content }}</p>
     </template>
   </Tab>
