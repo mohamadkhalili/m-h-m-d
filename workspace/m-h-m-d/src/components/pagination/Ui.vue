@@ -1,68 +1,66 @@
 /* eslint-disable */
 
 <template>
-  <div :dir="rtl ? 'rtl' : 'ltr'" class="w-fit">
-    <div class="flex items-center gap-4">
-      <pagination :modelValue="modelValue" @update:modelValue="handlePageChange" :searchPage="searchPage"
-        @update:searchPage="handleSearchPage" :isEditingSearchPage="isEditingSearchPage"
-        @update:isEditingSearchPage="handleIsEditingSearchPage" :page-size="pageSize" v-bind="$attrs">
-        <template #superPrev="{ disabled }">
-          <slot name="superPrev" :disabled="disabled" :rtl="rtl"></slot>
-          <button v-if="showDefaultSuperPrev" :class="mergeClasses(uiButtonClass, buttonClass).value"
-            :disabled="disabled">
-            <svg-icon type="mdi" :path="superPrevIcon"></svg-icon>
-          </button>
-        </template>
-        <template #prev="{ disabled }">
-          <slot name="prev" :disabled="disabled" :rtl="rtl"></slot>
-          <button v-if="showDefaultPrev" :class="mergeClasses(uiButtonClass, buttonClass).value" :disabled="disabled">
-            <svg-icon type="mdi" :path="prevIcon"></svg-icon>
-          </button>
-        </template>
-        <template #default="{ isCurrentPage, isActive, page }">
-          <slot name="default" :isCurrentPage="isCurrentPage" :isActive="isActive" :page="page"></slot>
-          <div v-if="isCurrentPage && showDefaultPagination" class="cursor-pointer elevation-1" :class="[
-            isActive
-              ? mergeClasses(uiActiveClass, activeClass).value
-              : mergeClasses(uiOnActiveClass, onActiveClass).value,
-          ]">
-            {{ page }}
-          </div>
-          <span v-if="page === -1 && showDefaultPagination" class="select-none mx-3" :class="separatorClass">...</span>
-        </template>
-        <template #next="{ disabled }">
-          <slot name="next" :disabled="disabled" :rtl="rtl"></slot>
-          <button v-if="showDefaultNext" :class="mergeClasses(uiButtonClass, buttonClass).value" :disabled="disabled">
-            <svg-icon type="mdi" :path="nextIcon"></svg-icon>
-          </button>
-        </template>
-        <template #superNext="{ disabled }">
-          <slot name="superNext" :disabled="disabled" :rtl="rtl"></slot>
-          <button v-if="showDefaultSuperNext" :class="mergeClasses(uiButtonClass, buttonClass).value"
-            :disabled="disabled">
-            <svg-icon type="mdi" :path="superNextIcon"></svg-icon>
-          </button>
-        </template>
-        <template #searchPage="{ enabled }">
-          <slot name="searchPage" :enabled="enabled"></slot>
-          <div class="inline-block w-[100px] max-w-[100px] h-[40px] mr-[-30px] mt-[7px] box-border"
-            style="perspective: 1000px" :class="{ 'is-flipped': isEditingSearchPage }">
-            <div class="flipper">
-              <div class="front">
-                <button v-if="showDefaultsearchPageBtn && enabled"
-                  :class="mergeClasses(uiButtonClass, buttonClass).value">
-                  <svg-icon type="mdi" :path="mdiMagnify"></svg-icon>
-                </button>
-              </div>
-              <div class="back">
-                <input v-if="showDefaultsearchPageInput && enabled" ref="searchInput" :value="searchPage"
-                  @input="handleInput" :class="mergeClasses(uiInputClass, onActiveClass).value" />
-              </div>
+  <div class="flex items-center gap-4 w-fit" :dir="rtl ? 'rtl' : 'ltr'">
+    <pagination :modelValue="modelValue" @update:modelValue="handlePageChange" :searchPage="searchPage"
+      @update:searchPage="handleSearchPage" :isEditingSearchPage="isEditingSearchPage"
+      @update:isEditingSearchPage="handleIsEditingSearchPage" :page-size="pageSize" v-bind="$attrs">
+      <template #superPrev="{ disabled }">
+        <slot name="superPrev" :disabled="disabled" :rtl="rtl"></slot>
+        <button v-if="showDefaultSuperPrev" :class="mergeClasses(uiButtonClass, buttonClass).value"
+          :disabled="disabled">
+          <svg-icon type="mdi" :path="superPrevIcon"></svg-icon>
+        </button>
+      </template>
+      <template #prev="{ disabled }">
+        <slot name="prev" :disabled="disabled" :rtl="rtl"></slot>
+        <button v-if="showDefaultPrev" :class="mergeClasses(uiButtonClass, buttonClass).value" :disabled="disabled">
+          <svg-icon type="mdi" :path="prevIcon"></svg-icon>
+        </button>
+      </template>
+      <template #default="{ isCurrentPage, isActive, page }">
+        <slot name="default" :isCurrentPage="isCurrentPage" :isActive="isActive" :page="page"></slot>
+        <div v-if="isCurrentPage && showDefaultPagination" class="cursor-pointer elevation-1" :class="[
+          isActive
+            ? mergeClasses(uiActiveClass, activeClass).value
+            : mergeClasses(uiOnActiveClass, onActiveClass).value,
+        ]">
+          {{ page }}
+        </div>
+        <span v-if="page === -1 && showDefaultPagination" class="select-none mx-3" :class="separatorClass">...</span>
+      </template>
+      <template #next="{ disabled }">
+        <slot name="next" :disabled="disabled" :rtl="rtl"></slot>
+        <button v-if="showDefaultNext" :class="mergeClasses(uiButtonClass, buttonClass).value" :disabled="disabled">
+          <svg-icon type="mdi" :path="nextIcon"></svg-icon>
+        </button>
+      </template>
+      <template #superNext="{ disabled }">
+        <slot name="superNext" :disabled="disabled" :rtl="rtl"></slot>
+        <button v-if="showDefaultSuperNext" :class="mergeClasses(uiButtonClass, buttonClass).value"
+          :disabled="disabled">
+          <svg-icon type="mdi" :path="superNextIcon"></svg-icon>
+        </button>
+      </template>
+      <template #searchPage="{ enabled }">
+        <slot name="searchPage" :enabled="enabled"></slot>
+        <div class="inline-block w-[100px] max-w-[100px] h-[40px] mr-[-30px] mt-[7px] box-border"
+          style="perspective: 1000px" :class="{ 'is-flipped': isEditingSearchPage }">
+          <div class="flipper">
+            <div class="front">
+              <button v-if="showDefaultsearchPageBtn && enabled"
+                :class="mergeClasses(uiButtonClass, buttonClass).value">
+                <svg-icon type="mdi" :path="mdiMagnify"></svg-icon>
+              </button>
+            </div>
+            <div class="back">
+              <input v-if="showDefaultsearchPageInput && enabled" ref="searchInput" :value="searchPage"
+                @input="handleInput" :class="mergeClasses(uiInputClass, onActiveClass).value" />
             </div>
           </div>
-        </template>
-      </pagination>
-    </div>
+        </div>
+      </template>
+    </pagination>
   </div>
 </template>
 
