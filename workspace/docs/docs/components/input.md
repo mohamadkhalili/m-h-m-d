@@ -27,7 +27,7 @@ const tabs = [
 
 <div class=" py-10  rounded-lg shadow-inner flex justify-center items-center">
   
-<Input label="name" />
+<Input label="name" LabelInputClass="" />
 
 </div>
 

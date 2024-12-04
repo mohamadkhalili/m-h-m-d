@@ -5,38 +5,39 @@
   >
     <template #input>
       <div class="relative">
-        <form v-if="props.variant === InputVariant.search" class="form relative">
-          <label type="label" class="absolute left-2 -translate-y-1/2 top-1/2 p-1">
-            {{ icon1 }}
+          <!-- برچسب با انیمیشن -->
+          <label
+            :class="[
+              'absolute left-3  transition-all duration-200 ease-in-out ',
+              mergeClasses(UiLabelInputClass, LabelInputClass).value || InputVariant,
+            ]"
+            for="input-id"
+          >
+            {{ props.label }}
           </label>
-          <input
-          :placeholder= props.placeholder
-            v-model="localValue"
-            class="input bg-white rounded-full px-8 py-3 border-2 border-transparent focus:outline-none focus:border-blue-500 placeholder-gray-400 transition-all duration-300 shadow-md"
-            
-            type="text"
-          />
-          <button type="reset" class="absolute right-3 -translate-y-1/2 top-1/2 p-1">
-            {{ icon2 }}
-          </button>
-        </form>
 
-        
-        <div v-else :class="'relative'">
+          <button v-if="props.variant === InputVariant.search" class="absolute left-2 -translate-y-1/2 top-1/2 p-1">
+            {{ icon1 }}
+          </button>
+
           <input
+            id="input-id"
+            :placeholder="props.placeholder || ''"
             v-model="localValue"
-            :class="[mergeClasses(UiInputClass, InputClass).value || InputVariant]"
+            :class="[
+              '   px-8 py-3  focus:outline-none  transition-all duration-300 ',
+              UiInputClass
+            ]"
+            type="text"
+            aria-label="Input field"
             @focus="isFocused = true"
             @blur="handleBlur"
           />
-          <label
-            for="input-id"
-            :class="[mergeClasses(UiLabelInputClass, LabelInputClass).value || InputVariant]"
-          >
-            {{ label }}
-            <slot name="label"></slot>
-          </label>
-        </div>
+
+          <button v-if="props.variant === InputVariant.search" type="reset" class="absolute right-3 -translate-y-1/2 top-1/2 p-1">
+            {{ icon2 }}
+          </button>
+       
       </div>
     </template>
   </Core>
@@ -71,46 +72,27 @@ const handleBlur = () => {
   isFocused.value = !!localValue.value;
 };
 
+const UiLabelInputClass = computed(() => {
+  const hasValue = !!localValue.value; 
+  return `${isFocused.value || hasValue ? "scale-90 top-[-25px] text-gray-500 top-0" : " bg-transparent top-2 text-gray-400"}`;
+});
+
 const UiInputClass = computed(() => {
   switch (props.variant) {
     case InputVariant.search:
-      return " rounded-full p-2 px-4"; 
+      return "rounded-full bg-white"; 
     case InputVariant.underline:
       return "border-b-2 border-gray-300 focus:border-blue-500 transition-all duration-300";
     case InputVariant.highlight:
-      return "ring-2 ring-yellow-400 rounded-lg p-2 focus:ring-yellow-500 transition-all duration-300";
+      return "rounded-none bg-transparent  shadow-[inset_0px_-2px_0px_0px_rgba(0,_0,_0,_0.9)]";
     case InputVariant.express:
       return "ring-2 ring-red-400 rounded-lg p-2 focus:ring-red-500 transition-all duration-300";
-    case InputVariant.defaultNew:
-      return "ring-2 ring-green-400 rounded-lg p-2 focus:ring-green-500 transition-all duration-300";
     default:
       return "ring-2 ring-blue-400 rounded-lg p-2 focus:ring-green-500 transition-all duration-300"; 
-  }
-});
-
-const UiLabelInputClass = computed(() => {
-  const hasValue = !!localValue.value; 
-  switch (props.variant) {
-    case InputVariant.search:
-      return ""; // No label styling needed for search variant
-    case InputVariant.underline:
-      return "";
-    case InputVariant.highlight:
-      return "";
-    case InputVariant.express:
-      return "";
-    case InputVariant.defaultNew:
-      return "";
-    default:
-      return `absolute left-2 transition-all duration-200 ease-in-out bg-transparent ${
-        isFocused.value || hasValue
-          ? "scale-90 top-[-30px] text-gray-500" 
-          : "top-2 text-gray-400"
-      }`; 
   }
 });
 </script>
 
 <style scoped>
-/* Add any additional styles here */
+
 </style>

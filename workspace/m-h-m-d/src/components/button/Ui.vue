@@ -4,6 +4,7 @@
     <template #button>
       <button :class="[
         mergeClasses(uiButtonClass, buttonClass).value || VariantColor,
+        
         { 'custom-button': true, 'disabled': disabled, 'CleanerEffect': propsData.CleanerEffect }
       ]" :disabled="disabled" @click="createRipple" :CleanerEffect="propsData.CleanerEffect">
         <slot></slot>
