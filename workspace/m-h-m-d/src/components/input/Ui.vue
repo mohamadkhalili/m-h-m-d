@@ -4,11 +4,9 @@
     :="$attrs"
   >
     <template #input>
-      <div class="relative my-5">
-        <div :class="[{ 'relative': props.variant === 'bordered' }]">
+      <div class="relative">
+        <div :class="['relative']">
           <input
-            id="input-id"
-            ref="inputRef"
             v-model="localValue"
             :class="[
               mergeClasses(UiInputClass, InputClass).value || InputVariant,
@@ -22,7 +20,7 @@
               mergeClasses(UiLabelInputClass, LabelInputClass).value || InputVariant
             ]"
           >
-          {{ label }}
+            {{ label }}
             <slot name="label"></slot>
           </label>
         </div>
@@ -46,7 +44,6 @@ defineOptions({
   inheritAttrs: false,
 });
 
-const inputRef = ref<HTMLInputElement | null>(null);
 const isFocused = ref(false);
 const localValue = ref(props.modelValue);
 
@@ -58,20 +55,52 @@ watch(
 );
 
 const handleBlur = () => {
-  isFocused.value = !!localValue.value; // Keep focused state if value exists
+  isFocused.value = !!localValue.value;
 };
 
-// Label stays at the top if input has value or is focused
-const UiLabelInputClass = computed(() => {
-  const hasValue = !!localValue.value; // Check if input has value
-  return `absolute left-2 text-blue-500 top-2 transition-all duration-200 ease-in-out bg-transparent ${
-    isFocused.value || hasValue
-      ? "scale-95 absolute top-[-30px] text-gray-500"
-      : ""
-  }`;
+
+
+const UiInputClass = computed(() => {
+  switch (props.variant) {
+    case InputVariant.search:
+      return "bg-gray-200 rounded-full p-2 px-4";
+    case InputVariant.underline:
+      return "border-b-2 border-gray-300 focus:border-blue-500 transition-all duration-300";
+    case InputVariant.highlight:
+      return "ring-2 ring-yellow-400 rounded-lg p-2 focus:ring-yellow-500 transition-all duration-300";
+    case InputVariant.express:
+      return "ring-2 ring-red-400 rounded-lg p-2 focus:ring-red-500 transition-all duration-300";
+    case InputVariant.defaultNew:
+      return "ring-2 ring-green-400 rounded-lg p-2 focus:ring-green-500 transition-all duration-300";
+    default:
+      return "ring-2 ring-blue-400 rounded-lg p-2 focus:ring-green-500 transition-all duration-300"; 
+  }
 });
 
-const UiInputClass = ref(
-  "ring-2 ring-blue-400 rounded-lg p-2 focus:ring-green-400 transition-all duration-300"
-);
+
+const UiLabelInputClass = computed(() => {
+  const hasValue = !!localValue.value; 
+  switch (props.variant) {
+    case InputVariant.search:
+      return "";
+    case InputVariant.underline:
+      return "";
+    case InputVariant.highlight:
+      return "";
+    case InputVariant.express:
+      return "";
+    case InputVariant.defaultNew:
+      return "";
+    default:
+    return `absolute left-2 transition-all duration-200 ease-in-out bg-transparent ${
+    isFocused.value || hasValue
+      ? "scale-90 top-[-30px] text-gray-500" 
+      : "top-2 text-gray-400"
+  }`; 
+  }
+});
 </script>
+
+<style scoped>
+
+</style>

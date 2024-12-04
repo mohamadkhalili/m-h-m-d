@@ -7,9 +7,9 @@ export const InputProps = {
 }
 
 export const InputVariant = {
-  shadow: 'v-shadow',
-  faded: 'v-faded',
-  underline: 'v-underline',
-  bordered: 'v-bordered',
-  flat: 'v-flat'
-} as const;
+  search: 'search',
+  underline: 'underline',
+  highlight: 'highlight',
+  express: 'express',
+  defaultNew: 'default-new', 
+};
