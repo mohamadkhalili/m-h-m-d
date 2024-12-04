@@ -72,9 +72,9 @@ name
 
 <template #content1>
 
-<div class=" py-10 rounded-lg  shadow-inner grid  grid-cols-2 gap-12 justify-items-center">
+<div class=" py-10 rounded-lg bg-gray-200 shadow-inner grid  grid-cols-2 gap-12 justify-items-center">
   
-<Input variant="search" placeholder="hi" />
+<Input variant="search" icon1="➥" icon2='🗙' placeholder='search'/>
 <Input variant="underline" />
 <Input variant="highlight" />
 <Input variant="express" />
