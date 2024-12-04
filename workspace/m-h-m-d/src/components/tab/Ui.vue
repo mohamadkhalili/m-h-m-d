@@ -64,7 +64,7 @@ const getButtonStyleClass = computed(() => {
         after:opacity-100  after:scale-100 after:transition-transform
         after:duration-500 border-none`
     case 'shadow':
-      return ' relative inline-flex    ';
+      return ' relative inline-flex ';
       case 'bordered':
       return `
         relative inline-flex items-center  justify-center 
@@ -87,7 +87,7 @@ function selectTab(value) {
 </script>
 
 <template>
-  <div :class="[position , 'items-center']">
+  <div :class="[position , 'items-center ']">
     <Core
     :tabs="props.tabs"
       :variant="props.variant"
@@ -107,7 +107,7 @@ function selectTab(value) {
     getButtonStyleClass,
     sizeTab,
     props.isDisabled ? 'opacity-50 cursor-not-allowed' : '',
-     !props.vertical && props.position =='top' ? (props.variant === 'bordered' && activeTab === tab.value ? '  border-b-0  shadow-[inset_0px_2px_0px_0px] active:scale-105 ' : '') : '' ,
+     !props.vertical && props.position =='top' ? (props.variant === 'bordered' && activeTab === tab.value ? '  border-b-0 border-x-0  shadow-[inset_0px_2px_0px_0px] active:scale-105 ' : '') : '' ,
      !props.vertical && props.position =='bottom' ? (props.variant === 'bordered' && activeTab === tab.value ? '  border-t-0  shadow-[inset_0px_-1px_0px_0px]  active:scale-105 ' : '') : '' ,
      props.vertical && props.position =='left' ? (props.variant === 'bordered' && activeTab === tab.value ? '  border-r-0 shadow-[inset_1px_0px_0px_0px] active:scale-105 ' : '') : '' ,
      props.vertical && props.position =='right' ? (props.variant === 'bordered' && activeTab === tab.value ? '  border-l-0 shadow-[inset_-1px_0px_0px_0px] active:scale-105 ' : '') : '' ,
@@ -120,8 +120,8 @@ function selectTab(value) {
     props.variant === 'underline' && activeTab === tab.value ? ' after:scale-x-100' : 'after:scale-x-0',
     props.variant === 'underline' && activeTab !== tab.value ? ' after:scale-x-0 after:bg-gray-400 ' : 'after:scale-x-0',
 
-    props.variant === 'shadow' && activeTab === tab.value ? ' bg-gray-200 border-0 border-x-8 active:scale-95 ' : '',
-    props.variant === 'shadow' && activeTab !== tab.value ? '  border-x-2  active:scale-95  ' : '',
+    props.variant === 'shadow' && activeTab === tab.value ? ' bg-gray-200 border-0 border-x-8 active:scale-105 ' : '',
+    props.variant === 'shadow' && activeTab !== tab.value ? '  border-x-2  active:scale-105 ' : '',
 
 
     props.variant === 'default' && activeTab === tab.value ? '' : '',
@@ -137,6 +137,14 @@ function selectTab(value) {
       : '',
     !props.vertical ? (props.variant === 'default' && index === 0 ? 'rounded-l-full' : '') : (props.variant === 'default' && index === 0 ? 'rounded-t-2xl' : ''),
     !props.vertical ? (props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-r-full' : '') : (props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-b-2xl' : ''),
+    props.vertical ? 'w-full' : '',
+    !props.vertical ? 
+  (props.variant === 'bordered' && index === activeTab - 2 ? 'rounded-br-2xl shadow-main ' : 
+   props.variant === 'bordered' && index === activeTab  ? 'rounded-bl-2xl shadow-main' : '') 
+  : 
+  (props.variant === 'bordered' && index === 0 ? 'rounded-t-lg' : 
+   props.variant === 'bordered' && index === props.tabs.length - 1 ? 'rounded-b-lg' : '')
+,
     props.vertical ? 'w-full' : '',
     activeTab === tab.value ? props.activeTextColor : props.textColor,
     activeTab === tab.value ? props.activeColor : props.color,
@@ -167,7 +175,6 @@ function selectTab(value) {
 </template>
 
 <style scoped>
-
 .slide-right-enter-active,
 .slide-right-leave-active {
   transition: all 0.5s ease-in-out;
@@ -180,4 +187,88 @@ function selectTab(value) {
   opacity: 0;
   transform: translateX(100%);
 }
+/* From Uiverse.io by zanina-yassine */ 
+/* Remove this container when use*/
+.component-title {
+  width: 100%;
+  position: absolute;
+  z-index: 999;
+  top: 30px;
+  left: 0;
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #888;
+  text-align: center;
+}
+
+.tab-container {
+  position: relative;
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+
+  padding: 2px;
+
+  background-color: #dadadb;
+  border-radius: 9px;
+}
+
+.indicator {
+  content: "";
+  width: 130px;
+  height: 28px;
+  background: #ffffff;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  z-index: 9;
+  border: 0.5px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.12), 0px 3px 1px rgba(0, 0, 0, 0.04);
+  border-radius: 7px;
+  transition: all 0.2s ease-out;
+}
+
+.tab {
+  width: 130px;
+  height: 28px;
+  position: absolute;
+  z-index: 99;
+  outline: none;
+  opacity: 0;
+}
+
+.tab_label {
+  width: 130px;
+  height: 28px;
+
+  position: relative;
+  z-index: 999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+
+  font-size: 0.75rem;
+  opacity: 0.6;
+
+  cursor: pointer;
+}
+
+.tab--1:checked ~ .indicator {
+  left: 2px;
+}
+
+.tab--2:checked ~ .indicator {
+  left: calc(130px + 2px);
+}
+
+.tab--3:checked ~ .indicator {
+  left: calc(130px * 2 + 2px);
+}
+
 </style>
