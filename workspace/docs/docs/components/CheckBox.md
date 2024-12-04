@@ -15,6 +15,8 @@ const size1 = ref(true);
 const size2 = ref(true);
 const size3 = ref(true);
 const Radius1 = ref(true);
+const controlRef = ref(false);
+
 const LineRef = ref(false);
 
 
@@ -333,8 +335,8 @@ const LineRef = ref(false);
 
 <div class="  p-6 rounded-lg   flex flex-col gap-4 justify-center place-items-center ">
 
-<CheckBox  v-model="LineRef" lineThrough  >option </CheckBox> <br/>
-<label>control : {{LineRef}}</label>
+<CheckBox  v-model="controlRef" lineThrough  >option </CheckBox> <br/>
+<label>control : {{controlRef}}</label>
 
 
 </div>
@@ -350,8 +352,8 @@ const LineRef = ref(false);
 
 </script>
 
-<CheckBox  v-model="LineRef" lineThrough  >option </CheckBox>
-
+<CheckBox  v-model="controlRef" lineThrough  >option </CheckBox> <br/>
+<label>control : {{controlRef}}</label>
 
 ```
   </template>

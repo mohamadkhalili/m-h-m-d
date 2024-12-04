@@ -1,3 +1,5 @@
 export interface InputSlots {
-    input(): any
-}
+    input: () => any;
+    label: () => any;
+  }
+  

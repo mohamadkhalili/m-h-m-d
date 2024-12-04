@@ -1,79 +1,63 @@
 <template>
   <Core
     :modelValue="modelValue"
-    @update:modelValue="handleModelValue"
-    v-bind="$attrs"
+    :="$attrs"
   >
     <template #input>
-      <slot name="input"></slot>
-      <div v-if="showInput" class="input-container">
-        <label
-          :class="{
-            active: isFocused || localValue,
-            'underline-label': props.variant === 'underline',
-           
-            'bordered-label': props.variant === 'bordered',
-          }"
-          @click="focusInput"
-        >
-          {{ title }}
-        </label>
-
-        <div
-          :class="{
-            'bordered-wrapper': props.variant === 'bordered',
-          }"
-        >
-          <input
-            ref="inputRef"
-            v-model="localValue"
-            :disabled="isDisabled"
-            :readonly="readonly"
-            required
+      <div class="relative">
+          <!-- برچسب با انیمیشن -->
+          <label
             :class="[
-              themeClass,
-              size,        
-              {
-                disabled: isDisabled,
-                readonly: readonly,
-                rtl: rtl,
-              },
+              'absolute left-3  transition-all duration-200 ease-in-out ',
+              mergeClasses(UiLabelInputClass, LabelInputClass).value || InputVariant,
             ]"
+            for="input-id"
+          >
+            {{ props.label }}
+          </label>
+
+          <button v-if="props.variant === InputVariant.search" class="absolute left-2 -translate-y-1/2 top-1/2 p-1">
+            {{ icon1 }}
+          </button>
+
+          <input
+            id="input-id"
+            :placeholder="props.placeholder || ''"
+            v-model="localValue"
+            :class="[
+              '   px-8 py-3  focus:outline-none  transition-all duration-300 ',
+              UiInputClass
+            ]"
+            type="text"
+            aria-label="Input field"
             @focus="isFocused = true"
             @blur="handleBlur"
           />
-        
-        </div>
+
+          <button v-if="props.variant === InputVariant.search" type="reset" class="absolute right-3 -translate-y-1/2 top-1/2 p-1">
+            {{ icon2 }}
+          </button>
+       
       </div>
     </template>
   </Core>
 </template>
 
-
 <script setup lang="ts">
-import {
-  computed,
-  ref,
-  
-  useSlots,
-  watch,
-} from "vue";
-import { uiProps, InputVariant, InputColor, InputSize } from "./props";
+import { computed, ref, watch } from "vue";
+import { InputProps, InputVariant } from "./props";
 import { inputEmits } from "./Emits";
-import { InputSlots } from "../input/Slots";
+import { useMergeClasses } from "../../composables/useMergeClasses";
 import Core from "./Core.vue";
 
-const uiSlots = defineSlots<InputSlots>();
-const props = defineProps(uiProps);
+const mergeClasses = useMergeClasses();
+const props = defineProps(InputProps);
 const emit = defineEmits(inputEmits);
 
 defineOptions({
   inheritAttrs: false,
 });
 
-const slots = useSlots();
-const showInput = computed(() => !slots.input);
-const inputRef = ref<HTMLInputElement | null>(null);
 const isFocused = ref(false);
 const localValue = ref(props.modelValue);
 
@@ -84,264 +68,31 @@ watch(
   }
 );
 
-const handleModelValue = (newValue: String) => {
-  emit("update:modelValue", newValue);
-};
-
-const themeClass = computed(() => {
-  if (props.variant) {
-    return InputVariant[props.variant];
-  }
-  return InputColor[props.color];
-});
-const size = computed(() => {
-  return InputSize[props.size];
-});
-
 const handleBlur = () => {
-  isFocused.value = !!props.modelValue;
+  isFocused.value = !!localValue.value;
 };
 
-const focusInput = () => {
-  inputRef.value?.focus();
-  isFocused.value = true;
-};
+const UiLabelInputClass = computed(() => {
+  const hasValue = !!localValue.value; 
+  return `${isFocused.value || hasValue ? "scale-90 top-[-25px] text-gray-500 top-0" : " bg-transparent top-2 text-gray-400"}`;
+});
+
+const UiInputClass = computed(() => {
+  switch (props.variant) {
+    case InputVariant.search:
+      return "rounded-full bg-white"; 
+    case InputVariant.underline:
+      return "border-b-2 border-gray-300 focus:border-blue-500 transition-all duration-300";
+    case InputVariant.highlight:
+      return "rounded-none bg-transparent  shadow-[inset_0px_-2px_0px_0px_rgba(0,_0,_0,_0.9)]";
+    case InputVariant.express:
+      return "ring-2 ring-red-400 rounded-lg p-2 focus:ring-red-500 transition-all duration-300";
+    default:
+      return "ring-2 ring-blue-400 rounded-lg p-2 focus:ring-green-500 transition-all duration-300"; 
+  }
+});
 </script>
 
-
 <style scoped>
-.v-shadow {
-  border: 2px solid transparent;
-  background-origin: border-box;
-  background-clip: content-box;
-  box-shadow: 0 4px 20px rgba(149, 155, 167, 0.555);
-  transition: box-shadow 0.3s ease, border 0.5s ease;
-}
 
-.v-shadow:focus {
-  border: 2px solid transparent;
-  background-origin: border-box;
-  background-clip: content-box;
-  box-shadow: 0 10px 15px rgba(86, 145, 247, 0.548);
-}
-
-
-
-
-
-
-#MainInput:hover,
-#MainInput:focus {
-  box-shadow: inset 0 0 2px rgba(156, 156, 156, 0.1),
-    0 0 0 2px rgba(255, 255, 255, 0.39), 0 0 0 3px rgba(158, 203, 255, 0.795),
-    0 0 0 5px rgba(14, 155, 190, 0.034);
-  border-color: rgba(161, 161, 161, 0.719);
-}
-
-.custom-input {
-  border-radius: 10px;
-  transition: all 200ms;
-  border: 1px solid gray;
-}
-
-.rtl {
-  text-align: right;
-  direction: rtl;
-}
-
-.default-label:active {
-  opacity: 0;
-}
-.default-wrapper {
-  border-radius: 15px;
-}
-.bg-default {
-  border: 2px rgb(112, 112, 112) solid;
-}
-.bg-purple {
-  border: 2px rgb(191, 58, 196) solid;
-  color: rgb(114, 0, 95);
-}
-
-.bg-green {
-  border: 2px rgb(0, 207, 145) solid;
-  color: rgb(0, 116, 58);
-}
-
-.bg-red {
-  border: 2px rgba(228, 46, 0, 0.829) solid;
-  color: rgb(204, 0, 0);
-}
-
-.bg-amber {
-  border: 2px rgb(221, 221, 26) solid;
-  color: rgb(85, 85, 0);
-}
-
-.bg-transparent {
-  border: 2px solid rgb(77, 77, 241);
-  transition: 0.2s all ease-in-out;
-}
-
-.bg-transparent:focus {
-  border: 2px solid transparent;
-  border: 2px solid rgb(1, 206, 221);
-}
-
-.v-flat {
-  background: rgba(124, 124, 124, 0.315);
-  border: none;
-  color: rgba(0, 0, 0, 0.87);
-  transition: 0.2s all;
-}
-.v-flat:hover {
-  background: #cececea4;
-}
-
-.bordered-wrapper {
-  position: relative;
-}
-
-.bordered-label {
-  position: absolute;
-  top: -8px;
-  left: 10px;
-  background: #ffffff;
-  padding: 0 10px;
-  font-size: 12px;
-  color: #8b8b8b;
-  transition: all 0.3s ease;
-  border-radius: 10px;
-  z-index: 10;
-}
-
-.bordered-label.active {
-  top: -8px;
-  background: #5a5a5a;
-  color: #ffffff;
-}
-.bordered-label:active {
-  border: 1px solid greenyellow;
-}
-
-.v-underline {
-  position: relative;
-  background-color: transparent;
-  padding: 10px;
-  border: none;
-  border-radius: 0;
-  border-bottom: 2px solid #afafaf;
-  transition: border-color 0.3s ease;
-}
-
-.v-underline::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: transparent;
-  transition: all 0.4s ease;
-}
-
-.v-underline:hover::after {
-  background-color: #0056d8;
-  width: 100%;
-}
-
-.v-underline:focus {
-  border-bottom: 2px solid #00bb92;
-}
-
-.v-underline:hover {
-  border-bottom: 2px solid #0056d8;
-
-  cursor: text;
-}
-
-.v-faded {
-  border: none;
-
-  color: #000000;
-  box-shadow: inset 0px 0px 50px 0px rgba(0, 0, 0, 0.233);
-  transition: all 0.4s ease;
-}
-.v-faded:hover {
-  box-shadow: inset 0px 0px 50px 0px rgba(107, 73, 73, 0.233);
-}
-
-.disabled {
-  pointer-events: none;
-  cursor: not-allowed;
-  opacity: 40%;
-}
-
-.Readonly {
-  border: 10px black solid;
-}
-
-.input-container {
-  position: relative;
-  margin: 20px 0;
-}
-
-label {
-  position: absolute;
-  left: 4%;
-  top: 12px;
-  transition: 0.2s ease all;
-  color: gray;
-  padding: 2px;
-}
-
-label.active {
-  left: 8;
-
-  background: #ffffff00;
-  top: -3px;
-  font-size: 12px;
-  color: #8b8b8b;
-}
-
-input {
-  padding: 12px 10px;
-  border-radius: 10px;
-  border: 1px solid gray;
-  width: 100%;
-  text-align: left;
-}
-
-input.rtl {
-  text-align: right;
-  direction: rtl;
-}
-
-.underline-label {
-  position: absolute;
-  top: 5px;
-  left: 0;
-  font-size: 18px;
-  color: #8b8b8b;
-  transition: all 0.2s ease-in-out;
-}
-
-.underline-label.active {
-  top: 45px;
-  font-size: 16px;
-  color: #818181;
-}
-
-.size-sm {
-  font-size: 12px;
-}
-.size-md {
-  font-size: 15px;
-}
-.size-lg {
-  font-size: 18px;
-}
-.size-xl {
-  font-size: 20px;
-}
 </style>
