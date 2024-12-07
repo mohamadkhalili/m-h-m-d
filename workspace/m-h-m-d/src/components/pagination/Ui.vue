@@ -1,61 +1,122 @@
 /* eslint-disable */
 
 <template>
-  <div class="flex items-center gap-4 w-fit" :dir="rtl ? 'rtl' : 'ltr'">
-    <pagination :modelValue="modelValue" @update:modelValue="handlePageChange" :searchPage="searchPage"
-      @update:searchPage="handleSearchPage" :isEditingSearchPage="isEditingSearchPage"
-      @update:isEditingSearchPage="handleIsEditingSearchPage" :page-size="pageSize" v-bind="$attrs">
+  <div :class="paginationClasses.uiContainerClass" :dir="rtl ? 'rtl' : 'ltr'">
+    <pagination
+      :modelValue="modelValue"
+      @update:modelValue="handlePageChange"
+      :searchPage="searchPage"
+      @update:searchPage="handleSearchPage"
+      :isEditingSearchPage="isEditingSearchPage"
+      @update:isEditingSearchPage="handleIsEditingSearchPage"
+      :page-size="pageSize"
+      v-bind="$attrs"
+    >
       <template #superPrev="{ disabled }">
         <slot name="superPrev" :disabled="disabled" :rtl="rtl"></slot>
-        <Button v-if="showDefaultSuperPrev" :buttonClass="mergeClasses(paginationClasses.uiButtonClass, buttonClass).value"
-          :disabled="disabled">
+        <Button
+          v-if="showDefaultSuperPrev"
+          :buttonClass="
+            mergeClasses(paginationClasses.uiButtonClass, buttonClass).value
+          "
+          :disabled="disabled"
+        >
           <svg-icon type="mdi" :path="superPrevIcon"></svg-icon>
-      </Button>
+        </Button>
       </template>
       <template #prev="{ disabled }">
         <slot name="prev" :disabled="disabled" :rtl="rtl"></slot>
-        <Button v-if="showDefaultPrev" :buttonClass="mergeClasses(paginationClasses.uiButtonClass, buttonClass).value" :disabled="disabled">
+        <Button
+          v-if="showDefaultPrev"
+          :buttonClass="
+            mergeClasses(paginationClasses.uiButtonClass, buttonClass).value
+          "
+          :disabled="disabled"
+        >
           <svg-icon type="mdi" :path="prevIcon"></svg-icon>
         </Button>
       </template>
       <template #default="{ isCurrentPage, isActive, page }">
-        <slot name="default" :isCurrentPage="isCurrentPage" :isActive="isActive" :page="page"></slot>
-        <div v-if="isCurrentPage && showDefaultPagination" class="cursor-pointer elevation-1" :class="[
-          isActive
-            ? mergeClasses(paginationClasses.uiActiveClass, activeClass).value
-            : mergeClasses(paginationClasses.uiOnActiveClass, onActiveClass).value,
-        ]">
+        <slot
+          name="default"
+          :isCurrentPage="isCurrentPage"
+          :isActive="isActive"
+          :page="page"
+        ></slot>
+        <div
+          v-if="isCurrentPage && showDefaultPagination"
+          :class="[
+            isActive
+              ? mergeClasses(paginationClasses.uiActiveClass, activeClass).value
+              : mergeClasses(paginationClasses.uiOnActiveClass, onActiveClass)
+                  .value,
+          ]"
+        >
           {{ page }}
         </div>
-        <span v-if="page === -1 && showDefaultPagination" class="select-none mx-3" :class="separatorClass">...</span>
+        <span
+          v-if="page === -1 && showDefaultPagination"
+          :class="
+            mergeClasses(paginationClasses.uiSeparatorClass, separatorClass)
+              .value
+          "
+          >...</span
+        >
       </template>
       <template #next="{ disabled }">
         <slot name="next" :disabled="disabled" :rtl="rtl"></slot>
-        <Button v-if="showDefaultNext" :buttonClass="mergeClasses(paginationClasses.uiButtonClass, buttonClass).value" :disabled="disabled">
+        <Button
+          v-if="showDefaultNext"
+          :buttonClass="
+            mergeClasses(paginationClasses.uiButtonClass, buttonClass).value
+          "
+          :disabled="disabled"
+        >
           <svg-icon type="mdi" :path="nextIcon"></svg-icon>
         </Button>
       </template>
       <template #superNext="{ disabled }">
         <slot name="superNext" :disabled="disabled" :rtl="rtl"></slot>
-        <Button v-if="showDefaultSuperNext" :buttonClass="mergeClasses(paginationClasses.uiButtonClass, buttonClass).value"
-          :disabled="disabled">
+        <Button
+          v-if="showDefaultSuperNext"
+          :buttonClass="
+            mergeClasses(paginationClasses.uiButtonClass, buttonClass).value
+          "
+          :disabled="disabled"
+        >
           <svg-icon type="mdi" :path="superNextIcon"></svg-icon>
         </Button>
       </template>
       <template #searchPage="{ enabled }">
         <slot name="searchPage" :enabled="enabled"></slot>
-        <div class="inline-block w-[100px] max-w-[100px] h-[40px] mr-[-30px] mt-[7px] box-border"
-          style="perspective: 1000px" :class="{ 'is-flipped': isEditingSearchPage }">
+        <div
+          class="flip-container"
+          style="perspective: 1000px"
+          :class="{ 'is-flipped': isEditingSearchPage }"
+        >
           <div class="flipper">
             <div class="front">
-              <Button v-if="showDefaultsearchPageBtn && enabled"
-                :buttonClass="mergeClasses(paginationClasses.uiButtonClass, buttonClass).value">
+              <Button
+                v-if="showDefaultsearchPageBtn && enabled"
+                :buttonClass="
+                  mergeClasses(paginationClasses.uiButtonClass, buttonClass)
+                    .value
+                "
+              >
                 <svg-icon type="mdi" :path="mdiMagnify"></svg-icon>
               </Button>
             </div>
             <div class="back">
-              <input v-if="showDefaultsearchPageInput && enabled" ref="searchInput" :value="searchPage"
-                @input="handleInput" :class="mergeClasses(paginationClasses.uiInputClass, onActiveClass).value" />
+              <input
+                v-if="showDefaultsearchPageInput && enabled"
+                ref="searchInput"
+                :value="searchPage"
+                @input="handleInput"
+                :class="
+                  mergeClasses(paginationClasses.uiInputClass, onActiveClass)
+                    .value
+                "
+              />
             </div>
           </div>
         </div>
@@ -164,6 +225,17 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.flip-container {
+  perspective: 1000px;
+  display: inline-block;
+  width: 100px;
+  max-width: 100px;
+  height: 40px;
+  margin-right: -30px;
+  margin-top: 7px;
+  box-sizing: border-box;
 }
 
 .flipper {
