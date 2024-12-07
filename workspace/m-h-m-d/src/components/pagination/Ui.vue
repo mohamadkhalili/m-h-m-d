@@ -87,40 +87,30 @@
           <svg-icon type="mdi" :path="superNextIcon"></svg-icon>
         </Button>
       </template>
-      <template #searchPage="{ enabled }">
+      <template #searchPage="{ enabled}">
         <slot name="searchPage" :enabled="enabled"></slot>
         <div
-          class="flip-container"
-          style="perspective: 1000px"
-          :class="{ 'is-flipped': isEditingSearchPage }"
-        >
-          <div class="flipper">
-            <div class="front">
-              <Button
-                v-if="showDefaultsearchPageBtn && enabled"
-                :buttonClass="
-                  mergeClasses(paginationClasses.uiButtonClass, buttonClass)
-                    .value
-                "
-              >
-                <svg-icon type="mdi" :path="mdiMagnify"></svg-icon>
-              </Button>
-            </div>
-            <div class="back">
-              <input
-                v-if="showDefaultsearchPageInput && enabled"
-                ref="searchInput"
-                :value="searchPage"
-                @input="handleInput"
-                :class="
-                  mergeClasses(paginationClasses.uiInputClass, onActiveClass)
-                    .value
-                "
-              />
-            </div>
+          v-click-outside="handleClickOutside">
+          <div v-if="showDefaultsearchPageBtn && enabled && !isEditingSearchPage || isEditingSearchPage == undefined">
+            <Button
+              :buttonClass="mergeClasses(paginationClasses.uiButtonClass, buttonClass).value"
+            >
+              <svg-icon type="mdi" :path="mdiMagnify"></svg-icon>
+            </Button>
           </div>
+    
+          <input
+            v-if="showDefaultsearchPageInput && isEditingSearchPage"
+            ref="searchInput"
+            :value="searchPage"
+            @input="handleInput"
+            :class="mergeClasses(paginationClasses.uiInputClass, onActiveClass).value"
+            class=""
+          />
         </div>
       </template>
+      
+      
     </pagination>
   </div>
 </template>
@@ -218,57 +208,12 @@ watch(
     }
   }
 );
+const handleClickOutside = (event: Event) => {
+  if (props.isEditingSearchPage === true ) {
+    emit("update:isEditingSearchPage", false);
+  }
+};
 </script>
 
 <style scoped>
-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.flip-container {
-  perspective: 1000px;
-  display: inline-block;
-  width: 100px;
-  max-width: 100px;
-  height: 40px;
-  margin-right: -30px;
-  margin-top: 7px;
-  box-sizing: border-box;
-}
-
-.flipper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-  transform-origin: center;
-}
-
-.flip-container.is-flipped .flipper {
-  transform: rotateY(180deg);
-}
-
-.front,
-.back {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.front {
-  transform: rotateY(0deg);
-}
-
-.back {
-  transform: rotateY(180deg);
-}
 </style>
