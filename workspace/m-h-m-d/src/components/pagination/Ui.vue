@@ -167,14 +167,14 @@ button {
 }
 
 .flip-container {
-  perspective: 1000px; /* Creates 3D space */
-  display: inline-block; /* Keeps it inline with other items */
-  width: 100px; /* Use full width of the parent container */
-  max-width: 100px; /* Set a max width if necessary */
-  height: 40px; /* Adjust height based on the size of the button/input */
+  perspective: 1000px; 
+  display: inline-block; 
+  width: 100px; 
+  max-width: 100px;
+  height: 40px; 
   margin-right: -30px;
   margin-top: 7px;
-  box-sizing: border-box; /* Include padding and border in element's total width and height */
+  box-sizing: border-box; 
 }
 
 .flipper {

@@ -17,7 +17,7 @@
   <div @click="superNextPage">
     <slot name="superNext" :disabled="modelValue === pageSize"></slot>
   </div>
-  <div v-if="enableSearchPage" @click="toggleEdit" @keyup.enter="setSearchPage(searchPage)">
+  <div v-click-outside="handleClickOutside" v-if="enableSearchPage" @click="toggleEdit" @keyup.enter="setSearchPage(searchPage)">
     <slot name="searchPage" :enabled="enableSearchPage"></slot>
   </div>
 </template>
@@ -72,6 +72,11 @@ const setSearchPage = (searchnum: number) => {
 const toggleEdit = () => {
   if (props.isEditingSearchPage === false) {
     emit("update:isEditingSearchPage", true);
+  }
+};
+const handleClickOutside = (event: Event) => {
+  if (props.isEditingSearchPage === true) {
+    emit("update:isEditingSearchPage", false);
   }
 };
 
