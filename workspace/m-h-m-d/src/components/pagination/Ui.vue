@@ -91,7 +91,7 @@
         <slot name="searchPage" :enabled="enabled"></slot>
         <div
           v-click-outside="handleClickOutside">
-          <div v-if="showDefaultsearchPageBtn && enabled && !isEditingSearchPage || isEditingSearchPage == undefined">
+          <div v-if="showDefaultsearchPage && enabled && !isEditingSearchPage || isEditingSearchPage == undefined">
             <Button
               :buttonClass="adapterClass(mergeClasses(paginationClasses.uiButtonClass, buttonClass).value).value"
             >
@@ -100,7 +100,7 @@
           </div>
     
           <input
-            v-if="showDefaultsearchPageInput && isEditingSearchPage"
+            v-if="showDefaultsearchPage && isEditingSearchPage"
             ref="searchInput"
             :value="searchPage"
             @input="handleInput"
@@ -124,7 +124,7 @@ import { useBorder } from "../../composables/UseBorderProps";
 import { paginationEmits } from "./Emits";
 import SvgIcon from "@jamescoyle/vue-icon";
 import { useMergeClasses } from "../../composables/useMergeClasses";
-import { useAdapterClass } from "../../composables/Adapter";
+import { useAdapterClass } from "../../composables/UseClass";
 const adapterClass = useAdapterClass();
 const mergeClasses = useMergeClasses();
 import {
@@ -157,8 +157,7 @@ const showDefaultPrev = computed(() => !slots.prev);
 const showDefaultNext = computed(() => !slots.next);
 const showDefaultSuperPrev = computed(() => !slots.superPrev);
 const showDefaultSuperNext = computed(() => !slots.superNext);
-const showDefaultsearchPageInput = computed(() => !slots.superPrev);
-const showDefaultsearchPageBtn = computed(() => !slots.superNext);
+const showDefaultsearchPage = computed(() => !slots.searchPage);
 let timeoutId: number | undefined;
 const searchInput = ref<HTMLInputElement | null>(null);
 const handlePageChange = (newValue: number) => {
