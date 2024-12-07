@@ -4,11 +4,10 @@
     :="$attrs"
   >
     <template #input>
-      <div class="relative">
-          <!-- برچسب با انیمیشن -->
+      <div class="relative ">
           <label
             :class="[
-              'absolute left-3  transition-all duration-200 ease-in-out ',
+              'absolute left-4  transition-all duration-300 ease-in-out ',
               mergeClasses(UiLabelInputClass, LabelInputClass).value || InputVariant,
             ]"
             for="input-id"
@@ -16,7 +15,7 @@
             {{ props.label }}
           </label>
 
-          <button v-if="props.variant === InputVariant.search" class="absolute left-2 -translate-y-1/2 top-1/2 p-1">
+          <button v-if="props.variant === InputVariant.search" class="absolute left-2 -translate-y-1/2 top-1/2  pr-8">
             {{ icon1 }}
           </button>
 
@@ -25,8 +24,8 @@
             :placeholder="props.placeholder || ''"
             v-model="localValue"
             :class="[
-              '   px-8 py-3  focus:outline-none  transition-all duration-300 ',
-              UiInputClass
+              '   px-10 py-3  transition-all duration-300 ',
+              mergeClasses(UiInputClass, InputClass).value ,
             ]"
             type="text"
             aria-label="Input field"
@@ -49,6 +48,7 @@ import { InputProps, InputVariant } from "./props";
 import { inputEmits } from "./Emits";
 import { useMergeClasses } from "../../composables/useMergeClasses";
 import Core from "./Core.vue";
+import  Divider  from  "../Divider/Ui.vue";
 
 const mergeClasses = useMergeClasses();
 const props = defineProps(InputProps);
@@ -74,22 +74,13 @@ const handleBlur = () => {
 
 const UiLabelInputClass = computed(() => {
   const hasValue = !!localValue.value; 
-  return `${isFocused.value || hasValue ? "scale-90 top-[-25px] text-gray-500 top-0" : " bg-transparent top-2 text-gray-400"}`;
+  return `${isFocused.value || hasValue  ? " top-[-25px]  top-0 text-gray-800" : " bg-transparent top-3 text-gray-400 "}`;
 });
 
+
 const UiInputClass = computed(() => {
-  switch (props.variant) {
-    case InputVariant.search:
-      return "rounded-full bg-white"; 
-    case InputVariant.underline:
-      return "border-b-2 border-gray-300 focus:border-blue-500 transition-all duration-300";
-    case InputVariant.highlight:
-      return "rounded-none bg-transparent  shadow-[inset_0px_-2px_0px_0px_rgba(0,_0,_0,_0.9)]";
-    case InputVariant.express:
-      return "ring-2 ring-red-400 rounded-lg p-2 focus:ring-red-500 transition-all duration-300";
-    default:
-      return "ring-2 ring-blue-400 rounded-lg p-2 focus:ring-green-500 transition-all duration-300"; 
-  }
+  const hasValue = !!localValue.value; 
+  return `${isFocused.value || hasValue  ? "  rounded-lg ring-2 ring-gray-600 " : "  ring-2 ring-gray-400 rounded-lg p-2 "}`;
 });
 </script>
 

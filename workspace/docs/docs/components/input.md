@@ -58,7 +58,7 @@ name
 </Tab>
 
 
-## variant 
+## Modify 
 
 
 
@@ -72,12 +72,12 @@ name
 
 <template #content1>
 
-<div class=" py-10 rounded-lg bg-gray-200 shadow-inner grid  grid-cols-2 gap-12 justify-items-center">
+<div class=" py-10 rounded-lg  shadow-inner grid  grid-cols-2 gap-12 justify-items-center">
   
-<Input variant="search" icon1="➥" icon2='🗙' placeholder='search'/>
-<Input variant="underline" />
-<Input variant="highlight" />
-<Input variant="express" />
+<Input variant="search" icon1="➥" icon2='🗙' placeholder='search' InputClass="rounded-full ring-2  "/>
+<Input variant="search" icon1="👤 "  placeholder="password" InputClass="shadow-blue-200 shadow-inner" />
+<Input  label="User name" InputClass="shadow-[1px_4px_2px_-2px_rgba(34,_197,_94,_0.5)] " LabelInputClass=' top-12 left-[84px] rounded-full  px-2  bg-transparent '/>
+<Input label="Gmail"  LabelInputClass=' -top-3 left-6  rounded-full  px-2  bg-white text-sm '  />
 
 
 </div>
