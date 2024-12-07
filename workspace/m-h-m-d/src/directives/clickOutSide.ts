@@ -1,5 +1,3 @@
-import { Directive } from "vue";
-
 const clickOutside: Directive = {
   beforeMount(el, binding) {
     // Check if `binding.value` is a function
@@ -12,8 +10,8 @@ const clickOutside: Directive = {
 
     el.clickOutsideHandler = (event: Event) => {
       const target = event.target as Node;
-      // Ensure the click is outside the element and the menu is open
-      if (!(el === target || el.contains(target))) {
+      // Exclude clicks inside the button
+      if (!(el === target || el.contains(target) || target.closest("button"))) {
         binding.value(event); // Call the provided handler
       }
     };
