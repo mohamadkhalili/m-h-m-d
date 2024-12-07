@@ -44,7 +44,7 @@
       </template>
       <template #searchPage="{ enabled }">
         <slot name="searchPage" :enabled="enabled"></slot>
-        <div class="inline-block w-[100px] max-w-[100px] h-[40px] mr-[-30px] mt-[7px] box-border"
+        <div class="flip-container"
           style="perspective: 1000px" :class="{ 'is-flipped': isEditingSearchPage }">
           <div class="flipper">
             <div class="front">
@@ -164,6 +164,17 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.flip-container {
+  perspective: 1000px; /* Creates 3D space */
+  display: inline-block; /* Keeps it inline with other items */
+  width: 100px; /* Use full width of the parent container */
+  max-width: 100px; /* Set a max width if necessary */
+  height: 40px; /* Adjust height based on the size of the button/input */
+  margin-right: -30px;
+  margin-top: 7px;
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
 }
 
 .flipper {
