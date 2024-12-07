@@ -27,7 +27,9 @@ const tabs = [
 
 <div class=" py-10  rounded-lg shadow-inner flex justify-center items-center">
   
-<Input label="name" LabelInputClass="" />
+<Input label="name"/>
+</div
+
 
 </div>
 
@@ -42,6 +44,7 @@ const tabs = [
 name
 </template>
 </Input>
+
 
 ```
   </template>
@@ -74,8 +77,8 @@ name
 
 <div class=" py-10 px-2 rounded-lg  shadow-inner grid  grid-cols-2 gap-12 justify-items-center">
   
-<Input variant="search" prefix="➥" suffix='🗙' placeholder='search' InputClass="rounded-full ring-2  "/>
-<Input variant="search" icon1="👤 "  placeholder="password" InputClass="shadow-blue-200 shadow-inner" />
+<Input  prefix="➥" suffix='🗙' placeholder='search' InputClass="rounded-full ring-2  "/>
+<Input prefix="👤"   placeholder="password" InputClass="shadow-blue-200 shadow-inner" />
 <Input  label="User name" InputClass="shadow-[1px_4px_2px_-2px_rgba(34,_197,_94,_0.5)] " LabelInputClass=' top-12 left-[84px] rounded-full  px-2  bg-transparent '/>
 <Input label="Gmail"  LabelInputClass=' top-[-10px] left-8 rounded-full bg-white  px-2  text-sm '  />
 
@@ -88,11 +91,17 @@ name
 
   ```md
 
-<Input>
-<template #label >
-name
+<Input  placeholder="Search">
+  <template #prefix>
+ <button  class="absolute left-2 -translate-y-1/2 top-1/2  pr-8">
+➥
+ </button>
 </template>
-</Input>
+  <template #suffix>
+           <button  type="reset" class="absolute right-3 -translate-y-1/2 top-1/2 p-1">
+            🗙
+          </button>
+  </template>
 
 ```
   </template>
@@ -100,7 +109,10 @@ name
 
   ```md
 
-<Input label="name" />
+<Input  prefix="➥" suffix='🗙' placeholder='search' InputClass="rounded-full ring-2  "/>
+<Input prefix="👤"   placeholder="password" InputClass="shadow-blue-200 shadow-inner" />
+<Input  label="User name" InputClass="shadow-[1px_4px_2px_-2px_rgba(34,_197,_94,_0.5)] " LabelInputClass=' top-12 left-[84px] rounded-full  px-2  bg-transparent '/>
+<Input label="Gmail"  LabelInputClass=' top-[-10px] left-8 rounded-full bg-white  px-2  text-sm '  />
 
 
 ```

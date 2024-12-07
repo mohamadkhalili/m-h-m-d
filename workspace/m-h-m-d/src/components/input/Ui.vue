@@ -12,13 +12,18 @@
             ]"
             for="input-id"
           >
+          <div v-if="!$slots.label" >
             {{ props.label }}
+          </div>
+          <slot name="label"/>
           </label>
-
-          <button v-if="props.variant === InputVariant.search" class="absolute left-2 -translate-y-1/2 top-1/2  pr-8">
+          
+          <div v-if="!$slots.prefix">
+          <button  class="absolute left-2 -translate-y-1/2 top-1/2  pr-8">
             {{ prefix }}
           </button>
-
+          </div>
+          <slot name="prefix" />
           <input
             id="input-id"
             :placeholder="props.placeholder || ''"
@@ -33,10 +38,12 @@
             @blur="handleBlur"
           />
 
-          <button v-if="props.variant === InputVariant.search" type="reset" class="absolute right-3 -translate-y-1/2 top-1/2 p-1">
+          <div v-if="!$slots.suffix">
+          <button  type="reset" class="absolute right-3 -translate-y-1/2 top-1/2 p-1">
             {{ suffix }}
           </button>
-       
+          <slot name="suffix"/>
+        </div>
       </div>
     </template>
   </Core>

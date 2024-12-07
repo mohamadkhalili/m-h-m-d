@@ -11,6 +11,5 @@ export const InputProps = {
 }
 
 export const InputVariant = {
-  search: 'search',
   default: 'default', 
 };
