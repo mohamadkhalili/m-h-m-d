@@ -8,13 +8,9 @@ export const InputProps = {
   icon2: { type: String, default: '' },
   placeholder: { type: String, default: '' },
 
-
 }
 
 export const InputVariant = {
   search: 'search',
-  underline: 'underline',
-  highlight: 'highlight',
-  express: 'express',
-  defaultNew: 'default-new', 
+  default: 'default', 
 };

@@ -25,13 +25,11 @@ const DividerPosition = computed(() => {
     ]"
   >
 
-    <!-- Vertical Divider with Text -->
     <template v-if="props.text !== undefined && props.direction === 'vertical'">
       <div class="flex flex-col items-center justify-center h-full">
         <div class="flex-grow">
           <Core v-bind="props" />
         </div>
-        <!-- متن یا فضای خالی -->
         <span
           :style="{ color: props.color }"
           :class="[props.textColor,DividerPosition]"
