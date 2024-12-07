@@ -16,7 +16,7 @@
           </label>
 
           <button v-if="props.variant === InputVariant.search" class="absolute left-2 -translate-y-1/2 top-1/2  pr-8">
-            {{ icon1 }}
+            {{ prefix }}
           </button>
 
           <input
@@ -34,7 +34,7 @@
           />
 
           <button v-if="props.variant === InputVariant.search" type="reset" class="absolute right-3 -translate-y-1/2 top-1/2 p-1">
-            {{ icon2 }}
+            {{ suffix }}
           </button>
        
       </div>
@@ -48,7 +48,6 @@ import { InputProps, InputVariant } from "./props";
 import { inputEmits } from "./Emits";
 import { useMergeClasses } from "../../composables/useMergeClasses";
 import Core from "./Core.vue";
-import  Divider  from  "../Divider/Ui.vue";
 
 const mergeClasses = useMergeClasses();
 const props = defineProps(InputProps);

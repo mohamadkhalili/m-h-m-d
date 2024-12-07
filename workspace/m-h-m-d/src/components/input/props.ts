@@ -4,8 +4,8 @@ export const InputProps = {
   InputClass: { type: String, default: '' },
   label: { type: String, default: '' },
   LabelInputClass: { type: String, default: '' },
-  icon1: { type: String, default: '' },
-  icon2: { type: String, default: '' },
+  prefix: { type: String, default: '' },
+  suffix: { type: String, default: '' },
   placeholder: { type: String, default: '' },
 
 }
