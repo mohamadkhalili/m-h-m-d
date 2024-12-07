@@ -20,14 +20,14 @@
       </template>
       <template #default="{ isCurrentPage, isActive, page }">
         <slot name="default" :isCurrentPage="isCurrentPage" :isActive="isActive" :page="page"></slot>
-        <div v-if="isCurrentPage && showDefaultPagination" class="cursor-pointer elevation-1" :class="[
+        <div v-if="isCurrentPage && showDefaultPagination" :class="[
           isActive
             ? mergeClasses(paginationClasses.uiActiveClass, activeClass).value
             : mergeClasses(paginationClasses.uiOnActiveClass, onActiveClass).value,
         ]">
           {{ page }}
         </div>
-        <span v-if="page === -1 && showDefaultPagination" class="select-none mx-3" :class="separatorClass">...</span>
+        <span v-if="page === -1 && showDefaultPagination"  :class="mergeClasses(paginationClasses.uiSeparatorClass, separatorClass).value">...</span>
       </template>
       <template #next="{ disabled }">
         <slot name="next" :disabled="disabled" :rtl="rtl"></slot>

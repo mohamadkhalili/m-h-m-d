@@ -16,7 +16,7 @@ export const uiProps = {
     activeClass: { type: String, default: '' },
     onActiveClass: { type: String, default: '' },
     buttonClass: { type: String, default: '' },
-    separatorClass: { type: String, default: 'text-black' },
+    separatorClass: { type: String, default: '' },
     pageSize: { type: Number, default: 20, required: false }, //Size of pages
     modelValue: { type: Number, required: false }, //the page it is on
     searchPage: { type: Number, required: false }, //the page it is on with search page input
