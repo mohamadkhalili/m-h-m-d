@@ -8,6 +8,14 @@ const tabs = [
 
 
 ]
+
+import { ref } from 'vue';
+
+const buttonState = ref(false);
+
+const toggleValue = () => {
+  buttonState.value = !buttonState.value; 
+};
 </script>
 
 
@@ -102,6 +110,7 @@ name
             🗙
           </button>
   </template>
+  </input>
 
 ```
   </template>
@@ -119,4 +128,100 @@ name
   </template>
 
 </Tab>
+
+
+
+## Actions
+
+
+<Tab 
+   class="gap-3 border-[1px]  rounded-md w-full mx-auto "
+    :tabs="tabs" 
+    variant="bordered"
+    size="sm"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+
+<template #content1>
+
+<div class=" py-10 px-2 rounded-lg  shadow-inner grid gap-2   justify-items-center">
+
+<p class="text-gray-600"> click on  close button for handling action</p>
+<Input>
+  <template #label>
+    Name
+  </template>
+
+  <template #prefix>
+    <button
+      type="reset"
+      class="absolute right-3 -translate-y-1/2 top-1/2 p-1 animate-pulse scale-150 hover:animate-none"
+      @click="toggleValue"
+    >
+      🗙
+    </button>
+  </template>
+</Input>
+
+ <p class="text-sm">
+      The button state is: 
+      <span :class="[buttonState ? 'text-green-600' : 'text-red-700']">
+        {{ buttonState }}
+      </span>
+    </p>
+</div>
+
+</template>
+
+  <template #content2>
+
+  ```md
+
+<script>
+import { ref } from 'vue';
+
+const buttonState = ref(false);
+
+const toggleValue = () => {
+  buttonState.value = !buttonState.value; 
+};
+</script>
+
+
+<Input>
+  <template #label>
+    Name
+  </template>
+
+  <template #prefix>
+    <button
+      type="reset"
+      class="absolute right-3 -translate-y-1/2 top-1/2 p-1"
+      @click="toggleValue"
+    >
+      🗙
+    </button>
+  </template>
+</Input>
+
+ <p class="text-sm">
+      The button state is: 
+      <span :class="[buttonState.value ? 'text-green-600' : 'text-red-700']">
+        {{ buttonState }}
+      </span>
+    </p>
+
+```
+  </template>
+    <template #content3>
+
+  ```md
+
+<Input label="name" suffix="X" />
+
+```
+  </template>
+
+</Tab>
+
 
