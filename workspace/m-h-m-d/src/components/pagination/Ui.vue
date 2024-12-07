@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 <template>
-  <div :class="paginationClasses.uiContainerClass" :dir="rtl ? 'rtl' : 'ltr'">
+  <div :class="adapterClass(paginationClasses.uiContainerClass).value" :dir="rtl ? 'rtl' : 'ltr'">
     <pagination
       :modelValue="modelValue"
       @update:modelValue="handlePageChange"
@@ -17,7 +17,7 @@
         <Button
           v-if="showDefaultSuperPrev"
           :buttonClass="
-            mergeClasses(paginationClasses.uiButtonClass, buttonClass).value
+          adapterClass(mergeClasses(paginationClasses.uiButtonClass, buttonClass).value).value
           "
           :disabled="disabled"
         >
@@ -29,7 +29,7 @@
         <Button
           v-if="showDefaultPrev"
           :buttonClass="
-            mergeClasses(paginationClasses.uiButtonClass, buttonClass).value
+            adapterClass(mergeClasses(paginationClasses.uiButtonClass, buttonClass).value).value
           "
           :disabled="disabled"
         >
@@ -47,9 +47,9 @@
           v-if="isCurrentPage && showDefaultPagination"
           :class="[
             isActive
-              ? mergeClasses(paginationClasses.uiActiveClass, activeClass).value
-              : mergeClasses(paginationClasses.uiOnActiveClass, onActiveClass)
-                  .value,
+              ? adapterClass(mergeClasses(paginationClasses.uiActiveClass, activeClass).value).value
+              : adapterClass(mergeClasses(paginationClasses.uiOnActiveClass, onActiveClass)
+                  .value).value,
           ]"
         >
           {{ page }}
@@ -57,8 +57,8 @@
         <span
           v-if="page === -1 && showDefaultPagination"
           :class="
-            mergeClasses(paginationClasses.uiSeparatorClass, separatorClass)
-              .value
+            adapterClass(mergeClasses(paginationClasses.uiSeparatorClass, separatorClass)
+              .value).value
           "
           >...</span
         >
@@ -68,7 +68,7 @@
         <Button
           v-if="showDefaultNext"
           :buttonClass="
-            mergeClasses(paginationClasses.uiButtonClass, buttonClass).value
+            adapterClass(mergeClasses(paginationClasses.uiButtonClass, buttonClass).value).value
           "
           :disabled="disabled"
         >
@@ -80,7 +80,7 @@
         <Button
           v-if="showDefaultSuperNext"
           :buttonClass="
-            mergeClasses(paginationClasses.uiButtonClass, buttonClass).value
+            adapterClass(mergeClasses(paginationClasses.uiButtonClass, buttonClass).value).value
           "
           :disabled="disabled"
         >
@@ -93,7 +93,7 @@
           v-click-outside="handleClickOutside">
           <div v-if="showDefaultsearchPageBtn && enabled && !isEditingSearchPage || isEditingSearchPage == undefined">
             <Button
-              :buttonClass="mergeClasses(paginationClasses.uiButtonClass, buttonClass).value"
+              :buttonClass="adapterClass(mergeClasses(paginationClasses.uiButtonClass, buttonClass).value).value"
             >
               <svg-icon type="mdi" :path="mdiMagnify"></svg-icon>
             </Button>
@@ -104,8 +104,7 @@
             ref="searchInput"
             :value="searchPage"
             @input="handleInput"
-            :class="mergeClasses(paginationClasses.uiInputClass, onActiveClass).value"
-            class=""
+            :class="adapterClass(mergeClasses(paginationClasses.uiInputClass, onActiveClass).value).value"
           />
         </div>
       </template>
@@ -125,6 +124,8 @@ import { useBorder } from "../../composables/UseBorderProps";
 import { paginationEmits } from "./Emits";
 import SvgIcon from "@jamescoyle/vue-icon";
 import { useMergeClasses } from "../../composables/useMergeClasses";
+import { useAdapterClass } from "../../composables/Adapter";
+const adapterClass = useAdapterClass();
 const mergeClasses = useMergeClasses();
 import {
   mdiChevronDoubleRight,
