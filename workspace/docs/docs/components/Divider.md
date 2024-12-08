@@ -1,12 +1,29 @@
 
-# Divider Component
+<script setup>
+const tabs = [
+  { label: 'UI', value: 1, content: '' },
+  { label: 'code', value: 2, content: ''}
+];
+
+
+</script>
+
+
+## Divider Component
 
 The `Divider` component is a versatile tool for separating content in both vertical and horizontal layouts. It can include text, adapt to custom colors and thickness, and fit various lengths based on your design requirements.
 
-
-
-## Vertical Divider Example  
 A simple `vertical` divider used in a flex container:  
+
+
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full mx-auto "
+    :tabs="tabs" 
+    variant="bordered"
+    size="sm"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+    <template #content1>
 
 <div class="bg-gray-50 p-6 rounded-lg shadow-inner flex w-full justify-between">
   <div class="flex-1 rounded-md p-4"> 
@@ -25,30 +42,27 @@ A simple `vertical` divider used in a flex container:
     <p class="bg-gray-200 h-6 w-2/3 rounded"></p>
   </div>
 </div>
-
-
-## Horizontal Divider Example  
-A `horizontal` divider with text and a specific length:  
-
+<br/>
 <div class="bg-gray-50 p-6 rounded-lg shadow-inner flex flex-col w-full justify-between">
   <div class="flex-1 rounded-md p-4"> 
     <p class="bg-gray-200 h-6 w-2/3 rounded"></p>
     <p class="bg-gray-200 h-6 w-3/4 rounded"></p>
     <p class="bg-gray-200 h-6 w-1/2 rounded"></p>
-    <p class="bg-gray-200 h-6 w-full rounded"></p>
   </div>
   <Divider length="250px" text="OR" color="bg-gray-400" diameter="1px"/>
   <div class="flex-1 rounded-md p-4">
     <p class="bg-gray-200 h-6 w-3/4 rounded"></p>
     <p class="bg-gray-200 h-6 w-1/2 rounded"></p>
     <p class="bg-gray-200 h-6 w-5/6 rounded"></p>
-    <p class="bg-gray-200 h-6 w-2/3 rounded"></p>
   </div>
 </div>
 
-**Code**
+</template>
 
-```md
+
+  <template #content2>
+
+  ```md
 <div class="bg-gray-50 p-6 rounded-lg shadow-inner flex w-full justify-between">
   <div class="flex-1 rounded-md p-4"> 
     <p class="bg-gray-200 h-6 w-3/4 rounded"></p>
@@ -71,13 +85,25 @@ A `horizontal` divider with text and a specific length:
   </div>
 </div>
 
-
 ```
+  </template>
+</Tab>
+
+
 
 ## Colors
 
 The `Divider` component supports custom colors through the `color`  and `textColor` props.  
 
+
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full mx-auto "
+    :tabs="tabs" 
+    variant="bordered"
+    size="sm"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+    <template #content1>
 
 <Divider direction="horizontal" length="300px" text="VS" textColor="text-red-500" color="bg-red-500"  class="my-8" />
 <Divider direction="horizontal" length="300px" text="VS" textColor="text-yellow-500" color="bg-yellow-500" class="my-8" />
@@ -85,20 +111,54 @@ The `Divider` component supports custom colors through the `color`  and `textCol
 <Divider direction="horizontal" length="300px" text="VS" textColor="text-green-500" color="bg-green-500" class="my-8"  />
 <Divider direction="horizontal" length="300px" text="VS" textColor="text-purple-500" color="bg-purple-500" class="my-8"  />
 
-**Code**
+</template>
 
-```md
+
+  <template #content2>
+
+  ```md
 <Divider direction="horizontal"  text="VS" textColor="text-red-500" color="bg-red-500"  class="my-8" />
 <Divider direction="horizontal" text="VS" textColor="text-yellow-500" color="bg-yellow-500" class="my-8" />
 <Divider direction="horizontal" text="VS" textColor="text-blue-500" color="bg-blue-500" class="my-8"  />
 <Divider direction="horizontal" text="VS" textColor="text-green-500" color="bg-green-500" class="my-8"  />
 <Divider direction="horizontal" text="VS" textColor="text-purple-500" color="bg-purple-500" class="my-8"  />
 
+
 ```
-## **Diameter**
+  </template>
+</Tab>
+
+
+
+
+
+## Diameter
 
 The `diameter` prop defines the thickness of the divider:
 
+
+
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full mx-auto "
+    :tabs="tabs" 
+    variant="bordered"
+    size="sm"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+    <template #content1>
+<div class="flex justify-around">
+<Divider direction="vertical" diameter="1px"  length="100px" text="VS" textColor="text-red-500" color="bg-red-500"  class="my-8" />
+<Divider direction="vertical" diameter="2px" length="100px" text="VS" textColor="text-yellow-500" color="bg-yellow-500" class="my-8" />
+<Divider direction="vertical" diameter="3px" length="100px" text="VS" textColor="text-blue-500" color="bg-blue-500" class="my-8"  />
+<Divider direction="vertical" diameter="4px" length="100px" text="VS" textColor="text-green-500" color="bg-green-500" class="my-8"  />
+<Divider direction="vertical" diameter="5px" length="100px" text="VS" textColor="text-purple-500" color="bg-purple-500" class="my-8"  />
+</div>
+</template>
+
+
+  <template #content2>
+
+  ```md
 <div class="flex justify-around">
 <Divider direction="vertical" diameter="1px"  length="100px" text="VS" textColor="text-red-500" color="bg-red-500"  class="my-8" />
 <Divider direction="vertical" diameter="2px" length="100px" text="VS" textColor="text-yellow-500" color="bg-yellow-500" class="my-8" />
@@ -107,36 +167,61 @@ The `diameter` prop defines the thickness of the divider:
 <Divider direction="vertical" diameter="5px" length="100px" text="VS" textColor="text-purple-500" color="bg-purple-500" class="my-8"  />
 </div>
 
-**Code**
-
-```md
-<div class="flex justify-around">
-<Divider direction="vertical" diameter="1px"  length="100px" text="VS" textColor="text-red-500" color="bg-red-500"  class="my-8" />
-<Divider direction="vertical" diameter="2px" length="100px" text="VS" textColor="text-yellow-500" color="bg-yellow-500" class="my-8" />
-<Divider direction="vertical" diameter="3px" length="100px" text="VS" textColor="text-blue-500" color="bg-blue-500" class="my-8"  />
-<Divider direction="vertical" diameter="4px" length="100px" text="VS" textColor="text-green-500" color="bg-green-500" class="my-8"  />
-<Divider direction="vertical" diameter="5px" length="100px" text="VS" textColor="text-purple-500" color="bg-purple-500" class="my-8"  />
-</div>
 ```
+  </template>
+</Tab>
+
+
+
+
+
+
 
 ## Position
 
-
+you can choice the position of text with `position`  props
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full mx-auto "
+    :tabs="tabs" 
+    variant="bordered"
+    size="sm"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+    <template #content1>
 <Divider direction="horizontal" length="300px" text="VS" textColor="text-red-500" color="bg-red-500"  class="my-8" position="start"/>
 <Divider direction="horizontal" length="300px" text="VS" textColor="text-yellow-500" color="bg-yellow-500" class="my-8" />
 <Divider direction="horizontal" length="300px" text="VS" textColor="text-blue-500" color="bg-blue-500" class="my-8"  position="end"/>
 
+</template>
 
-**Code**
-```md
+
+  <template #content2>
+
+  ```md
 <Divider  length="300px" text="VS"  position="start"/>
 <Divider  length="300px" text="VS"   />
 <Divider  length="300px" text="VS"  position="end"/>
 
+
 ```
+  </template>
+</Tab>
+
+
 
 
 ## Multi
+
+
+
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full mx-auto "
+    :tabs="tabs" 
+    variant="bordered"
+    size="sm"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+    <template #content1>
 <div class="bg-gray-50 p-6 rounded-lg shadow-inner
  flex w-full justify-between">
      <div className="max-w-md">
@@ -155,10 +240,13 @@ The `diameter` prop defines the thickness of the divider:
     </div>
 
 </div>
+</template>
 
-**Code**
 
-```md
+  <template #content2>
+
+  ```md
+
 <div class="bg-gray-50 p-6 rounded-lg shadow-inner
  flex w-full justify-between">
      <div className="max-w-md">
@@ -179,7 +267,12 @@ The `diameter` prop defines the thickness of the divider:
     </div>
 
 </div>
+
+
 ```
+  </template>
+</Tab>
+
 
 ## Divider Component Features
 
