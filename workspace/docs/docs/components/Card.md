@@ -231,7 +231,7 @@ class="bg-white" >
    class="bg-white  "
 >
 
-<Button class="shadow-inner ring-1 ring-blue-200 rounded-lg" variant="link">
+<Button buttonClass="bg-gradient-to-r from-amber-500 to-pink-500 text-white  rounded-xl">
 View
 </Button>
 </Card>
@@ -256,7 +256,7 @@ View
 
   <template #footer>
     <p>More from this photographer</p>
-    <Button class="shadow-inner ring-1 ml-2 ring-blue-200 rounded-lg" variant="link">
+   <Button buttonClass="bg-gradient-to-r from-amber-500 to-pink-500 text-white  rounded-xl">
       View
     </Button>
   </template>
@@ -394,7 +394,7 @@ View
   info4="1K ♥️"
 >
 
-<Button   round="full">
+<Button   buttonClass="rounded-full bg-white  text-blue-500 ring-2">
     follow
  </Button>
 </Card>
@@ -417,7 +417,8 @@ View
         <p class="text-sm text-gray-500">2h ago</p>
       </div>
     </div>
-    <Button class="  w-min shadow-none" round="full" >
+    <Button   buttonClass="rounded-full bg-white  text-blue-500 ring-2">
+
       follow
     </Button>
   </template>

@@ -106,11 +106,10 @@ another variant for loader in MHMD library !
     activeColor="text-blue-500 shadow-blue-500"
   >
 <template #content1>
-<div class="grid grid-cols-3 gap-3 justify-items-center">
+<div class="grid grid-cols-2 gap-3 justify-items-center">
 
 <Loader variant="spinner" />
 <Loader variant="circle" />
-<Loader variant="dots" />
 </div>
 </template>
 
@@ -120,7 +119,6 @@ another variant for loader in MHMD library !
   ```md
 <Loader variant="spinner" />
 <Loader variant="circle" />
-<Loader variant="dots" />
 ```
   </template>
 
