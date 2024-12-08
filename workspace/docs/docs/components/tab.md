@@ -6,6 +6,12 @@ const tabs = [
 
 
 ];
+const tabsView = [
+  { label: 'Ui', value: 1, content: '' },
+  { label: 'Code', value: 2, content: '' }
+
+
+];
 
 const tabsVariants = [
   { label: 'Tab 1', value: 1, content: null },
@@ -19,16 +25,27 @@ const tabsVariants = [
 ##  Tab
 
 
+
+
+
+
 This example demonstrates horizontally aligned tabs with default styling.
+
+
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full mx-auto "
+    :tabs="tabsView" 
+    variant="bordered"
+    size="sm"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+    <template #content1>
 
 <div class="p-8 rounded-xl shadow-inner flex justify-center items-center">
   <Tab 
    class="gap-3 border-[1px] rounded-md w-fit"
     :tabs="tabs" 
     variant="bordered"
-     activeColor="text-blue-500"
-     color="bg-blue-800 text-gray-100 border-transparent"
-     contentColor="text-blue-900"
   >
     <template #label="{ tab }">
       <span>{{ tab.label }}</span>
@@ -39,13 +56,13 @@ This example demonstrates horizontally aligned tabs with default styling.
   </Tab>
 </div>
 
-<br/>
-<br/>
 
-**Code**
+</template>
 
 
-```md
+  <template #content2>
+
+  ```md
 <script setup>
 const tabs = [
   { label: 'Tab 1', value: 1, content: 'Content of tab 1' },
@@ -67,17 +84,23 @@ const tabs = [
       <p>{{ tab.content }}</p>
     </template>
   </Tab>
-
 ```
-<br/>
-<br/>
+  </template>
+</Tab>
+
 
 
 ## Modify
  the colors for active and inactive tabs
 The following examples show how you can customize the background and text colors for active and inactive states.
-<br/>
-<br/>
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full mx-auto "
+    :tabs="tabsView" 
+    variant="bordered"
+    size="sm"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+    <template #content1>
 <div class="grid grid-cols-2 gap-2"> 
 <div class="p-8 rounded-lg   justify-center items-center shadow-inner">
  <Tab :tabs="tabs" 
@@ -108,9 +131,38 @@ The following examples show how you can customize the background and text colors
        </div>
 
 
+</template>
+
+
+  <template #content2>
+
+  ```md
+ <Tab :tabs="tabs" 
+ activeColor="bg-blue-600"
+  color="bg-gray-700"
+   activeTextColor="text-white"
+   variant="default"
+   contentColor="text-blue-600"
+    textColor="text-white" > 
+    </Tab> 
+```
+  </template>
+</Tab>
+
 
 
 ## Vertical Tabs
+
+
+
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full mx-auto "
+    :tabs="tabsView" 
+    variant="bordered"
+    size="sm"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+    <template #content1>
 
 <div class="p-6 rounded-lg shadow-inner flex justify-center items-center">
   <Tab 
@@ -128,8 +180,12 @@ The following examples show how you can customize the background and text colors
   </Tab>
 </div>
 
-```md
+</template>
 
+
+  <template #content2>
+
+  ```md
  <Tab 
     :tabs="tabsVariants" 
     activeColor="bg-purple-600" 
@@ -139,12 +195,25 @@ The following examples show how you can customize the background and text colors
     vertical      <!-- add this -->
   >
 ```
+  </template>
+</Tab>
 
----
+
+
 
 
 ## Variants
-<br/>
+
+
+
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full mx-auto "
+    :tabs="tabsView" 
+    variant="bordered"
+    size="sm"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+    <template #content1>
 
 <div class="flex justify-around">
 <h5 class="text-green-600">bordered</h5>
@@ -214,10 +283,12 @@ The following examples show how you can customize the background and text colors
 </div>
 <br/>
 
----
+</template>
 
-**code**
-```md
+
+  <template #content2>
+
+  ```md
  <Tab 
   :tabs="tabsVariants" 
   activeColor="bg-transparent"
@@ -226,19 +297,25 @@ The following examples show how you can customize the background and text colors
   activeTextColor="text-blue-500"
   variant="underline"        <!-- You can choice 1 of 4 variants  -->
     >
-      
-  
 ```
-<br/>
-<br/>
+  </template>
+</Tab>
 
 
 ## Position
 Adjust the position of the tabs using the `position` prop. The available options are `top`, `right`, `left`, and `bottom`. Below are examples for each position option:
 
-<br/>
-<br/>
 
+
+
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full mx-auto "
+    :tabs="tabsView" 
+    variant="bordered"
+    size="sm"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+    <template #content1>
 <div class="flex justify-around">
 <h5>bottom</h5>
 <h5>top</h5>
@@ -328,11 +405,12 @@ Adjust the position of the tabs using the `position` prop. The available options
 
 </div>
 
-<br/>
+</template>
 
-**Code** 
 
-```md
+  <template #content2>
+
+  ```md
 <script setup>
 const tabs = [
   { label: 'Tab 1', value: 1, content: 'Content of tab 1' },
@@ -357,9 +435,9 @@ const tabs = [
       <p>{{ tab.content }}</p>
     </template>
   </Tab>
-
 ```
-
+  </template>
+</Tab>
 
 
 
@@ -367,6 +445,16 @@ const tabs = [
 
 ## Disable
  you can disable your Tab with `isDisable` option!
+
+
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full mx-auto "
+    :tabs="tabsView" 
+    variant="bordered"
+    size="sm"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+    <template #content1>
 
  <div class="p-6 rounded-lg shadow-inner flex justify-center items-center">
   <Tab 
@@ -379,8 +467,13 @@ const tabs = [
   </Tab>
 </div>
 
-**Code**
-```md
+
+</template>
+
+
+  <template #content2>
+
+  ```md
  <Tab 
      :tabs="tabsVariants" 
       activeTextColor="text-teal-500"
@@ -390,10 +483,21 @@ const tabs = [
      isDisabled    <!-- add this -->
   >
 ```
+  </template>
+</Tab>
+
 
 ## Justify
  you can select justify your Tab with `justify` option!
 
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full mx-auto "
+    :tabs="tabsView" 
+    variant="bordered"
+    size="sm"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+    <template #content1>
 <Tab 
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
     :tabs="tabs" 
@@ -424,8 +528,13 @@ const tabs = [
   >
 </tab>
 
-**Code**
-```md
+
+</template>
+
+
+  <template #content2>
+
+  ```md
 <Tab 
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
     :tabs="tabs" 
@@ -436,15 +545,24 @@ const tabs = [
   >
 </tab>
 ```
+  </template>
+</Tab>
+
+
 ## Size
 
 Adjust the size of the tabs using the `size` prop. The available options are `sm`, `md`, `lg`, and `xl`. Below are examples for each size option:
 
-<div class="p-6 rounded-lg shadow-inner flex flex-col justify-center items-center gap-8">
 
-
-
-<div class="flex items-center space-x-4">
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full mx-auto "
+    :tabs="tabsView" 
+    variant="bordered"
+    size="sm"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+    <template #content1>
+<div class=" rounded-lg shadow-inner grid grid-cols gap-1 ">
   <Tab 
      :tabs="tabsVariants" 
      activeTextColor="text-rose-500"
@@ -455,10 +573,6 @@ Adjust the size of the tabs using the `size` prop. The available options are `sm
      size="xl" 
   >
   </Tab>
-</div>
-
-
-<div class="flex items-center space-x-4">
   <Tab 
      :tabs="tabsVariants" 
      variant="shadow"
@@ -467,11 +581,6 @@ Adjust the size of the tabs using the `size` prop. The available options are `sm
      size="lg" 
   >
   </Tab>
-</div>
-
-
-
-<div class="flex items-center ">
   <Tab 
      :tabs="tabsVariants" 
      variant="shadow"
@@ -480,11 +589,9 @@ Adjust the size of the tabs using the `size` prop. The available options are `sm
      size="md" 
   >
   </Tab>
-</div>
 
 <br/>
 
-<div class="flex items-center  ">
   <Tab 
      :tabs="tabsVariants" 
      variant="shadow"
@@ -493,13 +600,16 @@ Adjust the size of the tabs using the `size` prop. The available options are `sm
      size="sm" 
   >
   </Tab>
-</div>
 
 </div>
 
-**Code**
 
-```md
+</template>
+
+
+  <template #content2>
+
+  ```md
   <Tab 
      :tabs="tabsVariants" 
      variant="shadow"
@@ -509,6 +619,12 @@ Adjust the size of the tabs using the `size` prop. The available options are `sm
   >
   </Tab>
 ```
+  </template>
+</Tab>
+
+
+
+
 
 ## Tab Component Features
 
