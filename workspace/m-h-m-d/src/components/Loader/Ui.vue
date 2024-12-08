@@ -26,9 +26,6 @@
     <span v-else-if="variant === 'spinner'" :class="['loader-spinner']"></span>
     <span v-else-if="variant === 'circle'" :class="['loader-circle']"></span>
 
-    <div v-else-if="variant === 'dots'" :class="['loader-dots']"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-
-
 </Core>
 
 </template>
@@ -84,67 +81,6 @@ animation: l24 1s infinite linear;
 @keyframes l24 {
   100% {transform: rotate(1turn)}
 }
-
-
-.loader-dots {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-grid-template-rows: repeat(3, 1fr);
-gap: 12px;
-row-gap: 0px;
-scale: 0.8;
-width: 72px;
-height: 72px;
-justify-content: center;
-align-items: center;
-}
-
-.loader-dots div {
-width: 12px;
-height: 12px;
-border-radius: 50%;
-background: currentColor;
-animation: loader-dots 1.2s linear infinite;
-}
-
-.loader-dots div:nth-child(1) {
-animation-delay: 0s;
-}
-.loader-dots div:nth-child(2) {
-animation-delay: -0.4s;
-}
-.loader-dots div:nth-child(3) {
-animation-delay: -0.8s;
-}
-.loader-dots div:nth-child(4) {
-animation-delay: -0.4s;
-}
-.loader-dots div:nth-child(5) {
-animation-delay: -0.8s;
-}
-.loader-dots div:nth-child(6) {
-animation-delay: -1.2s;
-}
-.loader-dots div:nth-child(7) {
-animation-delay: -0.8s;
-}
-.loader-dots div:nth-child(8) {
-animation-delay: -1.2s;
-}
-.loader-dots div:nth-child(9) {
-animation-delay: -1.6s;
-}
-
-@keyframes loader-dots {
-0%, 100% {
-  opacity: 1;
-}
-50% {
-  opacity: 0.5;
-}
-}
-
-
 
 
 .loader  {

@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineEmits, onMounted, onUnmounted, ref, useSlots, computed } from 'vue';
+import {  onMounted, onUnmounted, ref, useSlots, computed } from 'vue';
 import type { Config, Header } from './models/tableModels.js'
 
 const isMouseDown = ref(false);

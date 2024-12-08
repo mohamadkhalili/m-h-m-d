@@ -2,7 +2,7 @@ import type { PropType } from 'vue';
 
 export const loaderProps = {
   variant: {
-    type: String as PropType<'default' | 'spinner' | 'dots' | 'circle'>,
+    type: String as PropType<'default' | 'spinner' |   'circle'>,
     default: 'default',
   },
   size: {

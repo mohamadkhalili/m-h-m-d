@@ -31,7 +31,7 @@
   </template>
   
   <script setup>
-  import { computed, defineProps, defineEmits, ref } from 'vue';
+  import { computed, ref } from 'vue';
   
   const props = defineProps({
     modelValue: {
