@@ -15,8 +15,8 @@ import Card from './components/Card/Ui.vue';
 import Divider from './components/Divider/Ui.vue';
 import list from './components/list/Ui.vue'
 import { tooltip } from './directives/TooltipDirective';
-import  clickOutside  from './directives/clickOutSide';
-import  stepper  from './components/stepper/Core.vue';
+import clickOutside from './directives/clickOutSide';
+import stepper from './components/stepper/Core.vue';
 const components = [
     { name: 'pagination', ...pagination },
     { name: 'modal', ...modal },
@@ -29,11 +29,11 @@ const components = [
     { name: 'Switch', ...Switch },
     { name: 'CheckBox', ...CheckBox },
     { name: 'Divider', ...Divider },
-    { name: 'list', ...list},
-    { name: 'stepper', ...stepper},
-    { name: 'Loader', ...Loader},
+    { name: 'list', ...list },
+    { name: 'stepper', ...stepper },
+    { name: 'Loader', ...Loader },
 
-    { name: 'breadcrumb', ...Breadcrumb},
+    { name: 'breadcrumb', ...Breadcrumb },
 ]
 
 const directives = {
@@ -41,9 +41,15 @@ const directives = {
     clickOutside,
 }
 
-const install = (app: App) => {
+interface Config {
+    componentPrefix?: string;
+    classPrefix?: string;
+}
+
+const install = (app: App, config: Config = {}) => {
+    app.config.globalProperties.$config = config;
     components.forEach(component => {
-        app.component(component.name, component);
+        app.component(config?.componentPrefix + component.name, component);
     });
     Object.entries(directives).forEach(([name, directive]) => {
         app.directive(name, directive);
@@ -54,19 +60,9 @@ const install = (app: App) => {
 
 
 
-export { pagination, modal, Button, input, menu, tab, list,ChatBubble,Divider, stepper ,Card, Switch, CheckBox, Breadcrumb,Loader}
+export { pagination, modal, Button, input, menu, tab, list, ChatBubble, Divider, stepper, Card, Switch, CheckBox, Breadcrumb, Loader }
 export { tooltip }
 
 export default {
     install
 }
-
-// export default {
-//     install(app: App) {
-//         app.directive('tooltipl', tooltip);
-//         app.component('Main', pagination);
-//         app.component('MainBtn', MainBtn);
-//         app.component('MainInput', mainInput)
-
-//     },
-// };
