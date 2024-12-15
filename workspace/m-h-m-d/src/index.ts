@@ -21,7 +21,7 @@ const components = [
     { name: 'Pagination', ...pagination },
     { name: 'modal', ...modal },
     { name: 'Button', ...Button },
-    { name: 'input', ...input },
+    { name: 'Input', ...input },
     { name: 'Menu', ...menu },
     { name: 'Tab', ...tab },
     { name: 'ChatBubble', ...ChatBubble },
