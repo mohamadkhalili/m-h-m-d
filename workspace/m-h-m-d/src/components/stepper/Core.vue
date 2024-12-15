@@ -1,12 +1,12 @@
 <template>
-  <div class="flex flex-row justify-between relative pb-4 pt-4">
+  <div :class="adapterClass(stepperClasses.generalClass).value">
     <!-- Progress Bar -->
      <slot name="progress"></slot>
-    <div v-if="showProgress" :class="mergeClasses(uiProgressClass, progressClass).value">
+    <div v-if="showProgress" :class="adapterClass(mergeClasses(stepperClasses.uiProgressClass, progressClass).value).value">
       <slot name="progressBar"></slot>
       <div
         v-if="showProgressBar"
-        :class="mergeClasses(uiProgressBarClass, progressBarClass).value"
+        :class="adapterClass(mergeClasses(stepperClasses.uiProgressBarClass, progressBarClass).value).value"
         role="progressbar"
         :style="progressStyle"
         :aria-valuenow="60"
@@ -19,10 +19,9 @@
       v-for="(step, index) in steps"
       :key="index + 1"
       :class="{
-        'flex flex-col items-center z-20':
-          index !== 0 && index !== steps.length - 1,
-        'flex flex-col items-start z-20': index === 0,
-        'flex flex-col items-end z-20': index === steps.length - 1,
+        [adapterClass(stepperClasses.stepClass).value]: index !== 0 && index !== steps.length - 1,
+        [adapterClass(stepperClasses.startStepClass).value]: index === 0,
+        [adapterClass(stepperClasses.endStepClass).value]: index === steps.length - 1,
       }"
     >
       <slot
@@ -37,8 +36,8 @@
         v-if="showStep"
         :class="
           index + 1 <= modelValue
-            ? mergeClasses(uiDoneClass, doneClass).value
-            : mergeClasses(uiNotDoneClass, notDoneClass).value
+            ? adapterClass(mergeClasses(stepperClasses.uiDoneClass, doneClass).value).value
+            : adapterClass(mergeClasses(stepperClasses.uiNotDoneClass, notDoneClass).value).value
         "
         @click="moveStep(index + 1)"
         ref="stepRefs"
@@ -63,6 +62,9 @@ import { stepperSlots } from "./Slots";
 import * as mdiIcons from "@mdi/js";
 import SvgIcon from "@jamescoyle/vue-icon";
 import { useMergeClasses } from "../../composables/useMergeClasses";
+import { stepperClasses } from "../../styles/StepperClasses";
+import { useAdapterClass } from "../../composables/UseClass";
+const adapterClass = useAdapterClass();
 const mergeClasses = useMergeClasses();
 const props = defineProps(coreProps);
 const emit = defineEmits(stepperEmits);
@@ -71,18 +73,6 @@ const slots = useSlots();
 const showStep = computed(() => !slots.step);
 const showProgress = computed(() => !slots.ptogress);
 const showProgressBar = computed(() => !slots.progressBar);
-const uiProgressClass = ref(
-  "absolute top-8 h-1.5 m-0 shadow-none bg-gray-300 w-[95%] overflow-hidden"
-);
-const uiProgressBarClass = ref(
-  "bg-green-500 h-full transition-all duration-300 ease-linear"
-);
-const uiDoneClass = ref(
-  "bg-green-500 transition-all duration-500 delay-200 flex justify-center w-10 h-10 text-center p-2 text-white rounded-full select-none cursor-pointer items-center"
-);
-const uiNotDoneClass = ref(
-  "bg-gray-300 p-2 text-white rounded-full cursor-pointer items-center flex justify-center w-10 h-10 select-none text-center"
-);
 
 const moveStep = (stepNumber: number) => {
   if (props.allowStepClick) {
