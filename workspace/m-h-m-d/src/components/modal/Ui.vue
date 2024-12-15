@@ -15,7 +15,7 @@
         ></SvgIcon>
       </template>
       <template #default>
-        <div class="mt-7">
+        <div :class="adapterClass(modalClasses.contentClass).value">
           <slot name="default"></slot>
           <p v-if="showDefault">This is the modal content</p>
         </div>
@@ -31,6 +31,9 @@ import { uiProps } from "./Props";
 import { modalEmits } from "./Emits";
 import SvgIcon from "@jamescoyle/vue-icon";
 import { mdiClose } from "@mdi/js";
+import { useAdapterClass } from "../../composables/UseClass";
+const adapterClass = useAdapterClass();
+import { modalClasses } from "../../styles/ModalClasses";
 
 const props = defineProps(uiProps);
 const emit = defineEmits(modalEmits);

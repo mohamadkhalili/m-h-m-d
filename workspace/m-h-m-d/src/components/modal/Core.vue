@@ -3,12 +3,12 @@
     <div
       v-if="modelValue"
       class="modal-overlay"
-      :class="mergeClasses(uiOutsideClass, outsideClass).value"
+      :class="adapterClass(mergeClasses(modalClasses.uiOutsideClass, outsideClass).value).value"
       @click.self="handleOutsideClick"
     >
       <div
         class="modal-content"
-        :class="mergeClasses(uiModalClass, modalClass).value"
+        :class="adapterClass(mergeClasses( modalClasses.uiModalClass, modalClass).value).value"
       >
         <slot name="close"></slot>
         <slot name="default"></slot>
@@ -21,18 +21,15 @@
 import { modalSlots } from "./Slots";
 import { coreProps } from "./Props";
 import { modalEmits } from "./Emits";
+import { modalClasses } from "../../styles/ModalClasses";
 import { useMergeClasses } from "../../composables/useMergeClasses";
 const mergeClasses = useMergeClasses();
+import { useAdapterClass } from "../../composables/UseClass";
+const adapterClass = useAdapterClass();
 import { ref } from "vue";
 const props = defineProps(coreProps);
 const slots = defineSlots<modalSlots>();
 const emit = defineEmits(modalEmits);
-const uiModalClass = ref(
-  "bg-teal-900 text-white rounded-xl p-5 w-[400px] h-[200px] -translate-y-5 shadow-xl z-[1000]"
-);
-const uiOutsideClass = ref(
-  "bg-black bg-opacity-10 fixed inset-0 backdrop-blur-sm flex items-center justify-center opacity-0 z-[9999]"
-);
 function handleOutsideClick() {
   if (props.closeOnOutside) {
     const modalOverlay = document.querySelector(".modal-overlay");
