@@ -6,19 +6,15 @@ const tabs = [
   { label: 'Props', value: 3, content: ''},
 ];
 
-
 </script>
 
-## Card 
+## Card
 
 `Card` components  simple example
 
-
-
-
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="shadow"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -27,17 +23,16 @@ const tabs = [
 
 <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
 <Card class="bg-white h-44 w-40">
-<template #title> 
+<template #title>
 <h3>title</h3>
 </template>
-<template #description> 
+<template #description>
 <p class="text-gray-500 text-sm">description</p>
 </template>
 </Card>
 </div>
 
 </template>
-
 
   <template #content2>
 
@@ -50,6 +45,7 @@ const tabs = [
 </template>
 
 ```
+
   </template>
     <template #content3>
 
@@ -61,18 +57,17 @@ const tabs = [
    class="bg-white h-44 w-56"
 /> 
 ```
+
   </template>
 
 </Tab>
 
-
-
-
 ## Footer and Header
-this card use `footer ` and ` header ` property !
-<Tab 
+
+this card use `footer` and ` header ` property !
+<Tab
    class="gap-3 border-[1px] rounded-md w-full"
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="shadow"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -82,23 +77,22 @@ this card use `footer ` and ` header ` property !
 <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
 <Card
    class="bg-white w-56"  
-> 
-<template #header> 
+>
+<template #header>
 header
 </template>
-<template #title> 
+<template #title>
 <h3>title</h3>
 </template>
-<template #description> 
+<template #description>
 <p class="text-gray-500 text-sm">description</p>
 </template>
-<template #footer> 
+<template #footer>
 footer
 </template>
 </Card>
 </div>
 </template>
-
 
   <template #content2>
 
@@ -118,6 +112,7 @@ footer
 </template>
 </Card>
 ```
+
   </template>
     <template #content3>
 
@@ -130,31 +125,24 @@ footer="footer"
 header="header " 
 /> 
 ```
+
   </template>
 
 </Tab>
 
+## button
 
-
-
-
-
-
-
-
-##  button 
-
-<Tab 
+<Tab
   class="gap-3 border-[1px] rounded-md w-full"
-  :tabs="tabs" 
+  :tabs="tabs"
   variant="shadow"
   size="sm"
   activeColor="text-blue-500 shadow-blue-500"
 >
   <template #content1>
     <div class="p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
-      <Card 
-        class="bg-white" 
+      <Card
+        class="bg-white"
         >
          <template #title>
           <h3>Button Example</h3>
@@ -186,6 +174,7 @@ class="bg-white" >
 </template>
 </Card>
 ```
+
   </template>
 
   <template #content3>
@@ -204,29 +193,28 @@ class="bg-white" >
 </Card>
 
 ```
+
   </template>
 
 </Tab>
 
-##  image 
+## image
 
-<Tab 
+<Tab
   class="gap-3 border-[1px] rounded-md w-full"
-  :tabs="tabs" 
+  :tabs="tabs"
   variant="shadow"
   size="sm"
   activeColor="text-blue-500 shadow-blue-500"
 >
 
-
   <template #content1>
     <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
 
-
-<Card 
-  title="Beautiful Sunset" 
-  description="A breathtaking view of the sunset   " 
-  image="https://stacycorwin.com/wp-content/uploads/2018/12/sunrise-sunset.jpg" 
+<Card
+  title="Beautiful Sunset"
+  description="A breathtaking view of the sunset   "
+  image="<https://stacycorwin.com/wp-content/uploads/2018/12/sunrise-sunset.jpg>"
   footer=" More from this photographer"
    class="bg-white  "
 >
@@ -264,6 +252,7 @@ View
 </Card>
 
 ```
+
   </template>
 
   <template #content3>
@@ -283,29 +272,28 @@ View
 </Button>
 </Card>
 ```
+
   </template>
 
 </Tab>
 
-##  image horizontal
+## image horizontal
 
-<Tab 
+<Tab
   class="gap-3 border-[1px] rounded-md w-full"
-  :tabs="tabs" 
+  :tabs="tabs"
   variant="shadow"
   size="sm"
   activeColor="text-blue-500 shadow-blue-500"
 >
 
-
   <template #content1>
     <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
 
-
-<Card 
-  title="Beautiful Sunset" 
-  description="A breathtaking view of the sunset   " 
-  image="https://stacycorwin.com/wp-content/uploads/2018/12/sunrise-sunset.jpg" 
+<Card
+  title="Beautiful Sunset"
+  description="A breathtaking view of the sunset   "
+  image="<https://stacycorwin.com/wp-content/uploads/2018/12/sunrise-sunset.jpg>"
   footer=" More from this photographer"
    class="bg-white  "
    horizontal
@@ -344,6 +332,7 @@ View
 </Card>
 
 ```
+
   </template>
 
   <template #content3>
@@ -363,18 +352,18 @@ View
 </Button>
 </Card>
 ```
+
   </template>
 
 </Tab>
 
 ## Variant
 
-
 **Post**
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full"
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="shadow"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -382,8 +371,8 @@ View
     <template #content1>
 
 <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
-<Card 
-  description="This is a demo post from MHMD library 🔥" 
+<Card
+  description="This is a demo post from MHMD library 🔥"
   variant="post"
   avatar="https://avatar.iran.liara.run/public/50"
   username="John Doe"
@@ -399,11 +388,8 @@ View
  </Button>
 </Card>
 
-
-
 </div>
 </template>
-
 
   <template #content2>
 
@@ -441,6 +427,7 @@ View
   </template>
 </Card>
 ```
+
   </template>
   <template #content3>
 
@@ -463,15 +450,16 @@ View
  </Button>
 </Card>
 ```
+
   </template>
 
 </Tab>
 
 **weather**
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full"
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="shadow"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -479,7 +467,7 @@ View
     <template #content1>
 <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
 
-<Card 
+<Card
   title="Tehran"
   description="cloudy"
   info1="Precipitation 0%"
@@ -487,13 +475,12 @@ View
   info3="123 km/h"
   info4="18°C"
   variant="weather"
-  weatherImage="https://icon-library.com/images/weather-icon/weather-icon-2.jpg"
+  weatherImage="<https://icon-library.com/images/weather-icon/weather-icon-2.jpg>"
 >
 </Card>
 </div>
 
 </template>
-
 
   <template #content2>
 
@@ -517,6 +504,7 @@ View
 </Card>
 
 ```
+
   </template>
   <template #content3>
 
@@ -533,22 +521,16 @@ View
 </Card>
 
 ```
+
   </template>
 
 </Tab>
 
-
-
-
-
-
 **progress**
 
-
-
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full"
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="shadow"
     activeColor="text-blue-500 shadow-blue-500"
     size="sm"
@@ -570,7 +552,6 @@ View
 </div>
 
 </template>
-
 
   <template #content2>
 
@@ -602,6 +583,7 @@ View
 </Card>
 
 ```
+
   </template>
   <template #content3>
 
@@ -618,15 +600,10 @@ View
 >
 </Card>
 ```
+
   </template>
 
 </Tab>
-
-
-
-
-
-
 
 ## Features
 
@@ -639,4 +616,3 @@ View
 | **Post Variant**    | Create a social media-like post layout with user details and actions.                                       | Set the `variant` prop to `post` and use related props like `avatar`, `username`, and `info1`-`info4`. |
 | **Weather Variant** | Display weather details in a card format, including an image and key metrics.                              | Set the `variant` prop to `weather` and provide props like `weatherImage` and `info1`-`info4`.       |
 | **Progress Variant**| Showcase project or task progress with percentage and milestones.                                          | Set the `variant` prop to `progress` and include props like `info1`-`info4` for details.             |
-

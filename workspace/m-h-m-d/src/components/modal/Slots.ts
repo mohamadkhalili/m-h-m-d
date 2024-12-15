@@ -1,4 +1,4 @@
 export interface modalSlots {
-    close(): any, 
+    close(): any,
     default(): any
 }

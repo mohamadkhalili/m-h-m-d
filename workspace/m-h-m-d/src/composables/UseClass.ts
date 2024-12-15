@@ -3,8 +3,9 @@ import { addPrefixToTailwindClasses } from "../adapters/tailwind";
 
 export function useAdapterClass() {
   const adapterClass = (className: string) => {
+    const exportClass = addPrefixToTailwindClasses(className)
     return computed(() => {
-      return addPrefixToTailwindClasses(className);
+      return (exportClass);
     });
   };
   return adapterClass;

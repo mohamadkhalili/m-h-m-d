@@ -1,4 +1,4 @@
-# Pagination
+# pagination
 
 <script setup>
 import { ref } from 'vue'
@@ -17,7 +17,7 @@ const searchValue = ref()
 const isEditingSearchPage = ref()
 </script>
 
-## Default Pagination
+## Default pagination
 
 **Props:**
 
@@ -27,11 +27,11 @@ const isEditingSearchPage = ref()
 <br>
 
 <br>
-<Pagination v-model="inputValue1" v-model:searchPage="searchValue" v-model:isEditingSearchPage="isEditingSearchPage"/>
+<pagination v-model="inputValue1" v-model:searchPage="searchValue" v-model:isEditingSearchPage="isEditingSearchPage"/>
 <br>
 
 ```vue
-<Pagination v-model="inputValue" v-model:searchPage="searchValue" 
+<pagination v-model="inputValue" v-model:searchPage="searchValue" 
 v-model:isEditingSearchPage="isEditingSearchPage"/>
 ```
 
@@ -43,14 +43,14 @@ v-model:isEditingSearchPage="isEditingSearchPage"/>
 <br>
 
 <br>
-<Pagination v-model="inputValue3" :enableSearchPage="false"/>
+<pagination v-model="inputValue3" :enableSearchPage="false"/>
 <br>
 
 ```vue
-<Pagination v-model="inputValue" :enableSearchPage="false"/>
+<pagination v-model="inputValue" :enableSearchPage="false"/>
 ```
 
-## Left-to-Right Pagination
+## Left-to-Right pagination
 
 **Props:**
 
@@ -61,12 +61,12 @@ v-model:isEditingSearchPage="isEditingSearchPage"/>
 <br>
 
 <div >
-<Pagination v-model="inputValue2" :enableSearchPage="false" :rtl="false"/>
+<pagination v-model="inputValue2" :enableSearchPage="false" :rtl="false"/>
 </div>
 <br>
 
 ```vue
-<Pagination v-model="inputValue" :enableSearchPage="false" :rtl="false"/>
+<pagination v-model="inputValue" :enableSearchPage="false" :rtl="false"/>
 ```
 
 ## Set Page Size
@@ -77,11 +77,11 @@ v-model:isEditingSearchPage="isEditingSearchPage"/>
 <br>
 
 <br>
-<Pagination v-model="inputValue4" :enableSearchPage="false" :pageSize="10"/>
+<pagination v-model="inputValue4" :enableSearchPage="false" :pageSize="10"/>
 <br>
 
 ```vue
-<Pagination v-model="inputValue" :enableSearchPage="false" :pageSize="10"/>
+<pagination v-model="inputValue" :enableSearchPage="false" :pageSize="10"/>
 
 ```
 
@@ -98,25 +98,25 @@ v-model:isEditingSearchPage="isEditingSearchPage"/>
 
 <br>
 <br>
-<Pagination v-model="inputValue5" :enableSearchPage="false" :activeClass="'bg-emerald-500 size-11 rounded-lg shadow-lg'" :onActiveClass="'rounded-lg shadow-lg'" :separatorClass="'text-emerald-500'" :buttonClass="'size-11 rounded-lg shadow-lg'" />
+<pagination v-model="inputValue5" :enableSearchPage="false" :activeClass="'bg-emerald-500 size-11 rounded-lg shadow-lg'" :onActiveClass="'rounded-lg shadow-lg'" :separatorClass="'text-emerald-500'" :buttonClass="'size-11 rounded-lg shadow-lg'" />
 
 <br>
 
 ```vue
-<Pagination v-model="inputValue5" :enableSearchPage="false" 
+<pagination v-model="inputValue5" :enableSearchPage="false" 
 :activeClass="'bg-emerald-500 size-11 rounded-lg shadow-lg'" 
 :onActiveClass="'rounded-lg shadow-lg'" 
 :separatorClass="'text-emerald-500'" 
 :buttonClass="'size-11 rounded-lg shadow-lg'" />
 ```
 
-## Introduction to Pagination with Slots in Vue
+## Introduction to pagination with Slots in Vue
 
-Pagination is a UI component that divides content into discrete pages, allowing users to navigate efficiently. This implementation is designed to be highly customizable through Vue's slots, enabling developers to define specific behaviors and appearances for various pagination elements.
+pagination is a UI component that divides content into discrete pages, allowing users to navigate efficiently. This implementation is designed to be highly customizable through Vue's slots, enabling developers to define specific behaviors and appearances for various pagination elements.
 
-### Slots in the Pagination Component
+### Slots in the pagination Component
 
-The Pagination component utilizes multiple slots to give flexibility in customizing the appearance and functionality of its elements. Below is an explanation of the available slots:
+The pagination component utilizes multiple slots to give flexibility in customizing the appearance and functionality of its elements. Below is an explanation of the available slots:
 
 1. **`#superPrev` Slot**
    - **Purpose**: Customize the button for navigating to the first page or skipping multiple pages backward.

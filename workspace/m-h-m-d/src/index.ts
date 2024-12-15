@@ -32,7 +32,6 @@ const components = [
     { name: 'list', ...list },
     { name: 'stepper', ...stepper },
     { name: 'Loader', ...Loader },
-
     { name: 'breadcrumb', ...Breadcrumb },
 ]
 
@@ -54,11 +53,7 @@ const install = (app: App, config: Config = {}) => {
     Object.entries(directives).forEach(([name, directive]) => {
         app.directive(name, directive);
     });
-
 }
-
-
-
 
 export { pagination, modal, Button, input, menu, tab, list, ChatBubble, Divider, stepper, Card, Switch, CheckBox, Breadcrumb, Loader }
 export { tooltip }

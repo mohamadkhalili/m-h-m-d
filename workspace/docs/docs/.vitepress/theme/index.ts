@@ -7,7 +7,8 @@ import DefaultTheme from 'vitepress/theme'
 import './tailwind.postcss'
 // import Pagination from '../../../../ui/src/components/pagination/Ui.vue'
 
-import { pagination, modal, Button, input, menu, tab, list, tooltip ,ChatBubble,Divider, stepper,Card,Switch,CheckBox, Breadcrumb,Loader} from 'm-h-m-d'
+import mhmd from 'm-h-m-d'
+import { tooltip } from 'm-h-m-d'
 
 import clickOutside from 'm-h-m-d/src/directives/clickOutSide';
 
@@ -20,21 +21,7 @@ export default {
   },
   enhanceApp({ app, router, siteData }) {
     // ...
-    app.component('Button', Button)
-    app.component('Pagination', pagination)
-    app.component('modal', modal)
-    app.component('Input', input)
-    app.component('Menu', menu)
-    app.component('Tab', tab)
-    app.component('ChatBubble', ChatBubble)
-    app.component('CheckBox', CheckBox)
-    app.component('Card', Card)
-    app.component('Divider', Divider)
-    app.component('Loader', Loader)
-    app.component('Switch', Switch)
-    app.component('Stepper', stepper)
-    app.component('List', list)
-    app.component('Breadcrumb', Breadcrumb)
+    app.use(mhmd, { componentPrefix: '' })
     app.directive('click-outside', clickOutside)
     app.directive('tooltipl', tooltip)
 

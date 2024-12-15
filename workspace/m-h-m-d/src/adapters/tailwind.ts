@@ -5,7 +5,7 @@ export function addPrefixToTailwindClasses(classString: string) {
     const prefix = appContext.config.globalProperties.$config?.classPrefix
     return classString.split(' ').map(cls => {
         const parts = cls.split(':');
-        parts[parts.length - 1] = `${prefix}${parts[parts.length - 1]}`;
+        parts[parts.length - 1] = `${prefix || ''}${parts[parts.length - 1]}`;
         return parts.join(':');
-    }).join(' ');
+    }).join(' ')
 }
