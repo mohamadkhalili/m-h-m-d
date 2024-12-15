@@ -15,7 +15,7 @@
         <div
           v-click-outside="handleClickOutside"
           v-show="modelValue"
-          :class="mergeClasses(uiClass, menuClass).value"
+          :class="adapterClass(mergeClasses(menuClasses.uiClass, menuClass).value).value"
         >
           <slot name="menu"></slot>
         </div>
@@ -32,7 +32,9 @@ import { menuEmits } from "./Emits";
 import { menuSlots } from "./Slots";
 import { useMergeClasses } from "../../composables/useMergeClasses";
 const mergeClasses = useMergeClasses();
-
+import { menuClasses } from "../../styles/MenuClasses";
+import { useAdapterClass } from "../../composables/UseClass";
+const adapterClass = useAdapterClass();
 const props = defineProps(uiProps);
 const emit = defineEmits(menuEmits);
 const uiSlots = defineSlots<menuSlots>();
@@ -40,9 +42,6 @@ const enableOutside = ref(false);
 const handleModelValue = (newValue: boolean) => {
   emit("update:modelValue", newValue);
 };
-const uiClass = ref(
-  "absolute left-0 top-full -mt-4 bg-teal-200 rounded-lg w-28 h-20 shadow-lg z-50 transform"
-);
 watch(
   () => props.modelValue,
   (newValue) => {
