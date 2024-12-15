@@ -10,7 +10,7 @@ const items =  ref([
             { title: "tab", disable:false },
             { title: "pagination", disable:false },
             { title: "modal", disable:false },
-            { title: "mwnu", disable:false }
+            { title: "menu", disable:false }
         ]);
 const breadcrumbValue = ref("");
 const breadcrumbValue2 = ref("");
