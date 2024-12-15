@@ -18,21 +18,21 @@ import { tooltip } from './directives/TooltipDirective';
 import clickOutside from './directives/clickOutSide';
 import stepper from './components/stepper/Core.vue';
 const components = [
-    { name: 'pagination', ...pagination },
+    { name: 'Pagination', ...pagination },
     { name: 'modal', ...modal },
     { name: 'Button', ...Button },
     { name: 'input', ...input },
-    { name: 'menu', ...menu },
-    { name: 'tab', ...tab },
+    { name: 'Menu', ...menu },
+    { name: 'Tab', ...tab },
     { name: 'ChatBubble', ...ChatBubble },
     { name: 'Card', ...Card },
     { name: 'Switch', ...Switch },
     { name: 'CheckBox', ...CheckBox },
     { name: 'Divider', ...Divider },
-    { name: 'list', ...list },
-    { name: 'stepper', ...stepper },
+    { name: 'List', ...list },
+    { name: 'Stepper', ...stepper },
     { name: 'Loader', ...Loader },
-    { name: 'breadcrumb', ...Breadcrumb },
+    { name: 'Breadcrumb', ...Breadcrumb },
 ]
 
 const directives = {
