@@ -1,5 +1,5 @@
 <template>
-  <div class="inline-flex items-center space-x-2">
+  <div :class="adapterClass(breadcrumbClasses.generalClass).value">
     <div
       v-for="(item, index) in items"
       :key="index"
@@ -19,7 +19,9 @@
 import { coreProps } from "./Props";
 import { breadcrumbEmits } from "./Emits";
 import { coreSlots } from "./Slots";
-
+import { breadcrumbClasses } from "../../styles/BreadcrumbClasses";
+import { useAdapterClass } from "../../composables/UseClass";
+const adapterClass = useAdapterClass();
 const props = defineProps(coreProps);
 const emit = defineEmits(breadcrumbEmits);
 const slots = defineSlots<coreSlots>();
