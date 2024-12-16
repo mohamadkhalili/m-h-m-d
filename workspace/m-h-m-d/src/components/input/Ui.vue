@@ -8,7 +8,7 @@
           <label
             :class="[
               inputClass.uiLabelClass,
-              adapterClass(mergeClasses(UiLabelInputClass, LabelInputClass).value).value || InputVariant,
+              adapterClass(UiLabelInputClass+' '+ LabelInputClass).value || InputVariant,
             ]"
             for="input-id"
           >
@@ -30,7 +30,7 @@
             v-model="localValue"
             :class="[
              inputClass.uiInputBaseClass ,
-              adapterClass(mergeClasses(UiInputClass, InputClass).value).value ,
+              adapterClass(UiInputClass + ' ' + InputClass).value ,
             ]"
             type="text"
             aria-label="Input field"
@@ -57,7 +57,6 @@ import { useMergeClasses } from "../../composables/useMergeClasses";
 import Core from "./Core.vue";
 import { inputClass } from "../../styles/InputClasses";
 import { useAdapterClass } from "../../composables/UseClass";
-const mergeClasses = useMergeClasses();
 const adapterClass = useAdapterClass();
 const props = defineProps(InputProps);
 const emit = defineEmits(inputEmits);
