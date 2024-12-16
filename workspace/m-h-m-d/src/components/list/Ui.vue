@@ -25,8 +25,8 @@
         <div
           :class="
             isActive
-              ? mergeClasses(uiActiveClass, activeClass).value
-              : mergeClasses(uiOnActiveClass, onActiveClass).value
+              ? adapterClass(mergeClasses(listClasses.uiActiveClass, activeClass).value).value
+              : adapterClass(mergeClasses(listClasses.uiOnActiveClass, onActiveClass).value).value
           "
           v-if="showItem"
         >
@@ -45,18 +45,15 @@ import { useSlots, computed, ref, onActivated } from "vue";
 import { uiProps } from "./Props";
 import { listEmits } from "./Emits";
 import { uiSlots } from "./Slots";
+import { listClasses } from "../../styles/ListClasses";
+import { useAdapterClass } from "../../composables/UseClass";
+const adapterClass = useAdapterClass();
 const props = defineProps(uiProps);
 const emit = defineEmits(listEmits);
 const uiSlots = defineSlots<uiSlots>();
 defineOptions({
   inheritAttrs: false,
 });
-const uiActiveClass = ref(
-  "bg-gray-900 hover:bg-gray-800 transition-colors duration-300 delay-80 text-white flex justify-center items-center cursor-pointer transition-transform duration-300 ease-in-out select-none transform text-sm text-center w-24 h-10"
-);
-const uiOnActiveClass = ref(
-  "bg-gray-100 hover:bg-gray-200 text-black flex justify-center items-center cursor-pointer transition-colors duration-300 select-none ease-in-out delay-80 transform text-sm text-center w-24 h-10"
-);
 const slots = useSlots();
 const showList = computed(() => !slots.list);
 const showItem = computed(() => !slots.item);

@@ -16,6 +16,9 @@
 import { coreProps } from "./Props";
 import { listEmits } from "./Emits";
 import { coreSlots } from "./Slots";
+import { useAdapterClass } from "../../composables/UseClass";
+const adapterClass = useAdapterClass();
+import { listClasses } from "../../styles/ListClasses";
 const props = defineProps(coreProps);
 const emit = defineEmits(listEmits);
 const slots = defineSlots<coreSlots>();
