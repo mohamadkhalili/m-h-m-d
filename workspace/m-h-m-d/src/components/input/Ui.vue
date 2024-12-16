@@ -30,7 +30,7 @@
             v-model="localValue"
             :class="[
              inputClass.uiInputBaseClass ,
-              mergeClasses(UiInputClass, InputClass).value ,
+              adapterClass(mergeClasses(UiInputClass, InputClass).value).value ,
             ]"
             type="text"
             aria-label="Input field"
