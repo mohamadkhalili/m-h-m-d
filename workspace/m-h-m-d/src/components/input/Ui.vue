@@ -7,8 +7,8 @@
       <div class="relative ">
           <label
             :class="[
-              'absolute left-4  transition-all duration-300 ease-in-out ',
-              mergeClasses(UiLabelInputClass, LabelInputClass).value || InputVariant,
+              inputClass.uiLabelClass,
+              adapterClass(mergeClasses(UiLabelInputClass, LabelInputClass).value).value || InputVariant,
             ]"
             for="input-id"
           >
@@ -19,7 +19,7 @@
           </label>
           
           <div v-if="!$slots.prefix">
-          <button  class="absolute left-2 -translate-y-1/2 top-1/2  pr-8">
+          <button  :class=inputClass.uiButtonClass >
             {{ prefix }}
           </button>
           </div>
@@ -29,7 +29,7 @@
             :placeholder="props.placeholder || ''"
             v-model="localValue"
             :class="[
-              '   px-10 py-3  transition-all duration-300 ',
+             inputClass.uiInputBaseClass ,
               mergeClasses(UiInputClass, InputClass).value ,
             ]"
             type="text"
@@ -39,7 +39,7 @@
           />
 
           <div v-if="!$slots.suffix">
-          <button  type="reset" class="absolute right-3 -translate-y-1/2 top-1/2 p-1">
+          <button  type="reset" :class=inputClass.uiButtonSuffixClass>
             {{ suffix }}
           </button>
           <slot name="suffix"/>
@@ -55,8 +55,10 @@ import { InputProps, InputVariant } from "./props";
 import { inputEmits } from "./Emits";
 import { useMergeClasses } from "../../composables/useMergeClasses";
 import Core from "./Core.vue";
-
+import { inputClass } from "../../styles/InputClasses";
+import { useAdapterClass } from "../../composables/UseClass";
 const mergeClasses = useMergeClasses();
+const adapterClass = useAdapterClass();
 const props = defineProps(InputProps);
 const emit = defineEmits(inputEmits);
 
@@ -80,13 +82,13 @@ const handleBlur = () => {
 
 const UiLabelInputClass = computed(() => {
   const hasValue = !!localValue.value; 
-  return `${isFocused.value || hasValue  ? " top-[-25px]  top-0 text-gray-800" : " bg-transparent top-3 text-gray-400 "}`;
+  return `${isFocused.value || hasValue  ? inputClass.UiLabelActiveClass : inputClass.UiLabelNotActiveClass}`;
 });
 
 
 const UiInputClass = computed(() => {
   const hasValue = !!localValue.value; 
-  return `${isFocused.value || hasValue  ? "  rounded-lg ring-2 ring-gray-600 " : "  ring-2 ring-gray-400 rounded-lg p-2 "}`;
+  return `${isFocused.value || hasValue  ? inputClass.UiInputActiveClass : inputClass.UiInputNotActiveClass}`;
 });
 </script>
 
