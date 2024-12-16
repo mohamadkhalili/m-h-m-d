@@ -2,11 +2,11 @@
   <div :class="adapterClass(stepperClasses.generalClass).value">
     <!-- Progress Bar -->
      <slot name="progress"></slot>
-    <div v-if="showProgress" :class="adapterClass(mergeClasses(stepperClasses.uiProgressClass, progressClass).value).value">
+    <div v-if="showProgress" :class="adapterClass(stepperClasses.uiProgressClass + ' ' + progressClass).value">
       <slot name="progressBar"></slot>
       <div
         v-if="showProgressBar"
-        :class="adapterClass(mergeClasses(stepperClasses.uiProgressBarClass, progressBarClass).value).value"
+        :class="adapterClass(stepperClasses.uiProgressBarClass + ' ' + progressBarClass).value"
         role="progressbar"
         :style="progressStyle"
         :aria-valuenow="60"
@@ -36,8 +36,8 @@
         v-if="showStep"
         :class="
           index + 1 <= modelValue
-            ? adapterClass(mergeClasses(stepperClasses.uiDoneClass, doneClass).value).value
-            : adapterClass(mergeClasses(stepperClasses.uiNotDoneClass, notDoneClass).value).value
+            ? adapterClass(stepperClasses.uiDoneClass + ' ' + doneClass).value
+            : adapterClass(stepperClasses.uiNotDoneClass + ' ' + notDoneClass).value
         "
         @click="moveStep(index + 1)"
         ref="stepRefs"
@@ -61,11 +61,9 @@ import { stepperEmits } from "./Emits";
 import { stepperSlots } from "./Slots";
 import * as mdiIcons from "@mdi/js";
 import SvgIcon from "@jamescoyle/vue-icon";
-import { useMergeClasses } from "../../composables/useMergeClasses";
 import { stepperClasses } from "../../styles/StepperClasses";
 import { useAdapterClass } from "../../composables/UseClass";
 const adapterClass = useAdapterClass();
-const mergeClasses = useMergeClasses();
 const props = defineProps(coreProps);
 const emit = defineEmits(stepperEmits);
 const uiSlots = defineSlots<stepperSlots>();

@@ -15,7 +15,7 @@
         <div
           v-click-outside="handleClickOutside"
           v-show="modelValue"
-          :class="adapterClass(mergeClasses(menuClasses.uiClass, menuClass).value).value"
+          :class="adapterClass(menuClasses.uiClass + ' ' + menuClass).value"
         >
           <slot name="menu"></slot>
         </div>
@@ -30,8 +30,6 @@ import { useSlots, computed, ref, watch } from "vue";
 import { uiProps } from "./Props";
 import { menuEmits } from "./Emits";
 import { menuSlots } from "./Slots";
-import { useMergeClasses } from "../../composables/useMergeClasses";
-const mergeClasses = useMergeClasses();
 import { menuClasses } from "../../styles/MenuClasses";
 import { useAdapterClass } from "../../composables/UseClass";
 const adapterClass = useAdapterClass();
