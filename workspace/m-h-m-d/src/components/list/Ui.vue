@@ -25,8 +25,8 @@
         <div
           :class="
             isActive
-              ? adapterClass(mergeClasses(listClasses.uiActiveClass, activeClass).value).value
-              : adapterClass(mergeClasses(listClasses.uiOnActiveClass, onActiveClass).value).value
+              ? adapterClass(listClasses.uiActiveClass + ' ' + activeClass).value
+              : adapterClass(listClasses.uiOnActiveClass + ' ' + onActiveClass).value
           "
           v-if="showItem"
         >
