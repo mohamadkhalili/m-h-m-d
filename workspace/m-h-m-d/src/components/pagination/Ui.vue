@@ -70,7 +70,6 @@ import pagination from "./Core.vue";
 import { uiSlots } from "./Slots";
 import { uiProps } from "./Props";
 import { paginationClasses } from "../../styles/PaginatioinClasses";
-import { useBorder } from "../../composables/UseBorderProps";
 import { paginationEmits } from "./Emits";
 import SvgIcon from "@jamescoyle/vue-icon";
 import { useAdapterClass } from "../../composables/UseClass";
