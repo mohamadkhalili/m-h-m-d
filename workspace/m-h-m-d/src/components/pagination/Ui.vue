@@ -2,114 +2,64 @@
 
 <template>
   <div :class="adapterClass(paginationClasses.uiContainerClass).value" :dir="rtl ? 'rtl' : 'ltr'">
-    <pagination
-      :modelValue="modelValue"
-      @update:modelValue="handlePageChange"
-      :searchPage="searchPage"
-      @update:searchPage="handleSearchPage"
-      :isEditingSearchPage="isEditingSearchPage"
-      @update:isEditingSearchPage="handleIsEditingSearchPage"
-      :page-size="pageSize"
-      v-bind="$attrs"
-    >
+    <pagination :modelValue="modelValue" @update:modelValue="handlePageChange" :searchPage="searchPage"
+      @update:searchPage="handleSearchPage" :isEditingSearchPage="isEditingSearchPage"
+      @update:isEditingSearchPage="handleIsEditingSearchPage" :page-size="pageSize" v-bind="$attrs">
       <template #superPrev="{ disabled }">
         <slot name="superPrev" :disabled="disabled" :rtl="rtl"></slot>
-        <Button
-          v-if="showDefaultSuperPrev"
-          :buttonClass="
-          adapterClass(mergeClasses(paginationClasses.uiButtonClass, buttonClass).value).value
-          "
-          :disabled="disabled"
-        >
+        <Button v-if="showDefaultSuperPrev" :buttonClass="adapterClass(paginationClasses.uiButtonClass + ' ' + buttonClass).value
+          " :disabled="disabled">
           <svg-icon type="mdi" :path="superPrevIcon"></svg-icon>
         </Button>
       </template>
       <template #prev="{ disabled }">
         <slot name="prev" :disabled="disabled" :rtl="rtl"></slot>
-        <Button
-          v-if="showDefaultPrev"
-          :buttonClass="
-            adapterClass(mergeClasses(paginationClasses.uiButtonClass, buttonClass).value).value
-          "
-          :disabled="disabled"
-        >
+        <Button v-if="showDefaultPrev" :buttonClass="adapterClass(paginationClasses.uiButtonClass + ' ' + buttonClass).value
+          " :disabled="disabled">
           <svg-icon type="mdi" :path="prevIcon"></svg-icon>
         </Button>
       </template>
       <template #default="{ isCurrentPage, isActive, page }">
-        <slot
-          name="default"
-          :isCurrentPage="isCurrentPage"
-          :isActive="isActive"
-          :page="page"
-        ></slot>
-        <div
-          v-if="isCurrentPage && showDefaultPagination"
-          :class="[
-            isActive
-              ? adapterClass(mergeClasses(paginationClasses.uiActiveClass, activeClass).value).value
-              : adapterClass(mergeClasses(paginationClasses.uiOnActiveClass, onActiveClass)
-                  .value).value,
-          ]"
-        >
+        <slot name="default" :isCurrentPage="isCurrentPage" :isActive="isActive" :page="page"></slot>
+        <div v-if="isCurrentPage && showDefaultPagination" :class="[
+          isActive
+            ? adapterClass(paginationClasses.uiActiveClass + ' ' + activeClass).value
+            : adapterClass(paginationClasses.uiOnActiveClass + ' ' + onActiveClass).value,
+        ]">
           {{ page }}
         </div>
-        <span
-          v-if="page === -1 && showDefaultPagination"
-          :class="
-            adapterClass(mergeClasses(paginationClasses.uiSeparatorClass, separatorClass)
-              .value).value
-          "
-          >...</span
-        >
+        <span v-if="page === -1 && showDefaultPagination" :class="adapterClass(paginationClasses.uiSeparatorClass + ' ' + separatorClass).value
+          ">...</span>
       </template>
       <template #next="{ disabled }">
         <slot name="next" :disabled="disabled" :rtl="rtl"></slot>
-        <Button
-          v-if="showDefaultNext"
-          :buttonClass="
-            adapterClass(mergeClasses(paginationClasses.uiButtonClass, buttonClass).value).value
-          "
-          :disabled="disabled"
-        >
+        <Button v-if="showDefaultNext" :buttonClass="adapterClass(paginationClasses.uiButtonClass + ' ' + buttonClass).value
+          " :disabled="disabled">
           <svg-icon type="mdi" :path="nextIcon"></svg-icon>
         </Button>
       </template>
       <template #superNext="{ disabled }">
         <slot name="superNext" :disabled="disabled" :rtl="rtl"></slot>
-        <Button
-          v-if="showDefaultSuperNext"
-          :buttonClass="
-            adapterClass(mergeClasses(paginationClasses.uiButtonClass, buttonClass).value).value
-          "
-          :disabled="disabled"
-        >
+        <Button v-if="showDefaultSuperNext" :buttonClass="adapterClass(paginationClasses.uiButtonClass + ' ' + buttonClass).value
+          " :disabled="disabled">
           <svg-icon type="mdi" :path="superNextIcon"></svg-icon>
         </Button>
       </template>
-      <template #searchPage="{ enabled}">
+      <template #searchPage="{ enabled }">
         <slot name="searchPage" :enabled="enabled"></slot>
-        <div
-          v-click-outside="handleClickOutside">
+        <div v-click-outside="handleClickOutside">
           <div v-if="showDefaultsearchPage && enabled && !isEditingSearchPage || isEditingSearchPage == undefined">
-            <Button
-              :buttonClass="adapterClass(mergeClasses(paginationClasses.uiButtonClass, buttonClass).value).value"
-            >
+            <Button :buttonClass="adapterClass(paginationClasses.uiButtonClass + ' ' + buttonClass).value">
               <svg-icon type="mdi" :path="mdiMagnify"></svg-icon>
             </Button>
           </div>
-    
-          <input
-            v-if="showDefaultsearchPage && isEditingSearchPage"
-            ref="searchInput"
-            :value="searchPage"
-            @input="handleInput"
-            :class="adapterClass(mergeClasses(paginationClasses.uiInputClass, onActiveClass).value).value"
-          />
+
+          <input v-if="showDefaultsearchPage && isEditingSearchPage" ref="searchInput" :value="searchPage"
+            @input="handleInput" :class="adapterClass(paginationClasses.uiInputClass + ' ' + onActiveClass).value" />
         </div>
       </template>
-      
-      
+
+
     </pagination>
   </div>
 </template>
@@ -123,10 +73,9 @@ import { paginationClasses } from "../../styles/PaginatioinClasses";
 import { useBorder } from "../../composables/UseBorderProps";
 import { paginationEmits } from "./Emits";
 import SvgIcon from "@jamescoyle/vue-icon";
-import { useMergeClasses } from "../../composables/useMergeClasses";
 import { useAdapterClass } from "../../composables/UseClass";
 const adapterClass = useAdapterClass();
-const mergeClasses = useMergeClasses();
+
 import {
   mdiChevronDoubleRight,
   mdiChevronDoubleLeft,
@@ -209,11 +158,10 @@ watch(
   }
 );
 const handleClickOutside = (event: Event) => {
-  if (props.isEditingSearchPage === true ) {
+  if (props.isEditingSearchPage === true) {
     emit("update:isEditingSearchPage", false);
   }
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

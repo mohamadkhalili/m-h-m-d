@@ -3,7 +3,8 @@ import { getCurrentInstance } from 'vue';
 export function addPrefixToTailwindClasses(classString: string) {
     const { appContext }: any = getCurrentInstance();
     const prefix = appContext.config.globalProperties.$config?.classPrefix
-    return classString.split(' ').map(cls => {
+    const miniClass = deduplicateTailwindClasses(classString)
+    return miniClass.split(' ').map(cls => {
         const parts = cls.split(':');
         parts[parts.length - 1] = `${prefix || ''}${parts[parts.length - 1]}`;
         return parts.join(':');
@@ -11,110 +12,134 @@ export function addPrefixToTailwindClasses(classString: string) {
 }
 
 
-function deduplicateTailwindClasses(classString) {
-    // تعریف نقشه کلاس‌ها به ویژگی‌ها و زیر ویژگی‌ها
-    const classMapping = [
-        // Width
-        { regex: /^w-/, properties: ['width'] },
-        // Height
-        { regex: /^h-/, properties: ['height'] },
-        // Size (فرض بر این است که 'size' کلاس سفارشی است که هم width و هم height را تنظیم می‌کند)
-        { regex: /^size$/, properties: ['width', 'height'] },
-        // Text Color
-        { regex: /^text-(red|green|blue|yellow|purple|pink|indigo|gray|neutral|stone|amber|lime|emerald|teal|cyan|sky|violet|fuchsia|rose)-\d{3}$/, properties: ['textColor'] },
-        // Text Size
-        { regex: /^text-(xs|sm|base|lg|xl|2xl|3xl|4xl|5xl|6xl|7xl|8xl|9xl)$/, properties: ['fontSize'] },
-        // Text Align
-        { regex: /^text-(left|center|right|justify)$/, properties: ['textAlign'] },
-        // Font Weight
-        { regex: /^text-(thin|extralight|light|normal|medium|semibold|bold|extrabold|black)$/, properties: ['fontWeight'] },
-        // Text Decoration
-        { regex: /^text-decoration-(none|underline|line-through|underline line-through)$/, properties: ['textDecoration'] },
-        // Line Height
-        { regex: /^leading-(none|tight|snug|normal|relaxed|loose)$/, properties: ['lineHeight'] },
-        // Letter Spacing
-        { regex: /^tracking-(tighter|tight|normal|wide|wider|widest)$/, properties: ['letterSpacing'] },
-        // Background Color
-        { regex: /^bg-(red|green|blue|yellow|purple|pink|indigo|gray|neutral|stone|amber|lime|emerald|teal|cyan|sky|violet|fuchsia|rose)-\d{3}$/, properties: ['backgroundColor'] },
-        // Padding
-        { regex: /^p-(\d+|px|sm|md|lg|xl)$/, properties: ['padding'] },
-        { regex: /^pt-(\d+|px|sm|md|lg|xl)$/, properties: ['paddingTop'] },
-        { regex: /^pr-(\d+|px|sm|md|lg|xl)$/, properties: ['paddingRight'] },
-        { regex: /^pb-(\d+|px|sm|md|lg|xl)$/, properties: ['paddingBottom'] },
-        { regex: /^pl-(\d+|px|sm|md|lg|xl)$/, properties: ['paddingLeft'] },
-        // Margin
-        { regex: /^m-(\d+|px|sm|md|lg|xl)$/, properties: ['margin'] },
-        { regex: /^mt-(\d+|px|sm|md|lg|xl)$/, properties: ['marginTop'] },
-        { regex: /^mr-(\d+|px|sm|md|lg|xl)$/, properties: ['marginRight'] },
-        { regex: /^mb-(\d+|px|sm|md|lg|xl)$/, properties: ['marginBottom'] },
-        { regex: /^ml-(\d+|px|sm|md|lg|xl)$/, properties: ['marginLeft'] },
-        // Border Radius
-        { regex: /^rounded$/, properties: ['borderRadius'] },
-        { regex: /^rounded-(t|r|b|l|tl|tr|br|bl)$/, properties: ['borderTopRadius', 'borderRightRadius', 'borderBottomRadius', 'borderLeftRadius', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius'] }, // زیر ویژگی‌های متفاوت
-        // Flex
-        { regex: /^flex-(\d+|grow|shrink|none)$/, properties: ['flex'] },
-        // Grid
-        { regex: /^grid-(cols|rows)-\d+$/, properties: ['gridTemplateColumns', 'gridTemplateRows'] },
-        // Border
-        { regex: /^border(-[trbl]{1,2})?$/, properties: ['borderWidth', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth'] },
-        // Box Shadow
-        { regex: /^shadow(-[a-z]+)?$/, properties: ['boxShadow'] },
-        // اضافه کردن کلاس‌های دیگر به صورت مشابه
-    ];
 
-    // تابع برای یافتن ویژگی‌های مربوط به یک کلاس
-    function getProperties(cls) {
-        for (const mapping of classMapping) {
-            if (mapping.regex.test(cls)) {
-                return mapping.properties;
+interface ClassMapping {
+    regex: RegExp;
+    properties: string[];
+}
+
+const classMappings: ClassMapping[] = [
+    // Width
+    { regex: /^w-/, properties: ['width'] },
+    // Height
+    { regex: /^h-/, properties: ['height'] },
+    // Size
+    { regex: /^size$/, properties: ['width', 'height'] },
+    // Text Color
+    { regex: /^text-(red|green|blue|yellow|purple|pink|indigo|gray|neutral|stone|amber|lime|emerald|teal|cyan|sky|violet|fuchsia|rose)-\d{3}$/, properties: ['textColor'] },
+    // Text Size
+    { regex: /^text-(xs|sm|base|lg|xl|2xl|3xl|4xl|5xl|6xl|7xl|8xl|9xl)$/, properties: ['fontSize'] },
+    // Text Align
+    { regex: /^text-(left|center|right|justify)$/, properties: ['textAlign'] },
+    // Font Weight
+    { regex: /^text-(thin|extralight|light|normal|medium|semibold|bold|extrabold|black)$/, properties: ['fontWeight'] },
+    // Text Decoration
+    { regex: /^text-decoration-(none|underline|line-through|underline line-through)$/, properties: ['textDecoration'] },
+    // Line Height
+    { regex: /^leading-(none|tight|snug|normal|relaxed|loose)$/, properties: ['lineHeight'] },
+    // Letter Spacing
+    { regex: /^tracking-(tighter|tight|normal|wide|wider|widest)$/, properties: ['letterSpacing'] },
+    // Background Color
+    { regex: /^bg-(red|green|blue|yellow|purple|pink|indigo|gray|neutral|stone|amber|lime|emerald|teal|cyan|sky|violet|fuchsia|rose)-\d{3}$/, properties: ['backgroundColor'] },
+    // Padding
+    { regex: /^p-(\d+|px|sm|md|lg|xl)$/, properties: ['padding'] },
+    { regex: /^pt-(\d+|px|sm|md|lg|xl)$/, properties: ['paddingTop'] },
+    { regex: /^pr-(\d+|px|sm|md|lg|xl)$/, properties: ['paddingRight'] },
+    { regex: /^pb-(\d+|px|sm|md|lg|xl)$/, properties: ['paddingBottom'] },
+    { regex: /^pl-(\d+|px|sm|md|lg|xl)$/, properties: ['paddingLeft'] },
+    // Margin
+    { regex: /^m-(\d+|px|sm|md|lg|xl)$/, properties: ['margin'] },
+    { regex: /^mt-(\d+|px|sm|md|lg|xl)$/, properties: ['marginTop'] },
+    { regex: /^mr-(\d+|px|sm|md|lg|xl)$/, properties: ['marginRight'] },
+    { regex: /^mb-(\d+|px|sm|md|lg|xl)$/, properties: ['marginBottom'] },
+    { regex: /^ml-(\d+|px|sm|md|lg|xl)$/, properties: ['marginLeft'] },
+    // Border Radius
+    { regex: /^rounded$/, properties: ['borderRadius'] },
+    { regex: /^rounded-(t|r|b|l|tl|tr|br|bl)$/, properties: ['borderTopRadius', 'borderRightRadius', 'borderBottomRadius', 'borderLeftRadius', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius'] },
+    // Flex
+    { regex: /^flex-(\d+|grow|shrink|none)$/, properties: ['flex'] },
+    // Grid
+    { regex: /^grid-(cols|rows)-\d+$/, properties: ['gridTemplateColumns', 'gridTemplateRows'] },
+    // Border
+    { regex: /^border(-[trbl]{1,2})?$/, properties: ['borderWidth', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth'] },
+    // Box Shadow
+    { regex: /^shadow(-[a-z]+)?$/, properties: ['boxShadow'] },
+];
+
+function getProperties(cls: string): string[] {
+    for (const mapping of classMappings) {
+        if (mapping.regex.test(cls)) {
+            if (mapping.properties.includes('borderTopRadius') || mapping.properties.includes('borderRightRadius') ||
+                mapping.properties.includes('borderBottomRadius') || mapping.properties.includes('borderLeftRadius') ||
+                mapping.properties.includes('borderTopLeftRadius') || mapping.properties.includes('borderTopRightRadius') ||
+                mapping.properties.includes('borderBottomRightRadius') || mapping.properties.includes('borderBottomLeftRadius')) {
+                const borderRadiusRegex = /^rounded-([trbl]{1,2})$/;
+                const match = cls.match(borderRadiusRegex);
+                if (match) {
+                    const side = match[1];
+                    switch (side) {
+                        case 't':
+                            return ['borderTopRadius'];
+                        case 'r':
+                            return ['borderRightRadius'];
+                        case 'b':
+                            return ['borderBottomRadius'];
+                        case 'l':
+                            return ['borderLeftRadius'];
+                        case 'tl':
+                            return ['borderTopLeftRadius'];
+                        case 'tr':
+                            return ['borderTopRightRadius'];
+                        case 'br':
+                            return ['borderBottomRightRadius'];
+                        case 'bl':
+                            return ['borderBottomLeftRadius'];
+                        default:
+                            return ['borderRadius'];
+                    }
+                }
             }
+            return mapping.properties;
         }
-        return [];
     }
+    return [];
+}
 
-    const classes = classString.split(/\s+/);
-    const propertyMap = {}; // نگهداری آخرین کلاس برای هر ویژگی
-    const classToPropertiesMap = {}; // نگهداری ویژگی‌هایی که هر کلاس تنظیم می‌کند
-
+export function deduplicateTailwindClasses(classString: string): string {
+    const classes = classString.trim().split(/\s+/);
+    const propertyMap: Map<string, string> = new Map();
+    const classToPropertiesMap: Map<string, Set<string>> = new Map();
     classes.forEach(cls => {
-        // تقسیم کلاس بر اساس حالت‌ها مانند hover:, md:, lg: و غیره
         const parts = cls.split(':');
-        const baseClass = parts.pop();
-        const variants = parts; // مثلاً ['hover', 'md']
+        const baseClass = parts.pop() as string;
+        const variants = parts;
 
-        // یافتن ویژگی‌هایی که این کلاس تنظیم می‌کند
         const properties = getProperties(baseClass);
 
         if (properties.length > 0) {
-            // ایجاد یک کلید منحصر به فرد برای حالت‌ها
-            const variantKey = variants.join(':'); // مثلاً "hover", "md:hover"
+            const variantKey = variants.join(':');
 
             properties.forEach(property => {
                 const mapKey = variantKey ? `${variantKey}:${property}` : property;
 
-                // انتساب کلاس به ویژگی در نقشه
-                propertyMap[mapKey] = cls;
+                propertyMap.set(mapKey, cls);
 
-                // نگهداری اینکه این کلاس چه ویژگی‌هایی را تنظیم کرده است
-                if (!classToPropertiesMap[cls]) {
-                    classToPropertiesMap[cls] = new Set();
+                if (!classToPropertiesMap.has(cls)) {
+                    classToPropertiesMap.set(cls, new Set());
                 }
-                classToPropertiesMap[cls].add(mapKey);
+                classToPropertiesMap.get(cls)!.add(mapKey);
             });
         } else {
-            // اگر کلاس با هیچ ویژگی مشخصی مطابقت نداشت، آن را به صورت جداگانه نگه داریم
             const mapKey = variants.length > 0 ? `${variants.join(':')}:${baseClass}` : baseClass;
-            propertyMap[mapKey] = cls;
-            if (!classToPropertiesMap[cls]) {
-                classToPropertiesMap[cls] = new Set();
+            propertyMap.set(mapKey, cls);
+            if (!classToPropertiesMap.has(cls)) {
+                classToPropertiesMap.set(cls, new Set());
             }
-            classToPropertiesMap[cls].add(mapKey);
+            classToPropertiesMap.get(cls)!.add(mapKey);
         }
     });
 
-    // تعیین کلاس‌هایی که باید نگهداری شوند (کلاس‌هایی که آخرین بار یک ویژگی را تنظیم کرده‌اند)
-    const classesToKeep = new Set(Object.values(propertyMap));
+    const classesToKeep = new Set(propertyMap.values());
 
-    // بازگرداندن کلاس‌ها بدون تکرار
     return Array.from(classesToKeep).join(' ');
 }
