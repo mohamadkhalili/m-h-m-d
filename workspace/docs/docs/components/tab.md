@@ -37,7 +37,7 @@ This example demonstrates horizontally aligned tabs with default styling.
     :tabs="tabsView" 
     variant="bordered"
     size="sm"
-    activeColor="text-blue-100 "
+    activeColor="text-blue-500 "
     notActiveColor='text-gray-700'
     contentColor='text-red-600 '
   >
