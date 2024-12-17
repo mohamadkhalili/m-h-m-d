@@ -1,5 +1,5 @@
 <template>
-  <div class="inline-flex p-[10px] rounded-[8px]" :class="herizontal ? '' : 'flex flex-col min-w-[100px] min-h-[40px]' ">
+  <div :class="herizontal ? adapterClass(listClasses.herizontalClass).value : adapterClass(listClasses.verticalClass).value ">
     <div v-for="(item, index) in items" :key="index" @click="handleClick(item)">
       <slot
         name="item"
@@ -16,6 +16,9 @@
 import { coreProps } from "./Props";
 import { listEmits } from "./Emits";
 import { coreSlots } from "./Slots";
+import { useAdapterClass } from "../../composables/UseClass";
+const adapterClass = useAdapterClass();
+import { listClasses } from "../../styles/ListClasses";
 const props = defineProps(coreProps);
 const emit = defineEmits(listEmits);
 const slots = defineSlots<coreSlots>();
