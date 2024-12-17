@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue';
 import { TabProps } from './props';
 import Core from './Core.vue';
+import { TabClasses } from '../../styles/TabClasses';
 
 const props = defineProps(TabProps);
 const emit = defineEmits(['update:modelValue']);
@@ -12,27 +13,27 @@ const activeTab = ref(props.modelValue || props.tabs[0]?.value);
 
 const position = computed(() => {
   switch (props.position) {
-    case 'bottom':
-      return 'flex flex-col flex-col-reverse ';
-    case 'left':
-      return 'flex flex-row flex-row ';
-    case 'right':
-      return 'flex flex-row flex-row-reverse ';
     case 'top':
-      return 'flex flex-col ';
+      return TabClasses.uiTabTopPositionClass;
+    case 'bottom':
+      return TabClasses.uiTabBottomPositionClass;
+    case 'left':
+      return TabClasses.uiTabLeftPositionClass;
+    case 'right':
+      return TabClasses.uiTabRightPositionClass;
     default:
-      return ' ';
+      return '';
   }
 });
 
 const justifyClass = computed(() => {
   switch (props.justify) {
     case 'start':
-      return 'justify-start w-full flex';
+      return TabClasses.uiTabJustifyStartClass;
     case 'end':
-      return 'justify-end w-full flex';
+      return TabClasses.uiTabJustifyEndClass;
     default:
-      return 'justify-center w-full flex';
+      return TabClasses.uiTabJustifyCenterClass;
   }
 });
 
@@ -41,39 +42,30 @@ const justifyClass = computed(() => {
 const sizeTab = computed(() => {
   switch (props.size) {
     case 'sm':
-      return 'text-[12px]';
+      return TabClasses.uiTabSizeSmallClass;
     case 'md':
-      return 'text-md';
+      return TabClasses.uiTabSizeMediumClass;
     case 'lg':
-      return 'text-xl';
+      return TabClasses.uiTabSizeLargeClass;
     case 'xl':
-      return 'text-2xl';
+      return TabClasses.uiTabSizeExtraLargeClass;
     default:
-      return 'text-md';
+      return TabClasses.uiTabSizeMediumClass;
   }
 });
 
 const getButtonStyleClass = computed(() => {
   switch (props.variant) {
     case 'underline':
-      return 'relative after:content-[""] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-0 after:left-0 after:transition-transform after:duration-300 hover:after:scale-x-100 border-none';
+      return TabClasses.uiTabVariantUnderlineClass;
     case 'mirror':
-      return `  relative inline-flex items-center justify-center overflow-hidden
-        after:content-[""] after:absolute after:w-10 after:h-10
-        after:bg-gray-600/30 after:opacity-0 
-        after:opacity-100  after:scale-100 after:transition-transform
-        after:duration-500 border-none `
+      return TabClasses.uiTabVariantMirrorClass;
     case 'shadow':
-      return ' relative inline-flex ';
+      return TabClasses.uiTabVariantShadowClass;
       case 'bordered':
-      return `
-        relative inline-flex items-center  justify-center transition-all  duration-200 ease-in-out 
-      `;
+      return TabClasses.uiTabVariantBorderedClass;
     default:
-      return `
-        relative flex items-center justify-center overflow-hidden 
-        transition-all duration-700 ease-in-out 
-      `;
+      return TabClasses.uiTabVariantDefaultClass;
   }
 });
 
@@ -103,14 +95,14 @@ function selectTab(value) {
   @click="!props.isDisabled && selectTab(tab.value)"
   :disabled="props.isDisabled"
   :class="[
-    'py-2 px-4 transition-all  duration-200 ease-in-out cursor-pointer border-[1px] select-none',
+    TabClasses.uiTabButtonClass,
     getButtonStyleClass,
     sizeTab,
-    props.isDisabled ? 'opacity-50 cursor-not-allowed' : '',
-     !props.vertical && props.position =='top' ? (props.variant === 'bordered' && activeTab === tab.value ? '  border-b-transparent border-x-transparent  shadow-[inset_0px_2px_0px_0px]' : '') : '' ,
-     !props.vertical && props.position =='bottom' ? (props.variant === 'bordered' && activeTab === tab.value ? ' border-x-transparent  border-t-0  shadow-[inset_0px_-1px_0px_0px]   ' : '') : '' ,
-     props.vertical && props.position =='left' ? (props.variant === 'bordered' && activeTab === tab.value ? '  border-[1px] border-y-transparent border-r-0 shadow-[inset_1px_0px_0px_0px] ' : '') : '' ,
-     props.vertical && props.position =='right' ? (props.variant === 'bordered' && activeTab === tab.value ? ' border-y-transparent  border-l-0 shadow-[inset_-1px_0px_0px_0px]  ' : '') : '' ,
+    props.isDisabled ? TabClasses.uiTabDisabledClass : '',
+     !props.vertical && props.position =='top' ? (props.variant === 'bordered' && activeTab === tab.value ? TabClasses.uiTabStylePositionTopClass : '') : '' ,
+     !props.vertical && props.position =='bottom' ? (props.variant === 'bordered' && activeTab === tab.value ? TabClasses.uiTabStylePositionBottomClass: '') : '' ,
+     props.vertical && props.position =='left' ? (props.variant === 'bordered' && activeTab === tab.value ? TabClasses.uiTabStylePositionLeftClass : '') : '' ,
+     props.vertical && props.position =='right' ? (props.variant === 'bordered' && activeTab === tab.value ? TabClasses.uiTabStylePositionRightClass : '') : '' ,
 
 
      
