@@ -69,8 +69,7 @@ const getButtonStyleClass = computed(() => {
   }
 });
 
-const layoutClass = computed(() => (props.vertical ? 'flex flex-col' : justifyClass.value));
-
+const layoutClass = computed(() => (props.vertical ? TabClasses.uiTabTopPositionClass : justifyClass.value));
 
 function selectTab(value) {
   activeTab.value = value;
@@ -131,24 +130,22 @@ function selectTab(value) {
     !props.vertical ? (props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-r-full' : '') : (props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-b-2xl' : ''),
 
 
-    !props.vertical && props.variant==='bordered' && props.position ==='top' ? (tab.value===activeTab + 1 ? 'rounded-bl-2xl' : '' ) :'',
-        !props.vertical && props.variant==='bordered' && props.position ==='top' ? (tab.value===activeTab -1  ? 'rounded-br-2xl' : '' ) :'',
+    !props.vertical && props.variant==='bordered' && props.position ==='top' ? (tab.value===activeTab + 1 ? TabClasses.uiTabRoundedBlClass : '' ) :'',
+        !props.vertical && props.variant==='bordered' && props.position ==='top' ? (tab.value===activeTab -1  ? TabClasses.uiTabRoundedBrClass : '' ) :'',
 
-    !props.vertical && props.variant==='bordered' && props.position ==='bottom' ?  (tab.value===activeTab +1? 'rounded-tl-2xl ' : '' ) :'',
-        !props.vertical && props.variant==='bordered' && props.position ==='bottom' ?  (tab.value===activeTab -1? 'rounded-tr-2xl' : '' ) :'',
+    !props.vertical && props.variant==='bordered' && props.position ==='bottom' ?  (tab.value===activeTab +1? TabClasses.uiTabRoundedTlClass : '' ) :'',
+        !props.vertical && props.variant==='bordered' && props.position ==='bottom' ?  (tab.value===activeTab -1? TabClasses.uiTabRoundedTrClass : '' ) :'',
 
-     props.vertical && props.variant==='bordered' && props.position ==='right' ?   (tab.value===activeTab+1 ? 'rounded-tl-2xl' : '' ) :'',
-          props.vertical && props.variant==='bordered' && props.position ==='right' ?   (tab.value===activeTab-1 ? 'rounded-bl-2xl' : '' ) :'',
+     props.vertical && props.variant==='bordered' && props.position ==='right' ?   (tab.value===activeTab+1 ? TabClasses.uiTabRoundedTlClass : '' ) :'',
+          props.vertical && props.variant==='bordered' && props.position ==='right' ?   (tab.value===activeTab-1 ? TabClasses.uiTabRoundedBlClass : '' ) :'',
 
-    props.vertical && props.variant==='bordered' && props.position ==='left' ?   (tab.value===activeTab+1 ? 'rounded-tr-2xl' : '' ) :'',
-        props.vertical && props.variant==='bordered' && props.position ==='left' ?   (tab.value===activeTab-1 ? 'rounded-br-2xl' : '' ) :'',
+    props.vertical && props.variant==='bordered' && props.position ==='left' ?   (tab.value===activeTab+1 ? TabClasses.uiTabRoundedTrClass : '' ) :'',
+        props.vertical && props.variant==='bordered' && props.position ==='left' ?   (tab.value===activeTab-1 ? TabClasses.uiTabRoundedBlClass: '' ) :'',
 
 
 
     props.vertical ? 'w-full' : '',
-    activeTab === tab.value ? props.activeTextColor : props.textColor,
-    activeTab === tab.value ? props.activeColor : props.color,
-    activeTab === tab.value ? props.activeShadow : props.shadow
+    activeTab === tab.value ? props.activeColor : props.notActiveColor,
 
   ]"
 >
@@ -164,7 +161,7 @@ function selectTab(value) {
       <div v-for="tab in props.tabs" :key="tab.value" v-show="activeTab === tab.value" class="p-6">
         <transition name="slide-right" mode="out-in">
           <div v-if="tab.content != null" :key="tab.value" :class=[props.contentColor]>
-            <slot :name="'content'+tab.value" :tab="tab" :class="[ 'animate-ping' ]">
+            <slot :name="'content'+tab.value" :tab="tab" :class="[]">
               {{ tab.content }}
             </slot>
           </div>

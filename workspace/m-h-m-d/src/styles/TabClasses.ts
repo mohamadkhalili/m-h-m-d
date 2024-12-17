@@ -43,4 +43,12 @@ export const TabClasses = {
  uiTabStylePositionBottomClass:' border-x-transparent  border-t-0  shadow-[inset_0px_-1px_0px_0px] ',
    uiTabStylePositionLeftClass:'  border-[1px] border-y-transparent border-r-0 shadow-[inset_1px_0px_0px_0px]',
  uiTabStylePositionRightClass:' border-y-transparent  border-l-0 shadow-[inset_-1px_0px_0px_0px]',
+
+
+ uiTabRoundedTlClass:'rounded-tl-2xl ',
+ uiTabRoundedTrClass:'rounded-tr-2xl',
+ uiTabRoundedBrClass:'rounded-br-2xl',
+ uiTabRoundedBlClass:'rounded-bl-2xl',
+
+
 };

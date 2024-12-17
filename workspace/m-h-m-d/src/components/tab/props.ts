@@ -41,25 +41,17 @@ export const TabProps = {
     type: String as PropType<'sm' | 'md' | 'lg' | 'xl'>,
     default: 'md',
   },
-  activeTextColor: {
+  notActiveColor: {
     type: String,
-    default: '',
-  },
-  textColor: {
-    type: String,
-    default: 'text-gray-400',
+    default: 'text-gray-700 bg-transparent',
   },
   activeColor: {
     type: String,
     default: 'bg-transparent',
   },
-  color: {
-    type: String,
-    default: 'bg-transparent',
-  },
   contentColor: {
     type: String,
-    default: 'bg-transparent',
+    default: 'text-black bg-transparent',
   },
   position: {
     type: String as PropType<'top' | 'bottom' | 'left' | 'right'>,
