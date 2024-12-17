@@ -8,7 +8,7 @@
           <label
             :class="[
               inputClass.uiLabelClass,
-              adapterClass(UiLabelInputClass+' '+ LabelInputClass).value || InputVariant,
+              adapterClass(UiLabelInputClass+' '+ LabelInputClass).value ,
             ]"
             for="input-id"
           >
