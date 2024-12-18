@@ -56,17 +56,17 @@ const isLongMessage = (message) => {
                 ChatBubbleClasses.uiChatMassageClass, color,
                 isLongMessage($slots.default ? $slots.default()[0].children : '') 
                   ? (Side === 'left' 
-                      ? 'rounded-3xl rounded-tl-none' 
-                      : 'rounded-3xl rounded-tr-none')
+                      ? ChatBubbleClasses.uiChatLowLengthLeftClasses
+                      :ChatBubbleClasses.uiChatLowLengthRightClasses )
                   : (Side === 'left' 
-                      ? 'rounded-bl-full rounded-e-full' 
-                      : 'rounded-br-full rounded-s-full'),
+                      ? ChatBubbleClasses.uiChatHighLengthLeftClasses 
+                      : ChatBubbleClasses.uiChatHighLengthRightClasses),
                       Images.length > 0   ? (Side === 'left' 
-                      ? ' rounded-xl rounded-tl-none ' 
-                      : 'rounded-xl rounded-tr-none')
+                      ? ChatBubbleClasses.uiChatWithImageLeftClasses
+                      : ChatBubbleClasses.uiChatWithImageRightClasses)
                   : (Side === 'left' 
-                      ? 'rounded-bl-full rounded-e-full' 
-                      : 'rounded-br-full rounded-s-full'),
+                      ?  ChatBubbleClasses.uiChatWithNoImageLeftClasses
+                      :ChatBubbleClasses.uiChatWithNoImageRightClasses ),
               ]"
               style="word-wrap: break-word; word-break: break-word;"
             >

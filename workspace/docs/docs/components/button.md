@@ -6,6 +6,7 @@ const tabs = [
 ];
 
 
+
 </script>
 
 
@@ -22,7 +23,7 @@ const tabs = [
   >
     <template #content1>
 <div class='  p-4 rounded-lg shadow-inner  flex justify-center items-center'>
-  <Button >button</Button>
+     <Button >button</Button>
 </div>
 
 </template>

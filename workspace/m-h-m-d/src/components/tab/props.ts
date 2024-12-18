@@ -51,7 +51,7 @@ export const TabProps = {
   },
   contentColor: {
     type: String,
-    default: 'text-black bg-transparent',
+    default: ' bg-transparent',
   },
   position: {
     type: String as PropType<'top' | 'bottom' | 'left' | 'right'>,
