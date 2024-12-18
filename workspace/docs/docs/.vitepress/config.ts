@@ -38,7 +38,8 @@ export default defineConfig({
           {text:'Divider',link:'/components//Divider'},
           {text:'Stepper',link:'/components//stepper'},
           {text:'List',link:'/components//list'},
-          {text:'Breadcrumb',link:'/components//breadcrumb'}
+          {text:'Breadcrumb',link:'/components//breadcrumb'},
+          {text:'Progress', link:'/components//progress'}
         ]
       },
       
