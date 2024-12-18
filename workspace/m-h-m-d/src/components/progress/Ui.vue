@@ -11,6 +11,7 @@
       >
         <slot name="progressFill"></slot>
         <div
+          v-show="pendingValue < 310"
           v-if="showProgressFill"
           ref="progressFillRef"
           :class="
@@ -25,7 +26,7 @@
                   width: '25%',
                   height: '100%',
                   transform: `translateX(${pendingValue}%)`,
-                  transition: 'transform 0.1s linear',
+                  transition: 'transform 0.1s',
                 }
               : { width: `${modelValue}%` }
           "
@@ -64,12 +65,12 @@ const startLoopingProgress = () => {
   loopingInterval = setInterval(() => {
     if (isPaused) return;
     pendingValue.value += 1;
-    if (pendingValue.value == 300) {
+    if (pendingValue.value == 310) {
       isPaused = true;
       setTimeout(() => {
         pendingValue.value = -35;
         isPaused = false;
-      }, 170);
+      }, 50);
     }
   }, 10);
 };
