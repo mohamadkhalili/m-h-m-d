@@ -11,7 +11,7 @@
       >
         <slot name="progressFill"></slot>
         <div
-          v-show="pendingValue < 310"
+          v-show="pendingValue < 450"
           v-if="showProgressFill"
           ref="progressFillRef"
           :class="
@@ -57,22 +57,21 @@ const handleItemChange = (newValue: Number) => {
 };
 
 let interval: ReturnType<typeof setInterval>;
-let pendingValue = ref(0); // Store the current value for translation
+let pendingValue = ref(-100); 
 let loopingInterval: ReturnType<typeof setInterval> | null = null;
 let isPaused = false;
-// Function to update the pendingValue for the translateX
 const startLoopingProgress = () => {
   loopingInterval = setInterval(() => {
     if (isPaused) return;
     pendingValue.value += 1;
-    if (pendingValue.value == 310) {
+    if (pendingValue.value == 450) {
       isPaused = true;
       setTimeout(() => {
-        pendingValue.value = -35;
+        pendingValue.value = -100;
         isPaused = false;
       }, 50);
     }
-  }, 10);
+  }, props.pendingSpeed);
 };
 
 onMounted(() => {

@@ -211,8 +211,12 @@ onUnmounted(() => {
     activeColor="text-blue-500 shadow-blue-500"
   >
 <template #content1>
+<span class="mb-3 text-sm font-medium">default pending:</span>
 <div class="mb-5"><Progress v-model="progressValue4" :pending="true"/></div>
-
+<span class="mb-3 text-sm font-medium">with pendingSpeed : 5</span>
+<div class="mb-5"><Progress v-model="progressValue4" :pendingSpeed="5" :pending="true"/></div>
+<span class="mb-3 text-sm font-medium">with pendingSpeed : 6</span>
+<div class="mb-5"><Progress v-model="progressValue4" :pendingSpeed="6" :pending="true"/></div>
 </template>
 
 <template #content2>
@@ -226,7 +230,9 @@ onUnmounted(() => {
 <template #content3>
 
 ```vue
-<Progress v-model="progressValue"/>
+<div class="mb-5"><Progress v-model="progressValue" :pending="true"/></div>
+<div class="mb-5"><Progress v-model="progressValue" :pendingSpeed="5" :pending="true"/></div>
+<div class="mb-5"><Progress v-model="progressValue" :pendingSpeed="6" :pending="true"/></div>
 ```
 
 </template>
