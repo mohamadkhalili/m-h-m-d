@@ -2,17 +2,18 @@
 import { computed } from 'vue';
 import Core from './Core.vue';
 import { dividerProps } from './props';
+import { DividerClasses } from '../../styles/DividerClasses';
 
 const props = defineProps(dividerProps);
 
 const DividerPosition = computed(() => {
   switch (props.position) {
     case 'end':
-      return 'order-first';
+      return DividerClasses.position.end;
     case 'start':
-      return 'order-last';
+      return DividerClasses.position.start;
     default:
-      return 'order-none';
+      return DividerClasses.position.none;
   }
 });
 </script>
@@ -20,48 +21,47 @@ const DividerPosition = computed(() => {
 <template>
   <div
     :class="[
-      'flex items-center',
-      props.direction === 'vertical' ? 'flex-col h-full w-min mx-2' : 'w-full',
+      DividerClasses.container,
+      props.direction === 'vertical' ? DividerClasses.vertical : DividerClasses.coreFullWidth,
     ]"
   >
 
     <template v-if="props.text !== undefined && props.direction === 'vertical'">
-      <div class="flex flex-col items-center justify-center h-full">
-        <div class="flex-grow">
+      <div :class=DividerClasses.verticalContainer>
+        <div :class=DividerClasses.verticalText>
           <Core v-bind="props" />
         </div>
         <span
           :style="{ color: props.color }"
-          :class="[props.textColor,DividerPosition]"
-          class="px-2 text-sm"
+          :class="[props.textColor,DividerPosition,DividerClasses.text,DividerClasses.textPadding]"
         >
           {{ props.text }}
         </span>
-        <div class="flex-grow">
-          <Core v-bind="props" />
+        <div :class=DividerClasses.verticalText>
+          <Core :="props" />
         </div>
       </div>
     </template>
 
     <!-- Simple Vertical Divider -->
     <template v-else-if="props.direction === 'vertical'">
-      <Core v-bind="props" :class="['h-full mx-auto']" />
+      <Core v-bind="props" :class="[DividerClasses.coreFullHeight]" />
     </template>
 
     <!-- Horizontal Divider with Text -->
     <template v-if="props.text !== undefined && props.direction === 'horizontal'">
-      <div class="flex items-center  mx-auto">
-        <div class="flex-grow">
+      <div :class=DividerClasses.container>
+        <div :class=DividerClasses.verticalText>
           <Core v-bind="props" />
         </div>
         <!-- متن یا فضای خالی -->
         <span
           :style="{ color: props.color }"
-          :class="[props.textColor,' text-sm flex-grow-0 ',props.text ==='' ? '':'px-1',DividerPosition ]"
+          :class="[props.textColor,DividerClasses.text  ,props.text ==='' ? '':DividerClasses.textPadding,DividerPosition ]"
         >
           {{ props.text  }} 
         </span>
-        <div class="flex-grow">
+        <div :class=DividerClasses.verticalText>
           <Core v-bind="props" />
         </div>
       </div>
@@ -69,7 +69,7 @@ const DividerPosition = computed(() => {
 
     <!-- Simple Horizontal Divider -->
     <template v-else-if="props.direction === 'horizontal'">
-      <Core v-bind="props" class="w-full" />
+      <Core v-bind="props" :class=DividerClasses.coreFullWidth />
     </template>
   </div>
 </template>
