@@ -7,4 +7,5 @@ export const uiProps = {
     progressClass : { type : String, default : ''},
     progressFillClass : { type : String, default : ''},
     pending : { type : Boolean, required : false},
+    pendingSpeed : { type : Number, default : 1},
 }
