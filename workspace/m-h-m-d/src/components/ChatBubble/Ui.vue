@@ -70,30 +70,30 @@ const isLongMessage = (message) => {
               ]"
               style="word-wrap: break-word; word-break: break-word;"
             >
-            <div v-if="Images.length > 0" :class="['grid gap-2  mb-4 rounded-xl ' ,Images.length >1 ?'grid-cols-2' :'grid-cols']">
-  <div v-for="(image, index) in Images.slice(0, 4)" :key="index" class="image-item relative group">
-    <div :class="['relative rounded-xl overflow-hidden cursor-pointer transition-all duration-300', Images.length === 1 ? 'w-[360px] h-fit' : 'w-[160px] h-[100px]']">
+            <div v-if="Images.length > 0" :class="[ChatBubbleClasses.uiChatImageGridClass ,Images.length >1 ?ChatBubbleClasses.uiChatImageGridImageUpClass :ChatBubbleClasses.uiChatImageGridImageDownClass]">
+  <div v-for="(image, index) in Images.slice(0, 4)" :key="index" :class=ChatBubbleClasses.uiChatImageItemClass>
+    <div :class="[ChatBubbleClasses.UiChatImageHoverClasses, Images.length === 1 ?  ChatBubbleClasses.uiChatImageWidthClass :ChatBubbleClasses.uiChatImageWidth2Class ]">
       
-      <img :src="image" alt="chat image" class="transform scale-110 group-hover:scale-125 transition-transform duration-300 ease-in-out object-cover object-center" />
-      <div v-if="index === 3 && Images.length > 4" class="absolute inset-0 bg-black opacity-70 flex items-center justify-center hover:opacity-60">
-        <span class="text-white font-medium text-xl">+{{ Images.length - 4 }} more</span>
+      <img :src="image" alt="chat image" :class=ChatBubbleClasses.uiChatImageGroupStyleClass />
+      <div v-if="index === 3 && Images.length > 4" :class=ChatBubbleClasses.uiChatImageMoreLabelClass >
+        <span :class=ChatBubbleClasses.uiChatMoreLabelClass>+{{ Images.length - 4 }} more</span>
       </div>
     </div>
   </div>
 </div>
               <span v-if="typing">
-                <div class="flex gap-1">
-                  <span class="size-1.5 rounded-full bg-neutral-600 motion-safe:animate-[bounce_1s_ease-in-out_infinite] dark:bg-neutral-600"></span>
-                  <span class="size-1.5 rounded-full bg-neutral-600 motion-safe:animate-[bounce_0.5s_ease-in-out_infinite] dark:bg-neutral-600"></span>
-                  <span class="size-1.5 rounded-full bg-neutral-600 motion-safe:animate-[bounce_1s_ease-in-out_infinite] dark:bg-neutral-600"></span>
+                <div :class=ChatBubbleClasses.uiChatTypingAnimeParentClass>
+                  <span :class=ChatBubbleClasses.uiChatTypingAnimeClass></span>
+                  <span :class=ChatBubbleClasses.uiChatTypingAnime2Class></span>
+                  <span :class=ChatBubbleClasses.uiChatTypingAnimeClass></span>
                 </div>
               </span>
               <span v-else><slot /></span>
             </div>
   
             <div
-              class="flex items-center mt-1 text-xs space-x-2"
-              :class="Side === 'left' ? 'text-left justify-start flex-row-reverse  pr-4' : 'text-right justify-end flex-row-reverse  '"
+              :class="[ChatBubbleClasses.uiChatSubParentClass,
+              Side === 'left' ? ChatBubbleClasses.uiChatSubLeftClass : ChatBubbleClasses.uiChatSubRightClass ]"
             >
               <span v-if="!typing" :class="[subColor]">{{ rightSubChat }}</span>
               <span v-if="!typing" :class="['px-2',subColor]">{{ leftSubChat }}</span>

@@ -63,7 +63,7 @@ const tabs = [
 <Button  buttonClass=' bg-gradient-to-tr from-green-600 to-green-700 shadow-inner hover:scale-105 hover:ring-2' > faded  </Button>
  </div>
     <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
-<Button  buttonClass="bg-transparent ring-2 text-sky-500" > linked  </Button>
+<Button  buttonClass=" ring-2 bg-purple-500  text-sky-300" > linked  </Button>
 
 </div>
     <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">

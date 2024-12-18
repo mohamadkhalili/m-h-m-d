@@ -125,7 +125,7 @@ const labelActive3 = ref(false);
 <Switch v-model="ColorActive2"  activeColor="bg-cyan-500" inactiveColor="bg-cyan-950" />
 <Switch v-model="ColorActive1"   activeColor="bg-pink-500" inactiveColor="bg-pink-950"/>
 <Switch v-model="ColorActive3" activeColor="bg-green-500" inactiveColor="bg-green-950" />
-<Switch v-model="ColorActive4"  activeColor="bg-yellow-500" inactiveColor="bg-yellow-950"/>
+<Switch v-model="ColorActive4"  activeColor="bg-blue-700" inactiveColor="bg-yellow-950"/>
 <Switch v-model="ColorActive5"  activeColor="bg-rose-500" inactiveColor="bg-rose-950"/>
 <Switch v-model="ColorActive6"  activeColor="bg-purple-500" inactiveColor="bg-purple-950" />
 
@@ -150,7 +150,7 @@ const ColorActive6 = ref(true);
 <Switch v-model="ColorActive1"   activeColor="bg-pink-500" inactiveColor="bg-pink-950"/>
 <Switch v-model="ColorActive2"  activeColor="bg-cyan-500" inactiveColor="bg-cyan-950" />
 <Switch v-model="ColorActive3" activeColor="bg-green-500" inactiveColor="bg-green-950" />
-<Switch v-model="ColorActive4"  activeColor="bg-yellow-500" inactiveColor="bg-yellow-950"/>
+<Switch v-model="ColorActive4"  activeColor="bg-blue-700" inactiveColor="bg-yellow-950"/>
 <Switch v-model="ColorActive5"  activeColor="bg-rose-500" inactiveColor="bg-rose-950"/>
 <Switch v-model="ColorActive6"  activeColor="bg-purple-500" inactiveColor="bg-purple-950" />
 </div>
