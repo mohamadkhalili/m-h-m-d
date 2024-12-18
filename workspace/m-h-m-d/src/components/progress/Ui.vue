@@ -19,6 +19,8 @@ import { uiProps } from "./Props";
 import { progressEmits } from "./Emits";
 import { progressClasses } from "../../styles/ProgressClasses";
 import { useAdapterClass } from "../../composables/UseClass";
+import { uiSlots } from "./Slots";
+const uiSlots = defineSlots<uiSlots>();
 const adapterClass = useAdapterClass();
 const props = defineProps(uiProps);
 const emit = defineEmits(progressEmits);
