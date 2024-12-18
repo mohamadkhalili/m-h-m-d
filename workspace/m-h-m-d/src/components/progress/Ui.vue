@@ -2,10 +2,10 @@
   <Core :modelValue="modelValue" @update:modelValue="handleItemChange">
     <template #progress>
       <slot name="progress"></slot>
-      <div class="w-full h-2 bg-gray-200 rounded">
-        <slot name="progressBar"></slot>
+      <div :class="adapterClass(progressClasses.progress).value">
+        <slot name="progressFill"></slot>
         <div
-          class="h-full rounded bg-blue-500 transition-all duration-300"
+          :class="adapterClass(progressClasses.progressFill).value"
           :style="{ width: `${modelValue}%` }"
         ></div>
       </div>
@@ -17,6 +17,9 @@
 import Core from "./Core.vue";
 import { uiProps } from "./Props";
 import { progressEmits } from "./Emits";
+import { progressClasses } from "../../styles/ProgressClasses";
+import { useAdapterClass } from "../../composables/UseClass";
+const adapterClass = useAdapterClass();
 const props = defineProps(uiProps);
 const emit = defineEmits(progressEmits);
 const handleItemChange = (newValue: Number) => {

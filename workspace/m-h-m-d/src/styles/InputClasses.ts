@@ -8,6 +8,5 @@ export const inputClass = {
     UiLabelNotActiveClass:' bg-transparent top-3 text-gray-400 ',
     UiInputActiveClass:'rounded-lg ring-2 ring-gray-600',
     UiInputNotActiveClass:'ring-2 ring-gray-400 rounded-lg p-2',
-
   };
   
