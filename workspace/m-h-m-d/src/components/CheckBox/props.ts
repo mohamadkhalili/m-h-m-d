@@ -7,7 +7,7 @@ export const CheckBoxProps = {
   },
   color: {
     type: String ,
-    default: '',
+    default: 'bg-blue-500 text-white border-blue-500',
   },
   
   size: {

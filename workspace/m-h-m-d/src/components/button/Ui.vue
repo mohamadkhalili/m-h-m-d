@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineEmits } from 'vue';
+import { ref } from 'vue';
 import Core from './Core.vue';
 import { props } from './props';
 import { ButtonClasses } from '../../styles/buttonClasses';
