@@ -3,4 +3,6 @@ export const coreProps = {
 }
 export const uiProps = {
     modelValue : { type : Number, required: false},
+    progressClass : { type : String, default : ''},
+    progressFillClass : { type : String, default : ''},
 }

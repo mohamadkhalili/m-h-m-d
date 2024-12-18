@@ -2,10 +2,10 @@
   <Core :modelValue="modelValue" @update:modelValue="handleItemChange">
     <template #progress>
       <slot name="progress"></slot>
-      <div :class="adapterClass(progressClasses.progress).value">
+      <div :class="adapterClass(progressClasses.progress + ' ' + progressClass).value">
         <slot name="progressFill"></slot>
         <div
-          :class="adapterClass(progressClasses.progressFill).value"
+          :class="adapterClass(progressClasses.progressFill + ' ' + progressFillClass).value"
           :style="{ width: `${modelValue}%` }"
         ></div>
       </div>
