@@ -1,6 +1,3 @@
-import { Teleport } from "vue";
-import { createBgColorProp, createColorProp } from "../../composables/ColorComposable";
-
 export const coreProps = {
     modalClass : { type : String, default : ''},
     outsideClass : { type : String, default : ''},
