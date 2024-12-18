@@ -9,6 +9,10 @@ export const switchClasses = {
     md: 'w-14 h-7',
     lg: 'w-16 h-8',
     xl: 'w-20 h-10',
+translateX: 'translateX(14%)' ,
+    spanSizeLabel1:'absolute right-0 mr-1 text-xs text-white',
+    spanSizeLabel2:"absolute left-0 ml-1 text-xs text-white",
+
   };
   
   export const toggleClasses = {
@@ -26,6 +30,7 @@ export const switchClasses = {
     md: 'translateX(160%)',
     lg: 'translateX(110%)',
     xl: 'translateX(130%)',
+
     default: 'translateX(100%)',
   };
   

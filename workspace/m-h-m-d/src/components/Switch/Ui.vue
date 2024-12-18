@@ -24,7 +24,7 @@ const toggleClass = computed(() => {
   const sizeClass = toggleClasses[props.size] || toggleClasses.sm;
   return [
     toggleClasses.base,
-    props.isDisabled ? adapter(props.isDisabled).value :adapter(props.activeColor).value,
+    props.isDisabled ? props.isDisabled : adapter(props.activeColor).value,
     sizeClass,
   ];
 });
@@ -42,9 +42,9 @@ const toggleSwitch = () => {
   <Core :modelValue="props.modelValue" :isDisabled="props.isDisabled" :defaultChecked="props.defaultChecked" @update:modelValue="emit('update:modelValue', $event)">
     <template #default="{ isActive, toggleSwitch }">
       <div :class="switchClass" @click="toggleSwitch">
-        <span :class="['absolute right-0 mr-1 text-xs text-white', props.size === 'lg' || props.size === 'xl' ? 'text-sm' : '']" v-if="!isActive">{{ props.label1 }}</span>
-        <span class="absolute left-0 ml-1 text-xs text-white" v-if="props.label2 && isActive">{{ props.label2 }}</span>
-        <span :class="toggleClass" :style="{ transform: isActive ? getTranslateValueComputed : 'translateX(14%)' }"></span>
+        <span :class="[switchClasses.spanSizeLabel1]" v-if="!isActive">{{ props.label1 }}</span>
+        <span :class=switchClasses.spanSizeLabel2 v-if="props.label2 && isActive">{{ props.label2 }}</span>
+        <span :class="toggleClass" :style="{ transform: isActive ? getTranslateValueComputed :switchClasses.translateX}"></span>
       </div>
     </template>
   </Core>
