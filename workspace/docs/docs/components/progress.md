@@ -21,11 +21,12 @@ const progressValue2 = ref(60);
 <Tab 
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
     :tabs="tabs" 
-    variant="shadow"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
 <template #content1>
+<button :disabled="progressValue === 0"  @click="progressValue >= 10 ? progressValue = progressValue - 10 : progressValue = 0" class="mb-10 size-10 bg-black text-white rounded-lg p-2 mt-1 mr-40" cleaner>-</button>
+<button :disabled="progressValue === 100" @click="progressValue <= 90 ? progressValue = progressValue + 10 : progressValue = 100" class="mb-10 size-10 bg-black text-white rounded-lg p-2 mt-1 ml-[390px]" cleaner>+</button>
 <Progress v-model="progressValue"/>
 
 </template>
@@ -58,8 +59,7 @@ const progressValue2 = ref(60);
 - This example demonstrates how to customize the progress bar's container and filled section using Tailwind classes.
 <Tab 
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
-    variant="shadow"
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >

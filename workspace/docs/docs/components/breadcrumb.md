@@ -28,8 +28,7 @@ Improved the explanation for the default breadcrumb and corrected the inconsiste
 
 <Tab 
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
-    variant="mirror"
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
@@ -60,8 +59,7 @@ Added consistent formatting and improved the explanation for the separator slot.
 
 <Tab 
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
-    variant="mirror"
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
@@ -101,8 +99,7 @@ Clarified the usage of the items prop and enhanced alignment.
 
 <Tab 
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
-    variant="mirror"
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
@@ -143,8 +140,7 @@ The breadcrumb component with custom active, onActive, and disabled classes for 
 
 <Tab 
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
-    variant="mirror"
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >

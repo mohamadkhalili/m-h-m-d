@@ -29,7 +29,6 @@ The default stepper component with `prev` and `next` buttons.
 <Tab 
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
     :tabs="tabs" 
-    variant="shadow"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
@@ -79,8 +78,7 @@ A stepper that allows users to click on any step to navigate directly to it.
 
 <Tab 
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
-    variant="shadow"
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
@@ -123,8 +121,7 @@ A stepper configured with a defined list of custom steps, each with labels and i
 
 <Tab 
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
-    variant="shadow"
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
@@ -179,8 +176,7 @@ A stepper with fully customized styles for progress, progress bar, done, and not
 
 <Tab 
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
-    variant="shadow"
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
