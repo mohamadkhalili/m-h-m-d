@@ -1,4 +1,5 @@
 <script setup>
+import { ChatBubbleClasses } from '../../styles/Chatbubble';
 import Core from './Core.vue';
 
 const props = defineProps({
@@ -11,7 +12,7 @@ const props = defineProps({
   color: { type: String, required: false },
   subColor: { type: String, required: false },
   typing: { type: Boolean ,required: false },
-  Images: { type: Array, default: () => [] },  // اضافه کردن پراپرتی Images
+  Images: { type: Array, default: () => [] },  
 });
 
 
@@ -27,45 +28,45 @@ const isLongMessage = (message) => {
     <Core :Side="Side" :rightSubChat="rightSubChat" :leftSubChat="leftSubChat" :Avatar="Avatar" :Header="Header" :HeaderSub="HeaderSub" 
     :color="color" :typing="typing" :subColor="subColor" :Images="Images">
       <template #default="{ Side, rightSubChat, leftSubChat, Avatar, Header, HeaderSub, color, typing ,subColor, Images }">
-        <div :class="['flex w-full p-2', Side === 'left' ? 'justify-start ' : 'justify-end',
-         Avatar && Side === 'left' ? 'pl-12 ' : '',
-         Avatar && Side === 'right' ? 'pr-12 ' : '',
+        <div :class="[ChatBubbleClasses.uiChatClass, Side === 'left' ? ChatBubbleClasses.uiLeftSideClass : ChatBubbleClasses.uiRightSideClass,
+         Avatar && Side === 'left' ? ChatBubbleClasses.UiChatPaddingLeftSideClass : '',
+         Avatar && Side === 'right' ? ChatBubbleClasses.UiChatPaddingRightSideClass : '',
         ]">
          
-          <div class="relative max-w-[75%]">
-            <div v-if="Avatar" :class="['absolute ', Side === 'left' ? '-left-10 top-0  ' : '-right-10 top-0']">
+          <div :class=ChatBubbleClasses.uiChatBubbleMainClass>
+            <div v-if="Avatar" :class="[ Side === 'left' ? ChatBubbleClasses.uiAvatarLeftSideClass : ChatBubbleClasses.uiAvatarRightSideClass ]">
               <img
                 :src="Avatar"       
-                class="w-10 h-10 rounded-full border  border-gray-300 "
+                :class=ChatBubbleClasses.UiChatImageClass
               />
             </div>
   
             <div
               class="flex items-center "
-              :class="Side === 'left' ? 'text-left justify-start flex-row ml-4' : 'text-right justify-start flex-row-reverse mr-4 '"
+              :class="Side === 'left' ? ChatBubbleClasses.uiChatHeaderLeftClasses: ChatBubbleClasses.uiChatHeaderRightClasses"
             >
-              <span :class="['text-lg', subColor]">{{ Header }}</span>
-              <span class="text-xs px-2" :class="subColor">{{ HeaderSub }}</span>
+              <span :class="[subColor]">{{ Header }}</span>
+              <span  :class="[subColor,ChatBubbleClasses.uiChatSubHeaderSizeClasses]">{{ HeaderSub }}</span>
             </div>
 
           
 
             <div
               :class="[
-                'px-4 py-2 shadow-md max-w-[75%]', color,
+                ChatBubbleClasses.uiChatMassageClass, color,
                 isLongMessage($slots.default ? $slots.default()[0].children : '') 
                   ? (Side === 'left' 
-                      ? 'rounded-3xl rounded-tl-none' 
-                      : 'rounded-3xl rounded-tr-none')
+                      ? ChatBubbleClasses.uiChatLowLengthLeftClasses
+                      :ChatBubbleClasses.uiChatLowLengthRightClasses )
                   : (Side === 'left' 
-                      ? 'rounded-bl-full rounded-e-full' 
-                      : 'rounded-br-full rounded-s-full'),
+                      ? ChatBubbleClasses.uiChatHighLengthLeftClasses 
+                      : ChatBubbleClasses.uiChatHighLengthRightClasses),
                       Images.length > 0   ? (Side === 'left' 
-                      ? ' rounded-xl rounded-tl-none ' 
-                      : 'rounded-xl rounded-tr-none')
+                      ? ChatBubbleClasses.uiChatWithImageLeftClasses
+                      : ChatBubbleClasses.uiChatWithImageRightClasses)
                   : (Side === 'left' 
-                      ? 'rounded-bl-full rounded-e-full' 
-                      : 'rounded-br-full rounded-s-full'),
+                      ?  ChatBubbleClasses.uiChatWithNoImageLeftClasses
+                      :ChatBubbleClasses.uiChatWithNoImageRightClasses ),
               ]"
               style="word-wrap: break-word; word-break: break-word;"
             >

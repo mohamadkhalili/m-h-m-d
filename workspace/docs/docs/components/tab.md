@@ -37,7 +37,9 @@ This example demonstrates horizontally aligned tabs with default styling.
     :tabs="tabsView" 
     variant="bordered"
     size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
+    activeColor="text-blue-500 "
+    notActiveColor='text-gray-700'
+    contentColor='text-red-600 '
   >
     <template #content1>
 
@@ -46,6 +48,7 @@ This example demonstrates horizontally aligned tabs with default styling.
    class="gap-3 border-[1px] rounded-md w-fit"
     :tabs="tabs" 
     variant="bordered"
+    activeColor="text-blue-500"
   >
     <template #label="{ tab }">
       <span>{{ tab.label }}</span>
@@ -104,22 +107,18 @@ The following examples show how you can customize the background and text colors
 <div class="grid grid-cols-2 gap-2"> 
 <div class="p-8 rounded-lg   justify-center items-center shadow-inner">
  <Tab :tabs="tabs" 
- activeColor="bg-blue-600"
-  color="bg-gray-700"
-   activeTextColor="text-white"
-   variant="default"
+    variant="default"
+activeColor="bg-blue-700 text-white" 
    contentColor="text-blue-600"
-    textColor="text-white" > 
+     notActiveColor="text-gray-700"> 
     </Tab> 
     </div> 
     <div class="p-8 rounded-lg shadow-inner  justify-center items-center"> 
     <Tab :tabs="tabs" 
-    activeColor="bg-rose-700" 
-    color="bg-gray-100" 
    variant="default"
+  activeColor="bg-rose-700 text-white" 
    contentColor="text-red-600"
-    activeTextColor="text-white"
-     textColor="text-black" >
+     notActiveColor="text-gray-700" >
      <template #label="{ tab }"> 
      <span>{{ tab.label }}</span> 
      </template>
@@ -138,12 +137,10 @@ The following examples show how you can customize the background and text colors
 
   ```md
  <Tab :tabs="tabs" 
- activeColor="bg-blue-600"
-  color="bg-gray-700"
-   activeTextColor="text-white"
-   variant="default"
+    variant="default"
+activeColor="bg-blue-700 text-white" 
    contentColor="text-blue-600"
-    textColor="text-white" > 
+     notActiveColor="text-gray-700"> 
     </Tab> 
 ```
   </template>
@@ -160,17 +157,15 @@ The following examples show how you can customize the background and text colors
     :tabs="tabsView" 
     variant="bordered"
     size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
+    activeColor="text-blue-500  "
   >
     <template #content1>
 
 <div class="p-6 rounded-lg shadow-inner flex justify-center items-center">
   <Tab 
     :tabs="tabsVariants" 
-    activeColor="bg-purple-600" 
+    activeColor="bg-purple-600 text-white" 
     color="bg-purple-200" 
-    activeTextColor="text-white" 
-    textColor="text-black"
     vertical
    variant="default"
   >
@@ -188,10 +183,9 @@ The following examples show how you can customize the background and text colors
   ```md
  <Tab 
     :tabs="tabsVariants" 
-    activeColor="bg-purple-600" 
+     activeColor="bg-purple-600 text-white" 
     color="bg-purple-200" 
-    activeTextColor="text-white" 
-    textColor="text-black"
+   variant="default"
     vertical      <!-- add this -->
   >
 ```
@@ -631,7 +625,7 @@ Adjust the size of the tabs using the `size` prop. The available options are `sm
 | **Feature**         | **Description**                                                                                                   | **Usage**                                                                                   |
 |---------------------|-------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
 | **Default Tab**      | Basic example with default styles. This is the simplest usage, without any extra configuration.                 | Pass an array of tabs with labels and content. Set the `variant` prop to `'default'`.       |
-| **Customize Colors** | Customize the text and background colors of both active and inactive tabs. Can be applied using `createColorProp()` and `createBgColorProp()`. | Set the `textColor` and `activeColor` props to modify the colors of the tabs.               |
+| **Customize Colors** | Customize the text and background colors of both active and inactive tabs. Can be applied using `activeColor` and `notActiveColor` and `ContentColor`. | Set the `textColor` and `activeColor` props to modify the colors of the tabs.               |
 | **Vertical Tabs**    | Displays the tabs in a vertical orientation instead of horizontal, useful for space-constrained areas.            | Set the `vertical` prop to `true`.                                                           |
 | **Variants**         | Different tab styles that can be applied using the `variant` prop. Options include `'underline'`, `'bordered'`, `'shadow'`, and `'default'`. | Use the `variant` prop to set the desired tab style (`'underline'`, `'bordered'`, etc.).      |
 | **Disabled Tab**     | Prevent users from interacting with specific tabs by disabling them.                                              | Use the `isDisabled` prop to disable all tabs or specific ones.                             |

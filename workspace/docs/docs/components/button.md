@@ -6,6 +6,7 @@ const tabs = [
 ];
 
 
+
 </script>
 
 
@@ -22,7 +23,7 @@ const tabs = [
   >
     <template #content1>
 <div class='  p-4 rounded-lg shadow-inner  flex justify-center items-center'>
-  <Button >button</Button>
+     <Button >button</Button>
 </div>
 
 </template>
@@ -47,67 +48,53 @@ const tabs = [
 
 ## modify
 
+
+
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full mx-auto "
+    :tabs="tabs" 
+    variant="bordered"
+    size="sm"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+    <template #content1>
 <div class="grid grid-cols-2 gap-4">
     <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
-<Button  CleanerEffect > faded  </Button>
+<Button  buttonClass=' bg-gradient-to-tr from-green-600 to-green-700 shadow-inner hover:scale-105 hover:ring-2' > faded  </Button>
  </div>
     <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
-<Button  variant='link' > linked  </Button>
+<Button  buttonClass="bg-transparent ring-2 text-sky-500" > linked  </Button>
 
 </div>
     <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
-  <Button variant='bordered' > border</Button>
+  <Button buttonClass=' bg-gradient-to-b from-blue-600 to-sky-900' > border</Button>
 
 
 </div>
-    <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
-<Button  variant='light' > lighten  </Button>
- </div>
      <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
-     <Button  variant='shadow' > shadow  </Button>
-
-</div>
-    <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
-       <Button  variant='ghost' > ghosts  </Button>
-
- </div>
+     <Button  buttonClass=' bg-gradient-to-r from-orange-400 to-pink-400' > shadow  </Button>
 
 </div>
 
+</div>
+
+</template>
 
 
-```md
+  <template #content2>
 
-<Button  variant='faded' > faded  </Button>
-<Button  variant='link' > linked  </Button> 
-<Button variant='bordered' >border </Button>
-<Button  variant='light' > lighten  </Button>
-<Button  variant='ghost' > ghosts   </Button>
-<Button  variant='shadow' > shadow  </Button>
+  ```md
+<Button  buttonClass=' bg-gradient-to-tr from-green-600 to-green-700 shadow-inner hover:scale-105 hover:ring-2' > faded  </Button>
+<Button  buttonClass="bg-transparent ring-2 text-sky-500" > linked  </Button>
+<Button buttonClass=' bg-gradient-to-b from-blue-600 to-sky-900' > border</Button>
+<Button  buttonClass=' bg-gradient-to-r from-orange-400 to-pink-400' > shadow  </Button>
 
 ```
+  </template>
+</Tab>
 
 
------------------
-<br/>
 
-## CleanerEffect
-
-<br/>
-
-You Can use   *CleanerEffect*  for enable  cleaner effect on Button !
-<div class='  p-4 rounded-lg shadow-inner  flex justify-center items-center'>
-
-<Button  color="secondary" CleanerEffect  >Cleaner </Button>
-
-
-</div>
-
-```md
-<Button  color="secondary" CleanerEffect > Cleaner </Button>
-
-```
----
 
 
 ## Button Component Features

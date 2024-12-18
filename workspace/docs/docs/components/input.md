@@ -91,10 +91,12 @@ You can customize the appearance of the input component by modifying the followi
 
 <div class=" py-10 px-2 rounded-lg  shadow-inner grid  grid-cols-2 gap-12 justify-items-center">
   
-<Input  prefix="➥" suffix='🗙' placeholder='search' InputClass="rounded-full ring-2  "/>
-<Input prefix="👤"   placeholder="password" InputClass="shadow-blue-200 shadow-inner" />
-<Input  label="User name" InputClass="shadow-[1px_4px_2px_-2px_rgba(34,_197,_94,_0.5)] " LabelInputClass=' top-12 left-[84px] rounded-full  px-2  bg-transparent '/>
-<Input label="Gmail"  LabelInputClass=' top-[-10px] left-8 rounded-full bg-white  px-2  text-sm '  />
+<Input  prefix="➥" suffix='🗙' placeholder='search' InputClass=" rounded-full ring-2 ring-blue-600 " />
+<Input prefix="👤"   placeholder="password" InputClass="shadow-blue-200 shadow-inner ring-0 ring-transparent"  />
+<Input  label="User name" InputClass="shadow-[1px_4px_2px_-2px_rgba(34,_197,_94,_0.5)] ring-0" LabelInputClass=' -top-[-56px] left-[33px] rounded-full  bg-transparent text-green-600' />
+
+
+<Input label="Gmail"  LabelInputClass=' top-[-13px] left-8 rounded-full bg-white  px-2  text-sm '  />
 
 
 </div>

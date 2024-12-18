@@ -3,10 +3,10 @@
     <template #button>
       <button
         :class="[
-          mergeClasses(uiButtonClass, buttonClass).value,
-          { 'custom-button': true, 'CleanerEffect': propsData.CleanerEffect }
+          adapterClass(uibuttonClass + ' ' + buttonClass).value,
+          { 'custom-button': true }
         ]"
-        @click="createRipple"
+        @click="handleClick"
       >
         <slot></slot>
         <span
@@ -21,23 +21,23 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, defineEmits } from 'vue';
 import Core from './Core.vue';
 import { props } from './props';
-import { useMergeClasses } from "../../composables/useMergeClasses";
+import { ButtonClasses } from '../../styles/buttonClasses';
+import { useAdapterClass } from '../../composables/UseClass';
 
-const mergeClasses = useMergeClasses();
 const propsData = defineProps(props);
+const emit = defineEmits(['click']); // Emit the 'click' event to the parent
 
 const rippleVisible = ref(false);
 const rippleStyle = ref({});
-
-const uiButtonClass = ref("rounded-lg text-sm w-24 h-10 text-white transition-all duration-200 cursor-pointer z-10 overflow-hidden bg-gradient-to-r from-slate-600 to-slate-700");
+const uibuttonClass = ref(ButtonClasses.uiButtonClass);
+const adapterClass = useAdapterClass();
 
 const createRipple = (event: MouseEvent) => {
   const button = event.currentTarget as HTMLButtonElement;
   const rect = button.getBoundingClientRect();
-  
   const size = Math.max(rect.width, rect.height);
   const x = event.clientX - rect.left - size / 2;
   const y = event.clientY - rect.top - size / 2;
@@ -54,17 +54,24 @@ const createRipple = (event: MouseEvent) => {
 
   setTimeout(() => {
     rippleVisible.value = false;
-  }, 600); 
+  }, 600);
 };
 
 const resetRipple = () => {
   rippleStyle.value = {};
 };
+
+// Combined click handler
+const handleClick = (event: MouseEvent) => {
+  createRipple(event); // Trigger ripple effect
+  emit('click', event); // Emit click event for external use
+};
 </script>
 
 <style scoped>
+/* No changes to your CSS */
 .custom-button {
-  position: relative; 
+  position: relative;
 }
 
 .custom-button::before {
@@ -75,7 +82,7 @@ const resetRipple = () => {
   opacity: 0;
   height: 100%;
   background: rgba(255, 255, 255, 0.5);
-  transition: left .7s ease, box-shadow .4s ease-in-out;
+  transition: left 0.7s ease, box-shadow 0.4s ease-in-out;
 }
 
 .custom-button:hover::before {
@@ -91,17 +98,17 @@ const resetRipple = () => {
 }
 
 .ripple {
-  position: absolute; 
+  position: absolute;
   transform: scale(0.1);
   border-radius: 20%;
-  animation: ripple-animation 0.7s linear forwards; 
+  animation: ripple-animation 0.7s linear forwards;
 }
 
 @keyframes ripple-animation {
-   to {
-     background: rgba(255, 255, 255, 0.589); 
-     transform: scale(2);
-     opacity: 0;
-   }
+  to {
+    background: rgba(255, 255, 255, 0.589);
+    transform: scale(2);
+    opacity: 0;
+  }
 }
 </style>
