@@ -7,29 +7,43 @@
         :class="
           adapterClass(progressClasses.progress + ' ' + progressClass).value
         "
+        style="position: relative; overflow: hidden"
       >
         <slot name="progressFill"></slot>
         <div
           v-if="showProgressFill"
+          ref="progressFillRef"
           :class="
             adapterClass(progressClasses.progressFill + ' ' + progressFillClass)
               .value
           "
-          :style="{ width: `${modelValue}%` }"
+          :style="
+            pending
+              ? {
+                  position: 'absolute',
+                  left: '0%',
+                  width: '25%',
+                  height: '100%',
+                  transform: `translateX(${pendingValue}%)`,
+                  transition: 'transform 0.1s linear',
+                }
+              : { width: `${modelValue}%` }
+          "
         ></div>
       </div>
     </template>
   </Core>
 </template>
   
-  <script setup lang="ts">
+<script setup lang="ts">
 import Core from "./Core.vue";
 import { uiProps } from "./Props";
 import { progressEmits } from "./Emits";
 import { progressClasses } from "../../styles/ProgressClasses";
 import { useAdapterClass } from "../../composables/UseClass";
 import { uiSlots } from "./Slots";
-import { computed, useSlots } from "vue";
+import { computed, onMounted, onUnmounted, nextTick, useSlots, ref } from "vue";
+
 const uiSlots = defineSlots<uiSlots>();
 const adapterClass = useAdapterClass();
 const props = defineProps(uiProps);
@@ -40,4 +54,31 @@ const showProgressFill = computed(() => !slots.progressFill);
 const handleItemChange = (newValue: Number) => {
   emit("update:modelValue", newValue);
 };
+
+let interval: ReturnType<typeof setInterval>;
+let pendingValue = ref(0); // Store the current value for translation
+let loopingInterval: ReturnType<typeof setInterval> | null = null;
+let isPaused = false;
+// Function to update the pendingValue for the translateX
+const startLoopingProgress = () => {
+  loopingInterval = setInterval(() => {
+    if (isPaused) return;
+    pendingValue.value += 1;
+    if (pendingValue.value == 300) {
+      isPaused = true;
+      setTimeout(() => {
+        pendingValue.value = -35;
+        isPaused = false;
+      }, 170);
+    }
+  }, 10);
+};
+
+onMounted(() => {
+  if (props.pending) startLoopingProgress();
+});
+onUnmounted(() => {
+  if (loopingInterval) clearInterval(loopingInterval);
+});
 </script>
+  
