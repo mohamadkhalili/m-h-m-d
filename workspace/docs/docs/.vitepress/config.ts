@@ -39,7 +39,9 @@ export default defineConfig({
           {text:'Stepper',link:'/components//stepper'},
           {text:'List',link:'/components//list'},
           {text:'Breadcrumb',link:'/components//breadcrumb'},
-          {text:'Progress', link:'/components//progress'}
+          {text:'Progress', link:'/components//progress'},
+          {text:'RangeSlider', link:'/components//RangeSlider'}
+          
         ]
       },
       
