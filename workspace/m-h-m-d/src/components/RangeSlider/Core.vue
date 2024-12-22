@@ -1,59 +1,31 @@
-<template>
-    <div>
-      <h3>Primary Slider</h3>
-      <RangeSlider 
-        :min="0" 
-        :max="100" 
-        :value="sliderValues.primary" 
-        @update:value="updateValue('primary', $event)" 
-        variant="primary" 
-      />
-  
-      <h3>Music Slider</h3>
-      <RangeSlider 
-        :min="0" 
-        :max="100" 
-        :value="sliderValues.music" 
-        @update:value="updateValue('music', $event)" 
-        variant="music" 
-      />
-  
-      <h3>Sound Slider</h3>
-      <RangeSlider 
-        :min="0" 
-        :max="100" 
-        :value="sliderValues.sound" 
-        @update:value="updateValue('sound', $event)" 
-        variant="sound" 
-      />
-  
-      <h3>Car Rental Slider</h3>
-      <RangeSlider 
-        :min="0" 
-        :max="1000" 
-        :value="sliderValues.carRental" 
-        @update:value="updateValue('carRental', $event)" 
-        variant="carRental" 
-      />
-    </div>
-  </template>
-  
-  <script setup>
-  import { ref } from 'vue';
-  import RangeSlider from './Ui.vue';
-  
-  const sliderValues = ref({
-    primary: 50,
-    music: 50,
-    sound: 30,
-    carRental: 500,
-  });
-  
-  const updateValue = (key, value) => {
-    sliderValues.value[key] = value;
-  };
-  </script>
-  
-  <style scoped>
-  /* Add your styles here */
-  </style>
+<script setup>
+
+const props = defineProps({
+  min: Number,
+  max: Number,
+  value: [Number, Array],
+  variant: {
+    type: String,
+    default: 'default',
+    validator: value => ['default', 'primary', 'secondary', 'music', 'sound', 'carRental'].includes(value),
+  },
+  range: {
+    type: Boolean,
+    default: false,
+  },
+});
+
+const emit = defineEmits(['update:value']);
+
+const updateValue = (event, index = null) => {
+  if (props.range && Array.isArray(props.value)) {
+    const newValue = [...props.value];
+    newValue[index] = Number(event.target.value);
+    emit('update:value', newValue);
+  } else {
+    emit('update:value', Number(event.target.value));
+  }
+};
+
+export { updateValue, props }; // منطق و props را صادر می‌کنیم
+</script>

@@ -1,37 +1,10 @@
 <script setup>
 import { computed } from 'vue';
-import { rangeSliderClasses } from '../../styles/RangeSlider';
-
-const props = defineProps({
-  min: Number,
-  max: Number,
-  value: [Number, Array],
-  variant: {
-    type: String,
-    default: 'default',
-    validator: value => ['default', 'primary', 'secondary', 'music', 'sound', 'carRental'].includes(value),
-  },
-  range: {
-    type: Boolean,
-    default: false,
-  },
-});
-
-const emit = defineEmits(['update:value']);
+import { props, updateValue } from './Core.vue'; // ایمپورت منطق
 
 const classes = computed(() => {
   return props.variant === 'default' ? rangeSliderClasses : rangeSliderClasses.variants[props.variant];
 });
-
-const updateValue = (event, index = null) => {
-  if (props.range && Array.isArray(props.value)) {
-    const newValue = [...props.value];
-    newValue[index] = Number(event.target.value);
-    emit('update:value', newValue);
-  } else {
-    emit('update:value', Number(event.target.value));
-  }
-};
 </script>
 
 <template>
