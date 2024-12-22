@@ -106,7 +106,6 @@ const tabs = [
   thumbColor="#0cc0C4"
   thumbBorderColor="#fff"
   linkFieldColor="bg-cyan-500"
-  baseColor='bg-gray-400'
 />
 <RangeSlider
   :min="0"
@@ -115,7 +114,6 @@ const tabs = [
      thumbColor="#fc4"
   thumbBorderColor="#fcaE44"
   linkFieldColor="bg-yellow-500"
-  baseColor='bg-gray-400'
 />
 <RangeSlider
   :min="0"

@@ -1,7 +1,6 @@
 <template>
-    <div class="text-center w-full">
-      <div class="flex flex-col items-center w-full mt-4">
-        <div class="relative w-full">
+    <div class="w-full">
+        <div class="relative w-full text-center">
           <div :class="[ sliderClasses.trackBackground[props.variant], baseColor]"></div>
           <div :class="[sliderClasses.trackFilled[props.variant], linkFieldColor]" :style="{ width: percentage + '%' }"></div>
           <input
@@ -20,7 +19,6 @@
           />
         </div>
       </div>
-    </div>
   </template>
   
   <script setup>
