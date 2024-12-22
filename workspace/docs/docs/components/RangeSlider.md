@@ -7,6 +7,9 @@ const rangeValueLight2 = ref(24);
 const rangeValueLight3 = ref(60);
 const rangeValueLight4 = ref(50);
 const rangeValueLight5 = ref(34);
+const rangeValueLight6 = ref(10);
+const rangeValueLight7 = ref(5);
+
 
 
 
@@ -152,6 +155,68 @@ const tabs = [
 
 
 
+## Step
+
+<Tab 
+   class="gap-3 border-[1px]  rounded-md w-full mx-auto "
+    :tabs="tabs" 
+    variant="bordered"
+    size="sm"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+
+<template #content1>
+
+<div class=" py-10  rounded-lg  gap-4 grid  grid-cols-2 justify-items-center">
+
+  
+<RangeSlider
+  min="0"
+  max="100"
+  v-model="rangeValueLight6"
+  thumbColor="#FFFF"
+  thumbBorderColor="#F21114"
+  linkFieldColor="bg-rose-500"
+  step="10"
+/>
+<p> with 10 step => {{rangeValueLight6}}</p>
+<RangeSlider
+  :min="0"
+  :max="100"
+  v-model="rangeValueLight7"
+  step="5"
+/>
+<p> with 5 step => {{rangeValueLight7}}</p>
+
+
+
+</div
+
+
+</div>
+
+</template>
+
+  <template #content2>
+
+  ```md
+
+<RangeSlider
+  :min="0"
+  :max="100"
+  v-model="rangeValueLight5"
+  thumbColor="#b4afff"
+  thumbBorderColor="#bd26f0"
+  linkFieldColor="bg-purple-500"
+  baseColor='bg-purple-200'
+
+/>
+
+```
+  </template>
+
+
+</Tab>
 
 
 
