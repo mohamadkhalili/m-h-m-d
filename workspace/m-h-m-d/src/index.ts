@@ -18,6 +18,8 @@ import { tooltip } from './directives/TooltipDirective';
 import clickOutside from './directives/clickOutSide';
 import stepper from './components/stepper/Core.vue';
 import progress from './components/progress/Ui.vue'
+import RangeSlider from './components/RangeSlider/Ui.vue'
+
 const components = [
     { name: 'Pagination', ...pagination },
     { name: 'modal', ...modal },
@@ -35,6 +37,8 @@ const components = [
     { name: 'Loader', ...Loader },
     { name: 'Breadcrumb', ...Breadcrumb },
     { name: 'Progress', ...progress},
+    { name: 'RangeSlider', ...RangeSlider},
+
 ]
 
 const directives = {
@@ -57,7 +61,7 @@ const install = (app: App, config: Config = {}) => {
     });
 }
 
-export { pagination, modal, Button, input, menu, tab, list, ChatBubble, Divider, stepper, Card, Switch, CheckBox, Breadcrumb, Loader, progress }
+export { pagination, modal, Button, input, menu, tab, list, ChatBubble, Divider, stepper, Card, Switch, CheckBox, Breadcrumb, Loader, progress,RangeSlider }
 export { tooltip }
 
 export default {
