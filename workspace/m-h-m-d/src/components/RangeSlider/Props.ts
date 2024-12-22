@@ -5,4 +5,5 @@ export interface SliderProps {
   max: number;
   modelValue: number;
   name: string;
+  step:number;
 }

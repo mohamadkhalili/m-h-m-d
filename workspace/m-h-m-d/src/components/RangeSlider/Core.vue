@@ -8,6 +8,7 @@
         type="range"
         :min="min"
         :max="max"
+        :step="step"
         :value="modelValue"
         @input="updateValue"
         :id="name"
