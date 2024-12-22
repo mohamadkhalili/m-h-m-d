@@ -2,8 +2,8 @@
   <div class="flex flex-col items-center w-full">
     <SlotComponent :label="label" :value="modelValue" />
     <div class="relative w-full mt-4">
-      <div class="track-background"></div>
-      <div class="track-filled" :style="{ width: percentage + '%' }"></div>
+      <div :class="[sliderClasses.trackBackground, baseColor]"></div>
+      <div :class="[sliderClasses.trackFilled, linkFieldColor]" :style="{ width: percentage + '%' }"></div>
       <input
         type="range"
         :min="min"
@@ -12,26 +12,56 @@
         :value="modelValue"
         @input="updateValue"
         :id="name"
-        class="slider w-full"
+        :class="sliderClasses.base"
+        :style="{
+          '--thumb-bg': thumbColor,
+          '--thumb-border': thumbBorderColor
+        }"
       />
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { defineProps, defineEmits, computed } from 'vue';
-import { SliderProps } from './Props';
 import { emits } from './Emits';
+import { sliderClasses } from '../../styles/RangeSlider';
 
-const props = defineProps<SliderProps>();
+const props = defineProps({
+  label: String,
+  min: Number,
+  max: Number,
+  modelValue: Number,
+  name: String,
+  baseColor: {
+    type: String,
+    default: 'bg-gray-300'
+  },
+  thumbColor: {
+    type: String,
+    default: 'bg-blue-500'
+  },
+  thumbBorderColor: {
+    type: String,
+    default: 'border-white'
+  },
+  linkFieldColor: {
+    type: String,
+    default: 'bg-blue-500'
+  },
+  step: {
+    type: Number,
+    default: 1
+  }
+});
 const emit = defineEmits(emits);
 
 const percentage = computed(() => {
   return ((props.modelValue - props.min) / (props.max - props.min)) * 100;
 });
 
-const updateValue = (event: Event) => {
-  const value = Number((event.target as HTMLInputElement).value);
+const updateValue = (event) => {
+  const value = Number(event.target.value);
   emit('update:modelValue', value);
 };
 </script>
