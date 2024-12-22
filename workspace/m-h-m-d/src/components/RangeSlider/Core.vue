@@ -1,31 +1,48 @@
-<script setup>
-
-const props = defineProps({
-  min: Number,
-  max: Number,
-  value: [Number, Array],
-  variant: {
-    type: String,
-    default: 'default',
-    validator: value => ['default', 'primary', 'secondary', 'music', 'sound', 'carRental'].includes(value),
-  },
-  range: {
-    type: Boolean,
-    default: false,
-  },
-});
-
-const emit = defineEmits(['update:value']);
-
-const updateValue = (event, index = null) => {
-  if (props.range && Array.isArray(props.value)) {
-    const newValue = [...props.value];
-    newValue[index] = Number(event.target.value);
-    emit('update:value', newValue);
-  } else {
-    emit('update:value', Number(event.target.value));
+<template >
+    <div class="flex flex-col items-center">
+      <SlotComponent :label="label" :value="modelValue" />
+      <input
+        type="range"
+        :min="min"
+        :max="max"
+        :value="modelValue"
+        @input="updateValue"
+        :id="name"
+        class="slider w-full mt-4"
+      />
+    </div>
+  </template>
+  
+  <script setup lang="ts">
+  import { defineProps, defineEmits } from 'vue';
+  import { SliderProps } from './Props';
+  import { emits } from './Emits';
+  
+  const props = defineProps<SliderProps>();
+  const emit = defineEmits(emits);
+  
+  // ارسال تغییرات
+  const updateValue = (event: Event) => {
+    const value = Number((event.target as HTMLInputElement).value);
+    emit('update:modelValue', value);
+  };
+  </script>
+  
+  
+  <style scoped>
+  .slider {
+    @apply appearance-none w-full h-2 bg-gray-300 rounded-lg outline-none transition-all duration-200;
   }
-};
-
-export { updateValue, props }; // منطق و props را صادر می‌کنیم
-</script>
+  
+  .slider:hover {
+    @apply bg-gray-400;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    @apply w-6 h-6 bg-green-500 rounded-full cursor-pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    @apply w-6 h-6 bg-green-500 rounded-full cursor-pointer;
+  }
+  </style>

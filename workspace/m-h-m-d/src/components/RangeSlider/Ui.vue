@@ -1,45 +1,32 @@
-<script setup>
-import { computed } from 'vue';
-import { props, updateValue } from './Core.vue'; // ایمپورت منطق
-
-const classes = computed(() => {
-  return props.variant === 'default' ? rangeSliderClasses : rangeSliderClasses.variants[props.variant];
-});
-</script>
-
 <template>
-  <div :class="classes.uiContainerClass">
-    <input 
-      v-if="!props.range" 
-      type="range" 
-      :min="props.min" 
-      :max="props.max" 
-      :value="props.value" 
-      @input="updateValue" 
-      :class="classes.uiInputClass" 
+  <div class="text-center">
+    <label :for="name" class="block text-lg font-semibold mb-2">{{ label }}</label>
+    <span class="text-gray-700">{{ value }}</span>
+    <RangeSlider
+      :label="label"
+      :min="min"
+      :max="max"
+      v-model="value"
+      :name="name"
     />
-    <template v-else>
-      <input 
-        type="range" 
-        :min="props.min" 
-        :max="props.max" 
-        :value="props.value[0]" 
-        @input="event => updateValue(event, 0)" 
-        :class="classes.uiInputClass" 
-      />
-      <input 
-        type="range" 
-        :min="props.min" 
-        :max="props.max" 
-        :value="props.value[1]" 
-        @input="event => updateValue(event, 1)" 
-        :class="classes.uiInputClass" 
-      />
-    </template>
-    <span :class="classes.uiValueClass">{{ props.range ? `${props.value[0]} - ${props.value[1]}` : props.value }}</span>
   </div>
 </template>
 
+<script setup>
+import { defineProps, ref } from 'vue';
+import RangeSlider from './Core.vue';
+
+const props = defineProps({
+  label: String,
+  min: Number,
+  max: Number,
+  modelValue: Number,
+  name: String
+});
+
+const value = ref(props.modelValue);
+</script>
+
 <style scoped>
-/* Add your styles here */
+/* Optional: Customize styles */
 </style>

@@ -1,3 +1,5 @@
-export default {
-  default: 'Slot for custom range slider content'
-};
+// src/components/RangeSlider/Slots.ts
+export interface SlotProps {
+  label: string;
+  value: number;
+}

@@ -1,3 +1,6 @@
-export const emits = (event: string, value: number) => {
-  return event === 'update:value';
+// emits.ts
+export const emits = {
+  'update:modelValue': (value: number) => {
+    return typeof value === 'number';
+  }
 };
