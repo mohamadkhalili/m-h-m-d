@@ -2,8 +2,8 @@
     <div class="text-center w-full">
       <div class="flex flex-col items-center w-full mt-4">
         <div class="relative w-full">
-          <div :class="[sliderClasses.trackBackground, baseColor]"></div>
-          <div :class="[sliderClasses.trackFilled, linkFieldColor]" :style="{ width: percentage + '%' }"></div>
+          <div :class="[ sliderClasses.trackBackground[props.variant], baseColor]"></div>
+          <div :class="[sliderClasses.trackFilled[props.variant], linkFieldColor]" :style="{ width: percentage + '%' }"></div>
           <input
             type="range"
             :min="min"
@@ -11,7 +11,7 @@
             :step="step"
             v-model="value"
             :id="name"
-            :class="sliderClasses.base"
+            :class="sliderClasses.base[props.variant]"
             @input="updateValue"
             :style="{
               '--thumb-bg': thumbColor,
@@ -52,7 +52,12 @@
     step: {
       type: Number,
       default: 1
-    }
+    },
+    variant: {
+    type: String,
+    default: 'default',
+    validator: (value) => ['default', 'inside'].includes(value)
+  }
   });
   
   const emit = defineEmits(['update:modelValue']);
@@ -92,7 +97,7 @@
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     border-radius: 50%;
     position: relative;
-    top: 0px;
+    top: 10px;
   }
   </style>
   
