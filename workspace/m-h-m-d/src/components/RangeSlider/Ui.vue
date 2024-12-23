@@ -1,8 +1,8 @@
 <template>
     <div class="w-full">
         <div class="relative w-full text-center">
-          <div :class="[ sliderClasses.trackBackground[props.variant], baseColor]"></div>
-          <div :class="[sliderClasses.trackFilled[props.variant], linkFieldColor]" :style="{ width: percentage + '%' }"></div>
+          <div :class="[ adapter(sliderClasses.trackBackground[props.variant]).value,adapter( baseColor).value]"></div>
+          <div :class="[adapter(sliderClasses.trackFilled[props.variant]).value, adapter(linkFieldColor).value]" :style="{ width: percentage + '%' }"></div>
           <input
             type="range"
             :min="min"
@@ -10,7 +10,7 @@
             :step="step"
             v-model="value"
             :id="name"
-            :class="sliderClasses.base[props.variant]"
+            :class="adapter(sliderClasses.base[props.variant]).value"
             @input="updateValue"
             :style="{
               '--thumb-bg': thumbColor,
@@ -24,6 +24,7 @@
   <script setup>
   import {  ref, computed, watch } from 'vue';
   import { sliderClasses } from '../../styles/RangeSlider';
+import { useAdapterClass } from '../../composables/UseClass';
   
   const props = defineProps({
     label: String,
@@ -57,7 +58,7 @@
     validator: (value) => ['default', 'inside'].includes(value)
   }
   });
-  
+  const adapter =useAdapterClass();
   const emit = defineEmits(['update:modelValue']);
   const value = ref(props.modelValue);
   
