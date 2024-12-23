@@ -1,15 +1,8 @@
 import * as mdiIcons from "@mdi/js";
 import { PropType } from "vue";
-export const coreProps = {
+export const alertProps = {
     modelValue: { type: Boolean, default: true },
     icon: { type: String as PropType<keyof typeof mdiIcons>, default: "mdiAlertCircleOutline" },
-    title: { type: String, default: "" },
-    text: { type: String, default: "" },
-}
-
-export const uiProps = {
-    modelValue: { type: Boolean, required: true },
-    icon: { type: String as PropType<keyof typeof mdiIcons>, required: false },
-    title: { type: String, required: false },
-    text: { type: String, required: false },
+    title: { type: String, default: "alert" },
+    text: { type: String, default: "text for alert" },
 }
