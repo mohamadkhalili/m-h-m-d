@@ -1,5 +1,9 @@
 <template>
-  <Core>
+  <Core
+    :modelValue="modelValue"
+    @update:modelValue="handleModelValueChange"
+    v-bind="$attrs"
+  >
     <template #alert>
       <div
         class="flex items-start p-4 bg-gray-100 border border-gray-300 rounded-lg shadow-md"
@@ -11,7 +15,7 @@
           <svg-icon
             class="w-6 h-6 text-gray-700"
             type="mdi"
-            :path="icon"
+            :path="mdiIcons[icon]"
           ></svg-icon>
         </div>
         <div class="flex-1">
@@ -26,7 +30,17 @@
 </template>
   
   <script setup lang="ts">
+import * as mdiIcons from "@mdi/js";
+import SvgIcon from "@jamescoyle/vue-icon";
 import Core from "./Core.vue";
-import { uiProps } from "./Props";
-const props = defineProps(uiProps);
+import { alertEmits } from "./Emits";
+import { alertProps } from "./Props";
+const props = defineProps(alertProps);
+const emit = defineEmits(alertEmits);
+const handleModelValueChange = (newValue: boolean) => {
+  emit("update:modelValue", newValue);
+};
+defineOptions({
+  inheritAttrs: false,
+});
 </script>
