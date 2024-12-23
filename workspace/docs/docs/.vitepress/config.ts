@@ -40,7 +40,9 @@ export default defineConfig({
           {text:'List',link:'/components//list'},
           {text:'Breadcrumb',link:'/components//breadcrumb'},
           {text:'Progress', link:'/components//progress'},
-          {text:'RangeSlider', link:'/components//RangeSlider'}
+          {text:'RangeSlider', link:'/components//RangeSlider'},
+          {text:'Radio Group', link:'/components//RadioGroup'}
+
           
         ]
       },

@@ -19,6 +19,8 @@ import clickOutside from './directives/clickOutSide';
 import stepper from './components/stepper/Core.vue';
 import progress from './components/progress/Ui.vue'
 import RangeSlider from './components/RangeSlider/Ui.vue'
+import RadioGroup from './components/RadioGroup/Ui.vue'
+
 
 const components = [
     { name: 'Pagination', ...pagination },
@@ -38,6 +40,8 @@ const components = [
     { name: 'Breadcrumb', ...Breadcrumb },
     { name: 'Progress', ...progress},
     { name: 'RangeSlider', ...RangeSlider},
+    { name: 'RadioGroup', ...RadioGroup},
+
 
 ]
 
@@ -61,7 +65,7 @@ const install = (app: App, config: Config = {}) => {
     });
 }
 
-export { pagination, modal, Button, input, menu, tab, list, ChatBubble, Divider, stepper, Card, Switch, CheckBox, Breadcrumb, Loader, progress,RangeSlider }
+export { pagination, modal, Button, input, menu, tab, list, ChatBubble, Divider, stepper,RadioGroup, Card, Switch, CheckBox, Breadcrumb, Loader, progress,RangeSlider }
 export { tooltip }
 
 export default {
