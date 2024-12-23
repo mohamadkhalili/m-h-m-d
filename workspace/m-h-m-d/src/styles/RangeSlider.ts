@@ -1,8 +1,8 @@
 // RangeSlider.ts
 export const sliderClasses = {
     base: {
-        default: ' appearance-none w-full h-2 bg-transparent cursor-pointer relative z-10 ',
-        inside: 'appearance-none w-full h-3 bg-transparent cursor-pointer relative z-10 left-0  ' 
+        default: ' appearance-none w-full h-2  cursor-pointer relative z-10 ',
+        inside: 'appearance-none w-full h-3  cursor-pointer relative z-10 left-0  ' 
       },
     trackBackground: {
       default: ' absolute top-1/2 left-0 w-full h-2 rounded transform -translate-y-1/2',
