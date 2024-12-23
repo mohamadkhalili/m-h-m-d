@@ -80,6 +80,7 @@
     appearance: none;
     width: 16px;
     height: 16px;
+    background-color: var(--thumb-bg, #007bff);
     border: 2px solid var(--thumb-border, #fff);
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     border-radius: 50%;
@@ -88,8 +89,8 @@
   }
   
   input[type="range"]::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     background-color: var(--thumb-bg, #007bff); 
     border: 2px solid var(--thumb-border, #ffffff);
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
