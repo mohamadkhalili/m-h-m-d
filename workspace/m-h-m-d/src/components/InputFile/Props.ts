@@ -24,7 +24,7 @@ export const inputFileProps = {
   },
   containerClass: {
     type: String,
-    default: 'max-w-md mx-auto' // default width with center alignment
+    default: 'max-w-md mx-auto' 
   },
   icon: {
     type: String,

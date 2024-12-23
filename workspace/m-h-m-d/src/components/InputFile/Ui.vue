@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import { inputFileClasses } from '../../styles/InputFileClasses';
 
 const props = defineProps({
@@ -23,9 +23,10 @@ const icons = {
           </svg>`
 };
 
-const getIcon = (iconName: keyof typeof icons) => {
-  return icons[iconName] || icons.cloudUpload;
+const getIcon = (iconName: string) => {
+  return icons[iconName as keyof typeof icons] || iconName || icons.cloudUpload;
 };
+
 
 const fileIcon = `<svg class="${inputFileClasses.fileIconClass}"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
@@ -42,25 +43,21 @@ const handleFileChange = (event: Event) => {
 
 <template>
   <div :class="[inputFileClasses.containerClass, containerClass]">
-    <!-- Only show label for dropzone variant -->
-    <label v-if="label && variant === 'dropzone'" :class="inputFileClasses.labelClass" for="file_input">
-      {{ label }}
-    </label>
+   
     
-    <div :class="inputFileClasses.uploadContainerClass">
-        <div v-if="variant === 'dropzone'" :class="inputFileClasses.uploadInnerClass">
-          <!-- Icon slot -->
-          <slot name="icon">
-            <span v-html="getIcon(props.icon as keyof typeof icons || 'cloudUpload')"></span>
-          </slot>
-          
-          <!-- Text slot -->
-          <slot name="text">
-            <p :class="inputFileClasses.uploadTextClass">
-              {{ text || 'Click to upload or drag and drop' }}
-            </p>
-          </slot>
-        </div>
+    <div v-if="variant === 'dropzone'" :class="inputFileClasses.uploadInnerClass" @click.prevent="$refs.fileInput.click()">
+  <slot name="icon">
+    <span v-html="getIcon(props.icon as keyof typeof icons || 'cloudUpload')"></span>
+  </slot>
+  
+  <slot name="text">
+    <p v-if="fileName" :class="inputFileClasses.uploadTextClass">{{ fileName }}</p>
+    <p v-else :class="inputFileClasses.uploadTextClass">
+      {{ text || 'Click to upload or drag and drop' }}
+    </p>
+  </slot>
+</div>
+
         <div v-else :class="inputFileClasses.variantClasses.default">
           <span v-if="fileName" :class="inputFileClasses.fileNameClass" :title="fileName">{{ fileName }}</span>
           <span v-else :class="inputFileClasses.placeholderClass">{{ label || 'Choose file' }}</span>
@@ -68,13 +65,9 @@ const handleFileChange = (event: Event) => {
           <button :class="inputFileClasses.buttonClass" @click.prevent="$refs.fileInput.click()">
             {{ fileName ? 'Change' : 'Browse' }}
           </button>
-
           <span v-html="fileIcon"></span>
         </div>
-
-        <!-- Preview slot -->
         <slot name="preview" />
-
         <input
           ref="fileInput"
           id="file_input"
@@ -85,7 +78,7 @@ const handleFileChange = (event: Event) => {
           @change="handleFileChange"
         />
      </div>
-  </div>
+
 </template>
 
 <style scoped>
