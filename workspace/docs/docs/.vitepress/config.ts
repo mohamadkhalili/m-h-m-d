@@ -27,7 +27,8 @@ export default defineConfig({
           { text: 'pagination', link: '/components//pagination' },
           { text: 'modal', link: '/components//modal' },
           {text:'button',link:'/components//button'},
-          {text:'input',link:'/components//input'},
+          {text:'Input',link:'/components//input'},
+          {text:'Input File',link:'/components//InputFile'},
           {text:'Menu',link:'/components//menu'},
           {text:'Tab',link:'/components//tab'},
           {text:'Chat Bubble',link:'/components//ChatBubble'},
@@ -41,7 +42,9 @@ export default defineConfig({
           {text:'Breadcrumb',link:'/components//breadcrumb'},
           {text:'Progress', link:'/components//progress'},
           {text:'RangeSlider', link:'/components//RangeSlider'},
-          {text:'Alert', link:'/components//alert'},
+          {text:'Radio Group', link:'/components//RadioGroup'},
+          {text:'Alert', link:'/components//alert'}
+
           
         ]
       },
