@@ -15,7 +15,7 @@ export const inputFileProps = {
   variant: {
     type: String,
     default: 'default',
-    validator: (value: string) => ['default', 'minimal', 'outlined'].includes(value)
+    validator: (value: string) => ['default', 'dropzone'].includes(value)
   },
   size: {
     type: String,

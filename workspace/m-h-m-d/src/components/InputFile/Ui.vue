@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { ref, computed } from 'vue';
 import { inputFileClasses } from '../../styles/InputFileClasses';
 
 const props = defineProps({
@@ -10,64 +10,81 @@ const props = defineProps({
   size: String,
   containerClass: String,
   text: String,
-  labelIcon: String
+  labelIcon: String,
+  icon: String
 });
 
-const sizeClass = computed(() => inputFileClasses.sizeClasses[props.size as 'sm' | 'md' | 'lg' || 'md']);
-const variantClass = computed(() => inputFileClasses.variantClasses[props.variant || 'default']);
 
-defineEmits(['change']);
+const emit = defineEmits(['change']);
 
 const icons = {
-  upload: `<svg class="w-8 h-8 mb-4 text-gray-500" viewBox="0 0 20 16"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/></svg>`,
-  cloud: `<svg class="w-8 h-8 mb-4 text-gray-500" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>`
+  cloudUpload: `<svg class="w-8 h-8 mb-4 text-gray-500" aria-hidden="true"  fill="none" viewBox="0 0 20 16">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+          </svg>`
 };
 
-const getIcon = (iconName) => {
-  return icons[iconName] || icons.cloud;
+const getIcon = (iconName: keyof typeof icons) => {
+  return icons[iconName] || icons.cloudUpload;
+};
+
+const fileIcon = `<svg class="${inputFileClasses.fileIconClass}"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+</svg>`;
+
+const fileName = ref('');
+const handleFileChange = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+  const files = target.files ? Array.from(target.files) : [];
+  fileName.value = files.length > 0 ? files.map(file => file.name).join(', ') : '';
+  emit('change', files);
 };
 </script>
 
 <template>
-  <div :class="inputFileClasses.containerClass">
-    <div :class="inputFileClasses.containerClass">
-      <!-- Label slot -->
-      <slot name="label">
-        <label v-if="label" :class="inputFileClasses.labelClass">
-          <span v-html="labelIcon ? getIcon(labelIcon) : ''"></span>
-          {{ label }}
-        </label>
-      </slot>
+  <div :class="[inputFileClasses.containerClass, containerClass]">
+    <!-- Only show label for dropzone variant -->
+    <label v-if="label && variant === 'dropzone'" :class="inputFileClasses.labelClass" for="file_input">
+      {{ label }}
+    </label>
+    
+    <div :class="inputFileClasses.uploadContainerClass">
+        <div v-if="variant === 'dropzone'" :class="inputFileClasses.uploadInnerClass">
+          <!-- Icon slot -->
+          <slot name="icon">
+            <span v-html="getIcon(props.icon as keyof typeof icons || 'cloudUpload')"></span>
+          </slot>
+          
+          <!-- Text slot -->
+          <slot name="text">
+            <p :class="inputFileClasses.uploadTextClass">
+              {{ text || 'Click to upload or drag and drop' }}
+            </p>
+          </slot>
+        </div>
+        <div v-else :class="inputFileClasses.variantClasses.default">
+          <span v-if="fileName" :class="inputFileClasses.fileNameClass" :title="fileName">{{ fileName }}</span>
+          <span v-else :class="inputFileClasses.placeholderClass">{{ label || 'Choose file' }}</span>
+          <span :class="[inputFileClasses.fileNameClass , 'text-gray-500/70']"> | </span>
+          <button :class="inputFileClasses.buttonClass" @click.prevent="$refs.fileInput.click()">
+            {{ fileName ? 'Change' : 'Browse' }}
+          </button>
 
-      <div :class="inputFileClasses.uploadContainerClass">
-        <label :class="[inputFileClasses.uploadLabelClass, sizeClass, variantClass]">
-          <div :class="inputFileClasses.uploadInnerClass">
-            <!-- Icon slot -->
-            <slot name="icon">
-              <span v-html="getIcon('cloud')"></span>
-            </slot>
-            
-            <!-- Text slot -->
-            <slot name="text">
-              <p :class="inputFileClasses.uploadTextClass">
-                {{ text || 'Click to upload or drag and drop' }}
-              </p>
-            </slot>
-          </div>
+          <span v-html="fileIcon"></span>
+        </div>
 
-          <!-- Preview slot -->
-          <slot name="preview" />
+        <!-- Preview slot -->
+        <slot name="preview" />
 
-          <input
-            type="file"
-            :class="inputFileClasses.hiddenInputClass"
-            :accept="accept"
-            :multiple="multiple"
-            @change="$emit('change', $event)"
-          />
-        </label>
-      </div>
-    </div>
+        <input
+          ref="fileInput"
+          id="file_input"
+          type="file"
+          :class="inputFileClasses.hiddenInputClass"
+          :accept="accept"
+          :multiple="multiple"
+          @change="handleFileChange"
+        />
+     </div>
   </div>
 </template>
 

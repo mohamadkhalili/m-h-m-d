@@ -5,15 +5,16 @@ export const inputFileClasses = {
     lg: 'h-40 text-base'
   },
   variantClasses: {
-    default: 'border-2 border-dashed bg-gray-50 hover:bg-gray-100',
-    minimal: 'border border-solid bg-white hover:bg-gray-50',
-    outlined: 'border-2 border-solid bg-white hover:border-primary-500'
+    default: 'inline-flex items-center gap-2 py-1.5 px-3 border rounded-md  hover:bg-gray-50',
+    dropzone: 'border-2 border-dashed   text-gray-700 flex items-center justify-center p-4 '
   },
   containerClass: 'flex flex-col gap-2',
-  labelClass: 'text-sm font-medium text-gray-700 flex items-center gap-2',
-  uploadContainerClass: 'flex items-center justify-center w-full',
-  uploadLabelClass: 'flex flex-col items-center justify-center w-full rounded-lg cursor-pointer',
-  uploadInnerClass: 'flex flex-col items-center justify-center pt-5 pb-6',
-  uploadTextClass: 'mb-2 text-gray-500',
-  hiddenInputClass: 'hidden'
+  labelClass: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white',
+  uploadInnerClass: 'flex flex-col items-center justify-center p-4 border-4 border-dashed border-gray-500/20 rounded-xl bg-gray-500/10',
+  uploadTextClass: 'mb-2 text-gray-400',
+  hiddenInputClass: 'hidden',
+  buttonClass: 'shrink-0 text-sm font-medium text-primary-600 hover:text-primary-700',
+  fileNameClass: 'max-w-[150px] text-sm text-gray-600 truncate',
+  placeholderClass: 'text-sm text-gray-400 px-2',
+  fileIconClass: 'w-4 h-4 text-gray-400'
 };

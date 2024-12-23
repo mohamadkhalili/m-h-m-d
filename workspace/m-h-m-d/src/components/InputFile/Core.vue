@@ -16,12 +16,7 @@ const handleChange = (event: Event) => {
 
 <template>
   <Ui
-    :label="props.label"
-    :accept="props.accept"
-    :multiple="props.multiple"
-    :variant="props.variant"
-    :size="props.size"
-    :containerClass="props.containerClass"
+    v-bind="props"
     @change="handleChange"
   >
     <template v-for="(_, name) in $slots" #[name]="slotData">
