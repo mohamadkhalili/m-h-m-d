@@ -17,12 +17,14 @@ import list from './components/list/Ui.vue'
 import { tooltip } from './directives/TooltipDirective';
 import clickOutside from './directives/clickOutSide';
 import stepper from './components/stepper/Core.vue';
+
 import progress from './components/progress/Ui.vue';
 import RangeSlider from './components/RangeSlider/Ui.vue';
 import RadioGroup from './components/RadioGroup/Ui.vue';
 import InputFile from './components/InputFile/Ui.vue';
-
-
+import progress from './components/progress/Ui.vue'
+import RangeSlider from './components/RangeSlider/Ui.vue'
+import alert from './components/alert/Ui.vue'
 
 const components = [
     { name: 'Pagination', ...pagination },
@@ -44,8 +46,7 @@ const components = [
     { name: 'RangeSlider', ...RangeSlider},
     { name: 'RadioGroup', ...RadioGroup},
     { name: 'InputFile', ...InputFile},
-
-
+    { name: 'Alert', ...alert},
 
 ]
 
@@ -69,7 +70,9 @@ const install = (app: App, config: Config = {}) => {
     });
 }
 
-export { pagination, modal, Button, input, menu, tab, list, ChatBubble,InputFile, Divider, stepper,RadioGroup, Card, Switch, CheckBox, Breadcrumb, Loader, progress,RangeSlider }
+
+export { pagination, modal, Button, input, menu, tab, list, ChatBubble, Divider, stepper, Card, Switch, CheckBox, Breadcrumb, Loader, progress,RangeSlider, alert,InputFile ,RadioGroup}
+
 export { tooltip }
 
 export default {
