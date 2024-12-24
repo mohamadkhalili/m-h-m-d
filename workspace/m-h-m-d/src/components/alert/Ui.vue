@@ -6,23 +6,22 @@
   >
     <template #alert>
       <div
-        class="flex items-start p-4 bg-gray-100 border border-gray-300 rounded-lg shadow-md"
+        :class="alertClasses.alertClass"
       >
         <div
-          class="mr-4 flex items-center justify-center w-10 h-10 bg-gray-200 rounded-full"
         >
           <slot name="icon"></slot>
           <svg-icon
-            class="w-6 h-6 text-gray-700"
+            :class="alertClasses.iconClass"
             type="mdi"
             :path="mdiIcons[icon]"
           ></svg-icon>
         </div>
-        <div class="flex-1">
+        <div :class="alertClasses.titelAndTextClass">
           <slot name="title"></slot>
-          <div class="text-lg font-semibold text-gray-800">{{ title }}</div>
+          <div :class="alertClasses.titleClass">{{ title }}</div>
           <slot name="text"></slot>
-          <div class="text-sm text-gray-600 mt-1">{{ text }}</div>
+          <div :class="alertClasses.textClass">{{ text }}</div>
         </div>
       </div>
     </template>
@@ -35,6 +34,9 @@ import SvgIcon from "@jamescoyle/vue-icon";
 import Core from "./Core.vue";
 import { alertEmits } from "./Emits";
 import { alertProps } from "./Props";
+import { alertClasses } from "../../styles/AlertClasses";
+import { useAdapterClass } from "../../composables/UseClass";
+const adapterClass = useAdapterClass();
 const props = defineProps(alertProps);
 const emit = defineEmits(alertEmits);
 const handleModelValueChange = (newValue: boolean) => {
