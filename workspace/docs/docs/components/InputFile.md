@@ -233,7 +233,7 @@ You can use the `accept` prop to specify the types of files allowed for upload. 
 You can also specify multiple types of files:
 
 ```html
-<InputFile label="Choose Image or PDF" accept=".jpg,.jpeg,.png,.pdf" class=' mx-auto' />
+<InputFile label="Choose Image or PDF" accept=".jpg,.jpeg,.png,.pdf" />
 ```
 <br/>
 

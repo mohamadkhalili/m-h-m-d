@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { inputFileClasses } from '../../styles/InputFileClasses';
+import { useAdapterClass } from '../../composables/UseClass';
 
 const props = defineProps({
   label: String,
@@ -13,7 +14,7 @@ const props = defineProps({
   labelIcon: String,
   icon: String
 });
-
+const adapter = useAdapterClass('default-class');
 
 const emit = defineEmits(['change']);
 
@@ -42,7 +43,7 @@ const handleFileChange = (event: Event) => {
 </script>
 
 <template>
-  <div :class="[inputFileClasses.containerClass, containerClass]">
+  <div :class="[adapter(inputFileClasses.containerClass).value, adapter(containerClass || '').value]">
    
     
     <div v-if="variant === 'dropzone'" :class="inputFileClasses.uploadInnerClass" @click.prevent="$refs.fileInput.click()">
@@ -60,9 +61,9 @@ const handleFileChange = (event: Event) => {
 
         <div v-else :class="inputFileClasses.variantClasses.default">
           <span v-if="fileName" :class="inputFileClasses.fileNameClass" :title="fileName">{{ fileName }}</span>
-          <span v-else :class="inputFileClasses.placeholderClass">{{ label || 'Choose file' }}</span>
+          <span v-else :class="adapter(inputFileClasses.placeholderClass).value">{{ label || 'Choose file' }}</span>
           <span :class="[inputFileClasses.fileNameClass , 'text-gray-500/70']"> | </span>
-          <button :class="inputFileClasses.buttonClass" @click.prevent="$refs.fileInput.click()">
+          <button :class="adapter(inputFileClasses.buttonClass).value" @click.prevent="$refs.fileInput.click()">
             {{ fileName ? 'Change' : 'Browse' }}
           </button>
           <span v-html="fileIcon"></span>
