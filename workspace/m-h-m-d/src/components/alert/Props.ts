@@ -5,6 +5,7 @@ export const alertProps = {
     icon: { type: String as PropType<keyof typeof mdiIcons>, default: "mdiAlertCircleOutline" },
     title: { type: String, default: "alert" },
     text: { type: String, default: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima, at placeat totam, magni doloremque veniam neque porro libero rerum unde voluptatem!" },
+    alertClass: { type: String, default: ""},
     iconClass: { type: String, default: ""},
     titleClass: { type: String, default: ""},
     textClass: { type: String, default: ""}
