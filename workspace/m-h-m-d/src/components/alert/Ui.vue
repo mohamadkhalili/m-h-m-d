@@ -6,22 +6,22 @@
   >
     <template #alert>
       <div
-        :class="alertClasses.alertClass"
+        :class="adapterClass(alertClasses.alertClass).value"
       >
         <div
         >
           <slot name="icon"></slot>
           <svg-icon
-            :class="alertClasses.iconClass"
+            :class="adapterClass(alertClasses.iconClass + ' ' + iconClass).value"
             type="mdi"
             :path="mdiIcons[icon]"
           ></svg-icon>
         </div>
-        <div :class="alertClasses.titelAndTextClass">
+        <div :class="adapterClass(alertClasses.titelAndTextClass).value">
           <slot name="title"></slot>
-          <div :class="alertClasses.titleClass">{{ title }}</div>
+          <div :class="adapterClass(alertClasses.titleClass + ' ' + titleClass).value">{{ title }}</div>
           <slot name="text"></slot>
-          <div :class="alertClasses.textClass">{{ text }}</div>
+          <div :class="adapterClass(alertClasses.textClass + ' ' + textClass).value">{{ text }}</div>
         </div>
       </div>
     </template>
