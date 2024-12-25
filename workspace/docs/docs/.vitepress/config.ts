@@ -12,6 +12,7 @@ export default defineConfig({
         text: 'Learn',
         items: [
           { text: 'Components', link: '/components' },
+          { text: 'templates', link: '/templates' },
           { text: 'API', link: '/api' }
         ]
       }
@@ -44,9 +45,16 @@ export default defineConfig({
           {text:'RangeSlider', link:'/components//RangeSlider'},
           {text:'Radio Group', link:'/components//RadioGroup'},
           {text:'Alert', link:'/components//alert'},
-          {text:'Footer', link:'/components//footer'},
 
           
+        ]
+      },
+      {
+        text: "templates",
+        collapsed: true,
+        link: '/templates',
+        items: [
+          { text: 'footer', link: '/templates//footer' },
         ]
       },
       

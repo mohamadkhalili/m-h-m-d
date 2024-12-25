@@ -3,4 +3,5 @@ export interface coreSlots {
 }
 export interface uiSlots {
     footer(): any,
+    content(): any,
 }

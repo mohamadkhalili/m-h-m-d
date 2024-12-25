@@ -25,8 +25,10 @@ const footerEnable = ref(true);
     activeColor="text-blue-500 shadow-blue-500"
   >
 <template #content1>
-<Footer v-model="footerEnable"/>
 
+<div class="p-5 text-black text-[12px]">
+      Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet. Mauris cursus commodo interdum. Praesent ut risus eget metus luctus accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim a sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum tempor vel ut orci. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+</div>
 </template>
 
 <template #content2>

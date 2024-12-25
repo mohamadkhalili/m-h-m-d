@@ -8,8 +8,8 @@
       <slot name="footer"></slot>
       <div
         v-if="showFooter && modelValue"
-        :class="adapterClass(footerClasses.generalClass + ' ' + footerClass)"
-      ></div>
+        :class="adapterClass(footerClasses.generalClass + ' ' + footerClass).value"
+      ><slot name="content"></slot></div>
     </template>
   </Core>
 </template>
