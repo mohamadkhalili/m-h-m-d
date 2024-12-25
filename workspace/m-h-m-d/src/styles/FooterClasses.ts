@@ -1,3 +1,3 @@
 export const footerClasses = {
-    generalClass: "bg-gray-100 p-4 rounded-b-lg border-t border-gray-300 flex justify-between items-center",
+    generalClass: "bg-blue-100 w-[640px] h-[140px] text-center d-flex flex-column",
 }
