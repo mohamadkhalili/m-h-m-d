@@ -55,7 +55,7 @@ const classMappings: ClassMapping[] = [
     { regex: /^ml-(\d+|px|sm|md|lg|xl)$/, properties: ['marginLeft'] },
     // Border Radius
     { regex: /^rounded$/, properties: ['borderRadius'] },
-    { regex: /^rounded-(t|r|b|l|tl|tr|br|bl)$/, properties: ['borderTopRadius', 'borderRightRadius', 'borderBottomRadius', 'borderLeftRadius', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius'] },
+    { regex: /^rounded-(t|r|b|l|tl|tr|br|bl|none|xl|sm|lg|md|2xl|3xl|full)$/, properties: ['borderTopRadius', 'borderRightRadius', 'borderBottomRadius', 'borderLeftRadius', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius'] },
     // Flex
     { regex: /^flex-(\d+|grow|shrink|none)$/, properties: ['flex'] },
     // Grid
