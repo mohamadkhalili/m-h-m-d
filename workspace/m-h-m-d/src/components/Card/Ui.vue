@@ -1,8 +1,8 @@
 <template>
   <Core
     :class="[
-      props.class, // Add this first so it has higher priority
-      CardClasses.cardContainer,
+      
+      adapter(CardClasses.cardContainer + ' ' + props.cardClass ).value,
       props.variant === 'post' || props.variant === 'weather' ? CardClasses.VariantMain : '',
       (props.variant === 'post' && !props.horizontal) || props.variant === 'weather' ? CardClasses.Widths : '',
       props.horizontal ? CardClasses.horizontalGrid : '',
@@ -11,7 +11,7 @@
     <!-- Post Variant -->
     <template v-if="props.variant === 'post'">
       <div :class="CardClasses.flexBetween">
-        <div :class="CardClasses.postHeader">
+        <div>
           <img :src="props.avatar" alt="User Avatar" :class="CardClasses.postUserAvatar" />
           <div>
             <h3 v-if="!$slots.username" :class="CardClasses.TitleVariant">{{ props.username }}</h3>
@@ -42,7 +42,7 @@
     <!-- Progress Variant -->
     <template v-else-if="props.variant === 'progress'">
       <div :class="CardClasses.progressContainer">
-        <div :class="CardClasses.progressHeader">
+        <div>
           <h3 v-if="!$slots.title" :class="CardClasses.TitleVariant">{{ props.title }}</h3>
           <slot name="title" />
           <span v-if="!$slots.info1 && props.info1" :class="CardClasses.SizeSmClass">{{ props.info1 }}</span>
@@ -51,7 +51,7 @@
         <div :class="CardClasses.progressBarContainer">
           <div :class="CardClasses.progressBar" :style="{ width: `${props.info2}%` }"></div>
         </div>
-        <div :class="CardClasses.progressDetails">
+        <div >
           <span v-if="!$slots.info3 && props.info3">{{ props.info3 }}</span>
           <slot name="info3" />
           <span v-if="!$slots.info4 && props.info4">{{ props.info4 }}</span>
@@ -91,7 +91,7 @@
     <!-- Default Variant -->
     <template v-else>
       <div v-if="props.header || $slots.header" :class="[props.horizontal ? '' : 'p-4']">
-        <div :class="CardClasses.defaultHeader">
+        <div>
           <span v-if="!$slots.header && props.header">{{ props.header }}</span>
           <slot name="header" />
         </div>
@@ -109,7 +109,7 @@
         v-if="props.footer || $slots.footer || $slots.default"
         :class="[props.horizontal ? CardClasses.horizontalWithFooterImage :CardClasses.horizontalWithOutFooterImage ]"
       >
-        <div :class="CardClasses.defaultFooter">
+        <div >
           <span v-if="props.footer">{{ props.footer }}</span>
           <slot></slot>
           <slot name="footer" />
@@ -120,8 +120,10 @@
 </template>
 
 <script setup lang="ts">
+import { useAdapterClass } from '../../composables/UseClass';
 import { CardClasses } from '../../styles/CardClasses';
 import { cardProps } from './Props';
 
 const props = defineProps(cardProps);
+const adapter= useAdapterClass();
 </script>

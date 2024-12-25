@@ -22,7 +22,7 @@ const tabs = [
     <template #content1>
 
 <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
-<Card class="bg-white h-44 w-40">
+<Card cardClass="bg-white rounded-none w-full">
 <template #title>
 <h3>title</h3>
 </template>
