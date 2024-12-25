@@ -45,7 +45,7 @@ const components = [
     { name: 'RadioGroup', ...RadioGroup},
     { name: 'InputFile', ...InputFile},
     { name: 'Alert', ...alert},
-    { name: 'Flert', ...footer},
+    { name: 'Footer', ...footer},
 
 ]
 
