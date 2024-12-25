@@ -21,16 +21,14 @@ const tabs = [
   >
     <template #content1>
 
-<div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
-<Card class="bg-white h-44 w-40">
-<template #title>
+<Card class="bg-red-500">
+<template #header>
 <h3>title</h3>
 </template>
 <template #description>
 <p class="text-gray-500 text-sm">description</p>
 </template>
 </Card>
-</div>
 
 </template>
 
