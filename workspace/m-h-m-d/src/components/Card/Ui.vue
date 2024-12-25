@@ -1,17 +1,16 @@
 <template>
   <Core
     :class="[
+      props.class, // Add this first so it has higher priority
       CardClasses.cardContainer,
-      props.variant === 'post' ? CardClasses.VariantMain : '',
-      props.variant === 'weather' ? CardClasses.VariantMain : '',
-      props.variant === 'post' && !props.horizontal ? CardClasses.Widths : '',
-      props.variant === 'weather' ? CardClasses.Widths : '',
+      props.variant === 'post' || props.variant === 'weather' ? CardClasses.VariantMain : '',
+      (props.variant === 'post' && !props.horizontal) || props.variant === 'weather' ? CardClasses.Widths : '',
       props.horizontal ? CardClasses.horizontalGrid : '',
     ]"
   >
     <!-- Post Variant -->
     <template v-if="props.variant === 'post'">
-      <div :class="CardClasses.postHeader">
+      <div :class="CardClasses.flexBetween">
         <div :class="CardClasses.postHeader">
           <img :src="props.avatar" alt="User Avatar" :class="CardClasses.postUserAvatar" />
           <div>
