@@ -1,6 +1,6 @@
 export const CardClasses = {
     // کلاس‌های عمومی کارت
-    cardContainer: "rounded-xl overflow-hidden shadow-md relative",
+    cardContainer: "rounded-xl flex overflow-hidden shadow-md ",
     VariantMain: "bg-white flex flex-col p-4 gap-4",
     Widths: "w-[28rem]",
     horizontalGrid: "grid grid-flow-col grid-rows-3 gap-4 h-52",
