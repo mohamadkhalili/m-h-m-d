@@ -5,7 +5,7 @@ export const inputFileClasses = {
       lg: 'h-40 text-base'
     },
     variantClasses: {
-      default: 'inline-flex items-center gap-2 py-1.5 px-3 border rounded-md  hover:bg-gray-50 w-fit ',
+      default: 'inline-flex items-center gap-2 py-1.5 px-3 border rounded-md  hover:bg-gray-500/20 transition-all duration-300 w-fit ',
       dropzone: 'border-2 border-dashed text-gray-700 flex items-center justify-center p-4 cursor-pointer w-full'  
     },
     containerClass: 'flex flex-col gap-2',

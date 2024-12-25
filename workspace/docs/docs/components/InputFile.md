@@ -233,13 +233,13 @@ You can use the `accept` prop to specify the types of files allowed for upload. 
 You can also specify multiple types of files:
 
 ```html
-<InputFile label="Choose Image or PDF" accept=".jpg,.jpeg,.png,.pdf" class=' mx-auto' />
+<InputFile label="Choose Image or PDF" accept=".jpg,.jpeg,.png,.pdf" />
 ```
 <br/>
 
 
 
-###  **Handling File Size Limit**
+## **Handling File Size Limit**
 
 
 You can limit the file size by listening to the `change` event and validating the file size. For example:
@@ -251,7 +251,7 @@ You can limit the file size by listening to the `change` event and validating th
 <br/>
 
 
-###  **Custom File Preview**
+##  **Custom File Preview**
 
 You can add a custom file preview to show a thumbnail or file details after selecting the file:
 
@@ -316,7 +316,7 @@ You can add a custom file preview to show a thumbnail or file details after sele
 
 </Tab>
 
-###  **Custom File Preview**
+##  **Custom File Preview**
 
 You can add a custom file preview to show a thumbnail or file details after selecting the file:
 
@@ -380,7 +380,7 @@ You can add a custom file preview to show a thumbnail or file details after sele
 </Tab>
 
 
-###  **Loading State**
+##  **Loading State**
 
 You can show a loading indicator while the file is being uploaded by using a custom loading state:
 
