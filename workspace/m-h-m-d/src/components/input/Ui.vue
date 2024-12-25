@@ -53,7 +53,6 @@
 import { computed, ref, watch } from "vue";
 import { InputProps, InputVariant } from "./props";
 import { inputEmits } from "./Emits";
-import { useMergeClasses } from "../../composables/useMergeClasses";
 import Core from "./Core.vue";
 import { inputClass } from "../../styles/InputClasses";
 import { useAdapterClass } from "../../composables/UseClass";
