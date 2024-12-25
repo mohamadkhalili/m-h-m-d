@@ -72,9 +72,9 @@ const footerEnable = ref(true);
       <Button
         v-for="(icon, index) in icons"
         :key="index"
-        buttonClass="mr-4 bg-green-300 w-10 h-10 rounded-full flex items-center justify-center"
+        buttonClass="mr-4 bg-green-300 w-10 h-10 rounded-full flex items-center justify-center "
       >
-        <SvgIcon type="mdi" :path="icon"/>
+        <SvgIcon type="mdi" :path="icon" class="text-black hover:scale-150 transition-all duration-300"/>
       </Button>
     </div>
 </template>
