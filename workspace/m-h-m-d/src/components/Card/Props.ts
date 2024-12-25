@@ -10,6 +10,9 @@ export const cardProps = {
   info2: { type: String, required: false },
   info3: { type: String, required: false },
   info4: { type: String, required: false },
+  class: { type: String, required: false },
+
+  
   variant: { 
     type: String, 
     default: 'default', 

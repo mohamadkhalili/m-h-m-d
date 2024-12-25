@@ -8,7 +8,7 @@ export const cardSlots = {
       type: String,
       required: false
     },
-    content: {
+    description: {
       type: String,
       required: true
     }
