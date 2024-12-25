@@ -22,7 +22,6 @@ import RadioGroup from './components/RadioGroup/Ui.vue';
 import InputFile from './components/InputFile/Ui.vue';
 import progress from './components/progress/Ui.vue';
 import alert from './components/alert/Ui.vue';
-import footer from './components/footer/Ui.vue';
 
 const components = [
     { name: 'Pagination', ...pagination },
@@ -45,7 +44,6 @@ const components = [
     { name: 'RadioGroup', ...RadioGroup},
     { name: 'InputFile', ...InputFile},
     { name: 'Alert', ...alert},
-    { name: 'Footer', ...footer},
 
 ]
 
@@ -71,7 +69,7 @@ const install = (app: App, config: Config = {}) => {
 
 
 export { pagination, modal, Button, input, menu, tab, list, ChatBubble, Divider, stepper, Card, Switch, CheckBox, 
-         Breadcrumb, Loader, progress,RangeSlider, alert,InputFile ,RadioGroup, footer}
+         Breadcrumb, Loader, progress,RangeSlider, alert,InputFile ,RadioGroup }
 
 export { tooltip }
 

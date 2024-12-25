@@ -25,26 +25,38 @@ const footerEnable = ref(true);
     activeColor="text-blue-500 shadow-blue-500"
   >
 <template #content1>
-
-<div class="p-5 text-black text-[12px]">
+<Card class="bg-sky-200 text-black text-center">
+<template #description>
+  <div class="p-3 text-[11px]">
       Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet. Mauris cursus commodo interdum. Praesent ut risus eget metus luctus accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim a sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum tempor vel ut orci. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-</div>
+  </div>
+      <div class="text-[13px]">
+      {{ new Date().getFullYear() }} — <strong>M-H-M-D</strong>
+    </div>
+</template>
+</Card>
 </template>
 
 <template #content2>
 
 ```vue
-<slot name="alert"></slot>
-<slot name="icon"></slot>
-<slot name="title"></slot>
-<slot name="text"></slot>
+<slot name="content"></slot>
 ```
 
 </template>
 <template #content3>
 
 ```vue
-<Alert v-model="alertEnable"/>
+<Footer>
+<template #content>
+  <div class="p-3 text-[11px]">
+      Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet. Mauris cursus commodo interdum. Praesent ut risus eget metus luctus accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim a sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum tempor vel ut orci. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+  </div>
+  <div class="text-[13px]">
+      {{ new Date().getFullYear() }} — <strong>m-h-m-d</strong>
+  </div>
+</template>
+</Footer>
 ```
 
 </template>

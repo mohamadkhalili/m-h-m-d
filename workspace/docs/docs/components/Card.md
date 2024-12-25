@@ -21,6 +21,7 @@ const tabs = [
   >
     <template #content1>
 
+
 <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
 <Card cardClass="bg-white rounded-none w-full">
 <template #title>
@@ -31,7 +32,6 @@ const tabs = [
 </template>
 </Card>
 </div>
-
 </template>
 
   <template #content2>
