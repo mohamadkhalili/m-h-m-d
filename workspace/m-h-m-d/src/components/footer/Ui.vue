@@ -6,9 +6,10 @@
   >
     <template #footer>
       <slot name="footer"></slot>
-      <div v-if="showFooter && modelValue" :class="adapterClass(footerClasses.generalClass + ' ' + footerClass)">
-
-      </div>
+      <div
+        v-if="showFooter && modelValue"
+        :class="adapterClass(footerClasses.generalClass + ' ' + footerClass)"
+      ></div>
     </template>
   </Core>
 </template>
