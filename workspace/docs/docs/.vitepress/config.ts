@@ -43,7 +43,8 @@ export default defineConfig({
           {text:'Progress', link:'/components//progress'},
           {text:'RangeSlider', link:'/components//RangeSlider'},
           {text:'Radio Group', link:'/components//RadioGroup'},
-          {text:'Alert', link:'/components//alert'}
+          {text:'Alert', link:'/components//alert'},
+          {text:'Footer', link:'/components//footer'},
 
           
         ]

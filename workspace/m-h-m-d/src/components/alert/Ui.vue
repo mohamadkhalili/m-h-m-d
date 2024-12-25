@@ -5,24 +5,37 @@
     v-bind="$attrs"
   >
     <template #alert>
+      <slot name="alert"></slot>
       <div
-        class="flex items-start p-4 bg-gray-100 border border-gray-300 rounded-lg shadow-md"
+        v-if="showAlert"
+        :class="adapterClass(alertClasses.alertClass + ' ' + alertClass).value"
       >
-        <div
-          class="mr-4 flex items-center justify-center w-10 h-10 bg-gray-200 rounded-full"
-        >
-          <slot name="icon"></slot>
-          <svg-icon
-            class="w-6 h-6 text-gray-700"
-            type="mdi"
-            :path="mdiIcons[icon]"
-          ></svg-icon>
-        </div>
-        <div class="flex-1">
+        <slot name="icon"></slot>
+        <svg-icon
+          v-if="showIcon"
+          :class="adapterClass(alertClasses.iconClass + ' ' + iconClass).value"
+          type="mdi"
+          :path="mdiIcons[icon]"
+        ></svg-icon>
+        <div :class="adapterClass(alertClasses.titelAndTextClass).value">
           <slot name="title"></slot>
-          <div class="text-lg font-semibold text-gray-800">{{ title }}</div>
+          <div
+            v-if="showTitle"
+            :class="
+              adapterClass(alertClasses.titleClass + ' ' + titleClass).value
+            "
+          >
+            {{ title }}
+          </div>
           <slot name="text"></slot>
-          <div class="text-sm text-gray-600 mt-1">{{ text }}</div>
+          <div
+            v-if="showText"
+            :class="
+              adapterClass(alertClasses.textClass + ' ' + textClass).value
+            "
+          >
+            {{ text }}
+          </div>
         </div>
       </div>
     </template>
@@ -35,8 +48,19 @@ import SvgIcon from "@jamescoyle/vue-icon";
 import Core from "./Core.vue";
 import { alertEmits } from "./Emits";
 import { alertProps } from "./Props";
+import { alertClasses } from "../../styles/AlertClasses";
+import { useAdapterClass } from "../../composables/UseClass";
+import { uiSlots } from "./Slots";
+import { computed, useSlots } from "vue";
+const uislots = defineSlots<uiSlots>();
+const adapterClass = useAdapterClass();
 const props = defineProps(alertProps);
 const emit = defineEmits(alertEmits);
+const slots = useSlots();
+const showAlert = computed(() => !slots.alert);
+const showIcon = computed(() => !slots.icon);
+const showTitle = computed(() => !slots.title);
+const showText = computed(() => !slots.text);
 const handleModelValueChange = (newValue: boolean) => {
   emit("update:modelValue", newValue);
 };
