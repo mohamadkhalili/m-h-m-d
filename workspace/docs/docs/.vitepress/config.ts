@@ -45,6 +45,8 @@ export default defineConfig({
           {text:'RangeSlider', link:'/components//RangeSlider'},
           {text:'Radio Group', link:'/components//RadioGroup'},
           {text:'Alert', link:'/components//alert'},
+          {text:'Radio', link:'/components//Radio'},
+
 
           
         ]

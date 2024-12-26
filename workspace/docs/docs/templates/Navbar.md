@@ -10,7 +10,7 @@ const footerEnable = ref(true);
 </script>
 
 ## Usage
-- This is the basic footer that opens when the button is clicked.
+- This is the basic Navbar that opens when the button is clicked.
 
 <Tab 
      class="gap-3 border-[1px] rounded-md w-full mx-auto"

@@ -13,7 +13,7 @@ export const CardClasses = {
     flexBetween: "flex items-center justify-between",
     
     // Post variant
-    postUserAvatar: "w-14 h-14 rounded-full mr-2",
+    postUserAvatar: "w-14 h-14 rounded-full m-2",
     postDescription: "mt-2 text-gray-700",
     postImage: "w-full h-auto rounded-lg",
     postFooter: "flex text-gray-500 text-xs mt-4 justify-center items-center border-t pt-2 space-x-4",
