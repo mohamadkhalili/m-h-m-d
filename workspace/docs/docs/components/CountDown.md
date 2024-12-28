@@ -1,9 +1,17 @@
 <script setup>
 const tabs = [
-  { label: 'Demo', value: 1, content: '' },
-  { label: 'Slots', value: 2, content: '' },
-  { label: 'Props', value: 3, content: '' }
+    { label: 'Demo', value: 1, content: '' },
+    { label: 'Slots', value: 2, content: '' },
+    { label: 'Props', value: 3, content: '' }
 ];
+import { ref } from 'vue';
+
+const handleTimeUpdate = (time) => {
+    console.log(`Current time: ${time} seconds`);
+    if (time === 10) {
+        alert('Time has reached 10 seconds!');
+    }
+};
 </script>
 
 ## Countdown Component
@@ -11,16 +19,16 @@ const tabs = [
 The Countdown component is a flexible and reusable timer component built with Vue 3 and TypeScript. It supports features like auto-start, time updates, and custom controls.
 
 <Tab 
-   class="gap-3 border-[1px] rounded-md w-full mx-auto "
-   :tabs="[ { label: 'Demo', value: 1, content: '' }, { label: 'Props', value: 3, content: '' }]" 
-   variant="bordered"
-   size="sm"
-   activeColor="text-blue-500 shadow-blue-500"
+     class="gap-3 border-[1px] rounded-md w-full mx-auto "
+     :tabs="[ { label: 'Demo', value: 1, content: '' }, { label: 'Props', value: 3, content: '' }]" 
+     variant="bordered"
+     size="sm"
+     activeColor="text-blue-500 shadow-blue-500"
 >
 
 <template #content1>
 <div class="py-10 rounded-lg shadow-inner flex justify-center items-center">
-  <CountDown time="110" auto-start class='text-6xl font-thin'/>
+    <CountDown :time=110 auto-start class='text-6xl font-thin'/>
 </div>
 </template>
 
@@ -28,7 +36,7 @@ The Countdown component is a flexible and reusable timer component built with Vu
 <template #content3>
 
 ```md
-  <CountDown time="110" auto-start class='text-6xl font-thin'/>
+    <CountDown :time=110 auto-start class='text-6xl font-thin'/>
 
 ```
 </template>
@@ -37,35 +45,37 @@ The Countdown component is a flexible and reusable timer component built with Vu
 </Tab>
 
 
+
+
 ## Modify the Styles
 
 You can easily customize the appearance of the Countdown component by using the following CSS classes:
 
 - `container`: Adjust the main container styling.
-- `display`: Customize the countdown timer display styles.
+- `countDownClass`: Customize the countdown timer display styles.
 
 
 
 <Tab 
-   class="gap-3 border-[1px] rounded-md w-full mx-auto "
-   :tabs="[ { label: 'Demo', value: 1, content: '' }, { label: 'Slots', value: 3, content: '' }]" 
-   variant="bordered"
-   size="sm"
-   activeColor="text-blue-500 shadow-blue-500"
+     class="gap-3 border-[1px] rounded-md w-full mx-auto "
+     :tabs="[ { label: 'Demo', value: 1, content: '' }, { label: 'Slots', value: 3, content: '' }]" 
+     variant="bordered"
+     size="sm"
+     activeColor="text-blue-500 shadow-blue-500"
 >
 
 <template #content1>
 <div class="py-10 px-2 rounded-lg shadow-inner  justify-items-center">
-  <CountDown :time="45" :auto-start="false" class="font-thin text-6xl">
-    <template #controls="{ isRunning, start, reset }">
-    <div class="flex gap-4 mt-10">
-      <Button @click="start" buttonClass=" bg-blue-500  font-normal ">
-        {{ isRunning ? 'Running' : 'Start' }}
-      </Button>
-      <Button @click="reset" buttonClass="bg-red-500 font-normal">Stop</Button>
+    <CountDown :time="45" :auto-start="false" class="font-thin text-6xl">
+        <template #controls="{ isRunning, start, reset }">
+        <div class="flex gap-4 mt-10">
+            <Button @click="start" buttonClass=" bg-blue-500  font-normal ">
+                {{ isRunning ? 'Running' : 'Start' }}
+            </Button>
+            <Button @click="reset" buttonClass="bg-red-500 font-normal">Stop</Button>
 </div>
-    </template>
-  </CountDown>
+        </template>
+    </CountDown>
 </div>
 </template>
 
@@ -90,6 +100,26 @@ You can easily customize the appearance of the Countdown component by using the 
 
 </Tab>
 
+<template>
+    <div>
+        <CountDown 
+            :time="30" 
+            :auto-start="true" 
+            @update:time="handleTimeUpdate"
+        >
+            <template #controls="{ isRunning, start, reset }">
+                <div class="flex gap-4 mt-10">
+                    <button @click="start" class="bg-blue-500 px-4 py-2 text-white rounded">
+                        {{ isRunning ? 'Pause' : 'Start' }}
+                    </button>
+                    <button @click="reset" class="bg-red-500 px-4 py-2 text-white rounded">
+                        Reset
+                    </button>
+                </div>
+            </template>
+        </CountDown>
+    </div>
+</template>
 
 
 ## Countdown Component Features
@@ -102,3 +132,4 @@ You can easily customize the appearance of the Countdown component by using the 
 | **Styling Flexibility**  | Fully customizable styles for the countdown timer and controls.                                        | Use the CSS classes `container` and `display` to adjust the appearance.                       |
 
 This documentation provides a structured and detailed guide to using and customizing the Countdown component effectively.
+

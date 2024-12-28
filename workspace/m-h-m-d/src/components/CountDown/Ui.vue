@@ -10,25 +10,23 @@
         <slot name="controls" :is-running="isRunning" :start="start" :reset="reset" />
       </core>
     </div>
-  </template>
-  
-  <script setup lang="ts">
-  import { ref, defineProps } from 'vue';
-  import core from './core.vue';
-  import { CountDownClasses } from '../../styles/CountDownClasses';
-  const props = defineProps<{
-    time: number; 
-    autoStart: boolean; 
-  }>();
-  const classes = CountDownClasses;
-  const time = ref(props.time);
-  const autoStart = ref(props.autoStart);
-  const updateTime = (newTime: number) => {
-    time.value = newTime; 
-  };
+</template>
 
-  const onFinish = () => {
-    console.log('Countdown finished');
-  };
-  </script>
-  
+<script setup lang="ts">
+import { ref, defineProps } from 'vue';
+import core from './core.vue';
+import { CountDownClasses } from '../../styles/CountDownClasses';
+const props = defineProps<{
+  time: number; 
+  autoStart: boolean; 
+}>();
+const classes = CountDownClasses;
+const time = ref(props.time);
+const autoStart = ref(props.autoStart);
+const updateTime = (newTime: number) => {
+  time.value = newTime; 
+};
+
+const onFinish = () => {
+};
+</script>

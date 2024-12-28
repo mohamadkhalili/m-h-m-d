@@ -3,11 +3,7 @@
     <div :class="adapter(classes.countDownClass).value">
       {{ formatTime(time) }}
     </div>
-    <slot name="controls" 
-          :is-running="isRunning" 
-          :start="start" 
-          :reset="reset">
-    </slot>
+    <slot name="controls" :is-running="isRunning" :start="start" :reset="reset"></slot>
   </div>
 </template>
 
@@ -17,13 +13,9 @@ import { CountDownClasses } from '../../styles/CountDownClasses';
 import type { CountDownProps } from './Props';
 import { useAdapterClass } from '../../composables/UseClass';
 
-const emit = defineEmits<{
-  (e: 'update:time', value: number): void;
-  (e: 'finish', value: number): void;
-}>();
+const emit = defineEmits(['update:time', 'finish']);
 
-const adapter =useAdapterClass();
-
+const adapter = useAdapterClass();
 const props = withDefaults(defineProps<CountDownProps>(), {
   autoStart: false,
 });
@@ -33,7 +25,7 @@ const time = ref(props.time);
 const isRunning = ref(false);
 let timer: ReturnType<typeof setInterval> | null = null;
 
-  const formatTime = (seconds: number): string => {
+const formatTime = (seconds: number): string => {
   if (seconds < 3600) {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
@@ -46,19 +38,16 @@ let timer: ReturnType<typeof setInterval> | null = null;
   }
 };
 
-
-
-
 const start = () => {
   if (!isRunning.value && time.value > 0) {
     isRunning.value = true;
     timer = setInterval(() => {
       time.value--;
+      emit('update:time', time.value); // Ensure this line is present
       if (time.value <= 0) {
         stop();
-        emit('finish', time.value);
+        emit('finish');
       }
-      emit('update:time', time.value); 
     }, 1000);
   }
 };
@@ -78,11 +67,9 @@ const reset = () => {
 };
 
 watch(() => props.time, (newInitialTime) => {
-  
   time.value = newInitialTime;
+ 
 });
-
-
 
 defineExpose({
   start,
@@ -91,10 +78,10 @@ defineExpose({
   isRunning,
   time,
 });
+
 onMounted(() => {
   if (props.autoStart && !isRunning.value) {
     start();
   }
 });
-
 </script>
