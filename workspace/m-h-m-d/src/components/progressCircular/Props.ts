@@ -9,4 +9,5 @@ export const uiProps = {
     progressClass : { type : String, default : ''},
     progressContainerClass : { type : String, default : ''},
     progressFillClass : { type : String, default : ''},
+    numberFillClass : { type : String, default : ''},
 }
