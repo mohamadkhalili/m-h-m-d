@@ -1,6 +1,6 @@
 <template>
   <div :class="classes.container">
-    <div :class="classes.display">
+    <div :class="adapter(classes.countDownClass).value">
       {{ formatTime(time) }}
     </div>
     <slot name="controls" 
@@ -15,11 +15,14 @@
 import { ref, watch, onMounted } from 'vue';
 import { CountDownClasses } from '../../styles/CountDownClasses';
 import type { CountDownProps } from './Props';
+import { useAdapterClass } from '../../composables/UseClass';
 
 const emit = defineEmits<{
   (e: 'update:time', value: number): void;
   (e: 'finish', value: number): void;
 }>();
+
+const adapter =useAdapterClass();
 
 const props = withDefaults(defineProps<CountDownProps>(), {
   autoStart: false,
@@ -55,7 +58,7 @@ const start = () => {
         stop();
         emit('finish', time.value);
       }
-      emit('update:time', time.value); // Emit time change to parent
+      emit('update:time', time.value); 
     }, 1000);
   }
 };

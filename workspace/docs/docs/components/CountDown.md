@@ -1,155 +1,104 @@
-# Countdown Component Documentation
-
-## Overview
-The Countdown component is a highly customizable and reusable timer component built with Vue 3 and TypeScript. It offers a range of features such as automatic start, event emission, and custom control slots, making it ideal for integration into a variety of applications.
-
----
-
-## Features
-- **Customizable Initial Time**: Start the countdown from any specified time in seconds.
-- **Auto Start**: Option to automatically start the countdown on component mount.
-- **Slot for Controls**: Allows users to define custom controls for starting, pausing, and resetting the timer.
-- **Event Emission**: Provides `update:time` and `finish` events to communicate state changes to parent components.
-- **Flexible Integration**: Supports both minimal setups and advanced use cases with event handling and custom designs.
-
----
-
-## Props
-
-| Prop Name      | Type     | Default   | Description                                      |
-|----------------|----------|-----------|--------------------------------------------------|
-| `Time`  | Number   | Required  | The initial time (in seconds) to start the countdown from. |
-| `autoStart`    | Boolean  | `false`   | Determines if the countdown starts automatically on mount. |
-
----
-
-## Events
-
-| Event Name      | Payload         | Description                                      |
-|------------------|-----------------|--------------------------------------------------|
-| `update:time`    | Number          | Emitted whenever the remaining time updates.     |
-| `finish`         | Number          | Emitted when the countdown reaches zero.         |
-
----
-
-## Slots
-
-| Slot Name       | Props Passed            | Description                                      |
-|------------------|-------------------------|--------------------------------------------------|
-| `controls`       | `isRunning`, `start`, `reset` | Use this slot to provide custom controls for the timer. |
-
----
-
-## Usage Examples
-
-### Basic Example
-
-
-  <div>
-    <h1>Simple Countdown</h1>
-    <CountDown time=30 :autoStart="false">
-      <template #controls="{ isRunning, start, reset }">
-        <button @click="start">
-          {{ isRunning ? 'Pause' : 'Start' }}
-        </button>
-        <button @click="reset">Reset</button>
-      </template>
-    </CountDown>
-  </div>
-
-
-
----
-
-### Advanced Example with Events
-
-  <div>
-    <h1>Countdown with Event Handling</h1>
-    <CountDown
-      time="60"
-      :autoStart="true"
-      @update:time="handleTimeUpdate"
-      @finish="handleFinish">
-      <template #controls="{ isRunning, start, reset }">
-        <button @click="start">
-          {{ isRunning ? 'Pause' : 'Start' }}
-        </button>
-        <button @click="reset">Reset</button>
-      </template>
-    </CountDown>
-  </div>
-
 <script setup>
-const handleTimeUpdate = (newTime) => {
-  console.log('Time updated:', newTime);
-};
-
-const handleFinish = () => {
-  console.log('Countdown finished!');
-};
+const tabs = [
+  { label: 'Demo', value: 1, content: '' },
+  { label: 'Slots', value: 2, content: '' },
+  { label: 'Props', value: 3, content: '' }
+];
 </script>
 
+## Countdown Component
 
----
+The Countdown component is a flexible and reusable timer component built with Vue 3 and TypeScript. It supports features like auto-start, time updates, and custom controls.
 
-### Minimal Example (No Custom Controls)
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full mx-auto "
+   :tabs="[ { label: 'Demo', value: 1, content: '' }, { label: 'Props', value: 3, content: '' }]" 
+   variant="bordered"
+   size="sm"
+   activeColor="text-blue-500 shadow-blue-500"
+>
+
+<template #content1>
+<div class="py-10 rounded-lg shadow-inner flex justify-center items-center">
+  <CountDown time="110" auto-start class='text-6xl font-thin'/>
+</div>
+</template>
 
 
-  <div>
-    <h1>Minimal Countdown</h1>
-    <CountDown time="20000" :autoStart="true" />
-  </div>
+<template #content3>
 
----
+```md
+  <CountDown time="110" auto-start class='text-6xl font-thin'/>
 
-## Styling
-The Countdown component uses a set of predefined CSS classes to allow easy customization:
-
-| Class Name      | Description                                      |
-|------------------|--------------------------------------------------|
-| `container`      | The main wrapper for the countdown component.    |
-| `display`        | The display area for the remaining time.         |
-| `startButton`    | Default styling for the start button.            |
-| `pauseButton`    | Default styling for the pause button.            |
-| `resetButton`    | Default styling for the reset button.            |
-
-### Example CSS
-
-```css
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-}
-
-.display {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-button {
-  margin: 5px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  cursor: pointer;
-}
 ```
+</template>
 
----
 
-## API Summary
+</Tab>
 
-### Methods (Exposed via `defineExpose`)
 
-| Method Name      | Description                                      |
-|------------------|--------------------------------------------------|
-| `start()`        | Starts or resumes the countdown.                 |
-| `stop()`         | Pauses the countdown.                            |
-| `reset()`        | Resets the countdown to the initial time.        |
+## Modify the Styles
 
----
+You can easily customize the appearance of the Countdown component by using the following CSS classes:
 
-## Conclusion
-The Countdown component is a versatile tool that can be tailored to fit a variety of applications, from simple timers to complex UI integrations. Its flexibility with slots, events, and props ensures it meets the needs of both basic and advanced use cases.
+- `container`: Adjust the main container styling.
+- `display`: Customize the countdown timer display styles.
 
+
+
+<Tab 
+   class="gap-3 border-[1px] rounded-md w-full mx-auto "
+   :tabs="[ { label: 'Demo', value: 1, content: '' }, { label: 'Slots', value: 3, content: '' }]" 
+   variant="bordered"
+   size="sm"
+   activeColor="text-blue-500 shadow-blue-500"
+>
+
+<template #content1>
+<div class="py-10 px-2 rounded-lg shadow-inner  justify-items-center">
+  <CountDown :time="45" :auto-start="false" class="font-thin text-6xl">
+    <template #controls="{ isRunning, start, reset }">
+    <div class="flex gap-4 mt-10">
+      <Button @click="start" buttonClass=" bg-blue-500  font-normal ">
+        {{ isRunning ? 'Running' : 'Start' }}
+      </Button>
+      <Button @click="reset" buttonClass="bg-red-500 font-normal">Stop</Button>
+</div>
+    </template>
+  </CountDown>
+</div>
+</template>
+
+
+<template #content3>
+
+```md
+<CountDown :time="45" :auto-start="false" class="font-semibold text-6xl">
+<template #controls="{ isRunning, start, reset }">
+<div class="flex gap-4 mt-10">
+<Button @click="start" buttonClass=" bg-blue-500  font-normal ">
+{{ isRunning ? 'Running' : 'Start' }}
+ </Button>
+<Button @click="reset" buttonClass="bg-red-500  font-normal">Stop</Button>
+</div>
+</template>
+</CountDown>
+
+```
+</template>
+
+
+</Tab>
+
+
+
+## Countdown Component Features
+
+| **Feature**             | **Description**                                                                                         | **Usage**                                                                                     |
+|--------------------------|---------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| **Custom Controls**      | Add custom buttons for controlling the countdown.                                                      | Use the `controls` slot to define buttons for start, pause, and reset.                        |
+| **Auto Start**           | Automatically starts the countdown when the component is mounted.                                      | Use the `autoStart` prop and set it to `true`.                                                |
+| **Event Handling**       | Handle time updates and countdown finish events in the parent component.                              | Listen to the `update:time` and `finish` events to execute custom logic.                      |
+| **Styling Flexibility**  | Fully customizable styles for the countdown timer and controls.                                        | Use the CSS classes `container` and `display` to adjust the appearance.                       |
+
+This documentation provides a structured and detailed guide to using and customizing the Countdown component effectively.
