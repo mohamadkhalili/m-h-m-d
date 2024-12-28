@@ -1,5 +1,5 @@
 export interface CountDownProps {
-    initialTime: number;
+    time: number;
     autoStart?: boolean;
   }
   
@@ -8,6 +8,6 @@ export interface CountDownProps {
   };
   
   export const countDownPropsValidation = {
-    initialTime: (value: number) => value >= 0,
+    time: (value: number) => value >= 0,
   };
   

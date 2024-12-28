@@ -1,29 +1,26 @@
 <template>
     <div :class="classes.container">
       <core 
-        :initial-time="initialTime"
+        :time="time"
         :auto-start="autoStart"
         @update:time="updateTime"
         @finish="onFinish"
         v-slot:controls="{ isRunning, start, reset }">
-        <button @click="start" :class="isRunning ? 'pauseButton' : 'startButton'">
-          {{ isRunning ? 'Pause' : 'Start' }}
-        </button>
-        <button @click="reset" class="resetButton">Reset</button>
+          
+        <slot name="controls" :is-running="isRunning" :start="start" :reset="reset" />
       </core>
     </div>
   </template>
   
   <script setup lang="ts">
-  import { ref } from 'vue';
+  import { ref, defineProps } from 'vue';
   import core from './core.vue';
   import { CountDownClasses } from '../../styles/CountDownClasses';
-  import type { CountDownProps } from './Props';
   
+  const props = defineProps<{ time: number }>();
   const classes = CountDownClasses;
-  
-  const initialTime = ref(60);  // Initial time
-  const autoStart = ref(false); // Auto start flag
+  const time = ref(props.time);
+  const autoStart = ref(true);
   
   const updateTime = (newTime: number) => {
     console.log('Updated time:', newTime);

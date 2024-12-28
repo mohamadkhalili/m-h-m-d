@@ -12,30 +12,40 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch, onMounted } from 'vue';
 import { CountDownClasses } from '../../styles/CountDownClasses';
 import type { CountDownProps } from './Props';
 
+const emit = defineEmits<{
+  (e: 'update:time', value: number): void;
+  (e: 'finish', value: number): void;
+}>();
+
 const props = withDefaults(defineProps<CountDownProps>(), {
   autoStart: false,
-  initialTime: 60
 });
 
 const classes = CountDownClasses;
-const time = ref(props.initialTime);
+const time = ref(props.time); 
 const isRunning = ref(false);
 let timer: ReturnType<typeof setInterval> | null = null;
+
+const formatTime = (seconds: number): string => {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+};
 
 const start = () => {
   if (!isRunning.value && time.value > 0) {
     isRunning.value = true;
     timer = setInterval(() => {
       time.value--;
-      if (time.value === 0) {
+      if (time.value <= 0) {
         stop();
         emit('finish', time.value);
       }
-      emit('update:time', time.value);  // Emit time change to parent
+      emit('update:time', time.value); // Emit time change to parent
     }, 1000);
   }
 };
@@ -50,16 +60,22 @@ const stop = () => {
 
 const reset = () => {
   stop();
-  time.value = props.initialTime;
+  time.value = props.time; // Reset to initialTime
   emit('update:time', time.value); 
 };
 
-const formatTime = (seconds: number): string => {
-  const mins = Math.floor(seconds / 60);
-  const secs = seconds % 60;
-  return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-};
+// Watchers to handle changes in props
+watch(() => props.time, (newInitialTime) => {
+  console.log('Initial Time Changed:', newInitialTime); // Debugging line
+  time.value = newInitialTime; // Update time when initialTime changes
+});
 
+// Start countdown if autoStart is true and not already running
+if (props.autoStart && !isRunning.value) {
+  start();
+}
+
+// Expose methods and properties
 defineExpose({
   start,
   stop,
@@ -67,11 +83,4 @@ defineExpose({
   isRunning,
   time,
 });
-
-import { defineEmits } from 'vue';
-
-const emit = defineEmits<{
-  (e: 'update:time', value: number): void;
-  (e: 'finish', value: number): void;
-}>();
 </script>
