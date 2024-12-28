@@ -30,11 +30,21 @@ const time = ref(props.time);
 const isRunning = ref(false);
 let timer: ReturnType<typeof setInterval> | null = null;
 
-const formatTime = (seconds: number): string => {
-  const mins = Math.floor(seconds / 60);
-  const secs = seconds % 60;
-  return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  const formatTime = (seconds: number): string => {
+  if (seconds < 3600) {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  } else {
+    const hours = Math.floor(seconds / 3600);
+    const mins = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+    return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  }
 };
+
+
+
 
 const start = () => {
   if (!isRunning.value && time.value > 0) {
@@ -60,22 +70,17 @@ const stop = () => {
 
 const reset = () => {
   stop();
-  time.value = props.time; // Reset to initialTime
+  time.value = props.time;
   emit('update:time', time.value); 
 };
 
-// Watchers to handle changes in props
 watch(() => props.time, (newInitialTime) => {
-  console.log('Initial Time Changed:', newInitialTime); // Debugging line
-  time.value = newInitialTime; // Update time when initialTime changes
+  
+  time.value = newInitialTime;
 });
 
-// Start countdown if autoStart is true and not already running
-if (props.autoStart && !isRunning.value) {
-  start();
-}
 
-// Expose methods and properties
+
 defineExpose({
   start,
   stop,
@@ -83,4 +88,10 @@ defineExpose({
   isRunning,
   time,
 });
+onMounted(() => {
+  if (props.autoStart && !isRunning.value) {
+    start();
+  }
+});
+
 </script>

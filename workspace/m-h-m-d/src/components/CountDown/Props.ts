@@ -5,6 +5,7 @@ export interface CountDownProps {
   
   export const countDownPropsDefaults = {
     autoStart: false,
+    
   };
   
   export const countDownPropsValidation = {
