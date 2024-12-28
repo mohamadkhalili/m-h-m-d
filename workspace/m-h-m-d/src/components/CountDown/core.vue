@@ -18,6 +18,7 @@ const emit = defineEmits(['update:time', 'finish']);
 const adapter = useAdapterClass();
 const props = withDefaults(defineProps<CountDownProps>(), {
   autoStart: false,
+  format: 'hh:mm:ss',
 });
 
 const classes = CountDownClasses;
@@ -26,15 +27,24 @@ const isRunning = ref(false);
 let timer: ReturnType<typeof setInterval> | null = null;
 
 const formatTime = (seconds: number): string => {
-  if (seconds < 3600) {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-  } else {
-    const hours = Math.floor(seconds / 3600);
-    const mins = Math.floor((seconds % 3600) / 60);
-    const secs = seconds % 60;
-    return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  const hours = Math.floor(seconds / 3600);
+  const mins = Math.floor((seconds % 3600) / 60);
+  const secs = seconds % 60;
+
+  if (hours === 0) {
+    return `${mins.toString().padStart(2, '0')} : ${secs.toString().padStart(2, '0')}`;
+  }
+
+  switch (props.format) {
+    case 'hh mm ss':
+      return `${hours.toString().padStart(2, '0')} ${mins.toString().padStart(2, '0')} ${secs.toString().padStart(2, '0')}`;
+    case 'hhH mmM ssS':
+      return `${hours.toString().padStart(2, '0')} H ${mins.toString().padStart(2, '0')} M ${secs.toString().padStart(2, '0')} S`;
+    case 'hh hours mm minutes ss seconds':
+      return `${hours.toString().padStart(2, '0')} hours ${mins.toString().padStart(2, '0')} minutes ${secs.toString().padStart(2, '0')} seconds`;
+    case 'hh:mm:ss':
+    default:
+      return `${hours.toString().padStart(2, '0')} : ${mins.toString().padStart(2, '0')} : ${secs.toString().padStart(2, '0')}`;
   }
 };
 
@@ -68,7 +78,6 @@ const reset = () => {
 
 watch(() => props.time, (newInitialTime) => {
   time.value = newInitialTime;
- 
 });
 
 defineExpose({

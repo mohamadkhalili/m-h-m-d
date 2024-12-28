@@ -28,7 +28,7 @@ The Countdown component is a flexible and reusable timer component built with Vu
 
 <template #content1>
 <div class="py-10 rounded-lg shadow-inner flex justify-center items-center">
-    <CountDown :time=110 auto-start class='text-6xl font-thin'/>
+    <CountDown :time="110" auto-start format="hh:mm:ss" class='text-6xl font-thin' @update:time="handleTimeUpdate"/>
 </div>
 </template>
 
@@ -65,15 +65,15 @@ You can easily customize the appearance of the Countdown component by using the 
 >
 
 <template #content1>
-<div class="py-10 px-2 rounded-lg shadow-inner  justify-items-center">
-    <CountDown :time="45" :auto-start="false" class="font-thin text-6xl">
+<div class="py-10 px-2 rounded-lg shadow-inner justify-items-center">
+    <CountDown :time="45" :auto-start="false" format="hh mm ss" class="font-thin text-6xl" @update:time="handleTimeUpdate">
         <template #controls="{ isRunning, start, reset }">
         <div class="flex gap-4 mt-10">
-            <Button @click="start" buttonClass=" bg-blue-500  font-normal ">
+            <Button @click="start" buttonClass="bg-blue-500 font-normal">
                 {{ isRunning ? 'Running' : 'Start' }}
             </Button>
             <Button @click="reset" buttonClass="bg-red-500 font-normal">Stop</Button>
-</div>
+        </div>
         </template>
     </CountDown>
 </div>
@@ -100,11 +100,49 @@ You can easily customize the appearance of the Countdown component by using the 
 
 </Tab>
 
+### Formats
+<Tab 
+     class="gap-3 border-[1px] rounded-md w-full mx-auto "
+     :tabs="[ { label: 'Demo', value: 1, content: '' }, { label: 'Props', value: 3, content: '' }]" 
+     variant="bordered"
+     size="sm"
+     activeColor="text-blue-500 shadow-blue-500"
+>
+
+<template #content1>
+<div class="py-10 gap-4 rounded-lg shadow-inner grid grid-cols-1 justify-items-center">
+    <CountDown :time=4400 auto-start class='text-2xl  text-purple-900 ' format="hh hours mm minutes ss seconds"/>
+    -
+    <CountDown :time=4400 auto-start class='text-2xl  text-rose-900 ' format="hhH mmM ssS"/>
+    -
+    <CountDown :time=4400 auto-start class='text-2xl  text-yellow-900 ' format="default"/>
+    -
+    <CountDown :time=4400 auto-start class='text-2xl  text-green-900 ' format="hh mm ss"/>
+
+</div>
+</template>
+
+
+<template #content3>
+
+```md
+<CountDown :time=4400 auto-start class='text-2xl  ' format="hh hours mm minutes ss seconds"/>
+<CountDown :time=4400 auto-start class='text-2xl  ' format="hhH mmM ssS"/>
+<CountDown :time=4400 auto-start class='text-2xl  ' format="default"/>
+<CountDown :time=4400 auto-start class='text-2xl  ' format="hh mm ss"/>
+
+```
+</template>
+
+
+</Tab>
+
 <template>
     <div>
         <CountDown 
             :time="30" 
             :auto-start="true" 
+            format="hhH mmM ssS"
             @update:time="handleTimeUpdate"
         >
             <template #controls="{ isRunning, start, reset }">
@@ -120,6 +158,7 @@ You can easily customize the appearance of the Countdown component by using the 
         </CountDown>
     </div>
 </template>
+
 
 
 ## Countdown Component Features

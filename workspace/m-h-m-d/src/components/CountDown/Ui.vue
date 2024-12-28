@@ -3,6 +3,7 @@
       <core 
         :time="time"  
         :autoStart="autoStart"
+        :format="format"
         @update:time="updateTime"
         @finish="onFinish"
         v-slot:controls="{ isRunning, start, reset }">
@@ -19,10 +20,12 @@ import { CountDownClasses } from '../../styles/CountDownClasses';
 const props = defineProps<{
   time: number; 
   autoStart: boolean; 
+  format?: 'hh:mm:ss' | 'hh mm ss' | 'hhH mmM ssS'; // Add format prop
 }>();
 const classes = CountDownClasses;
 const time = ref(props.time);
 const autoStart = ref(props.autoStart);
+const format = ref(props.format || 'hh:mm:ss'); // Default format
 const updateTime = (newTime: number) => {
   time.value = newTime; 
 };
