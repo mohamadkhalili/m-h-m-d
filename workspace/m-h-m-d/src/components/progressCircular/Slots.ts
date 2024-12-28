@@ -3,5 +3,5 @@ export interface coreSlots {
 }
 export interface uiSlots {
     progress(): any,
-    progressFill(): any
+    numberFill(): any
 }
