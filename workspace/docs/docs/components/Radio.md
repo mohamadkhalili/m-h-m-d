@@ -35,7 +35,6 @@ import { ref } from 'vue';
 
 const selectedValue = ref<string | null>(null);
 
-// Update the modelValue when radio button is clicked
 const updateValue = (newValue: string) => {
   selectedValue.value = newValue;
 

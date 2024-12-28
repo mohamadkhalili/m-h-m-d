@@ -8,7 +8,7 @@
   </template>
   
   <script setup lang="ts">
-  import { ref, provide, inject } from 'vue';
+  import {  provide } from 'vue';
   import RadioClasses from '../../styles/RadioGroupClasses';
   
   const props = defineProps({

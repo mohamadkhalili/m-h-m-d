@@ -17,11 +17,11 @@
   
   const props = defineProps({
     modelValue: {
-      type: [String, null], // Now accept string or null for v-model compatibility
+      type: [String, null], 
       required: true
     },
     value: {
-      type: String, // Value should be a string
+      type: String,
       required: true
     },
     label: {
