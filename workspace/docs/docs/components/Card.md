@@ -23,7 +23,7 @@ const tabs = [
 
 
 <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
-<Card cardClass="bg-white rounded-none w-full">
+<Card cardClass="bg-white w-40  ">
 <template #title>
 <h3>title</h3>
 </template>
@@ -383,7 +383,7 @@ View
   info4="1K ♥️"
 >
 
-<Button   buttonClass="rounded-full bg-blue-500  ring-2">
+<Button   buttonClass="rounded-full bg-blue-500  ring-2 mr-4">
     follow
  </Button>
 </Card>
