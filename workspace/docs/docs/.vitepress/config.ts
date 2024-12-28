@@ -41,7 +41,7 @@ export default defineConfig({
           {text:'Stepper',link:'/components//stepper'},
           {text:'List',link:'/components//list'},
           {text:'Breadcrumb',link:'/components//breadcrumb'},
-          {text:'Progress', link:'/components//progress'},
+          {text:'Progress Linear', link:'/components//ProgressLinear'},
           {text:'RangeSlider', link:'/components//RangeSlider'},
           {text:'Radio Group', link:'/components//RadioGroup'},
           {text:'Alert', link:'/components//alert'},

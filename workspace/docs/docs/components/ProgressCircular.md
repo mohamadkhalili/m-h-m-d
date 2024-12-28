@@ -1,4 +1,4 @@
-# progress
+# Progress Linear
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
 const tabs = [
@@ -89,7 +89,7 @@ onUnmounted(() => {
     activeColor="text-blue-500 shadow-blue-500"
   >
 <template #content1>
-<Progress v-model="progressValue"/>
+<ProgressLinear v-model="progressValue"/>
 
 </template>
 
@@ -104,7 +104,7 @@ onUnmounted(() => {
 <template #content3>
 
 ```vue
-<Progress v-model="progressValue"/>
+<ProgressLinear v-model="progressValue"/>
 ```
 
 </template>
@@ -121,11 +121,11 @@ onUnmounted(() => {
 <template #content1>
     <div class="flex flex-col items-center">
       <span class="mb-3 text-sm font-medium">installing Progress:</span>
-      <Progress v-model="progressValue2" />
+      <ProgressLinear v-model="progressValue2" />
     </div>
     <div class="flex flex-col items-center">
       <span class="mb-3 text-sm font-medium">installing Progress:</span>
-      <Progress v-model="progressValue3" />
+      <ProgressLinear v-model="progressValue3" />
     </div>
 
 </template>
@@ -133,7 +133,7 @@ onUnmounted(() => {
 <template #content2>
 
 ```vue
-<Progress v-model="progressValue" />
+<ProgressLinear v-model="progressValue" />
 ```
 
 </template>
@@ -212,11 +212,11 @@ onUnmounted(() => {
   >
 <template #content1>
 <span class="mb-3 text-sm font-medium">default pending:</span>
-<div class="mb-5"><Progress v-model="progressValue4" :pending="true"/></div>
+<div class="mb-5"><ProgressLinear v-model="progressValue4" :pending="true"/></div>
 <span class="mb-3 text-sm font-medium">with pendingSpeed : 5</span>
-<div class="mb-5"><Progress v-model="progressValue4" :pendingSpeed="5" :pending="true"/></div>
+<div class="mb-5"><ProgressLinear v-model="progressValue4" :pendingSpeed="5" :pending="true"/></div>
 <span class="mb-3 text-sm font-medium">with pendingSpeed : 6</span>
-<div class="mb-5"><Progress v-model="progressValue4" :pendingSpeed="6" :pending="true"/></div>
+<div class="mb-5"><ProgressLinear v-model="progressValue4" :pendingSpeed="6" :pending="true"/></div>
 </template>
 
 <template #content2>
@@ -230,9 +230,9 @@ onUnmounted(() => {
 <template #content3>
 
 ```vue
-<div class="mb-5"><Progress v-model="progressValue" :pending="true"/></div>
-<div class="mb-5"><Progress v-model="progressValue" :pendingSpeed="5" :pending="true"/></div>
-<div class="mb-5"><Progress v-model="progressValue" :pendingSpeed="6" :pending="true"/></div>
+<div class="mb-5"><ProgressLinear v-model="progressValue" :pending="true"/></div>
+<div class="mb-5"><ProgressLinear v-model="progressValue" :pendingSpeed="5" :pending="true"/></div>
+<div class="mb-5"><ProgressLinear v-model="progressValue" :pendingSpeed="6" :pending="true"/></div>
 ```
 
 </template>
@@ -254,9 +254,9 @@ onUnmounted(() => {
 <template  #content1>
 <button :disabled="progressValue5 === 0"  @click="progressValue5 >= 10 ? progressValue5 = progressValue5 - 10 : progressValue5 = 0" class="mb-10 size-10 bg-black text-white rounded-lg p-2 mt-1 mr-40" cleaner>-</button>
 <button :disabled="progressValue5 === 100" @click="progressValue5 <= 90 ? progressValue5 = progressValue5 + 10 : progressValue5 = 100" class="mb-10 size-10 bg-black text-white rounded-lg p-2 mt-1 ml-[390px]" cleaner>+</button>
-<Progress v-model="progressValue5" progressClass="ml-40 w-80 bg-emerald-100" progressFillClass="bg-emerald-600 transition-all duration-300"/>
+<ProgressLinear v-model="progressValue5" progressClass="ml-40 w-80 bg-emerald-100" progressFillClass="bg-emerald-600 transition-all duration-300"/>
 <div class="mt-16">
-<Progress v-model="progressValue6" :pending="true" progressClass="ml-40 w-80 bg-emerald-100" progressFillClass="bg-emerald-600 transition-all duration-300"/>
+<ProgressLinear v-model="progressValue6" :pending="true" progressClass="ml-40 w-80 bg-emerald-100" progressFillClass="bg-emerald-600 transition-all duration-300"/>
 </div>
 </template>
 
@@ -271,7 +271,7 @@ onUnmounted(() => {
 <template #content3>
 
 ```vue
-<Progress v-model="progressValue"
+<ProgressLinear v-model="progressValue"
 progressClass="ml-40 w-80 bg-emerald-100" 
 progressFillClass="bg-emerald-600 transition-all duration-300"/>
 ```

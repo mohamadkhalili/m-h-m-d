@@ -20,7 +20,7 @@ import stepper from './components/stepper/Core.vue';
 import RangeSlider from './components/RangeSlider/Ui.vue';
 import RadioGroup from './components/RadioGroup/Ui.vue';
 import InputFile from './components/InputFile/Ui.vue';
-import progress from './components/progress/Ui.vue';
+import progress from './components/progressLinear/Ui.vue';
 import alert from './components/alert/Ui.vue';
 import Radio from './components/Radio/Ui.vue';
 
@@ -41,7 +41,7 @@ const components = [
     { name: 'Stepper', ...stepper },
     { name: 'Loader', ...Loader },
     { name: 'Breadcrumb', ...Breadcrumb },
-    { name: 'Progress', ...progress},
+    { name: 'ProgressLinear', ...progress},
     { name: 'RangeSlider', ...RangeSlider},
     { name: 'RadioGroup', ...RadioGroup},
     { name: 'InputFile', ...InputFile},
