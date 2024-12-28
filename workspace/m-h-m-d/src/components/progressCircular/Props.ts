@@ -4,7 +4,7 @@ export const coreProps = {
 }
 export const uiProps = {
     modelValue : { type : Number, required: false},
-    startAngle : { type : Number, default: 0},
+    rotate : { type : Number, default: 0},
     showNumberFill : { type : Number, default: false},
     progressClass : { type : String, default : ''},
     progressContainerClass : { type : String, default : ''},

@@ -5,7 +5,7 @@
       <div :class="adapterClass(progressCircularClasses.progress + ' ' + progressClass).value">
         <svg
           viewBox="0 0 100 100"
-          :style="{ transform: `rotate(${startAngle - 90}deg)`, transformOrigin: '50% 50%' }"
+          :style="{ transform: `rotate(${rotate - 90}deg)`, transformOrigin: '50% 50%' }"
         >
           <circle
             cx="50"

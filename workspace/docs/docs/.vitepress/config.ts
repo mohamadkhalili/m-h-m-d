@@ -42,11 +42,11 @@ export default defineConfig({
           {text:'List',link:'/components//list'},
           {text:'Breadcrumb',link:'/components//breadcrumb'},
           {text:'Progress Linear', link:'/components//ProgressLinear'},
+          {text:'Progress Circular', link:'/components//ProgressCircular'},
           {text:'RangeSlider', link:'/components//RangeSlider'},
           {text:'Radio Group', link:'/components//RadioGroup'},
           {text:'Alert', link:'/components//alert'},
           {text:'Radio', link:'/components//Radio'},
-          {text:'Progress Circular', link:'/components//ProgressCircular'},
 
           
         ]
