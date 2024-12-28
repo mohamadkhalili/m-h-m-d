@@ -20,12 +20,11 @@ import stepper from './components/stepper/Core.vue';
 import RangeSlider from './components/RangeSlider/Ui.vue';
 import RadioGroup from './components/RadioGroup/Ui.vue';
 import InputFile from './components/InputFile/Ui.vue';
-import progress from './components/progress/Ui.vue';
+import progressLinear from './components/progressLinear/Ui.vue';
 import alert from './components/alert/Ui.vue';
 import Radio from './components/Radio/Ui.vue';
 import CountDown from './components/CountDown/Ui.vue';
-
-
+import progressCircular from './components/progressCircular/Ui.vue'
 
 const components = [
     { name: 'Pagination', ...pagination },
@@ -43,14 +42,14 @@ const components = [
     { name: 'Stepper', ...stepper },
     { name: 'Loader', ...Loader },
     { name: 'Breadcrumb', ...Breadcrumb },
-    { name: 'Progress', ...progress},
+    { name: 'ProgressLinear', ...progressLinear},
     { name: 'RangeSlider', ...RangeSlider},
     { name: 'RadioGroup', ...RadioGroup},
     { name: 'InputFile', ...InputFile},
     { name: 'Alert', ...alert},
     { name: 'Radio', ...Radio},
     { name: 'CountDown', ...CountDown},
-
+    { name: 'ProgressCircular', ...progressCircular}
 
 
 ]
@@ -77,7 +76,8 @@ const install = (app: App, config: Config = {}) => {
 
 
 export { pagination, modal, Button, input, menu, tab, list, ChatBubble, Divider, stepper, Card, Switch, CheckBox, 
-         Breadcrumb, Loader, progress,RangeSlider, alert,InputFile ,RadioGroup,Radio ,CountDown}
+         Breadcrumb, Loader, progress,RangeSlider, alert,InputFile ,RadioGroup,Radio ,CountDown,progressCircular}
+
 
 export { tooltip }
 

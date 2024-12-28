@@ -5,7 +5,7 @@
       <div
         v-if="showProgress"
         :class="
-          adapterClass(progressClasses.progress + ' ' + progressClass).value
+          adapterClass(progressLinearClasses.progress + ' ' + progressClass).value
         "
         style="position: relative; overflow: hidden"
       >
@@ -15,7 +15,7 @@
           v-if="showProgressFill"
           ref="progressFillRef"
           :class="
-            adapterClass(progressClasses.progressFill + ' ' + progressFillClass)
+            adapterClass(progressLinearClasses.progressFill + ' ' + progressFillClass)
               .value
           "
           :style="
@@ -40,7 +40,7 @@
 import Core from "./Core.vue";
 import { uiProps } from "./Props";
 import { progressEmits } from "./Emits";
-import { progressClasses } from "../../styles/ProgressClasses";
+import { progressLinearClasses } from "../../styles/ProgressLinearClasses";
 import { useAdapterClass } from "../../composables/UseClass";
 import { uiSlots } from "./Slots";
 import { computed, onMounted, onUnmounted, nextTick, useSlots, ref } from "vue";
