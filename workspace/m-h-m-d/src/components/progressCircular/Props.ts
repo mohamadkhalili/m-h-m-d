@@ -4,8 +4,9 @@ export const coreProps = {
 }
 export const uiProps = {
     modelValue : { type : Number, required: false},
+    startAngle : { type : Number, default: 0},
+    showNumberFill : { type : Number, default: false},
     progressClass : { type : String, default : ''},
+    progressContainerClass : { type : String, default : ''},
     progressFillClass : { type : String, default : ''},
-    pending : { type : Boolean, required : false},
-    pendingSpeed : { type : Number, default : 1},
 }

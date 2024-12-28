@@ -11,7 +11,7 @@ const tabsInstalling = [
   { label: 'Props', value: 2, content: ''},
   { label: 'Script', value: 3, content: ''},
 ];
-const progressValue = ref(40);
+const progressValue = ref(50);
 const progressValue2 = ref(0);
 const progressValue3 = ref(0);
 const progressValue4 = ref(60);
@@ -89,7 +89,7 @@ onUnmounted(() => {
     activeColor="text-blue-500 shadow-blue-500"
   >
 <template #content1>
-<ProgressLinear v-model="progressValue"/>
+<ProgressCircular v-model="progressValue"/>
 
 </template>
 
@@ -121,11 +121,11 @@ onUnmounted(() => {
 <template #content1>
     <div class="flex flex-col items-center">
       <span class="mb-3 text-sm font-medium">installing Progress:</span>
-      <ProgressLinear v-model="progressValue2" />
+      <ProgressCircular v-model="progressValue2" />
     </div>
     <div class="flex flex-col items-center">
       <span class="mb-3 text-sm font-medium">installing Progress:</span>
-      <ProgressLinear v-model="progressValue3" />
+      <ProgressCircular v-model="progressValue3" />
     </div>
 
 </template>
@@ -212,11 +212,11 @@ onUnmounted(() => {
   >
 <template #content1>
 <span class="mb-3 text-sm font-medium">default pending:</span>
-<div class="mb-5"><ProgressLinear v-model="progressValue4" :pending="true"/></div>
+<div class="mb-5"><ProgressCircular v-model="progressValue4" :pending="true"/></div>
 <span class="mb-3 text-sm font-medium">with pendingSpeed : 5</span>
-<div class="mb-5"><ProgressLinear v-model="progressValue4" :pendingSpeed="5" :pending="true"/></div>
+<div class="mb-5"><ProgressCircular v-model="progressValue4" :pendingSpeed="5" :pending="true"/></div>
 <span class="mb-3 text-sm font-medium">with pendingSpeed : 6</span>
-<div class="mb-5"><ProgressLinear v-model="progressValue4" :pendingSpeed="6" :pending="true"/></div>
+<div class="mb-5"><ProgressCircular v-model="progressValue4" :pendingSpeed="6" :pending="true"/></div>
 </template>
 
 <template #content2>
