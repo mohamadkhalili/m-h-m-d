@@ -2,7 +2,7 @@
   <Core :modelValue="modelValue" @update:modelValue="handleItemChange">
     <template #progress>
       <slot name="progress"></slot>
-      <div class="relative flex items-center justify-center w-20 h-20">
+      <div :class="adapterClass(progressCircularClasses.progress + ' ' + progressClass).value">
         <svg
           viewBox="0 0 100 100"
           :style="{ transform: `rotate(${startAngle - 90}deg)`, transformOrigin: '50% 50%' }"
@@ -14,7 +14,7 @@
             fill="transparent"
             stroke="currentColor"
             stroke-width="10"
-            class="text-gray-300"
+            :class="adapterClass(progressCircularClasses.progressContainer + ' ' + progressContainerClass).value"
           ></circle>
           <circle
             cx="50"
@@ -25,14 +25,14 @@
             stroke-width="10"
             stroke-dasharray="282.6"
             :stroke-dashoffset="282.6 - (modelValue / 100) * 282.6"
-            class="text-blue-500"
+            :class="adapterClass(progressCircularClasses.progressFill + ' ' + progressFillClass).value"
             stroke-linecap="round"
           ></circle>
         </svg>
         <slot name="numberFill">
           <div
             v-if="showNumberFill"
-            class="absolute text-xl font-semibold text-blue-500"
+            :class="adapterClass(progressCircularClasses.numberFill + ' ' + numberFillClass).value"
           >
             {{ modelValue }}%
           </div>
@@ -47,7 +47,9 @@ import Core from "./Core.vue";
 import { uiProps } from "./Props";
 import { progressEmits } from "./Emits";
 import { uiSlots } from "./Slots";
-import { progressCircularClasses } from '../../styles/ProgressCircularClasses'
+import { progressCircularClasses } from '../../styles/ProgressCircularClasses';
+import { useAdapterClass } from "../../composables/UseClass";
+const adapterClass = useAdapterClass();
 const props = defineProps(uiProps);
 const emit = defineEmits(progressEmits);
 const uiSlots = defineSlots<uiSlots>();
