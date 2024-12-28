@@ -1,56 +1,77 @@
 <template>
-  <slot :time="time" :is-running="isRunning"></slot>
+  <div :class="classes.container">
+    <div :class="classes.display">
+      {{ formatTime(time) }}
+    </div>
+    <slot name="controls" 
+          :is-running="isRunning" 
+          :start="start" 
+          :reset="reset">
+    </slot>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onUnmounted } from 'vue'
-import type { CountDownProps } from './Props'
-import type { CountDownEmits } from './Emits'
+import { ref } from 'vue';
+import { CountDownClasses } from '../../styles/CountDownClasses';
+import type { CountDownProps } from './Props';
 
-const props = defineProps<CountDownProps>()
-const emit = defineEmits<CountDownEmits>()
+const props = withDefaults(defineProps<CountDownProps>(), {
+  autoStart: false,
+  initialTime: 60
+});
 
-const time = ref<number>(props.initialTime)
-const isRunning = ref<boolean>(props.autoStart || false)
-let timer: ReturnType<typeof setInterval> | null = null
+const classes = CountDownClasses;
+const time = ref(props.initialTime);
+const isRunning = ref(false);
+let timer: ReturnType<typeof setInterval> | null = null;
 
 const start = () => {
   if (!isRunning.value && time.value > 0) {
-    isRunning.value = true
+    isRunning.value = true;
     timer = setInterval(() => {
-      time.value--
-      emit('update:time', time.value)
+      time.value--;
       if (time.value === 0) {
-        stop()
-        emit('finish')
+        stop();
+        emit('finish', time.value);
       }
-    }, 1000)
+      emit('update:time', time.value);  // Emit time change to parent
+    }, 1000);
   }
-}
+};
 
 const stop = () => {
   if (timer) {
-    clearInterval(timer)
-    timer = null
+    clearInterval(timer);
+    timer = null;
   }
-  isRunning.value = false
-}
+  isRunning.value = false;
+};
 
 const reset = () => {
-  stop()
-  time.value = props.initialTime
-  emit('update:time', time.value)
-}
+  stop();
+  time.value = props.initialTime;
+  emit('update:time', time.value); 
+};
 
-onUnmounted(() => {
-  if (timer) clearInterval(timer)
-})
+const formatTime = (seconds: number): string => {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+};
 
 defineExpose({
   start,
   stop,
   reset,
   isRunning,
-  time
-})
+  time,
+});
+
+import { defineEmits } from 'vue';
+
+const emit = defineEmits<{
+  (e: 'update:time', value: number): void;
+  (e: 'finish', value: number): void;
+}>();
 </script>

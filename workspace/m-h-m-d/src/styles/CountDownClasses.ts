@@ -1,4 +1,3 @@
-// CountDownClasses.ts
 export const CountDownClasses = {
     container: "flex flex-col items-center gap-4",
     display: "font-mono text-4xl font-bold text-gray-800",
@@ -7,4 +6,5 @@ export const CountDownClasses = {
     startButton: "bg-green-500 text-white hover:bg-green-600 focus:ring-green-500",
     pauseButton: "bg-yellow-500 text-white hover:bg-yellow-600 focus:ring-yellow-500", 
     resetButton: "bg-red-500 text-white hover:bg-red-600 focus:ring-red-500"
-  }
+  };
+  
