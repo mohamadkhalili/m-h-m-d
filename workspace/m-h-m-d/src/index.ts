@@ -23,8 +23,8 @@ import InputFile from './components/InputFile/Ui.vue';
 import progressLinear from './components/progressLinear/Ui.vue';
 import alert from './components/alert/Ui.vue';
 import Radio from './components/Radio/Ui.vue';
+import CountDown from './components/CountDown/Ui.vue';
 import progressCircular from './components/progressCircular/Ui.vue'
-
 
 const components = [
     { name: 'Pagination', ...pagination },
@@ -48,6 +48,7 @@ const components = [
     { name: 'InputFile', ...InputFile},
     { name: 'Alert', ...alert},
     { name: 'Radio', ...Radio},
+    { name: 'CountDown', ...CountDown},
     { name: 'ProgressCircular', ...progressCircular}
 
 
@@ -75,7 +76,8 @@ const install = (app: App, config: Config = {}) => {
 
 
 export { pagination, modal, Button, input, menu, tab, list, ChatBubble, Divider, stepper, Card, Switch, CheckBox, 
-         Breadcrumb, Loader, progressLinear,RangeSlider, alert,InputFile ,RadioGroup,Radio, progressCircular }
+         Breadcrumb, Loader, progress,RangeSlider, alert,InputFile ,RadioGroup,Radio ,CountDown,progressCircular}
+
 
 export { tooltip }
 

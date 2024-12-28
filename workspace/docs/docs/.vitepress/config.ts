@@ -47,6 +47,8 @@ export default defineConfig({
           {text:'Radio Group', link:'/components//RadioGroup'},
           {text:'Alert', link:'/components//alert'},
           {text:'Radio', link:'/components//Radio'},
+          {text:'CountDown', link:'/components//CountDown'},
+
 
           
         ]
