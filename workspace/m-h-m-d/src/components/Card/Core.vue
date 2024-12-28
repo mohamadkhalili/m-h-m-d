@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
 import { cardProps } from './Props';
 
 const props = defineProps(cardProps);

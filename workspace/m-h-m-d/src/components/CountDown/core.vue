@@ -53,7 +53,7 @@ const start = () => {
     isRunning.value = true;
     timer = setInterval(() => {
       time.value--;
-      emit('update:time', time.value); // Ensure this line is present
+      emit('update:time', time.value); 
       if (time.value <= 0) {
         stop();
         emit('finish');

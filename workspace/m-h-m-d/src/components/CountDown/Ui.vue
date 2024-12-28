@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps } from 'vue';
+import { ref } from 'vue';
 import core from './core.vue';
 import { CountDownClasses } from '../../styles/CountDownClasses';
 const props = defineProps<{
@@ -26,8 +26,12 @@ const classes = CountDownClasses;
 const time = ref(props.time);
 const autoStart = ref(props.autoStart);
 const format = ref(props.format || 'hh:mm:ss'); // Default format
+const emit = defineEmits(['update:time', 'finish']);
+
 const updateTime = (newTime: number) => {
-  time.value = newTime; 
+    
+    time.value = newTime; 
+    emit('update:time', time.value); 
 };
 
 const onFinish = () => {
