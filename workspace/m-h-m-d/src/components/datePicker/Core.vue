@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="isPersian" class="mt-4">
+    <div v-if="persianMode" class="mt-4">
       <label for="persian-month" class="block mb-2"
         >Select Persian Month:</label
       >
@@ -44,28 +44,30 @@
     </div>
 
     <div
-      :dir="isPersian ? 'rtl' : 'ltr'"
+      :dir="persianMode ? 'rtl' : 'ltr'"
       class="grid grid-cols-7 gap-4 max-w-[430px] mt-6"
     >
       <div
         class="font-bold text-center flex justify-center items-center w-10 h-10 select-none"
-        v-for="day in isPersian ? persianDays : days"
+        v-for="day in persianMode ? persianDays : days"
         :key="day"
       >
         {{ day }}
       </div>
       <div
         class="w-10 h-10 bg-transparent text-center flex justify-center items-center"
-        v-for="n in isPersian ? firtsPersianMonth(persianYear, persianMonth, 1) : firstDayOffset"
+        v-for="n in persianMode ? firtsPersianMonth(persianYear, persianMonth, 1) : firstDayOffset"
         :key="'empty-' + n"
       ></div>
 
       <div
-        class="w-10 h-10 bg-transparent text-center flex justify-center items-center  rounded-full select-none cursor-pointer rounded-full hover:bg-gray-100"
-        v-for="day in isPersian ? daysPersianInMonth() : daysInMonth"
+        
+        
+        v-for="day in persianMode ? daysPersianInMonth() : daysInMonth"
         :key="'day-' + day"
-      >
-        {{ day }}
+        >
+      <div @click="changeModelValue(day)" :class="[day == dayNumber ? 'w-10 h-10 text-center flex justify-center items-center  rounded-full select-none cursor-pointer rounded-full bg-gray-200' : 'w-10 h-10 bg-transparent text-center flex justify-center items-center  rounded-full select-none cursor-pointer rounded-full hover:bg-gray-100']"
+      >{{ day }}</div>
       </div>
     </div>
   </div>
@@ -81,7 +83,7 @@ import { coreSlots } from "./Slots";
 const props = defineProps(coreProps);
 const emit = defineEmits(componentEmits);
 const slots = defineSlots<coreSlots>();
-const isPersian = ref();
+const dayNumber = ref();
 const persianMonth = ref(1);
 const persianYear = ref(1403);
 const selectedMonth = ref<string>("");
@@ -141,6 +143,16 @@ const firtsPersianMonth = (jy: number, jm: number, jd:number) =>  {
   return fd;
 };
 const persianYears = Array.from({ length: 100 }, (_, i) => 1340 + i);
+const changeModelValue = (day: number) => {
+  if(props.persianMode){
+    emit("update:modelValue", persianYear.value.toString() + '-' + persianMonth.value.toString() + '-' + day);
+    dayNumber.value = day;
+  }else{
+    const [year, month] = selectedMonth.value.split("-");
+    emit("update:modelValue", year + '-' + month + '-' + day);
+    dayNumber.value = day;
+  }
+}
 const generateCalendar = () => {
   if (!selectedMonth.value) return;
 
