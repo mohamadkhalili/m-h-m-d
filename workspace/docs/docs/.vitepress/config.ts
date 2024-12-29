@@ -48,6 +48,7 @@ export default defineConfig({
           {text:'Alert', link:'/components//alert'},
           {text:'Radio', link:'/components//Radio'},
           {text:'CountDown', link:'/components//CountDown'},
+          {text:'Date Picker', link:'/components//DatePicker'},
 
 
           

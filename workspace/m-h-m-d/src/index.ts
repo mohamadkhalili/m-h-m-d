@@ -25,6 +25,7 @@ import alert from './components/alert/Ui.vue';
 import Radio from './components/Radio/Ui.vue';
 import CountDown from './components/CountDown/Ui.vue';
 import progressCircular from './components/progressCircular/Ui.vue'
+import datePicker from './components/datePicker/Core.vue'
 
 const components = [
     { name: 'Pagination', ...pagination },
@@ -49,7 +50,8 @@ const components = [
     { name: 'Alert', ...alert},
     { name: 'Radio', ...Radio},
     { name: 'CountDown', ...CountDown},
-    { name: 'ProgressCircular', ...progressCircular}
+    { name: 'ProgressCircular', ...progressCircular},
+    { name: 'DatePicker', ...datePicker},
 
 
 ]
@@ -76,7 +78,8 @@ const install = (app: App, config: Config = {}) => {
 
 
 export { pagination, modal, Button, input, menu, tab, list, ChatBubble, Divider, stepper, Card, Switch, CheckBox, 
-         Breadcrumb, Loader, progress,RangeSlider, alert,InputFile ,RadioGroup,Radio ,CountDown,progressCircular}
+         Breadcrumb, Loader, progressLinear, RangeSlider, alert,InputFile ,RadioGroup,Radio ,CountDown,progressCircular,
+         datePicker,}
 
 
 export { tooltip }
