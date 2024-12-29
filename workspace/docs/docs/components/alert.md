@@ -7,6 +7,15 @@ const tabs = [
   { label: 'Props', value: 3, content: ''},
 ];
 const alertEnable = ref(true);
+const dayOfWeek = (dateString: string) => {
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const date = new Date(dateValue);
+  return days[date.getDay()];
+}
+const dateValue = "2020-12-29";
+console.log(dayOfWeek(dateValue));
+
+
 </script>
 
 
