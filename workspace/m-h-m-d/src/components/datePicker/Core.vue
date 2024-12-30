@@ -1,54 +1,67 @@
 <template>
   <div>
-    <div v-if="persianMode" class="mt-4">
-      <label for="persian-month" class="block mb-2"
-        >Select Persian Month:</label
-      >
-      <select
-        id="persian-year"
-        v-model="persianYear"
-        @change="generateCalendar"
-        class="border rounded p-2"
-      >
-        <option v-for="year in persianYears" :key="year" :value="year">
-          {{ year }}
-        </option>
-      </select>
-      <select
-        id="persian-month"
-        v-model="persianMonth"
-        @change="generateCalendar"
-        class="border rounded p-2 ml-2"
-      >
-        <option
-          v-for="(month, index) in persianMonths"
-          :key="index"
-          :value="index + 1"
-        >
-          {{ month }}
-        </option>
-      </select>
+    <div class="inline mr-3" :class="persianMode ? 'iran-font' : ''">
+      <Button @click="selectYear = !selectYear">{{
+        persianMode ? persianYear : gYear
+      }}</Button>
     </div>
-
-    <div v-else>
-      <label for="gregorian-month" class="block mb-2"
-        >Select Gregorian Month:</label
-      >
-      <input
-        id="gregorian-month"
-        type="month"
-        v-model="selectedMonth"
-        @change="generateCalendar"
-        class="border rounded p-2 mt-4"
-      />
+    <div class="inline" :class="persianMode ? 'iran-font' : ''">
+      <Button @click="selectMonth = !selectMonth">{{
+        persianMode
+          ? persianMonths[persianMonth - 1]
+          : gregorianMonths[gMonth - 1]
+      }}</Button>
     </div>
-
     <div
+      v-if="selectYear && !selectMonth"
       :dir="persianMode ? 'rtl' : 'ltr'"
-      class="grid grid-cols-7 gap-4 max-w-[430px] mt-6"
+      class="grid grid-cols-3 gap-4 w-[430px] h-[330px] max-w-[430px] mt-3 border rounded-md p-5 text-center overflow-y-scroll"
+    >
+      <div
+        v-for="year in persianMode ? persianYears : gregorainYears"
+        :key="year"
+        :class="[
+          year == persianYear || year == gYear
+            ? 'flex justify-center items-center w-full h-10 select-none bg-gray-300 rounded-lg shadow hover:bg-gray-200 cursor-pointer'
+            : 'flex justify-center items-center w-full h-10 select-none bg-gray-100 rounded-lg shadow hover:bg-gray-200 cursor-pointer',
+          persianMode == true ? 'iran-font' : '',
+        ]"
+        @click="changeYear(year)"
+      >
+        {{ year }}
+      </div>
+    </div>
+    <div
+      v-if="selectMonth && !selectYear"
+      :dir="persianMode ? 'rtl' : 'ltr'"
+      class="grid grid-cols-3 gap-4 w-[430px] h-[330px] max-w-[430px] mt-3 border rounded-md p-5 text-center"
+    >
+      <div
+        v-for="(month, index) in persianMode ? persianMonths : gregorianMonths"
+        :key="month"
+        class="flex justify-center items-center w-30 h-10 select-none bg-gray-100 rounded-lg shadow hover:bg-gray-200 cursor-pointer"
+        :class="[
+          persianMode ? 'iran-font' : '',
+          persianMode == true && index + 1 == persianMonth
+            ? 'flex justify-center items-center w-30 h-10 select-none bg-gray-300 rounded-lg shadow hover:bg-gray-400 cursor-pointer'
+            : 'flex justify-center items-center w-30 h-10 select-none bg-gray-100 rounded-lg shadow hover:bg-gray-200 cursor-pointer',
+            persianMode == false && index + 1 == gMonth
+            ? 'flex justify-center items-center w-30 h-10 select-none bg-gray-300 rounded-lg shadow hover:bg-gray-400 cursor-pointer'
+            : 'flex justify-center items-center w-30 h-10 select-none bg-gray-100 rounded-lg shadow hover:bg-gray-200 cursor-pointer',
+        ]"
+        @click="changeMonth(index)"
+      >
+        {{ month }}
+      </div>
+    </div>
+    <div
+      v-if="!selectMonth && !selectYear"
+      :dir="persianMode ? 'rtl' : 'ltr'"
+      class="grid grid-cols-7 w-[430px] h-[330px] gap-4 max-w-[430px] mt-3 border rounded-md evaluation-4 p-2"
     >
       <div
         class="font-bold text-center flex justify-center items-center w-10 h-10 select-none"
+        :class="persianMode ? 'iran-font' : ''"
         v-for="day in persianMode ? persianDays : days"
         :key="day"
       >
@@ -56,18 +69,29 @@
       </div>
       <div
         class="w-10 h-10 bg-transparent text-center flex justify-center items-center"
-        v-for="n in persianMode ? firtsPersianMonth(persianYear, persianMonth, 1) : firstDayOffset"
+        v-for="n in persianMode
+          ? firtsPersianDay(persianYear, persianMonth, 1)
+          : firstGregorianDay(gYear, gMonth)"
         :key="'empty-' + n"
       ></div>
 
       <div
-        
-        
-        v-for="day in persianMode ? daysPersianInMonth() : daysInMonth"
+        v-for="day in persianMode
+          ? daysPersianInMonth()
+          : daysGregorianInMonth()"
         :key="'day-' + day"
+      >
+        <label
+          @click="changeModelValue(day)"
+          :class="[
+            day == dayNumber
+              ? 'w-10 h-10 text-center flex justify-center items-center rounded-full select-none cursor-pointer bg-gray-200'
+              : 'w-10 h-10 bg-transparent text-center flex justify-center items-center rounded-full select-none cursor-pointer hover:bg-gray-100',
+          ]"
+          :style="{ fontFamily: persianMode ? 'iransans' : '' }"
         >
-      <div @click="changeModelValue(day)" :class="[day == dayNumber ? 'w-10 h-10 text-center flex justify-center items-center  rounded-full select-none cursor-pointer rounded-full bg-gray-200' : 'w-10 h-10 bg-transparent text-center flex justify-center items-center  rounded-full select-none cursor-pointer rounded-full hover:bg-gray-100']"
-      >{{ day }}</div>
+          {{ day }}
+        </label>
       </div>
     </div>
   </div>
@@ -84,9 +108,14 @@ const props = defineProps(coreProps);
 const emit = defineEmits(componentEmits);
 const slots = defineSlots<coreSlots>();
 const dayNumber = ref();
+const selectDate = ref();
 const persianMonth = ref(1);
 const persianYear = ref(1403);
 const selectedMonth = ref<string>("");
+const gMonth = ref(12);
+const gYear = ref(2024);
+const selectMonth = ref(false);
+const selectYear = ref(false);
 const days = ["S", "M", "T", "W", "T", "F", "S"];
 const persianDays = [
   "شنبه",
@@ -99,6 +128,8 @@ const persianDays = [
 ];
 const firstDayOffset = ref<number>(0);
 const daysInMonth = ref<number[]>([]);
+const persianYears = Array.from({ length: 100 }, (_, i) => 1340 + i);
+const gregorainYears = Array.from({ length: 100 }, (_, i) => 1961 + i);
 const persianMonths = [
   "فروردین",
   "اردیبهشت",
@@ -113,10 +144,48 @@ const persianMonths = [
   "بهمن",
   "اسفند",
 ];
-const firtsPersianMonth = (jy: number, jm: number, jd:number) =>  {
+const gregorianMonths = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+const changeMonth = (month: number) => {
+  if (props.persianMode) {
+    persianMonth.value = month + 1;
+  } else {
+    gMonth.value = month + 1;
+  }
+  selectMonth.value = false;
+  dayNumber.value = undefined;
+};
+const changeYear = (year: number) => {
+  if (props.persianMode) {
+    persianYear.value = year;
+  } else {
+    gYear.value = year;
+  }
+  selectYear.value = false;
+  dayNumber.value = undefined;
+};
+const firtsPersianDay = (jy: number, jm: number, jd: number) => {
   var sal_a, gy, gm, gd, days;
   jy += 1595;
-  days = -355668 + (365 * jy) + (~~(jy / 33) * 8) + ~~(((jy % 33) + 3) / 4) + jd + ((jm < 7) ? (jm - 1) * 31 : ((jm - 7) * 30) + 186);
+  days =
+    -355668 +
+    365 * jy +
+    ~~(jy / 33) * 8 +
+    ~~(((jy % 33) + 3) / 4) +
+    jd +
+    (jm < 7 ? (jm - 1) * 31 : (jm - 7) * 30 + 186);
   gy = 400 * ~~(days / 146097);
   days %= 146097;
   if (days > 36524) {
@@ -131,52 +200,77 @@ const firtsPersianMonth = (jy: number, jm: number, jd:number) =>  {
     days = (days - 1) % 365;
   }
   gd = days + 1;
-  sal_a = [0, 31, ((gy % 4 === 0 && gy % 100 !== 0) || (gy % 400 === 0)) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  sal_a = [
+    0,
+    31,
+    (gy % 4 === 0 && gy % 100 !== 0) || gy % 400 === 0 ? 29 : 28,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31,
+  ];
   for (gm = 0; gm < 13 && gd > sal_a[gm]; gm++) gd -= sal_a[gm];
   const firstDay = new Date(gy, gm - 1, gd);
   let fd = firstDay.getDay();
-  if(fd < 6){
+  if (fd < 6) {
     fd += 1;
-  }else if(fd == 6){
+  } else if (fd == 6) {
     fd = 0;
   }
   return fd;
 };
-const persianYears = Array.from({ length: 100 }, (_, i) => 1340 + i);
 const changeModelValue = (day: number) => {
-  if(props.persianMode){
-    emit("update:modelValue", persianYear.value.toString() + '-' + persianMonth.value.toString() + '-' + day);
+  if (props.persianMode) {
+    emit(
+      "update:modelValue",
+      persianYear.value.toString() +
+        "-" +
+        persianMonth.value.toString() +
+        "-" +
+        day
+    );
     dayNumber.value = day;
-  }else{
+  } else {
     const [year, month] = selectedMonth.value.split("-");
-    emit("update:modelValue", year + '-' + month + '-' + day);
+    emit("update:modelValue", year + "-" + month + "-" + day);
     dayNumber.value = day;
   }
-}
-const generateCalendar = () => {
-  if (!selectedMonth.value) return;
-
-  const [year, month] = selectedMonth.value.split("-");
-  const firstDay = new Date(parseInt(year), parseInt(month) - 1, 1);
-
-  firstDayOffset.value = firstDay.getDay();
-
-  const totalDays = new Date(parseInt(year), parseInt(month), 0).getDate();
-  daysInMonth.value = Array.from({ length: totalDays }, (_, i) => i + 1);
 };
-
+const firstGregorianDay = (gy, gm) => {
+  const firstDay = new Date(gy, gm - 1, 1);
+  return firstDay.getDay();
+};
+const daysGregorianInMonth = () => {
+  const totalDays = new Date(gYear.value, gMonth.value, 0).getDate();
+  return Array.from({ length: totalDays }, (_, i) => i + 1);
+};
 const daysPersianInMonth = () => {
-  if(persianMonth.value < 7){
+  if (persianMonth.value < 7) {
     return Array.from({ length: 31 }, (_, i) => i + 1);
-  }else if(persianMonth.value < 12){
+  } else if (persianMonth.value < 12) {
     return Array.from({ length: 30 }, (_, i) => i + 1);
-  }else if(persianMonth.value == 12){
-    if(persianYear.value % 4 == 3){
+  } else if (persianMonth.value == 12) {
+    if (persianYear.value % 4 == 3) {
       return Array.from({ length: 30 }, (_, i) => i + 1);
-    }else{
+    } else {
       return Array.from({ length: 29 }, (_, i) => i + 1);
     }
   }
-}
+};
 </script>
+<style scoped>
+@font-face {
+  font-family: iransans;
+  src: url("../../assets/IRAN(FaNum).ttf");
+}
+.iran-font {
+  font-family: iransans, sans-serif;
+}
+</style>
   
