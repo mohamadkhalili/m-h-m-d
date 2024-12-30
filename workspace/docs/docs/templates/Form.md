@@ -168,7 +168,7 @@ Card class="max-w-md mx-auto py-8 p-2 px-6 bg-white rounded-lg shadow-md dark:bg
       />
       <Button
         type="submit"
-        buttonClass="w-full bg-gray-500  rounded-full font-bold ring-2 hover:shadow-lg hover:bg-purple-500 transition-all duration-300"
+        buttonClass="w-full bg-purple-500  rounded-full font-bold ring-2 hover:shadow-lg  transition-all duration-300"
       >
         Log In
       </Button>
