@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits, computed } from 'vue';
+import {   computed } from 'vue';
 import { emits } from './Emits';
 import { sliderClasses } from '../../styles/RangeSlider';
 
