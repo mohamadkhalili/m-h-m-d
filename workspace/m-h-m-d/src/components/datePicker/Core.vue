@@ -16,6 +16,7 @@
       v-if="selectYear && !selectMonth"
       :dir="persianMode ? 'rtl' : 'ltr'"
       class="grid grid-cols-3 gap-4 w-[430px] h-[330px] max-w-[430px] mt-3 border rounded-md p-5 text-center overflow-y-scroll"
+      ref="yearContainer"
     >
       <div
         v-for="year in persianMode ? persianYears : gregorainYears"
@@ -45,7 +46,7 @@
           persianMode == true && index + 1 == persianMonth
             ? 'flex justify-center items-center w-30 h-10 select-none bg-gray-300 rounded-lg shadow hover:bg-gray-400 cursor-pointer'
             : 'flex justify-center items-center w-30 h-10 select-none bg-gray-100 rounded-lg shadow hover:bg-gray-200 cursor-pointer',
-            persianMode == false && index + 1 == gMonth
+          persianMode == false && index + 1 == gMonth
             ? 'flex justify-center items-center w-30 h-10 select-none bg-gray-300 rounded-lg shadow hover:bg-gray-400 cursor-pointer'
             : 'flex justify-center items-center w-30 h-10 select-none bg-gray-100 rounded-lg shadow hover:bg-gray-200 cursor-pointer',
         ]"
@@ -99,7 +100,7 @@
 
   
   <script setup lang="ts">
-import { ref } from "vue";
+import { nextTick, ref, watch } from "vue";
 import { componentEmits } from "./Emits";
 import { coreProps } from "./Props";
 import { coreSlots } from "./Slots";
@@ -242,7 +243,7 @@ const changeModelValue = (day: number) => {
     dayNumber.value = day;
   }
 };
-const firstGregorianDay = (gy, gm) => {
+const firstGregorianDay = (gy: number, gm: number) => {
   const firstDay = new Date(gy, gm - 1, 1);
   return firstDay.getDay();
 };
@@ -263,6 +264,25 @@ const daysPersianInMonth = () => {
     }
   }
 };
+const yearContainer = ref<HTMLElement | null>(null);
+
+watch(selectYear, async (newValue) => {
+  if (newValue) {
+    await nextTick();
+
+    const container = yearContainer.value as HTMLElement;
+    const years = props.persianMode ? persianYears : gregorainYears;
+    const selectedYear = props.persianMode ? persianYear.value : gYear.value;
+    
+    const selectedYearIndex = years.indexOf(selectedYear);
+    if (selectedYearIndex === -1) return; 
+
+    container.scrollTop = (1600 * selectedYearIndex )/ 100;
+    }
+  });
+
+
+
 </script>
 <style scoped>
 @font-face {
