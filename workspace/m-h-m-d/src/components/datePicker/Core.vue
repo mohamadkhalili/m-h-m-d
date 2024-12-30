@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div :dir="persianMode ? 'rtl': 'ltr' " class="mt-4">
     <div class="inline" :class="persianMode ? 'iran-font' : ''">
-      <Button @click="[(selectYear = !selectYear), (selectMonth = false)]" buttonClass="mr-4">{{
+      <Button @click="[(selectYear = !selectYear), (selectMonth = false)]" buttonClass="mr-4 bg-gray-600">{{
         persianMode ? persianYear : gYear
       }}</Button>
-      <Button @click="[(selectMonth = !selectMonth), (selectYear = false)]">{{
+      <Button @click="[(selectMonth = !selectMonth), (selectYear = false)]" buttonClass="mr-4 bg-gray-600">{{
         persianMode
           ? persianMonths[persianMonth - 1]
           : gregorianMonths[gMonth - 1]
@@ -12,7 +12,6 @@
     </div>
     <div
       v-if="selectYear && !selectMonth"
-      :dir="persianMode ? 'rtl' : 'ltr'"
       class="grid grid-cols-3 gap-4 w-[430px] h-[400px] max-w-[430px] mt-3 border rounded-md p-5 text-center overflow-y-scroll"
       ref="yearContainer"
     >
@@ -32,7 +31,6 @@
     </div>
     <div
       v-if="selectMonth && !selectYear"
-      :dir="persianMode ? 'rtl' : 'ltr'"
       class="grid grid-cols-3 gap-4 w-[430px] h-[400px] max-w-[430px] mt-3 border rounded-md p-5 text-center"
     >
       <div
@@ -54,7 +52,6 @@
     </div>
     <div
       v-if="!selectMonth && !selectYear"
-      :dir="persianMode ? 'rtl' : 'ltr'"
       class="grid grid-cols-7 w-[430px] h-[400px] gap-4 max-w-[430px] mt-3 border rounded-md evaluation-4 p-2"
     >
       <div
@@ -126,6 +123,10 @@ import { coreSlots } from "./Slots";
 const props = defineProps(coreProps);
 const emit = defineEmits(componentEmits);
 const slots = defineSlots<coreSlots>();
+const persianMonth = ref();
+const persianYear = ref();
+const gMonth = ref(new Date().getMonth() + 1);
+const gYear = ref(new Date().getFullYear());
 type dateInterface = {
   year: Number;
   month: Number;
@@ -139,7 +140,7 @@ const gNowDate = ref<dateInterface>({
 });
 const pNowDate = ref<dateInterface>();
 gregorian_to_jalali(gNowDate.value.year, gNowDate.value.month, gNowDate.value.day);
-function gregorian_to_jalali(gy, gm, gd) {
+function gregorian_to_jalali(gy: number, gm: number, gd: number) {
   var g_d_m, jy, jm, jd, gy2, days;
   g_d_m = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
   gy2 = (gm > 2) ? (gy + 1) : gy;
@@ -160,11 +161,10 @@ function gregorian_to_jalali(gy, gm, gd) {
     jd = 1 + ((days - 186) % 30);
   }
   pNowDate.value = {year: jy, month: jm, day: jd}; 
+  persianMonth.value = jm;
+  persianYear.value = jy;
 };
-const persianMonth = ref(pNowDate.value?.month);
-const persianYear = ref(pNowDate.value?.year);
-const gMonth = ref(gNowDate.value.month);
-const gYear = ref(gNowDate.value.year);
+
 const selectMonth = ref(false);
 const selectYear = ref(false);
 const days = ["S", "M", "T", "W", "T", "F", "S"];
