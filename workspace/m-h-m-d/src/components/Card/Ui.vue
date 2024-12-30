@@ -104,14 +104,15 @@
         <slot name="title" />
         <p v-if=" !$slots.description">{{ props.description }}</p>
         <slot v-if=" $slots.description" name="description" />
+        <slot />
+
       </div>
       <div
-        v-if="props.footer || $slots.footer || $slots.default"
+        v-if="props.footer || $slots.footer "
         :class="[props.horizontal ? CardClasses.horizontalWithFooterImage :CardClasses.horizontalWithOutFooterImage ]"
       >
         <div >
           <span v-if="props.footer">{{ props.footer }}</span>
-          <slot></slot>
           <slot name="footer" />
         </div>
       </div>

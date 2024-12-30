@@ -49,6 +49,8 @@ export default defineConfig({
           {text:'Radio', link:'/components//Radio'},
           {text:'CountDown', link:'/components//CountDown'},
           {text:'Date Picker', link:'/components//DatePicker'},
+          {text:'Skeleton', link:'/components//Skeleton'},
+
 
 
           
