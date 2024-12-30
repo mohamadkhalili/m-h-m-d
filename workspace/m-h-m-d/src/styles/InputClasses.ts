@@ -6,7 +6,7 @@ export const inputClass = {
     uiInputBaseClass: " px-10 py-3  transition-all duration-300 ",
     UiLabelActiveClass:'top-[-25px]   text-gray-800',
     UiLabelNotActiveClass:' bg-transparent top-3 text-gray-400 ',
-    UiInputActiveClass:'rounded-lg ring-2 ring-gray-600',
+    UiInputActiveClass:'rounded-lg ring-2 ring-gray-600 text-gray-900 dark:text-gray-400',
     UiInputNotActiveClass:'ring-2 ring-gray-400 rounded-lg p-2',
   };
   

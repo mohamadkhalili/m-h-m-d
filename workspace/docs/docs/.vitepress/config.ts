@@ -63,6 +63,8 @@ export default defineConfig({
         items: [
           { text: 'footer', link: '/templates//footer' },
           { text: 'Navbar', link: '/templates//Navbar' },
+          { text: 'Form', link: '/templates//Form' },
+
 
         ]
       },
