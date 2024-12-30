@@ -100,7 +100,7 @@ const loadImage = (e) => {
             <Skeleton v-if="isLoading" width='180px' height='15px' class="ml-8 my-2 rounded-md" />
             <Skeleton v-if="isLoading" width='240px' height='15px' class="ml-8 rounded-md"/>
              <Skeleton v-if="isLoading" width='70px' height='15px' class="ml-8 my-1 rounded-md"/>
-            <img v-else src="https://www.akamai.com/site/im-demo/perceptual-standard.jpg?imbypass=true" alt="Loaded" class="mx-auto rounded-xl"/>
+            <img v-else src="your-image-url" alt="Loaded" class="mx-auto rounded-xl"/>
             <h6 v-if="!isLoading" class="ml-8" >Its Demo</h6>
             <h6 v-if="!isLoading" class="ml-8" >For Testing Skeleton Component</h6>
             <h6 v-if="!isLoading" class="ml-8" >MHMD</h6>
@@ -233,39 +233,13 @@ const loadImage = (e) => {
 <template #content2>
 
   ```md
-
-<div class="flex justify-between border-b-2 m-4">
-<div>
-            <Skeleton  width='180px' height='15px' class="my-2" />
-            <Skeleton  width='240px' height='15px' class="mb-6"/>
-</div>
-            <Skeleton  width='80px' height='15px' class="mt-4 "/>
-
-</div>
-<div class="flex justify-between border-b-2 m-4">
-<div>
-            <Skeleton  width='180px' height='15px' class="my-2" />
-            <Skeleton  width='240px' height='15px' class="mb-6"/>
-</div>
-            <Skeleton  width='80px' height='15px' class="mt-4 "/>
-
-</div>
-<div class="flex justify-between border-b-2 m-4">
-<div>
-            <Skeleton  width='180px' height='15px' class="my-2" />
-            <Skeleton  width='240px' height='15px' class="mb-6"/>
-</div>
-            <Skeleton  width='80px' height='15px' class="mt-4 "/>
-
-</div>
-<div class="flex justify-between border-b-2 m-4">
-<div>
-            <Skeleton  width='180px' height='15px' class="my-2" />
-            <Skeleton  width='240px' height='15px' class="mb-6"/>
-</div>
-            <Skeleton  width='80px' height='15px' class="mt-4 "/>
-
-</div>
+<div class="grid h-80 p-4 shadow-xl grid-cols-2 grid-rows-2 gap-4">
+        <Skeleton width='50px' height='50px' class="rounded-full" />
+        <Skeleton width='50px' height='25px' class="rounded mt-4" />
+        <Skeleton width='100px' height='25px' class="rounded mt-4" />
+        <Skeleton width='100px' height='25px' class="rounded mt-4" />
+        <Skeleton width='250px' height='140px' class="rounded  col-span-2" />
+    </div>
 ```
   </template>
 
@@ -274,13 +248,11 @@ const loadImage = (e) => {
 
 ## Props
 
-| Name     | Type    | Default | Description                        |
-|----------|---------|---------|------------------------------------|
-| `width`  | String  | `100%`  | The width of the skeleton element. |
-| `height` | String  | `20px`  | The height of the skeleton element.|
-| `circle` | Boolean | `false` | If true, the skeleton will be circular. |
-| `animated` | Boolean | `true` | If false, the skeleton will not animate. |
-
-## Example
-
-
+| **Feature**             | **Description**                                                                                                   | **Usage**                                                                                   |
+|-------------------------|-------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
+| **Width**               | Sets the width of the skeleton element.                                                                           | Pass the `width` prop with a string value (e.g., `100%`, `300px`, etc.).                   |
+| **Height**              | Sets the height of the skeleton element.                                                                          | Pass the `height` prop with a string value (e.g., `20px`, `100px`, etc.).                  |
+| **Animated**            | Controls the animation of the skeleton element.                                                                   | Set the `animated` prop to `false` to disable the animation.                               |
+| **Class**               | Adds custom CSS classes to the skeleton element for further styling.                                              | Pass any additional classes using the `class` prop.                                        |
+| **Default Skeleton**    | Basic skeleton that serves as a loading placeholder.                                                              | Use the `Skeleton` component with `width` and `height` props to display a placeholder.      |
+| **Custom Skeleton**     | Customize the skeleton’s appearance with unique sizes and animations.                                             | Combine `width`, `height` and `animated` props to tailor the skeleton.          |
