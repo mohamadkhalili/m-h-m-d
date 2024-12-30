@@ -1,12 +1,10 @@
 <template>
   <div>
-    <div class="inline mr-3" :class="persianMode ? 'iran-font' : ''">
-      <Button @click="selectYear = !selectYear">{{
+    <div class="inline" :class="persianMode ? 'iran-font' : ''">
+      <Button @click="[(selectYear = !selectYear), (selectMonth = false)]" buttonClass="mr-4">{{
         persianMode ? persianYear : gYear
       }}</Button>
-    </div>
-    <div class="inline" :class="persianMode ? 'iran-font' : ''">
-      <Button @click="selectMonth = !selectMonth">{{
+      <Button @click="[(selectMonth = !selectMonth), (selectYear = false)]">{{
         persianMode
           ? persianMonths[persianMonth - 1]
           : gregorianMonths[gMonth - 1]
@@ -15,7 +13,7 @@
     <div
       v-if="selectYear && !selectMonth"
       :dir="persianMode ? 'rtl' : 'ltr'"
-      class="grid grid-cols-3 gap-4 w-[430px] h-[330px] max-w-[430px] mt-3 border rounded-md p-5 text-center overflow-y-scroll"
+      class="grid grid-cols-3 gap-4 w-[430px] h-[400px] max-w-[430px] mt-3 border rounded-md p-5 text-center overflow-y-scroll"
       ref="yearContainer"
     >
       <div
@@ -35,20 +33,19 @@
     <div
       v-if="selectMonth && !selectYear"
       :dir="persianMode ? 'rtl' : 'ltr'"
-      class="grid grid-cols-3 gap-4 w-[430px] h-[330px] max-w-[430px] mt-3 border rounded-md p-5 text-center"
+      class="grid grid-cols-3 gap-4 w-[430px] h-[400px] max-w-[430px] mt-3 border rounded-md p-5 text-center"
     >
       <div
         v-for="(month, index) in persianMode ? persianMonths : gregorianMonths"
         :key="month"
-        class="flex justify-center items-center w-30 h-10 select-none bg-gray-100 rounded-lg shadow hover:bg-gray-200 cursor-pointer"
         :class="[
           persianMode ? 'iran-font' : '',
           persianMode == true && index + 1 == persianMonth
-            ? 'flex justify-center items-center w-30 h-10 select-none bg-gray-300 rounded-lg shadow hover:bg-gray-400 cursor-pointer'
-            : 'flex justify-center items-center w-30 h-10 select-none bg-gray-100 rounded-lg shadow hover:bg-gray-200 cursor-pointer',
+            ? 'flex justify-center items-center w-30 h-16 select-none bg-gray-300 rounded-lg shadow hover:bg-gray-400 cursor-pointer'
+            : 'flex justify-center items-center w-30 h-16 select-none bg-gray-100 rounded-lg shadow hover:bg-gray-200 cursor-pointer',
           persianMode == false && index + 1 == gMonth
-            ? 'flex justify-center items-center w-30 h-10 select-none bg-gray-300 rounded-lg shadow hover:bg-gray-400 cursor-pointer'
-            : 'flex justify-center items-center w-30 h-10 select-none bg-gray-100 rounded-lg shadow hover:bg-gray-200 cursor-pointer',
+            ? 'flex justify-center items-center w-30 h-16 select-none bg-gray-300 rounded-lg shadow hover:bg-gray-400 cursor-pointer'
+            : 'flex justify-center items-center w-30 h-16 select-none bg-gray-100 rounded-lg shadow hover:bg-gray-200 cursor-pointer',
         ]"
         @click="changeMonth(index)"
       >
@@ -58,7 +55,7 @@
     <div
       v-if="!selectMonth && !selectYear"
       :dir="persianMode ? 'rtl' : 'ltr'"
-      class="grid grid-cols-7 w-[430px] h-[330px] gap-4 max-w-[430px] mt-3 border rounded-md evaluation-4 p-2"
+      class="grid grid-cols-7 w-[430px] h-[400px] gap-4 max-w-[430px] mt-3 border rounded-md evaluation-4 p-2"
     >
       <div
         class="font-bold text-center flex justify-center items-center w-10 h-10 select-none"
@@ -85,9 +82,30 @@
         <label
           @click="changeModelValue(day)"
           :class="[
-            day == dayNumber
+            persianMode == true
+              ? day == dateCurrent?.day &&
+                persianMonth == dateCurrent?.month &&
+                persianYear == dateCurrent.year
+                ? 'w-10 h-10 text-center flex justify-center items-center rounded-full select-none cursor-pointer bg-gray-200'
+                : 'w-10 h-10 bg-transparent text-center flex justify-center items-center rounded-full select-none cursor-pointer hover:bg-gray-100'
+              : day == dateCurrent?.day &&
+                gMonth == dateCurrent.month &&
+                gYear == dateCurrent.year
               ? 'w-10 h-10 text-center flex justify-center items-center rounded-full select-none cursor-pointer bg-gray-200'
               : 'w-10 h-10 bg-transparent text-center flex justify-center items-center rounded-full select-none cursor-pointer hover:bg-gray-100',
+              persianMode == true
+              ? day == pNowDate?.day &&
+                persianMonth == pNowDate?.month &&
+                persianYear == pNowDate.year &&
+                day != dateCurrent?.day
+                ? 'border border-black'
+                : ''
+              : day == gNowDate?.day &&
+                gMonth == gNowDate.month &&
+                gYear == gNowDate.year &&
+                day != dateCurrent?.day
+              ? 'border border-black'
+              : '',
           ]"
           :style="{ fontFamily: persianMode ? 'iransans' : '' }"
         >
@@ -108,13 +126,45 @@ import { coreSlots } from "./Slots";
 const props = defineProps(coreProps);
 const emit = defineEmits(componentEmits);
 const slots = defineSlots<coreSlots>();
-const dayNumber = ref();
-const selectDate = ref();
-const persianMonth = ref(1);
-const persianYear = ref(1403);
-const selectedMonth = ref<string>("");
-const gMonth = ref(12);
-const gYear = ref(2024);
+type dateInterface = {
+  year: Number;
+  month: Number;
+  day: Number;
+};
+const dateCurrent = ref<dateInterface>();
+const gNowDate = ref<dateInterface>({
+  year: new Date().getFullYear(),
+  month: new Date().getMonth() + 1, 
+  day: new Date().getDate(),
+});
+const pNowDate = ref<dateInterface>();
+gregorian_to_jalali(gNowDate.value.year, gNowDate.value.month, gNowDate.value.day);
+function gregorian_to_jalali(gy, gm, gd) {
+  var g_d_m, jy, jm, jd, gy2, days;
+  g_d_m = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
+  gy2 = (gm > 2) ? (gy + 1) : gy;
+  days = 355666 + (365 * gy) + ~~((gy2 + 3) / 4) - ~~((gy2 + 99) / 100) + ~~((gy2 + 399) / 400) + gd + g_d_m[gm - 1];
+  jy = -1595 + (33 * ~~(days / 12053));
+  days %= 12053;
+  jy += 4 * ~~(days / 1461);
+  days %= 1461;
+  if (days > 365) {
+    jy += ~~((days - 1) / 365);
+    days = (days - 1) % 365;
+  }
+  if (days < 186) {
+    jm = 1 + ~~(days / 31);
+    jd = 1 + (days % 31);
+  } else {
+    jm = 7 + ~~((days - 186) / 30);
+    jd = 1 + ((days - 186) % 30);
+  }
+  pNowDate.value = {year: jy, month: jm, day: jd}; 
+};
+const persianMonth = ref(pNowDate.value?.month);
+const persianYear = ref(pNowDate.value?.year);
+const gMonth = ref(gNowDate.value.month);
+const gYear = ref(gNowDate.value.year);
 const selectMonth = ref(false);
 const selectYear = ref(false);
 const days = ["S", "M", "T", "W", "T", "F", "S"];
@@ -127,8 +177,6 @@ const persianDays = [
   "پنج‌شنبه",
   "جمعه",
 ];
-const firstDayOffset = ref<number>(0);
-const daysInMonth = ref<number[]>([]);
 const persianYears = Array.from({ length: 100 }, (_, i) => 1340 + i);
 const gregorainYears = Array.from({ length: 100 }, (_, i) => 1961 + i);
 const persianMonths = [
@@ -166,7 +214,6 @@ const changeMonth = (month: number) => {
     gMonth.value = month + 1;
   }
   selectMonth.value = false;
-  dayNumber.value = undefined;
 };
 const changeYear = (year: number) => {
   if (props.persianMode) {
@@ -175,7 +222,6 @@ const changeYear = (year: number) => {
     gYear.value = year;
   }
   selectYear.value = false;
-  dayNumber.value = undefined;
 };
 const firtsPersianDay = (jy: number, jm: number, jd: number) => {
   var sal_a, gy, gm, gd, days;
@@ -236,11 +282,14 @@ const changeModelValue = (day: number) => {
         "-" +
         day
     );
-    dayNumber.value = day;
+    dateCurrent.value = {
+      year: persianYear.value,
+      month: persianMonth.value,
+      day: day,
+    };
   } else {
-    const [year, month] = selectedMonth.value.split("-");
-    emit("update:modelValue", year + "-" + month + "-" + day);
-    dayNumber.value = day;
+    emit("update:modelValue", gYear.value + "-" + gMonth.value + "-" + day);
+    dateCurrent.value = { year: gYear.value, month: gMonth.value, day: day };
   }
 };
 const firstGregorianDay = (gy: number, gm: number) => {
@@ -273,16 +322,13 @@ watch(selectYear, async (newValue) => {
     const container = yearContainer.value as HTMLElement;
     const years = props.persianMode ? persianYears : gregorainYears;
     const selectedYear = props.persianMode ? persianYear.value : gYear.value;
-    
+
     const selectedYearIndex = years.indexOf(selectedYear);
-    if (selectedYearIndex === -1) return; 
+    if (selectedYearIndex === -1) return;
 
-    container.scrollTop = (1600 * selectedYearIndex )/ 100;
-    }
-  });
-
-
-
+    container.scrollTop = (1600 * selectedYearIndex) / 100;
+  }
+});
 </script>
 <style scoped>
 @font-face {
