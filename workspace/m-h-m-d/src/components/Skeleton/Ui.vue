@@ -1,5 +1,4 @@
 <script setup>
-import { defineProps, defineEmits } from 'vue';
 import { skeletonClasses } from '../../styles/SkeletonClasses';
 import { skeletonProps } from './Props';
 import { skeletonEmits } from './Emits';

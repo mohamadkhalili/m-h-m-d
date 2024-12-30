@@ -80,13 +80,13 @@ const handleBlur = () => {
 
 const UiLabelInputClass = computed(() => {
   const hasValue = !!localValue.value; 
-  return `${isFocused.value || hasValue  ? inputClass.UiLabelActiveClass : inputClass.UiLabelNotActiveClass}`;
+  return `${isFocused.value || hasValue  ? adapterClass(inputClass.UiLabelActiveClass).value : adapterClass(inputClass.UiLabelNotActiveClass).value}`;
 });
 
 
 const UiInputClass = computed(() => {
   const hasValue = !!localValue.value; 
-  return `${isFocused.value || hasValue  ? inputClass.UiInputActiveClass : inputClass.UiInputNotActiveClass}`;
+  return `${isFocused.value || hasValue  ? adapterClass(inputClass.UiInputActiveClass).value : adapterClass(inputClass.UiInputNotActiveClass).value}`;
 });
 </script>
 
