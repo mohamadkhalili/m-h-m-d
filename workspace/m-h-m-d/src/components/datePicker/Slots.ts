@@ -1,5 +1,7 @@
 export interface coreSlots {
-    alert(): any
+    selectMonth(): any,
+    selectYear(): any,
+    calender(): any
 }
 export interface uiSlots {
     alert(): any,
