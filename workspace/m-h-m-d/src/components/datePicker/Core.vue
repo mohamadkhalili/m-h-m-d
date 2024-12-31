@@ -1,17 +1,19 @@
 <template>
-  <div :dir="persianMode ? 'rtl': 'ltr' " class="mt-4">
-    <div class="inline" :class="persianMode ? 'iran-font' : ''">
-      <Button @click="[(selectYear = !selectYear), (selectMonth = false)]" buttonClass="mr-4 bg-gray-600">{{
+  <div :dir="persianMode ? 'rtl': 'ltr' ">
+    <slot name="selectMonth"></slot>
+    <slot name="selectYear"></slot>
+    <div :class="[persianMode ? 'iran-font' : '', datePickerClasses.buttonClasses]">
+      <Button v-if="showSelectYear" @click="[(selectYear = !selectYear), (selectMonth = false)]" :buttonClass="datePickerClasses.buttonSelect">{{
         persianMode ? persianYear : gYear
       }}</Button>
-      <Button @click="[(selectMonth = !selectMonth), (selectYear = false)]" buttonClass="mr-4 bg-gray-600">{{
+      <Button v-if="showSelectMonth" @click="[(selectMonth = !selectMonth), (selectYear = false)]" :buttonClass="datePickerClasses.buttonSelect">{{
         persianMode
           ? persianMonths[persianMonth - 1]
           : gregorianMonths[gMonth - 1]
       }}</Button>
     </div>
     <div
-      v-if="selectYear && !selectMonth"
+      v-if="selectYear && !selectMonth && showSelectYear"
       class="grid grid-cols-3 gap-4 w-[430px] h-[400px] max-w-[430px] mt-3 border rounded-md p-5 text-center overflow-y-scroll"
       ref="yearContainer"
     >
@@ -30,7 +32,7 @@
       </div>
     </div>
     <div
-      v-if="selectMonth && !selectYear"
+      v-if="selectMonth && !selectYear && showSelectMonth"
       class="grid grid-cols-3 gap-4 w-[430px] h-[400px] max-w-[430px] mt-3 border rounded-md p-5 text-center"
     >
       <div
@@ -50,8 +52,9 @@
         {{ month }}
       </div>
     </div>
+    <slot name="calender"></slot>
     <div
-      v-if="!selectMonth && !selectYear"
+      v-if="!selectMonth && !selectYear && showCalender"
       class="grid grid-cols-7 w-[430px] h-[400px] gap-4 max-w-[430px] mt-3 border rounded-md evaluation-4 p-2"
     >
       <div
@@ -115,14 +118,18 @@
 
   
   <script setup lang="ts">
-import { nextTick, ref, watch } from "vue";
+import { computed, nextTick, ref, useSlots, watch } from "vue";
 import { componentEmits } from "./Emits";
 import { coreProps } from "./Props";
 import { coreSlots } from "./Slots";
-
+import {datePickerClasses} from '../../styles/DatePickerClasses';
 const props = defineProps(coreProps);
 const emit = defineEmits(componentEmits);
-const slots = defineSlots<coreSlots>();
+const uiSlots = defineSlots<coreSlots>();
+const slots = useSlots();
+const showSelectMonth = computed(() => !slots.selectMonth);
+const showSelectYear = computed(() => !slots.selectYear);
+const showCalender = computed(() => !slots.calender);
 const persianMonth = ref();
 const persianYear = ref();
 const gMonth = ref(new Date().getMonth() + 1);
