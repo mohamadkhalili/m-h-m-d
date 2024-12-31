@@ -2,11 +2,11 @@
   <div :dir="persianMode ? 'rtl': 'ltr' ">
     <slot name="selectMonth"></slot>
     <slot name="selectYear"></slot>
-    <div :class="[persianMode ? 'iran-font' : '', datePickerClasses.buttonClasses]">
-      <Button v-if="showSelectYear" @click="[(selectYear = !selectYear), (selectMonth = false)]" :buttonClass="datePickerClasses.buttonSelect">{{
+    <div :class="[persianMode ? 'iran-font' : '', adapterClass(datePickerClasses.buttonClasses).value]">
+      <Button v-if="showSelectYear" @click="[(selectYear = !selectYear), (selectMonth = false)]" :buttonClass="adapterClass(datePickerClasses.buttonSelect + ' ' + buttonSelectClass).value">{{
         persianMode ? persianYear : gYear
       }}</Button>
-      <Button v-if="showSelectMonth" @click="[(selectMonth = !selectMonth), (selectYear = false)]" :buttonClass="datePickerClasses.buttonSelect">{{
+      <Button v-if="showSelectMonth" @click="[(selectMonth = !selectMonth), (selectYear = false)]" :buttonClass="adapterClass(datePickerClasses.buttonSelect + ' ' + buttonSelectClass).value">{{
         persianMode
           ? persianMonths[persianMonth - 1]
           : gregorianMonths[gMonth - 1]
@@ -14,7 +14,7 @@
     </div>
     <div
       v-if="selectYear && !selectMonth && showSelectYear"
-      :class="datePickerClasses.selectYear"
+      :class="adapterClass(datePickerClasses.selectYear + ' ' + selectYearClass).value"
       ref="yearContainer"
     >
       <div
@@ -22,8 +22,8 @@
         :key="year"
         :class="[
           year == persianYear || year == gYear
-            ? datePickerClasses.activeYear
-            : datePickerClasses.onActiveYear,
+            ? adapterClass(datePickerClasses.activeYear + ' ' + activeYearClass).value
+            : adapterClass(datePickerClasses.onActiveYear + ' ' + onActiveYearClass).value,
           persianMode == true ? 'iran-font' : '',
         ]"
         @click="changeYear(year)"
@@ -33,7 +33,7 @@
     </div>
     <div
       v-if="selectMonth && !selectYear && showSelectMonth"
-      :class="datePickerClasses.selectMonth"
+      :class="adapterClass(datePickerClasses.selectMonth + ' ' + selectMonthClass).value"
     >
       <div
         v-for="(month, index) in persianMode ? persianMonths : gregorianMonths"
@@ -41,11 +41,11 @@
         :class="[
           persianMode ? 'iran-font' : '',
           persianMode == true && index + 1 == persianMonth
-            ? datePickerClasses.activeMonth
-            : datePickerClasses.onActiveMonth,
+            ? adapterClass(datePickerClasses.activeMonth + ' ' + activeMonthClass).value
+            : adapterClass(datePickerClasses.onActiveMonth + ' ' + onActiveMonthClass).value,
           persianMode == false && index + 1 == gMonth
-            ? datePickerClasses.activeYear
-            : datePickerClasses.onActiveYear,
+            ? adapterClass(datePickerClasses.activeMonth + ' ' + activeMonthClass).value
+            : adapterClass(datePickerClasses.onActiveMonth + ' ' + onActiveMonthClass).value,
         ]"
         @click="changeMonth(index)"
       >
@@ -55,17 +55,17 @@
     <slot name="calender"></slot>
     <div
       v-if="!selectMonth && !selectYear && showCalender"
-      :class="datePickerClasses.calender"
+      :class="adapterClass(datePickerClasses.calender + ' ' + calenderClass).value"
     >
       <div
-        :class="[datePickerClasses.dayOfWeek, persianMode ? 'iran-font' : '']"
+        :class="[adapterClass(datePickerClasses.dayOfWeek + ' ' + dayOfWeekClass).value, persianMode ? 'iran-font' : '']"
         v-for="day in persianMode ? persianDays : days"
         :key="day"
       >
         {{ day }}
       </div>
       <div
-        :class="datePickerClasses.separator"
+        :class="adapterClass(datePickerClasses.separator + ' ' + separatorClass).value"
         v-for="n in persianMode
           ? firtsPersianDay(persianYear, persianMonth, 1)
           : firstGregorianDay(gYear, gMonth)"
@@ -85,25 +85,25 @@
               ? day == dateCurrent?.day &&
                 persianMonth == dateCurrent?.month &&
                 persianYear == dateCurrent.year
-                ? datePickerClasses.activeDay
-                : datePickerClasses.onActiveDay
+                ? adapterClass(datePickerClasses.activeDay + ' ' + activeDayClass).value
+                : adapterClass(datePickerClasses.onActiveDay + ' ' + onActiveDayClass).value
               : day == dateCurrent?.day &&
                 gMonth == dateCurrent.month &&
                 gYear == dateCurrent.year
-              ? datePickerClasses.activeDay
-              : datePickerClasses.onActiveDay,
+              ? adapterClass(datePickerClasses.activeDay + ' ' + activeDayClass).value
+              : adapterClass(datePickerClasses.onActiveDay + ' ' + onActiveDayClass).value,
               persianMode == true
               ? day == pNowDate?.day &&
                 persianMonth == pNowDate?.month &&
                 persianYear == pNowDate.year &&
                 day != dateCurrent?.day
-                ? datePickerClasses.nowDay
+                ? adapterClass(datePickerClasses.nowDay + ' ' + nowDayClass).value
                 : ''
               : day == gNowDate?.day &&
                 gMonth == gNowDate.month &&
                 gYear == gNowDate.year &&
                 day != dateCurrent?.day
-              ? datePickerClasses.nowDay
+              ? adapterClass(datePickerClasses.nowDay + ' ' + nowDayClass).value
               : '',
           ]"
           :style="{ fontFamily: persianMode ? 'iransans' : '' }"
@@ -122,6 +122,8 @@ import { componentEmits } from "./Emits";
 import { coreProps } from "./Props";
 import { coreSlots } from "./Slots";
 import {datePickerClasses} from '../../styles/DatePickerClasses';
+import { useAdapterClass } from "../../composables/UseClass";
+const adapterClass = useAdapterClass();
 const props = defineProps(coreProps);
 const emit = defineEmits(componentEmits);
 const uiSlots = defineSlots<coreSlots>();
