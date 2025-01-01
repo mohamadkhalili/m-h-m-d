@@ -125,12 +125,11 @@
           @click="changeModelValue(day)"
           :class="[
             persianMode == true
-              ? day >= startPDate?.day &&
-                persianMonth >= startPDate?.month &&
+              ? persianMonth >= startPDate?.month &&
                 persianYear >= startPDate.year &&
-                day <= endPDate?.day &&
                 persianMonth <= endPDate?.month &&
-                persianYear <= endPDate.year
+                persianYear <= endPDate.year &&
+                dayInRange(day)
                 ? adapterClass(
                     datePickerClasses.activeDay + ' ' + activeDayClass
                   ).value
@@ -151,7 +150,7 @@
             persianMode == true
               ? day == pNowDate?.day &&
                 persianMonth == pNowDate?.month &&
-                persianYear == pNowDate.year &&
+                persianYear == pNowDate?.year &&
                 day != dateCurrent?.day
                 ? adapterClass(datePickerClasses.nowDay + ' ' + nowDayClass)
                     .value
@@ -369,6 +368,7 @@ const changeModelValue = (day: number) => {
         month: persianMonth.value,
         day: day,
       };
+      startMode.value = false;
     } else if (!startMode.value && enableSelect.value) {
       emit(
         "update:endDate",
@@ -379,41 +379,69 @@ const changeModelValue = (day: number) => {
           day
       );
       endPDate.value = {
-      year: persianYear.value,
-      month: persianMonth.value,
-      day: day,
-    };
-    enableSelect.value = false;
+        year: persianYear.value,
+        month: persianMonth.value,
+        day: day,
+      };
+      enableSelect.value = false;
+      startMode.value = true;
+    }
   } else {
     if (startMode.value && enableSelect.value) {
       emit(
         "update:startDate",
-        gYear.value.toString() +
-          "-" +
-          gMonth.value.toString() +
-          "-" +
-          day
+        gYear.value.toString() + "-" + gMonth.value.toString() + "-" + day
       );
       startGDate.value = {
         year: gYear.value,
         month: gMonth.value,
         day: day,
       };
+      startMode.value = false;
     } else if (!startMode.value && enableSelect.value) {
       emit(
         "update:endDate",
-        gYear.value.toString() +
-          "-" +
-          gMonth.value.toString() +
-          "-" +
-          day
+        gYear.value.toString() + "-" + gMonth.value.toString() + "-" + day
       );
       endGDate.value = {
-      year: gYear.value,
-      month: gMonth.value,
-      day: day,
-    };
-    enableSelect.value = false;
+        year: gYear.value,
+        month: gMonth.value,
+        day: day,
+      };
+      enableSelect.value = false;
+      startMode.value = true;
+    }
+  }
+};
+const dayInRange = (day: Number) => {
+  if (startPDate.value?.year === endPDate.value.year) {
+    if (persianMonth.value === startPDate.value?.month) {
+      if (day >= startPDate.value?.day && day <= daysPersianInMonth().length) {
+        return true;
+      }
+      return false;
+    } else if (
+      persianMonth.value > startPDate.value?.month &&
+      persianMonth.value < endPDate.value?.month
+    ) {
+      return true;
+    } else if (persianMonth.value == endPDate.value?.month) {
+      if (day <= endPDate.value?.day) {
+        return true;
+      }
+      return false;
+    }
+  }else {
+    if(persianYear.value === startPDate.value?.year){
+      if(persianMonth.value === startPDate.value?.month){
+        if (day >= startPDate.value?.day && day <= daysPersianInMonth().length) {
+        return true;
+      }
+      return false;
+      }
+    } else if(persianMonth.value > startPDate.value?.month){
+      return false;
+    }
   }
 };
 const firstGregorianDay = (gy: number, gm: number) => {
@@ -463,4 +491,3 @@ watch(selectYear, async (newValue) => {
   font-family: iransans, sans-serif;
 }
 </style>
-  
