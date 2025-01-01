@@ -1,12 +1,13 @@
 # Date Range
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 const tabs = [
   { label: 'UI', value: 1, content: '' },
   { label: 'Slots', value: 2, content: ''},
   { label: 'Props', value: 3, content: ''},
 ];
-const modelValue = ref();
+const modelValue = ref(false);
+const resetValue = ref()
 const startDate = ref();
 const endDate = ref();
 const modelValue2 = ref();
@@ -15,15 +16,22 @@ const endDate2 = ref();
 const modelValue3 = ref();
 const startDate3 = ref();
 const endDate3 = ref();
+watch(endDate, (newValue) => {
+  if(newValue){
+    modelValue.value = false;
+  }
+})
 </script>
 
 ## Default Date Picker
 
 **Props:**
 - `v-model`: Binds the selected date value.
+- `v-model`: Binds the selected start date value.
+- `v-model`: Binds the selected end date value.
 
 **Usage:**
-- This is a basic date picker that updates the displayed date when a selection is made.
+- This is a date range picker that allows users to select a start and end date.
 
 <Tab 
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
@@ -32,9 +40,18 @@ const endDate3 = ref();
     activeColor="text-blue-500 shadow-blue-500"
   >
 <template #content1>
-<DateRange v-model="modelValue" v-model:startDate="startDate" v-model:endDate="endDate" />
-<p>Start Date Selected: {{startDate}}</p>
-<p>End Date Selected: {{endDate}}</p>
+<div dir="rtl" class="mb-6">
+<Button @click="modelValue = true" buttonClass="w-40">انتخاب بازه زمانی</Button>
+</div>
+<DateRange v-model="modelValue" v-model:startDate="startDate" v-model:endDate="endDate"/>
+<div dir="rtl">
+  <p>
+    شروع بازه : <span dir="ltr">{{ startDate }}</span>
+  </p>
+  <p>
+    پایان بازه : <span dir="ltr">{{ endDate }}</span>
+  </p>
+</div>
 
 </template>
 
@@ -50,13 +67,15 @@ const endDate3 = ref();
 <template #content3>
 
 ```vue
-<DatePicker v-model="modelValue" />
+<DateRange v-model="modelValue" 
+v-model:startDate="startDate" 
+v-model:endDate="endDate"/>
 ```
 
 </template>
 </Tab>
 
-## Date Picker - Gregorian Mode
+## Date Range - Gregorian Mode
 
 **Props:**
 - `persianMode`: A Boolean prop. Set to `false` to enable Gregorian mode.
@@ -88,14 +107,17 @@ const endDate3 = ref();
 <template #content3>
 
 ```vue
-<DatePicker v-model="modelValue" :persianMode="false" />
+<DateRange v-model="modelValue" 
+v-model:startDate="startDate" 
+v-model:endDate="endDate" 
+:persianMode="false" />
 ```
 
 </template>
 </Tab>
 
 
-## Date Picker - Custom Class
+## Date Range - Custom Class
 
 **Props:**
 - `buttonSelectClass`: Custom class for the button.
@@ -124,8 +146,14 @@ const endDate3 = ref();
   >
 <template #content1>
 <DateRange v-model="modelValue3" v-model:startDate="startDate3" v-model:endDate="endDate3" buttonSelectClass="bg-gray-900" dayOfWeekClass="text-white" calenderClass="bg-gray-900 rounded-2xl" onActiveDayClass="text-white rounded-2xl hover:bg-gray-600" nowDayClass="border-amber-200 bg-gray-700 text-gray-900 rounded-2xl" activeDayClass="bg-gray-700 text-white rounded-2xl" selectMonthClass="bg-gray-900" activeMonthClass="bg-gray-800 text-white" onActiveMonthClass="bg-gray-600 text-white hover:bg-gray-600 hover:text-white" selectYearClass="bg-gray-900" activeYearClass="bg-gray-800 text-white" onActiveYearClass="bg-gray-600 text-white hover:bg-gray-600 hover:text-white"/>
-<p>Start Date Selected: {{startDate3}}</p>
-<p>End Date Selected: {{endDate3}}</p>
+<div dir="rtl">
+  <p>
+    شروع بازه : <span dir="ltr">{{ startDate3 }}</span>
+  </p>
+  <p>
+    پایان بازه : <span dir="ltr">{{ endDate3 }}</span>
+  </p>
+</div>
 </template>
 
 <template #content2>
@@ -140,8 +168,8 @@ const endDate3 = ref();
 <template #content3>
 
 ```vue
-<DatePicker v-model="modelValue3" buttonSelectClass="bg-gray-900"
-v-model:startDate="startDate3" v-model:endDate="endDate3" 
+<DatePicker v-model="modelValue" v-model:startDate="startDate" 
+v-model:endDate="endDate" buttonSelectClass="bg-gray-900"
 dayOfWeekClass="text-white" calenderClass="bg-gray-900 rounded-2xl" 
 onActiveDayClass="text-white rounded-2xl hover:bg-gray-600" 
 nowDayClass="border-amber-200 bg-gray-700 text-gray-900 rounded-2xl" 

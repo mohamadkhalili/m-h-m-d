@@ -131,7 +131,7 @@ const modelValue3 = ref();
 <template #content3>
 
 ```vue
-<DatePicker v-model="modelValue3" buttonSelectClass="bg-gray-900" 
+<DatePicker v-model="modelValue" buttonSelectClass="bg-gray-900" 
 dayOfWeekClass="text-white" calenderClass="bg-gray-900 rounded-2xl" 
 onActiveDayClass="text-white rounded-2xl hover:bg-gray-600" 
 nowDayClass="border-amber-200 bg-gray-700 text-gray-900 rounded-2xl" 
