@@ -10,7 +10,6 @@
       'https://knetic.org.uk/wp-content/uploads/2020/07/Pcture-Placeholder.png'
     ]"  
     variants="dots"  
-    imageClass="w-[500px] h-[300px]" 
     arrowsClass="bg-green-500 text-green-800"
     autoPlay
   />
