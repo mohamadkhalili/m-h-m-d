@@ -23,12 +23,12 @@ watch(endDate, (newValue) => {
 })
 </script>
 
-## Default Date Picker
+## Default Date Range
 
 **Props:**
 - `v-model`: Binds the selected date value.
-- `v-model`: Binds the selected start date value.
-- `v-model`: Binds the selected end date value.
+- `startDate`: Binds the selected start date value.
+- `endDate`: Binds the selected end date value.
 
 **Usage:**
 - This is a date range picker that allows users to select a start and end date.
