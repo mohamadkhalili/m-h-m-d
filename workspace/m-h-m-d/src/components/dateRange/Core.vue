@@ -246,7 +246,20 @@ function gregorian_to_jalali(gy: number, gm: number, gd: number) {
   persianMonth.value = jm;
   persianYear.value = jy;
 }
-
+watch(
+  () => props.modelValue,
+  (newValue) => {
+  if(!newValue){
+    startGDate.value = undefined;
+    startPDate.value = undefined;
+    endGDate.value = undefined;
+    endPDate.value = undefined
+    enableSelect.value = true;
+  }else{
+    emit("update:startDate", '');
+    emit("update:endDate", '');
+  }
+});
 const selectMonth = ref(false);
 const selectYear = ref(false);
 const days = ["S", "M", "T", "W", "T", "F", "S"];
