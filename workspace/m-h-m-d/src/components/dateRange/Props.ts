@@ -1,5 +1,5 @@
 export const coreProps = {
-    modelValue: { type: false, default: true },
+    modelValue: { type: Boolean, default: true },
     startDate: { type: String, default: '' },
     endDate: { type: String, default: '' },
     persianMode: { type: Boolean, default: true },
