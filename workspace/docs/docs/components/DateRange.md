@@ -10,7 +10,11 @@ const modelValue = ref();
 const startDate = ref();
 const endDate = ref();
 const modelValue2 = ref();
+const startDate2 = ref();
+const endDate2 = ref();
 const modelValue3 = ref();
+const startDate3 = ref();
+const endDate3 = ref();
 </script>
 
 ## Default Date Picker
@@ -29,8 +33,8 @@ const modelValue3 = ref();
   >
 <template #content1>
 <DateRange v-model="modelValue" v-model:startDate="startDate" v-model:endDate="endDate" />
-<p>Date Selected: {{startDate}}</p>
-<p>Date Selected: {{endDate}}</p>
+<p>Start Date Selected: {{startDate}}</p>
+<p>End Date Selected: {{endDate}}</p>
 
 </template>
 
@@ -67,8 +71,9 @@ const modelValue3 = ref();
     activeColor="text-blue-500 shadow-blue-500"
   >
 <template #content1>
-<DatePicker v-model="modelValue2" :persianMode="false" />
-<p>Date Selected: {{modelValue2}}</p>
+<DateRange v-model="modelValue2" v-model:startDate="startDate2" v-model:endDate="endDate2" :persianMode="false" />
+<p>Start Date Selected: {{startDate2}}</p>
+<p>End Date Selected: {{endDate2}}</p>
 </template>
 
 <template #content2>
@@ -118,8 +123,9 @@ const modelValue3 = ref();
     activeColor="text-blue-500 shadow-blue-500"
   >
 <template #content1>
-<DatePicker v-model="modelValue3" buttonSelectClass="bg-gray-900" dayOfWeekClass="text-white" calenderClass="bg-gray-900 rounded-2xl" onActiveDayClass="text-white rounded-2xl hover:bg-gray-600" nowDayClass="border-amber-200 bg-gray-700 text-gray-900 rounded-2xl" activeDayClass="bg-gray-700 text-white rounded-2xl" selectMonthClass="bg-gray-900" activeMonthClass="bg-gray-800 text-white" onActiveMonthClass="bg-gray-600 text-white hover:bg-gray-600 hover:text-white" selectYearClass="bg-gray-900" activeYearClass="bg-gray-800 text-white" onActiveYearClass="bg-gray-600 text-white hover:bg-gray-600 hover:text-white"/>
-<p>Date Selected: {{modelValue3}}</p>
+<DateRange v-model="modelValue3" v-model:startDate="startDate3" v-model:endDate="endDate3" buttonSelectClass="bg-gray-900" dayOfWeekClass="text-white" calenderClass="bg-gray-900 rounded-2xl" onActiveDayClass="text-white rounded-2xl hover:bg-gray-600" nowDayClass="border-amber-200 bg-gray-700 text-gray-900 rounded-2xl" activeDayClass="bg-gray-700 text-white rounded-2xl" selectMonthClass="bg-gray-900" activeMonthClass="bg-gray-800 text-white" onActiveMonthClass="bg-gray-600 text-white hover:bg-gray-600 hover:text-white" selectYearClass="bg-gray-900" activeYearClass="bg-gray-800 text-white" onActiveYearClass="bg-gray-600 text-white hover:bg-gray-600 hover:text-white"/>
+<p>Start Date Selected: {{startDate3}}</p>
+<p>End Date Selected: {{endDate3}}</p>
 </template>
 
 <template #content2>
@@ -134,7 +140,8 @@ const modelValue3 = ref();
 <template #content3>
 
 ```vue
-<DatePicker v-model="modelValue3" buttonSelectClass="bg-gray-900" 
+<DatePicker v-model="modelValue3" buttonSelectClass="bg-gray-900"
+v-model:startDate="startDate3" v-model:endDate="endDate3" 
 dayOfWeekClass="text-white" calenderClass="bg-gray-900 rounded-2xl" 
 onActiveDayClass="text-white rounded-2xl hover:bg-gray-600" 
 nowDayClass="border-amber-200 bg-gray-700 text-gray-900 rounded-2xl" 

@@ -123,25 +123,27 @@
       >
         <label
           @click="changeModelValue(day)"
+          @mouseover="hoverHandle(day)"
           :class="[
             persianMode == true
-              ? persianMonth >= startPDate?.month &&
-                persianYear >= startPDate.year &&
-                persianMonth <= endPDate?.month &&
-                persianYear <= endPDate.year &&
-                dayInRange(day)
+              ? (persianYear == startPDate?.year &&
+                  persianMonth == startPDate?.month &&
+                  day == startPDate?.day) ||
+                (persianYear >= startPDate?.year &&
+                  persianYear <= endPDate?.year &&
+                  dayInRange(day))
                 ? adapterClass(
                     datePickerClasses.activeDay + ' ' + activeDayClass
                   ).value
                 : adapterClass(
                     datePickerClasses.onActiveDay + ' ' + onActiveDayClass
                   ).value
-              : day >= startGDate?.day &&
-                persianMonth >= startGDate?.month &&
-                persianYear >= startGDate.year &&
-                day <= endGDate?.day &&
-                persianMonth <= endGDate?.month &&
-                persianYear <= endGDate.year
+              : (gYear == startGDate?.year &&
+                  gMonth == startGDate?.month &&
+                  day == startGDate?.day) ||
+                (gYear >= startGDate?.year &&
+                  gYear <= endGDate?.year &&
+                  dayInRange(day))
               ? adapterClass(datePickerClasses.activeDay + ' ' + activeDayClass)
                   .value
               : adapterClass(
@@ -352,6 +354,25 @@ const firtsPersianDay = (jy: number, jm: number, jd: number) => {
   }
   return fd;
 };
+const hoverHandle = (day: number) => {
+  if (props.persianMode) {
+     if (!startMode.value && enableSelect.value) {
+      endPDate.value = {
+        year: persianYear.value,
+        month: persianMonth.value,
+        day: day,
+      };
+    }
+  } else {
+    if (!startMode.value && enableSelect.value) {
+      endGDate.value = {
+        year: gYear.value,
+        month: gMonth.value,
+        day: day,
+      };
+    }
+  }
+};
 const changeModelValue = (day: number) => {
   if (props.persianMode) {
     if (startMode.value && enableSelect.value) {
@@ -413,34 +434,124 @@ const changeModelValue = (day: number) => {
     }
   }
 };
-const dayInRange = (day: Number) => {
-  if (startPDate.value?.year === endPDate.value.year) {
-    if (persianMonth.value === startPDate.value?.month) {
-      if (day >= startPDate.value?.day && day <= daysPersianInMonth().length) {
-        return true;
+const dayInRange = (day: number) => {
+  if (props.persianMode == true) {
+    if (startPDate.value?.year === endPDate.value?.year) {
+      if (startPDate.value?.month === endPDate.value?.month) {
+        if (day >= startPDate.value?.day && day <= endPDate.value?.day) {
+          return true;
+        }
+        return false;
       }
-      return false;
-    } else if (
-      persianMonth.value > startPDate.value?.month &&
-      persianMonth.value < endPDate.value?.month
-    ) {
-      return true;
-    } else if (persianMonth.value == endPDate.value?.month) {
-      if (day <= endPDate.value?.day) {
+      if (persianMonth.value === startPDate.value?.month) {
+        if (
+          day >= startPDate.value?.day &&
+          day <= daysPersianInMonth().length
+        ) {
+          return true;
+        }
+        return false;
+      } else if (
+        persianMonth.value > startPDate.value?.month &&
+        persianMonth.value < endPDate.value?.month
+      ) {
         return true;
+      } else if (persianMonth.value == endPDate.value?.month) {
+        if (day <= endPDate.value?.day) {
+          return true;
+        }
+        return false;
       }
-      return false;
+    } else {
+      if (persianYear.value === startPDate.value?.year) {
+        console.log(persianYear.value, persianMonth.value, day);
+        if (persianMonth.value === startPDate.value?.month) {
+          if (
+            day >= startPDate.value?.day &&
+            day <= daysPersianInMonth().length
+          ) {
+            return true;
+          }
+          return false;
+        } else if (persianMonth.value > startPDate.value?.month) {
+          return true;
+        }
+        return false;
+      } else if (
+        persianYear.value > startPDate.value?.year &&
+        persianYear.value < endPDate.value?.year
+      ) {
+        return true;
+      } else if (persianYear.value === endPDate.value?.year) {
+        if (persianMonth.value < endPDate.value?.month) {
+          return true;
+        } else if (persianMonth.value == endPDate.value?.month) {
+          if (day <= endPDate.value?.day) {
+            return true;
+          }
+          return false;
+        }
+        return false;
+      }
     }
-  }else {
-    if(persianYear.value === startPDate.value?.year){
-      if(persianMonth.value === startPDate.value?.month){
-        if (day >= startPDate.value?.day && day <= daysPersianInMonth().length) {
+  } else {
+    if (startGDate.value?.year === endGDate.value?.year) {
+      if (startGDate.value?.month === endGDate.value?.month) {
+        if (day >= startGDate.value?.day && day <= endGDate.value?.day) {
+          return true;
+        }
+        return false;
+      }
+      if (gMonth.value === startGDate.value?.month) {
+        if (
+          day >= startGDate.value?.day &&
+          day <= daysGregorianInMonth().length
+        ) {
+          return true;
+        }
+        return false;
+      } else if (
+        gMonth.value > startGDate.value?.month &&
+        gMonth.value < endGDate.value?.month
+      ) {
         return true;
+      } else if (gMonth.value == endGDate.value?.month) {
+        if (day <= endGDate.value?.day) {
+          return true;
+        }
+        return false;
       }
-      return false;
+    } else {
+      if (gYear.value === startGDate.value?.year) {
+        console.log(gYear.value, gMonth.value, day);
+        if (gMonth.value === startGDate.value?.month) {
+          if (
+            day >= startGDate.value?.day &&
+            day <= daysGregorianInMonth().length
+          ) {
+            return true;
+          }
+          return false;
+        } else if (gMonth.value > startGDate.value?.month) {
+          return true;
+        }
+        return false;
+      } else if (
+        gYear.value > startGDate.value?.year &&
+        gYear.value < endGDate.value?.year
+      ) {
+        return true;
+      } else if (gYear.value === endGDate.value?.year) {
+        if (gMonth.value < endGDate.value?.month) {
+          return true;
+        } else if (gMonth.value == endGDate.value?.month) {
+          if (day <= endGDate.value?.day) {
+            return true;
+          }
+          return false;
+        }
+        return false;
       }
-    } else if(persianMonth.value > startPDate.value?.month){
-      return false;
     }
   }
 };
