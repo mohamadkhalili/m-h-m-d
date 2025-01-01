@@ -2,7 +2,7 @@
     <div class="relative w-full overflow-hidden">
       <div class="flex transition-transform duration-300" :style="`transform: translateX(-${currentIndex * 100}%)`">
         <div v-for="(item, index) in items" :key="index" class="flex-none w-full">
-          <img :src="item" alt="" />
+          <img :src="item" alt="" :class="imageClass" />
         </div>
       </div>
       <button @click="prev" :class="arrowsClass + ' absolute left-4 top-1/2 transform -translate-y-1/2 scale-150 bg-gray-500/50 hover:bg-gray-500/80 transition-all duration-300 rounded-full px-2  '">《</button>
@@ -34,7 +34,7 @@
   </template>
   
   <script setup lang="ts">
-  import { ref, defineProps } from 'vue';
+  import { ref } from 'vue';
   
   const props = defineProps({
     items: {
@@ -54,6 +54,10 @@
       default: ''
     },
     arrowsClass: {
+      type: String,
+      default: ''
+    },
+    imageClass: {
       type: String,
       default: ''
     }
