@@ -50,8 +50,10 @@ export default defineConfig({
           {text:'CountDown', link:'/components//CountDown'},
           {text:'Date Picker', link:'/components//DatePicker'},
           {text:'Skeleton', link:'/components//Skeleton'},
+          {text:'Carousel', link:'/components//Carousel'},
 
 
+          
 
           
         ]
