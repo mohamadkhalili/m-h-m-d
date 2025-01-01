@@ -27,6 +27,7 @@ import CountDown from './components/CountDown/Ui.vue';
 import progressCircular from './components/progressCircular/Ui.vue'
 import datePicker from './components/datePicker/Core.vue'
 import Skeleton from './components/Skeleton/Ui.vue'
+import Carousel from './components/Carousel/Ui.vue'
 
 
 const components = [
@@ -55,7 +56,10 @@ const components = [
     { name: 'ProgressCircular', ...progressCircular},
     { name: 'DatePicker', ...datePicker},
     { name: 'Skeleton', ...Skeleton},
+    { name: 'Carousel', ...Carousel},
 
+
+    
 
 
 ]
@@ -83,7 +87,7 @@ const install = (app: App, config: Config = {}) => {
 
 export { pagination, modal, Button, input, menu, tab, list, ChatBubble, Divider, stepper, Card, Switch, CheckBox, 
          Breadcrumb, Loader, progressLinear, RangeSlider, alert,InputFile ,RadioGroup,Radio ,CountDown,progressCircular,
-         datePicker,Skeleton}
+         datePicker,Skeleton,Carousel}
 
 
 export { tooltip }
