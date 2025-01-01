@@ -3,7 +3,9 @@
       <div :class="carouselClasses.flexContainer" :style="`transform: translateX(-${currentIndex * 100}%)`">
         <div v-for="(item, index) in items" :key="index" :class="carouselClasses.imageContainer">
           <img :src="item" alt="" :class="imageClass" />
+          <slot/> 
         </div>
+
       </div>
       <button 
         @click="prev" 
@@ -16,7 +18,6 @@
         》
       </button>
       
-      <!-- Dots Navigation -->
       <div v-if="variants === 'dots'" :class="carouselClasses.centerAbsolute">
         <div :class="carouselClasses.centerContent">
           <span 
@@ -28,12 +29,10 @@
         </div>
       </div>
       
-      <!-- Number Navigation -->
       <div v-if="variants === 'number'" :class="`${carouselClasses.numberBase} ${variantClass}`">
         {{ currentIndex + 1 }} / {{ items.length }}
       </div>
       
-      <!-- Lines Navigation -->
       <div v-if="variants === 'lines'" :class="carouselClasses.centerAbsolute">
         <div :class="carouselClasses.centerContent">
           <span 
