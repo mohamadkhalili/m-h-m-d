@@ -26,7 +26,7 @@ const items = ['all', 'one', 'two'];
     activeColor="text-blue-500 shadow-blue-500"
   >
 <template #content1>
-<ComboBox v-model="modelValue" :items="items" multiple/>
+<ComboBox v-model="modelValue" :items="items" multiple enableChip/>
 <p> {{modelValue}}</p>
 <br>
 <br>

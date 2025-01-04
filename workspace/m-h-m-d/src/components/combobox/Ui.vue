@@ -1,61 +1,68 @@
 <template>
-    <Core
-      :modelValue="modelValue"
-      :items="items"
-      :multiple="multiple"
-      @update:modelValue="handleModelValueChange"
-      v-bind="$attrs"
-    >
-      <template #input>
-        <div
-          class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus-within:ring focus-within:ring-blue-500 focus-within:border-blue-500"
-        >
-          <!-- Display selected items when multiple is true -->
-          <div
-            v-if="multiple && Array.isArray(modelValue)"
-            class="flex flex-wrap gap-2 mb-1"
-          >
+  <Core
+    :modelValue="modelValue"
+    :items="items"
+    :multiple="multiple"
+    :enableChip="enableChip"
+    @update:modelValue="handleModelValueChange"
+    v-bind="$attrs"
+  >
+    <template #input>
+      <slot name="input"></slot>
+      <div
+        v-if="showInput"
+        class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus-within:ring focus-within:ring-gray-500 focus-within:border-gray-500 overflow-auto"
+      >
+        <div v-if="multiple && enableChip" class="flex flex-wrap gap-2 mb-1">
             <span
               v-for="(item, index) in modelValue"
               :key="index"
-              class="px-2 py-1 bg-blue-500 text-white rounded-full cursor-pointer"
+              class="px-2 py-1 bg-gray-500 text-white rounded-full cursor-pointer"
               @click.stop="removeItem(item)"
             >
               {{ item }}
               <span class="ml-2 text-sm font-bold">×</span>
             </span>
-          </div>
-          <input
-            v-model="modelValue"
-            :placeholder="label"
-            class="w-full border-none focus:outline-none"
-            @input="onInputChange"
-            @focus="onFocus"
-            @blur="onBlur"
-          />
         </div>
-      </template>
-      <template #item="{ isActive, item }">
-        <div
-          v-if="isDropdownOpen"
-          class="cursor-pointer px-4 py-2 hover:bg-blue-100"
-          :class="isActive ? 'bg-blue-500 text-white' : ''"
-        >
-          {{ item }}
-        </div>
-      </template>
-    </Core>
+        <input
+          :value="enableChip ? '' : modelValue"
+          :placeholder="label"
+          class="w-full border-none focus:outline-none"
+          @input="onInputChange"
+          @focus="onFocus"
+          @blur="onBlur"
+        />
+      </div>
+    </template>
+    <template #item="{ isActive, item }">
+      <slot
+      name="item"
+      :isActive="isActive"
+      :item="item"
+      ></slot>
+      <div
+        v-if="isDropdownOpen && showItem"
+        class="cursor-pointer px-4 py-2 hover:bg-gray-300 hover:text-black"
+        :class="isActive ? 'bg-gray-500 text-white' : ''"
+      >
+        {{ item }}
+      </div>
+    </template>
+  </Core>
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { computed, ref, useSlots } from "vue";
+import { uiSlots } from "./Slots";
 import Core from "./Core.vue";
 import { uiProps } from "./Props";
 
 const props = defineProps(uiProps);
 const emit = defineEmits(["update:modelValue"]);
-
-const inputValue = ref(""); 
+const uiSlots = defineSlots<uiSlots>();
+const slots = useSlots();
+const showInput = computed(() => !slots.input);
+const showItem = computed(() => !slots.item);
 const isDropdownOpen = ref(false);
 
 const onInputChange = () => {
@@ -74,18 +81,11 @@ const onFocus = () => {
   }, 100);
 };
 
-// Watch for changes in `modelValue` to update inputValue for single mode
-watch(
-  () => props.modelValue,
-  (newValue) => {
-    if (!props.multiple) {
-      inputValue.value = (newValue as string) ?? "";
-    }
-  }
-);
 const removeItem = (item: string) => {
   if (props.multiple && Array.isArray(props.modelValue)) {
-    const updatedValue = props.modelValue.filter((selected) => selected !== item);
+    const updatedValue = props.modelValue.filter(
+      (selected) => selected !== item
+    );
     emit("update:modelValue", updatedValue);
   }
 };
