@@ -2,7 +2,7 @@
     <!-- Overlay -->
     <div
       v-show="isOpen"
-      class=""
+      class="fixed inset-0 bg-black bg-opacity-50 z-40"
       @click="closeDrawer"
     ></div>
   
@@ -47,4 +47,3 @@
     transition: transform 0.3s ease-in-out;
   }
   </style>
-  

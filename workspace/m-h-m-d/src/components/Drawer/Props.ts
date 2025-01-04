@@ -6,7 +6,6 @@ export const drawerProps = {
     side: {
       type: String,
       default: 'right',
-      validator: (value: string) => ['left', 'right'].includes(value),
+      validator: (value: string) => ['left', 'right', 'top', 'bottom'].includes(value),
     },
-  };
-  
+};
