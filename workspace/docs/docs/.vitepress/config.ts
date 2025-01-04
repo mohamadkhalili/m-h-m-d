@@ -53,6 +53,7 @@ export default defineConfig({
           {text:'Skeleton', link:'/components//Skeleton'},
           {text:'Carousel', link:'/components//Carousel'},
           {text:'Combobox', link:'/components//Combobox'},
+          {text:'Drawer', link:'/components//Drawer'},
 
 
           
