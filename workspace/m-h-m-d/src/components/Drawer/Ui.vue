@@ -1,25 +1,37 @@
-<script setup>
-import { ref } from 'vue';
-import { drawerClasses } from '../../styles/DrawerClasses';
-import { drawerProps } from './Props';
-import { drawerEmits } from './Emits';
-
-const props = defineProps(drawerProps);
-const emit = defineEmits(drawerEmits);
-
-const isOpen = ref(false);
-
-const toggleDrawer = () => {
-  isOpen.value = !isOpen.value;
-  emit('update:isOpen', isOpen.value);
-};
-</script>
-
 <template>
-  <div :class="[drawerClasses.base, props.side === 'right' ? (isOpen ? drawerClasses.openRight : drawerClasses.closedRight) : (isOpen ? drawerClasses.openLeft : drawerClasses.closedLeft)]">
-    <slot></slot>
-  </div>
-</template>
+    <div
+      :class="[
+        drawerClasses.base,
+        side === 'right'
+          ? (isOpen ? drawerClasses.openRight : drawerClasses.closedRight)
+          : (isOpen ? drawerClasses.openLeft : drawerClasses.closedLeft),
+      ]"
+    >
 
-<style scoped>
-</style>
+      <slot />
+    </div>
+  </template>
+  
+  <script setup>
+  import { drawerProps } from './Props';
+  import { drawerClasses } from '../../styles/DrawerClasses';
+  
+  const props = defineProps(drawerProps);
+  </script>
+  
+  <style scoped>
+  /* Custom styles for the button */
+  button {
+    background-color: white;
+    border: 1px solid black;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: black;
+    color: white;
+  }
+  </style>
+  

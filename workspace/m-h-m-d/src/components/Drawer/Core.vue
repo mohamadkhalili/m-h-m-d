@@ -1,24 +1,50 @@
 <template>
-  <button @click="toggleDrawer('left')">Open Left Drawer</button>
-  <button @click="toggleDrawer('right')">Open Right Drawer</button>
-  <Ui :isOpen="isOpen" :side="side" @update:isOpen="isOpen = $event">
-    <slot></slot>
-  </Ui>
-</template>
+    <!-- Overlay -->
+    <div
+      v-show="isOpen"
+      class=""
+      @click="closeDrawer"
+    ></div>
+  
+    <!-- Drawer -->
+    <div
+      :class="[
+        drawerClasses.base,
+        side === 'right'
+          ? (isOpen ? drawerClasses.openRight : drawerClasses.closedRight)
+          : side === 'left'
+          ? (isOpen ? drawerClasses.openLeft : drawerClasses.closedLeft)
+          : side === 'top'
+          ? (isOpen ? drawerClasses.openTop : drawerClasses.closedTop)
+          : side === 'bottom'
+          ? (isOpen ? drawerClasses.openBottom : drawerClasses.closedBottom)
+          : ''
+      ]"
+      @click.stop
+    >
+      <slot />
+    </div>
+  </template>
+  
+  <script setup>
+  import { drawerProps } from './Props';
+  import { drawerClasses } from '../../styles/DrawerClasses';
+  import { defineProps, defineEmits } from 'vue';
+  
+  const props = defineProps(drawerProps);
+  const emit = defineEmits(['update:isOpen']);
+  
+  // Close Drawer
+  const closeDrawer = () => {
+    emit('update:isOpen', false);
+  };
+  </script>
+  
+  <style scoped>
 
-<script setup>
-import { ref } from 'vue';
-import Ui from './Ui.vue';
-
-const isOpen = ref(false);
-const side = ref('right');
-
-const toggleDrawer = (pos) => {
-  side.value = pos;
-  isOpen.value = !isOpen.value;
-};
-</script>
-
-<style scoped>
-/* Add any additional styles here */
-</style>
+  
+  .transition-transform {
+    transition: transform 0.3s ease-in-out;
+  }
+  </style>
+  
