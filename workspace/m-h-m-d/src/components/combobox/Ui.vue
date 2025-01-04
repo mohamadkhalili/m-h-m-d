@@ -11,23 +11,38 @@
       <slot name="input"></slot>
       <div
         v-if="showInput"
-        :class="adapterClass(comboboxClasses.container).value"
+        :class="
+          adapterClass(comboboxClasses.container + ' ' + containerClass).value
+        "
       >
-        <div v-if="multiple && enableChip" :class="adapterClass(comboboxClasses.chipContainer).value">
+        <div
+          v-if="multiple && enableChip"
+          :class="
+            adapterClass(
+              comboboxClasses.chipContainer + ' ' + chipContainerClass
+            ).value
+          "
+        >
           <span
             v-for="(item, index) in modelValue"
             :key="index"
-            :class="adapterClass(comboboxClasses.chip).value"
+            :class="adapterClass(comboboxClasses.chip + ' ' + chipClass).value"
             @click.stop="removeItem(item)"
           >
             {{ item }}
-            <span :class="adapterClass(comboboxClasses.chipClose).value">×</span>
+            <span
+              :class="
+                adapterClass(comboboxClasses.chipClose + ' ' + chipCloseClass)
+                  .value
+              "
+              >×</span
+            >
           </span>
         </div>
         <input
           :value="enableChip ? '' : modelValue"
           :placeholder="label"
-          :class="adapterClass(comboboxClasses.input).value"
+          :class="adapterClass(comboboxClasses.input + ' ' + inputClass).value"
           @input="onInputChange"
           @focus="onFocus"
           @blur="onBlur"
@@ -35,14 +50,20 @@
       </div>
     </template>
     <template #item="{ isActive, item }">
-      <slot
-        name="item"
-        :isActive="isActive"
-        :item="item"
-      ></slot>
+      <slot name="item" :isActive="isActive" :item="item"></slot>
       <div
         v-if="isDropdownOpen && showItem"
-        :class="[adapterClass(comboboxClasses.dropdownItem).value, isActive ? adapterClass(comboboxClasses.dropdownItemActive).value : '']"
+        :class="[
+          adapterClass(comboboxClasses.dropdownItem + ' ' + dropdownItemClass)
+            .value,
+          isActive
+            ? adapterClass(
+                comboboxClasses.dropdownItemActive +
+                  ' ' +
+                  dropdownItemActiveClass
+              ).value
+            : '',
+        ]"
       >
         {{ item }}
       </div>
@@ -55,7 +76,7 @@ import { computed, ref, useSlots } from "vue";
 import { uiSlots } from "./Slots";
 import Core from "./Core.vue";
 import { uiProps } from "./Props";
-import { comboboxClasses } from "../../styles/ComboboxClasses"
+import { comboboxClasses } from "../../styles/ComboboxClasses";
 import { useAdapterClass } from "../../composables/UseClass";
 const adapterClass = useAdapterClass();
 

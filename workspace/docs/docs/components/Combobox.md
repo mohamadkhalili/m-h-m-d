@@ -28,12 +28,6 @@ const items = ['all', 'one', 'two'];
 <template #content1>
 <ComboBox v-model="modelValue" :items="items" multiple enableChip/>
 <p> {{modelValue}}</p>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 </template>
 
