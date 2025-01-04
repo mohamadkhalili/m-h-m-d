@@ -37,6 +37,7 @@ The Input component provides a customizable input field that supports various us
 <div class=" py-10  rounded-lg shadow-inner flex justify-center items-center">
   
 <Input label="name"/>
+<p>{{modelValue}}</p>
 </div
 
 
