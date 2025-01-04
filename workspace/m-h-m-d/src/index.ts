@@ -29,7 +29,8 @@ import datePicker from './components/datePicker/Core.vue'
 import Skeleton from './components/Skeleton/Ui.vue'
 import Carousel from './components/Carousel/Ui.vue'
 import dateRange from './components/dateRange/Core.vue'
-
+import combobox from './components/combobox/Ui.vue'
+ 
 
 const components = [
     { name: 'Pagination', ...pagination },
@@ -59,6 +60,7 @@ const components = [
     { name: 'Skeleton', ...Skeleton},
     { name: 'Carousel', ...Carousel},
     { name: 'DateRange', ...dateRange},
+    { name: 'ComboBox', ...combobox},
 
 
     
@@ -89,7 +91,7 @@ const install = (app: App, config: Config = {}) => {
 
 export { pagination, modal, Button, input, menu, tab, list, ChatBubble, Divider, stepper, Card, Switch, CheckBox, 
          Breadcrumb, Loader, progressLinear, RangeSlider, alert,InputFile ,RadioGroup,Radio ,CountDown,progressCircular,
-         datePicker,Skeleton,Carousel,dateRange}
+         datePicker,Skeleton,Carousel,dateRange, combobox}
 
 export { tooltip }
 
