@@ -12,7 +12,7 @@ export const uiProps = {
     label : { type : String, required : false},
     multiple : { type : Boolean, required : false},
     items : { type : Array as PropType<string[]>},
-    enableChip : {type: Boolean, default : ''},
+    enableChip : {type: Boolean, required : false},
     containerClass: { type : String, default : ''},
     chipContainerClass: { type : String, default : ''},
     chipClass: { type : String, default : ''},
