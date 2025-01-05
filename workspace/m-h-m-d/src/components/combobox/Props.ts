@@ -18,6 +18,7 @@ export const uiProps = {
     chipClass: { type : String, default : ''},
     chipCloseClass: { type : String, default : ''},
     inputClass: { type : String, default : ''},
+    dropdownClass: { type : String, default : ''},
     dropdownItemClass: { type : String, default : ''},
     dropdownItemActiveClass: { type : String, default : ''},
 }

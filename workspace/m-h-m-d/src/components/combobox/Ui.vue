@@ -52,7 +52,7 @@
     <template #item>
       <Menu
         v-model="isDropdownOpen"
-        menuClass="mt-1 w-full h-[120px] bg-transparent rounded-none overflow-auto"
+        :menuClass="adapterClass(comboboxClasses.dropdown + ' ' + dropdownClass).value"
       >
         <template #menu>
           <div
