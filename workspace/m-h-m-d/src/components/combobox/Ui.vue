@@ -49,24 +49,45 @@
         />
       </div>
     </template>
-    <template #item="{ isActive, item }">
-      <slot name="item" :isActive="isActive" :item="item"></slot>
-      <div
-        v-if="isDropdownOpen && showItem"
-        :class="[
-          adapterClass(comboboxClasses.dropdownItem + ' ' + dropdownItemClass)
-            .value,
-          isActive
-            ? adapterClass(
-                comboboxClasses.dropdownItemActive +
-                  ' ' +
-                  dropdownItemActiveClass
-              ).value
-            : '',
-        ]"
+    <template #item>
+      <Menu
+        v-model="isDropdownOpen"
+        menuClass="mt-1 w-full h-[120px] bg-transparent rounded-none overflow-auto"
       >
-        {{ item }}
-      </div>
+        <template #menu>
+          <div
+            v-for="(item, index) in items"
+            :key="index"
+            @click="handleClick(item)"
+          >
+            <slot
+              name="item"
+              :isActive="
+                multiple ? modelValue?.indexOf(item) != -1 : item == modelValue
+              "
+              :item="item"
+            ></slot>
+            <div
+              v-if="isDropdownOpen && showItem"
+              :class="
+                (multiple
+                  ? modelValue?.indexOf(item) != -1
+                  : item == modelValue)
+                  ? adapterClass(
+                      comboboxClasses.dropdownItemActive +
+                        ' ' +
+                        dropdownItemActiveClass
+                    ).value
+                  : adapterClass(
+                      comboboxClasses.dropdownItem + ' ' + dropdownItemClass
+                    ).value
+              "
+            >
+              {{ item }}
+            </div>
+          </div>
+        </template>
+      </Menu>
     </template>
   </Core>
 </template>
@@ -87,7 +108,21 @@ const slots = useSlots();
 const showInput = computed(() => !slots.input);
 const showItem = computed(() => !slots.item);
 const isDropdownOpen = ref(false);
+const handleClick = (item: string) => {
+  if (props.multiple) {
+    const updatedValue = [...(props.modelValue || [])];
+    const itemIndex = updatedValue.indexOf(item);
 
+    if (itemIndex !== -1) {
+      updatedValue.splice(itemIndex, 1);
+    } else {
+      updatedValue.push(item);
+    }
+    emit("update:modelValue", updatedValue);
+  } else {
+    emit("update:modelValue", item);
+  }
+};
 const onInputChange = () => {
   isDropdownOpen.value = true;
 };
