@@ -110,7 +110,7 @@ const items = ['first choice', 'second choice', 'thrid choice', 'forth choice', 
   >
 <template #content1>
 <ComboBox v-model="modelValue3" :items="items" multiple enableChip/>
-<p> {{modelValue}}</p>
+<p> {{modelValue3}}</p>
 
 </template>
 
@@ -156,7 +156,7 @@ const items = ['first choice', 'second choice', 'thrid choice', 'forth choice', 
   >
 <template #content1>
 <ComboBox v-model="modelValue4" :items="items" multiple enableChip chipClass="bg-blue-900" dropdownItemClass="bg-blue-100 hover:bg-blue-100" dropdownItemActiveClass="bg-blue-900 hover:bg-blue-100"/>
-<p> {{modelValue}}</p>
+<p> {{modelValue4}}</p>
 
 </template>
 
