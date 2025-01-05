@@ -17,10 +17,11 @@ const items = ['first choice', 'second choice', 'thrid choice', 'forth choice', 
 ## Default ComboBox
 
 **Props:**
-- `v-model`: Binds the alert open/close state.
+- `v-model`: Binds the selected value of the ComboBox.
+- `items` : An array of items to display in the dropdown list.
 
 **Usage:**
-- This is the basic alert that opens when the button is clicked.
+- The ComboBox allows users to select an item from a dropdown list. The v-model binds the selected item, and the items prop populates the dropdown options.
 
 <Tab 
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
@@ -54,13 +55,13 @@ const items = ['first choice', 'second choice', 'thrid choice', 'forth choice', 
 </Tab>
 
 
-## Default Combo Box
+## Multiple ComboBox
 
 **Props:**
-- `v-model`: Binds the alert open/close state.
+- `multiple`: A Boolean to enable multiple selections. When set to true, v-model will bind to an array of selected items.
 
 **Usage:**
-- This is the basic alert that opens when the button is clicked.
+- Setting the multiple prop enables multi-selection mode.
 
 <Tab 
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
@@ -85,7 +86,7 @@ const items = ['first choice', 'second choice', 'thrid choice', 'forth choice', 
 <template #content3>
 
 ```vue
-<ComboBox v-model="modelValue2" 
+<ComboBox v-model="modelValue" 
 :items="items" multiple/>
 ```
 
@@ -93,13 +94,13 @@ const items = ['first choice', 'second choice', 'thrid choice', 'forth choice', 
 </Tab>
 
 
-## Default Combo Box
+## Enable Chip ComboBox
 
 **Props:**
-- `v-model`: Binds the alert open/close state.
+- `enableChip`: A Boolean that, when set to true, enables chips to display the selected items.
 
 **Usage:**
-- This is the basic alert that opens when the button is clicked.
+- with enableChip, the selected items are shown as chips.
 
 <Tab 
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
@@ -124,20 +125,28 @@ const items = ['first choice', 'second choice', 'thrid choice', 'forth choice', 
 <template #content3>
 
 ```vue
-<Alert v-model="alertEnable"/>
+<ComboBox v-model="modelValue" 
+:items="items" multiple enableChip/>
 ```
 
 </template>
 </Tab>
 
 
-## Default Combo Box
+## Custom Class ComboBox
 
 **Props:**
-- `v-model`: Binds the alert open/close state.
+- `containerClass`: A custom CSS class for the container Input box.
+- `chipContainerClass`: A custom CSS class for the chip container.
+- `chipClass`:  A custom CSS class for each chip.
+- `chipCloseClass`:  A custom CSS class for the chip close button.
+- `inputClass`: A custom CSS class for the input field.
+- `dropdownClass`: A custom CSS class for the dropdown menu.
+- `dropdownItemClass`: A custom CSS class for each dropdown item.
+- `dropdownItemActiveClass`: A custom CSS class for the active dropdown item.
 
 **Usage:**
-- This is the basic alert that opens when the button is clicked.
+- The custom class props allow you to style various parts of the ComboBox, such as the container, input field, chips, and dropdown items.
 
 <Tab 
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
@@ -146,7 +155,7 @@ const items = ['first choice', 'second choice', 'thrid choice', 'forth choice', 
     activeColor="text-blue-500 shadow-blue-500"
   >
 <template #content1>
-<ComboBox v-model="modelValue4" :items="items" multiple enableChip/>
+<ComboBox v-model="modelValue4" :items="items" multiple enableChip chipClass="bg-blue-900" dropdownItemClass="bg-blue-100 hover:bg-blue-100" dropdownItemActiveClass="bg-blue-900 hover:bg-blue-100"/>
 <p> {{modelValue}}</p>
 
 </template>
@@ -162,7 +171,11 @@ const items = ['first choice', 'second choice', 'thrid choice', 'forth choice', 
 <template #content3>
 
 ```vue
-<Alert v-model="alertEnable"/>
+<ComboBox v-model="modelValue4" 
+:items="items" multiple enableChip 
+chipClass="bg-blue-900" 
+dropdownItemClass="bg-blue-100 hover:bg-blue-100" 
+dropdownItemActiveClass="bg-blue-900 hover:bg-blue-100"/>
 ```
 
 </template>

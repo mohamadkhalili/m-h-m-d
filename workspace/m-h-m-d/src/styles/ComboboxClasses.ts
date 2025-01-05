@@ -4,6 +4,7 @@ export const comboboxClasses = {
     chip: "px-2 py-1 bg-gray-500 text-white rounded-full cursor-pointer",
     chipClose: "ml-2 text-sm font-bold",
     input: "w-full border-none focus:outline-none",
+    dropdown: "mt-1 w-full h-[120px] bg-transparent rounded-none overflow-auto",
     dropdownItem: "cursor-pointer px-4 py-2 bg-white hover:bg-gray-300 hover:text-black",
     dropdownItemActive: "cursor-pointer px-4 py-2 hover:bg-gray-300 hover:text-black bg-gray-500 text-white",
   };
