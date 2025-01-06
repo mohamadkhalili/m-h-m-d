@@ -40,7 +40,7 @@ const classMappings: ClassMapping[] = [
     // Letter Spacing
     { regex: /^tracking-(tighter|tight|normal|wide|wider|widest)$/, properties: ['letterSpacing'] },
     // Background Color
-    { regex: /^bg-(transparent|red|green|blue|yellow|purple|pink|indigo|gray|neutral|stone|amber|lime|emerald|teal|cyan|sky|violet|fuchsia|rose)-\d{3}$/, properties: ['backgroundColor'] },
+    { regex: /^bg-(transparent|red|white|green|blue|yellow|purple|black|pink|indigo|gray|neutral|stone|amber|lime|emerald|teal|cyan|sky|violet|fuchsia|rose)-\d{3}$/, properties: ['backgroundColor'] },
     // Padding
     { regex: /^p-(\d+|px|sm|md|lg|xl)$/, properties: ['padding'] },
     { regex: /^pt-(\d+|px|sm|md|lg|xl)$/, properties: ['paddingTop'] },
