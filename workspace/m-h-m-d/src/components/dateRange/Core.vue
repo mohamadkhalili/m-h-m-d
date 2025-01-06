@@ -5,14 +5,14 @@
     <div
       :class="[
         persianMode ? 'iran-font' : '',
-        adapterClass(datePickerClasses.buttonClasses).value,
+        adapterClass(dateRangeClasses.buttonClasses).value,
       ]"
     >
       <Button
         v-if="showSelectYear"
         @click="[(selectYear = !selectYear), (selectMonth = false)]"
         :buttonClass="
-          adapterClass(datePickerClasses.buttonSelect + ' ' + buttonSelectClass)
+          adapterClass(dateRangeClasses.buttonSelect + ' ' + buttonSelectClass)
             .value
         "
         >{{ persianMode ? persianYear : gYear }}</Button
@@ -21,7 +21,7 @@
         v-if="showSelectMonth"
         @click="[(selectMonth = !selectMonth), (selectYear = false)]"
         :buttonClass="
-          adapterClass(datePickerClasses.buttonSelect + ' ' + buttonSelectClass)
+          adapterClass(dateRangeClasses.buttonSelect + ' ' + buttonSelectClass)
             .value
         "
         >{{
@@ -34,7 +34,7 @@
     <div
       v-if="selectYear && !selectMonth && showSelectYear"
       :class="
-        adapterClass(datePickerClasses.selectYear + ' ' + selectYearClass).value
+        adapterClass(dateRangeClasses.selectYear + ' ' + selectYearClass).value
       "
       ref="yearContainer"
     >
@@ -43,10 +43,10 @@
         :key="year"
         :class="[
           year == persianYear || year == gYear
-            ? adapterClass(datePickerClasses.activeYear + ' ' + activeYearClass)
+            ? adapterClass(dateRangeClasses.activeYear + ' ' + activeYearClass)
                 .value
             : adapterClass(
-                datePickerClasses.onActiveYear + ' ' + onActiveYearClass
+                dateRangeClasses.onActiveYear + ' ' + onActiveYearClass
               ).value,
           persianMode == true ? 'iran-font' : '',
         ]"
@@ -58,7 +58,7 @@
     <div
       v-if="selectMonth && !selectYear && showSelectMonth"
       :class="
-        adapterClass(datePickerClasses.selectMonth + ' ' + selectMonthClass)
+        adapterClass(dateRangeClasses.selectMonth + ' ' + selectMonthClass)
           .value
       "
     >
@@ -69,17 +69,17 @@
           persianMode ? 'iran-font' : '',
           persianMode == true && index + 1 == persianMonth
             ? adapterClass(
-                datePickerClasses.activeMonth + ' ' + activeMonthClass
+                dateRangeClasses.activeMonth + ' ' + activeMonthClass
               ).value
             : adapterClass(
-                datePickerClasses.onActiveMonth + ' ' + onActiveMonthClass
+                dateRangeClasses.onActiveMonth + ' ' + onActiveMonthClass
               ).value,
           persianMode == false && index + 1 == gMonth
             ? adapterClass(
-                datePickerClasses.activeMonth + ' ' + activeMonthClass
+                dateRangeClasses.activeMonth + ' ' + activeMonthClass
               ).value
             : adapterClass(
-                datePickerClasses.onActiveMonth + ' ' + onActiveMonthClass
+                dateRangeClasses.onActiveMonth + ' ' + onActiveMonthClass
               ).value,
         ]"
         @click="changeMonth(index)"
@@ -91,12 +91,12 @@
     <div
       v-if="!selectMonth && !selectYear && showCalender"
       :class="
-        adapterClass(datePickerClasses.calender + ' ' + calenderClass).value
+        adapterClass(dateRangeClasses.calender + ' ' + calenderClass).value
       "
     >
       <div
         :class="[
-          adapterClass(datePickerClasses.dayOfWeek + ' ' + dayOfWeekClass)
+          adapterClass(dateRangeClasses.dayOfWeek + ' ' + dayOfWeekClass)
             .value,
           persianMode ? 'iran-font' : '',
         ]"
@@ -107,7 +107,7 @@
       </div>
       <div
         :class="
-          adapterClass(datePickerClasses.separator + ' ' + separatorClass).value
+          adapterClass(dateRangeClasses.separator + ' ' + separatorClass).value
         "
         v-for="n in persianMode
           ? firtsPersianDay(persianYear, persianMonth, 1)
@@ -133,10 +133,16 @@
                   persianYear <= (endPDate?.year ?? 0) &&
                   dayInRange(day))
                 ? adapterClass(
-                    datePickerClasses.activeDay + ' ' + activeDayClass
+                    dateRangeClasses.activeDay + ' ' + activeDayClass
                   ).value
+                : day == pNowDate?.day &&
+                  persianMonth == pNowDate?.month &&
+                  persianYear == pNowDate?.year &&
+                  !dayInRange(day)
+                ? adapterClass(adapterClass(dateRangeClasses.onActiveDay + ' ' + dateRangeClasses.nowDay).value + ' ' + nowDayClass)
+                    .value
                 : adapterClass(
-                    datePickerClasses.onActiveDay + ' ' + onActiveDayClass
+                    dateRangeClasses.onActiveDay + ' ' + onActiveDayClass
                   ).value
               : (gYear == startGDate?.year &&
                   gMonth == startGDate?.month &&
@@ -144,25 +150,16 @@
                 (gYear >= (startGDate?.year ?? 0) &&
                   gYear <= (endGDate?.year ?? 0) &&
                   dayInRange(day))
-              ? adapterClass(datePickerClasses.activeDay + ' ' + activeDayClass)
+              ? adapterClass(dateRangeClasses.activeDay + ' ' + activeDayClass)
                   .value
-              : adapterClass(
-                  datePickerClasses.onActiveDay + ' ' + onActiveDayClass
-                ).value,
-            persianMode == true
-              ? day == pNowDate?.day &&
-                persianMonth == pNowDate?.month &&
-                persianYear == pNowDate?.year &&
-                !dayInRange(day)
-                ? adapterClass(datePickerClasses.nowDay + ' ' + nowDayClass)
-                    .value
-                : ''
               : day == gNowDate?.day &&
                 gMonth == gNowDate.month &&
                 gYear == gNowDate.year &&
                 !dayInRange(day)
-              ? adapterClass(datePickerClasses.nowDay + ' ' + nowDayClass).value
-              : '',
+              ? adapterClass(adapterClass(dateRangeClasses.onActiveDay + ' ' + dateRangeClasses.nowDay).value + ' ' + nowDayClass).value
+              : adapterClass(
+                  dateRangeClasses.onActiveDay + ' ' + onActiveDayClass
+                ).value,
           ]"
           :style="{ fontFamily: persianMode ? 'iransans' : '' }"
         >
@@ -179,7 +176,7 @@ import { computed, nextTick, ref, useSlots, watch } from "vue";
 import { componentEmits } from "./Emits";
 import { coreProps } from "./Props";
 import { coreSlots } from "./Slots";
-import { datePickerClasses } from "../../styles/DatePickerClasses";
+import { dateRangeClasses } from "../../styles/DateRangeClasses";
 import { useAdapterClass } from "../../composables/UseClass";
 const adapterClass = useAdapterClass();
 const props = defineProps(coreProps);
@@ -249,17 +246,18 @@ function gregorian_to_jalali(gy: number, gm: number, gd: number) {
 watch(
   () => props.modelValue,
   (newValue) => {
-  if(!newValue){
-    startGDate.value = undefined;
-    startPDate.value = undefined;
-    endGDate.value = undefined;
-    endPDate.value = undefined
-    enableSelect.value = true;
-  }else{
-    emit("update:startDate", '');
-    emit("update:endDate", '');
+    if (!newValue) {
+      startGDate.value = undefined;
+      startPDate.value = undefined;
+      endGDate.value = undefined;
+      endPDate.value = undefined;
+      enableSelect.value = true;
+    } else {
+      emit("update:startDate", "");
+      emit("update:endDate", "");
+    }
   }
-});
+);
 const selectMonth = ref(false);
 const selectYear = ref(false);
 const days = ["S", "M", "T", "W", "T", "F", "S"];
@@ -369,7 +367,7 @@ const firtsPersianDay = (jy: number, jm: number, jd: number) => {
 };
 const hoverHandle = (day: number) => {
   if (props.persianMode) {
-     if (!startMode.value && enableSelect.value) {
+    if (!startMode.value && enableSelect.value) {
       endPDate.value = {
         year: persianYear.value,
         month: persianMonth.value,
