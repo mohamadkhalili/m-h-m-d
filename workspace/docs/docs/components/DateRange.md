@@ -145,7 +145,7 @@ v-model:endDate="endDate"
     activeColor="text-blue-500 shadow-blue-500"
   >
 <template #content1>
-<DateRange v-model="modelValue3" v-model:startDate="startDate3" v-model:endDate="endDate3" buttonSelectClass="bg-gray-900" dayOfWeekClass="text-white" calenderClass="bg-gray-900 rounded-2xl" onActiveDayClass="text-white rounded-2xl hover:bg-gray-600" nowDayClass="border-amber-200 bg-gray-700 text-gray-900 rounded-2xl" activeDayClass="bg-gray-700 text-white rounded-2xl" selectMonthClass="bg-gray-900" activeMonthClass="bg-gray-800 text-white" onActiveMonthClass="bg-gray-600 text-white hover:bg-gray-600 hover:text-white" selectYearClass="bg-gray-900" activeYearClass="bg-gray-800 text-white" onActiveYearClass="bg-gray-600 text-white hover:bg-gray-600 hover:text-white"/>
+<DateRange v-model="modelValue3" v-model:startDate="startDate3" v-model:endDate="endDate3" buttonSelectClass="bg-gray-900" dayOfWeekClass="text-white" calenderClass="bg-gray-900 rounded-2xl" onActiveDayClass="text-white rounded-2xl hover:bg-gray-600" nowDayClass="border-white text-amber-200 rounded-2xl" activeDayClass="bg-gray-700 text-white rounded-2xl" selectMonthClass="bg-gray-900" activeMonthClass="bg-gray-800 text-white" onActiveMonthClass="bg-gray-600 text-white hover:bg-gray-600 hover:text-white" selectYearClass="bg-gray-900" activeYearClass="bg-gray-800 text-white" onActiveYearClass="bg-gray-600 text-white hover:bg-gray-600 hover:text-white"/>
 <div dir="rtl">
   <p>
     شروع بازه : <span dir="ltr">{{ startDate3 }}</span>
@@ -172,7 +172,7 @@ v-model:endDate="endDate"
 v-model:endDate="endDate" buttonSelectClass="bg-gray-900"
 dayOfWeekClass="text-white" calenderClass="bg-gray-900 rounded-2xl" 
 onActiveDayClass="text-white rounded-2xl hover:bg-gray-600" 
-nowDayClass="border-amber-200 bg-gray-700 text-gray-900 rounded-2xl" 
+nowDayClass="border-white text-amber-200 rounded-2xl" 
 activeDayClass="bg-gray-700 text-white rounded-2xl" 
 selectMonthClass="bg-gray-900" activeMonthClass="bg-gray-800 text-white" 
 onActiveMonthClass="bg-gray-600 text-white hover:bg-gray-600 hover:text-white" 
