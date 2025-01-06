@@ -129,8 +129,8 @@
               ? (persianYear == startPDate?.year &&
                   persianMonth == startPDate?.month &&
                   day == startPDate?.day) ||
-                (persianYear >= startPDate?.year &&
-                  persianYear <= endPDate?.year &&
+                (persianYear >= (startPDate?.year ?? 0) &&
+                  persianYear <= (endPDate?.year ?? 0) &&
                   dayInRange(day))
                 ? adapterClass(
                     datePickerClasses.activeDay + ' ' + activeDayClass
@@ -141,8 +141,8 @@
               : (gYear == startGDate?.year &&
                   gMonth == startGDate?.month &&
                   day == startGDate?.day) ||
-                (gYear >= startGDate?.year &&
-                  gYear <= endGDate?.year &&
+                (gYear >= (startGDate?.year ?? 0) &&
+                  gYear <= (endGDate?.year ?? 0) &&
                   dayInRange(day))
               ? adapterClass(datePickerClasses.activeDay + ' ' + activeDayClass)
                   .value
@@ -153,14 +153,14 @@
               ? day == pNowDate?.day &&
                 persianMonth == pNowDate?.month &&
                 persianYear == pNowDate?.year &&
-                day != dateCurrent?.day
+                !dayInRange(day)
                 ? adapterClass(datePickerClasses.nowDay + ' ' + nowDayClass)
                     .value
                 : ''
               : day == gNowDate?.day &&
                 gMonth == gNowDate.month &&
                 gYear == gNowDate.year &&
-                day != dateCurrent?.day
+                !dayInRange(day)
               ? adapterClass(datePickerClasses.nowDay + ' ' + nowDayClass).value
               : '',
           ]"
@@ -196,19 +196,19 @@ const gYear = ref(new Date().getFullYear());
 const startMode = ref(true);
 const enableSelect = ref(true);
 type dateInterface = {
-  year: Number;
-  month: Number;
-  day: Number;
+  year: number;
+  month: number;
+  day: number;
 };
 const gNowDate = ref<dateInterface>({
   year: new Date().getFullYear(),
   month: new Date().getMonth() + 1,
   day: new Date().getDate(),
 });
-const startGDate = ref<dateInterface>();
-const endGDate = ref<dateInterface>();
-const startPDate = ref<dateInterface>();
-const endPDate = ref<dateInterface>();
+const startGDate = ref<dateInterface | undefined>();
+const endGDate = ref<dateInterface | undefined>();
+const startPDate = ref<dateInterface | undefined>();
+const endPDate = ref<dateInterface | undefined>();
 const pNowDate = ref<dateInterface>();
 gregorian_to_jalali(
   gNowDate.value.year,
@@ -448,125 +448,57 @@ const changeModelValue = (day: number) => {
   }
 };
 const dayInRange = (day: number) => {
-  if (props.persianMode == true) {
-    if (startPDate.value?.year === endPDate.value?.year) {
-      if (startPDate.value?.month === endPDate.value?.month) {
-        if (day >= startPDate.value?.day && day <= endPDate.value?.day) {
-          return true;
+  if (props.persianMode) {
+    if (startPDate.value && endPDate.value) {
+      if (startPDate.value.year === endPDate.value.year) {
+        if (startPDate.value.month === endPDate.value.month) {
+          return day >= startPDate.value.day && day <= endPDate.value.day;
         }
-        return false;
-      }
-      if (persianMonth.value === startPDate.value?.month) {
-        if (
-          day >= startPDate.value?.day &&
-          day <= daysPersianInMonth().length
+        if (persianMonth.value === startPDate.value.month) {
+          return day >= startPDate.value.day;
+        } else if (
+          persianMonth.value! > startPDate.value.month &&
+          persianMonth.value! < endPDate.value.month
         ) {
           return true;
+        } else if (persianMonth.value === endPDate.value.month) {
+          return day <= endPDate.value.day;
         }
-        return false;
-      } else if (
-        persianMonth.value > startPDate.value?.month &&
-        persianMonth.value < endPDate.value?.month
-      ) {
-        return true;
-      } else if (persianMonth.value == endPDate.value?.month) {
-        if (day <= endPDate.value?.day) {
-          return true;
-        }
-        return false;
       }
-    } else {
-      if (persianYear.value === startPDate.value?.year) {
-        console.log(persianYear.value, persianMonth.value, day);
-        if (persianMonth.value === startPDate.value?.month) {
-          if (
-            day >= startPDate.value?.day &&
-            day <= daysPersianInMonth().length
-          ) {
-            return true;
-          }
-          return false;
-        } else if (persianMonth.value > startPDate.value?.month) {
+      if (persianYear.value === startPDate.value.year) {
+        if (persianMonth.value === startPDate.value.month) {
+          return day >= startPDate.value.day;
+        }
+        if (persianMonth.value! > startPDate.value.month) {
           return true;
         }
-        return false;
-      } else if (
-        persianYear.value > startPDate.value?.year &&
-        persianYear.value < endPDate.value?.year
-      ) {
-        return true;
-      } else if (persianYear.value === endPDate.value?.year) {
-        if (persianMonth.value < endPDate.value?.month) {
+      } else if (persianYear.value! === endPDate.value.year) {
+        if (persianMonth.value! < endPDate.value.month) {
           return true;
-        } else if (persianMonth.value == endPDate.value?.month) {
-          if (day <= endPDate.value?.day) {
-            return true;
-          }
-          return false;
         }
-        return false;
+        if (persianMonth.value === endPDate.value.month) {
+          return day <= endPDate.value.day;
+        }
       }
     }
-  } else {
-    if (startGDate.value?.year === endGDate.value?.year) {
-      if (startGDate.value?.month === endGDate.value?.month) {
-        if (day >= startGDate.value?.day && day <= endGDate.value?.day) {
-          return true;
-        }
-        return false;
+  } else if (startGDate.value && endGDate.value) {
+    if (startGDate.value.year === endGDate.value.year) {
+      if (startGDate.value.month === endGDate.value.month) {
+        return day >= startGDate.value.day && day <= endGDate.value.day;
       }
-      if (gMonth.value === startGDate.value?.month) {
-        if (
-          day >= startGDate.value?.day &&
-          day <= daysGregorianInMonth().length
-        ) {
-          return true;
-        }
-        return false;
+      if (gMonth.value === startGDate.value.month) {
+        return day >= startGDate.value.day;
       } else if (
-        gMonth.value > startGDate.value?.month &&
-        gMonth.value < endGDate.value?.month
+        gMonth.value! > startGDate.value.month &&
+        gMonth.value! < endGDate.value.month
       ) {
         return true;
-      } else if (gMonth.value == endGDate.value?.month) {
-        if (day <= endGDate.value?.day) {
-          return true;
-        }
-        return false;
-      }
-    } else {
-      if (gYear.value === startGDate.value?.year) {
-        console.log(gYear.value, gMonth.value, day);
-        if (gMonth.value === startGDate.value?.month) {
-          if (
-            day >= startGDate.value?.day &&
-            day <= daysGregorianInMonth().length
-          ) {
-            return true;
-          }
-          return false;
-        } else if (gMonth.value > startGDate.value?.month) {
-          return true;
-        }
-        return false;
-      } else if (
-        gYear.value > startGDate.value?.year &&
-        gYear.value < endGDate.value?.year
-      ) {
-        return true;
-      } else if (gYear.value === endGDate.value?.year) {
-        if (gMonth.value < endGDate.value?.month) {
-          return true;
-        } else if (gMonth.value == endGDate.value?.month) {
-          if (day <= endGDate.value?.day) {
-            return true;
-          }
-          return false;
-        }
-        return false;
+      } else if (gMonth.value === endGDate.value.month) {
+        return day <= endGDate.value.day;
       }
     }
   }
+  return false;
 };
 const firstGregorianDay = (gy: number, gm: number) => {
   const firstDay = new Date(gy, gm - 1, 1);
