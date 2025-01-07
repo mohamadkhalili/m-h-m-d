@@ -71,6 +71,18 @@ export default defineConfig({
           { text: 'Form', link: '/templates//Form' },
 
 
+
+        ]
+      },
+      {
+        text: "Color",
+        collapsed: true,
+        link: '/Color',
+        items: [
+          { text: 'Colors', link: '/templates//Colors' },
+
+
+
         ]
       },
       
