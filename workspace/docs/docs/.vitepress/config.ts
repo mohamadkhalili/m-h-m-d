@@ -52,8 +52,8 @@ export default defineConfig({
           {text:'Date Range', link:'/components//DateRange'},
           {text:'Skeleton', link:'/components//Skeleton'},
           {text:'Carousel', link:'/components//Carousel'},
+          {text:'Combobox', link:'/components//Combobox'},
           {text:'Drawer', link:'/components//Drawer'},
-
 
 
           
