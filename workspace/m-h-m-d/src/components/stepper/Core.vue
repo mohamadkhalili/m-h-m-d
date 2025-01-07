@@ -1,12 +1,21 @@
 <template>
   <div :class="adapterClass(stepperClasses.generalClass).value">
     <!-- Progress Bar -->
-     <slot name="progress"></slot>
-    <div v-if="showProgress" :class="adapterClass(stepperClasses.uiProgressClass + ' ' + progressClass).value">
+    <slot name="progress"></slot>
+    <div
+      v-if="showProgress"
+      :class="
+        adapterClass(stepperClasses.uiProgressClass + ' ' + progressClass).value
+      "
+    >
       <slot name="progressBar"></slot>
       <div
         v-if="showProgressBar"
-        :class="adapterClass(stepperClasses.uiProgressBarClass + ' ' + progressBarClass).value"
+        :class="
+          adapterClass(
+            stepperClasses.uiProgressBarClass + ' ' + progressBarClass
+          ).value
+        "
         role="progressbar"
         :style="progressStyle"
         :aria-valuenow="60"
@@ -19,37 +28,46 @@
       v-for="(step, index) in steps"
       :key="index + 1"
       :class="{
-        [adapterClass(stepperClasses.stepClass).value]: index !== 0 && index !== steps.length - 1,
+        [adapterClass(stepperClasses.stepClass).value]:
+          index !== 0 && index !== steps.length - 1,
         [adapterClass(stepperClasses.startStepClass).value]: index === 0,
-        [adapterClass(stepperClasses.endStepClass).value]: index === steps.length - 1,
+        [adapterClass(stepperClasses.endStepClass).value]:
+          index === steps.length - 1,
       }"
     >
-      <slot
-        name="step"
-        :index="index + 1"
-        :step="step"
-        :currentStep="modelValue"
-        :status="getStatus(index + 1)"
-      >
-      </slot>
-      <div
-        v-if="showStep"
-        :class="
-          index + 1 <= modelValue
-            ? adapterClass(stepperClasses.uiDoneClass + ' ' + doneClass).value
-            : adapterClass(stepperClasses.uiNotDoneClass + ' ' + notDoneClass).value
-        "
-        @click="moveStep(index + 1)"
-        ref="stepRefs"
-      >
-        <svg-icon
-          v-if="index + 1 < modelValue"
-          type="mdi"
-          :path="mdiIcons[step.icon]"
-        ></svg-icon>
-        <span v-else class="text-xs truncate">{{ index + 1 }}</span>
+      <div :class="stepperClasses.stepsClass">
+        <slot
+          name="step"
+          :index="index + 1"
+          :step="step"
+          :currentStep="modelValue"
+          :status="getStatus(index + 1)"
+        ></slot>
+        <div
+          v-if="showStep"
+          :class="
+            index + 1 <= modelValue
+              ? adapterClass(stepperClasses.uiDoneClass + ' ' + doneClass).value
+              : adapterClass(stepperClasses.uiNotDoneClass + ' ' + notDoneClass)
+                  .value
+          "
+          @click="moveStep(index + 1)"
+          ref="stepRefs"
+        >
+          <svg-icon
+            v-if="index + 1 < modelValue"
+            type="mdi"
+            :path="mdiIcons[step.icon]"
+          ></svg-icon>
+          <span v-else class="text-xs truncate">{{ index + 1 }}</span>
+        </div>
+        <div
+          v-if="showStep"
+          :class="stepperClasses.labelClass"
+        >
+          {{ step.label }}
+        </div>
       </div>
-      <div v-if="showStep" class="pt-1.5 select-none">{{ step.label }}</div>
     </div>
   </div>
 </template>

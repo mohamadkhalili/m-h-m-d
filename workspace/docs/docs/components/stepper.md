@@ -5,6 +5,8 @@ const steps =  ref([
             { label: "authentication", icon: "mdiCheck" },
             { label: "Pre payment", icon: "mdiCloudCheckVariantOutline" },
             { label: "payment", icon: "mdiCloudCheckVariantOutline" },
+            { label: "payment", icon: "mdiCloudCheckVariantOutline" },
+            { label: "payment", icon: "mdiCloudCheckVariantOutline" },
             { label: "Final approval", icon: "mdiCheckDecagramOutline" }
         ]);
 const tabs = [
@@ -34,6 +36,7 @@ The default stepper component with `prev` and `next` buttons.
   >
 <template #content1>
 <Stepper v-model="stepperValue" ></Stepper>
+<br>
 <button :disabled="stepperValue === 1"  @click="stepperValue = stepperValue - 1" class="w-28 bg-black text-white rounded-lg p-2 mt-1 mr-40" cleaner>prev</button>
 <button :disabled="stepperValue === 4" @click="stepperValue = stepperValue + 1" class="w-28 bg-black text-white rounded-lg p-2 mt-1 ml-[254px]" cleaner>next</button>
 </template>
