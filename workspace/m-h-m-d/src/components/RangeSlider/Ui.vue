@@ -79,14 +79,14 @@ import { useAdapterClass } from '../../composables/UseClass';
   <style scoped>
   input[type="range"]::-webkit-slider-thumb {
     appearance: none;
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     background-color: var(--thumb-bg, #007bff);
     border: 2px solid var(--thumb-border, #fff);
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     border-radius: 50%;
     position: relative;
-    top: 0px;
+    top: -1px;
   }
   
   input[type="range"]::-moz-range-thumb {
