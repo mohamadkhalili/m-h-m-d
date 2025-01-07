@@ -4,8 +4,9 @@ export const stepperClasses = {
   uiDoneClass: "bg-green-500 transition-all duration-500 delay-200 flex justify-center w-10 h-10 text-center p-2 text-white rounded-full select-none cursor-pointer items-center",
   uiNotDoneClass: "bg-gray-300 p-2 text-white rounded-full cursor-pointer items-center flex justify-center w-10 h-10 select-none text-center",
   generalClass: "flex flex-row justify-between relative pb-4 pt-4",
+  stepsClass: "relative flex flex-col items-center",
   stepClass: "flex flex-col items-center z-20",
-  startStepClass: "flex flex-col items-start z-20",
-  endStepClass: "flex flex-col items-end z-20",
+  startStepClass: "flex flex-col items-center z-20", 
+  endStepClass: "flex flex-col items-center z-20", 
+  labelClass: "mt-11 text-sm inline-block overflow-auto select-none absolute left-1/2 transform -translate-x-1/2 whitespace-nowrap",
 };
-  
