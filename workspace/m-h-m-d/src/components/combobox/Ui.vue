@@ -58,7 +58,7 @@
           <div
             v-for="(item, index) in items"
             :key="index"
-            @click="handleClick(item)"
+            
           >
             <slot
               name="item"
@@ -82,6 +82,7 @@
                       comboboxClasses.dropdownItem + ' ' + dropdownItemClass
                     ).value
               "
+              @click="handleClick(item)"
             >
               {{ item }}
             </div>
