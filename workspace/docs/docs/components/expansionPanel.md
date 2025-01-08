@@ -31,12 +31,6 @@ const text = ref("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
 <template #content1>
 <ExpansionPanel :title="title" :text="text"
 />
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 </template>
 
 <template #content2>
@@ -74,13 +68,9 @@ const text = ref("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
     activeColor="text-blue-500 shadow-blue-500"
   >
 <template #content1>
+<div class="ml-16">
 <ExpansionPanel :title="title" :text="text" activeTitleClass="bg-blue-900 text-white hover:bg-blue-800 rounded-lg w-[500px]" onActiveTitleClass="bg-blue-900 hover:bg-blue-800 text-white w-[500px] rounded-t-lg" activeTextClass="bg-blue-100 w-[500px] rounded-b-lg" onActiveTextClass="bg-blue-100 w-[500px] rounded-b-lg" />
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+</div>
 </template>
 
 <template #content2>
