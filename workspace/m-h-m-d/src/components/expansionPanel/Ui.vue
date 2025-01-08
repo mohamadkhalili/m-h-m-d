@@ -17,7 +17,7 @@
         <svg-icon
           :class="adapterClass(expansionPanelClasses.iconClass).value"
           type="mdi"
-          :path="isActive ? mdiChevronUp : mdiChevronDown"
+          :path="isActive ? mdiChevronDown : mdiChevronUp"
         >
         </svg-icon>
       </div>
