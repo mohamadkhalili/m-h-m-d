@@ -5,4 +5,8 @@ export const coreProps = {
 export const uiProps = {
     title: { type: String, required: true },
     text: { type: String, required: true },
+    activeTitleClass: {type: String, default: ""},
+    onActiveTitleClass: {type: String, default: ""},
+    activeTextClass: {type: String, default: ""},
+    onActiveTextClass: {type: String, default: ""},
 }
