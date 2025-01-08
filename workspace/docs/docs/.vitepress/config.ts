@@ -54,6 +54,7 @@ export default defineConfig({
           {text:'Carousel', link:'/components//Carousel'},
           {text:'Combobox', link:'/components//Combobox'},
           {text:'Drawer', link:'/components//Drawer'},
+          {text:'Expansion Panel', link:'/components//expansionPanel'},
 
 
           

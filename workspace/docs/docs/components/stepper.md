@@ -119,8 +119,8 @@ A stepper configured with a defined list of custom steps, each with labels and i
 **Props:**
 
 - `steps`: An array of steps, where each step includes:
-  - `label`: The step's label (string).
-  - `icon`: The step's icon (string, optional).
+- `label`: The step's label (string).
+- `icon`: The step's icon (string, optional).
 
 <Tab 
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
