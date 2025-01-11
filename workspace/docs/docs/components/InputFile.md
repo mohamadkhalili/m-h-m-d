@@ -1,5 +1,4 @@
 
-
 <script setup>
 const tabs = [
   { label: 'UI', value: 1, content: '' },
@@ -21,9 +20,9 @@ A simple example of the `Input File` component
   >
     <template #content1>
 <div class="p-6 rounded-lg shadow-inner flex justify-center items-center">
-<InputFile 
-  label="Choose File" 
-  accept=".pdf,.doc,.docx" 
+<InputFile
+  label="Choose File"
+  accept=".pdf,.doc,.docx"
   @change="handleFileChange"
 />
 
@@ -50,16 +49,17 @@ A simple example of the `Input File` component
 </template>
 
 ```
+
   </template>
     <template #content3>
 
 ```md
 <InputFile   />
 ```
+
   </template>
 
 </Tab>
-
 
 ## Multiple
 
@@ -95,12 +95,14 @@ you can use `multi` prop  for send multi files
         </InputFile>
 
 ```
+
   </template>
     <template #content3>
 
 ```md
 <InputFile  multiple   label='multi file upload'/>
 ```
+
   </template>
 
 </Tab>
@@ -116,14 +118,13 @@ you can use `DropZone Variant`   for Different input File style
   >
     <template #content1>
 <div class="  p-6 rounded-lg shadow-inner  flex justify-center items-center ">
-<InputFile 
+<InputFile
   variant="dropzone"
   label="Upload Files"
   multiple
   text="Drop your files here or click to browse"
   class="w-full"
 />
-
 
 </div>
 
@@ -145,6 +146,7 @@ you can use `DropZone Variant`   for Different input File style
 
 
 ```
+
   </template>
     <template #content3>
 
@@ -159,10 +161,10 @@ you can use `DropZone Variant`   for Different input File style
 
 />
 ```
+
   </template>
 
 </Tab>
-
 
 ## Icon
 
@@ -175,7 +177,7 @@ you can use `icon` prop  for changing icon
   >
     <template #content1>
 <div class=" rounded-lg shadow-inner  flex justify-center items-center ">
-<InputFile 
+<InputFile
   variant="dropzone"
   label="Upload Files"
   multiple
@@ -183,7 +185,6 @@ you can use `icon` prop  for changing icon
   text="Drop your files here or click to browse"
   icon="📤"
 />
-
 
 </div>
 
@@ -203,6 +204,7 @@ you can use `icon` prop  for changing icon
 
 
 ```
+
   </template>
     <template #content3>
 
@@ -217,6 +219,7 @@ you can use `icon` prop  for changing icon
 
 />
 ```
+
   </template>
 
 </Tab>
@@ -224,7 +227,6 @@ you can use `icon` prop  for changing icon
 ## Accept
 
 You can use the `accept` prop to specify the types of files allowed for upload. For example, if you want to only allow PDF files, you can set the prop like this:
-
 
 ```html
 <InputFile label="Choose PDF" accept=".pdf" />
@@ -235,12 +237,10 @@ You can also specify multiple types of files:
 ```html
 <InputFile label="Choose Image or PDF" accept=".jpg,.jpeg,.png,.pdf" />
 ```
+
 <br/>
 
-
-
 ## **Handling File Size Limit**
-
 
 You can limit the file size by listening to the `change` event and validating the file size. For example:
 
@@ -250,14 +250,9 @@ You can limit the file size by listening to the `change` event and validating th
 
 <br/>
 
-
-##  **Custom File Preview**
+## **Custom File Preview**
 
 You can add a custom file preview to show a thumbnail or file details after selecting the file:
-
-
-
-
 
 <Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
@@ -274,10 +269,9 @@ You can add a custom file preview to show a thumbnail or file details after sele
   </template>
   <template #preview>
     <img src="https://blog.idrsolutions.com/app/uploads/2017/02/JPEG-1.png" alt="File Preview" class="w-20 h-20" />
-    
+
   </template>
 </InputFile>
-
 
 </div>
 
@@ -298,6 +292,7 @@ You can add a custom file preview to show a thumbnail or file details after sele
 
 
 ```
+
   </template>
     <template #content3>
 
@@ -312,16 +307,14 @@ You can add a custom file preview to show a thumbnail or file details after sele
 
 />
 ```
+
   </template>
 
 </Tab>
 
-##  **Custom File Preview**
+## **Custom File Preview**
 
 You can add a custom file preview to show a thumbnail or file details after selecting the file:
-
-
-
 
 <Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
@@ -340,7 +333,6 @@ You can add a custom file preview to show a thumbnail or file details after sele
     <img src="" alt="File Preview" class="w-20 h-20" />
   </template>
 </InputFile>
-
 
 </div>
 
@@ -361,6 +353,7 @@ You can add a custom file preview to show a thumbnail or file details after sele
 
 
 ```
+
   </template>
     <template #content3>
 
@@ -375,12 +368,12 @@ You can add a custom file preview to show a thumbnail or file details after sele
 
 />
 ```
+
   </template>
 
 </Tab>
 
-
-##  **Loading State**
+## **Loading State**
 
 You can show a loading indicator while the file is being uploaded by using a custom loading state:
 
@@ -393,7 +386,6 @@ You can show a loading indicator while the file is being uploaded by using a cus
 </InputFile>
 
 ```
-
 
 ## InputFile Component Features
 

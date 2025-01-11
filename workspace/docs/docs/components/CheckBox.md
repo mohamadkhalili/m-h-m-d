@@ -19,12 +19,7 @@ const controlRef = ref(false);
 
 const LineRef = ref(false);
 
-
-
-
 const insideActive = ref(false);
-
-
 
 const tabs = [
     { label: 'UI', value: 1, content: '' },
@@ -33,12 +28,12 @@ const tabs = [
 ];
 </script>
 
- ## CheckBox
+## CheckBox
 
  this is default CheckBox with Basic color
-<Tab 
+<Tab
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="shadow"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -49,7 +44,6 @@ const tabs = [
 <CheckBox  v-model="isActive"  />
 </div>
 </template>
-
 
   <template #content2>
 
@@ -62,8 +56,8 @@ const isActive = ref(false);
 <CheckBox  v-model="isActive"  />
 
 ```
-  </template>
 
+  </template>
 
 </Tab>
 
@@ -71,9 +65,9 @@ const isActive = ref(false);
 
  you can add your label with default slot !
 
-<Tab 
+<Tab
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="shadow"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -87,7 +81,6 @@ const isActive = ref(false);
 
 </div>
 </template>
-
 
   <template #content2>
 
@@ -106,16 +99,17 @@ const labelActive3 = ref(false);
 
 </div>
 ```
-  </template>
 
+  </template>
 
 </Tab>
 
 ## Disable
- you can disable your checkbox with `isDisabled` option 
-<Tab 
+
+ you can disable your checkbox with `isDisabled` option
+<Tab
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="shadow"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -128,7 +122,6 @@ const labelActive3 = ref(false);
 
 </div>
 </template>
-
 
   <template #content2>
 
@@ -143,16 +136,16 @@ const disable2 = ref(false);
 <CheckBox  v-model="disable2" isDisabled > Option </CheckBox>
 
 ```
-  </template>
 
+  </template>
 
 </Tab>
 
 ## Color
 
-<Tab 
+<Tab
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="shadow"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -169,7 +162,6 @@ const disable2 = ref(false);
 
 </div>
 </template>
-
 
   <template #content2>
 
@@ -190,16 +182,16 @@ const ColorActive5 = ref(true);
 <CheckBox  v-model="ColorActive3" color="bg-gray-800 border-rose-500 text-yellow-400 border-2 " > custom </CheckBox>
 
 ```
-  </template>
 
+  </template>
 
 </Tab>
 
 ## Size
 
-<Tab 
+<Tab
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="shadow"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -214,7 +206,6 @@ const ColorActive5 = ref(true);
 
 </div>
 </template>
-
 
   <template #content2>
 
@@ -230,17 +221,16 @@ const size3 = ref(true);
 <CheckBox  v-model="size2" size="md"  > medium </CheckBox>
 <CheckBox  v-model="size3" size="lg" > large </CheckBox>
 ```
-  </template>
 
+  </template>
 
 </Tab>
 
-
 ## Radius
 
-<Tab 
+<Tab
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="shadow"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -255,10 +245,8 @@ const size3 = ref(true);
 <CheckBox  v-model="Radius1" radius="lg" >large </CheckBox>
 <CheckBox  v-model="Radius1" radius="full">full  </CheckBox>
 
-
 </div>
 </template>
-
 
   <template #content2>
 
@@ -278,16 +266,16 @@ const Radius1 = ref(true);
 
 
 ```
-  </template>
 
+  </template>
 
 </Tab>
 
 ## Line Through
 
-<Tab 
+<Tab
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="shadow"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -301,7 +289,6 @@ const Radius1 = ref(true);
 </div>
 </template>
 
-
   <template #content2>
 
   ```md
@@ -316,17 +303,16 @@ const LineRef = ref(false);
 
 
 ```
-  </template>
 
+  </template>
 
 </Tab>
 
-
 ## Control
 
-<Tab 
+<Tab
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="shadow"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -338,10 +324,8 @@ const LineRef = ref(false);
 <CheckBox  v-model="controlRef" lineThrough  >option </CheckBox> <br/>
 <label>control : {{controlRef}}</label>
 
-
 </div>
 </template>
-
 
   <template #content2>
 
@@ -356,12 +340,10 @@ const LineRef = ref(false);
 <label>control : {{controlRef}}</label>
 
 ```
+
   </template>
 
-
 </Tab>
-
-
 
 ## CheckBox Component Features
 
@@ -369,7 +351,7 @@ const LineRef = ref(false);
 |-----------------------|-----------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
 | **Default CheckBox**   | A basic checkbox with default styling.                                                              | Use without additional props for a basic checkbox. Example: `<CheckBox />`                    |
 | **Colors**             | Customize the checkbox colors with options.                                                        | Use the `color` prop to customize the checkbox color. Example: `<CheckBox color="bg-blue-500" />` |
-| **Disable**            | Disable interaction to make the checkbox inactive.                                                  | Use the `isDisabled` prop to disable the checkbox. Example: `<CheckBox isDisabled />`          |                                                 
+| **Disable**            | Disable interaction to make the checkbox inactive.                                                  | Use the `isDisabled` prop to disable the checkbox. Example: `<CheckBox isDisabled />`          |
 | **Label**              | Add custom label text for the checkbox.                                                             | Use the default slot to provide custom label text. Example: `<CheckBox>Accept Terms</CheckBox>`  |
 | **Size**               | Adjust the size of the checkbox with `sm`, `md`, `lg`, or `xl` options.                             | Use the `size` prop to change the size. Example: `<CheckBox size="lg" />`                      |
 | **Radius**               | Adjust the radius of the checkbox with `sm`, `md`, `lg`,  `full` or `none` options.                             | Use the `radius` prop to change the size. Example: `<CheckBox radius="lg" />`                      |

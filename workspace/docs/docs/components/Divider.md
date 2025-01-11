@@ -5,9 +5,7 @@ const tabs = [
   { label: 'code', value: 2, content: ''}
 ];
 
-
 </script>
-
 
 ## Divider Component
 
@@ -15,10 +13,9 @@ The `Divider` component is a versatile tool for separating content in both verti
 
 A simple `vertical` divider used in a flex container:  
 
-
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="bordered"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -26,7 +23,7 @@ A simple `vertical` divider used in a flex container:
     <template #content1>
 
 <div class="bg-gray-50 p-6 rounded-lg shadow-inner flex w-full justify-between">
-  <div class="flex-1 rounded-md p-4"> 
+  <div class="flex-1 rounded-md p-4">
     <p class="bg-gray-200 h-6 w-3/4 rounded"></p>
     <p class="bg-gray-200 h-6 w-1/2 rounded"></p>
     <p class="bg-gray-200 h-6 w-full rounded"></p>
@@ -44,7 +41,7 @@ A simple `vertical` divider used in a flex container:
 </div>
 <br/>
 <div class="bg-gray-50 p-6 rounded-lg shadow-inner flex flex-col w-full justify-between">
-  <div class="flex-1 rounded-md p-4"> 
+  <div class="flex-1 rounded-md p-4">
     <p class="bg-gray-200 h-6 w-2/3 rounded"></p>
     <p class="bg-gray-200 h-6 w-3/4 rounded"></p>
     <p class="bg-gray-200 h-6 w-1/2 rounded"></p>
@@ -58,7 +55,6 @@ A simple `vertical` divider used in a flex container:
 </div>
 
 </template>
-
 
   <template #content2>
 
@@ -86,19 +82,17 @@ A simple `vertical` divider used in a flex container:
 </div>
 
 ```
+
   </template>
 </Tab>
-
-
 
 ## Colors
 
 The `Divider` component supports custom colors through the `color`  and `textColor` props.  
 
-
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="bordered"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -113,7 +107,6 @@ The `Divider` component supports custom colors through the `color`  and `textCol
 
 </template>
 
-
   <template #content2>
 
   ```md
@@ -125,22 +118,17 @@ The `Divider` component supports custom colors through the `color`  and `textCol
 
 
 ```
+
   </template>
 </Tab>
-
-
-
-
 
 ## Diameter
 
 The `diameter` prop defines the thickness of the divider:
 
-
-
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="bordered"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -155,7 +143,6 @@ The `diameter` prop defines the thickness of the divider:
 </div>
 </template>
 
-
   <template #content2>
 
   ```md
@@ -168,21 +155,16 @@ The `diameter` prop defines the thickness of the divider:
 </div>
 
 ```
+
   </template>
 </Tab>
-
-
-
-
-
-
 
 ## Position
 
 you can choice the position of text with `position`  props
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="bordered"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -194,7 +176,6 @@ you can choice the position of text with `position`  props
 
 </template>
 
-
   <template #content2>
 
   ```md
@@ -204,19 +185,15 @@ you can choice the position of text with `position`  props
 
 
 ```
+
   </template>
 </Tab>
 
-
-
-
 ## Multi
 
-
-
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="bordered"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -241,7 +218,6 @@ you can choice the position of text with `position`  props
 
 </div>
 </template>
-
 
   <template #content2>
 
@@ -270,9 +246,9 @@ you can choice the position of text with `position`  props
 
 
 ```
+
   </template>
 </Tab>
-
 
 ## Divider Component Features
 
@@ -286,4 +262,3 @@ you can choice the position of text with `position`  props
 | **Text in Divider**      | Display custom text inside the divider.                                                                              | Pass text through the `text` prop (e.g., `text="OR"`) to display text in the middle of the divider.         |
 | **Responsive Layout**    | Divider layout adapts based on direction (horizontal/vertical) and length.                                           | Use `direction` and `length` props to change the layout and spacing depending on the design structure.        |
 | **Position  Text**    | Change teh text in Divider with `position` props                                            | Use `position` props and use `start` and `end`       |
-

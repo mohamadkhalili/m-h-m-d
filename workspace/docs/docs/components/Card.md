@@ -21,7 +21,6 @@ const tabs = [
   >
     <template #content1>
 
-
 <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
 <Card cardClass="bg-white w-40  ">
 <template #title>
@@ -214,7 +213,7 @@ class="bg-white" >
 <Card
   title="Beautiful Sunset"
   description="A breathtaking view of the sunset   "
-  image="https://rukminim2.flixcart.com/image/850/1000/jh80ia80/poster/x/g/a/medium-azohp7308-azohp7308-sunset-nature-full-hd-poster-original-imaf59zjfscwzuy5.jpeg?q=90&crop=false"
+  image="<https://rukminim2.flixcart.com/image/850/1000/jh80ia80/poster/x/g/a/medium-azohp7308-azohp7308-sunset-nature-full-hd-poster-original-imaf59zjfscwzuy5.jpeg?q=90&crop=false>"
   footer=" More from this photographer"
    class="bg-white  "
 >
@@ -293,7 +292,7 @@ View
 <Card
   title="Beautiful Sunset"
   description="A breathtaking view of the sunset   "
-    image="https://rukminim2.flixcart.com/image/850/1000/jh80ia80/poster/x/g/a/medium-azohp7308-azohp7308-sunset-nature-full-hd-poster-original-imaf59zjfscwzuy5.jpeg?q=90&crop=false"
+    image="<https://rukminim2.flixcart.com/image/850/1000/jh80ia80/poster/x/g/a/medium-azohp7308-azohp7308-sunset-nature-full-hd-poster-original-imaf59zjfscwzuy5.jpeg?q=90&crop=false>"
   footer=" More from this photographer"
    class="bg-white  "
    horizontal
@@ -475,7 +474,7 @@ View
   info3="123 km/h"
   info4="18°C"
   variant="weather"
-  weatherImage="https://icon-library.com/images/weather-icon/weather-icon-2.jpg"
+  weatherImage="<https://icon-library.com/images/weather-icon/weather-icon-2.jpg>"
 >
 </Card>
 </div>

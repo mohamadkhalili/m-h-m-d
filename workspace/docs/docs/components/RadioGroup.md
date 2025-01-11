@@ -2,13 +2,14 @@
 
 The `RadioGroup` component allows you to group multiple `Radio` buttons together, ensuring only one button is selected at a time.
 
-### Props:
+### Props
+
 - `label`: The label for the group of radio buttons.
 - `value`: The currently selected value.
 - `isInvalid`: A flag to indicate whether the group is invalid (for error states).
 - `onValueChange`: A callback function when the value changes.
 
-### Usage Example:
+### Usage Example
 
   <div class="flex flex-col gap-3">
     <RadioGroup
@@ -29,5 +30,5 @@ The `RadioGroup` component allows you to group multiple `Radio` buttons together
 import { ref } from 'vue';
 
 const selected = ref<string | null>(null);  
-const isInvalid = ref(false); 
+const isInvalid = ref(false);
 </script>

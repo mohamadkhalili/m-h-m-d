@@ -4,12 +4,10 @@ const tabs = [
   { label: 'Tab 2', value: 2, content: 'Content of tab 2' },
   { label: 'Tab 3', value: 3, content: 'Content of tab 3' },
 
-
 ];
 const tabsView = [
   { label: 'Ui', value: 1, content: '' },
   { label: 'Code', value: 2, content: '' }
-
 
 ];
 
@@ -20,21 +18,13 @@ const tabsVariants = [
 ];
 </script>
 
-
-
-##  Tab
-
-
-
-
-
+## Tab
 
 This example demonstrates horizontally aligned tabs with default styling.
 
-
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabsView" 
+    :tabs="tabsView"
     variant="bordered"
     size="sm"
     activeColor="text-blue-500 "
@@ -44,9 +34,9 @@ This example demonstrates horizontally aligned tabs with default styling.
     <template #content1>
 
 <div class="p-8 rounded-xl shadow-inner flex justify-center items-center">
-  <Tab 
+  <Tab
    class="gap-3 border-[1px] rounded-md w-fit"
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="bordered"
     activeColor="text-blue-500"
   >
@@ -59,9 +49,7 @@ This example demonstrates horizontally aligned tabs with default styling.
   </Tab>
 </div>
 
-
 </template>
-
 
   <template #content2>
 
@@ -88,50 +76,48 @@ const tabs = [
     </template>
   </Tab>
 ```
+
   </template>
 </Tab>
 
-
-
 ## Modify
+
  the colors for active and inactive tabs
 The following examples show how you can customize the background and text colors for active and inactive states.
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabsView" 
+    :tabs="tabsView"
     variant="bordered"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
     <template #content1>
-<div class="grid grid-cols-2 gap-2"> 
+<div class="grid grid-cols-2 gap-2">
 <div class="p-8 rounded-lg   justify-center items-center shadow-inner">
- <Tab :tabs="tabs" 
+ <Tab :tabs="tabs"
     variant="default"
-activeColor="bg-blue-700 text-white" 
+activeColor="bg-blue-700 text-white"
    contentColor="text-blue-600"
-     notActiveColor="text-gray-700"> 
-    </Tab> 
-    </div> 
-    <div class="p-8 rounded-lg shadow-inner  justify-center items-center"> 
-    <Tab :tabs="tabs" 
+     notActiveColor="text-gray-700">
+    </Tab>
+    </div>
+    <div class="p-8 rounded-lg shadow-inner  justify-center items-center">
+    <Tab :tabs="tabs"
    variant="default"
-  activeColor="bg-rose-700 text-white" 
+  activeColor="bg-rose-700 text-white"
    contentColor="text-red-600"
      notActiveColor="text-gray-700" >
-     <template #label="{ tab }"> 
-     <span>{{ tab.label }}</span> 
+     <template #label="{ tab }">
+     <span>{{ tab.label }}</span>
      </template>
-      <template #content="{ tab }"> 
-      <p>{{ tab.content }}</p> 
-      </template> 
+      <template #content="{ tab }">
+      <p>{{ tab.content }}</p>
+      </template>
       </Tab>
        </div>
        </div>
 
-
 </template>
-
 
   <template #content2>
 
@@ -143,18 +129,15 @@ activeColor="bg-blue-700 text-white"
      notActiveColor="text-gray-700"> 
     </Tab> 
 ```
+
   </template>
 </Tab>
 
-
-
 ## Vertical Tabs
 
-
-
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabsView" 
+    :tabs="tabsView"
     variant="bordered"
     size="sm"
     activeColor="text-blue-500  "
@@ -162,10 +145,10 @@ activeColor="bg-blue-700 text-white"
     <template #content1>
 
 <div class="p-6 rounded-lg shadow-inner flex justify-center items-center">
-  <Tab 
-    :tabs="tabsVariants" 
-    activeColor="bg-purple-600 text-white" 
-    color="bg-purple-200" 
+  <Tab
+    :tabs="tabsVariants"
+    activeColor="bg-purple-600 text-white"
+    color="bg-purple-200"
     vertical
    variant="default"
   >
@@ -176,7 +159,6 @@ activeColor="bg-blue-700 text-white"
 </div>
 
 </template>
-
 
   <template #content2>
 
@@ -189,20 +171,15 @@ activeColor="bg-blue-700 text-white"
     vertical      <!-- add this -->
   >
 ```
+
   </template>
 </Tab>
 
-
-
-
-
 ## Variants
 
-
-
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabsView" 
+    :tabs="tabsView"
     variant="bordered"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -218,11 +195,11 @@ activeColor="bg-blue-700 text-white"
 
 <div class="grid grid-cols-2 gap-4">
   <div class="p-4 rounded-lg shadow-inner flex justify-center items-center">
-    <Tab 
+    <Tab
     class="gap-3 border-2  w-fit"
-      :tabs="tabs" 
+      :tabs="tabs"
       variant="bordered"
-       activeColor="text-green-800 bg-transparent border-t-green-600    " 
+       activeColor="text-green-800 bg-transparent border-t-green-600    "
       color=" text-gray-400   bg-transparent  "
     >
       <template #label="{ tab }">
@@ -232,9 +209,9 @@ activeColor="bg-blue-700 text-white"
   </div>
 
   <div class="p-4 rounded-lg shadow-inner flex justify-center items-center">
-    <Tab 
+    <Tab
     class="gap-3 border-2 rounded-xl w-96"
-  :tabs="tabs" 
+  :tabs="tabs"
   variant="underline"
   activeColor="bg-transparent"
   color="bg-transparent"
@@ -245,28 +222,27 @@ activeColor="bg-blue-700 text-white"
 
   </div>
    <div class="p-4 my-10 rounded-lg shadow-inner flex justify-center items-center">
-    <Tab 
+    <Tab
     class="gap-3 border-2  w-fit bg-gray-200"
-      :tabs="tabs" 
+      :tabs="tabs"
      variant="mirror"
-       activeColor=" text-rose-600 bg-gray-200  " 
+       activeColor=" text-rose-600 bg-gray-200  "
       color=" text-gray-800   bg-gray-200 bg-white   "
     >
     </Tab>
   </div>
 
   <div class="p-4 rounded-lg my-10  shadow-inner flex justify-center items-center">
- 
 
-  <Tab 
+  <Tab
   class="gap-3 border-2 rounded-xl min-w-full "
-      :tabs="tabs" 
-      activeColor="bg-gray-200  text-black" 
+      :tabs="tabs"
+      activeColor="bg-gray-200  text-black"
       color=" text-gray-400  bg-white   "
-      variant="shadow" 
+      variant="shadow"
     >
     </Tab>
-    
+
   </div>
   
 </div>
@@ -278,7 +254,6 @@ activeColor="bg-blue-700 text-white"
 <br/>
 
 </template>
-
 
   <template #content2>
 
@@ -292,19 +267,17 @@ activeColor="bg-blue-700 text-white"
   variant="underline"        <!-- You can choice 1 of 4 variants  -->
     >
 ```
+
   </template>
 </Tab>
 
-
 ## Position
+
 Adjust the position of the tabs using the `position` prop. The available options are `top`, `right`, `left`, and `bottom`. Below are examples for each position option:
 
-
-
-
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabsView" 
+    :tabs="tabsView"
     variant="bordered"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -319,9 +292,9 @@ Adjust the position of the tabs using the `position` prop. The available options
 
 <div class="grid grid-cols-2 gap-4">
   <div class="p-4 rounded-lg shadow-inner flex justify-center items-center">
-     <Tab 
-    :tabs="tabs" 
-   activeColor="bg-transparent shadow-rose-400 text-rose-700" 
+     <Tab
+    :tabs="tabs"
+   activeColor="bg-transparent shadow-rose-400 text-rose-700"
     textColor="text-gray-400  bg-transparent"
     variant="bordered"
     position="bottom"
@@ -336,9 +309,9 @@ Adjust the position of the tabs using the `position` prop. The available options
   </div>
 
    <div class="p-4 rounded-lg shadow-inner flex justify-center items-center">
-     <Tab 
-    :tabs="tabs" 
-   activeColor="bg-transparent shadow-sky-400 text-sky-700" 
+     <Tab
+    :tabs="tabs"
+   activeColor="bg-transparent shadow-sky-400 text-sky-700"
     textColor="text-gray-400  bg-transparent "
     variant="bordered"
     position="top"
@@ -351,12 +324,11 @@ Adjust the position of the tabs using the `position` prop. The available options
     </template>
   </Tab>
 
-
   </div>
    <div class="p-4 rounded-lg shadow-inner flex justify-center items-center">
-     <Tab 
-    :tabs="tabs" 
-   activeColor="bg-transparent shadow-violet-400 text-violet-700" 
+     <Tab
+    :tabs="tabs"
+   activeColor="bg-transparent shadow-violet-400 text-violet-700"
     textColor="text-gray-400  bg-transparent"
     variant="bordered"
     position="left"
@@ -373,10 +345,9 @@ Adjust the position of the tabs using the `position` prop. The available options
 
   <div class="p-4 rounded-lg my-10  shadow-inner flex justify-center items-center">
 
-
-   <Tab 
-    :tabs="tabs" 
-    activeColor="bg-transparent  shadow-lime-400 text-lime-700" 
+   <Tab
+    :tabs="tabs"
+    activeColor="bg-transparent  shadow-lime-400 text-lime-700"
     textColor="text-gray-400  bg-transparent"
     variant="bordered"
      position="right"
@@ -389,7 +360,7 @@ Adjust the position of the tabs using the `position` prop. The available options
       <p>{{ tab.content }}</p>
     </template>
   </Tab>
-    
+
   </div>
   
 </div>
@@ -400,7 +371,6 @@ Adjust the position of the tabs using the `position` prop. The available options
 </div>
 
 </template>
-
 
   <template #content2>
 
@@ -430,20 +400,17 @@ const tabs = [
     </template>
   </Tab>
 ```
+
   </template>
 </Tab>
 
-
-
-
-
 ## Disable
+
  you can disable your Tab with `isDisable` option!
 
-
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabsView" 
+    :tabs="tabsView"
     variant="bordered"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -451,19 +418,17 @@ const tabs = [
     <template #content1>
 
  <div class="p-6 rounded-lg shadow-inner flex justify-center items-center">
-  <Tab 
-     :tabs="tabsVariants" 
-      activeTextColor="text-gray-600  " 
-      color="shadow-gray-300 text-teal-500" 
-      variant="bordered" 
-    isDisabled 
+  <Tab
+     :tabs="tabsVariants"
+      activeTextColor="text-gray-600  "
+      color="shadow-gray-300 text-teal-500"
+      variant="bordered"
+    isDisabled
   >
   </Tab>
 </div>
 
-
 </template>
-
 
   <template #content2>
 
@@ -477,24 +442,25 @@ const tabs = [
      isDisabled    <!-- add this -->
   >
 ```
+
   </template>
 </Tab>
 
-
 ## Justify
+
  you can select justify your Tab with `justify` option!
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabsView" 
+    :tabs="tabsView"
     variant="bordered"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
     <template #content1>
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="shadow"
     size="sm"
     justify="start"
@@ -502,9 +468,9 @@ const tabs = [
   >
 </tab>
 <br/>
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="shadow"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -512,9 +478,9 @@ const tabs = [
 </tab>
 <br/>
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="shadow"
     size="sm"
     justify="end"
@@ -522,9 +488,7 @@ const tabs = [
   >
 </tab>
 
-
 </template>
-
 
   <template #content2>
 
@@ -539,67 +503,64 @@ const tabs = [
   >
 </tab>
 ```
+
   </template>
 </Tab>
-
 
 ## Size
 
 Adjust the size of the tabs using the `size` prop. The available options are `sm`, `md`, `lg`, and `xl`. Below are examples for each size option:
 
-
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabsView" 
+    :tabs="tabsView"
     variant="bordered"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
     <template #content1>
 <div class=" rounded-lg shadow-inner grid grid-cols gap-1 ">
-  <Tab 
-     :tabs="tabsVariants" 
+  <Tab
+     :tabs="tabsVariants"
      activeTextColor="text-rose-500"
      activeColor="bg-transparent"
-     textColor="shadow-gray-300 shadow-rose-300" 
+     textColor="shadow-gray-300 shadow-rose-300"
      color="bg-transparent"
      variant="shadow"
-     size="xl" 
+     size="xl"
   >
   </Tab>
-  <Tab 
-     :tabs="tabsVariants" 
+  <Tab
+     :tabs="tabsVariants"
      variant="shadow"
      activeColor="bg-transparent shadow-yellow-500 text-yellow-500 "
      color="shadow-yellow-400"
-     size="lg" 
+     size="lg"
   >
   </Tab>
-  <Tab 
-     :tabs="tabsVariants" 
+  <Tab
+     :tabs="tabsVariants"
      variant="shadow"
      activeColor="bg-transparent "
      color="shadow-blue-400"
-     size="md" 
+     size="md"
   >
   </Tab>
 
 <br/>
 
-  <Tab 
-     :tabs="tabsVariants" 
+  <Tab
+     :tabs="tabsVariants"
      variant="shadow"
      activeColor="bg-transparent shadow-green-500 text-green-700 "
      color="shadow-green-400"
-     size="sm" 
+     size="sm"
   >
   </Tab>
 
 </div>
 
-
 </template>
-
 
   <template #content2>
 
@@ -613,12 +574,9 @@ Adjust the size of the tabs using the `size` prop. The available options are `sm
   >
   </Tab>
 ```
+
   </template>
 </Tab>
-
-
-
-
 
 ## Tab Component Features
 

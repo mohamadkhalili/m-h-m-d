@@ -1,4 +1,5 @@
 # menu
+
 <script setup>
 import { ref } from 'vue'
 const menuValue = ref(false);
@@ -33,6 +34,7 @@ const menuValueSize = ref(false);
 ## Menu with Close on Click Outside
 
 **Props:**
+
 - `closeOutside`: Closes the menu when clicking outside.
 
 **Usage:**
@@ -49,6 +51,7 @@ const menuValueSize = ref(false);
 ```vue
 <Menu v-model="menuValueOutside" :closeOutside="true" >
 ```
+
 ## Menu with Open on Hover
 
 **Props:**
@@ -78,6 +81,7 @@ cleaner>Open menu</button>
 ## Menu with Set Size and border radius and Create Button in Menu
 
 **Props:**
+
 - `menuClass`: Sets custom tailwind classes for the menu.
 
 **Usage:**

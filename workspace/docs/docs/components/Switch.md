@@ -14,9 +14,6 @@ const disable1 = ref(true);
 const disable2 = ref(false);
 const insideActive = ref(false);
 
-
-
-
 const tabs = [
   { label: 'UI', value: 1, content: '' },
   { label: 'Props', value: 2, content: ''}
@@ -24,12 +21,11 @@ const tabs = [
 ];
 </script>
 
-
 ## Switch
 
-<Tab 
+<Tab
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="shadow"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -40,7 +36,6 @@ const tabs = [
 <Switch v-model="isActive" />
 </div>
 </template>
-
 
   <template #content2>
 
@@ -53,20 +48,16 @@ const isActive = ref(false);
 <Switch v-model="isActive" />
 
 ```
-  </template>
 
+  </template>
 
 </Tab>
 
-
-
 ## Label
 
-
-
-<Tab 
+<Tab
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="shadow"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -80,7 +71,6 @@ const isActive = ref(false);
 
 </div>
 </template>
-
 
   <template #content2>
 
@@ -98,23 +88,16 @@ const labelActive3 = ref(false);
 
 
 ```
+
   </template>
 
 </Tab>
 
-
-
-
-
-
 ## Color
 
-
-
-
-<Tab 
+<Tab
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="shadow"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -131,7 +114,6 @@ const labelActive3 = ref(false);
 
 </div>
 </template>
-
 
   <template #content2>
 
@@ -155,20 +137,16 @@ const ColorActive6 = ref(true);
 <Switch v-model="ColorActive6"  activeColor="bg-purple-500" inactiveColor="bg-purple-950" />
 </div>
 ```
+
   </template>
 
 </Tab>
 
-
-
-
-
-
 ## disable
 
-<Tab 
+<Tab
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="shadow"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -197,15 +175,15 @@ const disable2 = ref(false);
 <Switch v-model="disable2" :isDisabled="true" activeColor="bg-cyan-500" inactiveColor="bg-cyan-950"/>
 
 ```
+
 </template>
 </Tab>
 
-
 ## Size
 
-<Tab 
+<Tab
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="shadow"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -238,10 +216,9 @@ const sizeActiveXl = ref(false);
 <Switch v-model="sizeActive" size="xl"/>
 </div>
 ```
+
 </template>
 </Tab>
-
-
 
 ## Switch Component Features
 
