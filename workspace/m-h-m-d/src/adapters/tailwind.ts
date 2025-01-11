@@ -1,8 +1,8 @@
 import { getCurrentInstance } from 'vue';
 
 export function addPrefixToTailwindClasses(classString: string) {
-    const { appContext }: any = getCurrentInstance();
-    const prefix = appContext.config.globalProperties.$config?.classPrefix
+    const instance: any = getCurrentInstance();
+    const prefix = instance?.appContext?.config?.globalProperties?.$config?.classPrefix
     const miniClass = deduplicateTailwindClasses(classString)
     return miniClass.split(' ').map(cls => {
         const parts = cls.split(':');
