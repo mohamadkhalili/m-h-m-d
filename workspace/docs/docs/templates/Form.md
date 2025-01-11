@@ -167,10 +167,13 @@ Card class="max-w-md mx-auto py-8 p-2 px-6 bg-white rounded-lg shadow-md dark:bg
       </Button>
     </form>
     <div class="mt-6 text-center text-sm ">
+<<<<<<< HEAD
+        Don't have an account? 
+=======
       <p>
         Don't have an account?
+>>>>>>> 7142093cecd21d3c5e9cfad1f4ae0e6bd24e2445
         <p  class="font-bold text-yellow-300 hover:cursor-pointer">Sign Up</p>
-      </p>
     </div>
   </Card>
     </div>
