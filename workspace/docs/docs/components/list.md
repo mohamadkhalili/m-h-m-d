@@ -1,4 +1,5 @@
 # list
+
 <script setup lang="ts">
 import { ref } from 'vue'
 const listValue = ref("");
@@ -14,6 +15,7 @@ const custonItems = ref<string[]>(["apple", "benana", "mango", "orange"]);
 **Props:**
 
 - `v-model`: Binds the item state of the list.
+
 <p>item in this list: {{listValue}}</p>
 
 <List v-model="listValue"></List>
@@ -27,6 +29,7 @@ const custonItems = ref<string[]>(["apple", "benana", "mango", "orange"]);
 **Props:**
 
 - `herizontal`: Displays the list items in a horizontal layout.
+
 <p>item in this list: {{listValue2}}</p>
 
 <List v-model="listValue2" herizontal></List>
@@ -40,6 +43,7 @@ const custonItems = ref<string[]>(["apple", "benana", "mango", "orange"]);
 **Props:**
 
 - `tooltip`:  Enables tooltips for list items.
+
 <p>item in this list: {{listValue3}}</p>
 
 <List v-model="listValue3" tooltip></List>
@@ -53,6 +57,7 @@ const custonItems = ref<string[]>(["apple", "benana", "mango", "orange"]);
 **Props:**
 
 - `items`: Provides the list of items to display.
+
 <p>item in this list: {{listValue4}}</p>
 
 <List v-model="listValue4" :items="custonItems"></List>
@@ -70,6 +75,7 @@ const custonItems = ref<string[]>(["apple", "benana", "mango", "orange"]);
 
 - `activeClass`: Custom class applied to the active list item.
 - `onActiveClass`: Custom class applied to non-active list items.
+
 <p>item in this list: {{listValue5}}</p>
 
 <List v-model="listValue5" activeClass="bg-blue-950 hover:bg-blue-900 text-white w-32 h-10" onActiveClass="bg-blue-50 hover:bg-blue-100 w-32 h-10"></List>

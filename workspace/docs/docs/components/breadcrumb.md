@@ -1,4 +1,5 @@
 # Breadcrumb
+
 <script setup lang="ts">
 import { ref } from 'vue'
 const tabs = [
@@ -26,7 +27,7 @@ Improved the explanation for the default breadcrumb and corrected the inconsiste
 
 - `v-model`: Binds the current item value.
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
     :tabs="tabs"
     size="sm"
@@ -57,7 +58,7 @@ Improved the explanation for the default breadcrumb and corrected the inconsiste
 
 Added consistent formatting and improved the explanation for the separator slot.
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
     :tabs="tabs"
     size="sm"
@@ -97,7 +98,7 @@ Clarified the usage of the items prop and enhanced alignment.
 
 - `items`: Accepts an array of breadcrumb items with title and disable properties.
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
     :tabs="tabs"
     size="sm"
@@ -130,6 +131,7 @@ Clarified the usage of the items prop and enhanced alignment.
 <br>
 
 ## Custom Class
+
 The breadcrumb component with custom active, onActive, and disabled classes for enhanced customization.
 
 **Props:**
@@ -138,7 +140,7 @@ The breadcrumb component with custom active, onActive, and disabled classes for 
 - `onActiveClass`: Specifies additional classes applied to active items onActive.
 - `disableClass`: Class applied to disabled breadcrumb items.
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
     :tabs="tabs"
     size="sm"
@@ -172,5 +174,3 @@ disableClass="text-green-400">
 </template>
 </Tab>
 <br>
-
-

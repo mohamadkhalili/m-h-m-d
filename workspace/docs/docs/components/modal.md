@@ -1,4 +1,5 @@
 # modal
+
 <script setup lang="ts">
 import { ref } from 'vue'
 
@@ -7,14 +8,15 @@ const isModalOpen2 = ref(false);
 const isModalOpen3 = ref(false);
 </script>
 
-
 ## Default Modal
 
 **Props:**
+
 - `v-model`: Binds the modal open/close state.
 - `teleport`: Teleports the modal content to the `<body>`.
 
 **Usage:**
+
 - This is the basic modal that opens when the button is clicked.
 
 <button  @click="isModalOpen = true" class="bg-black text-white rounded-lg p-2 mt-1" cleaner>Open Modal</button>
@@ -23,6 +25,7 @@ const isModalOpen3 = ref(false);
 ```vue
 <modal v-model="isModalOpen" teleport="body"/>
 ```
+
 ## Modal Closed on Outside Click
 
 **Props:**
@@ -39,6 +42,7 @@ const isModalOpen3 = ref(false);
 ```vue
 <modal v-model="isModalOpen" teleport="body" closeOnOutside/>
 ```
+
 ## Custom class for Modal and Outside of Modal
 
 **Props:**
@@ -67,15 +71,18 @@ Slots in Vue allow you to customize the content inside a component. In this moda
    - **Purpose**: Allows you to define custom content for the close button of the modal.  
    - **Default Behavior**: If not provided, a default close button with an SVG icon (`mdiClose`) is rendered.  
    - **Usage**:
+
      ```vue
      <template #close>
        <button class="custom-close-button">Close</button>
      </template>
      ```
+
 2. **`#default` Slot**  
    - **Purpose**: Lets you define the main content of the modal.  
    - **Default Behavior**: If not provided, a placeholder paragraph (`This is the modal content`) is displayed.  
    - **Usage**:
+
      ```vue
      <template #default>
        <p>Your custom modal content goes here!</p>

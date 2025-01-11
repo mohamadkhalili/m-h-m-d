@@ -9,19 +9,19 @@ const tabs = [
 
 This section demonstrates how to use the carousel component to display a series of images. A carousel lets users cycle through a collection of items (usually images or content) in a smooth, interactive way.
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-   :tabs="tabs" 
+   :tabs="tabs"
    variant="bordered"
    size="sm"
    activeColor="text-blue-500 shadow-blue-500"
 >
   <template #content1>
     <div class="rounded-lg shadow-inner flex justify-center items-center">
-      <Carousel 
-        :items="['https://flowbite.com/docs/images/examples/image-2@2x.jpg', 
+      <Carousel
+        :items="['https://flowbite.com/docs/images/examples/image-2@2x.jpg',
         'https://flowbite.com/docs/images/examples/image-1@2x.jpg',
-        'https://flowbite.com/docs/images/examples/image-3@2x.jpg']" 
+        'https://flowbite.com/docs/images/examples/image-3@2x.jpg']"
         arrowsClass="text-gray-300"
         variantClass="hidden"
       />
@@ -38,6 +38,7 @@ This section demonstrates how to use the carousel component to display a series 
     arrowsClass="text-gray-300"
     />
 ```
+
   </template>
 </Tab>
 
@@ -45,19 +46,19 @@ This section demonstrates how to use the carousel component to display a series 
 
 The autoplay functionality automatically advances the carousel images without the user needing to click the arrows. This can make for a smoother, more automated experience.
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-   :tabs="tabs" 
+   :tabs="tabs"
    variant="bordered"
    size="sm"
    activeColor="text-blue-500 shadow-blue-500"
 >
   <template #content1>
     <div class="rounded-lg shadow-inner flex justify-center items-center">
-      <Carousel 
-        :items="['https://flowbite.com/docs/images/examples/image-2@2x.jpg', 
+      <Carousel
+        :items="['https://flowbite.com/docs/images/examples/image-2@2x.jpg',
         'https://flowbite.com/docs/images/examples/image-1@2x.jpg',
-        'https://flowbite.com/docs/images/examples/image-3@2x.jpg']" 
+        'https://flowbite.com/docs/images/examples/image-3@2x.jpg']"
         arrowsClass="text-gray-300"
         variantClass="hidden"
         autoPlay
@@ -76,6 +77,7 @@ The autoplay functionality automatically advances the carousel images without th
     autoPlay
     />
 ```
+
   </template>
 </Tab>
 
@@ -83,38 +85,38 @@ The autoplay functionality automatically advances the carousel images without th
 
 In this section, we demonstrate different pagination styles for the carousel: lines, dots, and numbers. This allows users to select a carousel style that fits their needs or design preferences.
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-   :tabs="tabs" 
+   :tabs="tabs"
    variant="bordered"
    size="sm"
    activeColor="text-blue-500 shadow-blue-500"
 >
   <template #content1>
     <div class="rounded-lg shadow-inner flex flex-col gap-2 justify-center items-center">
-      <Carousel 
-        :items="['https://flowbite.com/docs/images/examples/image-2@2x.jpg', 
+      <Carousel
+        :items="['https://flowbite.com/docs/images/examples/image-2@2x.jpg',
         'https://flowbite.com/docs/images/examples/image-1@2x.jpg',
-        'https://flowbite.com/docs/images/examples/image-3@2x.jpg']" 
+        'https://flowbite.com/docs/images/examples/image-3@2x.jpg']"
         arrowsClass="text-gray-300"
         autoPlay
-        variants="lines" 
+        variants="lines"
       />
-      <Carousel 
-        :items="['https://flowbite.com/docs/images/examples/image-2@2x.jpg', 
+      <Carousel
+        :items="['https://flowbite.com/docs/images/examples/image-2@2x.jpg',
         'https://flowbite.com/docs/images/examples/image-1@2x.jpg',
-        'https://flowbite.com/docs/images/examples/image-3@2x.jpg']" 
+        'https://flowbite.com/docs/images/examples/image-3@2x.jpg']"
         arrowsClass="text-gray-300"
         autoPlay
-        variants="dots" 
+        variants="dots"
       />
-      <Carousel 
-        :items="['https://flowbite.com/docs/images/examples/image-2@2x.jpg', 
+      <Carousel
+        :items="['https://flowbite.com/docs/images/examples/image-2@2x.jpg',
         'https://flowbite.com/docs/images/examples/image-1@2x.jpg',
-        'https://flowbite.com/docs/images/examples/image-3@2x.jpg']" 
+        'https://flowbite.com/docs/images/examples/image-3@2x.jpg']"
         arrowsClass="text-gray-300"
         autoPlay
-        variants="number" 
+        variants="number"
         variantClass="text-gray-200"
       />
     </div>
@@ -131,6 +133,7 @@ In this section, we demonstrate different pagination styles for the carousel: li
     variants="lines" <!--you can change it with dots or number-->
     />
 ```
+
   </template>
 </Tab>
 
@@ -138,24 +141,24 @@ In this section, we demonstrate different pagination styles for the carousel: li
 
 This section demonstrates how to create a customized carousel using placeholder images. You can replace these placeholder images with actual content, and style it to fit your design specifications.
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-   :tabs="tabs" 
+   :tabs="tabs"
    variant="bordered"
    size="sm"
    activeColor="text-blue-500 shadow-blue-500"
 >
   <template #content1>
     <div class="rounded-lg shadow-inner flex justify-center items-center">
-      <Carousel 
-        :items="['https://npr.brightspotcdn.com/dims4/default/3117f50/2147483647/strip/true/crop/6016x3705+0+311/resize/880x542!/quality/90/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2Ff1%2F20%2Fa6084dbd440bbe754fd204e14a1d%2F7-15-23-rsp-telescope-2.jpg', 
+      <Carousel
+        :items="['https://npr.brightspotcdn.com/dims4/default/3117f50/2147483647/strip/true/crop/6016x3705+0+311/resize/880x542!/quality/90/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2Ff1%2F20%2Fa6084dbd440bbe754fd204e14a1d%2F7-15-23-rsp-telescope-2.jpg',
         'https://media.q4launch.website/uploads/sites/25/2021/02/Redfish-Shot-3-Heyburn-MW-Core-hero.jpg',
         'https://omdarksky.com/site/wp-content/uploads/2020/05/om6-1-of-1.jpg',
-        'https://thelovat.com/media/x0vivjkb/wil-stewart-t26kcgcpsci-unsplash.jpg?center=0.70544279901057094,0.46146597431783237&mode=crop&quality=60&width=2000&height=1530&rnd=133221445229470000']" 
+        'https://thelovat.com/media/x0vivjkb/wil-stewart-t26kcgcpsci-unsplash.jpg?center=0.70544279901057094,0.46146597431783237&mode=crop&quality=60&width=2000&height=1530&rnd=133221445229470000']"
         arrowsClass="text-gray-400 bg-transparent"
         imageClass="w-full h-[400px]"
         autoPlay
-        variants="number" 
+        variants="number"
         variantClass="text-white"
         class="rounded-xl shadow-inner"
       />
@@ -177,6 +180,7 @@ This section demonstrates how to create a customized carousel using placeholder 
         class="rounded-xl shadow-inner"
     />
 ```
+
   </template>
 </Tab>
 

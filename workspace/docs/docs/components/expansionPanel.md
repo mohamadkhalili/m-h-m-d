@@ -1,4 +1,5 @@
 # Expansion Panel
+
 <script setup lang="ts">
 import { ref } from 'vue'
 const tabs = [
@@ -11,20 +12,21 @@ const text = ref("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
 
 </script>
 
-
 ## Default Expansion Panel
 
 **Props:**
+
 - `title`: The title of the expansion panel, displayed at the top.
 - `text`: The content text that appears when the panel is expanded.
 
 **Usage:**
-- Use the `ExpansionPanel` component to create collapsible sections with smooth transitions. 
+
+- Use the `ExpansionPanel` component to create collapsible sections with smooth transitions.
 - Customize the appearance and behavior using props or slots.
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
@@ -53,17 +55,19 @@ const text = ref("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
 ## Custom Class Expansion Panel
 
 **Props:**
+
 - `activeTitleClass`: Classes applied to the title when the panel is active.
 - `onActiveTitleClass`: Classes applied to the title when the panel is inactive.
 - `activeTextClass`: Classes applied to the text/content when the panel is active.
 - `onActiveTextClass`: Classes applied to the text/content when the panel is inactive.
 
 **Usage:**
+
 - Customize the title and text using the provided active and onactive class props.
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >

@@ -18,9 +18,9 @@ const updateTimer = (time) => {
 
 The Countdown component is a flexible and reusable timer component built with Vue 3 and TypeScript. It supports features like auto-start, time updates, and custom controls.
 
-<Tab 
+<Tab
      class="gap-3 border-[1px] rounded-md w-full mx-auto "
-     :tabs="[ { label: 'Ui', value: 1, content: '' }, { label: 'Props', value: 3, content: '' }]" 
+     :tabs="[ { label: 'Ui', value: 1, content: '' }, { label: 'Props', value: 3, content: '' }]"
      variant="bordered"
      size="sm"
      activeColor="text-blue-500 shadow-blue-500"
@@ -37,6 +37,7 @@ The Countdown component is a flexible and reusable timer component built with Vu
 ```md
 <CountDown :time=110 auto-start class='text-6xl font-thin'/>
 ```
+
 </template>
 
 </Tab>
@@ -48,9 +49,9 @@ You can easily customize the appearance of the Countdown component by using the 
 - `container`: Adjust the main container styling.
 - `countDownClass`: Customize the countdown timer display styles.
 
-<Tab 
+<Tab
      class="gap-3 border-[1px] rounded-md w-full mx-auto "
-     :tabs="[ { label: 'Ui', value: 1, content: '' }, { label: 'Slots', value: 3, content: '' }]" 
+     :tabs="[ { label: 'Ui', value: 1, content: '' }, { label: 'Slots', value: 3, content: '' }]"
      variant="bordered"
      size="sm"
      activeColor="text-blue-500 shadow-blue-500"
@@ -85,14 +86,16 @@ You can easily customize the appearance of the Countdown component by using the 
 </template>
 </CountDown>
 ```
+
 </template>
 
 </Tab>
 
 ## Formats
-<Tab 
+
+<Tab
      class="gap-3 border-[1px] rounded-md w-full mx-auto "
-     :tabs="[ { label: 'Ui', value: 1, content: '' }, { label: 'Props', value: 3, content: '' }]" 
+     :tabs="[ { label: 'Ui', value: 1, content: '' }, { label: 'Props', value: 3, content: '' }]"
      variant="bordered"
      size="sm"
      activeColor="text-blue-500 shadow-blue-500"
@@ -118,25 +121,27 @@ You can easily customize the appearance of the Countdown component by using the 
 <CountDown :time=4400 auto-start class='text-2xl  ' format="default"/>
 <CountDown :time=4400 auto-start class='text-2xl  ' format="hh mm ss"/>
 ```
+
 </template>
 
 </Tab>
 
-## Handle Events 
-<Tab 
+## Handle Events
+
+<Tab
      class="gap-3 border-[1px] rounded-md w-full mx-auto "
-     :tabs="[ { label: 'Ui', value: 1, content: '' }, { label: 'Props', value: 3, content: '' }]" 
+     :tabs="[ { label: 'Ui', value: 1, content: '' }, { label: 'Props', value: 3, content: '' }]"
      variant="bordered"
      size="sm"
      activeColor="text-blue-500 shadow-blue-500"
 >
 
 <template #content1>
- <CountDown 
-            :time="3630" 
-            auto-start 
-            class="text-4xl font-sans text-gray-600" 
-            format="hh hours mm ss" 
+ <CountDown
+            :time="3630"
+            auto-start
+            class="text-4xl font-sans text-gray-600"
+            format="hh hours mm ss"
             @update:time="updateTimer"
         />
         <div class="py-10 gap-4 rounded-lg shadow-inner grid grid-cols-2 justify-items-center">
@@ -166,6 +171,7 @@ You can easily customize the appearance of the Countdown component by using the 
 };
 </script>
 ```
+
 </template>
 
 </Tab>
@@ -180,4 +186,5 @@ You can easily customize the appearance of the Countdown component by using the 
 | **Styling Flexibility**  | Fully customizable styles for the countdown timer and controls.                                        | Use the CSS classes `container` and `display` to adjust the appearance.                       |
 
 This documentation provides a structured and detailed guide to using and customizing the Countdown component effectively.
+
 ```

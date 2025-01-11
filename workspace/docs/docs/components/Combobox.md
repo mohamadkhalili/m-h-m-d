@@ -1,4 +1,5 @@
 # Combo Box
+
 <script setup lang="ts">
 import { ref } from 'vue'
 const tabs = [
@@ -13,27 +14,26 @@ const modelValue4 = ref([]);
 const items = ['first choice', 'second choice', 'thrid choice', 'forth choice', 'fifth choice'];
 </script>
 
-
 ## Default ComboBox
 
 **Props:**
+
 - `v-model`: Binds the selected value of the ComboBox.
 - `items` : An array of items to display in the dropdown list.
 
 **Usage:**
+
 - The ComboBox allows users to select an item from a dropdown list. The v-model binds the selected item, and the items prop populates the dropdown options.
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
 <template #content1>
 <ComboBox v-model="modelValue" :items="items" />
 <p>selected item: {{modelValue}}</p>
-
-
 
 </template>
 
@@ -54,18 +54,19 @@ const items = ['first choice', 'second choice', 'thrid choice', 'forth choice', 
 </template>
 </Tab>
 
-
 ## Multiple ComboBox
 
 **Props:**
+
 - `multiple`: A Boolean to enable multiple selections. When set to true, v-model will bind to an array of selected items.
 
 **Usage:**
+
 - Setting the multiple prop enables multi-selection mode.
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
@@ -93,18 +94,19 @@ const items = ['first choice', 'second choice', 'thrid choice', 'forth choice', 
 </template>
 </Tab>
 
-
 ## Enable Chip ComboBox
 
 **Props:**
+
 - `enableChip`: A Boolean that, when set to true, enables chips to display the selected items.
 
 **Usage:**
+
 - with enableChip, the selected items are shown as chips.
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
@@ -132,10 +134,10 @@ const items = ['first choice', 'second choice', 'thrid choice', 'forth choice', 
 </template>
 </Tab>
 
-
 ## Custom Class ComboBox
 
 **Props:**
+
 - `containerClass`: A custom CSS class for the container Input box.
 - `chipContainerClass`: A custom CSS class for the chip container.
 - `chipClass`:  A custom CSS class for each chip.
@@ -146,11 +148,12 @@ const items = ['first choice', 'second choice', 'thrid choice', 'forth choice', 
 - `dropdownItemActiveClass`: A custom CSS class for the active dropdown item.
 
 **Usage:**
+
 - The custom class props allow you to style various parts of the ComboBox, such as the container, input field, chips, and dropdown items.
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >

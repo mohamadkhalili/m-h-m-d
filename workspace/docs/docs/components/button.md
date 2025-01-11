@@ -5,18 +5,13 @@ const tabs = [
   { label: 'code', value: 2, content: ''}
 ];
 
-
-
 </script>
-
-
-
 
 ## Button
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="bordered"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -28,31 +23,20 @@ const tabs = [
 
 </template>
 
-
   <template #content2>
 
   ```md
   <Button  >button</Button>
 ```
+
   </template>
 </Tab>
 
-
-
-
-
-
-
-
-
-
 ## modify
 
-
-
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="bordered"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -69,7 +53,6 @@ const tabs = [
     <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
   <Button buttonClass=' bg-gradient-to-b from-blue-600 to-sky-900' > border</Button>
 
-
 </div>
      <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
      <Button  buttonClass=' bg-gradient-to-r from-orange-400 to-pink-400' > shadow  </Button>
@@ -80,7 +63,6 @@ const tabs = [
 
 </template>
 
-
   <template #content2>
 
   ```md
@@ -90,12 +72,9 @@ const tabs = [
 <Button  buttonClass=' bg-gradient-to-r from-orange-400 to-pink-400' > shadow  </Button>
 
 ```
+
   </template>
 </Tab>
-
-
-
-
 
 ## Button Component Features
 

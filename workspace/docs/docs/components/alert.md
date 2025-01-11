@@ -1,4 +1,5 @@
 # alert
+
 <script setup lang="ts">
 import { ref } from 'vue'
 const tabs = [
@@ -10,18 +11,19 @@ const alertEnable = ref(true);
 
 </script>
 
-
 ## Default Alert
 
 **Props:**
+
 - `v-model`: Binds the alert open/close state.
 
 **Usage:**
+
 - This is the basic alert that opens when the button is clicked.
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
@@ -52,16 +54,18 @@ const alertEnable = ref(true);
 ## Custom Value Of Alert
 
 **Props:**
-- `icon`: Specifies the icon to be displayed in the alert. 
+
+- `icon`: Specifies the icon to be displayed in the alert.
 - `title`: Defines the title of the alert.
 - `text`: Provides the main text content or message of the alert.
 
 **Usage:**
+
 - The Alert component is a simple and customizable alert box. It binds the open/close state through the v-model directive. For example, the alert will open or close dynamically based on the value of alertEnable. The component also accepts props like icon, title, and text to customize its appearance and content.
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
@@ -93,17 +97,19 @@ title="Warning" text="Invalid email address!"/>
 ## Custom Class Alert
 
 **Props:**
-- `alertClass`: Applies custom styling classes to the main container of the alert. 
-- `iconClass`: Applies custom styling classes to the alert's icon. 
+
+- `alertClass`: Applies custom styling classes to the main container of the alert.
+- `iconClass`: Applies custom styling classes to the alert's icon.
 - `titleClass`: Adds custom styling to the alert's title.
 - `textClass`: Applies custom styling to the alert's text.
 
 **Usage:**
+
 - The Alert component allows customization of its appearance using the alertClass, iconClass, titleClass, and textClass props. This makes it highly flexible for adapting to various design requirements.
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
@@ -112,14 +118,14 @@ title="Warning" text="Invalid email address!"/>
 <Alert v-model="alertEnable" alertClass="bg-amber-500" iconClass="text-white" titleClass="text-white" textClass="text-white" />
 </div>
 <div class="mb-4">
-<Alert v-model="alertEnable" alertClass="bg-green-500" iconClass="text-white" titleClass="text-white" textClass="text-white" 
+<Alert v-model="alertEnable" alertClass="bg-green-500" iconClass="text-white" titleClass="text-white" textClass="text-white"
        icon="mdiCheck" title="Done" text="Your purchase has been confirmed!"/>
 </div>
 <div class="mb-4">
-<Alert v-model="alertEnable" alertClass="bg-red-600" iconClass="text-white" titleClass="text-white" textClass="text-white" 
+<Alert v-model="alertEnable" alertClass="bg-red-600" iconClass="text-white" titleClass="text-white" textClass="text-white"
        icon="mdiCloseCircleOutline" title="Error" text="Task failed successfully."/>
 </div>
-<Alert v-model="alertEnable" alertClass="bg-sky-400" iconClass="text-white" titleClass="text-white" textClass="text-white" 
+<Alert v-model="alertEnable" alertClass="bg-sky-400" iconClass="text-white" titleClass="text-white" textClass="text-white"
        icon="mdiInformationVariantCircleOutline" title="Info" text="New software update available."/>
 </template>
 

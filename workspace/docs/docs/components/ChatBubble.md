@@ -4,8 +4,7 @@ The `ChatBubble` component allows you to display messages in a chat-like interfa
 
 <div class="p-8 rounded-xl shadow-inner flex  items-center">
 
-
-<ChatBubble 
+<ChatBubble
  >
 this is a massage for you !
 </ChatBubble>
@@ -21,14 +20,11 @@ this is a test!
 
 ```
 
-
-
 ## Side
 
 you can select Your Side for Massage with `Side` option
 <div class="p-8 rounded-xl shadow-inner ">
 
-
 <ChatBubble Side="left" color="bg-violet-600  text-white">
 hi there !
 </ChatBubble>
@@ -37,9 +33,7 @@ hi there !
 hello
 </ChatBubble>
 
-
 </div>
-
 
 **Code**
 
@@ -55,39 +49,35 @@ hello
 
 ```
 
-
-
-
-
 ## Sub ChatBubble
+
 <br/>
 
 You can also display timestamps or message status with `leftSubChat` and `rightSubChat`
 <br/>
 
-
 <div class="p-8 rounded-xl shadow-inner ">
 
-
-<ChatBubble 
-  Side="left" 
-  leftSubChat="12:02" 
+<ChatBubble
+  Side="left"
+  leftSubChat="12:02"
   rightSubChat="Delivered"
   color="bg-gray-200 "
  >
   Pretty good as well. Want to grab coffee later?
 </ChatBubble>
 
-<ChatBubble 
-  Side="right" 
-  leftSubChat="12:03" 
-  rightSubChat="Read" 
+<ChatBubble
+  Side="right"
+  leftSubChat="12:03"
+  rightSubChat="Read"
 >
   Sure thing, see you at 4 PM!
 </ChatBubble>
 </div>
 
 **Code**
+
 ```md
 <ChatBubble 
   Side="left" 
@@ -107,35 +97,32 @@ You can also display timestamps or message status with `leftSubChat` and `rightS
 </ChatBubble>
 ```
 
-
-
 ## Header ChatBubble
+
 <br/>
 
 You can also display timestamps or message status with `Header` and `HeaderSub`
 <br/>
 
-
 <div class="p-8 rounded-xl shadow-inner ">
 
-
-<ChatBubble 
-  Side="left" 
-  leftSubChat="10:42" 
+<ChatBubble
+  Side="left"
+  leftSubChat="10:42"
   rightSubChat="Delivered"
   color="bg-green-300 "
-   Header="Sara" 
+   Header="Sara"
   HeaderSub="sister"
  >
   this is preview with Header and headerSub
 </ChatBubble>
 
-<ChatBubble 
-  Side="right" 
-  leftSubChat="11:13" 
-  rightSubChat="sent" 
+<ChatBubble
+  Side="right"
+  leftSubChat="11:13"
+  rightSubChat="sent"
   color="bg-rose-300 "
-   Header="Ali" 
+   Header="Ali"
   HeaderSub="friend"
 >
   this is preview with Header and headerSub
@@ -143,6 +130,7 @@ You can also display timestamps or message status with `Header` and `HeaderSub`
 </div>
 
 **Code**
+
 ```md
 <ChatBubble 
   Side="left" 
@@ -167,28 +155,27 @@ You can also display timestamps or message status with `Header` and `HeaderSub`
 </ChatBubble>
 ```
 
-
 ## Colorizing
 
 You can change your subColor  with `subColor` option!
 <div class="p-8 rounded-xl shadow-inner ">
-<ChatBubble 
-  Side="left" 
-  leftSubChat="10:42" 
+<ChatBubble
+  Side="left"
+  leftSubChat="10:42"
   rightSubChat="Delivered"
   color="bg-gray-300  "
-   Header="Sara" 
+   Header="Sara"
   HeaderSub="sister"
   subColor="text-rose-600"
  >
   this is subColor with red theme !
 </ChatBubble>
 
-<ChatBubble 
-  Side="right" 
-  leftSubChat="11:13" 
-  rightSubChat="sent" 
-   Header="Ali" 
+<ChatBubble
+  Side="right"
+  leftSubChat="11:13"
+  rightSubChat="sent"
+   Header="Ali"
   HeaderSub="friend"
   color="bg-gray-800 text-white"
   subColor="text-yellow-600"
@@ -198,6 +185,7 @@ You can change your subColor  with `subColor` option!
 </div>
 
 **Code**
+
 ```md
 <ChatBubble 
   Side="left" 
@@ -218,24 +206,24 @@ For a more personalized chat experience, you can include an `Avatar` for each us
 
 <div class="w-full shadow-inner">
 
-<ChatBubble 
-  Side="left" 
+<ChatBubble
+  Side="left"
   Avatar="https://avatar.iran.liara.run/public/91"
-  leftSubChat="22:12" 
+  leftSubChat="22:12"
   rightSubChat="Delivered"
-  Header="Sara" 
+  Header="Sara"
   color="bg-yellow-400"
   HeaderSub="client">
   i have some issue
 </ChatBubble>
 
-<ChatBubble 
-  Side="right" 
-  leftSubChat="22:17" 
+<ChatBubble
+  Side="right"
+  leftSubChat="22:17"
   Avatar="https://avatar.iran.liara.run/public/28"
-  rightSubChat="Read" 
+  rightSubChat="Read"
   color="bg-gray-500 text-white"
-  Header="John" 
+  Header="John"
   HeaderSub="Admin">
   lets Fix that together
   
@@ -244,6 +232,7 @@ For a more personalized chat experience, you can include an `Avatar` for each us
 </div>
 
 **Code**
+
 ```md
 <ChatBubble 
   Side="left" 
@@ -271,32 +260,32 @@ For a more personalized chat experience, you can include an `Avatar` for each us
 ```
 
 ## Typing
+
  You can use `typing` when you need  <br/>
+
 - this option ignore  your text  and Sub ChatBubble
+
 <div class="w-full shadow-inner">
 
-<ChatBubble 
-  Side="right" 
-  Avatar="https://avatar.iran.liara.run/public/91"
-  leftSubChat="14:12" 
+<ChatBubble
+  Side="right"
+  Avatar="<https://avatar.iran.liara.run/public/91>"
+  leftSubChat="14:12"
   rightSubChat="Delivered"
-  Header="Sara" 
+  Header="Sara"
   color="bg-purple-600 text-white"
   >
   where are you from ?
 </ChatBubble>
 
-
-
-
-<ChatBubble 
-  Side="left" 
-  leftSubChat="22:17" 
-  Avatar="https://avatar.iran.liara.run/public/28"
-  rightSubChat="Read" 
+<ChatBubble
+  Side="left"
+  leftSubChat="22:17"
+  Avatar="<https://avatar.iran.liara.run/public/28>"
+  rightSubChat="Read"
   color="bg-green-400 text-white"
   typing
-  Header="John" 
+  Header="John"
   >
   lets Fix that together
   
@@ -305,6 +294,7 @@ For a more personalized chat experience, you can include an `Avatar` for each us
 </div>
 
 **Code**
+
 ```md
 <ChatBubble 
   Side="left" 
@@ -320,8 +310,8 @@ For a more personalized chat experience, you can include an `Avatar` for each us
 </ChatBubble>
 ```
 
+## Customize
 
-## Customize 
 you can use another component like button in Chat Bubble   !
 <div class="w-full shadow-inner">
 <ChatBubble
@@ -329,7 +319,7 @@ you can use another component like button in Chat Bubble   !
 leftSubChat="Sent ✓✓"
 Avatar="https://avatar.iran.liara.run/public/20"
 >
-Download this file 
+Download this file
 <Button
  class="inline"
   round="lg"
@@ -343,7 +333,7 @@ File.pdf ↓
  <ChatBubble Header="engineer" Side="right" leftSubChat="Sending  82% " color="bg-green-600 text-white"   class="p-0 m-0" Avatar="https://avatar.iran.liara.run/public/21">
  Checkout
 <Button class="inline " round="lg" variant="faded" size="sm" >
-File.pdf ↓ 
+File.pdf ↓
 </Button>
 
  </ChatBubble>
@@ -394,7 +384,7 @@ color="bg-gray-500 text-white"
 Avatar="https://avatar.iran.liara.run/public/90"
  :Images="['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4Agomr1rNCyqrpB2Co_D9I1mJHLFmiAKo1A&s', 'https://media.foodpress.ir/d/2024/02/14/4/36560.jpg?ts=1707903454000', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXG28Cj6UWHoyg7-TdZdv9DUmHwNIZo7c1Sw&s','https://salamdonya.com/assets/images/66/66872rxfb.jpg','https://avatar.iran.liara.run/public/26', 'https://avatar.iran.liara.run/public/27']"
 >
-checkout this pictures 
+checkout this pictures
  </ChatBubble>
 </div>
 

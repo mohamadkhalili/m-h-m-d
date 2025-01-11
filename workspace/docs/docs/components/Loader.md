@@ -1,6 +1,5 @@
 <script setup>
 
-
 const tabs = [
   { label: 'UI', value: 1, content: '' },
   { label: 'Props', value: 2, content: ''}
@@ -8,15 +7,12 @@ const tabs = [
 ]
 </script>
 
-
-
-
 # Loader
 
 Loader express an unspecified wait time or display the length of a process.
-<Tab 
+<Tab
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="shadow"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -30,7 +26,6 @@ Loader express an unspecified wait time or display the length of a process.
 </div>
 </template>
 
-
   <template #content2>
 
   ```md
@@ -38,22 +33,23 @@ Loader express an unspecified wait time or display the length of a process.
 <Loader />
 
 ```
+
   </template>
 
 </Tab>
 
 </br>
 
-
 ## Size
+
 </br>
 
 you can select your size with `size` property
 </br>
 
-<Tab 
+<Tab
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="shadow"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -62,21 +58,13 @@ you can select your size with `size` property
 
 <div class="grid grid-cols-4 gap-3 justify-items-center">
 
-
 <Loader color="default" size="xl" />
 <Loader color="default" size="lg" />
 <Loader color="default" size="md" />
 <Loader color="default" size="sm" />
 
-
-
-
-
-
-
 </div>
 </template>
-
 
   <template #content2>
 
@@ -89,18 +77,18 @@ you can select your size with `size` property
 
 
 ```
+
   </template>
 
 </Tab>
 
 ## Variants
 
-
 another variant for loader in MHMD library !
 
-<Tab 
+<Tab
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="shadow"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -113,41 +101,39 @@ another variant for loader in MHMD library !
 </div>
 </template>
 
-
   <template #content2>
 
   ```md
 <Loader variant="spinner" />
 <Loader variant="circle" />
 ```
+
   </template>
 
 </Tab>
-
-
 
 ## Colors
 
 we have 7 Main color for Loader  you can see in below with `color` property!
 
-- primary   
+- primary
 - warning
- - dark 
-  - default
-- secondary 
+- dark
+- default
+- secondary
 - error  
 - light
-<Tab 
+<Tab
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="shadow"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
+>
 <template #content1>
 
 <div class="grid grid-cols-7 gap-3 justify-items-center">
-
 
 <Loader color="default" />
 <Loader color="secondary"/>
@@ -157,12 +143,8 @@ we have 7 Main color for Loader  you can see in below with `color` property!
 <Loader color="dark"/>
 <Loader color="light"/>
 
-
-
-
 </div>
 </template>
-
 
   <template #content2>
 
@@ -179,18 +161,18 @@ we have 7 Main color for Loader  you can see in below with `color` property!
 
 
 ```
+
   </template>
 
 </Tab>
 
+## customize
 
-## customize 
+you can mix `spinner` and `circle` variants with colors  and use it
 
-you can mix `spinner` and `circle` variants with colors  and use it 
-
-<Tab 
+<Tab
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="shadow"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -205,7 +187,6 @@ you can mix `spinner` and `circle` variants with colors  and use it
 </div>
 </template>
 
-
   <template #content2>
 
   ```md
@@ -214,10 +195,10 @@ you can mix `spinner` and `circle` variants with colors  and use it
 <Loader variant="spinner"  color="warning"/>
 <Loader variant="spinner"  color="secondary"/>
 ```
+
   </template>
 
 </Tab>
-
 
 ## Loader Component Features
 
@@ -228,4 +209,3 @@ you can mix `spinner` and `circle` variants with colors  and use it
 | **Variants**            | Different types of loader animations: spinner, circle, or dots.                                                   | Set the `variant` prop to `spinner`, `circle`, or `dots`.                                   |
 | **Colors**              | Customize the color of the loader.                                                                                 | Set the `color` prop to one of `primary`, `warning`, `dark`, `default`, `secondary`, `error`, or `light`. |
 | **Customize Variants**  | Mix different variants with colors for more customization.                                                        | Combine `variant` and `color` props for customized loaders.                                 |
-

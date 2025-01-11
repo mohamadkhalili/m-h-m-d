@@ -18,10 +18,9 @@ The `Skeleton` component is used to display a placeholder preview of your conten
 
 ## Usage
 
-
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto"
-    :tabs="tabs" 
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
 >
@@ -52,14 +51,16 @@ The `Skeleton` component is used to display a placeholder preview of your conten
 </Card>
 
 ```
+
   </template>
 
 </Tab>
 
 ## Handle Event
-<Tab 
+
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto"
-    :tabs="tabs" 
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
 >
@@ -109,16 +110,16 @@ const loadImage = (e) => {
     </Card>
 
 ```
+
   </template>
 
 </Tab>
 
 ## Chat example
 
-
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto"
-    :tabs="tabs" 
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
 >
@@ -196,16 +197,16 @@ const loadImage = (e) => {
 
 </div>
 ```
+
   </template>
 
 </Tab>
 
 ## Post example
 
-
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto"
-    :tabs="tabs" 
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
 >
@@ -227,7 +228,6 @@ const loadImage = (e) => {
     </div>
 </div>
 
-
 </template>
 
 <template #content2>
@@ -241,10 +241,10 @@ const loadImage = (e) => {
         <Skeleton width='250px' height='140px' class="rounded  col-span-2" />
     </div>
 ```
+
   </template>
 
 </Tab>
-
 
 ## Props
 

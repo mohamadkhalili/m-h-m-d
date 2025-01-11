@@ -1,4 +1,5 @@
 # footer
+
 <script setup lang="ts">
 import { ref } from 'vue'
 import SvgIcon from '@jamescoyle/vue-icon';
@@ -16,12 +17,11 @@ const icons = [
 const footerEnable = ref(true);
 </script>
 
-
 ## Example Footer
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
@@ -56,12 +56,11 @@ const footerEnable = ref(true);
 </template>
 </Tab>
 
-
 ## Example Footer 2
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
