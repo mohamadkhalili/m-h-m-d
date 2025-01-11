@@ -4,7 +4,6 @@ Common colors, like TailwindCSS colors, remain consistent regardless of the them
 
 ## White and black
 
-
 <div class="flex flex-row w-full items-center text-center gap-4 flex-wrap  ">
 <Card class="w-20  text-black font-sm h-20 bg-slate-50" >50</Card>
 <Card class="w-20  text-black font-sm h-20 bg-slate-100" >100 </Card>
@@ -34,7 +33,6 @@ Common colors, like TailwindCSS colors, remain consistent regardless of the them
 <Card class="w-20  text-white font-sm h-20 bg-gray-900" >900 </Card>
 <Card class="w-20  text-white font-sm h-20 bg-gray-950" >950 </Card>
 </div>
-
 
 ## Brown
 
@@ -83,7 +81,6 @@ Common colors, like TailwindCSS colors, remain consistent regardless of the them
 <Card class="w-20  text-white font-sm h-20 bg-amber-900" >900 </Card>
 <Card class="w-20  text-white font-sm h-20 bg-amber-950" >950 </Card>
 </div>
-
 
 ## Orange
 
@@ -165,9 +162,6 @@ Common colors, like TailwindCSS colors, remain consistent regardless of the them
 <Card class="w-20  text-white font-sm h-20 bg-fuchsia-950" >950 </Card>
 </div>
 
-
-
-
 ## Purple
 
 <div class="flex flex-row w-full items-center text-center gap-4 flex-wrap  ">
@@ -199,7 +193,6 @@ Common colors, like TailwindCSS colors, remain consistent regardless of the them
 <Card class="w-20  text-white font-sm h-20 bg-violet-900" >900 </Card>
 <Card class="w-20  text-white font-sm h-20 bg-violet-950" >950 </Card>
 </div>
-
 
 ## Indigo
 

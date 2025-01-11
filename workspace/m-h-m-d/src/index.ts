@@ -50,21 +50,21 @@ const components = [
     { name: 'Stepper', ...stepper },
     { name: 'Loader', ...Loader },
     { name: 'Breadcrumb', ...Breadcrumb },
-    { name: 'ProgressLinear', ...progressLinear},
-    { name: 'RangeSlider', ...RangeSlider},
-    { name: 'RadioGroup', ...RadioGroup},
-    { name: 'InputFile', ...InputFile},
-    { name: 'Alert', ...alert},
-    { name: 'Radio', ...Radio},
-    { name: 'CountDown', ...CountDown},
-    { name: 'ProgressCircular', ...progressCircular},
-    { name: 'DatePicker', ...datePicker},
-    { name: 'Skeleton', ...Skeleton},
-    { name: 'Carousel', ...Carousel},
-    { name: 'DateRange', ...dateRange},
-    { name: 'ComboBox', ...combobox},
-    { name: 'Drawer', ...Drawer},
-    { name: 'ExpansionPanel', ...expansionPanel},
+    { name: 'ProgressLinear', ...progressLinear },
+    { name: 'RangeSlider', ...RangeSlider },
+    { name: 'RadioGroup', ...RadioGroup },
+    { name: 'InputFile', ...InputFile },
+    { name: 'Alert', ...alert },
+    { name: 'Radio', ...Radio },
+    { name: 'CountDown', ...CountDown },
+    { name: 'ProgressCircular', ...progressCircular },
+    { name: 'DatePicker', ...datePicker },
+    { name: 'Skeleton', ...Skeleton },
+    { name: 'Carousel', ...Carousel },
+    { name: 'DateRange', ...dateRange },
+    { name: 'ComboBox', ...combobox },
+    { name: 'Drawer', ...Drawer },
+    { name: 'ExpansionPanel', ...expansionPanel },
 
 
 
@@ -81,7 +81,17 @@ interface Config {
 }
 
 const install = (app: App, config: Config = {}) => {
+    let counterComponent = 0
+
     app.config.globalProperties.$config = config;
+    app.mixin({
+        created() {
+            const newId = counterComponent++
+
+            this.MHMD_UName = this.$options.name + '-' + newId
+
+        }
+    })
     components.forEach(component => {
         app.component(config?.componentPrefix + component.name, component);
     });
@@ -91,9 +101,11 @@ const install = (app: App, config: Config = {}) => {
 }
 
 
-export { pagination, modal, Button, input, menu, tab, list, ChatBubble, Divider, stepper, Card, Switch, CheckBox, 
-         Breadcrumb, Loader, progressLinear, RangeSlider, alert,InputFile ,RadioGroup,Radio ,CountDown,progressCircular,
-         datePicker, Skeleton, Carousel, dateRange, Drawer, combobox, expansionPanel}
+export {
+    pagination, modal, Button, input, menu, tab, list, ChatBubble, Divider, stepper, Card, Switch, CheckBox,
+    Breadcrumb, Loader, progressLinear, RangeSlider, alert, InputFile, RadioGroup, Radio, CountDown, progressCircular,
+    datePicker, Skeleton, Carousel, dateRange, Drawer, combobox, expansionPanel
+}
 
 export { tooltip }
 

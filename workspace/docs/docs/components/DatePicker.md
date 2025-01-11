@@ -1,4 +1,5 @@
 # Date Picker
+
 <script setup lang="ts">
 import { ref } from 'vue'
 const tabs = [
@@ -14,14 +15,16 @@ const modelValue3 = ref();
 ## Default Date Picker
 
 **Props:**
+
 - `v-model`: Binds the selected date value.
 
 **Usage:**
+
 - This is a basic date picker that updates the displayed date when a selection is made.
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
@@ -52,14 +55,16 @@ const modelValue3 = ref();
 ## Date Picker - Gregorian Mode
 
 **Props:**
+
 - `persianMode`: A Boolean prop. Set to `false` to enable Gregorian mode.
 
 **Usage:**
+
 - This is a `DatePicker` configured to work in Gregorian mode. Selected dates will follow the Gregorian calendar format.
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
@@ -86,10 +91,10 @@ const modelValue3 = ref();
 </template>
 </Tab>
 
-
 ## Date Picker - Custom Class
 
 **Props:**
+
 - `buttonSelectClass`: Custom class for the button.
 - `selectYearClass`: Custom class for the year selector.
 - `activeYearClass`: Custom class for the active year.
@@ -104,13 +109,13 @@ const modelValue3 = ref();
 - `nowDayClass`: Custom class for the current day.
 - `onActiveDayClass`: Custom class for hover/active state on the day.
 
-
 **Usage:**
+
 - Use these props to customize the styling of the `DatePicker` component, such as the appearance of year and month selectors or the active state of days.
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >

@@ -1,4 +1,5 @@
 # stepper
+
 <script setup>
 import { ref } from 'vue'
 const steps =  ref([
@@ -28,9 +29,9 @@ The default stepper component with `prev` and `next` buttons.
 
 - `v-model`: Binds the current step value.
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
@@ -70,7 +71,6 @@ class="w-28 bg-black text-white rounded-lg p-2 mt-1 ml-36" cleaner>next</button>
 </template>
 </Tab>
 
-
 ## Stepper with Step Click Enabled
 
 A stepper that allows users to click on any step to navigate directly to it.
@@ -79,7 +79,7 @@ A stepper that allows users to click on any step to navigate directly to it.
 
 - `allowStepClick`: Enables clicking on steps for direct navigation.
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
     :tabs="tabs"
     size="sm"
@@ -109,6 +109,7 @@ A stepper that allows users to click on any step to navigate directly to it.
 ```vue
 <Stepper v-model="stepperValue" allowStepClick></Stepper>
 ```
+
 </template>
 </Tab>
 
@@ -122,7 +123,7 @@ A stepper configured with a defined list of custom steps, each with labels and i
 - `label`: The step's label (string).
 - `icon`: The step's icon (string, optional).
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
     :tabs="tabs"
     size="sm"
@@ -162,9 +163,9 @@ const steps =  ref([
 
 <Stepper v-model="stepperValue" :steps="steps"></Stepper>
 ```
+
 </template>
 </Tab>
-
 
 ## Custom Class Stepper
 
@@ -177,7 +178,7 @@ A stepper with fully customized styles for progress, progress bar, done, and not
 - `doneClass`: Custom CSS classes for completed steps.
 - `notDoneClass`: Custom CSS classes for incomplete steps.
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
     :tabs="tabs"
     size="sm"

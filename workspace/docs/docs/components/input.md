@@ -1,11 +1,9 @@
 <script setup>
 
-
 const tabs = [
   { label: 'demo', value: 1, content: '' },
   { label: 'slots', value: 2, content: ''},
   { label: 'Props', value: 3, content: ''}
-
 
 ]
 
@@ -14,19 +12,17 @@ import { ref } from 'vue';
 const buttonState = ref(false);
 
 const toggleValue = () => {
-  buttonState.value = !buttonState.value; 
+  buttonState.value = !buttonState.value;
 };
 </script>
 
-
-## Input 
+## Input
 
 The Input component provides a customizable input field that supports various use cases, such as text input, search fields, and forms with labels, prefixes, and suffixes. You can easily customize its appearance using different properties and slots.
 
-
-<Tab 
+<Tab
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="bordered"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -39,7 +35,6 @@ The Input component provides a customizable input field that supports various us
 <Input label="name"/>
 <p>{{modelValue}}</p>
 </div
-
 
 </div>
 
@@ -57,6 +52,7 @@ name
 
 
 ```
+
   </template>
     <template #content3>
 
@@ -66,11 +62,10 @@ name
 
 
 ```
+
   </template>
 
 </Tab>
-
-
 
 ## Modify the Styles
 
@@ -80,9 +75,9 @@ You can customize the appearance of the input component by modifying the followi
 - `LabelInputClass`: Modifies the styles of the input's label.
 - `prefix` and `suffix`: Add any text or icon content as prefixes or suffixes.
 
-<Tab 
+<Tab
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="bordered"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -96,9 +91,7 @@ You can customize the appearance of the input component by modifying the followi
 <Input prefix="👤"   placeholder="password" InputClass="shadow-blue-200 shadow-inner ring-0 ring-transparent"  />
 <Input  label="User name" InputClass="shadow-[1px_4px_2px_-2px_rgba(34,_197,_94,_0.5)] ring-0" LabelInputClass=' -top-[-56px] left-[33px] rounded-full  bg-transparent text-green-600' />
 
-
 <Input label="Gmail"  LabelInputClass=' top-[-13px] left-8 rounded-full bg-white  px-2  text-sm '  />
-
 
 </div>
 
@@ -122,6 +115,7 @@ You can customize the appearance of the input component by modifying the followi
   </input>
 
 ```
+
   </template>
     <template #content3>
 
@@ -134,11 +128,10 @@ You can customize the appearance of the input component by modifying the followi
 
 
 ```
+
   </template>
 
 </Tab>
-
-
 
 ## Actions
 
@@ -146,9 +139,9 @@ You can customize the appearance of the input component by modifying the followi
 
 <br/>
 
-<Tab 
+<Tab
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="bordered"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -176,7 +169,7 @@ You can customize the appearance of the input component by modifying the followi
 </Input>
 
  <p class="text-sm">
-      The button state is: 
+      The button state is:
       <span :class="[buttonState ? 'text-green-600' : 'text-red-700']">
         {{ buttonState }}
       </span>
@@ -224,6 +217,7 @@ const toggleValue = () => {
     </p>
 
 ```
+
   </template>
     <template #content3>
 
@@ -232,10 +226,10 @@ const toggleValue = () => {
 <Input label="name" suffix="X" />
 
 ```
+
   </template>
 
 </Tab>
-
 
 ## Input Component Features
 

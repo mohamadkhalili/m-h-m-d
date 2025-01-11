@@ -10,11 +10,12 @@ const footerEnable = ref(true);
 </script>
 
 ## Usage
+
 - This is the basic Navbar that opens when the button is clicked.
 
-<Tab 
+<Tab
      class="gap-3 border-[1px] rounded-md w-full mx-auto"
-    :tabs="tabs" 
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
@@ -65,23 +66,24 @@ const footerEnable = ref(true);
 </template>
   </Card>
 ```
+
 </template>
 
 <template #content3>
+
 ```md
 ```
+
 </template>
 </Tab>
 
-<Tab 
+<Tab
      class="gap-3 border-[1px] rounded-md w-full mx-auto"
-    :tabs="tabs" 
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
 <template #content1>
-
-
 
 <Card class="bg-white  border-gray-200 dark:bg-gray-900 shadow-none">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -145,11 +147,13 @@ const footerEnable = ref(true);
   </div>
 </Card>
 ```
+
 </template>
 
 <template #content3>
+
 ```md
 ```
+
 </template>
 </Tab>
-

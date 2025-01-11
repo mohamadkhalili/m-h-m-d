@@ -1,4 +1,5 @@
 # Progress Circular
+
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
 const tabs = [
@@ -26,7 +27,7 @@ let isPaused2 = false;
 let isPaused3 = false;
 const startLoopingProgress3 = () => {
   loopingInterval3 = setInterval(() => {
-    if (isPaused3) return; 
+    if (isPaused3) return;
     progressValue3.value += 1;
     if (progressValue3.value == 10) {
       isPaused3 = true;
@@ -89,12 +90,12 @@ const startLoopingProgress3 = () => {
         isPaused3 = false;
       }, 1000);
     }
-    
+
   }, 15);
 };
 const startLoopingProgress4 = () => {
   loopingInterval = setInterval(() => {
-    if (isPaused) return; 
+    if (isPaused) return;
     progressValue4.value += 1;
     if (progressValue4.value == 33) {
       isPaused = true;
@@ -115,12 +116,12 @@ const startLoopingProgress4 = () => {
         isPaused = false;
       }, 1000);
     }
-    
+
   }, 15);
 };
 const startLoopingProgress5 = () => {
   loopingInterval2 = setInterval(() => {
-    if (isPaused2) return; 
+    if (isPaused2) return;
     progressValue5.value += 1;
     if (progressValue5.value == 100) {
       isPaused2 = true;
@@ -129,7 +130,7 @@ const startLoopingProgress5 = () => {
         isPaused2 = false;
       }, 1000);
     }
-    
+
   }, 25);
 };
 onMounted(() => {
@@ -145,20 +146,22 @@ onUnmounted(() => {
 });
 </script>
 
-
 ## Default Progress
 
 **Props:**
+
 - `v-model`: Binds the progress value.
 
 **Usage:**
+
 - This is the basic progress bar that adjusts its value dynamically when v-model is updated.
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
+>
 <template #content1>
 <div class="flex justify-center item-center">
 <ProgressCircular v-model="progressValue"/>
@@ -186,16 +189,19 @@ onUnmounted(() => {
 ## Progress With Show Number Fill
 
 **Props:**
+
 - `showNumberFill`: Determines whether the progress value is displayed as a percentage inside the circular progress bar. Accepts a boolean value (true to display the value, false to hide it).
 
 **Usage:**
+
 - This is a dynamic circular progress bar. The progress value can be updated dynamically using v-model, and the current progress percentage is displayed inside the bar when showNumberFill is set to true.
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
+>
 <template #content1>
 <div class="flex justify-center item-center">
 <ProgressCircular v-model="progressValue2" showNumberFill="true"/>
@@ -223,16 +229,19 @@ onUnmounted(() => {
 ## Progress With Rotate
 
 **Props:**
+
 - `rotate`: Determines the starting position of the circular progress bar. Accepts a degree value (0, 90, 180, 270, etc.) to set the starting angle of the progress.
 
 **Usage:**
+
 - This is a dynamic circular progress bar that adjusts its value using v-model. The rotate prop allows you to customize the starting point of the progress arc. Combined with showNumberFill, the progress percentage can also be displayed inside the bar.
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
+>
 <template #content1>
 <div class="flex items-center justify-center space-x-4">
 <ProgressCircular v-model="progressValue3" showNumberFill="true"/>
@@ -267,11 +276,11 @@ rotate="270" showNumberFill="true"/>
 </template>
 </Tab>
 
-## Example For Installing Progress 
+## Example For Installing Progress
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabsInstalling" 
+    :tabs="tabsInstalling"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
@@ -354,23 +363,25 @@ onUnmounted(() => {
 </template>
 </Tab>
 
-
 ## Progress With Custom Class
 
 **Props:**
+
 - `progressClass`: Allows you to apply custom classes to the outer progress bar container for styling (e.g., size, positioning, and general layout).
 - `progressFillClass`: Customizes the filled portion of the progress bar, enabling color and animation effects.
 - `progressContainerClass` : Adds custom classes to the container that wraps the entire progress bar, allowing you to define overall styling.
 - `numberFillClass` : Customizes the appearance of the percentage text displayed inside the progress bar (e.g., font size, color, and alignment).
 
 **Usage:**
+
 - This example demonstrates how to customize the circular or linear progress bar, including the progress container, the filled portion, and the percentage text, by applying Tailwind classes. The numberFillClass prop allows for precise styling of the percentage text inside the progress bar.
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
     :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
+>
 <template  #content1>
 <button :disabled="progressValue6 === 0"  @click="progressValue6 >= 10 ? progressValue6 = progressValue6 - 10 : progressValue6 = 0" class="mb-10 size-10 bg-black text-white rounded-lg p-2 mt-1 mr-40" cleaner>-</button>
 <button :disabled="progressValue6 === 100" @click="progressValue6 <= 90 ? progressValue6 = progressValue6 + 10 : progressValue6 = 100" class="mb-10 size-10 bg-black text-white rounded-lg p-2 mt-1 ml-[390px]" cleaner>+</button>

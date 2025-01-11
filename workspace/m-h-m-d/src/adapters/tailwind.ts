@@ -1,8 +1,8 @@
 import { getCurrentInstance } from 'vue';
 
 export function addPrefixToTailwindClasses(classString: string) {
-    const { appContext }: any = getCurrentInstance();
-    const prefix = appContext.config.globalProperties.$config?.classPrefix
+    const instance: any = getCurrentInstance();
+    const prefix = instance?.appContext?.config?.globalProperties?.$config?.classPrefix
     const miniClass = deduplicateTailwindClasses(classString)
     return miniClass.split(' ').map(cls => {
         const parts = cls.split(':');
@@ -26,7 +26,7 @@ const classMappings: ClassMapping[] = [
     // Size
     { regex: /^size$/, properties: ['width', 'height'] },
     // Text Color
-    { regex: /^text-(red|green|blue|yellow|purple|pink|indigo|gray|neutral|stone|amber|lime|emerald|teal|cyan|sky|violet|fuchsia|rose|white|black)-\d{3}$/, properties: ['textColor'] },
+    { regex: /^text-(red|green|blue|yellow|purple|pink|indigo|gray|slate|neutral|stone|amber|lime|emerald|teal|cyan|sky|violet|fuchsia|rose|white|black)-\d{3}$/, properties: ['textColor'] },
     // Text Size
     { regex: /^text-(xs|sm|base|lg|xl|2xl|3xl|4xl|5xl|6xl|7xl|8xl|9xl)$/, properties: ['fontSize'] },
     // Text Align
@@ -40,7 +40,7 @@ const classMappings: ClassMapping[] = [
     // Letter Spacing
     { regex: /^tracking-(tighter|tight|normal|wide|wider|widest)$/, properties: ['letterSpacing'] },
     // Background Color
-    { regex: /^bg-(transparent|red|white|green|blue|yellow|purple|black|pink|indigo|gray|neutral|stone|amber|lime|emerald|teal|cyan|sky|violet|fuchsia|rose)-\d{3}$/, properties: ['backgroundColor'] },
+    { regex: /^bg-(transparent|red|white|green|blue|yellow|purple|black|pink|indigo|gray|slate|neutral|stone|amber|lime|emerald|teal|cyan|sky|violet|fuchsia|rose)-\d{3}$/, properties: ['backgroundColor'] },
     // Padding
     { regex: /^p-(\d+|px|sm|md|lg|xl)$/, properties: ['padding'] },
     { regex: /^pt-(\d+|px|sm|md|lg|xl)$/, properties: ['paddingTop'] },

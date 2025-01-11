@@ -1,4 +1,5 @@
 # Progress Linear
+
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
 const tabs = [
@@ -25,7 +26,7 @@ let isPaused2 = false;
 
 const startLoopingProgress2 = () => {
   loopingInterval = setInterval(() => {
-    if (isPaused) return; 
+    if (isPaused) return;
     progressValue2.value += 1;
     if (progressValue2.value == 33) {
       isPaused = true;
@@ -46,12 +47,12 @@ const startLoopingProgress2 = () => {
         isPaused = false;
       }, 1000);
     }
-    
+
   }, 15);
 };
 const startLoopingProgress3 = () => {
   loopingInterval2 = setInterval(() => {
-    if (isPaused2) return; 
+    if (isPaused2) return;
     progressValue3.value += 1;
     if (progressValue3.value == 100) {
       isPaused2 = true;
@@ -60,7 +61,7 @@ const startLoopingProgress3 = () => {
         isPaused2 = false;
       }, 1000);
     }
-    
+
   }, 25);
 };
 onMounted(() => {
@@ -74,20 +75,22 @@ onUnmounted(() => {
 });
 </script>
 
-
 ## Default Progress
 
 **Props:**
+
 - `v-model`: Binds the progress value.
 
 **Usage:**
+
 - This is the basic progress bar that adjusts its value dynamically when v-model is updated.
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
+>
 <template #content1>
 <ProgressLinear v-model="progressValue"/>
 
@@ -110,11 +113,11 @@ onUnmounted(() => {
 </template>
 </Tab>
 
-## Example For Installing Progress 
+## Example For Installing Progress
 
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabsInstalling" 
+    :tabs="tabsInstalling"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
@@ -200,16 +203,19 @@ onUnmounted(() => {
 ## Pending Progress
 
 **Props:**
+
 - `pending`: Determines whether the progress bar operates in pending mode. When true, the progress bar animates continuously, moving from the start to the end and resetting seamlessly.
 
 **Usage:**
+
 - This is a progress bar In pending mode, it simulates an indeterminate state by animating continuously.
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
+>
 <template #content1>
 <span class="mb-3 text-sm font-medium">default pending:</span>
 <div class="mb-5"><ProgressLinear v-model="progressValue4" :pending="true"/></div>
@@ -240,17 +246,20 @@ onUnmounted(() => {
 ## Progress With Custom Class
 
 **Props:**
+
 - `progressClass`: Customizes the outer progress bar container.
 - `progressFillClass`: Customizes the filled portion of the progress bar.
 
 **Usage:**
+
 - This example demonstrates how to customize the progress bar's container and filled section using Tailwind classes.
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
     :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
+>
 <template  #content1>
 <button :disabled="progressValue5 === 0"  @click="progressValue5 >= 10 ? progressValue5 = progressValue5 - 10 : progressValue5 = 0" class="mb-10 size-10 bg-black text-white rounded-lg p-2 mt-1 mr-40" cleaner>-</button>
 <button :disabled="progressValue5 === 100" @click="progressValue5 <= 90 ? progressValue5 = progressValue5 + 10 : progressValue5 = 100" class="mb-10 size-10 bg-black text-white rounded-lg p-2 mt-1 ml-[390px]" cleaner>+</button>

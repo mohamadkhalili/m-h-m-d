@@ -1,10 +1,10 @@
 # Drawer
 
-
 ## Usage
-<Tab 
+
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="bordered"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -25,7 +25,6 @@
 
 </template>
 
-
   <template #content2>
 
   ```md
@@ -45,15 +44,15 @@ const open = () => {
           </Button>
     </Drawer>
 ```
+
   </template>
 </Tab>
 
+## Customize
 
-## Customize 
-
-<Tab 
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="bordered"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -95,7 +94,6 @@ const open = () => {
 </div>
 
 </template>
-
 
   <template #content2>
 
@@ -145,13 +143,13 @@ const toggleDrawer = () => {
     </Drawer>
 
 ```
+
   </template>
 </Tab>
 
-    
-
 ## Sides
-<Tab 
+
+<Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
    :tabs="[
      { label: 'Right Drawer', value: 1, content: '' },
@@ -159,7 +157,7 @@ const toggleDrawer = () => {
      { label: 'Top Drawer', value: 3, content: '' },
      { label: 'Bottom Drawer', value: 4, content: '' },
      { label: 'Code', value: 5, content: '' },
-   ]" 
+   ]"
    variant="bordered"
    size="sm"
    activeColor="text-blue-500 shadow-blue-500"
@@ -312,10 +310,10 @@ const toggleDrawer = () => {
 Slots...
  </Drawer>
 ```
+
   </template>
 
 </Tab>
-
 
 ## Primary Drawer Component Features
 
@@ -368,7 +366,6 @@ const tabs = [
 ];
 </script>
 
-
 <style scoped>
 /* Tailwind Utility Classes */
 
@@ -381,8 +378,6 @@ const tabs = [
 .btn-secondary {
   @apply bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400 transition;
 }
-
-
 
 .drawer-link span {
   @apply mr-2;

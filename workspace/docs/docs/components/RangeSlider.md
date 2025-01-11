@@ -12,30 +12,20 @@ const rangeValueLight7 = ref(5);
 const rangeValueLight8 = ref(95);
 const rangeValueLight9 = ref(85);
 
-
-
-
-
 const tabs = [
   { label: 'demo', value: 1, content: '' },
   { label: 'props', value: 2, content: ''},
 
-
 ]
 </script>
 
-
-
-
-## Example:
+## Example
 
 ### Light Theme
 
-
-
-<Tab 
+<Tab
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="bordered"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -56,7 +46,6 @@ const tabs = [
 
 </div
 
-
 </div>
 
 </template>
@@ -73,14 +62,15 @@ const tabs = [
 />
 
 ```
+
   </template>
 </Tab>
 
 ## Customize
 
-<Tab 
+<Tab
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="bordered"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -90,7 +80,6 @@ const tabs = [
 
 <div class=" py-10  rounded-lg  gap-4 grid  grid-cols-2 justify-items-center">
 
-  
 <RangeSlider
   :min="0"
   :max="100"
@@ -127,7 +116,6 @@ const tabs = [
 
 </div
 
-
 </div>
 
 </template>
@@ -147,19 +135,16 @@ const tabs = [
 />
 
 ```
-  </template>
 
+  </template>
 
 </Tab>
 
-
-
-
 ## Step
 
-<Tab 
+<Tab
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="bordered"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -169,7 +154,6 @@ const tabs = [
 
 <div class=" py-10  rounded-lg  gap-4 grid  grid-cols-2 justify-items-center">
 
-  
 <RangeSlider
   min="0"
   max="100"
@@ -188,10 +172,7 @@ const tabs = [
 />
 <p> with 5 step => {{rangeValueLight7}}</p>
 
-
-
 </div
-
 
 </div>
 
@@ -210,17 +191,16 @@ const tabs = [
 />
 
 ```
-  </template>
 
+  </template>
 
 </Tab>
 
-
 ## Variant
 
-<Tab 
+<Tab
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs" 
+    :tabs="tabs"
     variant="bordered"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
@@ -230,7 +210,6 @@ const tabs = [
 
 <div class=" py-10  rounded-lg  gap-4 grid  grid-cols-2 justify-items-center">
 
-  
 <RangeSlider
   min="0"
   max="100"
@@ -246,10 +225,7 @@ const tabs = [
   v-model="rangeValueLight9"
 />
 
-
-
 </div
-
 
 </div>
 
@@ -271,8 +247,8 @@ const tabs = [
 
 
 ```
-  </template>
 
+  </template>
 
 </Tab>
 
@@ -302,8 +278,3 @@ const tabs = [
 | `step`            | Number  | `1`           | The step value for the range slider.                                        |
 | `linkFieldColor`  | String  | `''`          | The color of the filled part of the slider track.                           |
 | `disabled`        | Boolean | `false`       | Whether the slider is disabled.                                             |
-
-
-
-
-

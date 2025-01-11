@@ -11,10 +11,9 @@ const footerEnable = ref(true);
 
 ## Sign Up
 
-
-<Tab 
+<Tab
      class="gap-3 border-[1px] rounded-md w-full mx-auto"
-    :tabs="tabs" 
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
@@ -121,28 +120,22 @@ Card class="max-w-md mx-auto py-8 p-2 px-6 bg-white rounded-lg shadow-md dark:bg
 </template>
 
 ```
+
 </template>
 
 <template #content3>
+
 ```md
 ```
+
 </template>
 </Tab>  
   
-  
-  
-  
-  
-  
-  
-  
-  
-
 ## Log In
 
-<Tab 
+<Tab
     class="gap-3 border-[1px] rounded-md w-full mx-auto"
-    :tabs="tabs" 
+    :tabs="tabs"
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
@@ -174,7 +167,12 @@ Card class="max-w-md mx-auto py-8 p-2 px-6 bg-white rounded-lg shadow-md dark:bg
       </Button>
     </form>
     <div class="mt-6 text-center text-sm ">
+<<<<<<< HEAD
         Don't have an account? 
+=======
+      <p>
+        Don't have an account?
+>>>>>>> 7142093cecd21d3c5e9cfad1f4ae0e6bd24e2445
         <p  class="font-bold text-yellow-300 hover:cursor-pointer">Sign Up</p>
     </div>
   </Card>
@@ -215,5 +213,6 @@ Card class="max-w-md mx-auto py-8 p-2 px-6 bg-white rounded-lg shadow-md dark:bg
 <template #content3>
 ```md
 ```
+
 </template>
 </Tab>
