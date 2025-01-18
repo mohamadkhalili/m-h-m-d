@@ -12,5 +12,5 @@ import { coreSlots } from "./Slots";
 const props = defineProps(coreProps);
 const emit = defineEmits(componentEmits);
 const slots = defineSlots<coreSlots>();
-const active = ref(false);
+const active = ref(true);
 </script>
