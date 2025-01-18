@@ -158,7 +158,7 @@ const items = ['first choice', 'second choice', 'thrid choice', 'forth choice', 
     activeColor="text-blue-500 shadow-blue-500"
   >
 <template #content1>
-<ComboBox v-model="modelValue4" :items="items" multiple enableChip chipClass="bg-blue-900" dropdownItemClass="bg-blue-100 hover:bg-blue-100" dropdownItemActiveClass="bg-blue-900 hover:bg-blue-100"/>
+<ComboBox v-model="modelValue4" :items="items" multiple enableChip chipClass="bg-blue-900" dropdownItemClass="bg-blue-100 hover:bg-blue-200" dropdownItemActiveClass="bg-blue-900 hover:bg-blue-100"/>
 <p> {{modelValue4}}</p>
 
 </template>
