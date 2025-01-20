@@ -1,4 +1,4 @@
-// RangeSlider.ts
+
 export const sliderClasses = {
     base: {
         default: ' appearance-none w-full h-2  cursor-pointer relative z-10 ',

@@ -21,7 +21,6 @@ const tabs = [
 
 ## Example
 
-### Light Theme
 
 <Tab
    class="gap-3 border-[1px]  rounded-md w-full mx-auto "
@@ -78,41 +77,17 @@ const tabs = [
 
 <template #content1>
 
-<div class=" py-10  rounded-lg  gap-4 grid  grid-cols-2 justify-items-center">
+<div class=" py-10  rounded-lg  gap-4 grid  grid-cols-1 justify-items-center">
 
 <RangeSlider
   :min="0"
   :max="100"
   v-model="rangeValueLight2"
   thumbColor="#FFFF"
-  thumbBorderColor="#F21114"
-  linkFieldColor="bg-rose-500"
+  thumbBorderColor="#4338ca"
+  linkFieldColor="bg-indigo-500"
 />
-<RangeSlider
-  :min="0"
-  :max="100"
-  v-model="rangeValueLight3"
-  thumbColor="#0cc0C4"
-  thumbBorderColor="#fff"
-  linkFieldColor="bg-cyan-500"
-/>
-<RangeSlider
-  :min="0"
-  :max="100"
-  v-model="rangeValueLight4"
-     thumbColor="#fc4"
-  thumbBorderColor="#fcaE44"
-  linkFieldColor="bg-yellow-500"
-/>
-<RangeSlider
-  :min="0"
-  :max="100"
-  v-model="rangeValueLight5"
-  thumbColor="#b4afff"
-  thumbBorderColor="#bd26f0"
-  linkFieldColor="bg-purple-500"
-  baseColor='bg-purple-200'
-/>
+
 
 </div
 
@@ -127,11 +102,10 @@ const tabs = [
 <RangeSlider
   :min="0"
   :max="100"
-  v-model="rangeValueLight5"
-  thumbColor="#b4afff"
-  thumbBorderColor="#bd26f0"
-  linkFieldColor="bg-purple-500"
-  baseColor='bg-purple-200'
+  v-model="rangeValueLight2"
+  thumbColor="#FFFF"
+  thumbBorderColor="#4338ca"
+  linkFieldColor="bg-indigo-500"
 />
 
 ```
@@ -159,8 +133,8 @@ const tabs = [
   max="100"
   v-model="rangeValueLight6"
   thumbColor="#FFFF"
-  thumbBorderColor="#F21114"
-  linkFieldColor="bg-rose-500"
+  thumbBorderColor="#4338ca"
+  linkFieldColor="bg-indigo-500"
   step="10"
 />
 <p> with 10 step => {{rangeValueLight6}}</p>
@@ -168,6 +142,9 @@ const tabs = [
   :min="0"
   :max="100"
   v-model="rangeValueLight7"
+    thumbColor="#FFFF"
+  thumbBorderColor="#4338ca"
+  linkFieldColor="bg-indigo-500"
   step="5"
 />
 <p> with 5 step => {{rangeValueLight7}}</p>
@@ -215,14 +192,17 @@ const tabs = [
   max="100"
   v-model="rangeValueLight8"
   thumbColor="#FFFF"
-  thumbBorderColor="#000"
-  linkFieldColor="bg-green-400"
+  thumbBorderColor="#4338ca"
+  linkFieldColor="bg-indigo-400"
   variant='inside'
 />
 <RangeSlider
   :min="0"
   :max="100"
   v-model="rangeValueLight9"
+    thumbColor="#FFFF"
+  thumbBorderColor="#4338ca"
+  linkFieldColor="bg-indigo-400"
 />
 
 </div
