@@ -44,7 +44,7 @@ const tabs = [
     <template #content1>
 <div class="grid grid-cols-1 gap-4">
     <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
-<Button  buttonClass=' bg-indigo-700 hover:bg-indigo-600' > faded  </Button>
+<Button  buttonClass=' bg-indigo-700 hover:bg-indigo-600 ' > faded  </Button>
  </div>
 </div>
 

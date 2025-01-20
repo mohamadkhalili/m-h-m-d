@@ -166,7 +166,7 @@ you can use `DropZone Variant`   for Different input File style
 
 </Tab>
 
-## Icon
+## Customize
 
 you can use `icon` prop  for changing icon
 <Tab
@@ -181,7 +181,7 @@ you can use `icon` prop  for changing icon
   variant="dropzone"
   label="Upload Files"
   multiple
-  class="w-full"
+  class="w-full bg-indigo-800 rounded-xl hover:bg-indigo-700 transition-all duration-300 text-indigo-200 border-indigo-400 border-4 border-dashed"
   text="Drop your files here or click to browse"
   icon="📤"
 />
