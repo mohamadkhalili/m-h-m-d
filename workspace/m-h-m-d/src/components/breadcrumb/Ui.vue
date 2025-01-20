@@ -22,7 +22,7 @@
         </div>
       </div>
       <slot v-if="!end" name="separator"></slot>
-      <div v-if="!end && showSeparator" :class="adapterClass(breadcrumbClasses.separatorClass).value">/</div>
+      <div v-if="!end && showSeparator" :class="adapterClass(breadcrumbClasses.separatorClass + ' ' + separatorClass).value">/</div>
     </template>
   </Core>
 </template>

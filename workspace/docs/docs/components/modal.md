@@ -58,7 +58,7 @@ const isModalOpen3 = ref(false);
 <modal v-model="isModalOpen3" teleport="body" outsideClass="backdrop-blur-lg" modalClass="border-2 border-indigo-200 bg-indigo-700"/>
 
 ```vue
-<modal v-model="isModalOpen3" teleport="body" 
+<modal v-model="isModalOpen" teleport="body" 
 outsideClass="backdrop-blur-lg" 
 modalClass="border-2 border-indigo-200 bg-indigo-700"/>
 ```

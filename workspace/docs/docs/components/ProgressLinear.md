@@ -261,11 +261,11 @@ onUnmounted(() => {
   >
 >
 <template  #content1>
-<button :disabled="progressValue5 === 0"  @click="progressValue5 >= 10 ? progressValue5 = progressValue5 - 10 : progressValue5 = 0" class="mb-10 size-10 bg-black text-white rounded-lg p-2 mt-1 mr-40" cleaner>-</button>
-<button :disabled="progressValue5 === 100" @click="progressValue5 <= 90 ? progressValue5 = progressValue5 + 10 : progressValue5 = 100" class="mb-10 size-10 bg-black text-white rounded-lg p-2 mt-1 ml-[390px]" cleaner>+</button>
-<ProgressLinear v-model="progressValue5" progressClass="ml-40 w-80 bg-emerald-100" progressFillClass="bg-emerald-600 transition-all duration-300"/>
+<Button :isDisabled="progressValue5 === 0"  @click="progressValue5 >= 10 ? progressValue5 = progressValue5 - 10 : progressValue5 = 0" buttonClass="mb-10 w-10 h-10 p-2 mt-1 mr-40" cleaner>-</Button>
+<Button :isDisabled="progressValue5 === 100" @click="progressValue5 <= 90 ? progressValue5 = progressValue5 + 10 : progressValue5 = 100" buttonClass="mb-10 w-10 h-10 p-2 mt-1 ml-[390px]" cleaner>+</Button>
+<ProgressLinear v-model="progressValue5" progressClass="ml-40 w-80 bg-indigo-200" progressFillClass="bg-indigo-700 transition-all duration-300"/>
 <div class="mt-16">
-<ProgressLinear v-model="progressValue6" :pending="true" progressClass="ml-40 w-80 bg-emerald-100" progressFillClass="bg-emerald-600 transition-all duration-300"/>
+<ProgressLinear v-model="progressValue6" :pending="true" progressClass="ml-40 w-80 bg-indigo-200" progressFillClass="bg-indigo-700 transition-all duration-300"/>
 </div>
 </template>
 
@@ -280,9 +280,13 @@ onUnmounted(() => {
 <template #content3>
 
 ```vue
-<ProgressLinear v-model="progressValue"
-progressClass="ml-40 w-80 bg-emerald-100" 
-progressFillClass="bg-emerald-600 transition-all duration-300"/>
+<ProgressLinear v-model="progressValue" 
+progressClass="ml-40 w-80 bg-indigo-200" 
+progressFillClass="bg-indigo-700 transition-all duration-300"/>
+<div class="mt-16">
+<ProgressLinear v-model="progressValue" 
+:pending="true" progressClass="ml-40 w-80 bg-indigo-200" 
+progressFillClass="bg-indigo-700 transition-all duration-300"/>
 ```
 
 </template>

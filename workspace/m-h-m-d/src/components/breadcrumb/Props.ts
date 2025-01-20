@@ -9,7 +9,7 @@ export const coreProps = {
     items: {
         type: Array as PropType<item[]>,
         default: [
-            { title: "item1", disable: true },
+            { title: "item1", disable: false },
             { title: "item2", disable: false },
             { title: "item3", disable: false }
         ]
@@ -20,4 +20,5 @@ export const uiProps = {
     activeClass : { type: String, default: "" },
     onActiveClass : { type: String, default: "" },
     disableClass : { type: String, default: "" },
+    separatorClass : { type: String, default: ""},
 }

@@ -209,7 +209,7 @@ A stepper with fully customized styles for progress, progress bar, done, and not
 <template #content3>
 
 ```vue
-<Stepper v-model="stepperValue4" 
+<Stepper v-model="stepperValue" 
 progressClass="shadow-md bg-indigo-200" 
 progressBarClass="bg-indigo-700" 
 doneClass="shadow-md bg-indigo-700" 
