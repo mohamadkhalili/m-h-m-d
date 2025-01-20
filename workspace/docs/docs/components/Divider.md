@@ -99,22 +99,15 @@ The `Divider` component supports custom colors through the `color`  and `textCol
   >
     <template #content1>
 
-<Divider direction="horizontal" length="300px" text="VS" textColor="text-red-500" color="bg-red-500"  class="my-8" />
-<Divider direction="horizontal" length="300px" text="VS" textColor="text-yellow-500" color="bg-yellow-500" class="my-8" />
-<Divider direction="horizontal" length="300px" text="VS" textColor="text-blue-500" color="bg-blue-500" class="my-8"  />
-<Divider direction="horizontal" length="300px" text="VS" textColor="text-green-500" color="bg-green-500" class="my-8"  />
-<Divider direction="horizontal" length="300px" text="VS" textColor="text-purple-500" color="bg-purple-500" class="my-8"  />
+<Divider direction="horizontal" length="300px" text="VS" textColor="text-indigo-500" color="bg-indigo-500" class="my-8"  />
 
 </template>
 
   <template #content2>
 
   ```md
-<Divider direction="horizontal"  text="VS" textColor="text-red-500" color="bg-red-500"  class="my-8" />
-<Divider direction="horizontal" text="VS" textColor="text-yellow-500" color="bg-yellow-500" class="my-8" />
-<Divider direction="horizontal" text="VS" textColor="text-blue-500" color="bg-blue-500" class="my-8"  />
-<Divider direction="horizontal" text="VS" textColor="text-green-500" color="bg-green-500" class="my-8"  />
-<Divider direction="horizontal" text="VS" textColor="text-purple-500" color="bg-purple-500" class="my-8"  />
+
+<Divider direction="horizontal" text="VS" textColor="text-indigo-500" color="bg-indigo-500" class="my-8"  />
 
 
 ```
@@ -135,11 +128,11 @@ The `diameter` prop defines the thickness of the divider:
   >
     <template #content1>
 <div class="flex justify-around">
-<Divider direction="vertical" diameter="1px"  length="100px" text="VS" textColor="text-red-500" color="bg-red-500"  class="my-8" />
-<Divider direction="vertical" diameter="2px" length="100px" text="VS" textColor="text-yellow-500" color="bg-yellow-500" class="my-8" />
-<Divider direction="vertical" diameter="3px" length="100px" text="VS" textColor="text-blue-500" color="bg-blue-500" class="my-8"  />
-<Divider direction="vertical" diameter="4px" length="100px" text="VS" textColor="text-green-500" color="bg-green-500" class="my-8"  />
-<Divider direction="vertical" diameter="5px" length="100px" text="VS" textColor="text-purple-500" color="bg-purple-500" class="my-8"  />
+<Divider direction="vertical" diameter="1px"  length="100px" text="VS" textColor="text-indigo-600" color="bg-indigo-600"  class="my-8" />
+<Divider direction="vertical" diameter="2px" length="100px" text="VS" textColor="text-indigo-600" color="bg-indigo-600" class="my-8" />
+<Divider direction="vertical" diameter="3px" length="100px" text="VS" textColor="text-indigo-600" color="bg-indigo-600" class="my-8"  />
+<Divider direction="vertical" diameter="4px" length="100px" text="VS" textColor="text-indigo-600" color="bg-indigo-600" class="my-8"  />
+<Divider direction="vertical" diameter="5px" length="100px" text="VS" textColor="text-indigo-600" color="bg-indigo-600" class="my-8"  />
 </div>
 </template>
 
@@ -147,11 +140,11 @@ The `diameter` prop defines the thickness of the divider:
 
   ```md
 <div class="flex justify-around">
-<Divider direction="vertical" diameter="1px"  length="100px" text="VS" textColor="text-red-500" color="bg-red-500"  class="my-8" />
-<Divider direction="vertical" diameter="2px" length="100px" text="VS" textColor="text-yellow-500" color="bg-yellow-500" class="my-8" />
-<Divider direction="vertical" diameter="3px" length="100px" text="VS" textColor="text-blue-500" color="bg-blue-500" class="my-8"  />
-<Divider direction="vertical" diameter="4px" length="100px" text="VS" textColor="text-green-500" color="bg-green-500" class="my-8"  />
-<Divider direction="vertical" diameter="5px" length="100px" text="VS" textColor="text-purple-500" color="bg-purple-500" class="my-8"  />
+<Divider direction="vertical" diameter="1px"  length="100px" text="VS" textColor="text-indigo-600" color="bg-indigo-600"  class="my-8" />
+<Divider direction="vertical" diameter="2px" length="100px" text="VS" textColor="text-indigo-600" color="bg-indigo-600" class="my-8" />
+<Divider direction="vertical" diameter="3px" length="100px" text="VS" textColor="text-indigo-600" color="bg-indigo-600" class="my-8"  />
+<Divider direction="vertical" diameter="4px" length="100px" text="VS" textColor="text-indigo-600" color="bg-indigo-600" class="my-8"  />
+<Divider direction="vertical" diameter="5px" length="100px" text="VS" textColor="text-indigo-600" color="bg-indigo-600" class="my-8"  />
 </div>
 
 ```
@@ -170,9 +163,9 @@ you can choice the position of text with `position`  props
     activeColor="text-blue-500 shadow-blue-500"
   >
     <template #content1>
-<Divider direction="horizontal" length="300px" text="VS" textColor="text-red-500" color="bg-red-500"  class="my-8" position="start"/>
-<Divider direction="horizontal" length="300px" text="VS" textColor="text-yellow-500" color="bg-yellow-500" class="my-8" />
-<Divider direction="horizontal" length="300px" text="VS" textColor="text-blue-500" color="bg-blue-500" class="my-8"  position="end"/>
+<Divider direction="horizontal" length="300px" text="VS" textColor="text-indigo-500" color="bg-indigo-500"  class="my-8" position="start"/>
+<Divider direction="horizontal" length="300px" text="VS" textColor="text-indigo-500" color="bg-indigo-500" class="my-8" />
+<Divider direction="horizontal" length="300px" text="VS" textColor="text-indigo-500" color="bg-indigo-500" class="my-8"  position="end"/>
 
 </template>
 
