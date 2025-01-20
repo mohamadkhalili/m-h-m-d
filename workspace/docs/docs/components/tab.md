@@ -27,9 +27,9 @@ This example demonstrates horizontally aligned tabs with default styling.
     :tabs="tabsView"
     variant="bordered"
     size="sm"
-    activeColor="text-blue-500 "
-    notActiveColor='text-gray-700'
-    contentColor='text-red-600 '
+    activeColor="text-slate-600 "
+    notActiveColor='text-slate-700'
+    contentColor='text-indigo-600 '
   >
     <template #content1>
 
@@ -38,7 +38,7 @@ This example demonstrates horizontally aligned tabs with default styling.
    class="gap-3 border-[1px] rounded-md w-fit"
     :tabs="tabs"
     variant="bordered"
-    activeColor="text-blue-500"
+    activeColor="text-indigo-500"
   >
     <template #label="{ tab }">
       <span>{{ tab.label }}</span>
@@ -66,7 +66,7 @@ const tabs = [
    class="gap-3 border-[1px] rounded-md w-fit"
     :tabs="tabs" 
     variant="bordered"
-    activeColor="text-blue-500 shadow-blue-300"
+    activeColor="text-indigo-500 shadow-indigo-300"
   >
     <template #label="{ tab }">
       <span>{{ tab.label }}</span>
@@ -89,33 +89,20 @@ The following examples show how you can customize the background and text colors
     :tabs="tabsView"
     variant="bordered"
     size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
+    activeColor="text-indigo-500 shadow-indigo-500"
   >
     <template #content1>
-<div class="grid grid-cols-2 gap-2">
-<div class="p-8 rounded-lg   justify-center items-center shadow-inner">
+<div class="grid grid-cols-1 gap-2">
+<div class="p-8 rounded-lg justify-center items-center shadow-inner">
  <Tab :tabs="tabs"
     variant="default"
-activeColor="bg-blue-700 text-white"
-   contentColor="text-blue-600"
-     notActiveColor="text-gray-700">
+activeColor="bg-indigo-700 text-white"
+   contentColor="text-indigo-700"
+     notActiveColor="text-slate-700">
     </Tab>
     </div>
-    <div class="p-8 rounded-lg shadow-inner  justify-center items-center">
-    <Tab :tabs="tabs"
-   variant="default"
-  activeColor="bg-rose-700 text-white"
-   contentColor="text-red-600"
-     notActiveColor="text-gray-700" >
-     <template #label="{ tab }">
-     <span>{{ tab.label }}</span>
-     </template>
-      <template #content="{ tab }">
-      <p>{{ tab.content }}</p>
-      </template>
-      </Tab>
-       </div>
-       </div>
+</div>
+    
 
 </template>
 
@@ -124,8 +111,8 @@ activeColor="bg-blue-700 text-white"
   ```md
  <Tab :tabs="tabs" 
     variant="default"
-activeColor="bg-blue-700 text-white" 
-   contentColor="text-blue-600"
+activeColor="bg-indigo-700 text-white" 
+   contentColor="text-indigo-700"
      notActiveColor="text-gray-700"> 
     </Tab> 
 ```
@@ -140,15 +127,15 @@ activeColor="bg-blue-700 text-white"
     :tabs="tabsView"
     variant="bordered"
     size="sm"
-    activeColor="text-blue-500  "
+    activeColor="text-indigo-700  "
   >
     <template #content1>
 
 <div class="p-6 rounded-lg shadow-inner flex justify-center items-center">
   <Tab
     :tabs="tabsVariants"
-    activeColor="bg-purple-600 text-white"
-    color="bg-purple-200"
+    activeColor="bg-indigo-700 text-white"
+    color="bg-indigo-200"
     vertical
    variant="default"
   >
@@ -182,13 +169,13 @@ activeColor="bg-blue-700 text-white"
     :tabs="tabsView"
     variant="bordered"
     size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
+    activeColor="text-indigo-500 shadow-indigo-500"
   >
     <template #content1>
 
 <div class="flex justify-around">
-<h5 class="text-green-600">bordered</h5>
-<h5 class="text-blue-600">underline</h5>
+<h5 class="text-indigo-600">bordered</h5>
+<h5 class="text-indigo-600">underline</h5>
 
 </div>
 <br/>
@@ -199,7 +186,7 @@ activeColor="bg-blue-700 text-white"
     class="gap-3 border-2  w-fit"
       :tabs="tabs"
       variant="bordered"
-       activeColor="text-green-800 bg-transparent border-t-green-600    "
+       activeColor="text-indigo-700 bg-transparent border-t-indigo-700    "
       color=" text-gray-400   bg-transparent  "
     >
       <template #label="{ tab }">
@@ -215,19 +202,19 @@ activeColor="bg-blue-700 text-white"
   variant="underline"
   activeColor="bg-transparent"
   color="bg-transparent"
-  TextColor="text-gray-500"
-  activeTextColor="text-blue-500"
+  TextColor="text-slate-500"
+  activeTextColor="text-indigo-700"
 >
 </Tab>
 
   </div>
    <div class="p-4 my-10 rounded-lg shadow-inner flex justify-center items-center">
     <Tab
-    class="gap-3 border-2  w-fit bg-gray-200"
+    class="gap-3 border-2  w-fit bg-indigo-100"
       :tabs="tabs"
      variant="mirror"
-       activeColor=" text-rose-600 bg-gray-200  "
-      color=" text-gray-800   bg-gray-200 bg-white   "
+       activeColor=" text-indigo-600 bg-indigo-100  "
+      color=" text-slate-800   bg-slate-100 bg-white   "
     >
     </Tab>
   </div>
@@ -237,8 +224,8 @@ activeColor="bg-blue-700 text-white"
   <Tab
   class="gap-3 border-2 rounded-xl min-w-full "
       :tabs="tabs"
-      activeColor="bg-gray-200  text-black"
-      color=" text-gray-400  bg-white   "
+      activeColor="text-indigo-700 text-black"
+      color=" text-slate-400  bg-white   "
       variant="shadow"
     >
     </Tab>
@@ -247,8 +234,8 @@ activeColor="bg-blue-700 text-white"
   
 </div>
 <div class="flex justify-around">
-<h5 class="text-rose-600">mirror</h5>
-<h5 class="text-yellow-600">shadow</h5>
+<h5 class="text-indigo-600">mirror</h5>
+<h5 class="text-indigo-600">shadow</h5>
 
 </div>
 <br/>
@@ -263,7 +250,7 @@ activeColor="bg-blue-700 text-white"
   activeColor="bg-transparent"
   color="bg-transparent"
   TextColor="text-gray-500"
-  activeTextColor="text-blue-500"
+  activeTextColor="text-indigo-500"
   variant="underline"        <!-- You can choice 1 of 4 variants  -->
     >
 ```
@@ -280,7 +267,7 @@ Adjust the position of the tabs using the `position` prop. The available options
     :tabs="tabsView"
     variant="bordered"
     size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
+    activeColor="text-indigo-500 shadow-indigo-500"
   >
     <template #content1>
 <div class="flex justify-around">
@@ -294,8 +281,8 @@ Adjust the position of the tabs using the `position` prop. The available options
   <div class="p-4 rounded-lg shadow-inner flex justify-center items-center">
      <Tab
     :tabs="tabs"
-   activeColor="bg-transparent shadow-rose-400 text-rose-700"
-    textColor="text-gray-400  bg-transparent"
+   activeColor="bg-transparent shadow-indigo-400 text-indigo-700"
+    textColor="text-slate-400  bg-transparent"
     variant="bordered"
     position="bottom"
   >
@@ -311,7 +298,7 @@ Adjust the position of the tabs using the `position` prop. The available options
    <div class="p-4 rounded-lg shadow-inner flex justify-center items-center">
      <Tab
     :tabs="tabs"
-   activeColor="bg-transparent shadow-sky-400 text-sky-700"
+   activeColor="bg-transparent shadow-indigo-400 text-indigo-700"
     textColor="text-gray-400  bg-transparent "
     variant="bordered"
     position="top"
@@ -328,7 +315,7 @@ Adjust the position of the tabs using the `position` prop. The available options
    <div class="p-4 rounded-lg shadow-inner flex justify-center items-center">
      <Tab
     :tabs="tabs"
-   activeColor="bg-transparent shadow-violet-400 text-violet-700"
+   activeColor="bg-transparent shadow-indigo-400 text-indigo-700"
     textColor="text-gray-400  bg-transparent"
     variant="bordered"
     position="left"
@@ -347,7 +334,7 @@ Adjust the position of the tabs using the `position` prop. The available options
 
    <Tab
     :tabs="tabs"
-    activeColor="bg-transparent  shadow-lime-400 text-lime-700"
+    activeColor="bg-transparent  shadow-indigo-400 text-indigo-700"
     textColor="text-gray-400  bg-transparent"
     variant="bordered"
      position="right"
@@ -413,7 +400,7 @@ const tabs = [
     :tabs="tabsView"
     variant="bordered"
     size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
+    activeColor="text-indigo-500 shadow-indigo-500"
   >
     <template #content1>
 
@@ -455,7 +442,7 @@ const tabs = [
     :tabs="tabsView"
     variant="bordered"
     size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
+    activeColor="text-indigo-500 shadow-indigo-500"
   >
     <template #content1>
 <Tab
@@ -464,7 +451,7 @@ const tabs = [
     variant="shadow"
     size="sm"
     justify="start"
-    activeColor="text-blue-500 shadow-blue-500"
+    activeColor="text-indigo-500 shadow-indigo-500"
   >
 </tab>
 <br/>
@@ -473,7 +460,7 @@ const tabs = [
     :tabs="tabs"
     variant="shadow"
     size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
+    activeColor="text-indigo-500 shadow-indigo-500"
   >
 </tab>
 <br/>
@@ -484,7 +471,7 @@ const tabs = [
     variant="shadow"
     size="sm"
     justify="end"
-    activeColor="text-blue-500 shadow-blue-500"
+    activeColor="text-indigo-500 shadow-indigo-500"
   >
 </tab>
 
@@ -499,7 +486,7 @@ const tabs = [
     variant="shadow"
     size="sm"
     justify="start" <!-- change this -->
-    activeColor="text-blue-500 shadow-blue-500"
+    activeColor="text-indigo-500 shadow-indigo-500"
   >
 </tab>
 ```
@@ -516,33 +503,26 @@ Adjust the size of the tabs using the `size` prop. The available options are `sm
     :tabs="tabsView"
     variant="bordered"
     size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
+    activeColor="text-indigo-500 shadow-indigo-500"
   >
     <template #content1>
 <div class=" rounded-lg shadow-inner grid grid-cols gap-1 ">
   <Tab
      :tabs="tabsVariants"
-     activeTextColor="text-rose-500"
-     activeColor="bg-transparent"
-     textColor="shadow-gray-300 shadow-rose-300"
      color="bg-transparent"
-     variant="shadow"
      size="xl"
+      activeColor=" shadow-indigo-500 text-indigo-500 "
   >
   </Tab>
   <Tab
      :tabs="tabsVariants"
-     variant="shadow"
-     activeColor="bg-transparent shadow-yellow-500 text-yellow-500 "
-     color="shadow-yellow-400"
+     activeColor=" shadow-indigo-500 text-indigo-500 "
      size="lg"
   >
   </Tab>
   <Tab
      :tabs="tabsVariants"
-     variant="shadow"
-     activeColor="bg-transparent "
-     color="shadow-blue-400"
+      activeColor=" shadow-indigo-500 text-indigo-500 "
      size="md"
   >
   </Tab>
@@ -551,9 +531,7 @@ Adjust the size of the tabs using the `size` prop. The available options are `sm
 
   <Tab
      :tabs="tabsVariants"
-     variant="shadow"
-     activeColor="bg-transparent shadow-green-500 text-green-700 "
-     color="shadow-green-400"
+     activeColor="bg-transparent shadow-indigo-500 text-indigo-700 "
      size="sm"
   >
   </Tab>
@@ -567,7 +545,6 @@ Adjust the size of the tabs using the `size` prop. The available options are `sm
   ```md
   <Tab 
      :tabs="tabsVariants" 
-     variant="shadow"
      activeColor="bg-transparent shadow-green-500 text-green-700 "
      color="shadow-green-400"
      size="sm"     <!-- You can choice 1 of 4 sizes  -->
@@ -592,4 +569,4 @@ Adjust the size of the tabs using the `size` prop. The available options are `sm
 | **Size**             | Change the size of the tabs. Sizes available are `sm`, `md`, `lg`, and `xl`.                                     | Set the `size` prop to one of the following: `'sm'`, `'md'`, `'lg'`, `'xl'`.                  |
 | **Position**             | Change the Position of the tabs. Position available are `left`, `right`, `bottom`, and `top`.                                     | Set the `Position` prop to one of the following: `'left'`, `'right'`, `'bottom'`, `'top'`.                  |
 | **Justify**             | Change the justify the tabs. justify available are `start`, `default`, and `end`.                                     | Set the `justify` prop to one of the following: `start`, `default`, and `end`.                  |
-| **Content Color**         | Change the color of content `contentColor`                     | use the `contentColor ='text-blue-500'` in tab tag`                |
+| **Content Color**         | Change the color of content `contentColor`                     | use the `contentColor ='text-indigo-500'` in tab tag`                |
