@@ -21,7 +21,7 @@ export const CardClasses = {
     // Progress variant
     progressContainer: "flex flex-col gap-4 p-4 w-96",
     progressBarContainer: "w-full bg-gray-200 rounded-full h-4",
-    progressBar: "bg-blue-500 h-4 rounded-full",
+    progressBar: "bg-indigo-600 h-4 rounded-full",
     
     // Weather variant
     weatherInfo: "flex items-center justify-between space-x-4",
