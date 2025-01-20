@@ -36,7 +36,7 @@ const props = defineProps({
   },
   color: {
     type: String,
-    default: 'bg-blue-500 text-white border-blue-500',
+    default: 'bg-slate-700 text-white border-slate-500',
   },
 
   radius: {

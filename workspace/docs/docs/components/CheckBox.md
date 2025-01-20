@@ -154,11 +154,8 @@ const disable2 = ref(false);
 
 <div class="  p-6 rounded-lg   flex flex-row gap-8 justify-center place-items-center ">
 
-<CheckBox  v-model="ColorActive1" color="bg-green-500 text-white border-green-500" > Green </CheckBox>
-<CheckBox  v-model="ColorActive2" color="bg-yellow-400 text-white border-yellow-400" > Yellow </CheckBox>
-<CheckBox  v-model="ColorActive4" color="bg-red-500 text-white border-red-500" > red </CheckBox>
-<CheckBox  v-model="ColorActive5" color="bg-purple-500 text-white border-purple-500" > purple </CheckBox>
-<CheckBox  v-model="ColorActive3" color="bg-gray-800 border-rose-500 text-yellow-400 border-2 " > custom </CheckBox>
+
+<CheckBox  v-model="ColorActive3" color="bg-indigo-700 border-indigo-500  text-white  border-2 " > custom </CheckBox>
 
 </div>
 </template>
