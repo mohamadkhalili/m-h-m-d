@@ -9,20 +9,20 @@
       <div
         v-if="showItem"
         :class="[
-          disable
-            ? adapterClass(breadcrumbClasses.uiDisableClass + ' ' + disableClass).value
-            : adapterClass(breadcrumbClasses.uiOnActiveClass + ' ' + onActiveClass).value,
           modelValue === title && !disable
             ? adapterClass(breadcrumbClasses.uiActiveClass + ' ' + activeClass).value
+            : !disable ? adapterClass(breadcrumbClasses.uiOnActiveClass + ' ' + onActiveClass).value : '',
+          disable
+            ? adapterClass(breadcrumbClasses.uiDisableClass + ' ' + disableClass).value
             : '',
         ]"
       >
         <div>
           {{ title }}
         </div>
-        <slot v-if="!end" name="separator"></slot>
-        <div v-if="!end && showSeparator" :class="adapterClass(breadcrumbClasses.separatorClass).value">/</div>
       </div>
+      <slot v-if="!end" name="separator"></slot>
+      <div v-if="!end && showSeparator" :class="adapterClass(breadcrumbClasses.separatorClass).value">/</div>
     </template>
   </Core>
 </template>
