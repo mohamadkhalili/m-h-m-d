@@ -6,16 +6,16 @@
       @update:searchPage="handleSearchPage" :isEditingSearchPage="isEditingSearchPage"
       @update:isEditingSearchPage="handleIsEditingSearchPage" :page-size="pageSize" v-bind="$attrs">
       <template #superPrev="{ disabled }">
-        <slot name="superPrev" :disabled="disabled" :rtl="rtl"></slot>
+        <slot name="superPrev" :isDisabled="disabled" :rtl="rtl"></slot>
         <Button v-if="showDefaultSuperPrev" :buttonClass="adapterClass(paginationClasses.uiButtonClass + ' ' + buttonClass).value
-          " :disabled="disabled">
+          " :isDisabled="disabled">
           <svg-icon type="mdi" :path="superPrevIcon"></svg-icon>
         </Button>
       </template>
       <template #prev="{ disabled }">
-        <slot name="prev" :disabled="disabled" :rtl="rtl"></slot>
+        <slot name="prev" :isDisabled="disabled" :rtl="rtl"></slot>
         <Button v-if="showDefaultPrev" :buttonClass="adapterClass(paginationClasses.uiButtonClass + ' ' + buttonClass).value
-          " :disabled="disabled">
+          " :isDisabled="disabled">
           <svg-icon type="mdi" :path="prevIcon"></svg-icon>
         </Button>
       </template>
@@ -32,16 +32,16 @@
           ">...</span>
       </template>
       <template #next="{ disabled }">
-        <slot name="next" :disabled="disabled" :rtl="rtl"></slot>
+        <slot name="next" :isDisabled="disabled" :rtl="rtl"></slot>
         <Button v-if="showDefaultNext" :buttonClass="adapterClass(paginationClasses.uiButtonClass + ' ' + buttonClass).value
-          " :disabled="disabled">
+          " :isDisabled="disabled">
           <svg-icon type="mdi" :path="nextIcon"></svg-icon>
         </Button>
       </template>
       <template #superNext="{ disabled }">
-        <slot name="superNext" :disabled="disabled" :rtl="rtl"></slot>
+        <slot name="superNext" :isDisabled="disabled" :rtl="rtl"></slot>
         <Button v-if="showDefaultSuperNext" :buttonClass="adapterClass(paginationClasses.uiButtonClass + ' ' + buttonClass).value
-          " :disabled="disabled">
+          " :isDisabled="disabled">
           <svg-icon type="mdi" :path="superNextIcon"></svg-icon>
         </Button>
       </template>

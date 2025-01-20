@@ -59,8 +59,8 @@ const isModalOpen3 = ref(false);
 
 ```vue
 <modal v-model="isModalOpen3" teleport="body" 
-:outsideClass="'backdrop-blur-lg'" 
-:modalClass="'border-2 border-black'"/>
+outsideClass="backdrop-blur-lg" 
+modalClass="border-2 border-indigo-200 bg-indigo-700"/>
 ```
 
 ### Slots in the Modal Component
