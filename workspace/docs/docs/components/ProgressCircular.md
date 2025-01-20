@@ -383,10 +383,10 @@ onUnmounted(() => {
   >
 >
 <template  #content1>
-<button :disabled="progressValue6 === 0"  @click="progressValue6 >= 10 ? progressValue6 = progressValue6 - 10 : progressValue6 = 0" class="mb-10 size-10 bg-black text-white rounded-lg p-2 mt-1 mr-40" cleaner>-</button>
-<button :disabled="progressValue6 === 100" @click="progressValue6 <= 90 ? progressValue6 = progressValue6 + 10 : progressValue6 = 100" class="mb-10 size-10 bg-black text-white rounded-lg p-2 mt-1 ml-[390px]" cleaner>+</button>
+<Button :isDisabled="progressValue6 === 0"  @click="progressValue6 >= 10 ? progressValue6 = progressValue6 - 10 : progressValue6 = 0" buttonClass="mb-10 w-10 h-10 p-2 mt-1 mr-40" cleaner>-</Button>
+<Button :isDisabled="progressValue6 === 100" @click="progressValue6 <= 90 ? progressValue6 = progressValue6 + 10 : progressValue6 = 100" buttonClass="mb-10 w-10 h-10 p-2 mt-1 ml-[390px]" cleaner>+</Button>
 <div class="flex justify-center item-center">
-<ProgressCircular v-model="progressValue6" progressClass="w-32 h-32" progressContainerClass="text-emerald-100" progressFillClass="text-emerald-600 transition-all duration-300" showNumberFill="true" numberFillClass="text-emerald-600"/>
+<ProgressCircular v-model="progressValue6" progressClass="w-32 h-32" progressContainerClass="text-indigo-200" progressFillClass="text-indigo-700 transition-all duration-300" showNumberFill="true" numberFillClass="text-indigo-700"/>
 </div>
 </template>
 
@@ -401,11 +401,11 @@ onUnmounted(() => {
 <template #content3>
 
 ```vue
-<ProgressCircular v-model="progressValue6" 
-progressClass="ml-60 w-32 h-32" 
-progressContainerClass="text-emerald-100" 
-progressFillClass="text-emerald-600 transition-all duration-300" 
-showNumberFill="true" numberFillClass="text-emerald-600"/>
+<ProgressCircular v-model="progressValue" 
+progressClass="w-32 h-32" 
+progressContainerClass="text-indigo-200" 
+progressFillClass="text-indigo-700 transition-all duration-300" 
+showNumberFill="true" numberFillClass="text-indigo-700"/>
 ```
 
 </template>

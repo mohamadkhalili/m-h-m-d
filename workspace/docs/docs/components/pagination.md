@@ -103,7 +103,7 @@ v-model:isEditingSearchPage="isEditingSearchPage"/>
 <br>
 
 ```vue
-<pagination v-model="inputValue5" :enableSearchPage="false" 
+<pagination v-model="inputValue" :enableSearchPage="false" 
 :activeClass="'bg-indigo-700 hover:bg-indigo-600 size-11 rounded-lg shadow-lg'" 
 :onActiveClass="'bg-indigo-200 hover:bg-indigo-300 rounded-lg shadow-lg'" 
 :separatorClass="'text-emerald-500'" 

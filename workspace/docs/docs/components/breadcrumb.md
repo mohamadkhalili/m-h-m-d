@@ -9,7 +9,7 @@ const tabs = [
 ];
 const items =  ref([
             { title: "tab", disable:false },
-            { title: "pagination", disable:false },
+            { title: "pagination", disable:true },
             { title: "modal", disable:false },
             { title: "menu", disable:false }
         ]);
@@ -124,6 +124,12 @@ Clarified the usage of the items prop and enhanced alignment.
 <Breadcrumb v-model="breadcrumbValue3" :items="items">
 <template #separator> &nbsp> </template>
 </Breadcrumb>
+const items =  ref([
+            { title: "tab", disable:false },
+            { title: "pagination", disable:true },
+            { title: "modal", disable:false },
+            { title: "menu", disable:false }
+]);
 ```
 
 </template>
@@ -136,9 +142,10 @@ The breadcrumb component with custom active, onActive, and disabled classes for 
 
 **Props:**
 
-- `activeClass`: Binds the current step value.
-- `onActiveClass`: Specifies additional classes applied to active items onActive.
+- `activeClass`: Specifies additional classes applied to active items.
+- `onActiveClass`: Specifies additional classes applied to onActive items.
 - `disableClass`: Class applied to disabled breadcrumb items.
+- `separatorClass`: Specifies additional classes applied to separator.
 
 <Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
@@ -163,7 +170,7 @@ The breadcrumb component with custom active, onActive, and disabled classes for 
 <template #content3>
 
 ```vue
-<Breadcrumb v-model="breadcrumbValue4" 
+<Breadcrumb v-model="breadcrumbValue" 
 activeClass="text-indigo-700 hover:text-indigo-600" 
 onActiveClass="text-indigo-300 hover:text-indigo-400" 
 disableClass="text-indigo-100">
