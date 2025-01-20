@@ -42,11 +42,11 @@ import { useAdapterClass } from '../../composables/UseClass';
     },
     thumbBorderColor: {
       type: String,
-      default: '#007bff'
+      default: '#000'
     },
     linkFieldColor: {
       type: String,
-      default: 'bg-blue-500'
+      default: 'bg-slate-700'
     },
     step: {
       type: Number,
@@ -81,7 +81,7 @@ import { useAdapterClass } from '../../composables/UseClass';
     appearance: none;
     width: 18px;
     height: 18px;
-    background-color: var(--thumb-bg, #007bff);
+    background-color: var(--thumb-bg, #2c2c2c);
     border: 2px solid var(--thumb-border, #fff);
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     border-radius: 50%;
@@ -92,7 +92,7 @@ import { useAdapterClass } from '../../composables/UseClass';
   input[type="range"]::-moz-range-thumb {
     width: 16px;
     height: 16px;
-    background-color: var(--thumb-bg, #007bff); 
+    background-color: var(--thumb-bg, #272727); 
     border: 2px solid var(--thumb-border, #ffffff);
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     border-radius: 50%;
