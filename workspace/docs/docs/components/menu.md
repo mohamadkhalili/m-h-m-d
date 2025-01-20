@@ -20,7 +20,7 @@ const menuValueSize = ref(false);
 
 - This is the basic menu that toggles when the button is clicked.
 
-<button  @click="menuValue = !menuValue" class="w-28 bg-black text-white rounded-lg p-2 mt-1" cleaner>Open menu</button>
+<Button  @click="menuValue = !menuValue" buttonClass="w-28 p-2 mt-1">Open menu</Button>
 <Menu v-model="menuValue"  >
 </Menu>
 <br>
@@ -41,7 +41,7 @@ const menuValueSize = ref(false);
 
 - This menu closes automatically when you click outside of it.
 
-<button  @click="menuValueOutside = !menuValueOutside" class="w-28 bg-black text-white rounded-lg p-2 mt-1" cleaner>Open menu</button>
+<Button  @click="menuValueOutside = !menuValueOutside" buttonClass="w-28 p-2 mt-1">Open menu</Button>
 <Menu v-model="menuValueOutside" :closeOutside="true" >
 </Menu>
 <br>
@@ -62,7 +62,7 @@ const menuValueSize = ref(false);
 
 - This menu opens when hovered over and closes when the mouse leaves.
 
-<button @mouseover="menuValueHover = true" @mouseleave="menuValueHover = false" class="w-28 bg-black text-white rounded-lg p-2 mt-1" cleaner>Open menu</button>
+<Button @mouseover="menuValueHover = true" @mouseleave="menuValueHover = false" buttonClass="w-28 p-2 mt-1">Open menu</Button>
 <Menu v-model="menuValueHover" @mouseover="menuValueHover = true" @mouseleave="menuValueHover = false">
 </Menu>
 <br>
@@ -88,9 +88,9 @@ cleaner>Open menu</button>
 
 - This menu has custom size, border radius and a button (`item1`) inside.
 
-<button  @click="menuValueSize = !menuValueSize" class="w-28 bg-black text-white rounded-lg p-2 mt-1" cleaner>Open menu</button>
-<Menu v-model="menuValueSize" menuClass="rounded-xl bg-gray-500 border-2 border-gray-400" >
-<template #menu><button class="ml-9 size-9 text-xs bg-teal-500 text-white rounded-lg mt-5" cleaner>item1</button></template>
+<Button  @click="menuValueSize = !menuValueSize" buttonClass="w-28 p-2 mt-1" cleaner>Open menu</Button>
+<Menu v-model="menuValueSize" menuClass="rounded-xl bg-indigo-700 border-2 border-indigo-200" >
+<template #menu><Button buttonClass="ml-7 w-14 h-9 text-xs bg-indigo-200 rounded-lg mt-5 text-black" cleaner>item1</Button></template>
 </Menu>
 <br>
 <br>
