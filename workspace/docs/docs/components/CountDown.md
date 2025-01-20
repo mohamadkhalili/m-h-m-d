@@ -62,10 +62,10 @@ You can easily customize the appearance of the Countdown component by using the 
     <CountDown :time="45" :auto-start="false" format="hh mm ss" class="font-thin text-6xl" >
         <template #controls="{ isRunning, start, reset }">
         <div class="flex gap-4 mt-10">
-            <Button @click="start" buttonClass="bg-blue-500 font-normal">
+            <Button @click="start" buttonClass="bg-indigo-600 font-normal">
                 {{ isRunning ? 'Running' : 'Start' }}
             </Button>
-            <Button @click="reset" buttonClass="bg-red-500 font-normal">Stop</Button>
+            <Button @click="reset" buttonClass="font-normal">Stop</Button>
         </div>
         </template>
     </CountDown>
@@ -103,13 +103,13 @@ You can easily customize the appearance of the Countdown component by using the 
 
 <template #content1>
 <div class="py-10 gap-4 rounded-lg shadow-inner grid grid-cols-1 justify-items-center">
-    <CountDown :time=4400 auto-start class='text-2xl  text-purple-900 ' format="hh hours mm minutes ss seconds"/>
+    <CountDown :time=4400 auto-start class='text-2xl  text-indigo-900 ' format="hh hours mm minutes ss seconds"/>
     -
-    <CountDown :time=4400 auto-start class='text-2xl  text-rose-900 ' format="hhH mmM ssS"/>
+    <CountDown :time=4400 auto-start class='text-2xl  text-indigo-900 ' format="hhH mmM ssS"/>
     -
-    <CountDown :time=4400 auto-start class='text-2xl  text-yellow-900 ' format="default"/>
+    <CountDown :time=4400 auto-start class='text-2xl  text-indigo-900 ' format="default"/>
     -
-    <CountDown :time=4400 auto-start class='text-2xl  text-green-900 ' format="hh mm ss"/>
+    <CountDown :time=4400 auto-start class='text-2xl  text-indigo-900 ' format="hh mm ss"/>
 </div>
 </template>
 
