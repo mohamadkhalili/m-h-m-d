@@ -19,7 +19,7 @@ const isModalOpen3 = ref(false);
 
 - This is the basic modal that opens when the button is clicked.
 
-<button  @click="isModalOpen = true" class="bg-black text-white rounded-lg p-2 mt-1" cleaner>Open Modal</button>
+<Button  @click="isModalOpen = true" buttonClass="w-28 p-2 mt-1" cleaner>Open Modal</button>
 <modal v-model="isModalOpen"/>
 
 ```vue
@@ -36,7 +36,7 @@ const isModalOpen3 = ref(false);
 
 - This modal closes when clicking outside the modal content.
 
-<button  @click="isModalOpen2 = true" class="bg-black text-white rounded-lg p-2 mt-1" cleaner>Open Modal</button>
+<Button  @click="isModalOpen2 = true" buttonClass="w-28 p-2 mt-1" cleaner>Open Modal</button>
 <modal v-model="isModalOpen2" teleport="body" closeOnOutside/>
 
 ```vue
@@ -54,7 +54,7 @@ const isModalOpen3 = ref(false);
 
 - This modal has custom background and text colors.
 
-<button  @click="isModalOpen3 = true" class="bg-black text-white rounded-lg p-2 mt-1" cleaner>Open Modal</button>
+<Button  @click="isModalOpen3 = true" buttonClass="w-28 p-2 mt-1" cleaner>Open Modal</button>
 <modal v-model="isModalOpen3" teleport="body" outsideClass="backdrop-blur-lg" modalClass="border-2 border-indigo-200 bg-indigo-700"/>
 
 ```vue
