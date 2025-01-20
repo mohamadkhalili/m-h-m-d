@@ -7,7 +7,7 @@
           `${!propsData.isDisabled ? 'custom-button' : ''} `,
           { [ButtonClasses.DisabledClass]: propsData.isDisabled }
         ]"
-        :isDisabled="props.isDisabled" 
+        :disabled="propsData.isDisabled"
         @click="handleClick"
         @mouseover="emit('mouseover', $event)"
         @mouseleave="emit('mouseleave', $event)"

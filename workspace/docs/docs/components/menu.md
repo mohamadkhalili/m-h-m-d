@@ -97,11 +97,11 @@ cleaner>Open menu</button>
 <br>
 
 ```vue
-<Menu v-model="menuValueSize" menuClass="rounded-xl bg-gray-500 
- w-32 h-20 border-2 
- uborder-gray-400" >
-<template #menu><button 
-class="ml-11 size-9 text-xs bg-teal-500 text-white rounded-lg mt-5" 
-cleaner>item1</button></template>
+<Menu v-model="menuValueSize" 
+menuClass="rounded-xl bg-indigo-700 border-2 border-indigo-200" >
+<template #menu>
+<Button buttonClass="ml-7 w-14 h-9 text-xs bg-indigo-200 rounded-lg mt-5 text-black" 
+cleaner>item1</Button>
+</template>
 </Menu>
 ```

@@ -81,7 +81,7 @@ const custonItems = ref<string[]>(["apple", "benana", "mango", "orange"]);
 <List v-model="listValue5" activeClass="bg-indigo-700 hover:bg-indigo-600 text-white w-32 h-10" onActiveClass="bg-indigo-200 hover:bg-indigo-300 w-32 h-10"></List>
 
 ```vue
-<List v-model="listValue" activeClass="bg-blue-900 hover:bg-blue-800 
-text-white w-32 h-10" 
-onActiveClass="bg-blue-100 hover:bg-blue-200 w-32 h-10"></List>
+<List v-model="listValue5" 
+activeClass="bg-indigo-700 hover:bg-indigo-600 text-white w-32 h-10" 
+onActiveClass="bg-indigo-200 hover:bg-indigo-300 w-32 h-10"></List>
 ```

@@ -104,10 +104,10 @@ v-model:isEditingSearchPage="isEditingSearchPage"/>
 
 ```vue
 <pagination v-model="inputValue5" :enableSearchPage="false" 
-:activeClass="'bg-emerald-500 size-11 rounded-lg shadow-lg'" 
-:onActiveClass="'rounded-lg shadow-lg'" 
+:activeClass="'bg-indigo-700 hover:bg-indigo-600 size-11 rounded-lg shadow-lg'" 
+:onActiveClass="'bg-indigo-200 hover:bg-indigo-300 rounded-lg shadow-lg'" 
 :separatorClass="'text-emerald-500'" 
-:buttonClass="'size-11 rounded-lg shadow-lg'" />
+:buttonClass="'size-11 bg-indigo-700 hover:bg-indigo-600 rounded-lg shadow-lg'" />
 ```
 
 ## Introduction to pagination with Slots in Vue

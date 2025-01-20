@@ -15,10 +15,10 @@ const tabs = [
   { label: 'Slots', value: 2, content: ''},
   { label: 'Props', value: 3, content: ''},
 ];
-const stepperValue = ref(1);
-const stepperValue2 = ref(1);
-const stepperValue3 = ref(1);
-const stepperValue4 = ref(1);
+const stepperValue = ref(0);
+const stepperValue2 = ref(0);
+const stepperValue3 = ref(0);
+const stepperValue4 = ref(0);
 </script>
 
 ## Default Stepper
@@ -38,7 +38,7 @@ The default stepper component with `prev` and `next` buttons.
 <template #content1>
 <Stepper v-model="stepperValue" ></Stepper>
 <br>
-<Button :isDisabled="stepperValue === 1"  @click="stepperValue = stepperValue - 1" buttonClass="w-28  p-2 mt-8 mr-40" cleaner>prev</Button>
+<Button :isDisabled="stepperValue === 0"  @click="stepperValue = stepperValue - 1" buttonClass="w-28  p-2 mt-8 mr-40" cleaner>prev</Button>
 <Button :isDisabled="stepperValue === 4" @click="stepperValue = stepperValue + 1" buttonClass="w-28 p-2 mt-8 ml-[254px]" cleaner>next</Button>
 </template>
 
@@ -132,8 +132,8 @@ A stepper configured with a defined list of custom steps, each with labels and i
 <template #content1>
 
 <Stepper v-model="stepperValue3" :steps="steps"></Stepper>
-<Button :isDisabled="stepperValue3 === 1"  @click="stepperValue3 = stepperValue3 - 1" buttonClass="w-28 p-2 mt-8 mr-40" cleaner>prev</Button>
-<Button :isDisabled="stepperValue3 === 4" @click="stepperValue3 = stepperValue3 + 1" buttonClass="w-28 p-2 mt-8 ml-[254px]" cleaner>next</Button>
+<Button :isDisabled="stepperValue3 === 0"  @click="stepperValue3 = stepperValue3 - 1" buttonClass="w-28 p-2 mt-8 mr-40" cleaner>prev</Button>
+<Button :isDisabled="stepperValue3 === 7" @click="stepperValue3 = stepperValue3 + 1" buttonClass="w-28 p-2 mt-8 ml-[254px]" cleaner>next</Button>
 </template>
 <template #content2>
 
@@ -187,7 +187,7 @@ A stepper with fully customized styles for progress, progress bar, done, and not
 <template #content1>
 
 <Stepper v-model="stepperValue4" progressClass="shadow-md bg-indigo-200" progressBarClass="bg-indigo-700" doneClass="shadow-md bg-indigo-700" notDoneClass="shadow-md bg-indigo-200 text-black"></Stepper>
-<Button :isDisabled="stepperValue4 === 1"  @click="stepperValue4 = stepperValue4 - 1" buttonClass="w-28 p-2 mt-5 mr-40" cleaner>prev</Button>
+<Button :isDisabled="stepperValue4 === 0"  @click="stepperValue4 = stepperValue4 - 1" buttonClass="w-28 p-2 mt-5 mr-40" cleaner>prev</Button>
 <Button :isDisabled="stepperValue4 === 4" @click="stepperValue4 = stepperValue4 + 1" buttonClass="w-28 p-2 mt-5 ml-[254px]" cleaner>next</Button>
 </template>
 <template #content2>
@@ -209,9 +209,12 @@ A stepper with fully customized styles for progress, progress bar, done, and not
 <template #content3>
 
 ```vue
-<Stepper v-model="stepperValue" progressClass="shadow-md bg-indigo-200" 
-progressBarClass="bg-blue-950" doneClass="shadow-md bg-blue-950" 
-notDoneClass="shadow-md bg-indigo-200 text-black"></Stepper>
+<Stepper v-model="stepperValue4" 
+progressClass="shadow-md bg-indigo-200" 
+progressBarClass="bg-indigo-700" 
+doneClass="shadow-md bg-indigo-700" 
+notDoneClass="shadow-md bg-indigo-200 text-black">
+</Stepper>
 ```
 
 </template>
