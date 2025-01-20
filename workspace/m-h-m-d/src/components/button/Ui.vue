@@ -4,8 +4,10 @@
       <button
         :class="[
           adapterClass(uibuttonClass + ' ' + buttonClass).value,
-          { 'custom-button': true },
+          `${!propsData.isDisabled ? 'custom-button' : ''} `,
+          { [ButtonClasses.DisabledClass]: propsData.isDisabled }
         ]"
+        :isDisabled="props.isDisabled" 
         @click="handleClick"
         @mouseover="emit('mouseover', $event)"
         @mouseleave="emit('mouseleave', $event)"
@@ -13,7 +15,7 @@
         <slot></slot>
         <span
           class="ripple"
-          v-if="rippleVisible"
+          v-if="rippleVisible && !propsData.isDisabled" 
           :style="rippleStyle"
           @transitionend="resetRipple"
         ></span>
@@ -23,14 +25,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import Core from "./Core.vue";
-import { props } from "./props";
-import { ButtonClasses } from "../../styles/buttonClasses";
-import { useAdapterClass } from "../../composables/UseClass";
+import { ref } from 'vue';
+import Core from './Core.vue';
+import { props } from './props';
+import { ButtonClasses } from '../../styles/buttonClasses';
+import { useAdapterClass } from '../../composables/UseClass';
 
 const propsData = defineProps(props);
-const emit = defineEmits(["click", "mouseover", "mouseleave"]);
+const emit = defineEmits(["click", "mouseover", "mouseleave"]);// Emit the 'click' event to the parent
+
 const rippleVisible = ref(false);
 const rippleStyle = ref({});
 const uibuttonClass = ref(ButtonClasses.uiButtonClass);
@@ -48,7 +51,7 @@ const createRipple = (event: MouseEvent) => {
     height: `${size}px`,
     top: `${y}px`,
     left: `${x}px`,
-    transition: "none",
+    transition: 'none',
   };
 
   rippleVisible.value = true;
@@ -64,19 +67,18 @@ const resetRipple = () => {
 
 // Combined click handler
 const handleClick = (event: MouseEvent) => {
-  createRipple(event); // Trigger ripple effect
-  emit("click", event); // Emit click event for external use
+    createRipple(event); // Trigger ripple effect
+    emit('click', event); // Emit click event for external use
 };
 </script>
 
 <style scoped>
-/* No changes to your CSS */
 .custom-button {
   position: relative;
 }
 
 .custom-button::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: -100%;
