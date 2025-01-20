@@ -1,4 +1,3 @@
-
 <script setup>
 const tabs = [
   { label: 'UI', value: 1, content: '' },
@@ -44,7 +43,7 @@ const tabs = [
     <template #content1>
 <div class="grid grid-cols-1 gap-4">
     <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
-<Button  buttonClass=' bg-indigo-700 hover:bg-indigo-600 ' > faded  </Button>
+<Button   buttonClass=' bg-indigo-700 hover:bg-indigo-600 ' > faded  </Button>
  </div>
 </div>
 
@@ -58,6 +57,34 @@ const tabs = [
 
   </template>
 </Tab>
+
+## Disabled
+
+<Tab
+   class="gap-3 border-[1px] rounded-md w-full mx-auto "
+    :tabs="tabs"
+    variant="bordered"
+    size="sm"
+    activeColor="text-blue-500 shadow-blue-500"
+  >
+    <template #content1>
+<div class="grid grid-cols-1 gap-4">
+    <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
+<Button isDisabled buttonClass=' bg-indigo-700 ' > isDisabled  </Button>
+ </div>
+</div>
+
+</template>
+
+  <template #content2>
+
+  ```md
+<Button isDisabled buttonClass=' bg-indigo-700 ' > isDisabled  </Button>
+```
+
+  </template>
+</Tab>
+
 
 ## Button Component Features
 

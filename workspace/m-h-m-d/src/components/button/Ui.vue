@@ -4,14 +4,16 @@
       <button
         :class="[
           adapterClass(uibuttonClass + ' ' + buttonClass).value,
-          { 'custom-button': true }
+          `${!propsData.isDisabled ? 'custom-button' : ''} `,
+          { [ButtonClasses.DisabledClass]: propsData.isDisabled }
         ]"
+        :isDisabled="props.isDisabled" 
         @click="handleClick"
       >
         <slot></slot>
         <span
           class="ripple"
-          v-if="rippleVisible"
+          v-if="rippleVisible && !propsData.isDisabled" 
           :style="rippleStyle"
           @transitionend="resetRipple"
         ></span>
@@ -63,13 +65,12 @@ const resetRipple = () => {
 
 // Combined click handler
 const handleClick = (event: MouseEvent) => {
-  createRipple(event); // Trigger ripple effect
-  emit('click', event); // Emit click event for external use
+    createRipple(event); // Trigger ripple effect
+    emit('click', event); // Emit click event for external use
 };
 </script>
 
 <style scoped>
-/* No changes to your CSS */
 .custom-button {
   position: relative;
 }
