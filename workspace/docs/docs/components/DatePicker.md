@@ -115,7 +115,7 @@ const modelValue3 = ref();
     activeColor="text-blue-500 shadow-blue-500"
   >
 <template #content1>
-<DatePicker v-model="modelValue3" buttonSelectClass="bg-gray-900" dayOfWeekClass="text-white" calenderClass="bg-gray-900 rounded-2xl" onActiveDayClass="text-white rounded-2xl hover:bg-gray-600" nowDayClass="border-amber-200 text-amber-200 rounded-2xl" activeDayClass="bg-gray-700 text-white rounded-2xl" selectMonthClass="bg-gray-900" activeMonthClass="bg-gray-800 text-white" onActiveMonthClass="bg-gray-600 text-white hover:bg-gray-600 hover:text-white" selectYearClass="bg-gray-900" activeYearClass="bg-gray-800 text-white" onActiveYearClass="bg-gray-600 text-white hover:bg-gray-600 hover:text-white"/>
+<DatePicker v-model="modelValue3" buttonSelectClass="bg-indigo-700" dayOfWeekClass="text-black" calenderClass="bg-indigo-200 rounded-2xl" onActiveDayClass="text-balck rounded-2xl hover:bg-indigo-300" nowDayClass="border-indigo-700 hover:bg-indigo-300 text-black rounded-2xl" activeDayClass="bg-indigo-700 text-white rounded-2xl" selectMonthClass="bg-indigo-100" activeMonthClass="bg-indigo-700 hover:bg-indigo-600 hover:text-white text-white" onActiveMonthClass="bg-indigo-200 text-black hover:bg-indigo-300 hover:text-black" selectYearClass="bg-indigo-100" activeYearClass="bg-indigo-700 hover:bg-indigo-600 text-white hover:text-white" onActiveYearClass="bg-indigo-200 text-black hover:bg-indigo-300 hover:text-black"/>
 <p>Date Selected: {{modelValue3}}</p>
 </template>
 
