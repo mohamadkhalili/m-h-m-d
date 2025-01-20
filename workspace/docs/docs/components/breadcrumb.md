@@ -147,7 +147,7 @@ The breadcrumb component with custom active, onActive, and disabled classes for 
     activeColor="text-blue-500 shadow-blue-500"
   >
 <template #content1>
-<Breadcrumb v-model="breadcrumbValue4" activeClass="text-green-400" onActiveClass="hover:text-green-600" disableClass="text-gray-400">
+<Breadcrumb v-model="breadcrumbValue4" activeClass="text-indigo-700 hover:text-indigo-600" onActiveClass="text-indigo-300 hover:text-indigo-400" disableClass="text-indigo-100">
 <template #separator> &nbsp> </template>
 </Breadcrumb>
 </template>
