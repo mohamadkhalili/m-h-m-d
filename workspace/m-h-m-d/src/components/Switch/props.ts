@@ -15,7 +15,7 @@ export const SwitchProps = {
   },
   activeColor: {
     type: String,
-    default: 'bg-blue-500',
+    default: 'bg-slate-700',
   },
   inactiveColor: {
     type: String,

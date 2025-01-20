@@ -4,12 +4,7 @@ const isActive = ref(true);
 const labelActive = ref(false);
 const labelActive2 = ref(false);
 const labelActive3 = ref(false);
-const ColorActive1 = ref(true);
 const ColorActive2 = ref(true);
-const ColorActive3 = ref(true);
-const ColorActive4 = ref(true);
-const ColorActive5 = ref(true);
-const ColorActive6 = ref(true);
 const disable1 = ref(true);
 const disable2 = ref(false);
 const insideActive = ref(false);
@@ -104,13 +99,8 @@ const labelActive3 = ref(false);
   >
 <template #content1>
 
-<div class="grid grid-cols-2 grid-rows-3 gap-3 justify-items-center">
-<Switch v-model="ColorActive2"  activeColor="bg-cyan-500" inactiveColor="bg-cyan-950" />
-<Switch v-model="ColorActive1"   activeColor="bg-pink-500" inactiveColor="bg-pink-950"/>
-<Switch v-model="ColorActive3" activeColor="bg-green-500" inactiveColor="bg-green-950" />
-<Switch v-model="ColorActive4"  activeColor="bg-blue-700" inactiveColor="bg-yellow-950"/>
-<Switch v-model="ColorActive5"  activeColor="bg-rose-500" inactiveColor="bg-rose-950"/>
-<Switch v-model="ColorActive6"  activeColor="bg-purple-500" inactiveColor="bg-purple-950" />
+<div class="grid grid-cols-1  gap-3 justify-items-center">
+<Switch v-model="ColorActive2"  activeColor="bg-indigo-700" inactiveColor="bg-indigo-300" />
 
 </div>
 </template>
@@ -120,21 +110,12 @@ const labelActive3 = ref(false);
   ```md
 <script setup>
 import { ref } from 'vue';
-const ColorActive1 = ref(true);
 const ColorActive2 = ref(true);
-const ColorActive3 = ref(true);
-const ColorActive4 = ref(true);
-const ColorActive5 = ref(true);
-const ColorActive6 = ref(true);
+
 </script>
 
 <div class="grid grid-cols-2 grid-rows-3 gap-3 justify-items-center">
-<Switch v-model="ColorActive1"   activeColor="bg-pink-500" inactiveColor="bg-pink-950"/>
-<Switch v-model="ColorActive2"  activeColor="bg-cyan-500" inactiveColor="bg-cyan-950" />
-<Switch v-model="ColorActive3" activeColor="bg-green-500" inactiveColor="bg-green-950" />
-<Switch v-model="ColorActive4"  activeColor="bg-blue-700" inactiveColor="bg-yellow-950"/>
-<Switch v-model="ColorActive5"  activeColor="bg-rose-500" inactiveColor="bg-rose-950"/>
-<Switch v-model="ColorActive6"  activeColor="bg-purple-500" inactiveColor="bg-purple-950" />
+<Switch v-model="ColorActive2"  activeColor="bg-indigo-700" inactiveColor="bg-indigo-300" />
 </div>
 ```
 
@@ -156,8 +137,8 @@ const ColorActive6 = ref(true);
 <div class="grid grid-cols-2 gap-3 justify-items-center">
 <h7 class="text-xs">Disable in left side</h7>
 <h7 class="text-xs">Disable in right side</h7>
-<Switch v-model="disable1" :isDisabled="true" activeColor="bg-cyan-500" inactiveColor="bg-cyan-950"/>
-<Switch v-model="disable2" :isDisabled="true" activeColor="bg-pink-500" inactiveColor="bg-pink-950"/>
+<Switch v-model="disable1" :isDisabled="true" activeColor="bg-indigo-500" inactiveColor="bg-indigo-950"/>
+<Switch v-model="disable2" :isDisabled="true" activeColor="bg-indigo-500" inactiveColor="bg-indigo-950"/>
 </div>
 </template>
 
