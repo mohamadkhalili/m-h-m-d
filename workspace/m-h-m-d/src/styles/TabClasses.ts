@@ -18,11 +18,11 @@ export const TabClasses = {
 
   // Variant 
   uiTabVariantUnderlineClass:
-    "relative after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-0 after:left-0 after:transition-transform after:duration-300 hover:after:scale-x-100 border-none",
+    "relative after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-indigo-600 after:bottom-0 after:left-0 after:transition-transform after:duration-300 hover:after:scale-x-100 border-none",
   uiTabVariantMirrorClass: `
     relative inline-flex items-center justify-center overflow-hidden
     after:content-[''] after:absolute after:w-10 after:h-10
-    after:bg-gray-600/30 after:opacity-0
+    after:bg-indigo-600/30 after:opacity-0
     after:opacity-100 after:scale-100 after:transition-transform after:duration-500 border-none
   `,
   uiTabVariantShadowClass: "relative inline-flex",
