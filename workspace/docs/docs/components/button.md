@@ -18,7 +18,7 @@ const tabs = [
   >
     <template #content1>
 <div class='  p-4 rounded-lg shadow-inner  flex justify-center items-center'>
-     <Button >button</Button>
+     <Button buttonClass =' hover:bg-slate-600' >button</Button>
 </div>
 
 </template>
@@ -26,7 +26,7 @@ const tabs = [
   <template #content2>
 
   ```md
-  <Button  >button</Button>
+  <Button   buttonClass='bg-slate-900 hover:bg-slate-700 '>button</Button>
 ```
 
   </template>
@@ -42,23 +42,10 @@ const tabs = [
     activeColor="text-blue-500 shadow-blue-500"
   >
     <template #content1>
-<div class="grid grid-cols-2 gap-4">
+<div class="grid grid-cols-1 gap-4">
     <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
-<Button  buttonClass=' bg-gradient-to-tr from-green-600 to-green-700 shadow-inner hover:scale-105 hover:ring-2' > faded  </Button>
+<Button  buttonClass=' bg-indigo-700 hover:bg-indigo-600' > faded  </Button>
  </div>
-    <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
-<Button  buttonClass=" ring-2 bg-purple-500  text-sky-300" > linked  </Button>
-
-</div>
-    <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
-  <Button buttonClass=' bg-gradient-to-b from-blue-600 to-sky-900' > border</Button>
-
-</div>
-     <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
-     <Button  buttonClass=' bg-gradient-to-r from-orange-400 to-pink-400' > shadow  </Button>
-
-</div>
-
 </div>
 
 </template>
@@ -66,11 +53,7 @@ const tabs = [
   <template #content2>
 
   ```md
-<Button  buttonClass=' bg-gradient-to-tr from-green-600 to-green-700 shadow-inner hover:scale-105 hover:ring-2' > faded  </Button>
-<Button  buttonClass="bg-transparent ring-2 text-sky-500" > linked  </Button>
-<Button buttonClass=' bg-gradient-to-b from-blue-600 to-sky-900' > border</Button>
-<Button  buttonClass=' bg-gradient-to-r from-orange-400 to-pink-400' > shadow  </Button>
-
+<Button  buttonClass=' bg-indigo-700 hover:bg-indigo-600' > faded  </Button>
 ```
 
   </template>
