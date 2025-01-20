@@ -55,7 +55,7 @@ const isModalOpen3 = ref(false);
 - This modal has custom background and text colors.
 
 <button  @click="isModalOpen3 = true" class="bg-black text-white rounded-lg p-2 mt-1" cleaner>Open Modal</button>
-<modal v-model="isModalOpen3" teleport="body" outsideClass="backdrop-blur-lg" modalClass="border-2 border-white bg-emerald-200 text-black"/>
+<modal v-model="isModalOpen3" teleport="body" outsideClass="backdrop-blur-lg" modalClass="border-2 border-indigo-200 bg-indigo-700"/>
 
 ```vue
 <modal v-model="isModalOpen3" teleport="body" 
