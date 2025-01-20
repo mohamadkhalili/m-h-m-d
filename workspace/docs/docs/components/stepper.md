@@ -38,8 +38,8 @@ The default stepper component with `prev` and `next` buttons.
 <template #content1>
 <Stepper v-model="stepperValue" ></Stepper>
 <br>
-<button :disabled="stepperValue === 1"  @click="stepperValue = stepperValue - 1" class="w-28 bg-black text-white rounded-lg p-2 mt-1 mr-40" cleaner>prev</button>
-<button :disabled="stepperValue === 4" @click="stepperValue = stepperValue + 1" class="w-28 bg-black text-white rounded-lg p-2 mt-1 ml-[254px]" cleaner>next</button>
+<Button :isDisabled="stepperValue === 1"  @click="stepperValue = stepperValue - 1" buttonClass="w-28  p-2 mt-8 mr-40" cleaner>prev</Button>
+<Button :isDisabled="stepperValue === 4" @click="stepperValue = stepperValue + 1" buttonClass="w-28 p-2 mt-8 ml-[254px]" cleaner>next</Button>
 </template>
 
 <template #content2>
@@ -132,8 +132,8 @@ A stepper configured with a defined list of custom steps, each with labels and i
 <template #content1>
 
 <Stepper v-model="stepperValue3" :steps="steps"></Stepper>
-<button :disabled="stepperValue3 === 1" @click="stepperValue3 = stepperValue3 - 1" class="w-28 bg-black text-white rounded-lg p-2 mt-1 mr-40" cleaner>prev</button>
-<button :disabled="stepperValue3 === steps.length + 1" @click="stepperValue3 = stepperValue3 + 1" class="w-28 bg-black text-white rounded-lg p-2 mt-1 ml-[254px]" cleaner>next</button>
+<Button :isDisabled="stepperValue3 === 1"  @click="stepperValue3 = stepperValue3 - 1" buttonClass="w-28 p-2 mt-8 mr-40" cleaner>prev</Button>
+<Button :isDisabled="stepperValue3 === 4" @click="stepperValue3 = stepperValue3 + 1" buttonClass="w-28 p-2 mt-8 ml-[254px]" cleaner>next</Button>
 </template>
 <template #content2>
 
@@ -186,9 +186,9 @@ A stepper with fully customized styles for progress, progress bar, done, and not
   >
 <template #content1>
 
-<Stepper v-model="stepperValue4" progressClass="shadow-md bg-indigo-200" progressBarClass="bg-blue-950" doneClass="shadow-md bg-blue-950" notDoneClass="shadow-md bg-indigo-200 text-black"></Stepper>
-<button :disabled="stepperValue4 === 1"  @click="stepperValue4 = stepperValue4 - 1" class="w-28 bg-black text-white rounded-lg p-2 mt-1 mr-40" cleaner>prev</button>
-<button :disabled="stepperValue4 === 4" @click="stepperValue4 = stepperValue4 + 1" class="w-28 bg-black text-white rounded-lg p-2 mt-1 ml-[254px]" cleaner>next</button>
+<Stepper v-model="stepperValue4" progressClass="shadow-md bg-indigo-200" progressBarClass="bg-indigo-700" doneClass="shadow-md bg-indigo-700" notDoneClass="shadow-md bg-indigo-200 text-black"></Stepper>
+<Button :isDisabled="stepperValue4 === 1"  @click="stepperValue4 = stepperValue4 - 1" buttonClass="w-28 p-2 mt-5 mr-40" cleaner>prev</Button>
+<Button :isDisabled="stepperValue4 === 4" @click="stepperValue4 = stepperValue4 + 1" buttonClass="w-28 p-2 mt-5 ml-[254px]" cleaner>next</Button>
 </template>
 <template #content2>
 

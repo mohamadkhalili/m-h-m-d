@@ -9,6 +9,8 @@
         ]"
         :isDisabled="props.isDisabled" 
         @click="handleClick"
+        @mouseover="emit('mouseover', $event)"
+        @mouseleave="emit('mouseleave', $event)"
       >
         <slot></slot>
         <span
@@ -30,7 +32,7 @@ import { ButtonClasses } from '../../styles/buttonClasses';
 import { useAdapterClass } from '../../composables/UseClass';
 
 const propsData = defineProps(props);
-const emit = defineEmits(['click']); // Emit the 'click' event to the parent
+const emit = defineEmits(["click", "mouseover", "mouseleave"]);// Emit the 'click' event to the parent
 
 const rippleVisible = ref(false);
 const rippleStyle = ref({});
