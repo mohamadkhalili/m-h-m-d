@@ -218,7 +218,7 @@ class="bg-white" >
    class="bg-white  "
 >
 
-<Button buttonClass="bg-gradient-to-r from-amber-500 to-pink-500 text-white  rounded-xl">
+<Button buttonClass="bg-indigo-700 hover:bg-indigo-600 text-white  rounded-xl">
 View
 </Button>
 </Card>
@@ -382,7 +382,7 @@ View
   info4="1K ♥️"
 >
 
-<Button   buttonClass="rounded-full bg-blue-500  ring-2 mr-4">
+<Button   buttonClass="rounded-full  bg-indigo-700 ring-2  mr-4">
     follow
  </Button>
 </Card>
