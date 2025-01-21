@@ -1,4 +1,4 @@
-<script setup >
+<script setup>
 import { ref, computed } from 'vue';
 import { TabProps } from './props';
 import Core from './Core.vue';
@@ -8,8 +8,6 @@ const props = defineProps(TabProps);
 const emit = defineEmits(['update:modelValue']);
 
 const activeTab = ref(props.modelValue || props.tabs[0]?.value);
-
-
 
 const position = computed(() => {
   switch (props.position) {
@@ -62,7 +60,7 @@ const getButtonStyleClass = computed(() => {
       return TabClasses.uiTabVariantMirrorClass;
     case 'shadow':
       return TabClasses.uiTabVariantShadowClass;
-      case 'bordered':
+    case 'bordered':
       return TabClasses.uiTabVariantBorderedClass;
     default:
       return TabClasses.uiTabVariantDefaultClass;
@@ -78,77 +76,68 @@ function selectTab(value) {
 </script>
 
 <template>
-  <div :class="[position , 'items-center ']">
-    <Core
-    :tabs="props.tabs"
-      :variant="props.variant"
-      :is-disabled="props.isDisabled"
-      :class="[layoutClass
-,
-      ]"
-    >
+  <div :class="[position, 'items-center ']">
+    <Core :tabs="props.tabs" :variant="props.variant" :is-disabled="props.isDisabled" :class="[layoutClass
+      ,
+    ]">
       <div v-for="(tab, index) in props.tabs" :key="tab.value" :class="[
         'relative ',
       ]">
-        <label
-  @click="!props.isDisabled && selectTab(tab.value)"
-  :disabled="props.isDisabled"
-  :class="[
-    TabClasses.uiTabButtonClass,
-    getButtonStyleClass,
-    sizeTab,
-    props.isDisabled ? TabClasses.uiTabDisabledClass : '',
-     !props.vertical && props.position =='top' ? (props.variant === 'bordered' && activeTab === tab.value ? TabClasses.uiTabStylePositionTopClass : '') : '' ,
-     !props.vertical && props.position =='bottom' ? (props.variant === 'bordered' && activeTab === tab.value ? TabClasses.uiTabStylePositionBottomClass: '') : '' ,
-     props.vertical && props.position =='left' ? (props.variant === 'bordered' && activeTab === tab.value ? TabClasses.uiTabStylePositionLeftClass : '') : '' ,
-     props.vertical && props.position =='right' ? (props.variant === 'bordered' && activeTab === tab.value ? TabClasses.uiTabStylePositionRightClass : '') : '' ,
+        <label @click="!props.isDisabled && selectTab(tab.value)" :disabled="props.isDisabled" :class="[
+          TabClasses.uiTabButtonClass,
+          getButtonStyleClass,
+          sizeTab,
+          props.isDisabled ? TabClasses.uiTabDisabledClass : '',
+          !props.vertical && props.position == 'top' ? (props.variant === 'bordered' && activeTab === tab.value ? TabClasses.uiTabStylePositionTopClass : '') : '',
+          !props.vertical && props.position == 'bottom' ? (props.variant === 'bordered' && activeTab === tab.value ? TabClasses.uiTabStylePositionBottomClass : '') : '',
+          props.vertical && props.position == 'left' ? (props.variant === 'bordered' && activeTab === tab.value ? TabClasses.uiTabStylePositionLeftClass : '') : '',
+          props.vertical && props.position == 'right' ? (props.variant === 'bordered' && activeTab === tab.value ? TabClasses.uiTabStylePositionRightClass : '') : '',
 
 
-     
-      props.variant === 'bordered' && activeTab !== tab.value ? ' '  
-      : '',
-    ,
-    props.variant === 'underline' && activeTab === tab.value ? ' after:scale-x-100' : 'after:scale-x-0',
-    props.variant === 'underline' && activeTab !== tab.value ? ' after:scale-x-0 after:bg-gray-400 ' : '',
 
-    props.variant === 'shadow' && activeTab === tab.value ? ' bg-gray-200 border-0 border-x-8 ' : '',
-    props.variant === 'shadow' && activeTab !== tab.value ? '  border-x-2   ' : '',
+          props.variant === 'bordered' && activeTab !== tab.value ? ' '
+            : '',
+          ,
+          props.variant === 'underline' && activeTab === tab.value ? ' after:scale-x-100' : 'after:scale-x-0',
+          props.variant === 'underline' && activeTab !== tab.value ? ' after:scale-x-0 after:bg-gray-400 ' : '',
 
-
-    props.variant === 'default' && activeTab === tab.value ? '' : '',
-    props.variant === 'default' && activeTab !== tab.value ? '' : '',
+          props.variant === 'shadow' && activeTab === tab.value ? ' bg-gray-200 border-0 border-x-8 ' : '',
+          props.variant === 'shadow' && activeTab !== tab.value ? '  border-x-2   ' : '',
 
 
-    props.variant === 'mirror'
-      ? `relative overflow-hidden 
+          props.variant === 'default' && activeTab === tab.value ? '' : '',
+          props.variant === 'default' && activeTab !== tab.value ? '' : '',
+
+
+          props.variant === 'mirror'
+            ? `relative overflow-hidden 
           ${activeTab === tab.value
-            ? 'after:translate-x-100 after:scale-0 space-x-10'
-            : ' after:scale-x-[200%]  '}
+              ? 'after:translate-x-100 after:scale-0 space-x-10'
+              : ' after:scale-x-[200%]  '}
           transition-all duration-700`
-      : '',
-    !props.vertical ? (props.variant === 'default' && index === 0 ? 'rounded-l-full' : '') : (props.variant === 'default' && index === 0 ? 'rounded-t-2xl' : ''),
-    !props.vertical ? (props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-r-full' : '') : (props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-b-2xl' : ''),
+            : '',
+          !props.vertical ? (props.variant === 'default' && index === 0 ? 'rounded-l-full' : '') : (props.variant === 'default' && index === 0 ? 'rounded-t-2xl' : ''),
+          !props.vertical ? (props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-r-full' : '') : (props.variant === 'default' && index === props.tabs.length - 1 ? 'rounded-b-2xl' : ''),
 
 
-    !props.vertical && props.variant==='bordered' && props.position ==='top' ? (tab.value===activeTab + 1 ? TabClasses.uiTabRoundedBlClass : '' ) :'',
-        !props.vertical && props.variant==='bordered' && props.position ==='top' ? (tab.value===activeTab -1  ? TabClasses.uiTabRoundedBrClass : '' ) :'',
+          !props.vertical && props.variant === 'bordered' && props.position === 'top' ? (tab.value === activeTab + 1 ? TabClasses.uiTabRoundedBlClass : '') : '',
+          !props.vertical && props.variant === 'bordered' && props.position === 'top' ? (tab.value === activeTab - 1 ? TabClasses.uiTabRoundedBrClass : '') : '',
 
-    !props.vertical && props.variant==='bordered' && props.position ==='bottom' ?  (tab.value===activeTab +1? TabClasses.uiTabRoundedTlClass : '' ) :'',
-        !props.vertical && props.variant==='bordered' && props.position ==='bottom' ?  (tab.value===activeTab -1? TabClasses.uiTabRoundedTrClass : '' ) :'',
+          !props.vertical && props.variant === 'bordered' && props.position === 'bottom' ? (tab.value === activeTab + 1 ? TabClasses.uiTabRoundedTlClass : '') : '',
+          !props.vertical && props.variant === 'bordered' && props.position === 'bottom' ? (tab.value === activeTab - 1 ? TabClasses.uiTabRoundedTrClass : '') : '',
 
-     props.vertical && props.variant==='bordered' && props.position ==='right' ?   (tab.value===activeTab+1 ? TabClasses.uiTabRoundedTlClass : '' ) :'',
-          props.vertical && props.variant==='bordered' && props.position ==='right' ?   (tab.value===activeTab-1 ? TabClasses.uiTabRoundedBlClass : '' ) :'',
+          props.vertical && props.variant === 'bordered' && props.position === 'right' ? (tab.value === activeTab + 1 ? TabClasses.uiTabRoundedTlClass : '') : '',
+          props.vertical && props.variant === 'bordered' && props.position === 'right' ? (tab.value === activeTab - 1 ? TabClasses.uiTabRoundedBlClass : '') : '',
 
-    props.vertical && props.variant==='bordered' && props.position ==='left' ?   (tab.value===activeTab+1 ? TabClasses.uiTabRoundedTrClass : '' ) :'',
-        props.vertical && props.variant==='bordered' && props.position ==='left' ?   (tab.value===activeTab-1 ? TabClasses.uiTabRoundedBlClass: '' ) :'',
+          props.vertical && props.variant === 'bordered' && props.position === 'left' ? (tab.value === activeTab + 1 ? TabClasses.uiTabRoundedTrClass : '') : '',
+          props.vertical && props.variant === 'bordered' && props.position === 'left' ? (tab.value === activeTab - 1 ? TabClasses.uiTabRoundedBlClass : '') : '',
 
 
 
-    props.vertical ? 'w-full' : '',
-    activeTab === tab.value ? props.activeColor : props.notActiveColor,
+          props.vertical ? 'w-full' : '',
+          activeTab === tab.value ? props.activeColor : props.notActiveColor,
 
-  ]"
->
+        ]">
 
           <slot name="label" :tab="tab">
             {{ tab.label }}
@@ -161,7 +150,7 @@ function selectTab(value) {
       <div v-for="tab in props.tabs" :key="tab.value" v-show="activeTab === tab.value" class="p-6">
         <transition name="slide-right" mode="out-in">
           <div v-if="tab.content != null" :key="tab.value" :class=[props.contentColor]>
-            <slot :name="'content'+tab.value" :tab="tab" :class="[]">
+            <slot :name="tab.value" :tab="tab" :class="[]">
               {{ tab.content }}
             </slot>
           </div>
@@ -176,10 +165,12 @@ function selectTab(value) {
 .slide-right-leave-active {
   transition: all 0.5s ease-in-out;
 }
+
 .slide-right-enter {
   opacity: 0;
   transform: translateX(-100%);
 }
+
 .slide-right-leave-to {
   opacity: 0;
   transform: translateX(100%);
@@ -255,16 +246,15 @@ function selectTab(value) {
   cursor: pointer;
 }
 
-.tab--1:checked ~ .indicator {
+.tab--1:checked~.indicator {
   left: 2px;
 }
 
-.tab--2:checked ~ .indicator {
+.tab--2:checked~.indicator {
   left: calc(130px + 2px);
 }
 
-.tab--3:checked ~ .indicator {
+.tab--3:checked~.indicator {
   left: calc(130px * 2 + 2px);
 }
-
 </style>

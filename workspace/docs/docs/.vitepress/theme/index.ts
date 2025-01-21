@@ -10,6 +10,9 @@ import './tailwind.postcss'
 import mhmd from 'm-h-m-d'
 import { tooltip } from 'm-h-m-d'
 
+import CodeTabs from './components/CodeTabs.vue'
+import 'highlight.js/styles/github.css';
+
 import clickOutside from 'm-h-m-d/src/directives/clickOutSide';
 
 export default {
@@ -24,6 +27,8 @@ export default {
     app.use(mhmd, { componentPrefix: '' })
     app.directive('click-outside', clickOutside)
     app.directive('tooltipl', tooltip)
+
+    app.component('CodeTabs', CodeTabs)
 
   }
 } satisfies Theme
