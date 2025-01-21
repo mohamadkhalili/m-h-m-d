@@ -73,7 +73,7 @@ const text = ref("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
   >
 <template #content1>
 <div class="ml-16">
-<ExpansionPanel :title="title" :text="text" activeTitleClass="bg-blue-900 text-white hover:bg-blue-800 rounded-lg w-[500px]" onActiveTitleClass="bg-blue-900 hover:bg-blue-800 text-white w-[500px] rounded-t-lg" activeTextClass="bg-blue-100 w-[500px] rounded-b-lg" onActiveTextClass="bg-blue-100 w-[500px] rounded-b-lg" />
+<ExpansionPanel :title="title" :text="text" activeTitleClass="bg-indigo-700 text-white hover:bg-indigo-600 rounded-lg w-[500px]" onActiveTitleClass="bg-blue-900 hover:bg-indigo-700 text-white w-[500px] rounded-t-lg" activeTextClass="bg-indigo-200 w-[500px] rounded-b-lg" onActiveTextClass="bg-indigo-200 w-[500px] rounded-b-lg" />
 </div>
 </template>
 
