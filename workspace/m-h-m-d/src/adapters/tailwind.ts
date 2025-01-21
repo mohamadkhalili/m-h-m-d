@@ -41,7 +41,6 @@ const classMappings: ClassMapping[] = [
     { regex: /^tracking-(tighter|tight|normal|wide|wider|widest)$/, properties: ['letterSpacing'] },
     // Background Color
     { regex: /^bg-(transparent|red|white|green|blue|yellow|purple|black|pink|indigo|gray|slate|neutral|stone|amber|lime|emerald|teal|cyan|sky|violet|fuchsia|rose)(-\d{3}|)$/, properties: ['backgroundColor'] },
-    { regex: /^border-(transparent|red|white|green|blue|yellow|purple|black|pink|indigo|gray|slate|neutral|stone|amber|lime|emerald|teal|cyan|sky|violet|fuchsia|rose)(-\d{3}|)$/, properties: ['borderColor'] },
     // Padding
     { regex: /^p-(\d+|px|sm|md|lg|xl)$/, properties: ['padding'] },
     { regex: /^pt-(\d+|px|sm|md|lg|xl)$/, properties: ['paddingTop'] },
@@ -63,6 +62,7 @@ const classMappings: ClassMapping[] = [
     { regex: /^grid-(cols|rows)-\d+$/, properties: ['gridTemplateColumns', 'gridTemplateRows'] },
     // Border
     { regex: /^border(-[trbl]{1,2})?$/, properties: ['borderWidth', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth'] },
+    { regex: /^border-(transparent|red|white|green|blue|yellow|purple|black|pink|indigo|gray|slate|neutral|stone|amber|lime|emerald|teal|cyan|sky|violet|fuchsia|rose)(-\d{3}|)$/, properties: ['borderColor'] },
     // Box Shadow
     { regex: /^shadow(-[a-z]+)?$/, properties: ['boxShadow'] },
 ];
