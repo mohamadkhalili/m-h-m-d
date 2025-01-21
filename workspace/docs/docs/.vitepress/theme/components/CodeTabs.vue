@@ -1,6 +1,6 @@
 <template>
-    <Tab class="gap-3 border-[1px] rounded-md w-full mx-auto" :tabs="tabs" variant="bordered" size="sm"
-        activeColor="text-blue-500 shadow-blue-500">
+    <Tab v-model="avtiveTab" class="gap-3 border-[1px] rounded-md w-full mx-auto" :tabs="tabs" variant="bordered"
+        size="sm" activeColor="text-blue-500 shadow-blue-500">
         <template #ui>
             <div class="p-6 rounded-lg shadow-inner flex w-full justify-center">
                 <Button @click="open" class="btn-primary">Open</Button>
@@ -67,6 +67,7 @@ const tabs = [
     { label: 'template', value: 'template', content: '' },
     { label: 'script', value: 'script', content: '' },
 ];
+const avtiveTab = ref('ui')
 
 const openDrawer = ref(false);
 const open = () => {
