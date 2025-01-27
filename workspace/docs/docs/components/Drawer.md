@@ -2,6 +2,36 @@
 
 ## Usage
 
+<CodeTabs
+  templateCode="
+<div class='p-6 rounded-lg shadow-inner flex w-full justify-center'>
+  <Button @click='open' class='btn-primary'>Open</Button>
+  <Drawer v-model:isOpen='openDrawer' class='bg-gray-200 shadow-xl'>
+    <div class='w-full justify-center items-center mt-20 p-2'>
+      <h2>Test Drawer</h2>
+      Click the close button or action button to close the drawer...
+    </div>
+    <Button @click='open' buttonClass='m-36'>
+      Close
+    </Button>
+  </Drawer>
+</div>
+"
+  scriptCode="
+export default {
+data() {
+    return {
+      openDrawer: false
+    }
+  },
+methods: {
+open() {
+this.openDrawer = !this.openDrawer
+}
+}
+}
+"
+/>
 <Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
     :tabs="tabs"

@@ -2,19 +2,7 @@
     <Tab v-model="avtiveTab" class="gap-3 border-[1px] rounded-md w-full mx-auto" :tabs="tabs" variant="bordered"
         size="sm" activeColor="text-blue-500 shadow-blue-500">
         <template #ui>
-            <div class="p-6 rounded-lg shadow-inner flex w-full justify-center">
-                <Button @click="open" class="btn-primary">Open</Button>
-                <Drawer v-model:isOpen="openDrawer" class="bg-gray-200 shadow-xl">
-                    <div class="w-full justify-center items-center mt-20 p-2">
-                        <h2>Test Drawer</h2>
-                        Click the close button or action button to close the drawer. Clicking outside or pressing the
-                        escape key won't close it.
-                    </div>
-                    <Button @click="open" buttonClass="m-36">
-                        Close
-                    </Button>
-                </Drawer>
-            </div>
+            <RenderTemplate :template-code="props?.templateCode" :script-code="props?.scriptCode" />
         </template>
 
         <template #template>
@@ -36,6 +24,7 @@
 import { ref, defineProps, computed, onMounted } from 'vue';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/github.css';
+import RenderTemplate from './RenderTemplate';
 
 const props = defineProps({
     templateCode: {

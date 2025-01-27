@@ -20,6 +20,7 @@
   "dependencies": {
     "@jamescoyle/vue-icon": "^0.1.2",
     "@mdi/js": "^7.4.47",
+    "@vue/compiler-dom": "^3.5.13",
     "autoprefixer": "^10.4.20",
     "highlight.js": "^11.11.1",
     "postcss": "^8.4.47",
