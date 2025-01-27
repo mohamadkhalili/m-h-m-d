@@ -32,152 +32,67 @@ this.openDrawer = !this.openDrawer
 }
 "
 />
-<Tab
-   class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs"
-    variant="bordered"
-    size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
-  >
-    <template #content1>
-<div class=" p-6 rounded-lg shadow-inner flex w-full justify-center">
-   <Button @click="open" class="btn-primary">Open</Button>
-    <Drawer v-model:isOpen="openDrawer" class="bg-gray-200 shadow-xl">
-    <div class=" w-full justify-center items-center mt-20 p-2">
-    <h2>Test Drawer</h2>
-    Click the close button or action button to close the drawer. Clicking outside or pressing the escape key won't close it.
-    </div>
-      <Button @click="open" buttonClass="m-36">
-            Close
-          </Button>
-    </Drawer>
-    </div>
-
-</template>
-
-  <template #content2>
-
-  ```md
-const openDrawer = ref(false);
-const open = () => {
-  openDrawer.value = !openDrawer.value;
-};
-
-<Button @click="open" class="btn-primary">Open</Button>
-    <Drawer v-model:isOpen="openDrawer" class="bg-gray-800 shadow-xl text-white">
-    <div class=" w-full justify-center items-center mt-20 p-2">
-    <h2>Test Drawer</h2>
-    Click the close button or action button to close the drawer. Clicking outside or pressing the escape key won't close it.
-    </div>
-      <Button @click="open" buttonClass="m-36">
-            Close
-          </Button>
-    </Drawer>
-```
-
-  </template>
-</Tab>
 
 ## Customize
 
-<Tab
-   class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs"
-    variant="bordered"
-    size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
-  >
-    <template #content1>
-<div class=" p-6 rounded-lg shadow-inner flex w-full justify-center">
-  <Button @click="toggleDrawer" class="btn-primary">Open</Button>
-    <Drawer v-model:isOpen="isOpenRight">
-      <div class="flex flex-col h-full bg-gray-100">
-        <div class="flex justify-between items-center px-4 py-3 border-b border-gray-300">
-          <h2 class=" font-semibold text-gray-700">Menu</h2>
-          <button @click="toggleDrawer" class="text-gray-500 hover:text-gray-700 text-xl bg-transparent">
+<CodeTabs
+  templateCode="
+  <div class=' p-6 rounded-lg shadow-inner flex w-full justify-center'>
+  <Button @click='toggleDrawer' class='btn-primary'>Open</Button>
+    <Drawer v-model:isOpen='isOpenRight'>
+      <div class='flex flex-col h-full bg-gray-100'>
+        <div class='flex justify-between items-center px-4 py-3 border-b border-gray-300'>
+          <h2 class=' font-semibold text-gray-700'>Menu</h2>
+          <button @click='toggleDrawer' class='text-gray-500 hover:text-gray-700 text-xl bg-transparent'>
             ✖
           </button>
         </div>
-       <div class="flex flex-col flex-grow px-4 py-3 space-y-4">
-  <p href="#" class="cursor-pointer flex items-center text-gray-700 text-lg px-3 py-2 rounded-lg hover:bg-blue-100 hover:text-blue-600 transition">
+       <div class='flex flex-col flex-grow px-4 py-3 space-y-4'>
+  <p href='#' class='cursor-pointer flex items-center text-gray-700 text-lg px-3 py-2 rounded-lg hover:bg-blue-100 hover:text-blue-600 transition'>
     <span>🏠</span> Home
   </p>
-  <p href="#" class="cursor-pointer flex items-center text-gray-700 text-lg px-3 py-2 rounded-lg hover:bg-blue-100 hover:text-blue-600 transition">
+  <p href='#' class='cursor-pointer flex items-center text-gray-700 text-lg px-3 py-2 rounded-lg hover:bg-blue-100 hover:text-blue-600 transition'>
     <span>📄</span> About
   </p>
-  <p href="#" class="cursor-pointer flex items-center text-gray-700 text-lg px-3 py-2 rounded-lg hover:bg-blue-100 hover:text-blue-600 transition">
+  <p href='#' class='cursor-pointer flex items-center text-gray-700 text-lg px-3 py-2 rounded-lg hover:bg-blue-100 hover:text-blue-600 transition'>
     <span>📚</span> Content
   </p>
-  <p href="#" class="cursor-pointer flex items-center text-gray-700 text-lg px-3 py-2 rounded-lg hover:bg-blue-100 hover:text-blue-600 transition">
+  <p href='#' class='cursor-pointer flex items-center text-gray-700 text-lg px-3 py-2 rounded-lg hover:bg-blue-100 hover:text-blue-600 transition'>
     <span>📞</span> Contact
   </p>
-  <p href="#" class="cursor-pointer flex items-center text-gray-700 text-lg px-3 py-2 rounded-lg hover:bg-blue-100 hover:text-blue-600 transition">
+  <p href='#' class='cursor-pointer flex items-center text-gray-700 text-lg px-3 py-2 rounded-lg hover:bg-blue-100 hover:text-blue-600 transition'>
     <span>💸</span> Support
   </p>
 </div>
-        <div class="flex justify-between items-center px-4 py-3 border-t border-gray-300 bg-gray-200">
-          <Button class="btn-secondary">Help</Button>
-          <Button class="btn-secondary">Logout</Button>
+        <div class='flex justify-between items-center px-4 py-3 border-t border-gray-300 bg-gray-200'>
+          <Button class='btn-secondary'>Help</Button>
+          <Button class='btn-secondary'>Logout</Button>
         </div>
       </div>
     </Drawer>
 </div>
-
-</template>
-
-  <template #content2>
-
-  ```md
-  <script setup>
-import { ref } from 'vue';
-
-const isOpenRight = ref(false);
-const toggleDrawer = () => {
-  isOpenRight.value = !isOpenRight.value;
+"
+  scriptCode="
+export default {
+  data() {
+    return {
+      isOpenRight: false,
+    };
+  },
+  methods: {
+    toggleDrawer() {
+      this.isOpenRight = !this.isOpenRight;
+    },
+  },
 };
+"
+/>
 
 
-</script>
-
-  <Button @click="toggleDrawer" class="btn-primary">Open</Button>
-    <Drawer v-model:isOpen="isOpenRight">
-      <div class="flex flex-col h-full bg-gray-100">
-        <div class="flex justify-between items-center px-4 py-3 border-b border-gray-300">
-          <h2 class=" font-semibold text-gray-700">Menu</h2>
-          <button @click="toggleDrawer" class="text-gray-500 hover:text-gray-700 text-xl bg-transparent">
-            ✖
-          </button>
-        </div>
-       <div class="flex flex-col flex-grow px-4 py-3 space-y-4">
-  <p href="#" class="cursor-pointer flex items-center text-gray-700 text-lg px-3 py-2 rounded-lg hover:bg-blue-100 hover:text-blue-600 transition">
-    <span>🏠</span> Home
-  </p>
-  <p href="#" class="cursor-pointer flex items-center text-gray-700 text-lg px-3 py-2 rounded-lg hover:bg-blue-100 hover:text-blue-600 transition">
-    <span>📄</span> About
-  </p>
-  <p href="#" class="cursor-pointer flex items-center text-gray-700 text-lg px-3 py-2 rounded-lg hover:bg-blue-100 hover:text-blue-600 transition">
-    <span>📚</span> Content
-  </p>
-  <p href="#" class="cursor-pointer flex items-center text-gray-700 text-lg px-3 py-2 rounded-lg hover:bg-blue-100 hover:text-blue-600 transition">
-    <span>📞</span> Contact
-  </p>
-  <p href="#" class="cursor-pointer flex items-center text-gray-700 text-lg px-3 py-2 rounded-lg hover:bg-blue-100 hover:text-blue-600 transition">
-    <span>💸</span> Support
-  </p>
-</div>
-        <div class="flex justify-between items-center px-4 py-3 border-t border-gray-300 bg-gray-200">
-          <Button class="btn-secondary">Help</Button>
-          <Button class="btn-secondary">Logout</Button>
-        </div>
-      </div>
-    </Drawer>
-
-```
-
-  </template>
-</Tab>
 
 ## Sides
+
+
 
 <Tab
    class="gap-3 border-[1px] rounded-md w-full mx-auto "
