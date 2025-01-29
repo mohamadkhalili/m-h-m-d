@@ -24,31 +24,45 @@ const isEditingSearchPage = ref()
 - `v-model`: Binds the current page number.
 - `v-model:searchPage`: Manages the search functionality.
 - `v-model:isEditingSearchPage`: Indicates if the search input is editable.
-<br>
 
-<br>
-<pagination v-model="inputValue1" v-model:searchPage="searchValue" v-model:isEditingSearchPage="isEditingSearchPage"/>
-<br>
-
-```vue
-<pagination v-model="inputValue" v-model:searchPage="searchValue" 
-v-model:isEditingSearchPage="isEditingSearchPage"/>
-```
+<CodeTabs
+  templateCode="
+<pagination v-model='inputValue1' v-model:searchPage='searchValue' v-model:isEditingSearchPage='isEditingSearchPage'/>
+"
+scriptCode="
+export default {
+data() {
+    return {
+      inputValue1 : undefined,
+      searchValue : undefined,
+      isEditingSearchPage : true
+    }
+  },
+}
+"
+/>
 
 ## Disable Search Page
 
 **Props:**
 
 - `enableSearchPage`: Set to `false` to deactivate search functionality.
-<br>
 
-<br>
-<pagination v-model="inputValue3" :enableSearchPage="false"/>
-<br>
-
-```vue
-<pagination v-model="inputValue" :enableSearchPage="false"/>
-```
+<CodeTabs
+  templateCode="
+<pagination v-model='inputValue3' :enableSearchPage='searchEnabled'/>
+"
+scriptCode="
+export default {
+data() {
+    return {
+      inputValue3 : undefined,
+      searchEnabled : false
+    }
+  },
+}
+"
+/>
 
 ## Left-to-Right pagination
 
@@ -56,34 +70,46 @@ v-model:isEditingSearchPage="isEditingSearchPage"/>
 
 - `rtl`: Set to `false` for Left-to-Right layout.
 - `enableSearchPage`: Disable the search page feature.
-<br>
 
-<br>
-
-<div >
-<pagination v-model="inputValue2" :enableSearchPage="false" :rtl="false"/>
-</div>
-<br>
-
-```vue
-<pagination v-model="inputValue" :enableSearchPage="false" :rtl="false"/>
-```
+<CodeTabs
+  templateCode="
+<pagination v-model='inputValue2' :enableSearchPage='searchEnabled' :rtl='rtlValue'/>
+"
+scriptCode="
+export default {
+data() {
+    return {
+      inputValue2 : undefined,
+      searchEnabled : false,
+      rtlValue : false
+    }
+  },
+}
+"
+/>
 
 ## Set Page Size
 
 **Props:**
 
 - `pageSize`: Defines the number of items per page.
-<br>
 
-<br>
-<pagination v-model="inputValue4" :enableSearchPage="false" :pageSize="10"/>
-<br>
-
-```vue
-<pagination v-model="inputValue" :enableSearchPage="false" :pageSize="10"/>
-
-```
+<CodeTabs
+  templateCode="
+<pagination v-model='inputValue4' :enableSearchPage='searchEnabled' :pageSize='pageSize'/>
+"
+scriptCode="
+export default {
+data() {
+    return {
+      inputValue4 : undefined,
+      searchEnabled : false,
+      pageSize : 10
+    }
+  },
+}
+"
+/>
 
 ## Customize Classes
 
@@ -96,19 +122,25 @@ v-model:isEditingSearchPage="isEditingSearchPage"/>
 
 ### Example Usage
 
-<br>
-<br>
-<pagination v-model="inputValue5" :enableSearchPage="false" :activeClass="'bg-indigo-700 hover:bg-indigo-600 size-11 rounded-lg shadow-lg'" :onActiveClass="'bg-indigo-200 hover:bg-indigo-300 rounded-lg shadow-lg'" :separatorClass="'text-emerald-500'" :buttonClass="'size-11 bg-indigo-700 hover:bg-indigo-600 rounded-lg shadow-lg'" />
-
-<br>
-
-```vue
-<pagination v-model="inputValue" :enableSearchPage="false" 
-:activeClass="'bg-indigo-700 hover:bg-indigo-600 size-11 rounded-lg shadow-lg'" 
-:onActiveClass="'bg-indigo-200 hover:bg-indigo-300 rounded-lg shadow-lg'" 
-:separatorClass="'text-emerald-500'" 
-:buttonClass="'size-11 bg-indigo-700 hover:bg-indigo-600 rounded-lg shadow-lg'" />
-```
+<CodeTabs
+  templateCode="
+<pagination v-model='inputValue5' :enableSearchPage='searchValue' :activeClass='activeClass' :onActiveClass='onActiveClass' :separatorClass='separatorClass' :buttonClass='buttonClass' />
+"
+scriptCode="
+export default {
+data() {
+    return {
+      inputValue5 : undefined,
+      searchValue : false,
+      activeClass : 'bg-indigo-700 hover:bg-indigo-600 size-11 rounded-lg shadow-lg',
+      onActiveClass : 'bg-indigo-200 hover:bg-indigo-300 rounded-lg shadow-lg',
+      separatorClass : 'text-emerald-500',
+      buttonClass : 'size-11 bg-indigo-700 hover:bg-indigo-600 rounded-lg shadow-lg'
+    }
+  },
+}
+"
+/>
 
 ## Introduction to pagination with Slots in Vue
 
