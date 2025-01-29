@@ -72,7 +72,7 @@ export default {
   },
   methods: {
     loadImage() {
-      this.isLoading = !this.isLoading; // Toggle the loading state
+      this.isLoading = !this.isLoading; 
     }
   }
 }
@@ -81,134 +81,77 @@ export default {
 
 ## Chat example
 
-<Tab
-   class="gap-3 border-[1px] rounded-md w-full mx-auto"
-    :tabs="tabs"
-    size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
->
-<template #content1>
-<div class="p-6 rounded-lg  flex   flex-col gap-2">
-<div class="flex justify-between border-b-2 m-4">
+<CodeTabs
+templateCode="
+  <div class='p-6 rounded-lg  flex   flex-col gap-2'>
+  <div class='flex justify-between border-b-2 m-4'>
 <div>
-            <Skeleton  width='180px' height='15px' class="my-2 rounded-md" />
-            <Skeleton  width='240px' height='15px' class="mb-6 rounded-md"/>
+            <Skeleton  width='180px' height='15px' class='my-2 rounded-md' />
+            <Skeleton  width='240px' height='15px' class='mb-6 rounded-md'/>
 </div>
-            <Skeleton  width='80px' height='15px' class="mt-4 rounded-md "/>
+            <Skeleton  width='80px' height='15px' class='mt-4 rounded-md '/>
 
 </div>
-<div class="flex justify-between border-b-2 m-4">
+<div class='flex justify-between border-b-2 m-4'>
 <div>
-            <Skeleton  width='180px' height='15px' class="my-2 rounded-md" />
-            <Skeleton  width='240px' height='15px' class="mb-6 rounded-md"/>
+            <Skeleton  width='180px' height='15px' class='my-2 rounded-md' />
+            <Skeleton  width='240px' height='15px' class='mb-6 rounded-md'/>
 </div>
-            <Skeleton  width='80px' height='15px' class="mt-4 rounded-md"/>
+            <Skeleton  width='80px' height='15px' class='mt-4 rounded-md'/>
 
 </div>
-<div class="flex justify-between border-b-2 m-4">
+<div class='flex justify-between border-b-2 m-4'>
 <div>
-            <Skeleton  width='180px' height='15px' class="my-2 rounded-md" />
-            <Skeleton  width='240px' height='15px' class="mb-6 rounded-md"/>
+            <Skeleton  width='180px' height='15px' class='my-2 rounded-md' />
+            <Skeleton  width='240px' height='15px' class='mb-6 rounded-md'/>
 </div>
-            <Skeleton  width='80px' height='15px' class="mt-4 rounded-md"/>
+            <Skeleton  width='80px' height='15px' class='mt-4 rounded-md'/>
 
 </div>
-<div class="flex justify-between border-b-2 m-4 rounded-md">
+<div class='flex justify-between border-b-2 m-4 rounded-md'>
 <div>
-            <Skeleton  width='180px' height='15px' class="my-2 rounded-md" />
-            <Skeleton  width='240px' height='15px' class="mb-6 rounded-md"/>
+            <Skeleton  width='180px' height='15px' class='my-2 rounded-md' />
+            <Skeleton  width='240px' height='15px' class='mb-6 rounded-md'/>
 </div>
-            <Skeleton  width='80px' height='15px' class="mt-4 rounded-md"/>
+            <Skeleton  width='80px' height='15px' class='mt-4 rounded-md'/>
 
 </div>
 </div>
-</template>
+"
+  scriptCode="
+export default {
+}
+"
+/>
 
-<template #content2>
-
-  ```md
-
-<div class="flex justify-between border-b-2 m-4">
-<div>
-            <Skeleton  width='180px' height='15px' class="my-2 rounded-md" />
-            <Skeleton  width='240px' height='15px' class="mb-6 rounded-md"/>
-</div>
-            <Skeleton  width='80px' height='15px' class="mt-4 rounded-md"/>
-
-</div>
-<div class="flex justify-between border-b-2 m-4">
-<div>
-            <Skeleton  width='180px' height='15px' class="my-2 rounded-md" />
-            <Skeleton  width='240px' height='15px' class="mb-6 rounded-md"/>
-</div>
-            <Skeleton  width='80px' height='15px' class="mt-4 rounded-md"/>
-
-</div>
-<div class="flex justify-between border-b-2 m-4 rounded-md">
-<div>
-            <Skeleton  width='180px' height='15px' class="my-2  rounded-md" />
-            <Skeleton  width='240px' height='15px' class="mb-6 rounded-md"/>
-</div>
-            <Skeleton  width='80px' height='15px' class="mt-4 rounded-md"/>
-
-</div>
-<div class="flex justify-between border-b-2 m-4 rounded-md">
-<div>
-            <Skeleton  width='180px' height='15px' class="my-2 rounded-md" />
-            <Skeleton  width='240px' height='15px' class="mb-6 rounded-md"/>
-</div>
-            <Skeleton  width='80px' height='15px' class="mt-4 rounded-md"/>
-
-</div>
-```
-
-  </template>
-
-</Tab>
 
 ## Post example
 
-<Tab
-   class="gap-3 border-[1px] rounded-md w-full mx-auto"
-    :tabs="tabs"
-    size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
->
-<template #content1>
-<div class="p-6 rounded-lg grid grid-cols-2 gap-8">
-    <div class="grid h-80 p-4 shadow-xl grid-cols-2 grid-rows-2 gap-4">
-        <Skeleton width='50px' height='50px' class="rounded-full" />
-        <Skeleton width='50px' height='25px' class="rounded mt-4" />
-        <Skeleton width='100px' height='25px' class="rounded mt-4" />
-        <Skeleton width='100px' height='25px' class="rounded mt-4" />
-        <Skeleton width='250px' height='140px' class="rounded  col-span-2" />
+<CodeTabs
+templateCode="
+  <div class='p-6 rounded-lg grid grid-cols-2 gap-8'>
+    <div class='grid h-80 p-4 shadow-xl grid-cols-2 grid-rows-2 gap-4'>
+        <Skeleton width='50px' height='50px' class='rounded-full' />
+        <Skeleton width='50px' height='25px' class='rounded mt-4' />
+        <Skeleton width='100px' height='25px' class='rounded mt-4' />
+        <Skeleton width='100px' height='25px' class='rounded mt-4' />
+        <Skeleton width='250px' height='140px' class='rounded  col-span-2' />
     </div>
-    <div class="grid h-80 p-4 shadow-xl grid-cols-2 grid-rows-2 gap-4">
-        <img src="https://avatar.iran.liara.run/public/46" width='50px' height='50px' class="rounded-full" />
-        <h5  class="rounded mt-4 "> Jonas</h5>
-        <p width='100px' height='25px' class="rounded mt-4 text-sm text-gray-500" >last update </p>
-        <p width='100px' height='25px' class="rounded mt-4 text-xs text-gray-500" >2024/07/21</p>
-        <img src="https://www.akamai.com/site/im-demo/perceptual-standard.jpg?imbypass=true" alt="Loaded" class="col-span-2 rounded-md  object-cover" />
+    <div class='grid h-80 p-4 shadow-xl grid-cols-2 grid-rows-2 gap-4'>
+        <img src='https://avatar.iran.liara.run/public/46' width='50px' height='50px' class='rounded-full' />
+        <h5  class='rounded mt-4 '> Jonas</h5>
+        <p width='100px' height='25px' class='rounded mt-4 text-sm text-gray-500' >last update </p>
+        <p width='100px' height='25px' class='rounded mt-4 text-xs text-gray-500' >2024/07/21</p>
+        <img src='https://www.akamai.com/site/im-demo/perceptual-standard.jpg?imbypass=true' alt='Loaded' class='col-span-2 rounded-md  object-cover' />
     </div>
 </div>
+"
+  scriptCode="
+export default {
+}
+"
+/>
 
-</template>
-
-<template #content2>
-
-  ```md
-<div class="grid h-80 p-4 shadow-xl grid-cols-2 grid-rows-2 gap-4">
-        <Skeleton width='50px' height='50px' class="rounded-full" />
-        <Skeleton width='50px' height='25px' class="rounded mt-4" />
-        <Skeleton width='100px' height='25px' class="rounded mt-4" />
-        <Skeleton width='100px' height='25px' class="rounded mt-4" />
-        <Skeleton width='250px' height='140px' class="rounded  col-span-2" />
-    </div>
-```
-
-  </template>
-
-</Tab>
 
 ## Props
 
