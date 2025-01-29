@@ -1,22 +1,5 @@
 # pagination
 
-<script setup>
-import { ref } from 'vue'
-
-const inputValue1 = ref()
-const inputValue2 = ref()
-const inputValue3 = ref()
-const inputValue4 = ref()
-const inputValue5 = ref()
-const inputValue6 = ref()
-const inputValue7 = ref()
-const inputValue8 = ref()
-const inputValue9 = ref()
-const inputValue10 = ref()
-const searchValue = ref()
-const isEditingSearchPage = ref()
-</script>
-
 ## Default pagination
 
 **Props:**
@@ -27,13 +10,13 @@ const isEditingSearchPage = ref()
 
 <CodeTabs
   templateCode="
-<pagination v-model='inputValue1' v-model:searchPage='searchValue' v-model:isEditingSearchPage='isEditingSearchPage'/>
+<pagination v-model='inputValue' v-model:searchPage='searchValue' v-model:isEditingSearchPage='isEditingSearchPage'/>
 "
 scriptCode="
 export default {
 data() {
     return {
-      inputValue1 : undefined,
+      inputValue : undefined,
       searchValue : undefined,
       isEditingSearchPage : true
     }
@@ -50,13 +33,13 @@ data() {
 
 <CodeTabs
   templateCode="
-<pagination v-model='inputValue3' :enableSearchPage='searchEnabled'/>
+<pagination v-model='inputValue' :enableSearchPage='searchEnabled'/>
 "
 scriptCode="
 export default {
 data() {
     return {
-      inputValue3 : undefined,
+      inputValue : undefined,
       searchEnabled : false
     }
   },
@@ -73,13 +56,13 @@ data() {
 
 <CodeTabs
   templateCode="
-<pagination v-model='inputValue2' :enableSearchPage='searchEnabled' :rtl='rtlValue'/>
+<pagination v-model='inputValue' :enableSearchPage='searchEnabled' :rtl='rtlValue'/>
 "
 scriptCode="
 export default {
 data() {
     return {
-      inputValue2 : undefined,
+      inputValue : undefined,
       searchEnabled : false,
       rtlValue : false
     }
@@ -96,13 +79,13 @@ data() {
 
 <CodeTabs
   templateCode="
-<pagination v-model='inputValue4' :enableSearchPage='searchEnabled' :pageSize='pageSize'/>
+<pagination v-model='inputValue' :enableSearchPage='searchEnabled' :pageSize='pageSize'/>
 "
 scriptCode="
 export default {
 data() {
     return {
-      inputValue4 : undefined,
+      inputValue : undefined,
       searchEnabled : false,
       pageSize : 10
     }
@@ -124,13 +107,13 @@ data() {
 
 <CodeTabs
   templateCode="
-<pagination v-model='inputValue5' :enableSearchPage='searchValue' :activeClass='activeClass' :onActiveClass='onActiveClass' :separatorClass='separatorClass' :buttonClass='buttonClass' />
+<pagination v-model='inputValue' :enableSearchPage='searchValue' :activeClass='activeClass' :onActiveClass='onActiveClass' :separatorClass='separatorClass' :buttonClass='buttonClass' />
 "
 scriptCode="
 export default {
 data() {
     return {
-      inputValue5 : undefined,
+      inputValue : undefined,
       searchValue : false,
       activeClass : 'bg-indigo-700 hover:bg-indigo-600 size-11 rounded-lg shadow-lg',
       onActiveClass : 'bg-indigo-200 hover:bg-indigo-300 rounded-lg shadow-lg',

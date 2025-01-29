@@ -1,13 +1,5 @@
 # modal
 
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const isModalOpen = ref(false);
-const isModalOpen2 = ref(false);
-const isModalOpen3 = ref(false);
-</script>
-
 ## Default Modal
 
 **Props:**
@@ -15,16 +7,30 @@ const isModalOpen3 = ref(false);
 - `v-model`: Binds the modal open/close state.
 - `teleport`: Teleports the modal content to the `<body>`.
 
-**Usage:**
-
-- This is the basic modal that opens when the button is clicked.
-
-<Button  @click="isModalOpen = true" buttonClass="w-28 p-2 mt-1" cleaner>Open Modal</button>
-<modal v-model="isModalOpen"/>
-
-```vue
-<modal v-model="isModalOpen" teleport="body"/>
-```
+<CodeTabs
+  templateCode="
+<div class='flex items-center justify-center'>
+  <Button  @click='openModal' buttonClass='buttonClass' cleaner>Open Modal</button>
+</div>
+<modal v-model='isModalOpen'/>
+"
+scriptCode="
+export default {
+data() {
+    return {
+      isModalOpen : false,
+      searchValue : undefined,
+      buttonClass : 'w-28 p-2 mt-1'
+    }
+  },
+  methods: {
+    openModal() {
+      this.isModalOpen = !this.isModalOpen;
+    }
+  }
+}
+"
+/>
 
 ## Modal Closed on Outside Click
 
@@ -32,16 +38,30 @@ const isModalOpen3 = ref(false);
 
 - `closeOnOutside`: Closes the modal when clicking outside of it.
 
-**Usage:**
-
-- This modal closes when clicking outside the modal content.
-
-<Button  @click="isModalOpen2 = true" buttonClass="w-28 p-2 mt-1" cleaner>Open Modal</button>
-<modal v-model="isModalOpen2" teleport="body" closeOnOutside/>
-
-```vue
-<modal v-model="isModalOpen" teleport="body" closeOnOutside/>
-```
+<CodeTabs
+  templateCode="
+<div class='flex items-center justify-center'>
+  <Button  @click='openModal' buttonClass='buttonClass' cleaner>Open Modal</button>
+</div>
+<modal v-model='isModalOpen' teleport='body' closeOnOutside/>
+"
+scriptCode="
+export default {
+data() {
+    return {
+      isModalOpen : false,
+      searchValue : undefined,
+      buttonClass : 'w-28 p-2 mt-1'
+    }
+  },
+  methods: {
+    openModal() {
+      this.isModalOpen = !this.isModalOpen;
+    }
+  }
+}
+"
+/>
 
 ## Custom class for Modal and Outside of Modal
 
@@ -50,18 +70,32 @@ const isModalOpen3 = ref(false);
 - `outsideClass`: Sets the class outside of modal.
 - `modalClass`: Sets the class of the modal.
 
-**Usage:**
-
-- This modal has custom background and text colors.
-
-<Button  @click="isModalOpen3 = true" buttonClass="w-28 p-2 mt-1" cleaner>Open Modal</button>
-<modal v-model="isModalOpen3" teleport="body" outsideClass="backdrop-blur-lg" modalClass="border-2 border-indigo-200 bg-indigo-700"/>
-
-```vue
-<modal v-model="isModalOpen" teleport="body" 
-outsideClass="backdrop-blur-lg" 
-modalClass="border-2 border-indigo-200 bg-indigo-700"/>
-```
+<CodeTabs
+  templateCode="
+<div class='flex items-center justify-center'>
+  <Button  @click='openModal' buttonClass='buttonClass' cleaner>Open Modal</button>
+</div>
+<modal v-model='isModalOpen' teleport='body' :outsideClass='outsideClass' :modalClass='modalClass'/>
+"
+scriptCode="
+export default {
+data() {
+    return {
+      isModalOpen : false,
+      searchValue : undefined,
+      buttonClass : 'w-28 p-2 mt-1',
+      outsideClass : 'backdrop-blur-lg',
+      modalClass : 'border-2 border-indigo-200 bg-indigo-700'
+    }
+  },
+  methods: {
+    openModal() {
+      this.isModalOpen = !this.isModalOpen;
+    }
+  }
+}
+"
+/>
 
 ### Slots in the Modal Component
 
