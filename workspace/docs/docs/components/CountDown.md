@@ -1,5 +1,4 @@
 
-
 ## Countdown Component
 
 The Countdown component is a flexible and reusable timer component built with Vue 3 and TypeScript. It supports features like auto-start, time updates, and custom controls.
@@ -64,12 +63,11 @@ export default {
 "
 />
 
-
 ## Handle Events
 
 <CodeTabs
 templateCode="
- <CountDown
+ <count-down
         :time='3630'
         auto-start
         class='text-4xl font-sans text-gray-600'
@@ -83,9 +81,10 @@ templateCode="
 "
   scriptCode="
 export default {
+    components:{CountDown},
     data() {
         return {
-            RealTime: 0 
+            RealTime: 0
         };
     },
     computed: {
@@ -105,7 +104,6 @@ export default {
 "
 />
 
-
 ## Countdown Component Features
 
 | **Feature**             | **Description**                                                                                         | **Usage**                                                                                     |
@@ -116,4 +114,3 @@ export default {
 | **Styling Flexibility**  | Fully customizable styles for the countdown timer and controls.                                        | Use the CSS classes `container` and `display` to adjust the appearance.                       |
 
 This documentation provides a structured and detailed guide to using and customizing the Countdown component effectively.
-
