@@ -24,12 +24,15 @@ export default {
     })
   },
   enhanceApp({ app, router, siteData }) {
-    // ...
     app.use(mhmd, { componentPrefix: '' })
     app.directive('click-outside', clickOutside)
     app.directive('tooltipl', tooltip)
-
     app.component('CodeTabs', CodeTabs)
-
+    app.config.warnHandler = (msg, instance, trace) => {
+      if (msg.includes('Property undefined was accessed during render')) {
+        return;
+      }
+      console.warn(msg + trace);
+    }
   }
 } satisfies Theme

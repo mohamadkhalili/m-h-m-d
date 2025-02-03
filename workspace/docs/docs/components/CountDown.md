@@ -81,7 +81,6 @@ templateCode="
 "
   scriptCode="
 export default {
-    components:{CountDown},
     data() {
         return {
             RealTime: 0
