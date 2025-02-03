@@ -20,16 +20,33 @@ const menuValueSize = ref(false);
 
 - This is the basic menu that toggles when the button is clicked.
 
-<Button  @click="menuValue = !menuValue" buttonClass="w-28 p-2 mt-1">Open menu</Button>
-<Menu v-model="menuValue"  >
+<CodeTabs
+  templateCode="
+<div class='ml-[255px]'>
+<Button  @click='menuValue = !menuValue' :buttonClass='buttonClass'>Open menu</Button>
+<Menu v-model='menuValue' >
 </Menu>
+</div>
 <br>
 <br>
 <br>
-
-```vue
-<Menu v-model="menuValue">
-```
+"
+scriptCode="
+export default {
+data() {
+    return {
+      menuValue : false,
+      buttonClass : 'w-28 p-2 mt-1'
+    }
+  },
+  methods: {
+    openMenu() {
+      this.menuValue = !this.menuValue;
+    }
+  }
+}
+"
+/>
 
 ## Menu with Close on Click Outside
 
@@ -41,16 +58,33 @@ const menuValueSize = ref(false);
 
 - This menu closes automatically when you click outside of it.
 
-<Button  @click="menuValueOutside = !menuValueOutside" buttonClass="w-28 p-2 mt-1">Open menu</Button>
-<Menu v-model="menuValueOutside" :closeOutside="true" >
+<CodeTabs
+  templateCode="
+<div class='ml-[255px]'>
+<Button  @click='menuValue = !menuValue' :buttonClass='buttonClass'>Open menu</Button>
+<Menu v-model='menuValue' closeOutside>
 </Menu>
+</div>
 <br>
 <br>
 <br>
-
-```vue
-<Menu v-model="menuValueOutside" :closeOutside="true" >
-```
+"
+scriptCode="
+export default {
+data() {
+    return {
+      menuValue : false,
+      buttonClass : 'w-28 p-2 mt-1'
+    }
+  },
+  methods: {
+    openMenu() {
+      this.menuValue = !this.menuValue;
+    }
+  }
+}
+"
+/>
 
 ## Menu with Open on Hover
 
@@ -62,21 +96,33 @@ const menuValueSize = ref(false);
 
 - This menu opens when hovered over and closes when the mouse leaves.
 
-<Button @mouseover="menuValueHover = true" @mouseleave="menuValueHover = false" buttonClass="w-28 p-2 mt-1">Open menu</Button>
-<Menu v-model="menuValueHover" @mouseover="menuValueHover = true" @mouseleave="menuValueHover = false">
+<CodeTabs
+  templateCode="
+<div class='ml-[255px]'>
+<Button  @mouseover='openMenu' @mouseleave='openMenu' :buttonClass='buttonClass'>Open menu</Button>
+<Menu v-model='menuValue' @mouseover='openMenu' @mouseleave='openMenu'>
 </Menu>
+</div>
 <br>
 <br>
 <br>
-
-```vue
-<button @mouseover="menuValueHover = true"   
-@mouseleave="menuValueHover = false"
-class="w-28 bg-black text-white rounded-lg p-2 mt-1" 
-cleaner>Open menu</button>
-<Menu v-model="menuValueHover" @mouseover="menuValueHover = true"
- @mouseleave="menuValueHover = false">
-```
+"
+scriptCode="
+export default {
+data() {
+    return {
+      menuValue : false,
+      buttonClass : 'w-28 p-2 mt-1'
+    }
+  },
+  methods: {
+    openMenu() {
+      this.menuValue = !this.menuValue;
+    }
+  }
+}
+"
+/>
 
 ## Menu with Set Size and border radius and Create Button in Menu
 
@@ -88,20 +134,33 @@ cleaner>Open menu</button>
 
 - This menu has custom size, border radius and a button (`item1`) inside.
 
-<Button  @click="menuValueSize = !menuValueSize" buttonClass="w-28 p-2 mt-1" cleaner>Open menu</Button>
-<Menu v-model="menuValueSize" menuClass="rounded-xl bg-indigo-700 border-2 border-indigo-200" >
-<template #menu><Button buttonClass="ml-7 w-14 h-9 text-xs bg-indigo-200 rounded-lg mt-5 text-black" cleaner>item1</Button></template>
+<CodeTabs
+  templateCode="
+<div class='ml-[255px]'>
+<Button  @click='menuValue = !menuValue' :buttonClass='buttonClass'>Open menu</Button>
+<Menu v-model='menuValue' :menuClass='menuClass'>
+<template #menu><Button :buttonClass='templateClass' cleaner>item1</Button></template>
 </Menu>
+</div>
 <br>
 <br>
 <br>
-
-```vue
-<Menu v-model="menuValueSize" 
-menuClass="rounded-xl bg-indigo-700 border-2 border-indigo-200" >
-<template #menu>
-<Button buttonClass="ml-7 w-14 h-9 text-xs bg-indigo-200 rounded-lg mt-5 text-black" 
-cleaner>item1</Button>
-</template>
-</Menu>
-```
+"
+scriptCode="
+export default {
+data() {
+    return {
+      menuValue : false,
+      buttonClass : 'w-28 p-2 mt-1',
+      menuClass : 'rounded-xl bg-indigo-700 border-2 border-indigo-200',
+      templateClass : 'ml-7 w-14 h-9 text-xs bg-indigo-200 rounded-lg mt-5 text-black'
+    }
+  },
+  methods: {
+    openMenu() {
+      this.menuValue = !this.menuValue;
+    }
+  }
+}
+"
+/>
