@@ -27,7 +27,6 @@
             v-for="(item, index) in modelValue"
             :key="index"
             :class="adapterClass(comboboxClasses.chip + ' ' + chipClass).value"
-            @click.stop="removeItem(item)"
           >
             {{ item }}
             <span
@@ -35,6 +34,7 @@
                 adapterClass(comboboxClasses.chipClose + ' ' + chipCloseClass)
                   .value
               "
+              @click.stop="removeItem(item)"
               >×</span
             >
           </span>
@@ -63,7 +63,7 @@
             <slot
               name="item"
               :isActive="
-                multiple ? modelValue?.indexOf(item) != -1 : item == modelValue
+                multiple ? (Array.isArray(modelValue) && modelValue.indexOf(item) !== -1) : item == modelValue
               "
               :item="item"
             ></slot>
@@ -71,7 +71,7 @@
               v-if="isDropdownOpen && showItem"
               :class="
                 (multiple
-                  ? modelValue?.indexOf(item) != -1
+                  ? (Array.isArray(modelValue) && modelValue.indexOf(item) !== -1)
                   : item == modelValue)
                   ? adapterClass(
                       comboboxClasses.dropdownItemActive +

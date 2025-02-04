@@ -40,7 +40,7 @@ data() {
 <CodeTabs
   templateCode="
 <div class='flex flex-col items-center justify-center'>
-  <ProgressCircular v-model='progressValue' showNumberFill='true'/>
+  <ProgressCircular v-model='progressValue' :showNumberFill='true'/>
 </div>
 "
 scriptCode="
@@ -67,10 +67,10 @@ data() {
 <CodeTabs
   templateCode="
 <div class='flex items-center justify-center space-x-4'>
-  <ProgressCircular v-model='progressValue' showNumberFill='true'/>
-  <ProgressCircular v-model='progressValue' rotate='90' showNumberFill='true'/>
-  <ProgressCircular v-model='progressValue' rotate='180' showNumberFill='true'/>
-  <ProgressCircular v-model='progressValue' rotate='270' showNumberFill='true'/>
+  <ProgressCircular v-model='progressValue' :showNumberFill='true'/>
+  <ProgressCircular v-model='progressValue' :rotate='90' :showNumberFill='true'/>
+  <ProgressCircular v-model='progressValue' :rotate='180' :showNumberFill='true'/>
+  <ProgressCircular v-model='progressValue' :rotate='270' :showNumberFill='true'/>
 </div>
 "
 scriptCode="
@@ -202,7 +202,7 @@ export default {
 <Button :isDisabled='progressValue === 0' @click='progressValue >= 10 ? progressValue = progressValue - 10 : progressValue = 0' buttonClass='mb-10 w-10 h-10 p-2 mt-1 mr-40' cleaner>-</Button>
 <Button :isDisabled='progressValue === 100' @click='progressValue <= 90 ? progressValue = progressValue + 10 : progressValue = 100' buttonClass='mb-10 w-10 h-10 p-2 mt-1 ml-[390px]' cleaner>+</Button>
 <div class='flex justify-center item-center'>
-  <ProgressCircular v-model='progressValue' progressClass='w-32 h-32' progressContainerClass='text-indigo-200' progressFillClass='text-indigo-700 transition-all duration-300' showNumberFill='true' numberFillClass='text-indigo-700'/>
+  <ProgressCircular v-model='progressValue' progressClass='w-32 h-32' progressContainerClass='text-indigo-200' progressFillClass='text-indigo-700 transition-all duration-300' :showNumberFill='true' numberFillClass='text-indigo-700'/>
 </div>
 "
 scriptCode="
