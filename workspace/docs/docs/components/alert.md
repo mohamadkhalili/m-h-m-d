@@ -21,35 +21,20 @@ const alertEnable = ref(true);
 
 - This is the basic alert that opens when the button is clicked.
 
-<Tab
-   class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs"
-    size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
-  >
-<template #content1>
-<Alert v-model="alertEnable"/>
-
-</template>
-
-<template #content2>
-
-```vue
-<slot name="alert"></slot>
-<slot name="icon"></slot>
-<slot name="title"></slot>
-<slot name="text"></slot>
-```
-
-</template>
-<template #content3>
-
-```vue
-<Alert v-model="alertEnable"/>
-```
-
-</template>
-</Tab>
+<CodeTabs
+  templateCode="
+<Alert v-model='alertEnable'/>
+"
+scriptCode="
+export default {
+data() {
+    return {
+      alertEnable : true,
+    }
+  }
+}
+"
+/>
 
 ## Custom Value Of Alert
 
@@ -63,36 +48,20 @@ const alertEnable = ref(true);
 
 - The Alert component is a simple and customizable alert box. It binds the open/close state through the v-model directive. For example, the alert will open or close dynamically based on the value of alertEnable. The component also accepts props like icon, title, and text to customize its appearance and content.
 
-<Tab
-   class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs"
-    size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
-  >
-<template #content1>
-<Alert v-model="alertEnable" icon="mdiShieldAlertOutline" title="Warning" text="Invalid email address!"/>
-
-</template>
-
-<template #content2>
-
-```vue
-<slot name="alert"></slot>
-<slot name="icon"></slot>
-<slot name="title"></slot>
-<slot name="text"></slot>
-```
-
-</template>
-<template #content3>
-
-```vue
-<Alert v-model="alertEnable" icon="mdiShieldAlertOutline" 
-title="Warning" text="Invalid email address!"/>
-```
-
-</template>
-</Tab>
+<CodeTabs
+  templateCode="
+<Alert v-model='alertEnable' icon='mdiShieldAlertOutline' title='Warning' text='Invalid email address!'/>
+"
+scriptCode="
+export default {
+data() {
+    return {
+      alertEnable : true,
+    }
+  }
+}
+"
+/>
 
 ## Custom Class Alert
 
@@ -107,63 +76,29 @@ title="Warning" text="Invalid email address!"/>
 
 - The Alert component allows customization of its appearance using the alertClass, iconClass, titleClass, and textClass props. This makes it highly flexible for adapting to various design requirements.
 
-<Tab
-   class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs"
-    size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
-  >
-<template #content1>
-<div class="mb-4">
-<Alert v-model="alertEnable" alertClass="bg-amber-500" iconClass="text-white" titleClass="text-white" textClass="text-white" />
+<CodeTabs
+  templateCode="
+<div class='mb-4'>
+<Alert v-model='alertEnable' alertClass='bg-amber-500' iconClass='text-white' titleClass='text-white' textClass='text-white' />
 </div>
-<div class="mb-4">
-<Alert v-model="alertEnable" alertClass="bg-green-500" iconClass="text-white" titleClass="text-white" textClass="text-white"
-       icon="mdiCheck" title="Done" text="Your purchase has been confirmed!"/>
+<div class='mb-4'>
+<Alert v-model='alertEnable' alertClass='bg-green-500' iconClass='text-white' titleClass='text-white' textClass='text-white'
+       icon='mdiCheck' title='Done' text='Your purchase has been confirmed!'/>
 </div>
-<div class="mb-4">
-<Alert v-model="alertEnable" alertClass="bg-red-600" iconClass="text-white" titleClass="text-white" textClass="text-white"
-       icon="mdiCloseCircleOutline" title="Error" text="Task failed successfully."/>
+<div class='mb-4'>
+<Alert v-model='alertEnable' alertClass='bg-red-600' iconClass='text-white' titleClass='text-white' textClass='text-white'
+       icon='mdiCloseCircleOutline' title='Error' text='Task failed successfully.'/>
 </div>
-<Alert v-model="alertEnable" alertClass="bg-sky-400" iconClass="text-white" titleClass="text-white" textClass="text-white"
-       icon="mdiInformationVariantCircleOutline" title="Info" text="New software update available."/>
-</template>
-
-<template #content2>
-
-```vue
-<slot name="alert"></slot>
-<slot name="icon"></slot>
-<slot name="title"></slot>
-<slot name="text"></slot>
-```
-
-</template>
-<template #content3>
-
-```vue
-<Alert v-model="alertEnable" alertClass="bg-amber-500" 
-iconClass="text-white" titleClass="text-white" 
-textClass="text-white" />
-
-<Alert v-model="alertEnable" alertClass="bg-green-500" 
-iconClass="text-white" 
-titleClass="text-white" textClass="text-white" 
-icon="mdiCheck" title="Done" 
-text="Your purchase has been confirmed!"/>
-
-<Alert v-model="alertEnable" alertClass="bg-red-600" 
-iconClass="text-white" 
-titleClass="text-white" textClass="text-white" 
-icon="mdiCloseCircleOutline" title="Error" 
-text="Task failed successfully."/>
-
-<Alert v-model="alertEnable" alertClass="bg-sky-400" 
-iconClass="text-white" 
-titleClass="text-white" textClass="text-white" 
-icon="mdiInformationVariantCircleOutline" title="Info" 
-text="New software update available."/>
-```
-
-</template>
-</Tab>
+<Alert v-model='alertEnable' alertClass='bg-sky-400' iconClass='text-white' titleClass='text-white' textClass='text-white'
+       icon='mdiInformationVariantCircleOutline' title='Info' text='New software update available.'/>
+"
+scriptCode="
+export default {
+data() {
+    return {
+      alertEnable : true,
+    }
+  }
+}
+"
+/>
