@@ -1,16 +1,5 @@
 # alert
 
-<script setup lang="ts">
-import { ref } from 'vue'
-const tabs = [
-  { label: 'UI', value: 1, content: '' },
-  { label: 'Slots', value: 2, content: ''},
-  { label: 'Props', value: 3, content: ''},
-];
-const alertEnable = ref(true);
-
-</script>
-
 ## Default Alert
 
 **Props:**
