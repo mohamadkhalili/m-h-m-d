@@ -1,19 +1,5 @@
 # Combo Box
 
-<script setup lang="ts">
-import { ref } from 'vue'
-const tabs = [
-  { label: 'UI', value: 1, content: '' },
-  { label: 'Slots', value: 2, content: ''},
-  { label: 'Props', value: 3, content: ''},
-];
-const modelValue = ref();
-const modelValue2 = ref([]);
-const modelValue3 = ref([]);
-const modelValue4 = ref([]);
-const items = ['first choice', 'second choice', 'thrid choice', 'forth choice', 'fifth choice'];
-</script>
-
 ## Default ComboBox
 
 **Props:**
@@ -25,34 +11,22 @@ const items = ['first choice', 'second choice', 'thrid choice', 'forth choice', 
 
 - The ComboBox allows users to select an item from a dropdown list. The v-model binds the selected item, and the items prop populates the dropdown options.
 
-<Tab
-   class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs"
-    size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
-  >
-<template #content1>
-<ComboBox v-model="modelValue" :items="items" />
+<CodeTabs
+  templateCode="
+<ComboBox v-model='modelValue' :items='items' />
 <p>selected item: {{modelValue}}</p>
-
-</template>
-
-<template #content2>
-
-```vue
-<slot name="input"></slot>
-<slot name="item" :isActive="isActive" :item="item"></slot>
-```
-
-</template>
-<template #content3>
-
-```vue
-<ComboBox v-model="modelValue" :items="items" />
-```
-
-</template>
-</Tab>
+"
+scriptCode="
+export default {
+data() {
+    return {
+      modelValue : undefined,
+      items : ['first choice', 'second choice', 'thrid choice', 'forth choice', 'fifth choice'],
+    }
+  }
+}
+"
+/>
 
 ## Multiple ComboBox
 
@@ -64,35 +38,22 @@ const items = ['first choice', 'second choice', 'thrid choice', 'forth choice', 
 
 - Setting the multiple prop enables multi-selection mode.
 
-<Tab
-   class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs"
-    size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
-  >
-<template #content1>
-<ComboBox v-model="modelValue2" :items="items" multiple/>
-<p> {{modelValue2}}</p>
-
-</template>
-
-<template #content2>
-
-```vue
-<slot name="input"></slot>
-<slot name="item" :isActive="isActive" :item="item"></slot>
-```
-
-</template>
-<template #content3>
-
-```vue
-<ComboBox v-model="modelValue" 
-:items="items" multiple/>
-```
-
-</template>
-</Tab>
+<CodeTabs
+  templateCode="
+<ComboBox v-model='modelValue' :items='items' multiple/>
+<p>selected item: {{modelValue}}</p>
+"
+scriptCode="
+export default {
+data() {
+    return {
+      modelValue : undefined,
+      items : ['first choice', 'second choice', 'thrid choice', 'forth choice', 'fifth choice'],
+    }
+  }
+}
+"
+/>
 
 ## Enable Chip ComboBox
 
@@ -104,35 +65,22 @@ const items = ['first choice', 'second choice', 'thrid choice', 'forth choice', 
 
 - with enableChip, the selected items are shown as chips.
 
-<Tab
-   class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs"
-    size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
-  >
-<template #content1>
-<ComboBox v-model="modelValue3" :items="items" multiple enableChip/>
-<p> {{modelValue3}}</p>
-
-</template>
-
-<template #content2>
-
-```vue
-<slot name="input"></slot>
-<slot name="item" :isActive="isActive" :item="item"></slot>
-```
-
-</template>
-<template #content3>
-
-```vue
-<ComboBox v-model="modelValue" 
-:items="items" multiple enableChip/>
-```
-
-</template>
-</Tab>
+<CodeTabs
+  templateCode="
+<ComboBox v-model='modelValue' :items='items' multiple enableChip/>
+<p>selected item: {{modelValue}}</p>
+"
+scriptCode="
+export default {
+data() {
+    return {
+      modelValue : undefined,
+      items : ['first choice', 'second choice', 'thrid choice', 'forth choice', 'fifth choice'],
+    }
+  }
+}
+"
+/>
 
 ## Custom Class ComboBox
 
@@ -151,33 +99,19 @@ const items = ['first choice', 'second choice', 'thrid choice', 'forth choice', 
 
 - The custom class props allow you to style various parts of the ComboBox, such as the container, input field, chips, and dropdown items.
 
-<Tab
-   class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs"
-    size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
-  >
-<template #content1>
-<ComboBox v-model="modelValue4" :items="items" multiple enableChip chipClass="bg-indigo-700" dropdownItemClass="bg-indigo-200 hover:bg-indigo-300" dropdownItemActiveClass="bg-indigo-700 hover:bg-indigo-600"/>
-<p> {{modelValue4}}</p>
-
-</template>
-
-<template #content2>
-
-```vue
-<slot name="input"></slot>
-<slot name="item" :isActive="isActive" :item="item"></slot>
-```
-
-</template>
-<template #content3>
-
-```vue
-<ComboBox v-model="modelValue4" :items="items" multiple enableChip 
-chipClass="bg-indigo-700" dropdownItemClass="bg-indigo-200 hover:bg-indigo-300" 
-dropdownItemActiveClass="bg-indigo-700 hover:bg-indigo-600"/>
-```
-
-</template>
-</Tab>
+<CodeTabs
+  templateCode="
+<ComboBox v-model='modelValue' :items='items' multiple enableChip chipClass='bg-indigo-700' dropdownItemClass='bg-indigo-200 hover:bg-indigo-300' dropdownItemActiveClass='bg-indigo-700 hover:bg-indigo-600'/>
+<p>selected item: {{modelValue}}</p>
+"
+scriptCode="
+export default {
+data() {
+    return {
+      modelValue : undefined,
+      items : ['first choice', 'second choice', 'thrid choice', 'forth choice', 'fifth choice'],
+    }
+  }
+}
+"
+/>
