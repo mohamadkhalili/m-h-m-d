@@ -1,90 +1,60 @@
-<script setup>
-const tabs = [
-  { label: 'UI', value: 1, content: '' },
-  { label: 'code', value: 2, content: ''}
-];
-
-</script>
-
 ## Button
 
-<Tab
-   class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs"
-    variant="bordered"
-    size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
-  >
-    <template #content1>
+<CodeTabs
+  templateCode="
 <div class='  p-4 rounded-lg shadow-inner  flex justify-center items-center'>
      <Button buttonClass =' hover:bg-slate-600' >button</Button>
 </div>
-
-</template>
-
-  <template #content2>
-
-  ```md
-  <Button   buttonClass='bg-slate-900 hover:bg-slate-700 '>button</Button>
-```
-
-  </template>
-</Tab>
+"
+scriptCode="
+export default {
+data() {
+    return {
+    }
+  }
+}
+"
+/>
 
 ## modify
 
-<Tab
-   class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs"
-    variant="bordered"
-    size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
-  >
-    <template #content1>
-<div class="grid grid-cols-1 gap-4">
-    <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
+<CodeTabs
+  templateCode="
+<div class='grid grid-cols-1 gap-4'>
+    <div class='p-4 rounded-lg shadow-inner flex justify-center items-center'>
 <Button   buttonClass=' bg-indigo-700 hover:bg-indigo-600 ' > faded  </Button>
  </div>
 </div>
-
-</template>
-
-  <template #content2>
-
-  ```md
-<Button  buttonClass=' bg-indigo-700 hover:bg-indigo-600' > faded  </Button>
-```
-
-  </template>
-</Tab>
+"
+scriptCode="
+export default {
+data() {
+    return {
+    }
+  }
+}
+"
+/>
 
 ## Disabled
 
-<Tab
-   class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs"
-    variant="bordered"
-    size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
-  >
-    <template #content1>
-<div class="grid grid-cols-1 gap-4">
-    <div class="  p-4 rounded-lg shadow-inner  flex justify-center items-center">
-<Button isDisabled buttonClass=' bg-indigo-700 ' > isDisabled  </Button>
+<CodeTabs
+  templateCode="
+<div class='grid grid-cols-1 gap-4'>
+    <div class='p-4 rounded-lg shadow-inner flex justify-center items-center'>
+<Button isDisabled buttonClass='bg-indigo-700' > isDisabled  </Button>
  </div>
 </div>
-
-</template>
-
-  <template #content2>
-
-  ```md
-<Button isDisabled buttonClass=' bg-indigo-700 ' > isDisabled  </Button>
-```
-
-  </template>
-</Tab>
-
+"
+scriptCode="
+export default {
+data() {
+    return {
+    }
+  }
+}
+"
+/>
 
 ## Button Component Features
 
