@@ -11,24 +11,31 @@ The `RadioGroup` component allows you to group multiple `Radio` buttons together
 
 ### Usage Example
 
-  <div class="flex flex-col gap-3">
-    <RadioGroup
-      :isInvalid="isInvalid"
-      label="Select your favorite city"
-      v-model="selected"
-    >
-      <Radio value="buenos-aires">Buenos Aires</Radio>
-      <Radio value="sydney">Sydney</Radio>
-      <Radio value="san-francisco">San Francisco</Radio>
-      <Radio value="london">London</Radio>
-      <Radio value="tokyo">Tokyo</Radio>
-    </RadioGroup>
-    <p>Selected: {{ selected }}</p>
-  </div>
-
-<script setup lang="ts">
-import { ref } from 'vue';
-
-const selected = ref<string | null>(null);  
-const isInvalid = ref(false);
-</script>
+<CodeTabs
+  templateCode="
+<div class='flex flex-col gap-3'>
+  <RadioGroup
+    :isInvalid='isInvalid'
+    label='Select your favorite city'
+    v-model='selected'
+  >
+    <Radio value='buenos-aires'>Buenos Aires</Radio>
+    <Radio value='sydney'>Sydney</Radio>
+    <Radio value='san-francisco'>San Francisco</Radio>
+    <Radio value='london'>London</Radio>
+    <Radio value='tokyo'>Tokyo</Radio>
+  </RadioGroup>
+  <p>Selected: {{ selected }}</p>
+</div>
+  "
+  scriptCode="
+  export default {
+    data() {
+      return {
+        selected: null,  
+        isInvalid: false,
+      };
+    }
+  }
+  "
+/>
