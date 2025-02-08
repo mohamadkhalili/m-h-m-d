@@ -1,247 +1,143 @@
-
-<script setup>
-const tabs = [
-  { label: 'UI', value: 1, content: '' },
-  { label: 'code', value: 2, content: ''}
-];
-
-</script>
-
 ## Divider Component
 
 The `Divider` component is a versatile tool for separating content in both vertical and horizontal layouts. It can include text, adapt to custom colors and thickness, and fit various lengths based on your design requirements.
 
 A simple `vertical` divider used in a flex container:  
 
-<Tab
-   class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs"
-    variant="bordered"
-    size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
-  >
-    <template #content1>
-
-<div class="bg-gray-50 p-6 rounded-lg shadow-inner flex w-full justify-between">
-  <div class="flex-1 rounded-md p-4">
-    <p class="bg-gray-200 h-6 w-3/4 rounded"></p>
-    <p class="bg-gray-200 h-6 w-1/2 rounded"></p>
-    <p class="bg-gray-200 h-6 w-full rounded"></p>
-    <p class="bg-gray-200 h-6 w-2/3 rounded"></p>
+<CodeTabs
+  templateCode="
+<div class='bg-gray-50 p-6 rounded-lg shadow-inner flex w-full justify-between'>
+  <div class='flex-1 rounded-md p-4'>
+    <p class='bg-gray-200 h-6 w-3/4 rounded'></p>
+    <p class='bg-gray-200 h-6 w-1/2 rounded'></p>
+    <p class='bg-gray-200 h-6 w-full rounded'></p>
+    <p class='bg-gray-200 h-6 w-2/3 rounded'></p>
   </div>
-
-<Divider direction="vertical" length="100px" text="OR" color="bg-gray-400" diameter="1px" />
-
-  <div class="flex-1 rounded-md p-4">
-    <p class="bg-gray-200 h-6 w-3/4 rounded"></p>
-    <p class="bg-gray-200 h-6 w-1/2 rounded"></p>
-    <p class="bg-gray-200 h-6 w-5/6 rounded"></p>
-    <p class="bg-gray-200 h-6 w-2/3 rounded"></p>
+  <Divider direction='vertical' length='100px' text='OR' color='bg-gray-400' diameter='1px' />
+  <div class='flex-1 rounded-md p-4'>
+    <p class='bg-gray-200 h-6 w-3/4 rounded'></p>
+    <p class='bg-gray-200 h-6 w-1/2 rounded'></p>
+    <p class='bg-gray-200 h-6 w-5/6 rounded'></p>
+    <p class='bg-gray-200 h-6 w-2/3 rounded'></p>
   </div>
 </div>
 <br/>
-<div class="bg-gray-50 p-6 rounded-lg shadow-inner flex flex-col w-full justify-between">
-  <div class="flex-1 rounded-md p-4">
-    <p class="bg-gray-200 h-6 w-2/3 rounded"></p>
-    <p class="bg-gray-200 h-6 w-3/4 rounded"></p>
-    <p class="bg-gray-200 h-6 w-1/2 rounded"></p>
+<div class='bg-gray-50 p-6 rounded-lg shadow-inner flex flex-col w-full justify-between'>
+  <div class='flex-1 rounded-md p-4'>
+    <p class='bg-gray-200 h-6 w-2/3 rounded'></p>
+    <p class='bg-gray-200 h-6 w-3/4 rounded'></p>
+    <p class='bg-gray-200 h-6 w-1/2 rounded'></p>
   </div>
-  <Divider length="250px" text="OR" color="bg-gray-400" diameter="1px"/>
-  <div class="flex-1 rounded-md p-4">
-    <p class="bg-gray-200 h-6 w-3/4 rounded"></p>
-    <p class="bg-gray-200 h-6 w-1/2 rounded"></p>
-    <p class="bg-gray-200 h-6 w-5/6 rounded"></p>
-  </div>
-</div>
-
-</template>
-
-  <template #content2>
-
-  ```md
-<div class="bg-gray-50 p-6 rounded-lg shadow-inner flex w-full justify-between">
-  <div class="flex-1 rounded-md p-4"> 
-    <p class="bg-gray-200 h-6 w-3/4 rounded"></p>
-    <p class="bg-gray-200 h-6 w-1/2 rounded"></p>
-    <p class="bg-gray-200 h-6 w-full rounded"></p>
-    <p class="bg-gray-200 h-6 w-2/3 rounded"></p>
-  </div>
-
-<Divider direction="vertical"
-  length="100px"
-  text="OR"
-  color="bg-gray-400"
-  diameter="1px" />
-
-  <div class="flex-1 rounded-md p-4">
-    <p class="bg-gray-200 h-6 w-3/4 rounded"></p>
-    <p class="bg-gray-200 h-6 w-1/2 rounded"></p>
-    <p class="bg-gray-200 h-6 w-5/6 rounded"></p>
-    <p class="bg-gray-200 h-6 w-2/3 rounded"></p>
+  <Divider length='250px' text='OR' color='bg-gray-400' diameter='1px'/>
+  <div class='flex-1 rounded-md p-4'>
+    <p class='bg-gray-200 h-6 w-3/4 rounded'></p>
+    <p class='bg-gray-200 h-6 w-1/2 rounded'></p>
+    <p class='bg-gray-200 h-6 w-5/6 rounded'></p>
   </div>
 </div>
-
-```
-
-  </template>
-</Tab>
+  "
+  scriptCode="
+  export default {
+    data() {
+      return {
+      };
+    }
+  }
+  "
+/>
 
 ## Colors
 
 The `Divider` component supports custom colors through the `color`  and `textColor` props.  
 
-<Tab
-   class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs"
-    variant="bordered"
-    size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
-  >
-    <template #content1>
-
-<Divider direction="horizontal" length="300px" text="VS" textColor="text-indigo-500" color="bg-indigo-500" class="my-8"  />
-
-</template>
-
-  <template #content2>
-
-  ```md
-
-<Divider direction="horizontal" text="VS" textColor="text-indigo-500" color="bg-indigo-500" class="my-8"  />
-
-
-```
-
-  </template>
-</Tab>
+<CodeTabs
+  templateCode="
+<Divider direction='horizontal' length='300px' text='VS' textColor='text-indigo-500' color='bg-indigo-500' class='my-8' />
+  "
+  scriptCode="
+  export default {
+    data() {
+      return {
+      };
+    }
+  }
+  "
+/>
 
 ## Diameter
 
 The `diameter` prop defines the thickness of the divider:
 
-<Tab
-   class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs"
-    variant="bordered"
-    size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
-  >
-    <template #content1>
-<div class="flex justify-around">
-<Divider direction="vertical" diameter="1px"  length="100px" text="VS" textColor="text-indigo-600" color="bg-indigo-600"  class="my-8" />
-<Divider direction="vertical" diameter="2px" length="100px" text="VS" textColor="text-indigo-600" color="bg-indigo-600" class="my-8" />
-<Divider direction="vertical" diameter="3px" length="100px" text="VS" textColor="text-indigo-600" color="bg-indigo-600" class="my-8"  />
-<Divider direction="vertical" diameter="4px" length="100px" text="VS" textColor="text-indigo-600" color="bg-indigo-600" class="my-8"  />
-<Divider direction="vertical" diameter="5px" length="100px" text="VS" textColor="text-indigo-600" color="bg-indigo-600" class="my-8"  />
+<CodeTabs
+  templateCode="
+<div class='flex justify-around'>
+  <Divider direction='vertical' diameter='1px' length='100px' text='VS' textColor='text-indigo-600' color='bg-indigo-600' class='my-8' />
+  <Divider direction='vertical' diameter='2px' length='100px' text='VS' textColor='text-indigo-600' color='bg-indigo-600' class='my-8' />
+  <Divider direction='vertical' diameter='3px' length='100px' text='VS' textColor='text-indigo-600' color='bg-indigo-600' class='my-8' />
+  <Divider direction='vertical' diameter='4px' length='100px' text='VS' textColor='text-indigo-600' color='bg-indigo-600' class='my-8' />
+  <Divider direction='vertical' diameter='5px' length='100px' text='VS' textColor='text-indigo-600' color='bg-indigo-600' class='my-8' />
 </div>
-</template>
-
-  <template #content2>
-
-  ```md
-<div class="flex justify-around">
-<Divider direction="vertical" diameter="1px"  length="100px" text="VS" textColor="text-indigo-600" color="bg-indigo-600"  class="my-8" />
-<Divider direction="vertical" diameter="2px" length="100px" text="VS" textColor="text-indigo-600" color="bg-indigo-600" class="my-8" />
-<Divider direction="vertical" diameter="3px" length="100px" text="VS" textColor="text-indigo-600" color="bg-indigo-600" class="my-8"  />
-<Divider direction="vertical" diameter="4px" length="100px" text="VS" textColor="text-indigo-600" color="bg-indigo-600" class="my-8"  />
-<Divider direction="vertical" diameter="5px" length="100px" text="VS" textColor="text-indigo-600" color="bg-indigo-600" class="my-8"  />
-</div>
-
-```
-
-  </template>
-</Tab>
+  "
+  scriptCode="
+  export default {
+    data() {
+      return {
+      };
+    }
+  }
+  "
+/>
 
 ## Position
 
 you can choice the position of text with `position`  props
-<Tab
-   class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs"
-    variant="bordered"
-    size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
-  >
-    <template #content1>
-<Divider direction="horizontal" length="300px" text="VS" textColor="text-indigo-500" color="bg-indigo-500"  class="my-8" position="start"/>
-<Divider direction="horizontal" length="300px" text="VS" textColor="text-indigo-500" color="bg-indigo-500" class="my-8" />
-<Divider direction="horizontal" length="300px" text="VS" textColor="text-indigo-500" color="bg-indigo-500" class="my-8"  position="end"/>
 
-</template>
-
-  <template #content2>
-
-  ```md
-<Divider  length="300px" text="VS"  position="start"/>
-<Divider  length="300px" text="VS"   />
-<Divider  length="300px" text="VS"  position="end"/>
-
-
-```
-
-  </template>
-</Tab>
+<CodeTabs
+  templateCode="
+<Divider direction='horizontal' length='300px' text='VS' textColor='text-indigo-500' color='bg-indigo-500' class='my-8' position='start'/>
+<Divider direction='horizontal' length='300px' text='VS' textColor='text-indigo-500' color='bg-indigo-500' class='my-8' />
+<Divider direction='horizontal' length='300px' text='VS' textColor='text-indigo-500' color='bg-indigo-500' class='my-8' position='end'/>
+  "
+  scriptCode="
+  export default {
+    data() {
+      return {
+      };
+    }
+  }
+  "
+/>
 
 ## Multi
 
-<Tab
-   class="gap-3 border-[1px] rounded-md w-full mx-auto "
-    :tabs="tabs"
-    variant="bordered"
-    size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
-  >
-    <template #content1>
-<div class="bg-gray-50 p-6 rounded-lg shadow-inner
- flex w-full justify-between">
-     <div className="max-w-md">
-      <div className="space-y-1">
-        <h4 className="text-medium font-medium">MHMD Components</h4>
-        <p className="text-small text-default-400">Beautiful, fast and modern Vue UI library.</p>
-      </div>
-      <Divider className="my-4"  />
-      <div className="flex h-5 items-center space-x-4 text-small">
-        <p>Blog</p>
-    <Divider direction="vertical" length="20px"  color="bg-gray-400"  />
-        <div>Docs</div>
-    <Divider direction="vertical" length="20px"   color="bg-gray-400" />
-        <p >Source</p>
-      </div>
+<CodeTabs
+  templateCode="
+<div class='bg-gray-50 p-6 rounded-lg shadow-inner flex w-full justify-between'>
+  <div class='max-w-md'>
+    <div class='space-y-1'>
+      <h4 class='text-medium font-medium'>MHMD Components</h4>
+      <p class='text-small text-default-400'>Beautiful, fast and modern Vue UI library.</p>
     </div>
-
-</div>
-</template>
-
-  <template #content2>
-
-  ```md
-
-<div class="bg-gray-50 p-6 rounded-lg shadow-inner
- flex w-full justify-between">
-     <div className="max-w-md">
-      <div className="space-y-1">
-        <h4 className="text-medium font-medium">MHMD Components</h4>
-        <p className="text-small text-default-400">
-        Beautiful,fast and modern Vue UI library
-        </p>
-      </div>
-      <Divider className="my-4"  />
-      <div className="flex h-5 items-center space-x-4 text-small">
-        <p>Blog</p>
-    <Divider direction="vertical" length="20px" text=" "color="bg-gray-400" />
-        <div>Docs</div>
-    <Divider direction="vertical" length="20px" text=" "color="bg-gray-400"/>
-        <p >Source</p>
-      </div>
+    <Divider class='my-4' />
+    <div class='flex h-5 items-center space-x-4 text-small'>
+      <p>Blog</p>
+      <Divider direction='vertical' length='20px' color='bg-gray-400' />
+      <div>Docs</div>
+      <Divider direction='vertical' length='20px' color='bg-gray-400' />
+      <p>Source</p>
     </div>
-
+  </div>
 </div>
-
-
-```
-
-  </template>
-</Tab>
+  "
+  scriptCode="
+  export default {
+    data() {
+      return {
+      };
+    }
+  }
+  "
+/>
 
 ## Divider Component Features
 
