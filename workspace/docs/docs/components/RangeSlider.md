@@ -1,236 +1,129 @@
 
-<script setup>
-import { ref } from 'vue';
-
-const rangeValueLight = ref(20);
-const rangeValueLight2 = ref(24);
-const rangeValueLight3 = ref(60);
-const rangeValueLight4 = ref(50);
-const rangeValueLight5 = ref(34);
-const rangeValueLight6 = ref(10);
-const rangeValueLight7 = ref(5);
-const rangeValueLight8 = ref(95);
-const rangeValueLight9 = ref(85);
-
-const tabs = [
-  { label: 'demo', value: 1, content: '' },
-  { label: 'props', value: 2, content: ''},
-
-]
-</script>
-
 ## Example
 
-
-<Tab
-   class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs"
-    variant="bordered"
-    size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
-  >
-
-<template #content1>
-
-<div class=" py-10  rounded-lg  flex flex-col justify-center items-center">
-  
-<RangeSlider
-  :min="0"
-  :max="100"
-  v-model="rangeValueLight"
-  name="rangeSliderLight"
-/>
-
-<p>Selected Value: {{ rangeValueLight }}</p>
-
-</div
-
+<CodeTabs
+  templateCode="
+<div class='py-10 rounded-lg flex flex-col justify-center items-center'>
+  <RangeSlider
+    :min='0'
+    :max='100'
+    v-model='rangeValueLight'
+    name='rangeSliderLight'
+  />
+  <p>Selected Value: {{ rangeValueLight }}</p>
 </div>
-
-</template>
-
-  <template #content2>
-
-  ```md
-
-<RangeSlider
-  :min="0"
-  :max="100"
-  v-model="ref"
-  name="rangeSliderLight"
+  "
+  scriptCode="
+  export default {
+    data() {
+      return {
+        rangeValueLight: 20,
+      };
+    }
+  }
+  "
 />
-
-```
-
-  </template>
-</Tab>
 
 ## Customize
 
-<Tab
-   class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs"
-    variant="bordered"
-    size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
-  >
-
-<template #content1>
-
-<div class=" py-10  rounded-lg  gap-4 grid  grid-cols-1 justify-items-center">
-
-<RangeSlider
-  :min="0"
-  :max="100"
-  v-model="rangeValueLight2"
-  thumbColor="#FFFF"
-  thumbBorderColor="#4338ca"
-  linkFieldColor="bg-indigo-500"
-/>
-
-
-</div
-
+<CodeTabs
+  templateCode="
+<div class='py-10 rounded-lg gap-4 grid grid-cols-1 justify-items-center'>
+  <RangeSlider
+    :min='0'
+    :max='100'
+    v-model='rangeValueLight'
+    thumbColor='#FFFF'
+    thumbBorderColor='#4338ca'
+    linkFieldColor='bg-indigo-500'
+  />
 </div>
-
-</template>
-
-  <template #content2>
-
-  ```md
-
-<RangeSlider
-  :min="0"
-  :max="100"
-  v-model="rangeValueLight2"
-  thumbColor="#FFFF"
-  thumbBorderColor="#4338ca"
-  linkFieldColor="bg-indigo-500"
+  "
+  scriptCode="
+  export default {
+    data() {
+      return {
+        rangeValueLight: 24,
+      };
+    }
+  }
+  "
 />
-
-```
-
-  </template>
-
-</Tab>
 
 ## Step
 
-<Tab
-   class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs"
-    variant="bordered"
-    size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
-  >
-
-<template #content1>
-
-<div class=" py-10  rounded-lg  gap-4 grid  grid-cols-2 justify-items-center">
-
-<RangeSlider
-  min="0"
-  max="100"
-  v-model="rangeValueLight6"
-  thumbColor="#FFFF"
-  thumbBorderColor="#4338ca"
-  linkFieldColor="bg-indigo-500"
-  step="10"
-/>
-<p> with 10 step => {{rangeValueLight6}}</p>
-<RangeSlider
-  :min="0"
-  :max="100"
-  v-model="rangeValueLight7"
-    thumbColor="#FFFF"
-  thumbBorderColor="#4338ca"
-  linkFieldColor="bg-indigo-500"
-  step="5"
-/>
-<p> with 5 step => {{rangeValueLight7}}</p>
-
-</div
-
+<CodeTabs
+  templateCode="
+<div class='py-10 rounded-lg gap-4 grid grid-cols-2 justify-items-center'>
+  <RangeSlider
+    min='0'
+    max='100'
+    v-model='rangeValueLight'
+    thumbColor='#FFFF'
+    thumbBorderColor='#4338ca'
+    linkFieldColor='bg-indigo-500'
+    step='10'
+  />
+  <p> with 10 step => {{rangeValueLight}}</p>
+  <RangeSlider
+    :min='0'
+    :max='100'
+    v-model='rangeValueLight2'
+    thumbColor='#FFFF'
+    thumbBorderColor='#4338ca'
+    linkFieldColor='bg-indigo-500'
+    step='5'
+  />
+  <p> with 5 step => {{rangeValueLight2}}</p>
 </div>
-
-</template>
-
-  <template #content2>
-
-  ```md
-
-<RangeSlider
-  :min="0"
-  :max="100"
-  v-model="rangeValueLight7"
-  step="5"
+  "
+  scriptCode="
+  export default {
+    data() {
+      return {
+        rangeValueLight: 60,
+        rangeValueLight2: 50,
+      };
+    }
+  }
+  "
 />
-/>
-
-```
-
-  </template>
-
-</Tab>
 
 ## Variant
 
-<Tab
-   class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs"
-    variant="bordered"
-    size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
-  >
-
-<template #content1>
-
-<div class=" py-10  rounded-lg  gap-4 grid  grid-cols-2 justify-items-center">
-
-<RangeSlider
-  min="0"
-  max="100"
-  v-model="rangeValueLight8"
-  thumbColor="#FFFF"
-  thumbBorderColor="#4338ca"
-  linkFieldColor="bg-indigo-400"
-  variant='inside'
-/>
-<RangeSlider
-  :min="0"
-  :max="100"
-  v-model="rangeValueLight9"
-    thumbColor="#FFFF"
-  thumbBorderColor="#4338ca"
-  linkFieldColor="bg-indigo-400"
-/>
-
-</div
-
+<CodeTabs
+  templateCode="
+<div class='py-10 rounded-lg gap-4 grid grid-cols-2 justify-items-center'>
+  <RangeSlider
+    min='0'
+    max='100'
+    v-model='rangeValueLight'
+    thumbColor='#FFFF'
+    thumbBorderColor='#4338ca'
+    linkFieldColor='bg-indigo-400'
+    variant='inside'
+  />
+  <RangeSlider
+    :min='0'
+    :max='100'
+    v-model='rangeValueLight2'
+    thumbColor='#FFFF'
+    thumbBorderColor='#4338ca'
+    linkFieldColor='bg-indigo-400'
+  />
 </div>
-
-</template>
-
-  <template #content2>
-
-  ```md
-
-<RangeSlider
-  min="0"
-  max="100"
-  v-model="rangeValueLight8"
-  thumbColor="#FFFF"
-  thumbBorderColor="#000"
-  linkFieldColor="bg-green-400"
-  variant='inside'
+  "
+  scriptCode="
+  export default {
+    data() {
+      return {
+        rangeValueLight: 85,
+        rangeValueLight2: 95,
+      };
+    }
+  }
+  "
 />
-
-
-```
-
-  </template>
-
-</Tab>
 
 ## RangeSlider Component Features
 
