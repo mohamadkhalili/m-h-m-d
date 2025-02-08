@@ -1,71 +1,24 @@
-<script setup>
-
-const tabs = [
-  { label: 'demo', value: 1, content: '' },
-  { label: 'slots', value: 2, content: ''},
-  { label: 'Props', value: 3, content: ''}
-
-]
-
-import { ref } from 'vue';
-
-const buttonState = ref(false);
-
-const toggleValue = () => {
-  buttonState.value = !buttonState.value;
-};
-</script>
-
 ## Input
 
 The Input component provides a customizable input field that supports various use cases, such as text input, search fields, and forms with labels, prefixes, and suffixes. You can easily customize its appearance using different properties and slots.
 
-<Tab
-   class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs"
-    variant="bordered"
-    size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
-  >
-
-<template #content1>
-
-<div class=" py-10  rounded-lg shadow-inner flex justify-center items-center">
-  
-<Input label="name"/>
-<p>{{modelValue}}</p>
-</div
-
-</div>
-
-</template>
-
-  <template #content2>
-
-  ```md
-
-<Input>
-<template #label >
-name
-</template>
-</Input>
-
-
-```
-
-  </template>
-    <template #content3>
-
-  ```md
-
-<Input label="name" />
-
-
-```
-
-  </template>
-
-</Tab>
+<CodeTabs
+  templateCode="
+  <div class='py-10 rounded-lg shadow-inner flex justify-center items-center'>
+    <Input label='name'/>
+    <p>{{ modelValue }}</p>
+  </div>
+  "
+  scriptCode="
+  export default {
+    data() {
+      return {
+        modelValue: undefined,
+      };
+    }
+  }
+  "
+/>
 
 ## Modify the Styles
 
@@ -75,60 +28,23 @@ You can customize the appearance of the input component by modifying the followi
 - `LabelInputClass`: Modifies the styles of the input's label.
 - `prefix` and `suffix`: Add any text or icon content as prefixes or suffixes.
 
-<Tab
-   class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs"
-    variant="bordered"
-    size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
-  >
-
-<template #content1>
-
-<div class=" py-10 px-2 rounded-lg  shadow-inner grid  grid-cols-1 gap-12 justify-items-center">
-  
-<Input  prefix="➥" suffix='🗙' placeholder='search' InputClass=" rounded-full ring-2 ring-indigo-400 " />
-<Input prefix="👤"   placeholder="password" InputClass="shadow-indigo-200 shadow-inner ring-0 ring-indigo-400"  />
-
-
-
+<CodeTabs
+  templateCode="
+<div class='py-10 px-2 rounded-lg shadow-inner grid grid-cols-1 gap-12 justify-items-center'>
+  <Input prefix='➥' suffix='🗙' placeholder='search' InputClass='rounded-full ring-2 ring-indigo-400' />
+  <Input prefix='👤' placeholder='password' InputClass='shadow-indigo-200 shadow-inner ring-0 ring-indigo-400' />
 </div>
-
-</template>
-
-  <template #content2>
-
-  ```md
-
-<Input  placeholder="Search">
-  <template #prefix>
- <button  class="absolute left-2 -translate-y-1/2 top-1/2  pr-8">
-➥
- </button>
-</template>
-  <template #suffix>
-           <button  type="reset" class="absolute right-3 -translate-y-1/2 top-1/2 p-1">
-            🗙
-          </button>
-  </template>
-  </input>
-
-```
-
-  </template>
-    <template #content3>
-
-  ```md
-<Input  prefix="➥" suffix='🗙' placeholder='search' InputClass=" rounded-full ring-2 ring-indigo-400 " />
-<Input prefix="👤"   placeholder="password" InputClass="shadow-indigo-200 shadow-inner ring-0 ring-indigo-400"  />
-
-
-
-```
-
-  </template>
-
-</Tab>
+  "
+  scriptCode="
+  export default {
+    data() {
+      return {
+        modelValue: undefined,
+      };
+    }
+  }
+  "
+/>
 
 ## Actions
 
@@ -136,97 +52,48 @@ You can customize the appearance of the input component by modifying the followi
 
 <br/>
 
-<Tab
-   class="gap-3 border-[1px]  rounded-md w-full mx-auto "
-    :tabs="tabs"
-    variant="bordered"
-    size="sm"
-    activeColor="text-blue-500 shadow-blue-500"
-  >
-
-<template #content1>
-
-<div class=" py-10 px-2 rounded-lg  shadow-inner grid gap-2   justify-items-center">
-
-<p class="text-gray-600"> click on  close button for handling action</p>
-<Input>
-  <template #label>
-    Name
-  </template>
-
-  <template #prefix>
-    <button
-      type="reset"
-      class="absolute right-3 -translate-y-1/2 top-1/2 p-1 animate-pulse scale-150 hover:animate-none"
-      @click="toggleValue"
-    >
-      🗙
-    </button>
-  </template>
-</Input>
-
- <p class="text-sm">
+<CodeTabs
+  templateCode="
+  <div class='py-10 px-2 rounded-lg shadow-inner grid gap-2 justify-items-center'>
+    <p class='text-gray-600'> click on close button for handling action</p>
+    <Input>
+      <template #label>
+        Name
+      </template>
+      <template #prefix>
+        <button
+          type='reset'
+          class='absolute right-3 -translate-y-1/2 top-1/2 p-1 animate-pulse scale-150 hover:animate-none'
+          @click='toggleValue'
+        >
+          🗙
+        </button>
+      </template>
+    </Input>
+    <p class='text-sm'>
       The button state is:
-      <span :class="[buttonState ? 'text-green-600' : 'text-red-700']">
+      <span :class='[buttonState ? &quot;text-green-600&quot; : &quot;text-red-700&quot;]'>
         {{ buttonState }}
       </span>
     </p>
-</div>
-
-</template>
-
-  <template #content2>
-
-  ```md
-
-<script>
-import { ref } from 'vue';
-
-const buttonState = ref(false);
-
-const toggleValue = () => {
-  buttonState.value = !buttonState.value; 
-};
-</script>
-
-
-<Input>
-  <template #label>
-    Name
-  </template>
-
-  <template #prefix>
-    <button
-      type="reset"
-      class="absolute right-3 -translate-y-1/2 top-1/2 p-1"
-      @click="toggleValue"
-    >
-      🗙
-    </button>
-  </template>
-</Input>
-
- <p class="text-sm">
-      The button state is: 
-      <span :class="[buttonState.value ? 'text-green-600' : 'text-red-700']">
-        {{ buttonState }}
-      </span>
-    </p>
-
-```
-
-  </template>
-    <template #content3>
-
-  ```md
-
-<Input label="name" suffix="X" />
-
-```
-
-  </template>
-
-</Tab>
+  </div>
+  "
+  scriptCode="
+  export default {
+    data() {
+      return {
+        modelValue: undefined,
+        buttonState: false,
+      };
+    },
+    methods: {
+      toggleValue() {
+        this.buttonState = !this.buttonState;
+      }
+    }
+  }
+  "
+/>
 
 ## Input Component Features
 

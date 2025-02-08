@@ -19,7 +19,7 @@ const tabs = [
     size="sm"
     activeColor="text-blue-500 shadow-blue-500"
   >
-    <template #content1>
+<template #content1>
 
 <div class="  p-6 rounded-lg shadow-inner bg-slate-500/10 flex justify-center items-center ">
 <Card cardClass="bg-white w-40  ">
