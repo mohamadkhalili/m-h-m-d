@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ES2020",
+    "baseUrl": ".",
+    "paths": {
+      "m-h-m-d": [
+        "../m-h-m-d/src/index.ts"
+      ],
+      "m-h-m-d/*": [
+        "../m-h-m-d/src/*"
+      ]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.d.ts",
+    "**/*.vue",
+    "generateMd.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

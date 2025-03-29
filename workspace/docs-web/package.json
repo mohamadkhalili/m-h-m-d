@@ -1,0 +1,30 @@
+{
+  "name": "docs-web",
+  "private": true,
+  "version": "0.1.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "docs:dev": "vitepress dev docs",
+    "api:generator": "pnpm exec tsc generateMd.ts && mv generateMd.js generateMd.cjs",
+    "api:run": "pnpm exec node generateMd.cjs",
+    "api": "npm run api:generator && npm run api:run"
+  },
+  "dependencies": {
+    "@jamescoyle/vue-icon": "^0.1.2",
+    "@mdi/js": "^7.4.47",
+    "vitepress": "^1.4.0",
+    "vue": "^3.4.37",
+    "m-h-m-d": "workspace:*"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.1.2",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "sass-embedded": "^1.79.5",
+    "tailwindcss": "^3.4.13",
+    "vite": "^5.4.1"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "hash": "bd8ce745",
+  "configHash": "541cbe15",
+  "lockfileHash": "2dfab9e1",
+  "browserHash": "3173359a",
+  "optimized": {
+    "vue": {
+      "src": "../../../../../../node_modules/.pnpm/vue@3.5.13_typescript@5.7.3/node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "file": "vue.js",
+      "fileHash": "d1ca5742",
+      "needsInterop": false
+    },
+    "vitepress > @vue/devtools-api": {
+      "src": "../../../../../../node_modules/.pnpm/@vue+devtools-api@7.7.2/node_modules/@vue/devtools-api/dist/index.js",
+      "file": "vitepress___@vue_devtools-api.js",
+      "fileHash": "ad649c97",
+      "needsInterop": false
+    },
+    "vitepress > @vueuse/core": {
+      "src": "../../../../../../node_modules/.pnpm/@vueuse+core@12.7.0_typescript@5.7.3/node_modules/@vueuse/core/index.mjs",
+      "file": "vitepress___@vueuse_core.js",
+      "fileHash": "6c6b9d58",
+      "needsInterop": false
+    },
+    "highlight.js": {
+      "src": "../../../../../../node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/es/index.js",
+      "file": "highlight__js.js",
+      "fileHash": "a57d16da",
+      "needsInterop": false
+    },
+    "@vue/compiler-dom": {
+      "src": "../../../../../../node_modules/.pnpm/@vue+compiler-dom@3.5.13/node_modules/@vue/compiler-dom/dist/compiler-dom.esm-bundler.js",
+      "file": "@vue_compiler-dom.js",
+      "fileHash": "fb841467",
+      "needsInterop": false
+    },
+    "@mdi/js": {
+      "src": "../../../../../../node_modules/.pnpm/@mdi+js@7.4.47/node_modules/@mdi/js/mdi.js",
+      "file": "@mdi_js.js",
+      "fileHash": "94d86b75",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-NSJMWDLL": {
+      "file": "chunk-NSJMWDLL.js"
+    },
+    "chunk-CDIDLE2Y": {
+      "file": "chunk-CDIDLE2Y.js"
+    },
+    "chunk-5WRI5ZAA": {
+      "file": "chunk-5WRI5ZAA.js"
+    }
+  }
+}
