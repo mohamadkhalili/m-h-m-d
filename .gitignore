@@ -11,7 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
-workspace/docs/docs/.vitepress/cache
+workspace/docs-web/docs/.vitepress/cache
+workspace/docs-web/docs/api/*
 
 # Editor directories and files
 .vscode/*
