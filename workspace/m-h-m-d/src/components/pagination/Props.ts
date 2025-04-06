@@ -9,10 +9,10 @@ export const paginationProps = {
 };
 
 export const uiProps = {
-    activeClass: { type: String, default: '' },
-    onActiveClass: { type: String, default: '' },
-    buttonClass: { type: String, default: '' },
-    separatorClass: { type: String, default: '' },
+    activeClass: { type: String, default: '' }, //test test activeClass
+    onActiveClass: { type: String, default: '' }, //test test onActiveClass
+    buttonClass: { type: String, default: '' }, //test test buttonClass
+    separatorClass: { type: String, default: '' }, //test test separatorClass
     pageSize: { type: Number, default: 20, required: false }, //Size of pages
     modelValue: { type: Number, required: false }, //the page it is on
     searchPage: { type: Number, required: false }, //the page it is on with search page input

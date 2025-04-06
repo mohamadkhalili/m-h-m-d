@@ -30,7 +30,7 @@ import Skeleton from './components/Skeleton/Ui.vue'
 import Carousel from './components/Carousel/Ui.vue'
 import dateRange from './components/dateRange/Core.vue'
 import combobox from './components/combobox/Ui.vue'
-import Drawer from './components/Drawer/Ui.vue'
+import Drawer from './components/Drawer/index.vue'
 import expansionPanel from './components/expansionPanel/Ui.vue';
 
 

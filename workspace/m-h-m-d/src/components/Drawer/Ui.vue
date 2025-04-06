@@ -1,5 +1,5 @@
 <template>
-    <div
+    <!-- <div
         :class="[
             drawerClasses.base,
             side === 'right'
@@ -14,14 +14,14 @@
         ]"
     >
         <slot />
-    </div>
+    </div> -->
 </template>
 
 <script setup>
-import { drawerProps } from './Props';
-import { drawerClasses } from '../../styles/DrawerClasses';
+// import { drawerProps } from './Props';
+// import { drawerClasses } from '../../styles/DrawerClasses';
 
-const props = defineProps(drawerProps);
+// const props = defineProps(drawerProps);
 </script>
 
 <style scoped>

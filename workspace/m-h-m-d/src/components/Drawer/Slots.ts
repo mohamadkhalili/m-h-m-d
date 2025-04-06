@@ -1,3 +1,3 @@
-export const drawerSlots = {
-  default: 'Default slot for drawer content',
-};
+export interface Slots {
+  default(props: {}): any, // Includes everything in the drawer
+}

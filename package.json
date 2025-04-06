@@ -11,7 +11,9 @@
   "private": true,
   "scripts": {
     "start": "pnpm -r start",
-    "dev": "lerna run docs:dev --scope=docs",
+    "dev": "pnpm --filter docs-web run docs:dev",
+    "dev-api": "pnpm --filter docs-web run api:generator",
+    "dev-api-run": "pnpm --filter docs-web run api:run",
     "build": "pnpm -r build",
     "new-version": "lerna version --conventional-commits --yes"
   },
@@ -24,7 +26,10 @@
     "autoprefixer": "^10.4.20",
     "highlight.js": "^11.11.1",
     "postcss": "^8.4.47",
-    "tailwindcss": "^3.4.14"
+    "tailwindcss": "^3.4.14",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2",
+    "vitepress": "^1.4.0"
   },
   "devDependencies": {
     "lerna": "^8.1.9"
